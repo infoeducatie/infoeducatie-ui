@@ -10,7 +10,7 @@ import React from "react";
 import Router from "react-router";
 
 // Common utilities
-import Session from "./common/session";
+import Session from "./lib/session";
 
 // Routers
 import LoggedOutRouter from "./routers/logged_out";

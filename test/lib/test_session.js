@@ -1,4 +1,4 @@
-import Session from "../../src/common/session";
+import Session from "../../src/lib/session";
 
 
 describe("Session", function() {
