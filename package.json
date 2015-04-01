@@ -1,7 +1,7 @@
 {
-  "name": "essential-react",
-  "version": "0.2.2",
-  "description": "A minimal skeleton for building testable React apps using ES6.",
+  "name": "infoeducatie-react",
+  "version": "0.1.0",
+  "description": "Frontend for infoeducatie.ro",
   "main": "src/main.jsx",
   "scripts": {
     "server": "node server.js",
@@ -13,20 +13,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pheuter/essential-react.git"
+    "url": "https://github.com/infoeducatie/infoeducatie-react.git"
   },
   "keywords": [
-    "skeleton",
-    "template",
-    "react",
-    "quickstart"
+    "website"
   ],
-  "author": "Mark Fayngersh",
+  "author": "InfoEducatie Team",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pheuter/essential-react/issues"
+    "url": "https://github.com/infoeducatie/infoeducatie-react/issues"
   },
-  "homepage": "https://github.com/pheuter/essential-react",
+  "homepage": "https://github.com/infoeducatie/infoeducatie-react",
   "devDependencies": {
     "babel-core": "^4.7.8",
     "babel-loader": "^4.1.0",
