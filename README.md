@@ -6,7 +6,7 @@ React frontend for our [backend API](https://github.com/infoeducatie/infoeducati
 
 ```
 npm install
-npm run server
+npm start
 ```
 
 ## Technologies used

@@ -3,8 +3,7 @@ import "./lib/auth.js";
 
 import About from "./components/about.jsx";
 import Dashboard from "./components/dashboard.jsx";
-import Login from "./components/login.jsx";
-import Logout from "./components/logout.jsx";
+import Logo from "file!../assets/img/logo.png"
 
 import React from "react";
 import Router from "react-router";
@@ -24,6 +23,7 @@ let App = React.createClass({
 
   render() {
     return <div id="app">
+      <img src={Logo} />
       <ul>
         <li><Link to="/">Index</Link></li>
         <li><Link to="about">About</Link></li>
