@@ -44,7 +44,7 @@ let App = React.createClass({
   },
 
   setStateOnAuth() {
-    this.setState({loggedIn: window.auth.loggedIn()});
+    this.setState({loggedIn: window.Auth.loggedIn()});
   }
 });
 
