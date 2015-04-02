@@ -24,7 +24,7 @@ let App = React.createClass({
   },
 
   componentWillMount() {
-    window.auth.onChange = this.setStateOnAuth;
+    window.Auth.onChange = this.setStateOnAuth;
   },
 
   render() {
