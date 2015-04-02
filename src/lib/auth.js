@@ -4,7 +4,7 @@
  * Minimal authentication system.
  */
 window.user = false;
-window.auth = {
+let Auth = {
   loggedIn() {
     return window.user;
   },
@@ -18,3 +18,6 @@ window.auth = {
     this.onChange();
   }
 };
+
+window.Auth = Auth;
+export default Auth;

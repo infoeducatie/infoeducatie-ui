@@ -16,7 +16,7 @@ module.exports = function(config) {
      */
     files: [
       './test/polyfill.js',
-      './test/main.js'
+      './test/config.js'
     ],
 
     /**
@@ -24,14 +24,14 @@ module.exports = function(config) {
      * their source can be properly transpiled.
      */
     preprocessors: {
-      './test/main.js': ['webpack']
+      './test/config.js': ['webpack']
     },
 
     /**
      * We want to run the tests using the PhantomJS headless browser.
      * This is especially useful for continuous integration.
      */
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
 
     /**
      * Use Mocha as the test framework, Sinon for mocking, and
@@ -69,7 +69,11 @@ module.exports = function(config) {
     webpack: {
       module: {
         loaders: [
-          { test: /\.jsx?$/, exclude: /node_modules/, loader: "babel-loader"}
+          { test: /\.jsx?$/, exclude: /node_modules/, loader: "babel-loader"},
+          { test: "\.png$", loader: "file-loader" },
+          { test: /\.less$/, loader: "style!css!less" },
+          { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&minetype=application/font-woff" },
+          { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" },
         ],
         postLoaders: [{
           test: /\.jsx?$/,
@@ -102,7 +106,8 @@ module.exports = function(config) {
       'karma-webpack',
       'karma-coverage',
       'karma-sinon-chai',
-      'karma-phantomjs-launcher'
+      'karma-phantomjs-launcher',
+      'karma-chrome-launcher'
     ],
   });
 }

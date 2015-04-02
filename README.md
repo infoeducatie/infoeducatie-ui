@@ -1,6 +1,7 @@
 # infoeducatie-react
 
 React frontend for our [backend API](https://github.com/infoeducatie/infoeducatie-api).
+The rest of dependencies are in [`package.json`](https://github.com/infoeducatie/infoeducatie-react/blob/master/package.json).
 
 ## Setup
 
@@ -14,6 +15,7 @@ npm start
 - ES6 - the new Javascript standard
 - Webpack - module bundler
 - React - the best UI framework, written by Facebook
+- Bootstrap - reusable UI elements from Twitter
 - LESS - pre-processor for CSS
 - Mochai, Chai - unit tests
 
