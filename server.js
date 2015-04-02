@@ -22,18 +22,6 @@ app.get('*', function(req, res) {
   res.sendFile(__dirname + '/build/index.html');
 });
 
-app.post('/landing', function(req, res) {
-  res.json({
-    title: "Landing Page"
-  });
-});
-
-app.post('/home', function(req, res) {
-  res.json({
-    title: "Home Page"
-  });
-});
-
 
 /*************************************************************
  *
