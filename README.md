@@ -6,7 +6,6 @@ React frontend for our [backend API](https://github.com/infoeducatie/infoeducati
 
 ```
 npm install
-npm run build
 npm run server
 ```
 
@@ -23,3 +22,8 @@ npm run server
 - `build` - Javascript and CSS bundles
 - `src`
   - `common`
+
+## Commands
+
+- `gulp` - lints the code
+- `npm run bundle` - bundles the code for deploying

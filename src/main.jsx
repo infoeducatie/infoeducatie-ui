@@ -1,10 +1,10 @@
 import "babel-core/polyfill";
-import "./lib/auth.js"
+import "./lib/auth.js";
 
-import About from "./components/about.jsx"
-import Dashboard from "./components/dashboard.jsx"
-import Login from "./components/login.jsx"
-import Logout from "./components/logout.jsx"
+import About from "./components/about.jsx";
+import Dashboard from "./components/dashboard.jsx";
+import Login from "./components/login.jsx";
+import Logout from "./components/logout.jsx";
 
 import React from "react";
 import Router from "react-router";
@@ -19,11 +19,11 @@ let App = React.createClass({
   },
 
   componentWillMount() {
-    auth.onChange = this.setStateOnAuth;
+    window.auth.onChange = this.setStateOnAuth;
   },
 
   render() {
-    return <div id='app'>
+    return <div id="app">
       <ul>
         <li><Link to="/">Index</Link></li>
         <li><Link to="about">About</Link></li>
@@ -36,7 +36,7 @@ let App = React.createClass({
   },
 
   setStateOnAuth() {
-    this.setState({loggedIn: auth.loggedIn()});
+    this.setState({loggedIn: window.auth.loggedIn()});
   }
 });
 
@@ -50,5 +50,5 @@ let routes = (
 
 
 Router.run(routes, Router.HistoryLocation, function(Handler, state) {
-  React.render(<Handler />, document.getElementById('app'));
+  React.render(<Handler />, document.getElementById("app"));
 });
