@@ -26,7 +26,7 @@ npm start
   - `components` - React components and LESS files for each component
   - `lib` - Helper libraries
   - `mixins` - React mixins
-- `main.{jsx, less} - Main entry point with the router.
+- `main.jsx` - Main entry point with the router.
 
 ## Commands
 
