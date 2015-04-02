@@ -1,7 +1,6 @@
 # infoeducatie-react
 
-React frontend for our [backend API](https://github.com/infoeducatie/infoeducatie-api).
-The rest of dependencies are in [`package.json`](https://github.com/infoeducatie/infoeducatie-react/blob/master/package.json).
+React frontend for our [backend API](https://github.com/infoeducatie/infoeducatie-api). This will replace our [existing website](http://infoeducatie.ro/).
 
 ## Setup
 
@@ -18,6 +17,7 @@ npm start
 - Bootstrap - reusable UI elements from Twitter
 - LESS - pre-processor for CSS
 - Mochai, Chai - unit tests
+- dependencies are in [`package.json`](https://github.com/infoeducatie/infoeducatie-react/blob/master/package.json)
 
 ## Folder layout
 
