@@ -1,3 +1,5 @@
+"use strict";
+
 import "babel-core/polyfill";
 import "./lib/auth.js";
 import "!style!css!less!./main.less"
@@ -9,10 +11,12 @@ import Logo from "file!../assets/img/logo.png"
 import { Jumbotron } from "react-bootstrap";
 import React from "react";
 import Router from "react-router";
-let { Route, Link, RouteHandler } = Router;
+let { Route, Link, RouteHandler } = Router; // eslint-disable-line
 
 
 let App = React.createClass({
+  displayName: "App",
+
   getInitialState() {
     return {
       loggedIn: false
@@ -47,12 +51,12 @@ let App = React.createClass({
 
 let routes = (
   <Route handler={App}>
-    <Route name="about" handler={About} />
-    <Route name="dashboard" handler={Dashboard} />
+    <Route handler={About} name="about" />
+    <Route handler={Dashboard} name="dashboard" />
   </Route>
 );
 
 
-Router.run(routes, Router.HistoryLocation, function(Handler, state) {
+Router.run(routes, Router.HistoryLocation, function(Handler) {
   React.render(<Handler />, document.getElementById("app"));
 });

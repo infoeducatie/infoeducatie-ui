@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * Minimal authentication system.
  */

@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * Check if user is authenticate, or redirect him to /.
  */
