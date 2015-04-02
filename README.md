@@ -21,9 +21,12 @@ npm start
 
 - `build` - Javascript and CSS bundles
 - `src`
-  - `common`
+  - `components` - React components and LESS files for each component
+  - `lib` - Helper libraries
+  - `mixins` - React mixins
+- `main.{jsx, less} - Main entry point with the router.
 
 ## Commands
 
 - `gulp` - lints the code
-- `npm run bundle` - bundles the code for deploying
+- `npm run build` - bundles the code for deploying
