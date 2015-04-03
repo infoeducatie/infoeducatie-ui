@@ -8,23 +8,23 @@ describe("Auth", function() {
 
   it("should return false when user is logged out", function() {
     window.user = false;
-    expect(Auth.loggedIn()).to.equal(false);
+    expect(Auth.isLoggedIn()).to.equal(false);
   });
 
   it("should return true when user is logged in", function() {
     window.user = true;
-    expect(Auth.loggedIn()).to.equal(true);
+    expect(Auth.isLoggedIn()).to.equal(true);
   });
 
   it("should login a user", function() {
     window.user = false;
     Auth.login();
-    expect(Auth.loggedIn()).to.equal(true);
+    expect(Auth.isLoggedIn()).to.equal(true);
   });
 
   it("should logout a user", function() {
     window.user = true;
     Auth.logout();
-    expect(Auth.loggedIn()).to.equal(false);
+    expect(Auth.isLoggedIn()).to.equal(false);
   });
 });
