@@ -1,16 +1,16 @@
 "use strict";
 
 import "babel-core/polyfill";
-import "./lib/auth.js";
+import "./lib/auth";
 import "!style!css!less!./main.less";
 
-import Header from "./components/header.jsx";
-import News from "./components/news.jsx";
-import Photos from "./components/photos.jsx";
-import Alumni from "./components/alumni.jsx";
-import Galaciuc from "./components/galaciuc.jsx";
-import Register from "./components/register.jsx";
-import Dashboard from "./components/dashboard.jsx";
+import Header from "./components/header";
+import News from "./components/news";
+import Photos from "./components/photos";
+import Alumni from "./components/alumni";
+import Galaciuc from "./components/galaciuc";
+import Register from "./components/register";
+import Dashboard from "./components/dashboard";
 
 import React from "react";
 import Router from "react-router";
