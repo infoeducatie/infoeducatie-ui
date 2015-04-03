@@ -10,7 +10,7 @@
     "test-debug": "./node_modules/karma/bin/karma start karma-debug.config.js",
     "test-cross-browser": "./node_modules/karma/bin/karma start karma.cross-browser.config.js",
     "coveralls": "cat coverage/lcov.info | coveralls",
-    "clean": "rm build/app.js",
+    "clean": "rm -f build/app.js; find build/* | grep -v index.html | xargs rm -f",
     "postinstall": "npm run build"
   },
   "repository": {
