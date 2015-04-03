@@ -1,5 +1,9 @@
 "use strict";
 
+import React from "react";
+import Router from "react-router";
+let { Route, Link, RouteHandler } = Router; // eslint-disable-line
+
 import "babel-core/polyfill";
 import "./lib/auth";
 import "./main.less";
@@ -11,10 +15,6 @@ import Alumni from "./components/alumni";
 import Galaciuc from "./components/galaciuc";
 import Register from "./components/register";
 import Dashboard from "./components/dashboard";
-
-import React from "react";
-import Router from "react-router";
-let { Route, Link, RouteHandler } = Router; // eslint-disable-line
 
 
 let App = React.createClass({
