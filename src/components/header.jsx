@@ -1,7 +1,7 @@
 "use strict";
 
-import "!style!css!less!./../main.less";
-import "!style!css!less!./header.less";
+import "./../main.less";
+import "./header.less";
 
 import React from "react";
 import Router from "react-router";

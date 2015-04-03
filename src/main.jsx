@@ -2,7 +2,7 @@
 
 import "babel-core/polyfill";
 import "./lib/auth";
-import "!style!css!less!./main.less";
+import "./main.less";
 
 import Header from "./components/header";
 import News from "./components/news";
