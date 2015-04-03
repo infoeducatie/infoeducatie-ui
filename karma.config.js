@@ -31,7 +31,7 @@ module.exports = function(config) {
      * We want to run the tests using the PhantomJS headless browser.
      * This is especially useful for continuous integration.
      */
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
 
     /**
      * Use Mocha as the test framework, Sinon for mocking, and
