@@ -17,10 +17,10 @@ export default React.createClass({
       <Link to="dashboard">Dashboard</Link>
     </NavItem>;
 
-    return <div>
-        <div id="navbar-img"></div>
+    return <div className="header">
+        <div className="header-img" />
         <Navbar brand="InfoEducatie">
-            <Nav right ref="nav">
+            <Nav className="navbar-nav" right ref="nav">
                 <NavItemLink to="/">Acasa</NavItemLink>
                 <NavItemLink to="news">Stiri</NavItemLink>
                 <NavItemLink to="alumni">Alumni</NavItemLink>
