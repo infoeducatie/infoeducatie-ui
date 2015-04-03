@@ -19,7 +19,7 @@ var config = require('./webpack.local.config');
 
 // Serve index page
 app.get('*', function(req, res) {
-  res.sendFile(__dirname + '/build/index.html');
+  res.sendFile(__dirname + '/index.html');
 });
 
 
