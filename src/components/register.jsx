@@ -8,7 +8,7 @@ export default React.createClass({
 
   render() {
     return <div>
-      <h1>Register</h1>
+      <h1 ref="heading">Register</h1>
     </div>;
   }
 });
