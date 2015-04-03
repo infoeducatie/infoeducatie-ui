@@ -1,22 +1,21 @@
 @import "../main";
 
-#navbar-img {
-    width: 100%;
-    height: 4px;
-    background: @white url(../../assets/img/banner_image.png) repeat-x;
-}
-
-.navbar {
-    a{
-        color: @white;
+.header {
+    .header-img {
+        width: 100%;
+        height: 4px;
+        background: @white url(../../assets/img/banner_image.png) repeat-x;
     }
-}
 
-.navbar-nav {
-    font-weight: bold;
+    .navbar-nav {
+        font-weight: bold;
 
-    li.register-label {
-        margin-left: (@navbar-padding-horizontal * 2);
-        background-color: @red;
+        a {
+            color: @white;
+        }
+
+        li.register-label {
+            background-color: @red;
+        }
     }
 }
