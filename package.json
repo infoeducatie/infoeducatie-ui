@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "build": "webpack -p --config webpack.production.config.js",
-    "test": "PHANTOMJS_BIN=./node_modules/.bin/phantomjs ./node_modules/karma/bin/karma start karma.config.js",
+    "test": "./node_modules/gulp/bin/gulp.js lint && PHANTOMJS_BIN=./node_modules/.bin/phantomjs ./node_modules/karma/bin/karma start karma.config.js",
+    "test-debug": "./node_modules/karma/bin/karma start karma-debug.config.js",
     "test-cross-browser": "./node_modules/karma/bin/karma start karma.cross-browser.config.js",
     "coveralls": "cat coverage/lcov.info | coveralls",
     "clean": "rm build/app.js"
