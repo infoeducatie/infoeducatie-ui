@@ -2,13 +2,16 @@
 
 import "babel-core/polyfill";
 import "./lib/auth.js";
-import "!style!css!less!./main.less"
+import "!style!css!less!./main.less";
 
-import About from "./components/about.jsx";
+import Header from "./components/header.jsx";
+import News from "./components/news.jsx";
+import Photos from "./components/photos.jsx";
+import Alumni from "./components/alumni.jsx";
+import Galaciuc from "./components/galaciuc.jsx";
+import Register from "./components/register.jsx";
 import Dashboard from "./components/dashboard.jsx";
-import Logo from "file!../assets/img/logo.png"
 
-import { Jumbotron } from "react-bootstrap";
 import React from "react";
 import Router from "react-router";
 let { Route, Link, RouteHandler } = Router; // eslint-disable-line
@@ -19,7 +22,7 @@ let App = React.createClass({
 
   getInitialState() {
     return {
-      loggedIn: false
+      isLoggedIn: false
     };
   },
 
@@ -29,29 +32,26 @@ let App = React.createClass({
 
   render() {
     return <div id="app">
-      <Jumbotron>
-        <img src={Logo} />
-        <ul>
-          <li><Link to="/">Index</Link></li>
-          <li><Link to="about">About</Link></li>
-          <li><Link to="dashboard">Dashboard (only if auth)</Link></li>
-        </ul>
-        <p>{this.state.loggedIn ? "I am signed in." :
-                                  "I am not signed in."}</p>
+        <Header isLoggedIn={this.state.isLoggedIn} />
+        <p>{this.state.isLoggedIn ? "I am signed in."
+                                  : "I am not signed in."}</p>
         <RouteHandler/>
-      </Jumbotron>
     </div>;
   },
 
   setStateOnAuth() {
-    this.setState({loggedIn: window.Auth.loggedIn()});
+    this.setState({isLoggedIn: window.Auth.isLoggedIn()});
   }
 });
 
 
 let routes = (
   <Route handler={App}>
-    <Route handler={About} name="about" />
+    <Route handler={News} name="news" />
+    <Route handler={Alumni} name="alumini" />
+    <Route handler={Photos} name="photos" />
+    <Route handler={Galaciuc} name="galaciuc" />
+    <Route handler={Register} name="register" />
     <Route handler={Dashboard} name="dashboard" />
   </Route>
 );
