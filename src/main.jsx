@@ -4,7 +4,7 @@ import "babel-core/polyfill";
 import "./lib/auth.js";
 import "!style!css!less!./main.less";
 
-import Header from "./components/header";
+import Header from "./components/header.jsx";
 import News from "./components/news.jsx";
 import Photos from "./components/photos.jsx";
 import Alumni from "./components/alumni.jsx";
@@ -34,8 +34,8 @@ let App = React.createClass({
     return <div id="app">
         <Header isLoggedIn={this.state.isLoggedIn} />
             <p>{this.state.isLoggedIn ? "I am signed in." :
-                                      "I am not signed in."}</p>
-            <RouteHandler/>
+                                        "I am not signed in."}</p>
+        <RouteHandler/>
     </div>;
   },
 
