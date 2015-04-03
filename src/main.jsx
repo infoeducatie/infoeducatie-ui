@@ -5,7 +5,11 @@ import "./lib/auth.js";
 import "!style!css!less!./main.less";
 
 import Header from "./components/header";
-import About from "./components/about.jsx";
+import News from "./components/news.jsx";
+import Photos from "./components/photos.jsx";
+import Alumni from "./components/alumni.jsx";
+import Galaciuc from "./components/galaciuc.jsx";
+import Register from "./components/register.jsx";
 import Dashboard from "./components/dashboard.jsx";
 
 import React from "react";
@@ -29,6 +33,9 @@ let App = React.createClass({
   render() {
     return <div id="app">
         <Header loggedIn={this.state.loggedIn} />
+            <p>{this.state.loggedIn ? "I am signed in." :
+                                      "I am not signed in."}</p>
+            <RouteHandler/>
     </div>;
   },
 
@@ -40,7 +47,11 @@ let App = React.createClass({
 
 let routes = (
   <Route handler={App}>
-    <Route handler={About} name="about" />
+    <Route handler={News} name="news" />
+    <Route handler={Alumni} name="alumini" />
+    <Route handler={Photos} name="photos" />
+    <Route handler={Galaciuc} name="galaciuc" />
+    <Route handler={Register} name="register" />
     <Route handler={Dashboard} name="dashboard" />
   </Route>
 );
