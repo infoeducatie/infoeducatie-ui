@@ -26,7 +26,9 @@ export default React.createClass({
                 <NavItemLink to="alumni">Alumni</NavItemLink>
                 <NavItemLink to="photos">Poze</NavItemLink>
                 <NavItemLink to="galaciuc">Galaciuc</NavItemLink>
-                <NavItemLink className="register-label" to="register">Inscrie-te!</NavItemLink>
+                <NavItemLink className="register-label" to="register">
+                    Inscrie-te!
+                </NavItemLink>
                 {this.props.isLoggedIn ? {dashboardNavItem} : null}
             </Nav>
         </Navbar>
