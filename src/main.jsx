@@ -33,8 +33,8 @@ let App = React.createClass({
   render() {
     return <div id="app">
         <Header isLoggedIn={this.state.isLoggedIn} />
-            <p>{this.state.isLoggedIn ? "I am signed in." :
-                                        "I am not signed in."}</p>
+        <p>{this.state.isLoggedIn ? "I am signed in."
+                                  : "I am not signed in."}</p>
         <RouteHandler/>
     </div>;
   },
