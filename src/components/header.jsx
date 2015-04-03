@@ -1,10 +1,12 @@
 "use strict";
 
-import Logo from "file!../../assets/img/logo.png"
+import "./../main.less";
+import "./header.less";
 
 import React from "react";
 import Router from "react-router";
 import { Navbar, Nav, NavItem } from "react-bootstrap";
+import { NavItemLink } from "react-router-bootstrap";
 let { Route, Link, RouteHandler } = Router; // eslint-disable-line
 
 export default React.createClass({
@@ -15,16 +17,21 @@ export default React.createClass({
       <Link to="dashboard">Dashboard</Link>
     </NavItem>;
 
-    return <Navbar brand="InfoEducatie">
-        <Nav ref="nav">
-            <NavItem><Link to="/">Acasa</Link></NavItem>
-            <NavItem><Link to="news">Stiri</Link></NavItem>
-            <NavItem><Link to="alumini">Alumni</Link></NavItem>
-            <NavItem><Link to="photos">Poze</Link></NavItem>
-            <NavItem><Link to="galaciuc">Galaciuc</Link></NavItem>
-            <NavItem><Link to="register">Inscrie-te!</Link></NavItem>
-            {this.props.isLoggedIn ? {dashboardNavItem} : null}
-        </Nav>
-    </Navbar>;
+    return <div className="header">
+        <div className="header-img" />
+        <Navbar brand="InfoEducatie">
+            <Nav className="navbar-nav" right ref="nav">
+                <NavItemLink to="/">Acasa</NavItemLink>
+                <NavItemLink to="news">Stiri</NavItemLink>
+                <NavItemLink to="alumni">Alumni</NavItemLink>
+                <NavItemLink to="photos">Poze</NavItemLink>
+                <NavItemLink to="galaciuc">Galaciuc</NavItemLink>
+                <NavItemLink className="register-label" to="register">
+                    Inscrie-te!
+                </NavItemLink>
+                {this.props.isLoggedIn ? {dashboardNavItem} : null}
+            </Nav>
+        </Navbar>
+    </div>;
   }
 });

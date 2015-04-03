@@ -2,7 +2,7 @@
 
 import "babel-core/polyfill";
 import "./lib/auth";
-import "!style!css!less!./main.less";
+import "./main.less";
 
 import Header from "./components/header";
 import News from "./components/news";
@@ -48,7 +48,7 @@ let App = React.createClass({
 let routes = (
   <Route handler={App}>
     <Route handler={News} name="news" />
-    <Route handler={Alumni} name="alumini" />
+    <Route handler={Alumni} name="alumni" />
     <Route handler={Photos} name="photos" />
     <Route handler={Galaciuc} name="galaciuc" />
     <Route handler={Register} name="register" />
