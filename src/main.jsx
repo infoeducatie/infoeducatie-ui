@@ -6,7 +6,6 @@ let { Route, Link, RouteHandler } = Router; // eslint-disable-line
 
 import "babel-core/polyfill";
 import "./lib/auth";
-import "./lib/config";
 import "./main.less";
 
 import Header from "./components/header";

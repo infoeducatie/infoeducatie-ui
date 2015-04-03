@@ -6,7 +6,6 @@ import { Navbar, Nav, NavItem } from "react-bootstrap";
 import { NavItemLink } from "react-router-bootstrap";
 let { Route, Link, RouteHandler } = Router; // eslint-disable-line
 
-import "./../main.less";
 import "./header.less";
 
 import SignIn from "./sign-in"
