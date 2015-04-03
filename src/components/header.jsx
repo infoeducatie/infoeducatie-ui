@@ -1,6 +1,7 @@
 "use strict";
 
-import Logo from "file!../../assets/img/logo.png"
+import "!style!css!less!./../main.less";
+import "!style!css!less!./header.less";
 
 import React from "react";
 import Router from "react-router";
@@ -22,7 +23,7 @@ export default React.createClass({
             <NavItem><Link to="alumini">Alumni</Link></NavItem>
             <NavItem><Link to="photos">Poze</Link></NavItem>
             <NavItem><Link to="galaciuc">Galaciuc</Link></NavItem>
-            <NavItem><Link to="register">Inscrie-te!</Link></NavItem>
+            <NavItem><Link className="register-label" to="register">Inscrie-te!</Link></NavItem>
             {this.props.isLoggedIn ? {dashboardNavItem} : null}
         </Nav>
     </Navbar>;
