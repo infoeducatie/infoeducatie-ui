@@ -1,0 +1,13 @@
+{
+  "name":"infoeducatie-ui",
+  "scripts":{},
+  "env":{
+    "NPM_CONFIG_PRODUCTION":{
+      "required":true
+    },
+    "PORT":{
+      "required":true
+    }
+  },
+  "addons":[]
+}
