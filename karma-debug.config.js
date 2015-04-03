@@ -28,7 +28,8 @@ module.exports = function(config) {
     },
 
     /**
-     * We want to run the tests using the PhantomJS headless browser.
+     * We want to run the tests using the Chrome browser, in order to use the
+     * best development console (bitch!).
      * This is especially useful for continuous integration.
      */
     browsers: ['Chrome'],
@@ -94,7 +95,8 @@ module.exports = function(config) {
     },
 
     /**
-     * Once the mocha test suite returns, we want to exit from the test runner as well.
+     * Once the mocha test suite returns, we don't want to exit from the test.
+     * We want to keep debugging.
      */
     singleRun: false,
 
