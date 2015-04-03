@@ -5,7 +5,7 @@
   "main": "src/main.jsx",
   "scripts": {
     "start": "node server.js",
-    "build": "webpack -p --config webpack.production.config.js",
+    "build": "./node_modules/webpack/bin/webpack.js -p --config webpack.production.config.js",
     "test": "./node_modules/gulp/bin/gulp.js lint && PHANTOMJS_BIN=./node_modules/.bin/phantomjs ./node_modules/karma/bin/karma start karma.config.js",
     "test-debug": "./node_modules/karma/bin/karma start karma-debug.config.js",
     "test-cross-browser": "./node_modules/karma/bin/karma start karma.cross-browser.config.js",
@@ -51,6 +51,7 @@
     "less-loader": "^2.2.0",
     "phantomjs": "^1.9.16",
     "react-hot-loader": "^1.2.3",
+    "react-router-bootstrap": "^0.12.1",
     "style-loader": "^0.9.0",
     "url-loader": "^0.5.5",
     "webpack": "^1.7.2",

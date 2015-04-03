@@ -31,7 +31,7 @@ export default React.createClass({
   },
 
   render() {
-    return <a href="#" onClick={this.openModal}>Autentificare</a>;
+    return <span onClick={this.openModal}>Autentificare</span>;
   },
 
   onSignIn(formData) {

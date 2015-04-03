@@ -19,7 +19,7 @@ var config = require('./webpack.local.config');
 
 // Serve index page
 app.get('*', function(req, res) {
-  res.sendFile(__dirname + '/build/index.html');
+  res.sendFile(__dirname + '/index.html');
 });
 
 
@@ -48,7 +48,9 @@ new WebpackDevServer(webpack(config), {
  *
  *****************/
 
-var server = app.listen(8080, function () {
+app.set('port', process.env.PORT || 8080);
+
+var server = app.listen(app.get('port'), function () {
   var host = server.address().address;
   var port = server.address().port;
 

@@ -1,4 +1,5 @@
 # infoeducatie-ui
+[![Build Status](https://travis-ci.org/infoeducatie/infoeducatie-ui.svg?branch=master)](https://travis-ci.org/infoeducatie/infoeducatie-ui) [![Dependency Status](https://gemnasium.com/infoeducatie/infoeducatie-ui.svg)](https://gemnasium.com/infoeducatie/infoeducatie-ui)
 
 React frontend for our [backend API](https://github.com/infoeducatie/infoeducatie-api). This will replace our [existing website](http://infoeducatie.ro/).
 

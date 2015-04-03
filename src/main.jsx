@@ -1,9 +1,13 @@
 "use strict";
 
+import React from "react";
+import Router from "react-router";
+let { Route, Link, RouteHandler } = Router; // eslint-disable-line
+
 import "babel-core/polyfill";
 import "./lib/auth";
 import "./lib/config";
-import "!style!css!less!./main.less";
+import "./main.less";
 
 import Header from "./components/header";
 import News from "./components/news";
@@ -12,10 +16,6 @@ import Alumni from "./components/alumni";
 import Galaciuc from "./components/galaciuc";
 import Register from "./components/register";
 import Dashboard from "./components/dashboard";
-
-import React from "react";
-import Router from "react-router";
-let { Route, Link, RouteHandler } = Router; // eslint-disable-line
 
 
 let App = React.createClass({
@@ -49,7 +49,7 @@ let App = React.createClass({
 let routes = (
   <Route handler={App}>
     <Route handler={News} name="news" />
-    <Route handler={Alumni} name="alumini" />
+    <Route handler={Alumni} name="alumni" />
     <Route handler={Photos} name="photos" />
     <Route handler={Galaciuc} name="galaciuc" />
     <Route handler={Register} name="register" />
