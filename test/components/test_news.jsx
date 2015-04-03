@@ -10,8 +10,7 @@ describe("News Component", function() {
       <News />
     );
 
-    let heading = TestUtils.findRenderedDOMComponentWithTag(component, "h1");
-
-    expect(heading.getDOMNode().textContent).to.equal('News');
+    let heading = React.findDOMNode(component.refs.heading);
+    expect(heading.textContent).to.equal('News');
   });
 });
