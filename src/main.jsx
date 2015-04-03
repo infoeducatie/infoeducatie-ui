@@ -2,13 +2,12 @@
 
 import "babel-core/polyfill";
 import "./lib/auth.js";
-import "!style!css!less!./main.less"
+import "!style!css!less!./main.less";
 
+import Header from "./components/header";
 import About from "./components/about.jsx";
 import Dashboard from "./components/dashboard.jsx";
-import Logo from "file!../assets/img/logo.png"
 
-import { Jumbotron } from "react-bootstrap";
 import React from "react";
 import Router from "react-router";
 let { Route, Link, RouteHandler } = Router; // eslint-disable-line
@@ -29,17 +28,7 @@ let App = React.createClass({
 
   render() {
     return <div id="app">
-      <Jumbotron>
-        <img src={Logo} />
-        <ul>
-          <li><Link to="/">Index</Link></li>
-          <li><Link to="about">About</Link></li>
-          <li><Link to="dashboard">Dashboard (only if auth)</Link></li>
-        </ul>
-        <p>{this.state.loggedIn ? "I am signed in." :
-                                  "I am not signed in."}</p>
-        <RouteHandler/>
-      </Jumbotron>
+        <Header loggedIn={this.state.loggedIn} />
     </div>;
   },
 
