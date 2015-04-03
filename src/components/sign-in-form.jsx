@@ -10,8 +10,8 @@ import { Form,
 
 
 let SignInFormSchema = Form.extend({
-  email: emailField(),
-  password: charField({widget: PasswordInput})
+  email: emailField({required: true}),
+  password: charField({widget: PasswordInput, required: true})
 });
 
 
