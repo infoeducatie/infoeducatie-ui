@@ -10,7 +10,8 @@
     "test-debug": "./node_modules/karma/bin/karma start karma-debug.config.js",
     "test-cross-browser": "./node_modules/karma/bin/karma start karma.cross-browser.config.js",
     "coveralls": "cat coverage/lcov.info | coveralls",
-    "clean": "rm build/app.js"
+    "clean": "rm build/app.js",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -33,7 +34,6 @@
     "css-loader": "^0.9.1",
     "eslint": "^0.18.0",
     "eslint-plugin-react": "^2.0.2",
-    "express": "^4.12.2",
     "file-loader": "^0.8.1",
     "gulp": "^3.8.11",
     "gulp-eslint": "^0.8.0",
@@ -59,6 +59,9 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.4",
+    "express": "^4.12.3",
+    "gzippo": "^0.2.0",
+    "morgan": "^1.5.2",
     "react": "^0.13.1",
     "react-bootstrap": "^0.20.0",
     "react-router": "^0.13.1"
