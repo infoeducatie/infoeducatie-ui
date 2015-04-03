@@ -10,8 +10,7 @@ describe("Photos Component", function() {
       <Photos />
     );
 
-    let heading = TestUtils.findRenderedDOMComponentWithTag(component, "h1");
-
-    expect(heading.getDOMNode().textContent).to.equal('Photos');
+    let heading = React.findDOMNode(component.refs.heading);
+    expect(heading.textContent).to.equal('Photos');
   });
 });
