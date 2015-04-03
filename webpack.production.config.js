@@ -1,4 +1,4 @@
-var webpack = require('webpack');
+var webpack = require("webpack");
 
 /**
  * This is the Webpack configuration file for production.
@@ -8,6 +8,7 @@ module.exports = {
 
   output: {
     path: __dirname + "/build/",
+    publicPath: __dirname + "/build/",
     filename: "app.js"
   },
 
@@ -22,6 +23,6 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ["", ".js", ".jsx"]
   }
 }

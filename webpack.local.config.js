@@ -1,4 +1,4 @@
-var webpack = require('webpack');
+var webpack = require("webpack");
 
 /**
  * This is the Webpack configuration file for local development. It contains
@@ -49,6 +49,6 @@ module.exports = {
 
   // Automatically transform files with these extensions
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ["", ".js", ".jsx"]
   }
 }
