@@ -4,23 +4,28 @@ import Logo from "file!../../assets/img/logo.png"
 
 import React from "react";
 import Router from "react-router";
-import { Jumbotron } from "react-bootstrap";
+import { Jumbotron, Navbar, Nav, NavItem } from "react-bootstrap";
 let { Route, Link, RouteHandler } = Router; // eslint-disable-line
 
 export default React.createClass({
   displayName: "Header",
 
   render() {
-    return <Jumbotron>
-        <img src={Logo} />
-        <ul>
-          <li><Link to="/">Index</Link></li>
-          <li><Link to="about">About</Link></li>
-          <li><Link to="dashboard">Dashboard (only if auth)</Link></li>
-        </ul>
-        <p>{this.props.loggedIn ? "I am signed in." :
-                                  "I am not signed in."}</p>
-        <RouteHandler/>
-      </Jumbotron>
+    let dashboard = <NavItem><Link to="dashboard">Dashboard</Link></NavItem>;
+    if (!this.props.loggedIn)
+        dashboard = "";
+
+    return <Navbar brand="InfoEducatie">
+        <Nav>
+            <NavItem><Link to="/">Acasa</Link></NavItem>
+            <NavItem><Link to="news">Stiri</Link></NavItem>
+            <NavItem><Link to="alumini">Alumni</Link></NavItem>
+            <NavItem><Link to="photos">Poze</Link></NavItem>
+            <NavItem><Link to="galaciuc">Galaciuc</Link></NavItem>
+            <NavItem><Link to="register">Inscrie-te!</Link></NavItem>
+            {dashboard}
+            <RouteHandler/>
+        </Nav>
+    </Navbar>
   }
 });
