@@ -8,7 +8,7 @@ export default React.createClass({
 
   render() {
     return <div>
-      <h1>Alumni</h1>
+      <h1 ref="heading">Alumni</h1>
     </div>;
   }
 });

@@ -10,8 +10,7 @@ describe("Alumni Component", function() {
       <Alumni />
     );
 
-    let heading = TestUtils.findRenderedDOMComponentWithTag(component, "h1");
-
-    expect(heading.getDOMNode().textContent).to.equal('Alumni');
+    let heading = React.findDOMNode(component.refs.heading);
+    expect(heading.textContent).to.equal('Alumni');
   });
 });
