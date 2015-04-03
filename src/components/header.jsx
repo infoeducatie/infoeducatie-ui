@@ -12,7 +12,7 @@ export default React.createClass({
 
   render() {
     let dashboard = <NavItem><Link to="dashboard">Dashboard</Link></NavItem>;
-    if (!this.props.loggedIn)
+    if (!this.props.isLoggedIn)
         dashboard = "";
 
     return <Navbar brand="InfoEducatie">

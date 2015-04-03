@@ -22,7 +22,7 @@ let App = React.createClass({
 
   getInitialState() {
     return {
-      loggedIn: false
+      isLoggedIn: false
     };
   },
 
@@ -32,15 +32,15 @@ let App = React.createClass({
 
   render() {
     return <div id="app">
-        <Header loggedIn={this.state.loggedIn} />
-            <p>{this.state.loggedIn ? "I am signed in." :
+        <Header isLoggedIn={this.state.isLoggedIn} />
+            <p>{this.state.isLoggedIn ? "I am signed in." :
                                       "I am not signed in."}</p>
             <RouteHandler/>
     </div>;
   },
 
   setStateOnAuth() {
-    this.setState({loggedIn: window.Auth.loggedIn()});
+    this.setState({isLoggedIn: window.Auth.isLoggedIn()});
   }
 });
 

@@ -7,7 +7,7 @@ export default {
   statics: {
     willTransitionTo: function(transition) {
       var nextPath = transition.path;
-      if (!window.Auth.loggedIn()) {
+      if (!window.Auth.isLoggedIn()) {
         transition.redirect("/", {},
           {"nextPath": nextPath});
       }

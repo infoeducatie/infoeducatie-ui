@@ -5,7 +5,7 @@
  */
 window.user = false;
 let Auth = {
-  loggedIn() {
+  isLoggedIn() {
     return window.user;
   },
   onChange() { },
