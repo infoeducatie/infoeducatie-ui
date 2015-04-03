@@ -24,7 +24,6 @@ export default React.createClass({
             <NavItem><Link to="galaciuc">Galaciuc</Link></NavItem>
             <NavItem><Link to="register">Inscrie-te!</Link></NavItem>
             {dashboard}
-            <RouteHandler/>
         </Nav>
     </Navbar>
   }

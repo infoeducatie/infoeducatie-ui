@@ -4,11 +4,11 @@ import React from "react";
 
 
 export default React.createClass({
-  displayName: "AboutPage",
+  displayName: "News",
 
   render() {
     return <div>
-      <h1>About</h1>
+      <h1>News</h1>
     </div>;
   }
 });
