@@ -11,6 +11,10 @@ export default React.createClass({
   displayName: "Header",
 
   render() {
+    let dashboardNavItem = <NavItem>
+      <Link to="dashboard">Dashboard</Link>
+    </NavItem>;
+
     return <Navbar brand="InfoEducatie">
         <Nav>
             <NavItem><Link to="/">Acasa</Link></NavItem>
@@ -19,7 +23,7 @@ export default React.createClass({
             <NavItem><Link to="photos">Poze</Link></NavItem>
             <NavItem><Link to="galaciuc">Galaciuc</Link></NavItem>
             <NavItem><Link to="register">Inscrie-te!</Link></NavItem>
-            {this.props.isLoggedIn ? <NavItem><Link to="dashboard">Dashboard</Link></NavItem> : null}
+            {this.props.isLoggedIn ? {dashboardNavItem} : null}
         </Nav>
     </Navbar>;
   }
