@@ -1,5 +1,11 @@
 @import "../main";
 
+#navbar-img {
+    width: 100%;
+    height: 4px;
+    background: @white url(../../assets/img/banner_image.png) top center repeat-x;
+}
+
 .navbar {
     a{
         color: @white;
@@ -7,13 +13,10 @@
 }
 
 .navbar-nav {
-    float: right;
+    font-weight: bold;
 
-    li {
-        font-size: 15px;
-
-        a.register-label {
-            background-color: @red;
-        }
+    li.register-label {
+        margin-left: (@navbar-padding-horizontal * 2);
+        background-color: @red;
     }
 }
