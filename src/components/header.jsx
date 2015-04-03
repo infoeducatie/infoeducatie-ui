@@ -16,7 +16,7 @@ export default React.createClass({
     </NavItem>;
 
     return <Navbar brand="InfoEducatie">
-        <Nav>
+        <Nav ref="nav">
             <NavItem><Link to="/">Acasa</Link></NavItem>
             <NavItem><Link to="news">Stiri</Link></NavItem>
             <NavItem><Link to="alumini">Alumni</Link></NavItem>
