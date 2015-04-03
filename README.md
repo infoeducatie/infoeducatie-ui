@@ -32,3 +32,5 @@ npm start
 
 - `gulp` - lints the code
 - `npm run build` - bundles the code for deploying
+- `npm test` - run tests using PhantomJS
+- `npm run test-debug` - run tests using Google Chrome and enable js debugger
