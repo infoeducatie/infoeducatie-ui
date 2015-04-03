@@ -2,10 +2,38 @@
 
 import React from "react";
 import { Modal, Button, OverlayMixin } from "react-bootstrap";
+import { Form, CharField, EmailField, PasswordInput, RenderForm } from "newforms"
 
 
-export default SignIn = React.createClass({
-  displayName: "MyModal",
+let SignInFormSchema = Form.extend({
+  email: EmailField(),
+  password: CharField({widget: PasswordInput})
+});
+
+
+let SignInForm = React.createClass({
+  displayName: "SignInForm",
+
+  render() {
+    return <form onSubmit={this.onSubmit}>
+      <RenderForm form={SignInFormSchema} ref="signInForm" />
+      <Button bsStyle="primary" onClick={this.onSubmit}>Loghează-te</Button>
+    </form>;
+  },
+
+  onSubmit(event) {
+    event.preventDefault();
+
+    let form = this.refs.signInForm.getForm();
+    if (form.validate()) {
+      this.props.onSignIn(form.cleanedData);
+    }
+  }
+});
+
+
+export default React.createClass({
+  displayName: "SignIn",
   mixins: [OverlayMixin],
 
   getInitialState() {
@@ -30,6 +58,10 @@ export default SignIn = React.createClass({
     return <a href="#" onClick={this.openModal}>Autentificare</a>;
   },
 
+  onSignIn(formData) {
+    console.log(formData);
+  },
+
   renderOverlay() {
     if (!this.state.isModalOpen) {
       return null;
@@ -41,10 +73,7 @@ export default SignIn = React.createClass({
              onRequestHide={this.closeModal}
              title="Autentificare">
         <div className="modal-body">
-          Aici va veni formularul
-        </div>
-        <div className="modal-footer">
-          <Button bsStyle="primary">Loghează-te</Button>
+          <SignInForm onSignIn={this.onSignIn} />
         </div>
       </Modal>
     );
