@@ -1,4 +1,4 @@
-# infoeducatie-react
+# infoeducatie-ui
 
 React frontend for our [backend API](https://github.com/infoeducatie/infoeducatie-api). This will replace our [existing website](http://infoeducatie.ro/).
 
