@@ -2,6 +2,7 @@
 
 import "babel-core/polyfill";
 import "./lib/auth";
+import "./lib/config";
 import "!style!css!less!./main.less";
 
 import Header from "./components/header";

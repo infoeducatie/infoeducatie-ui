@@ -9,8 +9,8 @@ let Auth = {
     return window.user;
   },
   onChange() { },
-  login() {
-    window.user = true;
+  login(user = true) {
+    window.user = user;
     this.onChange();
   },
   logout() {

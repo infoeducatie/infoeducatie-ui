@@ -1,35 +1,11 @@
 "use strict";
 
 import React from "react";
-import { Modal, Button, OverlayMixin } from "react-bootstrap";
-import { Form, CharField, EmailField, PasswordInput, RenderForm } from "newforms"
+import { OverlayMixin, Modal } from "react-bootstrap";
+import $ from "jquery";
+import _ from "lodash";
 
-
-let SignInFormSchema = Form.extend({
-  email: EmailField(),
-  password: CharField({widget: PasswordInput})
-});
-
-
-let SignInForm = React.createClass({
-  displayName: "SignInForm",
-
-  render() {
-    return <form onSubmit={this.onSubmit}>
-      <RenderForm form={SignInFormSchema} ref="signInForm" />
-      <Button bsStyle="primary" onClick={this.onSubmit}>Loghează-te</Button>
-    </form>;
-  },
-
-  onSubmit(event) {
-    event.preventDefault();
-
-    let form = this.refs.signInForm.getForm();
-    if (form.validate()) {
-      this.props.onSignIn(form.cleanedData);
-    }
-  }
-});
+import SignInForm from "./sign-in-form";
 
 
 export default React.createClass({
@@ -59,7 +35,15 @@ export default React.createClass({
   },
 
   onSignIn(formData) {
-    console.log(formData);
+    let data = { };
+    _.keys(formData).forEach(function(key) {
+      data[`user[${key}]`] = formData[key];
+    });
+
+    $.post(window.config.API_URL + "users/sign_in.json", data, data => {
+      window.Auth.login(data);
+      this.closeModal();
+    });
   },
 
   renderOverlay() {
