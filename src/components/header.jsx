@@ -26,8 +26,8 @@ export default React.createClass({
                 <NavItemLink to="galaciuc">Galaciuc</NavItemLink>
                 {this.props.isLoggedIn ? null
                                        : <NavItem><SignIn /></NavItem>}
-                <NavItemLink className="register-label" to="register">
-                    Inscrie-te!
+                <NavItemLink className="register-label" to="registration">
+                    Înscrie-te!
                 </NavItemLink>
             </Nav>
         </Navbar>
