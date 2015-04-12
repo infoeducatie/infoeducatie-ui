@@ -13,7 +13,7 @@ import News from "./components/news";
 import Photos from "./components/photos";
 import Alumni from "./components/alumni";
 import Galaciuc from "./components/galaciuc";
-import Register from "./components/register";
+import Registration from "./components/registration";
 import Dashboard from "./components/dashboard";
 
 
@@ -52,7 +52,7 @@ let routes = (
     <Route handler={Alumni} name="alumni" />
     <Route handler={Photos} name="photos" />
     <Route handler={Galaciuc} name="galaciuc" />
-    <Route handler={Register} name="register" />
+    <Route handler={Registration} name="registration" />
     <Route handler={Dashboard} name="dashboard" />
   </Route>
 );
