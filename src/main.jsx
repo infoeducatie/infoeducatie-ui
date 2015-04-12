@@ -22,11 +22,12 @@ let App = React.createClass({
 
   getInitialState() {
     return {
-      isLoggedIn: false
+      isLoggedIn: window.Auth.isLoggedIn()
     };
   },
 
   componentWillMount() {
+    // TODO @palcu: make another request to see if I am still logged in
     window.Auth.onChange = this.setStateOnAuth;
   },
 
@@ -35,7 +36,7 @@ let App = React.createClass({
         <Header isLoggedIn={this.state.isLoggedIn} />
         <p>{this.state.isLoggedIn ? "I am signed in."
                                   : "I am not signed in."}</p>
-        <RouteHandler/>
+        <RouteHandler />
     </div>;
   },
 
