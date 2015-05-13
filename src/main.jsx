@@ -31,11 +31,30 @@ let App = React.createClass({
   },
 
   render() {
-    return <div id="app">
-        <Header isLoggedIn={this.state.isLoggedIn} />
-        <p>{this.state.isLoggedIn ? "I am signed in."
-                                  : "I am not signed in."}</p>
-        <RouteHandler/>
+    return <div className="main">
+      <Header isLoggedIn={this.state.isLoggedIn} />
+      <h1>InfoEducație Ediția 2015</h1>
+      <h2>Concurs Național de Informatică</h2>
+      <p className="tagline">Maria Tănase și vinul de Vrancea fac minuni</p>
+      <p className="call-to-action">
+        <a href="#" className="link link-primary">Înregistrează-te</a>
+        <a href="#" className="link link-secondary">Citește mai multe</a>
+      </p>
+
+      <table>
+        <tr className="entities">
+          <td>Participanți</td>
+          <td>Proiecte</td>
+          <td>Județe</td>
+        </tr>
+        <tr className="values">
+          <td>250+</td>
+          <td>120+</td>
+          <td>35+</td>
+        </tr>
+      </table>
+
+      <RouteHandler/>
     </div>;
   },
 
