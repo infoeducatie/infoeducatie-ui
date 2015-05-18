@@ -17,11 +17,11 @@ export default React.createClass({
 
   render() {
     return <div className="header">
-      <Navbar>
+      <Navbar toggleNavKey={0}>
         <a className="navbar-brand" href="#">
           <img width="200" alt="Brand" src={Logo} />
         </a>
-        <Nav className="navbar-nav" right ref="nav">
+        <Nav className="navbar-nav" eventKey={0} right ref="nav">
           <NavItemLink to="/">Acasa</NavItemLink>
           <NavItemLink to="news">Stiri</NavItemLink>
           <NavItemLink to="alumni">Alumni</NavItemLink>
