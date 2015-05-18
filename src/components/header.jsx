@@ -30,7 +30,7 @@ export default React.createClass({
           {this.props.isLoggedIn ? null
                                  : <NavItem><SignIn /></NavItem>}
           <NavItemLink className="link link-primary" to="register">
-            Inscrie-te!
+            Înregistrează-te
           </NavItemLink>
         </Nav>
       </Navbar>
