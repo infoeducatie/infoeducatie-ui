@@ -17,7 +17,7 @@ export default React.createClass({
 
   render() {
     return <div className="header">
-      <Navbar toggleNavKey={0}>
+      <Navbar toggleNavKey={0} className="fluid">
         <a className="navbar-brand" href="#">
           <img width="200" height="43" alt="Brand" src={Logo} />
         </a>
