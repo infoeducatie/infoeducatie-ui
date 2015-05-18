@@ -19,7 +19,7 @@ export default React.createClass({
     return <div className="header">
       <Navbar>
         <a className="navbar-brand" href="#">
-          <img width="200" alt="Brand" src={Logo} />
+          <img width="200" width="63" alt="Brand" src={Logo} />
         </a>
         <Nav className="navbar-nav" right ref="nav">
           <NavItemLink to="/">Acasa</NavItemLink>
