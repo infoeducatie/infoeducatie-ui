@@ -36,7 +36,7 @@ let App = React.createClass({
         <Header isLoggedIn={this.state.isLoggedIn} />
         <h1>InfoEducație Ediția 2015</h1>
         <h2>Concurs Național de Informatică</h2>
-        <p className="tagline">Maria Tănase și vinul de Vrancea fac minuni</p>
+        <p className="tagline">The best software engineering contest in the world.</p>
         <p className="call-to-action">
           <a href="#" className="link link-primary">Înregistrează-te</a>
           <a href="#" className="link link-secondary">Citește mai multe</a>
