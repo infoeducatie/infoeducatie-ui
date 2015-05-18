@@ -1,3 +1,79 @@
 @import "~bootstrap/less/bootstrap";
 @import "~bootstrap/less/variables";
 @import "styles/variables";
+@import "styles/classes";
+
+@import url(https://fonts.googleapis.com/css?family=Shadows+Into+Light);
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
+@vertical-big-spacing: 100px;
+@vertical-small-spacing: 50px;
+@blue-gradient: rgba(13, 104, 137, 0.45);
+
+body {
+  background:
+    linear-gradient(
+      @blue-gradient,
+      @blue-gradient
+    ),
+    url(../assets/img/ghiozdan.png);
+
+  background-size: cover;
+  margin-top: 20px;
+}
+
+.main {
+  text-align: center;
+
+  h1 {
+    margin-top: @vertical-big-spacing;
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 80pt;
+    color: @white;
+  }
+
+  h2 {
+    font-size: 24pt;
+    text-transform: uppercase;
+    color: @orange;
+  }
+
+  .tagline {
+    margin-top: @vertical-small-spacing;
+    font-size: 18pt;
+    color: @white;
+  }
+
+  .call-to-action {
+    margin-top: @vertical-small-spacing;
+    a {
+      padding: 15px;
+      color: @white;
+      text-transform: uppercase;
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+  }
+
+  table {
+    margin-top: @vertical-big-spacing;
+    margin-left: auto;
+    margin-right: auto;
+    text-transform: uppercase;
+
+    td {
+      padding-left: 10px;
+      padding-right: 10px;
+      font-size: 18pt;
+    }
+
+    .entities td {
+      color: @white;
+    }
+
+    .values td {
+      font-size: 34pt;
+      color: @orange;
+    }
+  }
+}
