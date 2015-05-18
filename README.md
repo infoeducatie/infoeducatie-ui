@@ -23,11 +23,13 @@ npm start
 ## Folder layout
 
 - `build` - Javascript and CSS bundles
+  - `index.html` - Index file w/ settings for development
 - `src`
   - `components` - React components and LESS files for each component
   - `lib` - Helper libraries
   - `mixins` - React mixins
-- `main.jsx` - Main entry point with the router.
+- `main.jsx` - Main entry point with the router
+- `index.html` - Index file w/ settings for production
 
 ## Commands
 
