@@ -17,6 +17,10 @@ import Register from "./components/register";
 import Dashboard from "./components/dashboard";
 import Jury from "./components/jury";
 import Home from "./components/home";
+import Forum from "./components/forum";
+import Schedule from "./components/schedule";
+import Contact from "./components/contact";
+import Results from "./components/results";
 
 
 let App = React.createClass({
@@ -54,6 +58,10 @@ let routes = (
     <Route handler={Galaciuc} name="galaciuc" />
     <Route handler={Register} name="register" />
     <Route handler={Dashboard} name="dashboard" />
+    <Route handler={Forum} name="forum" />
+    <Route handler={Schedule} name="schedule" />
+    <Route handler={Results} name="results" />
+    <Route handler={Contact} name="contact" />
     <DefaultRoute handler={Home} />
   </Route>
 );
