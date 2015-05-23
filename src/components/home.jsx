@@ -2,8 +2,8 @@
 
 import React from "react";
 
-import Authentication from "../mixins/authentication.jsx"
 import Header from "./header";
+import Authentication from "../mixins/authentication.jsx"
 
 export default React.createClass({
 
