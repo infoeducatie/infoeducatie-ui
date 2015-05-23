@@ -10,6 +10,8 @@
 @vertical-small-spacing: 50px;
 @blue-gradient: rgba(13, 104, 137, 0.45);
 @section-min-height: 345px;
+@navbar-default-bg: transparent;
+@blue-section-background-image:  url(../assets/img/bag.png);
 
 .main {
   .row {
@@ -26,8 +28,7 @@
       linear-gradient(
         @blue-gradient,
         @blue-gradient
-      ),
-      url(../assets/img/bag.png);
+      ), @blue-section-background-image;
     background-size: cover;
 
     text-align: center;
