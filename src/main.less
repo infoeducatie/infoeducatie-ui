@@ -9,71 +9,91 @@
 @vertical-big-spacing: 100px;
 @vertical-small-spacing: 50px;
 @blue-gradient: rgba(13, 104, 137, 0.45);
-
-body {
-  background:
-    linear-gradient(
-      @blue-gradient,
-      @blue-gradient
-    ),
-    url(../assets/img/ghiozdan.png);
-
-  background-size: cover;
-  margin-top: 20px;
-}
+@section-min-height: 345px;
 
 .main {
-  text-align: center;
+  .row {
+    min-height: 345px;
 
-  h1 {
-    margin-top: @vertical-big-spacing;
-    font-family: 'Shadows Into Light', cursive;
-    font-size: 80pt;
-    color: @white;
+    .inner-row {
+      margin: 0 auto;
+    }
   }
 
-  h2 {
-    font-size: 24pt;
-    text-transform: uppercase;
-    color: @orange;
-  }
+  .blue-section {
+    padding-top: 20px;
+    background:
+      linear-gradient(
+        @blue-gradient,
+        @blue-gradient
+      ),
+      url(../assets/img/bag.png);
+    background-size: cover;
 
-  .tagline {
-    margin-top: @vertical-small-spacing;
-    font-size: 18pt;
-    color: @white;
-  }
+    text-align: center;
+    min-height: @section-min-height * 2;
 
-  .call-to-action {
-    margin-top: @vertical-small-spacing;
-    a {
-      padding: 15px;
+    h1 {
+      margin-top: @vertical-big-spacing;
+      font-family: 'Shadows Into Light', cursive;
+      font-size: 5em;
       color: @white;
+    }
+
+    h2 {
       text-transform: uppercase;
-      margin-left: 15px;
-      margin-right: 15px;
-    }
-  }
-
-  table {
-    margin-top: @vertical-big-spacing;
-    margin-left: auto;
-    margin-right: auto;
-    text-transform: uppercase;
-
-    td {
-      padding-left: 10px;
-      padding-right: 10px;
-      font-size: 18pt;
-    }
-
-    .entities td {
-      color: @white;
-    }
-
-    .values td {
-      font-size: 34pt;
       color: @orange;
     }
+
+    .tagline {
+      margin-top: @vertical-small-spacing;
+      font-size: 1.5em;
+      color: @white;
+    }
+
+    .call-to-action {
+      margin-top: @vertical-small-spacing;
+      a {
+        padding: 15px;
+        color: @white;
+        text-transform: uppercase;
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+    }
+
+    table {
+      margin-top: @vertical-big-spacing;
+      margin-left: auto;
+      margin-right: auto;
+      text-transform: uppercase;
+
+      td {
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 1.3em;
+      }
+
+      .entities td {
+        color: @white;
+      }
+
+      .values td {
+        font-size: 2.6em;
+        color: @orange;
+      }
+    }
+  }
+
+  .green-section {
+    background-color: green;
+  }
+
+  .gray-section {
+    background-color: gray;
+  }
+
+  .yellow-section {
+    background-color: yellow;
   }
 }
