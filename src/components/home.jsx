@@ -3,6 +3,7 @@
 import React from "react";
 
 import Header from "./header";
+import Footer from "./footer";
 import Authentication from "../mixins/authentication.jsx"
 
 export default React.createClass({
@@ -59,6 +60,7 @@ export default React.createClass({
         <div>
             <h1>Jury</h1>
         </div>
+        <Footer />
     </div>;
   }
 });
