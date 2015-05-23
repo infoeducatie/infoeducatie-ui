@@ -34,8 +34,7 @@ let App = React.createClass({
 
   render() {
     return <div className="main">
-        <Header isLoggedIn={this.state.isLoggedIn} />
-        <RouteHandler/>
+        <RouteHandler />
   </div>;
   },
 

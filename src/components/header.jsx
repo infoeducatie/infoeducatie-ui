@@ -27,7 +27,6 @@ export default React.createClass({
           <NavItemLink to="alumni">Alumni</NavItemLink>
           <NavItemLink to="photos">Poze</NavItemLink>
           <NavItemLink to="galaciuc">Galaciuc</NavItemLink>
-          <NavItemLink to="jury">Juriu</NavItemLink>
           {this.props.isLoggedIn ? null
                                  : <NavItem><SignIn /></NavItem>}
           <NavItemLink className="link link-primary" to="register">
