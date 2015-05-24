@@ -6,6 +6,7 @@ import { Navbar, Nav, NavItem } from "react-bootstrap";
 import { NavItemLink } from "react-router-bootstrap";
 let { Route, Link, RouteHandler } = Router; // eslint-disable-line
 
+import "./footer.less";
 
 export default React.createClass({
   displayName: "Footer",
