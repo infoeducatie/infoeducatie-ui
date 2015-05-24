@@ -2,6 +2,8 @@
 
 
 .jury {
+    @blue-section-background-image:  url(../../assets/img/jury.png);
+
     .blue-section {
         min-height: 500px;
         padding-top: 20px;
@@ -9,7 +11,7 @@
           linear-gradient(
             @blue-gradient,
             @blue-gradient
-          ), url(../../assets/img/jury.png);
+          ), @blue-section-background-image;
         background-size: cover;
     }
 }
