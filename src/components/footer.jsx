@@ -15,7 +15,7 @@ export default React.createClass({
   render() {
     return <div className="footer">
       <Navbar toggleNavKey={0} className="fluid">
-        <Nav className="navbar-nav" eventKey={0} right ref="nav">
+        <Nav className="navbar-nav" eventKey={0} ref="nav">
           <NavItemLink to="alumni">Alumni</NavItemLink>
           <NavItemLink to="forum">Forum</NavItemLink>
           <NavItemLink to="schedule">Program</NavItemLink>

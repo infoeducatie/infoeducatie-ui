@@ -5,21 +5,33 @@
 .footer {
   text-transform: uppercase;
 
-  .navbar-default .navbar-nav {
-    li {
-      &.active {
-        a {
-          color: @grey;
-        }
-      }
-      a {
-        color: @pink;
+  .navbar-default {
+    .navbar-collapse {
+      text-align: center;
+    }
 
-        &:hover {
-          color: @grey;
+    .navbar-nav {
+      display: inline-block;
+      float: none;
+      vertical-align: top;
+
+      li {
+        margin-left: 15px;
+        margin-right: 15px;
+
+        &.active {
+          a {
+            color: @grey;
+          }
+        }
+        a {
+          color: @pink;
+
+          &:hover {
+            color: @grey;
+          }
         }
       }
     }
-
   }
 }
