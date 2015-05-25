@@ -6,11 +6,14 @@ import Header from "./header";
 import Footer from "./footer";
 import Authentication from "../mixins/authentication.jsx"
 
+import "./home.less";
+
+
 export default React.createClass({
 
   displayName: "Home",
   render() {
-    return <div>
+    return <div className="home">
         <div className="row blue-section">
             <Header isLoggedIn={this.props.isLoggedIn} />
             <h2>Concurs Național de Informatică</h2>
