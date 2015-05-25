@@ -1,7 +1,25 @@
+// vim: sw=2:ts=2:sts=2:et:fileencoding=utf8:
 @import "../main";
 
+
 .footer {
-    .navbar-default .navbar-nav > li > a {
-        color: #ff69b2;
+  text-transform: uppercase;
+
+  .navbar-default .navbar-nav {
+    li {
+      &.active {
+        a {
+          color: @grey;
+        }
+      }
+      a {
+        color: @pink;
+
+        &:hover {
+          color: @grey;
+        }
+      }
     }
+
+  }
 }

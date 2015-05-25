@@ -23,7 +23,6 @@ export default React.createClass({
         </a>
         <Nav className="navbar-nav" eventKey={0} right ref="nav">
           <NavItemLink to="/">Acasa</NavItemLink>
-          <NavItemLink to="jury">Juriu</NavItemLink>
           <NavItemLink to="news">Stiri</NavItemLink>
           <NavItemLink to="alumni">Alumni</NavItemLink>
           <NavItemLink to="photos">Poze</NavItemLink>
