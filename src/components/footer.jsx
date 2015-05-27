@@ -10,6 +10,7 @@ import classSet from "classnames";
 let { Route, Link, RouteHandler } = Router; // eslint-disable-line
 
 import "./footer.less";
+import Facebook from "file!../../assets/img/icons/fb.png";
 
 export default React.createClass({
   displayName: "Footer",
@@ -35,7 +36,9 @@ export default React.createClass({
           <Row><div className="newsletter">abonează-te la newsletter</div></Row>
           <Row><div className="signup">înscrie-te</div></Row>
         </Col>
-        <Col xs={6} md={6} className="showMore">Social</Col>
+        <Col xs={6} md={6} className="showMore">
+          <Row><div className="social"><img src={Facebook} /></div></Row>
+        </Col>
       </Row>
     </Row>;
   }
