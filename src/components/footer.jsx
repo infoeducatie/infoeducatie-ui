@@ -3,14 +3,16 @@
 
 import React from "react";
 import Router from "react-router";
-import { Navbar, Nav, NavItem, Row, Col } from "react-bootstrap";
+import { Navbar, Nav, NavItem, Row, Col, Thumbnail } from "react-bootstrap";
 import { NavItemLink } from "react-router-bootstrap";
-import classSet from "classnames";
 
 let { Route, Link, RouteHandler } = Router; // eslint-disable-line
 
 import "./footer.less";
-import Facebook from "file!../../assets/img/icons/fb.png";
+import Facebook from "../../assets/img/icons/fb.png";
+import Twitter from "../../assets/img/icons/twitter.png";
+import Google from "../../assets/img/icons/gplus.png";
+import Github from "../../assets/img/icons/github.png";
 
 export default React.createClass({
   displayName: "Footer",
@@ -36,8 +38,17 @@ export default React.createClass({
           <Row><div className="newsletter">abonează-te la newsletter</div></Row>
           <Row><div className="signup">înscrie-te</div></Row>
         </Col>
-        <Col xs={6} md={6} className="showMore">
-          <Row><div className="social"><img src={Facebook} /></div></Row>
+        <Col xs={6} md={6} className="show-more">
+          <Row>
+            <div className="social-logos">
+              <ul>
+                <li><a href="https://www.facebook.com/infoeducatie" target="_blank"><img alt='Facebook' src={Facebook} /></a></li>
+                <li><a href="https://twitter.com/infoeducatie" target="_blank"><img alt='Twitter' src={Twitter} /></a></li>
+                <li><a href="https://plus.google.com/+InfoeducatieRomania" target="_blank"><img alt='Google+' src={Google} /></a></li>
+                <li><a href="https://github.com/infoeducatie" target="_blank"><img alt='Github' src={Github} /></a></li>
+              </ul>
+            </div>
+          </Row>
         </Col>
       </Row>
     </Row>;
