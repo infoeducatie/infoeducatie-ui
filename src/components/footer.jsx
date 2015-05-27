@@ -49,6 +49,17 @@ export default React.createClass({
               </ul>
             </div>
           </Row>
+
+          <Row>
+            <div className="privacy">
+              Privacy policy / Terms &amp; condition
+            </div>
+          </Row>
+          <Row>
+            <div className="copyright">
+              &copy; 2015 InfoEducație
+            </div>
+          </Row>
         </Col>
       </Row>
     </Row>;
