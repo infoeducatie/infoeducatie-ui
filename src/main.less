@@ -78,12 +78,10 @@
   }
 }
 
-.row() {
-  .row {
-    min-height: 345px;
+.row(@min-height: 345px) {
+  min-height: @min-height;
 
-    .inner-row {
-      margin: 0 auto;
-    }
+  .inner-row {
+    margin: 0 auto;
   }
 }

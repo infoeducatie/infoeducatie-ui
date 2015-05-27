@@ -22,6 +22,7 @@ import Forum from "./components/forum";
 import Schedule from "./components/schedule";
 import Contact from "./components/contact";
 import Results from "./components/results";
+import Footer from "./components/footer";
 
 
 let App = React.createClass({
@@ -40,6 +41,7 @@ let App = React.createClass({
   render() {
     return <div className="main">
         <RouteHandler />
+        <Footer />
   </div>;
   },
 
