@@ -33,12 +33,12 @@ export default React.createClass({
           </Navbar>
         </Col>
       </Row>
-      <Row className='show-grid'>
-        <Col xs={6} md={6} className="show-more right">
-          <Row><div className="newsletter">abonează-te la newsletter</div></Row>
-          <Row><div className="signup">înscrie-te</div></Row>
+      <Row>
+        <Col xs={6} md={6} className="block right">
+          <Row><div className="newsletter">aboneaz&#258;-te la newsletter</div></Row>
+          <Row><div className="signup">&#206;nscrie-te</div></Row>
         </Col>
-        <Col xs={6} md={6} className="show-more">
+        <Col xs={6} md={6} className="block">
           <Row>
             <div className="social-logos">
               <ul>
@@ -57,7 +57,7 @@ export default React.createClass({
           </Row>
           <Row>
             <div className="copyright">
-              &copy; 2015 InfoEducație
+              &copy; 2015 InfoEduca&#355;ie
             </div>
           </Row>
         </Col>

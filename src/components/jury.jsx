@@ -16,7 +16,7 @@ export default React.createClass({
     return <div className="jury">
         <div className="row blue-section">
             <Header isLoggedIn={this.props.isLoggedIn} />
-            <h1>Juriul InfoEducație</h1>
+            <h1>Juriul InfoEduca&#355;ie</h1>
             <h2>Membrii juriului pe categorii</h2>
         </div>
     </div>;
