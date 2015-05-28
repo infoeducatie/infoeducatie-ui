@@ -4,6 +4,8 @@
 import React from "react";
 import { Row } from "react-bootstrap";
 
+import Avatar from "../../assets/img/jury/vlad.png";
+
 export default React.createClass({
   displayName: "JuryDescription",
   render() {
@@ -15,6 +17,28 @@ export default React.createClass({
           {this.props.name}
         <span className="orange-dash">&mdash;</span>
       </div>
+      <Row className="jury-members">
+        <div className="jury-member">
+          <div className="jury-avatar"><img src={Avatar} /></div>
+          <div className="jury-name">Vlad Temian</div>
+          <div className="jury-occupation">student &#64; uvt</div>
+        </div>
+        <div className="jury-member">
+          <div className="jury-avatar"><img src={Avatar} /></div>
+          <div className="jury-name">Vlad Temian</div>
+          <div className="jury-occupation">student &#64; uvt</div>
+        </div>
+        <div className="jury-member">
+          <div className="jury-avatar"><img src={Avatar} /></div>
+          <div className="jury-name">Vlad Temian</div>
+          <div className="jury-occupation">student &#64; uvt</div>
+        </div>
+        <div className="jury-member">
+          <div className="jury-avatar"><img src={Avatar} /></div>
+          <div className="jury-name">Vlad Temian</div>
+          <div className="jury-occupation">student &#64; uvt</div>
+        </div>
+      </Row>
     </Row>;
   }
 });

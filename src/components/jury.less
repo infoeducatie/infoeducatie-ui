@@ -44,6 +44,7 @@
           background-size: 50px 35px;
         }
       }
+
       .jury-description {
         width: 200px;
         margin: 0 auto;
@@ -55,6 +56,47 @@
           color: @orange;
           margin-left: 10px;
           margin-right: 10px;
+        }
+      }
+
+      .jury-members {
+        min-height: 0px;
+        text-transform: uppercase;
+        text-align: center;
+
+        .jury-member {
+          display: inline-block;
+          letter-spacing: 1px;
+          width: 250px;
+          margin: 20px 5px 20px auto;
+          text-align: center;
+          box-shadow: 0px 2px 0px @light-grey;
+          border: 1px solid @light-grey;
+          padding: 15px;
+
+          .jury-avatar {
+            margin-top: 30px;
+            img{
+              -webkit-filter: grayscale(1);
+              -webkit-filter: grayscale(100%);
+              filter: grayscale(100%);
+              filter: url(#greyscale);
+              filter: gray;
+              width: 100px;
+              height: 100px;
+              border-radius: 50px;
+            }
+          }
+          .jury-name {
+              margin-top: 30px;
+              margin-bottom: 5px;
+              color: @orange;
+          }
+
+          .jury-occupation {
+              color: @grey;
+              margin-bottom: 10px;
+          }
         }
       }
     }
