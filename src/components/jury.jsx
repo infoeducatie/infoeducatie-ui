@@ -28,7 +28,9 @@ import AlexComanAvatar from "../../assets/img/jury/alex_coman.png";
 import CristianVatAvatar from "../../assets/img/jury/cristian_vat.png";
 import VictorPorofAvatar from "../../assets/img/jury/victor_porof.png";
 import CristianTomaAvatar from "../../assets/img/jury/cristian_toma.png";
+
 import DefaultAvatar from "../../assets/img/jury/default.png";
+import DefaultDocument from "../../assets/img/icons/doc.png";
 
 
 export default React.createClass({
@@ -71,6 +73,15 @@ export default React.createClass({
         {"avatar": SabinMarcuAvatar, "name": "Sabin Marcu", "occupation": "student @ southampton"}
     ];
 
+    var criteria = [
+      {"name": "Educațional", "link": "https://docs.google.com/document/d/10ygW8gpijQJE94CbMMNxhrt_ju3X-tMjPATf7WcjTW8/pub"},
+      {"name": "Multimedia", "link": "https://docs.google.com/document/d/12UY9ByKQt7CpBj11vwg1HPrsKOH-uTL9kFCEdxBgvAY/pub"},
+      {"name": "Mobile", "link": "https://docs.google.com/document/d/1jqwoAduZoHjnj01Q6eQE0DWNB-DeMQouLumkW753mUA/pub"},
+      {"name": "Roboți", "link": "https://docs.google.com/document/d/1n0yoqA3n9heBiYWgmeg-lfXYPvSMVMRhGZrHRYKhDVk/pub"},
+      {"name": "Utilitar", "link": "https://docs.google.com/document/d/19HTucZgQWY92nZ-NDoKRWlE63hipb_IkZVcMxHyOCdc/pub"},
+      {"name": "Web", "link": "https://docs.google.com/document/d/1ZgdZz_5JHJSZyxWnZWzP162NZ2H3CkBojyp5p6cKNDI/pub"},
+    ];
+
     return <div className="jury">
         <div className="row blue-section">
           <Header isLoggedIn={this.props.isLoggedIn} />
@@ -88,6 +99,15 @@ export default React.createClass({
                 criterii de jurizare
               <span className="pink-dash">&mdash;</span>
           </Row>
+          <Row className="jury-criteria-documents">
+            {criteria.map(function(doc) {
+              return <div className="jury-criteria">
+                <div className="jury-criteria-txt">{doc.name}</div>
+                <div className="jury-criteria-img"><a href={doc.link} target="_blank"><img src={DefaultDocument} alt={doc.link} /></a></div>
+              </div>;
+            })}
+          </Row>
+
         </Row>
     </div>;
   }
