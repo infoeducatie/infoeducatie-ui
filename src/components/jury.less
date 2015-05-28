@@ -5,6 +5,30 @@
 .jury {
   .row {
     .row;
+    &.orange-section{
+      min-height: 0px;
+
+      background-color: @orange;
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      .jury-criteria-desc {
+        width: 300px;
+        margin: 0 auto;
+        text-transform: uppercase;
+        min-height: 0px;
+        padding-top: 30px;
+        padding-bottom: 20px;
+        letter-spacing: 3px;
+
+        .pink-dash {
+            color: @pink;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+      }
+    }
+
     &.white-section {
       min-height: 0px;
       margin-top: 40px;

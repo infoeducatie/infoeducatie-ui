@@ -2,6 +2,7 @@
 "use strict";
 
 import React from "react";
+import { Row } from "react-bootstrap";
 
 import Header from "./header";
 import JuryDescription from "./jury_description.jsx";
@@ -81,6 +82,13 @@ export default React.createClass({
         <JuryDescription iconClass="robots" name="roboți" members={robots}/>
         <JuryDescription iconClass="utility" name="utilitar" members={utilitar}/>
         <JuryDescription iconClass="web" name="web" members={web}/>
+        <Row className="orange-section">
+          <Row className="jury-criteria-desc">
+              <span className="pink-dash">&mdash;</span>
+                criterii de jurizare
+              <span className="pink-dash">&mdash;</span>
+          </Row>
+        </Row>
     </div>;
   }
 });
