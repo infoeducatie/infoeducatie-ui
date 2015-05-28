@@ -5,6 +5,59 @@
 .jury {
   .row {
     .row;
+    &.white-section {
+      min-height: 0px;
+
+      .jury-icon {
+        color: @pink;
+        margin: 15px auto 0 auto;
+        height: 35px;
+        width: 50px;
+
+        .jury-media {
+          height: 100%;
+          display: block;
+          background: url(../../assets/img/icons/media.png) no-repeat;
+        }
+        .jury-utility {
+          height: 100%;
+          display: block;
+          background: url(../../assets/img/icons/utility.png) no-repeat;
+          background-size: 50px 35px;
+        }
+        .jury-web {
+          height: 100%;
+          display: block;
+          background: url(../../assets/img/icons/web.png) no-repeat;
+          background-size: 50px 35px;
+        }
+        .jury-educational {
+          height: 100%;
+          display: block;
+          background: url(../../assets/img/icons/educational.png) no-repeat;
+          background-size: 50px 35px;
+        }
+        .jury-robots {
+          height: 100%;
+          display: block;
+          background: url(../../assets/img/icons/robots.png) no-repeat;
+          background-size: 50px 35px;
+        }
+      }
+      .jury-description {
+        width: 200px;
+        margin: 0 auto;
+        text-align: center;
+        text-transform: uppercase;
+        margin-top: 10px;
+
+        .orange-dash {
+          color: @orange;
+          margin-left: 10px;
+          margin-right: 10px;
+        }
+      }
+    }
   }
 
   @section-min-height: 250px;
