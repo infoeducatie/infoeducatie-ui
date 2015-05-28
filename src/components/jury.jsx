@@ -35,40 +35,40 @@ export default React.createClass({
   render() {
 
     var educational = [
-        {'avatar': RazvanDeaconescuAvatar, 'name': 'Razvan Deaconescu', 'occupation': 'profesor asistent @ upb'},
-        {'avatar': JulianAvatar, 'name': 'Iulian Atanasoaie', 'occupation': 'student @ unibuc'},
-        {'avatar': DefaultAvatar, 'name': 'Andreea Popescu', 'occupation': 'student @ '},
-        {'avatar': DefaultAvatar, 'name': 'Emilian Bacila', 'occupation': 'student @ Cambridge'},
-        {'avatar': DefaultAvatar, 'name': 'Andrei Iancu', 'occupation': 'student @ '},
-    ]
+        {"avatar": RazvanDeaconescuAvatar, "name": "Razvan Deaconescu", "occupation": "profesor asistent @ upb"},
+        {"avatar": JulianAvatar, "name": "Iulian Atanasoaie", "occupation": "student @ unibuc"},
+        {"avatar": DefaultAvatar, "name": "Andreea Popescu", "occupation": "student @ "},
+        {"avatar": DefaultAvatar, "name": "Emilian Bacila", "occupation": "student @ Cambridge"},
+        {"avatar": DefaultAvatar, "name": "Andrei Iancu", "occupation": "student @ "}
+    ];
     var media = [
-        {'avatar': RobertaTomegaAvatar, 'name': 'Roberta Tomega', 'occupation': 'student @ upt'},
-        {'avatar': LuizaBubatuAvatar, 'name': 'Luiza Bubatu', 'occupation': 'student @ utcn'},
-    ]
+        {"avatar": RobertaTomegaAvatar, "name": "Roberta Tomega", "occupation": "student @ upt"},
+        {"avatar": LuizaBubatuAvatar, "name": "Luiza Bubatu", "occupation": "student @ utcn"}
+    ];
     var robots = [
-        {'avatar': DefaultAvatar, 'name': '<unknown>', 'occupation': 'student @ narnia'},
-        {'avatar': DefaultAvatar, 'name': '<unknown>', 'occupation': 'student @ narnia'},
-        {'avatar': DefaultAvatar, 'name': '<unknown>', 'occupation': 'student @ narnia'},
-    ]
+        {"avatar": DefaultAvatar, "name": "<unknown>", "occupation": "student @ narnia"},
+        {"avatar": DefaultAvatar, "name": "<unknown>", "occupation": "student @ narnia"},
+        {"avatar": DefaultAvatar, "name": "<unknown>", "occupation": "student @ narnia"}
+    ];
     var utilitar = [
-        {'avatar': AlexComanAvatar, 'name': 'Alexandru Coman', 'occupation': 'developer @ Cloudbase'},
-        {'avatar': AlexCiteaAvatar, 'name': 'Alex Citea', 'occupation': 'developer @ Bitdefender'},
-        {'avatar': DefaultAvatar, 'name': 'Alina Dumitrascu', 'occupation': 'profesor @ A.Macedonki'},
-        {'avatar': VladAvatar, 'name': 'Vlad Temian', 'occupation': 'student @ uvt'},
-        {'avatar': AndreiMAvatar, 'name': 'Andrei Munteanu', 'occupation': 'student @ Manchester'},
-        {'avatar': CristianVatAvatar, 'name': 'Cristian Vat', 'occupation': 'developer @ DataGroup'},
-        {'avatar': VictorPorofAvatar, 'name': 'Victor Porof', 'occupation': 'developer @ Mozilla'},
-        {'avatar': CristianTomaAvatar, 'name': 'Cristian Toma', 'occupation': 'student @ upt'},
-    ]
+        {"avatar": AlexComanAvatar, "name": "Alexandru Coman", "occupation": "developer @ Cloudbase"},
+        {"avatar": AlexCiteaAvatar, "name": "Alex Citea", "occupation": "developer @ Bitdefender"},
+        {"avatar": DefaultAvatar, "name": "Alina Dumitrascu", "occupation": "profesor @ A.Macedonki"},
+        {"avatar": VladAvatar, "name": "Vlad Temian", "occupation": "student @ uvt"},
+        {"avatar": AndreiMAvatar, "name": "Andrei Munteanu", "occupation": "student @ Manchester"},
+        {"avatar": CristianVatAvatar, "name": "Cristian Vat", "occupation": "developer @ DataGroup"},
+        {"avatar": VictorPorofAvatar, "name": "Victor Porof", "occupation": "developer @ Mozilla"},
+        {"avatar": CristianTomaAvatar, "name": "Cristian Toma", "occupation": "student @ upt"}
+    ];
     var web = [
-        {'avatar': RobertAvatar, 'name': 'Robert Dolca', 'occupation': 'inginer @ Intel'},
-        {'avatar': AlexPAvatar, 'name': 'Alex Palcuie', 'occupation': 'student @ unibuc'},
-        {'avatar': AndreiAAvatar, 'name': 'Andrei Adoamnei', 'occupation': 'student @ unibuc'},
-        {'avatar': AndreiHAvatar, 'name': 'Andrei Horak', 'occupation': 'inginer @ UnifiedPost'},
-        {'avatar': AndreiAvAvatar, 'name': 'Andrei Avadaniei', 'occupation': 'CEO @ CSRC'},
-        {'avatar': VladVeliciAvatar, 'name': 'Vlad Velici', 'occupation': 'student @ southampton'},
-        {'avatar': SabinMarcuAvatar, 'name': 'Sabin Marcu', 'occupation': 'student @ southampton'},
-    ]
+        {"avatar": RobertAvatar, "name": "Robert Dolca", "occupation": "inginer @ Intel"},
+        {"avatar": AlexPAvatar, "name": "Alex Palcuie", "occupation": "student @ unibuc"},
+        {"avatar": AndreiAAvatar, "name": "Andrei Adoamnei", "occupation": "student @ unibuc"},
+        {"avatar": AndreiHAvatar, "name": "Andrei Horak", "occupation": "inginer @ UnifiedPost"},
+        {"avatar": AndreiAvAvatar, "name": "Andrei Avadaniei", "occupation": "CEO @ CSRC"},
+        {"avatar": VladVeliciAvatar, "name": "Vlad Velici", "occupation": "student @ southampton"},
+        {"avatar": SabinMarcuAvatar, "name": "Sabin Marcu", "occupation": "student @ southampton"}
+    ];
 
     return <div className="jury">
         <div className="row blue-section">
