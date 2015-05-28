@@ -15,6 +15,6 @@ export default React.createClass({
           {this.props.name}
         <span className="orange-dash">&mdash;</span>
       </div>
-    </Row>
+    </Row>;
   }
 });
