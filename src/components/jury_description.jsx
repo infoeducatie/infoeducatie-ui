@@ -4,7 +4,6 @@
 import React from "react";
 import { Row } from "react-bootstrap";
 
-import Avatar from "../../assets/img/jury/vlad.png";
 
 export default React.createClass({
   displayName: "JuryDescription",
@@ -18,26 +17,13 @@ export default React.createClass({
         <span className="orange-dash">&mdash;</span>
       </div>
       <Row className="jury-members">
-        <div className="jury-member">
-          <div className="jury-avatar"><img src={Avatar} /></div>
-          <div className="jury-name">Vlad Temian</div>
-          <div className="jury-occupation">student &#64; uvt</div>
-        </div>
-        <div className="jury-member">
-          <div className="jury-avatar"><img src={Avatar} /></div>
-          <div className="jury-name">Vlad Temian</div>
-          <div className="jury-occupation">student &#64; uvt</div>
-        </div>
-        <div className="jury-member">
-          <div className="jury-avatar"><img src={Avatar} /></div>
-          <div className="jury-name">Vlad Temian</div>
-          <div className="jury-occupation">student &#64; uvt</div>
-        </div>
-        <div className="jury-member">
-          <div className="jury-avatar"><img src={Avatar} /></div>
-          <div className="jury-name">Vlad Temian</div>
-          <div className="jury-occupation">student &#64; uvt</div>
-        </div>
+        {this.props.members.map(function(member) {
+            return <div className="jury-member">
+                <div className="jury-avatar"><img src={member.avatar} /></div>
+                <div className="jury-name">{member.name}</div>
+                <div className="jury-occupation">{member.occupation}</div>
+              </div>;
+            })}
       </Row>
     </Row>;
   }
