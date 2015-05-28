@@ -52,7 +52,7 @@ export default React.createClass({
 
           <Row>
             <div className="privacy">
-              Privacy policy / Terms &amp; condition
+              Protec&#355;ia datelor / Termene &amp; condi&#355;ii
             </div>
           </Row>
           <Row>
