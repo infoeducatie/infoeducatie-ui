@@ -7,14 +7,75 @@
     .row;
   }
 
+  @vertical-big-spacing: 100px;
+  @vertical-small-spacing: 50px;
+  @blue-gradient: rgba(13, 104, 137, 0.45);
+
   @section-min-height: 345px;
 
-  .blue-section {
-    @blue-section-background-image:  url(../../assets/img/bag.png);
-    .blue-section;
+  .blue-section-wrapper {
+    background: linear-gradient(@blue-gradient, @blue-gradient), url(../../assets/img/bag.png);
   }
 
-  .green-section {
+  .blue-section {
+    padding-top: 20px;
+    text-align: center;
+    min-height: @section-min-height * 2;
+
+    h1 {
+      margin-top: @vertical-big-spacing;
+      font-family: 'Shadows Into Light', cursive;
+      font-size: 5em;
+      color: @white;
+    }
+
+    h2 {
+      margin-top: @vertical-big-spacing;
+      text-transform: uppercase;
+      color: @orange;
+    }
+
+    .tagline {
+      margin-top: @vertical-small-spacing;
+      font-size: 1.5em;
+      color: @white;
+    }
+
+    .call-to-action {
+      margin-top: @vertical-small-spacing;
+      a {
+        padding: 15px;
+        color: @white;
+        text-transform: uppercase;
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+    }
+
+    table {
+      margin-top: @vertical-big-spacing;
+      margin-left: auto;
+      margin-right: auto;
+      text-transform: uppercase;
+
+      td {
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 1.3em;
+      }
+
+      .entities td {
+        color: @white;
+      }
+
+      .values td {
+        font-size: 2.6em;
+        color: @orange;
+      }
+    }
+  }
+
+  .green-section-wrapper {
     background-color: green;
   }
 

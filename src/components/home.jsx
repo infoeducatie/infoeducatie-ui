@@ -14,54 +14,96 @@ export default React.createClass({
   displayName: "Home",
   render() {
     return <div className="home">
-        <div className="row blue-section">
-            <Header isLoggedIn={this.props.isLoggedIn} />
-            <h2>Concurs Național de Informatică</h2>
-            <p className="tagline">The best software engineering contest in the world.</p>
-            <p className="call-to-action">
-                <a href="#" className="link link-primary">Înregistrează-te</a>
-                <a href="#" className="link link-secondary">Citește mai multe</a>
-            </p>
-            <table>
-                <tr className="entities">
-                    <td>Participanți</td>
-                    <td>Proiecte</td>
-                    <td>Județe</td>
-                </tr>
-                <tr className="values">
-                    <td>250+</td>
-                    <td>120+</td>
-                    <td>35+</td>
-                </tr>
-            </table>
-        </div>
-
-        <div className="row green-section">
-            <div className="inner-row">
-                <h1>News</h1>
+        <div className="blue-section-wrapper">
+            <div className="container">
+                <div className="row blue-section">
+                    <div className="col-md-12">
+                        <Header isLoggedIn={this.props.isLoggedIn} />
+                        <h2>Concurs Național de Informatică</h2>
+                        <p className="tagline">The best software engineering contest in the world.</p>
+                        <p className="call-to-action">
+                            <a href="#" className="link link-primary">Înregistrează-te</a>
+                            <a href="#" className="link link-secondary">Citește mai multe</a>
+                        </p>
+                        <table>
+                            <tr className="entities">
+                                <td>Participanți</td>
+                                <td>Proiecte</td>
+                                <td>Județe</td>
+                            </tr>
+                            <tr className="values">
+                                <td>250+</td>
+                                <td>120+</td>
+                                <td>35+</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div className="row gray-section">
-            <div className="inner-row">
-                <h1>Alumni</h1>
+        <div className="green-section-wrapper">
+            <div className="green-section">
+                <div className="container">
+                    <div className="row">
+                        <div className="column-left col-md-6">
+                            <h1>News</h1>
+                            <p>16 aprilie 2069</p>
+                            <h2>Deadline-ul de înscriere a fost prelungit.</h2>
+                            <p>Deadline-ul de înscriere pentru InfoEducație Online a
+                            fost prelungit până marți 21 aprilie. Sursele trebuie
+                            trimise până joi noaptea pe Github.</p>
+                        </div>
+                        <div className="column-right col-md-6">
+                            <div className="right-annoucement">
+                                <p>18 martie 2015</p>
+                                <p>Au inceput inscrierile pentru InfoEducatie 2015</p>
+                            </div>
+                            <div className="right-annoucement">
+                                <p>08 martie 2015</p>
+                                <p>Website-ul InfoEducatie Online 2015 a fost
+                                actualizat</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div className="row yellow-section">
-            <div className="inner-row">
-                <h1>Pics</h1>
+        <div className="gray-section-wrapper">
+            <div className="gray-section">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <h1>Alumni</h1>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div className="row sponsors-section">
-            <div className="inner-row">
-                <h1>Sponsors</h1>
+        <div className="yellow-section-wrapper">
+            <div className="yellow-section">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <h1>Pics</h1>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div>
-            <h1>Jury</h1>
+        <div className="sponsors-section-wrapper">
+            <div className="sponsors-section">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <h1>Sponsors</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>;
   }
