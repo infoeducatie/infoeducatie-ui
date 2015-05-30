@@ -19,6 +19,7 @@ export default React.createClass({
                 <div className="row blue-section">
                     <div className="col-md-12">
                         <Header isLoggedIn={this.props.isLoggedIn} />
+                        <h1>InfoEducație Ediția 2015</h1>
                         <h2>Concurs Național de Informatică</h2>
                         <p className="tagline">The best software engineering contest in the world.</p>
                         <p className="call-to-action">
@@ -46,25 +47,28 @@ export default React.createClass({
             <div className="green-section">
                 <div className="container">
                     <div className="row">
-                        <div className="column-left col-md-6">
+                        <div className="col-md-1"></div>
+                        <div className="column-left col-md-4">
                             <h1>News</h1>
-                            <p>16 aprilie 2069</p>
+                            <p className="date">16 aprilie 2069</p>
                             <h2>Deadline-ul de înscriere a fost prelungit.</h2>
-                            <p>Deadline-ul de înscriere pentru InfoEducație Online a
+                            <p className="message">Deadline-ul de înscriere pentru InfoEducație Online a
                             fost prelungit până marți 21 aprilie. Sursele trebuie
                             trimise până joi noaptea pe Github.</p>
                         </div>
-                        <div className="column-right col-md-6">
-                            <div className="right-annoucement">
-                                <p>18 martie 2015</p>
-                                <p>Au inceput inscrierile pentru InfoEducatie 2015</p>
+                        <div className="col-md-2"></div>
+                        <div className="column-right col-md-4">
+                            <div>
+                                <p className="date">18 martie 2015</p>
+                                <p className="message">Au inceput inscrierile pentru InfoEducatie 2015</p>
                             </div>
-                            <div className="right-annoucement">
-                                <p>08 martie 2015</p>
-                                <p>Website-ul InfoEducatie Online 2015 a fost
+                            <div>
+                                <p className="date">08 martie 2015</p>
+                                <p className="message">Website-ul InfoEducatie Online 2015 a fost
                                 actualizat</p>
                             </div>
                         </div>
+                        <div className="col-md-1"></div>
                     </div>
                 </div>
             </div>
