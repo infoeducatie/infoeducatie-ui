@@ -121,11 +121,41 @@
 
   .gray-section-wrapper {
     background-color: @gray;
+    color: @dark-gray;
 
     .container {
-      background-image: url(../../assets/img/quotes.png);
+      background-image: url(../../assets/img/quotes.png), url(../../assets/img/cristi.png);
       background-repeat: no-repeat;
-      background-position: 25% -20px;
+      background-position: 25% -20px, 0 150px;
+      min-height: 500px;
+
+      .row {
+        margin: 7% 5%;
+
+        .alumnus-name, .alumnus-position, h1 {
+          text-transform: uppercase;
+          letter-spacing: 0.2em;
+        }
+
+        h1 {
+          font-size: 1em;
+        }
+
+        .quote {
+          font-size: 2em;
+          margin-top: 5%;
+        }
+
+        .alumnus-name {
+          color: @yellow;
+          margin-top: 10%;
+          font-size: 1.4em;
+        }
+
+        .alumnus-position {
+          font-size: 1.25em;
+        }
+      }
     }
   }
 

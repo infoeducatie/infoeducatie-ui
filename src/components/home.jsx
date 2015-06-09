@@ -7,7 +7,7 @@ import Header from "./header";
 import Authentication from "../mixins/authentication.jsx"
 
 import "./home.less";
-
+import Cristi from "../../assets/img/cristi.png";
 
 export default React.createClass({
 
@@ -78,8 +78,16 @@ export default React.createClass({
             <div className="gray-section">
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-12">
-                            <h1>Alumni</h1>
+                        <div className="col-md-6 col-md-offset-6">
+                            <h1>Alumnus</h1>
+                            <p className="quote">La momentul respectiv părea o
+                            joacă, acum infoarena este o organizație cu o
+                            activitate foarte solidă și cu un impact mare în
+                            rândul elevilor pasionați de informatică.</p>
+                            <p className="alumnus-name">Cristian Strat</p>
+                            <p className="alumnus-position">
+                                Ex Growth Manager @ Twitter
+                            </p>
                         </div>
                     </div>
                 </div>
