@@ -1,5 +1,3 @@
-// vim: sw=2:ts=2:sts=2:et:fileencoding=utf8:
-"use strict";
 
 import React from "react";
 import { Row } from "react-bootstrap";
