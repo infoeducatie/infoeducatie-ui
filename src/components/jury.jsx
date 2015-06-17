@@ -98,7 +98,7 @@ export default React.createClass({
         <div className="orange-section-wrapper">
           <div className="container">
             <Row className="orange-section">
-              <Col xs={12} md={12} className="block">
+              <Col md={12} className="block">
                 <Row className="jury-criteria-desc">
                     <span className="pink-dash">&mdash;</span>
                       criterii de jurizare

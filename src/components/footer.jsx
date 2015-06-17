@@ -18,10 +18,10 @@ export default React.createClass({
 
   render() {
     return <Row className="footer">
-        <Col xs={12} md={12} className="block">
+        <Col md={12} className="block">
           <Row>
             <Col>
-              <Navbar toggleNavKey={0} className="fluid">
+              <Navbar toggleNavKey={0}>
                 <Nav className="navbar-nav" eventKey={0} ref="nav">
                   <NavItemLink to="alumni">Alumni</NavItemLink>
                   <NavItemLink to="forum">Forum</NavItemLink>
@@ -34,12 +34,12 @@ export default React.createClass({
             </Col>
           </Row>
           <Row>
-            <Col xs={6} md={6} className="block right">
+            <Col md={6} className="block right hidden-xs">
               <Row><div className="newsletter">aboneaz&#258;-te la newsletter</div></Row>
               <Row><div className="signup">&#206;nscrie-te</div></Row>
             </Col>
-            <Col xs={6} md={6} className="block">
-              <Row>
+            <Col md={6} className="block">
+              <Row hidden-xs>
                 <div className="social-logos">
                   <ul>
                     <li><a href="https://www.facebook.com/infoeducatie" target="_blank"><img alt='Facebook' src={Facebook} /></a></li>
