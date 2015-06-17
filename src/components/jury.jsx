@@ -42,7 +42,7 @@ export default React.createClass({
         {"avatar": JulianAvatar, "name": "Iulian Atanasoaie", "occupation": "student @ unibuc"},
         {"avatar": DefaultAvatar, "name": "Andreea Popescu", "occupation": "student @ "},
         {"avatar": DefaultAvatar, "name": "Emilian Bacila", "occupation": "student @ Cambridge"},
-        {"avatar": DefaultAvatar, "name": "Andrei Iancu", "occupation": "student @ "}
+        {"avatar": AndreiMAvatar, "name": "Andrei Munteanu", "occupation": "student @ Manchester"},
     ];
     var media = [
         {"avatar": RobertaTomegaAvatar, "name": "Roberta Tomega", "occupation": "student @ upt"},
@@ -58,10 +58,6 @@ export default React.createClass({
         {"avatar": AlexCiteaAvatar, "name": "Alex Citea", "occupation": "developer @ Bitdefender"},
         {"avatar": DefaultAvatar, "name": "Alina Dumitrascu", "occupation": "profesor @ A.Macedonki"},
         {"avatar": VladAvatar, "name": "Vlad Temian", "occupation": "student @ uvt"},
-        {"avatar": AndreiMAvatar, "name": "Andrei Munteanu", "occupation": "student @ Manchester"},
-        {"avatar": CristianVatAvatar, "name": "Cristian Vat", "occupation": "developer @ DataGroup"},
-        {"avatar": VictorPorofAvatar, "name": "Victor Porof", "occupation": "developer @ Mozilla"},
-        {"avatar": CristianTomaAvatar, "name": "Cristian Toma", "occupation": "student @ upt"}
     ];
     var web = [
         {"avatar": RobertAvatar, "name": "Robert Dolca", "occupation": "inginer @ Intel"},
@@ -83,10 +79,14 @@ export default React.createClass({
     ];
 
     return <div className="jury">
-        <div className="row blue-section">
-          <Header isLoggedIn={this.props.isLoggedIn} />
-          <h1>Juriul InfoEduca&#355;ie</h1>
-          <h2>Membrii juriului pe categorii</h2>
+        <div className="blue-section-wrapper">
+          <div className="container">
+            <div className="row blue-section">
+              <Header isLoggedIn={this.props.isLoggedIn} />
+              <h1>Juriul InfoEduca&#355;ie</h1>
+              <h2>Membrii juriului pe categorii</h2>
+            </div>
+          </div>
         </div>
         <JuryDescription iconClass="educational" name="educațional" members={educational}/>
         <JuryDescription iconClass="media" name="multimedia" members={media}/>
