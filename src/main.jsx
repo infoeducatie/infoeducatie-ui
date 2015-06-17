@@ -2,7 +2,7 @@
 
 import React from "react";
 import Router from "react-router";
-let { Route, Link, RouteHandler } = Router; // eslint-disable-line
+let { Route, Link, RouteHandler, DefaultRoute } = Router; // eslint-disable-line
 
 import "babel-core/polyfill";
 import "./lib/auth";
@@ -15,6 +15,13 @@ import Alumni from "./components/alumni";
 import Galaciuc from "./components/galaciuc";
 import Register from "./components/register";
 import Dashboard from "./components/dashboard";
+import Jury from "./components/jury";
+import Home from "./components/home";
+import Forum from "./components/forum";
+import Schedule from "./components/schedule";
+import Contact from "./components/contact";
+import Results from "./components/results";
+import Footer from "./components/footer";
 
 
 let App = React.createClass({
@@ -32,52 +39,9 @@ let App = React.createClass({
 
   render() {
     return <div className="main">
-      <div className="row blue-section">
-        <Header isLoggedIn={this.state.isLoggedIn} />
-        <h1>InfoEducație Ediția 2015</h1>
-        <h2>Concurs Național de Informatică</h2>
-        <p className="tagline">The best software engineering contest in the world.</p>
-        <p className="call-to-action">
-          <a href="#" className="link link-primary">Înregistrează-te</a>
-          <a href="#" className="link link-secondary">Citește mai multe</a>
-        </p>
-
-        <table>
-          <tr className="entities">
-            <td>Participanți</td>
-            <td>Proiecte</td>
-            <td>Județe</td>
-          </tr>
-          <tr className="values">
-            <td>250+</td>
-            <td>120+</td>
-            <td>35+</td>
-          </tr>
-        </table>
-      </div>
-      <div className="row green-section">
-        <div className="inner-row">
-          <h1>News</h1>
-        </div>
-      </div>
-      <div className="row gray-section">
-        <div className="inner-row">
-          <h1>Alumni</h1>
-        </div>
-      </div>
-      <div className="row yellow-section">
-        <div className="inner-row">
-          <h1>Pics</h1>
-        </div>
-      </div>
-      <div className="row sponsors-section">
-        <div className="inner-row">
-          <h1>Sponsors</h1>
-        </div>
-      </div>
-
-      <RouteHandler/>
-    </div>;
+        <RouteHandler />
+        <Footer />
+  </div>;
   },
 
   setStateOnAuth() {
@@ -88,15 +52,21 @@ let App = React.createClass({
 
 let routes = (
   <Route handler={App}>
+    <Route handler={Home} name="home" />
+    <Route handler={Jury} name="jury" />
     <Route handler={News} name="news" />
     <Route handler={Alumni} name="alumni" />
     <Route handler={Photos} name="photos" />
     <Route handler={Galaciuc} name="galaciuc" />
     <Route handler={Register} name="register" />
     <Route handler={Dashboard} name="dashboard" />
+    <Route handler={Forum} name="forum" />
+    <Route handler={Schedule} name="schedule" />
+    <Route handler={Results} name="results" />
+    <Route handler={Contact} name="contact" />
+    <DefaultRoute handler={Home} />
   </Route>
 );
-
 
 Router.run(routes, Router.HistoryLocation, function(Handler) {
   React.render(<Handler />, document.getElementById("app"));

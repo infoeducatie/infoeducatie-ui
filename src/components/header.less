@@ -1,15 +1,18 @@
 @import "../main";
 
-@navbar-default-bg: transparent;
 
 .header {
   .navbar-nav {
     text-transform: uppercase;
+    float: right;
   }
 
   @media screen and (max-width: 1000px) {
     .navbar-brand {
       display: none;
+    }
+    .navbar-nav {
+      float: none;
     }
   }
 
