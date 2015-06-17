@@ -72,9 +72,11 @@
     text-align: center;
 
     .navbar-nav {
-      display: inline-block;
-      float: none;
-      vertical-align: top;
+      @media (min-width: 768px) {
+        display: inline-block;
+        float: none;
+        vertical-align: top;
+      }
 
       li {
         margin-left: 30px;
