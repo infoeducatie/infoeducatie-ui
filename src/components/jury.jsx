@@ -1,7 +1,7 @@
 "use strict";
 
 import React from "react";
-import { Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 
 import Header from "./header";
 import JuryDescription from "./jury_description.jsx";
@@ -98,19 +98,21 @@ export default React.createClass({
         <div className="orange-section-wrapper">
           <div className="container">
             <Row className="orange-section">
-              <Row className="jury-criteria-desc">
-                  <span className="pink-dash">&mdash;</span>
-                    criterii de jurizare
-                  <span className="pink-dash">&mdash;</span>
-              </Row>
-              <Row className="jury-criteria-documents">
-                {criteria.map(function(doc) {
-                  return <div className="jury-criteria">
-                    <div className="jury-criteria-txt">{doc.name}</div>
-                    <div className="jury-criteria-img"><a href={doc.link} target="_blank"><img src={DefaultDocument} alt={doc.link} /></a></div>
-                  </div>;
-                })}
-              </Row>
+              <Col xs={12} md={12} className="block">
+                <Row className="jury-criteria-desc">
+                    <span className="pink-dash">&mdash;</span>
+                      criterii de jurizare
+                    <span className="pink-dash">&mdash;</span>
+                </Row>
+                <Row className="jury-criteria-documents">
+                  {criteria.map(function(doc) {
+                    return <div className="jury-criteria">
+                      <div className="jury-criteria-txt">{doc.name}</div>
+                      <div className="jury-criteria-img"><a href={doc.link} target="_blank"><img src={DefaultDocument} alt={doc.link} /></a></div>
+                    </div>;
+                  })}
+                </Row>
+              </Col>
             </Row>
           </div>
         </div>
