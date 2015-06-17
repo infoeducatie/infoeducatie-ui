@@ -6,7 +6,9 @@ import Header from "./header";
 import Authentication from "../mixins/authentication.jsx"
 
 import "./home.less";
-import Cristi from "../../assets/img/cristi.png";
+import Google from "../../assets/img/sponsors/google.png";
+import Intel from "../../assets/img/sponsors/intel.png";
+import Orange from "../../assets/img/sponsors/orange.png";
 
 export default React.createClass({
 
@@ -121,7 +123,18 @@ export default React.createClass({
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
-                            <h1>Sponsors</h1>
+                            <h1>Sponsori Gold</h1>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-2 col-md-offset-3">
+                            <img src={Google} />
+                        </div>
+                        <div className="col-md-2">
+                            <img src={Intel} />
+                        </div>
+                        <div className="col-md-2">
+                            <img src={Orange} />
                         </div>
                     </div>
                 </div>
