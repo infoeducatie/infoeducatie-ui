@@ -1,5 +1,9 @@
 .link {
   border-radius: 30px;
+  color: @white;
+  text-transform: uppercase;
+  margin-left: 15px;
+  margin-right: 15px;
 
   &.link-primary {
     background-color: @pink;
@@ -7,5 +11,12 @@
 
   &.link-secondary {
     border: 3px @white solid;
+  }
+}
+
+.pink-dash {
+  &:before {
+    content: "\2014";
+    color: @pink;
   }
 }

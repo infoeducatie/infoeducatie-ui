@@ -95,10 +95,21 @@ export default React.createClass({
 
         <div className="yellow-section-wrapper">
             <div className="yellow-section">
-                <div className="container">
+                <div className="container-fluid">
                     <div className="row">
-                        <div className="col-md-12">
-                            <h1>Pics</h1>
+                        <div className="col-md-4 col-md-offset-2 yellow">
+                            <h1>Tabără Gălăciuc</h1>
+                            <p className="data">
+                                <span className="pink-dash"></span> 2 - 8 August 2015 <span className="pink-dash"></span>
+                            </p>
+                            <p className="editia">Ediția 23</p>
+                            <p className="mai-multe-poze">
+                                <a href="#" className="link link-secondary">
+                                    Mai multe poze
+                                </a>
+                            </p>
+                        </div>
+                        <div className="col-md-6 pajiste">
                         </div>
                     </div>
                 </div>
