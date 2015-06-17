@@ -42,7 +42,7 @@ export default React.createClass({
         {"avatar": JulianAvatar, "name": "Iulian Atanasoaie", "occupation": "student @ unibuc"},
         {"avatar": DefaultAvatar, "name": "Andreea Popescu", "occupation": "student @ "},
         {"avatar": DefaultAvatar, "name": "Emilian Bacila", "occupation": "student @ Cambridge"},
-        {"avatar": AndreiMAvatar, "name": "Andrei Munteanu", "occupation": "student @ Manchester"},
+        {"avatar": AndreiMAvatar, "name": "Andrei Munteanu", "occupation": "student @ Manchester"}
     ];
     var media = [
         {"avatar": RobertaTomegaAvatar, "name": "Roberta Tomega", "occupation": "student @ upt"},
@@ -57,7 +57,7 @@ export default React.createClass({
         {"avatar": AlexComanAvatar, "name": "Alexandru Coman", "occupation": "developer @ Cloudbase"},
         {"avatar": AlexCiteaAvatar, "name": "Alex Citea", "occupation": "developer @ Bitdefender"},
         {"avatar": DefaultAvatar, "name": "Alina Dumitrascu", "occupation": "profesor @ A.Macedonki"},
-        {"avatar": VladAvatar, "name": "Vlad Temian", "occupation": "student @ uvt"},
+        {"avatar": VladAvatar, "name": "Vlad Temian", "occupation": "student @ uvt"}
     ];
     var web = [
         {"avatar": RobertAvatar, "name": "Robert Dolca", "occupation": "inginer @ Intel"},
