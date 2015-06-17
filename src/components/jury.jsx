@@ -88,27 +88,33 @@ export default React.createClass({
             </div>
           </div>
         </div>
+
         <JuryDescription iconClass="educational" name="educațional" members={educational}/>
         <JuryDescription iconClass="media" name="multimedia" members={media}/>
         <JuryDescription iconClass="robots" name="roboți" members={robots}/>
         <JuryDescription iconClass="utility" name="utilitar" members={utilitar}/>
         <JuryDescription iconClass="web" name="web" members={web}/>
-        <Row className="orange-section">
-          <Row className="jury-criteria-desc">
-              <span className="pink-dash">&mdash;</span>
-                criterii de jurizare
-              <span className="pink-dash">&mdash;</span>
-          </Row>
-          <Row className="jury-criteria-documents">
-            {criteria.map(function(doc) {
-              return <div className="jury-criteria">
-                <div className="jury-criteria-txt">{doc.name}</div>
-                <div className="jury-criteria-img"><a href={doc.link} target="_blank"><img src={DefaultDocument} alt={doc.link} /></a></div>
-              </div>;
-            })}
-          </Row>
 
-        </Row>
+        <div className="orange-section-wrapper">
+          <div className="container">
+            <Row className="orange-section">
+              <Row className="jury-criteria-desc">
+                  <span className="pink-dash">&mdash;</span>
+                    criterii de jurizare
+                  <span className="pink-dash">&mdash;</span>
+              </Row>
+              <Row className="jury-criteria-documents">
+                {criteria.map(function(doc) {
+                  return <div className="jury-criteria">
+                    <div className="jury-criteria-txt">{doc.name}</div>
+                    <div className="jury-criteria-img"><a href={doc.link} target="_blank"><img src={DefaultDocument} alt={doc.link} /></a></div>
+                  </div>;
+                })}
+              </Row>
+            </Row>
+          </div>
+        </div>
+
     </div>;
   }
 });
