@@ -147,26 +147,23 @@ export default React.createClass({
         </div>
 
         <div className="sponsors-section-wrapper">
-            <div className="sponsors-section">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <h1>Sponsori Gold</h1>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-2 col-md-offset-3">
+            <Grid className="sponsors-section">
+                <Row className="big-spacing" />
+                <Row className="row">
+                    <Col md={12}>
+                        <h1>Sponsori Gold</h1>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={12}>
+                        <p className="logos">
                             <img src={Google} />
-                        </div>
-                        <div className="col-md-2">
                             <img src={Intel} />
-                        </div>
-                        <div className="col-md-2">
                             <img src={Orange} />
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        </p>
+                    </Col>
+                </Row>
+            </Grid>
         </div>
     </div>;
   }
