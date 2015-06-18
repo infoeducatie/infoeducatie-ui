@@ -106,9 +106,9 @@ export default React.createClass({
             <Row>
               <Col md={12} className="block">
                 <Row className="jury-criteria-desc">
-                    <span className="pink-dash">&mdash;</span>
+                    <span className="pink-dash" />
                       criterii de jurizare
-                    <span className="pink-dash">&mdash;</span>
+                    <span className="pink-dash" />
                 </Row>
                 <Row className="jury-criteria-documents">
                   {criteria.map(function(doc) {
