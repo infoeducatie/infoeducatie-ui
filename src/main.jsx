@@ -39,9 +39,9 @@ let App = React.createClass({
 
   render() {
     return <div className="main">
-        <RouteHandler />
-        <Footer />
-  </div>;
+      <RouteHandler />
+      <Footer />
+    </div>;
   },
 
   setStateOnAuth() {
