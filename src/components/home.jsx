@@ -92,7 +92,7 @@ export default React.createClass({
                             trimise până joi noaptea pe Github.</p>
                         </Row>
                     </Col>
-                    <Col md={4} mdOffset={2} className="right">
+                    <Col md={4} mdOffset={1} className="right">
                         <Row className="big-spacing" />
                         <div>
                             <p className="date">18 martie 2015</p>
