@@ -122,40 +122,34 @@
     .row {
       background-color: @yellow;
     }
-    .yellow {
-      padding: 5% 0;
+
+    .text {
       min-height: 500px;
       text-align: center;
       color: @dark-green;
+
+      .double-big-spacing {
+        margin-bottom: 4 * @vertical-big-spacing;
+      }
 
       h1 {
         font-family: 'Shadows Into Light', cursive;
         font-size: 4em;
       }
 
-      .data, .editia {
-        padding: 1% 0;
+      .data, .edition {
         text-transform: uppercase;
         font-size: 1.2em;
         font-weight: bold;
         letter-spacing: 3px;
       }
 
-      .editia {
+      .edition {
         color: @pink;
       }
-
-      .mai-multe-poze {
-        margin-top: 10%;
-        .link {
-          // Poate o sa ajung o data un programator bun care e in stare sa
-          // scrie componente reutilizabile
-          // Poate...
-          padding: 15px
-        }
-      }
     }
-    .pajiste {
+
+    .grass {
       background-image: url(../../assets/img/pajiste.jpg);
       background-color: @yellow;
       background-repeat: no-repeat;

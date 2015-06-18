@@ -138,25 +138,25 @@ export default React.createClass({
         </div>
 
         <div className="yellow-section-wrapper">
-            <div className="yellow-section">
-                <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-md-4 col-md-offset-2 yellow">
-                            <h1>Tabără Gălăciuc</h1>
-                            <p className="data">
-                                <span className="pink-dash"></span> 2 - 8 August 2015 <span className="pink-dash"></span>
-                            </p>
-                            <p className="editia">Ediția 23</p>
-                            <p className="mai-multe-poze">
-                                <a href="#" className="link link-secondary">
-                                    Mai multe poze
-                                </a>
-                            </p>
-                        </div>
-                        <div className="col-md-6 pajiste">
-                        </div>
-                    </div>
-                </div>
+            <div className="yellow-section container-fluid">
+                <Row>
+                    <Col md={4} mdOffset={2} className="text">
+                        <Row className="double-big-spacing" />
+                        <h1>Tabără Gălăciuc</h1>
+                        <p className="data">
+                            <span className="pink-dash"></span> 2 - 8 August 2015 <span className="pink-dash"></span>
+                        </p>
+                        <p className="edition">Ediția 23</p>
+                        <Row className="big-spacing" />
+                        <p>
+                            <a href="#" className="link link-secondary">
+                                Mai multe poze
+                            </a>
+                        </p>
+                    </Col>
+                    <Col md={6} className="grass">
+                    </Col>
+                </Row>
             </div>
         </div>
 
