@@ -73,34 +73,41 @@ export default React.createClass({
         </div>
 
         <div className="green-section-wrapper">
-            <div className="green-section">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-1"></div>
-                        <div className="column-left col-md-4">
+            <Grid className="green-section">
+                <Row className="small-spacing" />
+                <Row className="row">
+                    <Col md={4} mdOffset={1} className="left">
+                        <Row>
                             <h1>News</h1>
+                        </Row>
+                        <Row className="big-spacing" />
+                        <Row>
                             <p className="date">16 aprilie 2069</p>
                             <h2>Deadline-ul de înscriere a fost prelungit.</h2>
+                        </Row>
+                        <Row className="big-spacing" />
+                        <Row>
                             <p className="message">Deadline-ul de înscriere pentru InfoEducație Online a
                             fost prelungit până marți 21 aprilie. Sursele trebuie
                             trimise până joi noaptea pe Github.</p>
+                        </Row>
+                    </Col>
+                    <Col md={4} mdOffset={2} className="right">
+                        <Row className="big-spacing" />
+                        <div>
+                            <p className="date">18 martie 2015</p>
+                            <p className="message">Au inceput inscrierile pentru InfoEducatie 2015</p>
                         </div>
-                        <div className="col-md-2"></div>
-                        <div className="column-right col-md-4">
-                            <div>
-                                <p className="date">18 martie 2015</p>
-                                <p className="message">Au inceput inscrierile pentru InfoEducatie 2015</p>
-                            </div>
-                            <div>
-                                <p className="date">08 martie 2015</p>
-                                <p className="message">Website-ul InfoEducatie Online 2015 a fost
-                                actualizat</p>
-                            </div>
+                        <Row className="big-spacing" />
+                        <div>
+                            <p className="date">08 martie 2015</p>
+                            <p className="message">Website-ul InfoEducatie Online 2015 a fost
+                            actualizat</p>
                         </div>
-                        <div className="col-md-1"></div>
-                    </div>
-                </div>
-            </div>
+                    </Col>
+                </Row>
+                <Row className="big-spacing" />
+            </Grid>
         </div>
 
         <div className="gray-section-wrapper">

@@ -42,11 +42,14 @@
   }
 
   .green-section {
-    padding-top: 30px;
-
     h1 {
       text-transform: uppercase;
-      font-size: 1em;
+      font-size: 1.2em;
+      letter-spacing: @medium-letter-spacing;
+    }
+
+    .message {
+      font-weight: 300;
     }
 
     h1, .message {
@@ -57,27 +60,22 @@
       color: @dark-green;
     }
 
-    .column-left {
+    .left {
       .date {
-        margin-top: 30px;
       }
       h2 {
-        margin-top: 20px;
       }
       .message {
-        margin-top: 20px;
         font-size: 1em;
       }
     }
 
-    .column-right {
+    .right {
       .message {
-        margin-top: 10px;
         font-size: 2em;
       }
 
       .date {
-        margin-top: 30px;
       }
     }
   }
