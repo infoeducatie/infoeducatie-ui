@@ -33,6 +33,10 @@ let App = React.createClass({
     };
   },
 
+  componentDidMount() {
+    // TODO @palcu: Do API request to /current and re-render whole app
+  },
+
   render() {
     return <div className="main">
       <RouteHandler currentUser={this.state.currentUser}
