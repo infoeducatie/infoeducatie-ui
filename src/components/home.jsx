@@ -77,7 +77,7 @@ export default React.createClass({
                 <Row className="small-spacing" />
                 <Row className="row">
                     <Col md={4} mdOffset={1} className="left">
-                        <h1>News</h1>
+                        <h1>Știri</h1>
                         <Row className="big-spacing" />
                         <p className="date">16 aprilie 2069</p>
                         <h2>Deadline-ul de înscriere a fost prelungit.</h2>
