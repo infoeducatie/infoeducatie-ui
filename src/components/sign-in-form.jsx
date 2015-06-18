@@ -1,7 +1,9 @@
 "use strict";
 
 import React from "react";
+
 import { Button } from "react-bootstrap";
+let BootstrapForm = require('newforms-bootstrap');
 import { Form,
          CharField as charField,
          EmailField as emailField,
@@ -18,9 +20,15 @@ let SignInFormSchema = Form.extend({
 export default React.createClass({
   displayName: "SignInForm",
 
+  propTypes: {
+    onSignIn: React.PropTypes.func.isRequired
+  },
+
   render() {
     return <form onSubmit={this.onSubmit}>
-      <RenderForm form={SignInFormSchema} ref="signInForm" />
+      <RenderForm form={SignInFormSchema} ref="signInForm">
+        <BootstrapForm />
+      </RenderForm>
       <Button bsStyle="primary" onClick={this.onSubmit}>Loghează-te</Button>
     </form>;
   },
