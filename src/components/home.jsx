@@ -77,33 +77,24 @@ export default React.createClass({
                 <Row className="small-spacing" />
                 <Row className="row">
                     <Col md={4} mdOffset={1} className="left">
-                        <Row>
-                            <h1>News</h1>
-                        </Row>
+                        <h1>News</h1>
                         <Row className="big-spacing" />
-                        <Row>
-                            <p className="date">16 aprilie 2069</p>
-                            <h2>Deadline-ul de înscriere a fost prelungit.</h2>
-                        </Row>
+                        <p className="date">16 aprilie 2069</p>
+                        <h2>Deadline-ul de înscriere a fost prelungit.</h2>
                         <Row className="big-spacing" />
-                        <Row>
-                            <p className="message">Deadline-ul de înscriere pentru InfoEducație Online a
-                            fost prelungit până marți 21 aprilie. Sursele trebuie
-                            trimise până joi noaptea pe Github.</p>
-                        </Row>
+                        <p className="message">Deadline-ul de înscriere pentru InfoEducație Online a
+                        fost prelungit până marți 21 aprilie. Sursele trebuie
+                        trimise până joi noaptea pe Github.</p>
                     </Col>
                     <Col md={4} mdOffset={1} className="right">
                         <Row className="big-spacing" />
-                        <div>
-                            <p className="date">18 martie 2015</p>
-                            <p className="message">Au inceput inscrierile pentru InfoEducatie 2015</p>
-                        </div>
+                        <p className="date">18 martie 2015</p>
+                        <p className="message">Au inceput inscrierile pentru InfoEducatie 2015</p>
+
                         <Row className="big-spacing" />
-                        <div>
-                            <p className="date">08 martie 2015</p>
-                            <p className="message">Website-ul InfoEducatie Online 2015 a fost
-                            actualizat</p>
-                        </div>
+                        <p className="date">08 martie 2015</p>
+                        <p className="message">Website-ul InfoEducatie Online 2015 a fost
+                        actualizat</p>
                     </Col>
                 </Row>
                 <Row className="big-spacing" />
@@ -115,23 +106,17 @@ export default React.createClass({
                 <Row className="big-spacing" />
                 <Row className="row">
                     <Col md={6} mdOffset={6}>
-                        <Row>
-                            <h1>Alumnus</h1>
-                        </Row>
+                        <h1>Alumnus</h1>
                         <Row className="small-spacing" />
-                        <Row>
-                            <p className="quote">La momentul respectiv părea o
-                            joacă, acum infoarena este o organizație cu o
-                            activitate foarte solidă și cu un impact mare în
-                            rândul elevilor pasionați de informatică.</p>
-                        </Row>
+                        <p className="quote">La momentul respectiv părea o
+                        joacă, acum infoarena este o organizație cu o
+                        activitate foarte solidă și cu un impact mare în
+                        rândul elevilor pasionați de informatică.</p>
                         <Row className="small-spacing" />
-                        <Row>
-                            <p className="alumnus-name">Cristian Strat</p>
-                            <p className="alumnus-position">
-                                Ex Growth Manager @ Twitter
-                            </p>
-                        </Row>
+                        <p className="alumnus-name">Cristian Strat</p>
+                        <p className="alumnus-position">
+                            Ex Growth Manager @ Twitter
+                        </p>
                     </Col>
                 </Row>
             </Grid>
