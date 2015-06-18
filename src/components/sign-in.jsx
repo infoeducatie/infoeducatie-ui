@@ -40,7 +40,7 @@ export default React.createClass({
       data[`user[${key}]`] = formData[key];
     });
 
-    $.post(window.config.API_URL + "users/sign_in.json", data, data => {
+    $.post(window.config.API_URL + "v1/sign_in", data, data => {
       window.Auth.login(data);
       this.closeModal();
     });
