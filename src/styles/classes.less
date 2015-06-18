@@ -2,8 +2,14 @@
   border-radius: 30px;
   color: @white;
   text-transform: uppercase;
-  margin-left: 15px;
-  margin-right: 15px;
+  display: inline-block;
+  padding: 20px;
+  font-size: 1.2em;
+  letter-spacing: @medium-letter-spacing;
+
+  &:hover {
+    color: @white;
+  }
 
   &.link-primary {
     background-color: @pink;
@@ -19,4 +25,16 @@
     content: "\2014";
     color: @pink;
   }
+}
+
+
+@vertical-small-spacing: 5%;
+@vertical-big-spacing: 2 * @vertical-small-spacing;
+
+.small-spacing {
+  margin-bottom: @vertical-small-spacing;
+}
+
+.big-spacing {
+  margin-bottom: @vertical-big-spacing;
 }

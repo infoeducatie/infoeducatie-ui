@@ -1,6 +1,7 @@
 "use strict";
 
 import React from "react";
+import {Grid, Row, Col} from "react-bootstrap";
 
 import Header from "./header";
 import Authentication from "../mixins/authentication.jsx"
@@ -16,32 +17,59 @@ export default React.createClass({
   render() {
     return <div className="home">
         <div className="blue-section-wrapper">
-            <div className="container">
-                <div className="row blue-section">
-                    <div className="col-md-12">
+            <Grid className="blue-section">
+                <Row>
+                    <Col md={12}>
                         <Header isLoggedIn={this.props.isLoggedIn} />
+                    </Col>
+                </Row>
+                <Row className="big-spacing" />
+                <Row>
+                    <Col md={12}>
                         <h1>InfoEducație Ediția 2015</h1>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={12}>
                         <h2>Concurs Național de Informatică</h2>
+                    </Col>
+                </Row>
+                <Row className="small-spacing" />
+                <Row>
+                    <Col md={12}>
                         <p className="tagline">The best software engineering contest in the world.</p>
+                    </Col>
+                </Row>
+                <Row className="small-spacing" />
+                <Row>
+                    <Col md={4} mdOffset={2}>
                         <p className="call-to-action">
                             <a href="#" className="link link-primary">Înregistrează-te</a>
-                            <a href="#" className="link link-secondary">Citește mai multe</a>
                         </p>
-                        <table>
-                            <tr className="entities">
-                                <td>Participanți</td>
-                                <td>Proiecte</td>
-                                <td>Județe</td>
-                            </tr>
-                            <tr className="values">
-                                <td>250+</td>
-                                <td>120+</td>
-                                <td>35+</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
+                    </Col>
+                    <Col md={4}>
+                        <p>
+                            <a href="#" className="link link-secondary">Mai multe...</a>
+                        </p>
+                    </Col>
+                </Row>
+                <Row className="big-spacing" />
+                <Row className="statistics">
+                    <Col md={2} mdOffset={3}>
+                        <p className="description">Participanți</p>
+                        <p className="value">250+</p>
+                    </Col>
+                    <Col md={2}>
+                        <p className="description">Proiecte</p>
+                        <p className="value">120+</p>
+                    </Col>
+                    <Col md={2}>
+                        <p className="description">Județe</p>
+                        <p className="value">35+</p>
+                    </Col>
+                </Row>
+                <Row className="small-spacing" />
+            </Grid>
         </div>
 
         <div className="green-section-wrapper">

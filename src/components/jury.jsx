@@ -1,7 +1,7 @@
 "use strict";
 
 import React from "react";
-import { Col, Row } from "react-bootstrap";
+import { Grid, Col, Row } from "react-bootstrap";
 
 import Header from "./header";
 import JuryDescription from "./jury_description.jsx";
@@ -80,13 +80,19 @@ export default React.createClass({
 
     return <div className="jury">
         <div className="blue-section-wrapper">
-          <div className="container">
-            <div className="row blue-section">
-              <Header isLoggedIn={this.props.isLoggedIn} />
-              <h1>Juriul InfoEduca&#355;ie</h1>
-              <h2>Membrii juriului pe categorii</h2>
-            </div>
-          </div>
+          <Grid className="blue-section">
+            <Header isLoggedIn={this.props.isLoggedIn} />
+            <Row>
+              <Col md={12}>
+                <h1>Juriul InfoEduca&#355;ie</h1>
+              </Col>
+            </Row>
+            <Row>
+              <Col md={12}>
+                <h2>Membrii juriului pe categorii</h2>
+              </Col>
+            </Row>
+          </Grid>
         </div>
 
         <JuryDescription iconClass="educational" name="educațional" members={educational}/>
@@ -96,8 +102,8 @@ export default React.createClass({
         <JuryDescription iconClass="web" name="web" members={web}/>
 
         <div className="orange-section-wrapper">
-          <div className="container">
-            <Row className="orange-section">
+          <Grid className="orange-section">
+            <Row>
               <Col md={12} className="block">
                 <Row className="jury-criteria-desc">
                     <span className="pink-dash">&mdash;</span>
@@ -114,7 +120,7 @@ export default React.createClass({
                 </Row>
               </Col>
             </Row>
-          </div>
+          </Grid>
         </div>
 
     </div>;

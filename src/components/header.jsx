@@ -2,7 +2,7 @@
 
 import React from "react";
 import Router from "react-router";
-import { Navbar, Nav, NavItem } from "react-bootstrap";
+import { Navbar, Nav, NavItem, Row, Col } from "react-bootstrap";
 import { NavItemLink } from "react-router-bootstrap";
 let { Route, Link, RouteHandler } = Router; // eslint-disable-line
 
@@ -17,23 +17,25 @@ export default React.createClass({
 
   render() {
     return <div className="header">
-      <Navbar toggleNavKey={0}>
-        <a className="navbar-brand" href="#">
-          <img width="200" height="43" alt="Brand" src={Logo} />
-        </a>
-        <Nav className="navbar-nav" eventKey={0} right ref="nav">
-          <NavItemLink to="/">Acas&#259;</NavItemLink>
-          <NavItemLink to="news">&#350;tiri</NavItemLink>
-          <NavItemLink to="alumni">Alumni</NavItemLink>
-          <NavItemLink to="photos">Poze</NavItemLink>
-          <NavItemLink to="galaciuc">G&#259;l&#259;ciuc</NavItemLink>
-          {this.props.isLoggedIn ? null
-                                 : <NavItem><SignIn /></NavItem>}
-          <NavItemLink className="link link-primary" to="register">
-            Înregistrează-te
-          </NavItemLink>
-        </Nav>
-      </Navbar>
+      <Row className="small-spacing" />
+      <Row>
+        <Col md={12}>
+          <Navbar toggleNavKey={0}>
+            <Nav className="navbar-nav" eventKey={0} right ref="nav">
+              <NavItemLink to="/">Acas&#259;</NavItemLink>
+              <NavItemLink to="news">&#350;tiri</NavItemLink>
+              <NavItemLink to="alumni">Alumni</NavItemLink>
+              <NavItemLink to="photos">Poze</NavItemLink>
+              <NavItemLink to="galaciuc">G&#259;l&#259;ciuc</NavItemLink>
+              {this.props.isLoggedIn ? null
+                                     : <NavItem><SignIn /></NavItem>}
+              <NavItemLink to="register">
+                Înregistrează-te
+              </NavItemLink>
+            </Nav>
+          </Navbar>
+        </Col>
+      </Row>
     </div>;
   }
 });
