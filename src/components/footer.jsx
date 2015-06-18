@@ -18,7 +18,8 @@ export default React.createClass({
 
   render() {
     return <Grid className="footer">
-      <Row className="big-spacing" />
+      <Row className="small-spacing" />
+      <Row className="small-spacing second" />
       <Row>
         <Col md={12}>
           <Navbar>
