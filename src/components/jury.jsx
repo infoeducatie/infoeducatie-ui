@@ -95,11 +95,13 @@ export default React.createClass({
           </Grid>
         </div>
 
-        <JuryDescription iconClass="educational" name="educațional" members={educational}/>
-        <JuryDescription iconClass="media" name="multimedia" members={media}/>
-        <JuryDescription iconClass="robots" name="roboți" members={robots}/>
-        <JuryDescription iconClass="utility" name="utilitar" members={utilitar}/>
-        <JuryDescription iconClass="web" name="web" members={web}/>
+        <Grid>
+          <JuryDescription iconClass="educational" name="educațional" members={educational}/>
+          <JuryDescription iconClass="media" name="multimedia" members={media}/>
+          <JuryDescription iconClass="robots" name="roboți" members={robots}/>
+          <JuryDescription iconClass="utility" name="utilitar" members={utilitar}/>
+          <JuryDescription iconClass="web" name="web" members={web}/>
+        </Grid>
 
         <div className="orange-section-wrapper">
           <Grid className="orange-section">
