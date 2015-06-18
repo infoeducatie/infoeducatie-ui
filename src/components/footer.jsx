@@ -18,8 +18,9 @@ export default React.createClass({
 
   render() {
     return <Grid className="footer">
+      <Row className="big-spacing" />
       <Row>
-        <Col md={12} className="block">
+        <Col md={12}>
           <Navbar>
             <Nav className="navbar-nav" ref="nav">
               <NavItemLink to="alumni">Alumni</NavItemLink>
@@ -32,12 +33,14 @@ export default React.createClass({
           </Navbar>
         </Col>
       </Row>
-      <Row>
-        <Col md={6} className="block right hidden-xs">
+      <Row className="small-spacing" />
+      <Row className="call-to-action">
+        <Col md={6} className="left hidden-xs">
           <Row><p className="newsletter">aboneaz&#258;-te la newsletter</p></Row>
-          <Row><p className="signup">&#206;nscrie-te</p></Row>
+          <Row className="small-spacing" />
+          <Row><p className="signup"><a href="#" className="link link-ternary">Înscrie-te</a></p></Row>
         </Col>
-        <Col md={6} className="block">
+        <Col md={6}>
           <Row>
             <ul className="social-logos">
               <li><a href="https://www.facebook.com/infoeducatie" target="_blank"><img alt='Facebook' src={Facebook} /></a></li>
