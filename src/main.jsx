@@ -8,7 +8,6 @@ import "babel-core/polyfill";
 import "./lib/auth";
 import "./main.less";
 
-import Header from "./components/header";
 import News from "./components/news";
 import Photos from "./components/photos";
 import Alumni from "./components/alumni";
