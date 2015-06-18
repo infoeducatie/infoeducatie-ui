@@ -15,16 +15,14 @@ export default React.createClass({
           {this.props.name}
         <span className="orange-dash">&mdash;</span>
       </div>
-      <Col>
-        <Row className="jury-members">
-          {this.props.members.map(function(member) {
-              return <div className="jury-member">
-                  <div className="jury-avatar"><img src={member.avatar} /></div>
-                  <div className="jury-name">{member.name}</div>
-                  <div className="jury-occupation">{member.occupation}</div>
-                </div>;
-              })}
-        </Row>
+      <Col md={12} className="jury-members">
+        {this.props.members.map(function(member) {
+          return <div className="jury-member">
+            <div className="jury-avatar"><img src={member.avatar} /></div>
+            <div className="jury-name">{member.name}</div>
+            <div className="jury-occupation">{member.occupation}</div>
+          </div>;
+        })}
       </Col>
     </Row>;
   }
