@@ -111,23 +111,30 @@ export default React.createClass({
         </div>
 
         <div className="gray-section-wrapper">
-            <div className="gray-section">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-6 col-md-offset-6">
+            <Grid className="gray-section">
+                <Row className="big-spacing" />
+                <Row className="row">
+                    <Col md={6} mdOffset={6}>
+                        <Row>
                             <h1>Alumnus</h1>
+                        </Row>
+                        <Row className="small-spacing" />
+                        <Row>
                             <p className="quote">La momentul respectiv părea o
                             joacă, acum infoarena este o organizație cu o
                             activitate foarte solidă și cu un impact mare în
                             rândul elevilor pasionați de informatică.</p>
+                        </Row>
+                        <Row className="small-spacing" />
+                        <Row>
                             <p className="alumnus-name">Cristian Strat</p>
                             <p className="alumnus-position">
                                 Ex Growth Manager @ Twitter
                             </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        </Row>
+                    </Col>
+                </Row>
+            </Grid>
         </div>
 
         <div className="yellow-section-wrapper">
