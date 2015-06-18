@@ -4,7 +4,6 @@ import React from "react";
 import {Grid, Row, Col} from "react-bootstrap";
 
 import Header from "./header";
-import Authentication from "../mixins/authentication.jsx"
 
 import "./home.less";
 import Google from "../../assets/img/sponsors/google.png";
@@ -20,7 +19,9 @@ export default React.createClass({
             <Grid className="blue-section">
                 <Row>
                     <Col md={12}>
-                        <Header isLoggedIn={this.props.isLoggedIn} />
+                        <Header isLoggedIn={this.props.isLoggedIn}
+                                login={this.props.login}
+                                logout={this.props.logout} />
                     </Col>
                 </Row>
                 <Row className="big-spacing" />

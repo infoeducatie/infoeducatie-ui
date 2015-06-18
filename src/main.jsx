@@ -2,10 +2,9 @@
 
 import React from "react";
 import Router from "react-router";
-let { Route, Link, RouteHandler, DefaultRoute } = Router; // eslint-disable-line
+let { Route, RouteHandler, DefaultRoute } = Router; // eslint-disable-line
 
 import "babel-core/polyfill";
-import "./lib/auth";
 import "./main.less";
 
 import News from "./components/news";
@@ -27,30 +26,43 @@ let App = React.createClass({
   displayName: "App",
 
   getInitialState() {
+    let user = localStorage.getItem('user');
     return {
-      isLoggedIn: false
+      currentUser: user,
+      isLoggedIn: user ? true : false
     };
-  },
-
-  componentWillMount() {
-    window.Auth.onChange = this.setStateOnAuth;
   },
 
   render() {
     return <div className="main">
-      <RouteHandler />
+      <RouteHandler currentUser={this.state.currentUser}
+                    isLoggedIn={this.state.isLoggedIn}
+                    login={this.login}
+                    logout={this.logout} />
       <Footer />
     </div>;
   },
 
-  setStateOnAuth() {
-    this.setState({isLoggedIn: window.Auth.isLoggedIn()});
+  login(user) {
+    this.setState({
+      isLoggedIn: true,
+      currentUser: user
+    });
+    localStorage.setItem('user', JSON.stringify(user));
+  },
+
+  logout() {
+    localStorage.removeItem('user');
+    this.setState({
+      isLoggedIn: false,
+      currentUser: null
+    });
   }
 });
 
 
 let routes = (
-  <Route handler={App}>
+  <Route path="/" handler={App}>
     <Route handler={Home} name="home" />
     <Route handler={Jury} name="jury" />
     <Route handler={News} name="news" />
@@ -67,8 +79,8 @@ let routes = (
   </Route>
 );
 
-Router.run(routes, Router.HistoryLocation, function(Handler) {
-  React.render(<Handler />, document.getElementById("app"));
+Router.run(routes, Router.HistoryLocation, (Root) => {
+  React.render(<Root />, document.getElementById("app"));
 });
 
 export default App;

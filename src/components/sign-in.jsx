@@ -36,13 +36,13 @@ export default React.createClass({
 
   onSignIn(formData) {
     let data = { };
-    _.keys(formData).forEach(function(key) {
+    _.keys(formData).forEach((key) => {
       data[`user[${key}]`] = formData[key];
     });
 
     $.post(window.config.API_URL + "v1/sign_in", data, data => {
-      window.Auth.login(data);
       this.closeModal();
+      this.props.login(data);
     });
   },
 
