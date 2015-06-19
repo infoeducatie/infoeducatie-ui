@@ -42,7 +42,7 @@ export default React.createClass({
     data["user[password]"] = formData.password;
 
     $.ajax({
-        url: window.config.API_URL + "v1/sign_in",
+        url: window.config.API_URL + "sign_in",
         method: "POST",
         success: this.onSignInSuccess,
         error: this.onSignInError,
