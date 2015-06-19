@@ -1,0 +1,53 @@
+@import "../main";
+
+
+.contestants {
+  .row {
+    .row;
+  }
+
+  .blue-section-wrapper {
+    .blue-section-wrapper (@img_path: "../../assets/img/jury.png");
+  }
+
+  .blue-section {
+    .blue-section(@min-height: 500px);
+
+    h1 {
+      font-size: 6em;
+    }
+
+    .stats {
+      color: @yellow;
+      height: 100px;
+      position: absolute;
+      right: 0;
+      left: 0;
+      background-color: @light-black;
+      vertical-align: middle;
+      text-transform: uppercase;
+    }
+
+    .description {
+      margin-top: 20px;
+      font-weight: bold;
+      color: @white;
+    }
+
+    .value {
+      margin-top: -20px;
+      font-size: 3em;
+      width: 100%;
+      height: 100%;
+    }
+
+    .right-border:after {
+      content: "";
+      position: absolute;
+      width: 50%;
+      height: 75%;
+      bottom: 10px;
+      border-right: 2px solid @grey;
+    }
+  }
+}
