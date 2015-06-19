@@ -54,7 +54,7 @@ export default React.createClass({
                         </p>
                     </Col>
                 </Row>
-                <Row className="big-spacing" />
+                <Row className="small-spacing" />
                 <Row className="statistics">
                     <Col md={2} mdOffset={3} xs={4}>
                         <p className="description">Participanți</p>
