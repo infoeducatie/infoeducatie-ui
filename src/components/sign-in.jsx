@@ -45,7 +45,8 @@ export default React.createClass({
         url: window.config.API_URL + "v1/sign_in",
         method: "POST",
         success: this.onSignInSuccess,
-        error: this.onSignInError
+        error: this.onSignInError,
+        data: data
       });
   },
 
