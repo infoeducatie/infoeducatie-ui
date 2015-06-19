@@ -7,6 +7,18 @@
 
   .navbar-nav {
     float: right;
+
+    li.active:before {
+      top: 75%;
+      border-radius: 150px;
+      content: "";
+      position: absolute;
+      width: 40%;
+      height: 1px;
+      bottom: 0;
+      left: 30%;
+      border-bottom: 3px solid @yellow;
+    }
   }
 
   @media screen and (max-width: 1000px) {
@@ -29,4 +41,6 @@
   a:hover {
     text-decoration: underline;
   }
+
+
 }
