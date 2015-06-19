@@ -140,8 +140,7 @@ export default React.createClass({
                             </a>
                         </p>
                     </Col>
-                    <Col md={6} className="grass">
-                    </Col>
+                    <Col md={6} className="grass" />
                 </Row>
             </div>
         </div>

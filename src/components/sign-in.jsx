@@ -38,12 +38,12 @@ export default React.createClass({
 
   onSignIn(formData) {
     let data = { };
-    data['user[email]'] = formData['email'];
-    data['user[password]'] = formData['password'];
+    data["user[email]"] = formData.email;
+    data["user[password]"] = formData.password;
 
     $.ajax({
         url: window.config.API_URL + "v1/sign_in",
-        method: 'POST',
+        method: "POST",
         success: this.onSignInSuccess,
         error: this.onSignInError
       });
@@ -54,7 +54,7 @@ export default React.createClass({
     this.props.login(data);
   },
 
-  onSignInError(data) {
+  onSignInError() {
     this.setState({
       hasErrored: true
     });

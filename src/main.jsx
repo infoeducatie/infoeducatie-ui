@@ -26,7 +26,7 @@ let App = React.createClass({
   displayName: "App",
 
   getInitialState() {
-    let user = localStorage.getItem('user');
+    let user = localStorage.getItem("user");
     return {
       currentUser: user,
       isLoggedIn: user ? true : false
@@ -52,11 +52,11 @@ let App = React.createClass({
       isLoggedIn: true,
       currentUser: user
     });
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem("user", JSON.stringify(user));
   },
 
   logout() {
-    localStorage.removeItem('user');
+    localStorage.removeItem("user");
     this.setState({
       isLoggedIn: false,
       currentUser: null

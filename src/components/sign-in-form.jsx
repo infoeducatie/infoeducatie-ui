@@ -14,13 +14,13 @@ export default React.createClass({
   getDefaultProps() {
     return {
       hasErrored: false
-    }
+    };
   },
 
   getInitialState() {
     return {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
       hasErrored: this.props.hasErrored
     };
   },
@@ -48,7 +48,7 @@ export default React.createClass({
 
   renderError() {
     return <ListGroup>
-      <ListGroupItem bsStyle='danger'>Autentificarea nu a reușit!</ListGroupItem>
+      <ListGroupItem bsStyle="danger">Autentificarea nu a reușit!</ListGroupItem>
     </ListGroup>;
   },
 
