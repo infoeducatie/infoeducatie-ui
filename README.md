@@ -37,3 +37,7 @@ npm start
 - `npm run build` - bundles the code for deploying
 - `npm test` - run tests using PhantomJS
 - `npm run test-debug` - run tests using Google Chrome and enable js debugger
+
+### Supported browsers
+
+We don't versions lower than IE10 because we use [flexbox](http://caniuse.com/#feat=flexbox).
