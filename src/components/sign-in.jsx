@@ -14,7 +14,8 @@ export default React.createClass({
 
   getInitialState() {
     return {
-      isModalOpen: false
+      isModalOpen: false,
+      hasErrored: false
     };
   },
 
@@ -26,7 +27,8 @@ export default React.createClass({
 
   closeModal() {
     this.setState({
-      isModalOpen: false
+      isModalOpen: false,
+      hasErrored: false
     });
   },
 
@@ -36,13 +38,26 @@ export default React.createClass({
 
   onSignIn(formData) {
     let data = { };
-    _.keys(formData).forEach(function(key) {
-      data[`user[${key}]`] = formData[key];
-    });
+    data["user[email]"] = formData.email;
+    data["user[password]"] = formData.password;
 
-    $.post(window.config.API_URL + "users/sign_in.json", data, data => {
-      window.Auth.login(data);
-      this.closeModal();
+    $.ajax({
+        url: window.config.API_URL + "sign_in",
+        method: "POST",
+        success: this.onSignInSuccess,
+        error: this.onSignInError,
+        data: data
+      });
+  },
+
+  onSignInSuccess(data) {
+    this.closeModal();
+    this.props.login(data);
+  },
+
+  onSignInError() {
+    this.setState({
+      hasErrored: true
     });
   },
 
@@ -57,7 +72,8 @@ export default React.createClass({
              onRequestHide={this.closeModal}
              title="Autentificare">
         <div className="modal-body">
-          <SignInForm onSignIn={this.onSignIn} />
+          <SignInForm onSignIn={this.onSignIn}
+                      hasErrored={this.state.hasErrored} />
         </div>
       </Modal>
     );

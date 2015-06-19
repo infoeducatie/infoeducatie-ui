@@ -2,13 +2,11 @@
 
 import React from "react";
 import Router from "react-router";
-let { Route, Link, RouteHandler, DefaultRoute } = Router; // eslint-disable-line
+let { Route, RouteHandler, DefaultRoute } = Router; // eslint-disable-line
 
 import "babel-core/polyfill";
-import "./lib/auth";
 import "./main.less";
 
-import Header from "./components/header";
 import News from "./components/news";
 import Photos from "./components/photos";
 import Alumni from "./components/alumni";
@@ -28,30 +26,47 @@ let App = React.createClass({
   displayName: "App",
 
   getInitialState() {
+    let user = localStorage.getItem("user");
     return {
-      isLoggedIn: false
+      currentUser: user,
+      isLoggedIn: user ? true : false
     };
   },
 
-  componentWillMount() {
-    window.Auth.onChange = this.setStateOnAuth;
+  componentDidMount() {
+    // TODO @palcu: Do API request to /current and re-render whole app
   },
 
   render() {
     return <div className="main">
-        <RouteHandler />
-        <Footer />
-  </div>;
+      <RouteHandler currentUser={this.state.currentUser}
+                    isLoggedIn={this.state.isLoggedIn}
+                    login={this.login}
+                    logout={this.logout} />
+      <Footer />
+    </div>;
   },
 
-  setStateOnAuth() {
-    this.setState({isLoggedIn: window.Auth.isLoggedIn()});
+  login(user) {
+    this.setState({
+      isLoggedIn: true,
+      currentUser: user
+    });
+    localStorage.setItem("user", JSON.stringify(user));
+  },
+
+  logout() {
+    localStorage.removeItem("user");
+    this.setState({
+      isLoggedIn: false,
+      currentUser: null
+    });
   }
 });
 
 
 let routes = (
-  <Route handler={App}>
+  <Route path="/" handler={App}>
     <Route handler={Home} name="home" />
     <Route handler={Jury} name="jury" />
     <Route handler={News} name="news" />
@@ -68,8 +83,8 @@ let routes = (
   </Route>
 );
 
-Router.run(routes, Router.HistoryLocation, function(Handler) {
-  React.render(<Handler />, document.getElementById("app"));
+Router.run(routes, Router.HistoryLocation, (Root) => {
+  React.render(<Root />, document.getElementById("app"));
 });
 
 export default App;

@@ -27,8 +27,8 @@ export default React.createClass({
               <NavItemLink to="alumni">Alumni</NavItemLink>
               <NavItemLink to="photos">Poze</NavItemLink>
               <NavItemLink to="galaciuc">G&#259;l&#259;ciuc</NavItemLink>
-              {this.props.isLoggedIn ? null
-                                     : <NavItem><SignIn /></NavItem>}
+              {this.props.isLoggedIn ? <NavItem onClick={this.props.logout}>Delogare</NavItem>
+                                     : <NavItem><SignIn login={this.props.login} /></NavItem>}
               <NavItemLink to="register">
                 Înregistrează-te
               </NavItemLink>
