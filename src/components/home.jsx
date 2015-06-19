@@ -56,15 +56,15 @@ export default React.createClass({
                 </Row>
                 <Row className="big-spacing" />
                 <Row className="statistics">
-                    <Col md={2} mdOffset={3}>
+                    <Col md={2} mdOffset={3} xs={4}>
                         <p className="description">Participanți</p>
                         <p className="value">250+</p>
                     </Col>
-                    <Col md={2}>
+                    <Col md={2} xs={4}>
                         <p className="description">Proiecte</p>
                         <p className="value">120+</p>
                     </Col>
-                    <Col md={2}>
+                    <Col md={2} xs={4}>
                         <p className="description">Județe</p>
                         <p className="value">35+</p>
                     </Col>
@@ -126,19 +126,20 @@ export default React.createClass({
         <div className="yellow-section-wrapper">
             <div className="yellow-section container-fluid">
                 <Row>
-                    <Col md={4} mdOffset={2} className="text">
-                        <Row className="double-big-spacing" />
-                        <h1>Tabără Gălăciuc</h1>
-                        <p className="data">
-                            <span className="pink-dash"></span> 2 - 8 August 2015 <span className="pink-dash"></span>
-                        </p>
-                        <p className="edition">Ediția 23</p>
-                        <Row className="big-spacing" />
-                        <p>
-                            <a href="#" className="link link-secondary">
-                                Mai multe poze
-                            </a>
-                        </p>
+                    <Col md={4} mdOffset={2} className="text middle-align">
+                        <div>
+                            <h1>Tabăra Gălăciuc</h1>
+                            <p className="data">
+                                <span className="pink-dash"></span> 2 - 8 August 2015 <span className="pink-dash"></span>
+                            </p>
+                            <p className="edition">Ediția 23</p>
+                            <Row className="big-spacing" />
+                            <p>
+                                <a href="#" className="link link-secondary">
+                                    Mai multe poze
+                                </a>
+                            </p>
+                        </div>
                     </Col>
                     <Col md={6} className="grass" />
                 </Row>
@@ -148,7 +149,7 @@ export default React.createClass({
         <div className="sponsors-section-wrapper">
             <Grid className="sponsors-section">
                 <Row className="big-spacing" />
-                <Row className="row">
+                <Row>
                     <Col md={12}>
                         <h1>Sponsori Gold</h1>
                     </Col>
