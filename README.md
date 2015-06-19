@@ -40,4 +40,4 @@ npm start
 
 ### Supported browsers
 
-We don't versions lower than IE10 because we use [flexbox](http://caniuse.com/#feat=flexbox).
+We don't support versions lower than IE10 because we use [flexbox](http://caniuse.com/#feat=flexbox).
