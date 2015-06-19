@@ -56,15 +56,15 @@ export default React.createClass({
                 </Row>
                 <Row className="big-spacing" />
                 <Row className="statistics">
-                    <Col md={2} mdOffset={3}>
+                    <Col md={2} mdOffset={3} xs={4}>
                         <p className="description">Participanți</p>
                         <p className="value">250+</p>
                     </Col>
-                    <Col md={2}>
+                    <Col md={2} xs={4}>
                         <p className="description">Proiecte</p>
                         <p className="value">120+</p>
                     </Col>
-                    <Col md={2}>
+                    <Col md={2} xs={4}>
                         <p className="description">Județe</p>
                         <p className="value">35+</p>
                     </Col>
@@ -148,7 +148,7 @@ export default React.createClass({
         <div className="sponsors-section-wrapper">
             <Grid className="sponsors-section">
                 <Row className="big-spacing" />
-                <Row className="row">
+                <Row>
                     <Col md={12}>
                         <h1>Sponsori Gold</h1>
                     </Col>
