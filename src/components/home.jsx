@@ -126,19 +126,20 @@ export default React.createClass({
         <div className="yellow-section-wrapper">
             <div className="yellow-section container-fluid">
                 <Row>
-                    <Col md={4} mdOffset={2} className="text">
-                        <Row className="double-big-spacing" />
-                        <h1>Tabără Gălăciuc</h1>
-                        <p className="data">
-                            <span className="pink-dash"></span> 2 - 8 August 2015 <span className="pink-dash"></span>
-                        </p>
-                        <p className="edition">Ediția 23</p>
-                        <Row className="big-spacing" />
-                        <p>
-                            <a href="#" className="link link-secondary">
-                                Mai multe poze
-                            </a>
-                        </p>
+                    <Col md={4} mdOffset={2} className="text middle-align">
+                        <div>
+                            <h1>Tabăra Gălăciuc</h1>
+                            <p className="data">
+                                <span className="pink-dash"></span> 2 - 8 August 2015 <span className="pink-dash"></span>
+                            </p>
+                            <p className="edition">Ediția 23</p>
+                            <Row className="big-spacing" />
+                            <p>
+                                <a href="#" className="link link-secondary">
+                                    Mai multe poze
+                                </a>
+                            </p>
+                        </div>
                     </Col>
                     <Col md={6} className="grass" />
                 </Row>
