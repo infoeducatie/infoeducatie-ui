@@ -7,9 +7,8 @@ import { Row, Col } from "react-bootstrap";
 export default React.createClass({
   displayName: "JuryDescription",
   render() {
-    var className = "jury-" + this.props.iconClass;
     return <Row className="white-section">
-      <div className="jury-icon"><span className={className}></span></div>
+      <div className="jury-icon"><span className={this.props.iconClass}></span></div>
       <div className="jury-description">
         <span className="orange-dash">&mdash;</span>
           {this.props.name}

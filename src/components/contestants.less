@@ -35,6 +35,7 @@
     }
 
     .value {
+      font-weight: bold;
       margin-top: -20px;
       font-size: 3em;
       width: 100%;
@@ -45,9 +46,31 @@
       content: "";
       position: absolute;
       width: 50%;
-      height: 75%;
-      bottom: 10px;
+      height: 50%;
+      bottom: 25px;
       border-right: 2px solid @grey;
+    }
+  }
+
+  .white-section {
+    min-height: 150px;
+
+    .round-icon {
+      height: 60px;
+      width: 60px;
+      border: 3px solid;
+      border-radius: 100%;
+      text-align: center;
+
+      span {
+        background-size: 30px 25px;
+        display: inline-block;
+        margin: 13px auto;
+        -webkit-filter: saturate(0);
+        filter: saturate(0);
+        height: 25px;
+        width: 30px;
+      }
     }
   }
 }

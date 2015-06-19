@@ -6,6 +6,7 @@ import { Grid, Col, Row } from "react-bootstrap";
 
 import Header from "./header";
 import "./contestants.less";
+import "./jury.less";
 
 
 export default React.createClass({
@@ -44,6 +45,28 @@ export default React.createClass({
                       <p className="value">17</p>
                   </Col>
                 </Row>
+              </Col>
+            </Row>
+          </Grid>
+        </div>
+        <Row className="small-spacing" />
+        <div className="white-section-wrapper">
+          <Grid>
+            <Row className="white-section">
+              <Col md={1}>
+                <div className="round-icon"><span className="educational"></span></div>
+              </Col>
+              <Col md={1}>
+                <div className="round-icon"><span className="media"></span></div>
+              </Col>
+              <Col md={1}>
+                <div className="round-icon"><span className="robots"></span></div>
+              </Col>
+              <Col md={1}>
+                <div className="round-icon"><span className="utility"></span></div>
+              </Col>
+              <Col md={1}>
+                <div className="round-icon"><span className="web"></span></div>
               </Col>
             </Row>
           </Grid>
