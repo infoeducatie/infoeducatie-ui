@@ -44,12 +44,12 @@ export default React.createClass({
                 <Row className="small-spacing" />
                 <Row>
                     <Col md={4} mdOffset={2}>
-                        <p className="call-to-action">
+                        <p className="left-button">
                             <a href="#" className="link link-primary">Înregistrează-te</a>
                         </p>
                     </Col>
                     <Col md={4}>
-                        <p>
+                        <p className="right-button">
                             <a href="#" className="link link-secondary">Mai multe...</a>
                         </p>
                     </Col>
