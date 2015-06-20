@@ -49,7 +49,36 @@ export default React.createClass({
         "county": "brăila",
         "comments": 5,
         "category": "web"
+       },
+       {
+        "title": "Acționarea automată și securizată a Căilor de Access",
+        "authors": ["adriana-patricia blaj", "robert preda"],
+        "county": "arad",
+        "comments": 5,
+        "category": "roboți"
+       },
+       {
+        "title": "Romania e Okay!",
+        "authors": ["diana elena ghinea"],
+        "county": "bucurești",
+        "comments": 1,
+        "category": "educațional"
+       },
+       {
+        "title": "Mica Unire",
+        "authors": ["georgiana raluca bucutea", "roxana patricia datcu"],
+        "county": "brașov",
+        "comments": 13,
+        "category": "multimedia"
+       },
+       {
+        "title": "Velocity Reporter",
+        "authors": ["mihaela costache", "bogdan nechifor"],
+        "county": "brăila",
+        "comments": 5,
+        "category": "web"
        }
+
     ];
 
     return <div className="contestants">
@@ -116,8 +145,8 @@ export default React.createClass({
             </Row>
           </Grid>
           <Grid>
-            <Row className="white-section">
-              <Col md={12}>
+            <Row className="small-spacing" />
+            <Row className="white-section pinterest-grid">
                 {projects.map(function(project) {
                   return <Project
                             title={project.title}
@@ -126,7 +155,6 @@ export default React.createClass({
                             county={project.county}
                             comments={project.comments} />;
                 })}
-              </Col>
             </Row>
           </Grid>
         </div>
