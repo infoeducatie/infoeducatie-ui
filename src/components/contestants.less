@@ -72,5 +72,57 @@
         width: 30px;
       }
     }
+
+    .icon {
+      font-size: 50px;
+    }
+    .item {
+      display: inline-block;
+      padding:  .25rem;
+      width:  275px;
+    }
+
+    .participant-container {
+      text-align: center;
+      border-top: 4px solid @light-grey;
+      border-right: 1px solid @light-grey;
+      border-left: 1px solid @light-grey;
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+
+      position: relative;
+      display: block;
+
+      .project-title {
+        font-size: 2em;
+      }
+
+      .project-details {
+        width: 85%;
+        margin: 0 auto;
+        text-transform: uppercase;
+        text-align: left;
+
+        .author {
+          color: @blue;
+        }
+
+        .icon {
+          font-size: 20px;
+        }
+      }
+    }
+
+    .orange-section {
+      margin: 0 auto;
+      border-bottom-right-radius: 7px;
+      border-bottom-left-radius: 7px;
+      height: 60px;
+      background: url("../../assets/img/icons/media.png") no-repeat;
+      background-position: 30% 20%;
+      background-color: @orange;
+      font-size: 15px;
+      text-transform: uppercase;
+    }
   }
 }
