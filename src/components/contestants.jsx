@@ -16,41 +16,41 @@ export default React.createClass({
   render() {
     var projects = [
        {
-        'title': 'Time Travel',
-        'authors': ['claudia rujoiu', 'dan stoian'],
-        'county': 'hunedoara',
-        'comments': 7,
-        'category': 'utilitar'
+        "title": "Time Travel",
+        "authors": ["claudia rujoiu", "dan stoian"],
+        "county": "hunedoara",
+        "comments": 7,
+        "category": "utilitar"
        },
        {
-        'title': 'Acționarea automată și securizată a Căilor de Access',
-        'authors': ['adriana-patricia blaj', 'robert preda'],
-        'county': 'arad',
-        'comments': 5,
-        'category': 'roboți'
+        "title": "Acționarea automată și securizată a Căilor de Access",
+        "authors": ["adriana-patricia blaj", "robert preda"],
+        "county": "arad",
+        "comments": 5,
+        "category": "roboți"
        },
        {
-        'title': 'Romania e Okay!',
-        'authors': ['diana elena ghinea'],
-        'county': 'bucurești',
-        'comments': 1,
-        'category': 'educațional'
+        "title": "Romania e Okay!",
+        "authors": ["diana elena ghinea"],
+        "county": "bucurești",
+        "comments": 1,
+        "category": "educațional"
        },
        {
-        'title': 'Mica Unire',
-        'authors': ['georgiana raluca bucutea', 'roxana patricia datcu'],
-        'county': 'brașov',
-        'comments': 13,
-        'category': 'multimedia'
+        "title": "Mica Unire",
+        "authors": ["georgiana raluca bucutea", "roxana patricia datcu"],
+        "county": "brașov",
+        "comments": 13,
+        "category": "multimedia"
        },
        {
-        'title': 'Velocity Reporter',
-        'authors': ['mihaela costache', 'bogdan nechifor'],
-        'county': 'brăila',
-        'comments': 5,
-        'category': 'web'
+        "title": "Velocity Reporter",
+        "authors": ["mihaela costache", "bogdan nechifor"],
+        "county": "brăila",
+        "comments": 5,
+        "category": "web"
        }
-    ]
+    ];
 
     return <div className="contestants">
         <div className="blue-section-wrapper">
@@ -117,7 +117,7 @@ export default React.createClass({
           </Grid>
           <Grid>
             <Row className="white-section">
-              <Col mdOffset={1} md={8}>
+              <Col md={12}>
                 {projects.map(function(project) {
                   return <Project
                             title={project.title}

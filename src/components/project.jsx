@@ -10,18 +10,22 @@ export default React.createClass({
   render() {
 
     var categoryMapping = {
-      'utilitar': 'utility',
-      'roboți': 'robots',
-      'multimedia': 'media',
-      'educatțional': 'educational',
-      'web': 'web',
-    }
+      "utilitar": "utility",
+      "roboți": "robots",
+      "multimedia": "media",
+      "educațional": "educational",
+      "web": "web"
+    };
     var className = "orange-section " + categoryMapping[this.props.category];
 
     return <div className="item">
       <div className="participant-container">
         <Row className="big-spacing"></Row>
-        <Row className="project-title">{this.props.title}</Row>
+        <Row className="project-title">
+          <Col md={10} mdOffset={1}>
+            {this.props.title}
+          </Col>
+        </Row>
         <Row className="big-spacing"></Row>
         <Row className="project-details">
           <Col md={12}>
