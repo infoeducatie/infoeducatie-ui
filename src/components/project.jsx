@@ -9,7 +9,14 @@ export default React.createClass({
 
   render() {
 
-    var className = "orange-section " + this.props.category;
+    var categoryMapping = {
+      'utilitar': 'utility',
+      'roboți': 'robots',
+      'multimedia': 'media',
+      'educatțional': 'educational',
+      'web': 'web',
+    }
+    var className = "orange-section " + categoryMapping[this.props.category];
 
     return <div className="item">
       <div className="participant-container">
@@ -42,7 +49,7 @@ export default React.createClass({
           <Row className="big-spacing"></Row>
           <Row>
             <Col md={4} mdOffset={1}>
-              utilitar
+              {this.props.category}
             </Col>
           </Row>
         </Col>
