@@ -24,7 +24,7 @@ export default React.createClass({
                                 logout={this.props.logout} />
                     </Col>
                 </Row>
-                <Row className="big-spacing" />
+                <Row className="big-spacing header-spacing" />
                 <Row>
                     <Col md={12}>
                         <h1>InfoEducație Ediția 2015</h1>
