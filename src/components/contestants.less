@@ -115,14 +115,16 @@
 
     .orange-section {
       margin: 0 auto;
+      font-size: 15px;
+      background-color: @orange;
+      text-transform: uppercase;
       border-bottom-right-radius: 7px;
       border-bottom-left-radius: 7px;
-      height: 60px;
-      background: url("../../assets/img/icons/media.png") no-repeat;
-      background-position: 30% 20%;
-      background-color: @orange;
-      font-size: 15px;
-      text-transform: uppercase;
+
+      &.utility {
+        height: 60px;
+        background-position: 90% 40%;
+      }
     }
   }
 }

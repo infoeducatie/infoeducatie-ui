@@ -103,7 +103,7 @@ export default React.createClass({
                       </Col>
                     </Row>
                   </div>
-                  <Row className="orange-section">
+                  <Row className="orange-section utility">
                     <Col md={12} >
                       <Row className="big-spacing"></Row>
                       <Row>
