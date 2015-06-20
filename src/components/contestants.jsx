@@ -4,7 +4,7 @@ import React from "react";
 import { Grid, Col, Row, Glyphicon } from "react-bootstrap";
 
 import Header from "./header";
-import Project from "./project";
+import { ProjectCard, ProjectRow } from "./project";
 
 import "./contestants.less";
 import "./jury.less";
@@ -146,15 +146,27 @@ export default React.createClass({
           </Grid>
           <Grid>
             <Row className="small-spacing" />
-            <Row className="white-section pinterest-grid">
+            <Row className="white-section pinterest-grid hidden">
                 {projects.map(function(project) {
-                  return <Project
+                  return <ProjectCard
                             title={project.title}
                             authors={project.authors}
                             category={project.category}
                             county={project.county}
                             comments={project.comments} />;
                 })}
+            </Row>
+            <Row className="white-section">
+              <Col md={12}>
+                {projects.map(function(project) {
+                  return <ProjectRow
+                            title={project.title}
+                            authors={project.authors}
+                            category={project.category}
+                            county={project.county}
+                            comments={project.comments} />;
+                })}
+              </Col>
             </Row>
           </Grid>
         </div>
