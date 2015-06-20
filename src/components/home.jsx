@@ -133,7 +133,7 @@ export default React.createClass({
             <div className="yellow-section container-fluid">
                 <Row>
                     <Col md={4} mdOffset={2} className="text middle-align">
-                        <div class="wrapper-for-flexbox">
+                        <div className="wrapper-for-flexbox">
                             <h1>Tabăra Gălăciuc</h1>
                             <h6 className="data">
                                 <span className="pink-dash"></span>
