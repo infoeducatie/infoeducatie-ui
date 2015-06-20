@@ -3,7 +3,10 @@
 import React from "react";
 
 import { Grid, Col, Row, Glyphicon } from "react-bootstrap";
+
 import Header from "./header";
+import Project from "./project";
+
 import "./contestants.less";
 import "./jury.less";
 
@@ -12,6 +15,16 @@ export default React.createClass({
   displayName: "Participanti",
 
   render() {
+    var projects = [
+       {
+        'title': 'Time Travel',
+        'authors': ['claudia rujoiu', 'dan stoian'],
+        'county': 'hunedoara',
+        'comments': 7,
+        'category': 'utility'
+       }
+    ]
+
     return <div className="contestants">
         <div className="blue-section-wrapper">
           <Grid className="blue-section">
@@ -78,47 +91,14 @@ export default React.createClass({
           <Grid>
             <Row className="white-section">
               <Col mdOffset={1} md={8}>
-                <div className="item">
-                  <div className="participant-container">
-                    <Row className="big-spacing"></Row>
-                    <Row className="project-title">Time Travel</Row>
-                    <Row className="big-spacing"></Row>
-                    <Row className="project-details">
-                      <Col md={12}>
-                        <div className="author">claudia rujoiu</div>
-                        <div className="author">dan stoian</div>
-                        <Row className="large-spacing"></Row>
-                        <Row>
-                          <Col md={1}>
-                            <Glyphicon inverse glyph='map-marker' className="icon" />
-                          </Col>
-                          <Col md={6}>
-                            hunedoara
-                          </Col>
-                          <Col md={1} mdOffset={2}>
-                            7
-                          </Col>
-                        </Row>
-                        <Row className="big-spacing"></Row>
-                      </Col>
-                    </Row>
-                  </div>
-                  <Row className="orange-section utility">
-                    <Col md={12} >
-                      <Row className="big-spacing"></Row>
-                      <Row>
-                        <Col md={4} mdOffset={1}>
-                          utilitar
-                        </Col>
-                      </Row>
-                    </Col>
-                  </Row>
-                </div>
-                <div className="item">
-                  <div className="well">
-                  1 blah blah blah
-                  </div>
-                </div>
+                {projects.map(function(project) {
+                  return <Project
+                            title={project.title}
+                            authors={project.authors}
+                            category={project.category}
+                            county={project.county}
+                            comments={project.comments} />;
+                })}
               </Col>
             </Row>
           </Grid>
