@@ -2,21 +2,17 @@
 
 
 .home {
+  color: @white;
   .blue-section-wrapper {
     .blue-section-wrapper (@img_path: "../../assets/img/bag.png");
   }
-
   .blue-section {
     .blue-section();
 
-    .tagline {
-      font-size: 1.5em;
-      font-weight: 300;
-      color: @white;
-    }
-
-    .link {
-      margin: 10px;
+    @media screen and (max-width: @screen-md) {
+      .link {
+        margin: @vertical-small-spacing/4 0;
+      }
     }
 
     @media screen and (min-width: @screen-md) {
@@ -35,14 +31,13 @@
       color: @white;
 
       .description {
-        font-size: 1.2em;
+        text-transform: uppercase;
         margin-bottom: 0;
-        line-height: 0;
       }
-
       .value {
-        font-size: 3em;
         color: @orange;
+        font-size: @font-size-h3;
+        font-weight: normal;
       }
     }
   }
@@ -50,109 +45,68 @@
   .green-section-wrapper {
     background-color: @green;
   }
-
   .green-section {
-    h1 {
-      text-transform: uppercase;
-      font-size: 1.2em;
-      letter-spacing: @medium-letter-spacing;
-    }
-
-    .message {
-      font-weight: 300;
-    }
-
-    h1, .message {
-      color: @white;
-    }
-
     .date {
       color: @dark-green;
+      font-weight: normal;
     }
 
     .left {
-      .message {
-        font-size: 1em;
+      .title {
+        font-size: @font-size-h3;
+        color: @dark-green;
+        font-weight: normal;
       }
     }
 
     .right {
-      .message {
-        font-size: 2em;
-      }
+       .message {
+        font-size: @font-size-h4;
+       }
     }
   }
 
   .gray-section-wrapper {
     background-color: @dark-green;
+  }
+  .gray-section {
     color: @dark-gray;
+    background-image: url(../../assets/img/quotes.png), url(../../assets/img/cristi.png);
+    background-repeat: no-repeat;
+    background-position: 25% -20px, 0 150px;
+    min-height: 500px;
 
-    .container {
-      background-image: url(../../assets/img/quotes.png), url(../../assets/img/cristi.png);
-      background-repeat: no-repeat;
-      background-position: 25% -20px, 0 150px;
-      min-height: 500px;
+    .quote {
+      font-size: @font-size-h2;
+    }
 
-      .row {
-        .alumnus-name, .alumnus-position, h1 {
-          text-transform: uppercase;
-          letter-spacing: @medium-letter-spacing;
-        }
-
-        h1 {
-          font-size: 1em;
-          font-weight: 300;
-        }
-
-        .quote {
-          font-size: 2em;
-          font-weight: 300;
-        }
-
-        .alumnus-name {
-          color: @yellow;
-          font-size: 1.4em;
-        }
-
-        .alumnus-position {
-          font-size: 1.25em;
-        }
-      }
+    .alumnus-name {
+      color: @yellow;
+      font-weight: normal;
     }
   }
 
   .yellow-section-wrapper {
     text-align: center;
-
-    .row {
-      background-color: @yellow;
-    }
+    background-color: @yellow;
+    color: @dark-green;
 
     .text {
       min-height: 500px;
-      color: @dark-green;
 
-      h1 {
-        font-family: 'Shadows Into Light', cursive;
-        font-size: 4em;
-      }
-
-      .data, .edition {
-        text-transform: uppercase;
-        font-size: 1.2em;
-        font-weight: bold;
-        letter-spacing: 3px;
+      .data {
+        font-weight: normal;
       }
 
       .edition {
         color: @pink;
+        font-weight: bold;
       }
     }
 
     .grass {
       background-image: url(../../assets/img/pajiste.jpg);
       background-color: @yellow;
-      background-repeat: no-repeat;
       background-size: cover;
       min-height: 500px;
     }
@@ -162,11 +116,6 @@
     text-align: center;
     text-transform: uppercase;
     color: @dark-green;
-
-    h1 {
-      font-size: 1.2em;
-      letter-spacing: @medium-letter-spacing;
-    }
 
     img {
       padding: 20px 20px;
