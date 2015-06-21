@@ -13,8 +13,9 @@ import "./jury.less";
 export default React.createClass({
   displayName: "Participanti",
 
-  render() {
-    var projects = [
+  getInitialState: function() {
+    return {
+     projects: [
        {
         "title": "Time Travel",
         "authors": ["claudia rujoiu", "dan stoian"],
@@ -77,9 +78,31 @@ export default React.createClass({
         "county": "brăila",
         "comments": 5,
         "category": "web"
-       }
+       }],
+     showGrid: true,
+     showTable: false
+   };
 
-    ];
+  },
+
+  showGrid() {
+    this.setState({
+      showTable: false,
+      showGrid: true
+    });
+  },
+  showTable() {
+    this.setState({
+      showTable: true,
+      showGrid: false
+    });
+  },
+
+
+  render() {
+
+    var gridClassName = "icon hidden-xs " + (this.state.showGrid ? '' : 'inactive');
+    var tableClassName = "icon hidden-xs " + (this.state.showTable ? '' : 'inactive');
 
     return <div className="contestants">
         <div className="blue-section-wrapper">
@@ -137,38 +160,41 @@ export default React.createClass({
                 <div className="round-icon"><span className="web" /></div>
               </Col>
               <Col mdOffset={2} md={1}>
-                <Glyphicon glyph='th-large' className="icon hidden-xs" />
+                <Glyphicon glyph='th-large' className={gridClassName} onClick={this.showGrid} />
               </Col>
               <Col md={1}>
-                <Glyphicon glyph='align-justify' className="icon hidden-xs" />
+                <Glyphicon glyph='align-justify' className={tableClassName} onClick={this.showTable} />
               </Col>
             </Row>
           </Grid>
           <Grid>
-            <Row className="small-spacing" />
-            <Row className="white-section projects-grid hidden-xs">
-                {projects.map(function(project) {
-                  return <ProjectCard
-                            title={project.title}
-                            authors={project.authors}
-                            category={project.category}
-                            county={project.county}
-                            comments={project.comments} />;
-                })}
-            </Row>
-            <Row className="white-section projects-list visible-xs">
-              <Col md={12}>
-                {projects.map(function(project) {
-                  return <ProjectRow
-                            title={project.title}
-                            authors={project.authors}
-                            category={project.category}
-                            county={project.county}
-                            comments={project.comments} />;
-                })}
-              </Col>
-            </Row>
-          </Grid>
+              <Row className="small-spacing" />
+              {this.state.showGrid ?
+                <Row className="white-section projects-grid hidden-xs">
+                    {this.state.projects.map(function(project) {
+                      return <ProjectCard
+                                title={project.title}
+                                authors={project.authors}
+                                category={project.category}
+                                county={project.county}
+                                comments={project.comments} />;
+                    })}
+                </Row> : null}
+
+              {this.state.showTable ?
+                <Row className="white-section projects-list">
+                  <Col md={12}>
+                    {this.state.projects.map(function(project) {
+                      return <ProjectRow
+                                title={project.title}
+                                authors={project.authors}
+                                category={project.category}
+                                county={project.county}
+                                comments={project.comments} />;
+                    })}
+                  </Col>
+                </Row> : null}
+            </Grid>
         </div>
       </div>;
   }
