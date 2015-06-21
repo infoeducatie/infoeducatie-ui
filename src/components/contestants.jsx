@@ -80,7 +80,14 @@ export default React.createClass({
         "category": "web"
        }],
      showGrid: true,
-     showTable: false
+     showTable: false,
+     showCategory: {
+        "educațional": true,
+        "utilitar": true,
+        "web": true,
+        "multimedia": true,
+        "roboți": true,
+     }
    };
 
   },
@@ -91,6 +98,7 @@ export default React.createClass({
       showGrid: true
     });
   },
+
   showTable() {
     this.setState({
       showTable: true,
@@ -98,11 +106,19 @@ export default React.createClass({
     });
   },
 
+  toggleCategory(category) {
+    var newStates = this.state.showCategory;
+    newStates[category] = this.state.showCategory[category] ? false : true;
+
+    this.setState({ showCategory: newStates });
+  },
 
   render() {
 
     var gridClassName = "icon hidden-xs " + (this.state.showGrid ? '' : 'inactive');
     var tableClassName = "icon hidden-xs " + (this.state.showTable ? '' : 'inactive');
+    var categories = this.state.showCategory;
+    console.log(categories);
 
     return <div className="contestants">
         <div className="blue-section-wrapper">
@@ -145,19 +161,24 @@ export default React.createClass({
           <Grid>
             <Row className="white-section">
               <Col mdOffset={2} md={1}>
-                <div className="round-icon"><span className="educational"></span></div>
+                <div onClick={this.toggleCategory.bind(this, "educațional")}
+                     className={"round-icon " + (this.state.showCategory["educațional"] ? "" : "inactive") }><span className="educational"></span></div>
               </Col>
               <Col md={1}>
-                <div className="round-icon"><span className="media" /></div>
+                <div onClick={this.toggleCategory.bind(this, "multimedia")}
+                     className={"round-icon " + (this.state.showCategory["multimedia"] ? "" : "inactive") }><span className="media" /></div>
               </Col>
               <Col md={1}>
-                <div className="round-icon"><span className="robots" /></div>
+                <div onClick={this.toggleCategory.bind(this, "roboți")}
+                     className={"round-icon " + (this.state.showCategory["roboți"] ? "" : "inactive") }><span className="robots" /></div>
               </Col>
               <Col md={1}>
-                <div className="round-icon"><span className="utility" /></div>
+                <div onClick={this.toggleCategory.bind(this, "utilitar")}
+                     className={"round-icon " + (this.state.showCategory["utilitar"] ? "" : "inactive") }><span className="utility" /></div>
               </Col>
               <Col md={1}>
-                <div className="round-icon"><span className="web" /></div>
+                <div onClick={this.toggleCategory.bind(this, "web")}
+                     className={"round-icon " + (this.state.showCategory["web"] ? "" : "inactive") }><span className="web" /></div>
               </Col>
               <Col mdOffset={2} md={1}>
                 <Glyphicon glyph='th-large' className={gridClassName} onClick={this.showGrid} />
@@ -171,26 +192,30 @@ export default React.createClass({
               <Row className="small-spacing" />
               {this.state.showGrid ?
                 <Row className="white-section projects-grid hidden-xs">
-                    {this.state.projects.map(function(project) {
-                      return <ProjectCard
+                    {
+                     this.state.projects.map(function(project) {
+                      return categories[project.category] ?
+                              <ProjectCard
                                 title={project.title}
                                 authors={project.authors}
                                 category={project.category}
                                 county={project.county}
-                                comments={project.comments} />;
+                                comments={project.comments} /> : "";
                     })}
                 </Row> : null}
 
               {this.state.showTable ?
                 <Row className="white-section projects-list">
                   <Col md={12}>
-                    {this.state.projects.map(function(project) {
-                      return <ProjectRow
+                    {
+                     this.state.projects.map(function(project) {
+                      return categories[project.category] ?
+                              <ProjectRow
                                 title={project.title}
                                 authors={project.authors}
                                 category={project.category}
                                 county={project.county}
-                                comments={project.comments} />;
+                                comments={project.comments} /> : "";
                     })}
                   </Col>
                 </Row> : null}
