@@ -4,7 +4,7 @@ import { Row, Col, Glyphicon } from "react-bootstrap";
 import React from "react";
 
 
-var ProjectCard = React.createClass({
+export var ProjectCard = React.createClass({
   displayName: "Project",
 
   render() {
@@ -56,7 +56,7 @@ var ProjectCard = React.createClass({
   }
 });
 
-var ProjectRow = React.createClass({
+export var ProjectRow = React.createClass({
   displayName: "Project",
 
   render() {
@@ -103,10 +103,3 @@ var ProjectRow = React.createClass({
     </Row>;
   }
 });
-
-
-
-module.exports = {
-  ProjectCard: ProjectCard,
-  ProjectRow: ProjectRow
-};

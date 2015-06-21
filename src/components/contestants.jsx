@@ -86,7 +86,7 @@ export default React.createClass({
         "utilitar": true,
         "web": true,
         "multimedia": true,
-        "roboți": true,
+        "roboți": true
      }
    };
 
@@ -114,11 +114,9 @@ export default React.createClass({
   },
 
   render() {
-
-    var gridClassName = "icon hidden-xs " + (this.state.showGrid ? '' : 'inactive');
-    var tableClassName = "icon hidden-xs " + (this.state.showTable ? '' : 'inactive');
+    var gridClassName = "icon hidden-xs " + (this.state.showGrid ? "" : "inactive");
+    var tableClassName = "icon hidden-xs " + (this.state.showTable ? "" : "inactive");
     var categories = this.state.showCategory;
-    console.log(categories);
 
     return <div className="contestants">
         <div className="blue-section-wrapper">
@@ -166,7 +164,7 @@ export default React.createClass({
               </Col>
               <Col md={1}>
                 <div onClick={this.toggleCategory.bind(this, "multimedia")}
-                     className={"round-icon " + (this.state.showCategory["multimedia"] ? "" : "inactive") }><span className="media" /></div>
+                     className={"round-icon " + (this.state.showCategory.multimedia ? "" : "inactive") }><span className="media" /></div>
               </Col>
               <Col md={1}>
                 <div onClick={this.toggleCategory.bind(this, "roboți")}
@@ -174,17 +172,17 @@ export default React.createClass({
               </Col>
               <Col md={1}>
                 <div onClick={this.toggleCategory.bind(this, "utilitar")}
-                     className={"round-icon " + (this.state.showCategory["utilitar"] ? "" : "inactive") }><span className="utility" /></div>
+                     className={"round-icon " + (this.state.showCategory.utilitar ? "" : "inactive") }><span className="utility" /></div>
               </Col>
               <Col md={1}>
                 <div onClick={this.toggleCategory.bind(this, "web")}
-                     className={"round-icon " + (this.state.showCategory["web"] ? "" : "inactive") }><span className="web" /></div>
+                     className={"round-icon " + (this.state.showCategory.web ? "" : "inactive") }><span className="web" /></div>
               </Col>
               <Col mdOffset={2} md={1}>
-                <Glyphicon glyph='th-large' className={gridClassName} onClick={this.showGrid} />
+                <Glyphicon glyph="th-large" className={gridClassName} onClick={this.showGrid} />
               </Col>
               <Col md={1}>
-                <Glyphicon glyph='align-justify' className={tableClassName} onClick={this.showTable} />
+                <Glyphicon glyph="align-justify" className={tableClassName} onClick={this.showTable} />
               </Col>
             </Row>
           </Grid>
