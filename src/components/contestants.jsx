@@ -146,7 +146,7 @@ export default React.createClass({
           </Grid>
           <Grid>
             <Row className="small-spacing" />
-            <Row className="white-section pinterest-grid hidden">
+            <Row className="white-section projects-grid">
                 {projects.map(function(project) {
                   return <ProjectCard
                             title={project.title}
@@ -156,7 +156,7 @@ export default React.createClass({
                             comments={project.comments} />;
                 })}
             </Row>
-            <Row className="white-section">
+            <Row className="white-section projects-list">
               <Col md={12}>
                 {projects.map(function(project) {
                   return <ProjectRow

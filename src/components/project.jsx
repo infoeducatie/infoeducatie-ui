@@ -16,7 +16,7 @@ var ProjectCard = React.createClass({
       "educațional": "educational",
       "web": "web"
     };
-    var className = "orange-section " + categoryMapping[this.props.category];
+    var className = "project-category-icon " + categoryMapping[this.props.category];
 
     return <div className="item">
       <div className="participant-container">
@@ -48,15 +48,9 @@ var ProjectCard = React.createClass({
           </Col>
         </Row>
       </div>
-      <Row className={className}>
-        <Col md={12} >
-          <Row className="big-spacing"></Row>
-          <Row>
-            <Col md={4} mdOffset={1}>
-              {this.props.category}
-            </Col>
-          </Row>
-        </Col>
+      <Row className="orange-section">
+        <span className="project-category">{this.props.category}</span>
+        <span className={className} />
       </Row>
     </div>;
   }
@@ -76,13 +70,13 @@ var ProjectRow = React.createClass({
     };
     var className = "orange-section " + categoryMapping[this.props.category];
 
-    return <Row className="project-row">
+    return <Row>
       <Col md={12}>
-        <Row>
+        <Row className="project-row">
           <Col md={9}>
-            <p className="project-title">{this.props.title}</p>
+            <span className="project-title">{this.props.title}</span>
             {this.props.authors.map(function(author) {
-              return <div className="author">{author}</div>;
+              return <span className="author">{author}</span>;
             })}
           </Col>
           <Col md={1}>
@@ -93,6 +87,16 @@ var ProjectRow = React.createClass({
           </Col>
           <Col md={1}>
             {this.props.comments}
+          </Col>
+        </Row>
+        <Row className={className}>
+          <Col md={12} >
+            <Row className="small-spacing"></Row>
+            <Row>
+              <Col md={4} mdOffset={1}>
+                {this.props.category}
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Col>
