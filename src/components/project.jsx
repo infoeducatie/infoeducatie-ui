@@ -68,36 +68,36 @@ var ProjectRow = React.createClass({
       "educațional": "educational",
       "web": "web"
     };
-    var className = "orange-section " + categoryMapping[this.props.category];
+    var className = "project-category-icon " + categoryMapping[this.props.category];
 
     return <Row>
       <Col md={12}>
         <Row className="project-row">
-          <Col md={9}>
-            <span className="project-title">{this.props.title}</span>
-            {this.props.authors.map(function(author) {
-              return <span className="author">{author}</span>;
-            })}
-          </Col>
-          <Col md={1}>
-            <Glyphicon inverse glyph='map-marker' className="icon" />
-          </Col>
-          <Col md={1}>
-            {this.props.county}
-          </Col>
-          <Col md={1}>
-            {this.props.comments}
-          </Col>
-        </Row>
-        <Row className={className}>
-          <Col md={12} >
-            <Row className="small-spacing"></Row>
+          <Col md={12}>
+            <Row className="xsmall-spacing" />
             <Row>
-              <Col md={4} mdOffset={1}>
-                {this.props.category}
+              <Col md={9} className="project-details">
+                <span className="project-title">{this.props.title}</span>
+                <div className="authors">
+                  {this.props.authors.map(function(author) {
+                    return <span className="author">{author}</span>;
+                  })}
+                </div>
+              </Col>
+              <Col md={2}>
+                <div className="project-other-details">
+                  <Glyphicon inverse glyph='map-marker' className="icon" />
+                  <span className="location">{this.props.county}</span>
+                  <span className="comments">{this.props.comments}</span>
+                </div>
               </Col>
             </Row>
+            <Row className="xsmall-spacing" />
           </Col>
+        </Row>
+        <Row className="orange-section">
+          <span className="project-category">{this.props.category}</span>
+          <span className={className} />
         </Row>
       </Col>
     </Row>;
