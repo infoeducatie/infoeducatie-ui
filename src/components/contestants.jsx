@@ -137,16 +137,16 @@ export default React.createClass({
                 <div className="round-icon"><span className="web" /></div>
               </Col>
               <Col mdOffset={2} md={1}>
-                <Glyphicon glyph='th-large' className="icon" />
+                <Glyphicon glyph='th-large' className="icon hidden-xs" />
               </Col>
               <Col md={1}>
-                <Glyphicon glyph='align-justify' className="icon" />
+                <Glyphicon glyph='align-justify' className="icon hidden-xs" />
               </Col>
             </Row>
           </Grid>
           <Grid>
             <Row className="small-spacing" />
-            <Row className="white-section projects-grid">
+            <Row className="white-section projects-grid hidden-xs">
                 {projects.map(function(project) {
                   return <ProjectCard
                             title={project.title}
@@ -156,7 +156,7 @@ export default React.createClass({
                             comments={project.comments} />;
                 })}
             </Row>
-            <Row className="white-section projects-list">
+            <Row className="white-section projects-list visible-xs">
               <Col md={12}>
                 {projects.map(function(project) {
                   return <ProjectRow
