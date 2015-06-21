@@ -35,13 +35,13 @@ var ProjectCard = React.createClass({
             <Row className="large-spacing"></Row>
             <Row>
               <Col md={1}>
-                <Glyphicon inverse glyph='map-marker' className="icon" />
+                <span className='map-marker' />
               </Col>
               <Col md={6}>
                 {this.props.county}
               </Col>
               <Col md={1} mdOffset={2}>
-                {this.props.comments}
+                <span className="comments">{this.props.comments}</span>
               </Col>
             </Row>
             <Row className="big-spacing"></Row>
@@ -86,7 +86,7 @@ var ProjectRow = React.createClass({
               </Col>
               <Col md={2}>
                 <div className="project-other-details">
-                  <Glyphicon inverse glyph='map-marker' className="icon" />
+                  <span className="map-marker" />
                   <span className="location">{this.props.county}</span>
                   <span className="comments">{this.props.comments}</span>
                 </div>
