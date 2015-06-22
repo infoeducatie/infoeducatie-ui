@@ -142,8 +142,21 @@ export default React.createClass({
                         </p>
                     </Col>
                 </Row>
+                <Row className="big-spacing" />
+                <Row>
+                    <Col mdOffset={3} md={6} className="box">
+                        <div className="rules">
+                            <div className="description">
+                                <span className="pink-dash" />
+                                regulament concurs
+                                <span className="pink-dash" />
+                            </div>
+                            <a href="http://google.com"><span className="section-icon doc" /></a>
+                        </div>
+                    </Col>
+                </Row>
             </Grid>
-        </div>;
+        </div>
     </div>;
   }
 });

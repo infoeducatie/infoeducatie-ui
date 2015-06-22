@@ -52,6 +52,36 @@
       }
     }
 
+    .box {
+      @box-height: 400px;
+      height: @box-height;
+      border: 3px solid @light-grey;
+
+      .rules {
+        margin-top: @box-height / 4;
+
+        .description {
+          text-transform: uppercase;
+          font-size: 25px;
+          letter-spacing: @medium-letter-spacing;
+
+          .pink-dash {
+            margin-left: 20px;
+            margin-right: 20px;
+          }
+
+        }
+        .doc {
+          display: inline-block;
+          margin: @box-height / 8 auto auto;
+          background-size: 100%;
+          height: 80px;
+          width: 60px;
+        }
+
+      }
+    }
+
     .category {
       @category-height: 175px;
       height: @category-height;
