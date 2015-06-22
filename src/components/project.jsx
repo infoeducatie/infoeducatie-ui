@@ -37,7 +37,7 @@ export var ProjectCard = React.createClass({
         </Row>
       </div>
       <Row className="orange-section">
-        <span className="project-category">{this.props.slug}</span>
+        <span className="project-category">{this.props.category_slug}</span>
         <span className={className} />
       </Row>
     </div>;
@@ -76,7 +76,7 @@ export var ProjectRow = React.createClass({
           </Col>
         </Row>
         <Row className="orange-section">
-          <span className="project-category">{this.props.slug}</span>
+          <span className="project-category">{this.props.category_slug}</span>
           <span className={className} />
         </Row>
       </Col>

@@ -5,6 +5,7 @@ import { Grid, Col, Row, Glyphicon } from "react-bootstrap";
 
 import Header from "./header";
 import { ProjectCard, ProjectRow } from "./project";
+import projectsFixture from "../fixtures/projects";
 
 import "./contestants.less";
 
@@ -26,79 +27,7 @@ export default React.createClass({
     let isMobile = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) <= 768;
 
     return {
-     projects: [
-       {
-        "title": "Time Travel",
-        "authors": ["claudia rujoiu", "dan stoian"],
-        "county": "hunedoara",
-        "comments": 7,
-        "category": "utility",
-        "slug": "utilitar"
-       },
-       {
-        "title": "Acționarea automată și securizată a Căilor de Access",
-        "authors": ["adriana-patricia blaj", "robert preda"],
-        "county": "arad",
-        "comments": 5,
-        "category": "robots",
-        "slug": "roboți"
-       },
-       {
-        "title": "Romania e Okay!",
-        "authors": ["diana elena ghinea"],
-        "county": "bucurești",
-        "comments": 1,
-        "category": "educational",
-        "slug": "educațional"
-       },
-       {
-        "title": "Mica Unire",
-        "authors": ["georgiana raluca bucutea", "roxana patricia datcu"],
-        "county": "brașov",
-        "comments": 13,
-        "category": "media",
-        "slug": "multimedia"
-       },
-       {
-        "title": "Velocity Reporter",
-        "authors": ["mihaela costache", "bogdan nechifor"],
-        "county": "brăila",
-        "comments": 5,
-        "category": "web",
-        "slug": "web"
-       },
-       {
-        "title": "Acționarea automată și securizată a Căilor de Access",
-        "authors": ["adriana-patricia blaj", "robert preda"],
-        "county": "arad",
-        "comments": 5,
-        "category": "robots",
-        "slug": "roboți"
-       },
-       {
-        "title": "Romania e Okay!",
-        "authors": ["diana elena ghinea"],
-        "county": "bucurești",
-        "comments": 1,
-        "category": "educational",
-        "slug": "educațional"
-       },
-       {
-        "title": "Mica Unire",
-        "authors": ["georgiana raluca bucutea", "roxana patricia datcu"],
-        "county": "brașov",
-        "comments": 13,
-        "category": "media",
-        "slug": "multimedia"
-       },
-       {
-        "title": "Velocity Reporter",
-        "authors": ["mihaela costache", "bogdan nechifor"],
-        "county": "brăila",
-        "comments": 5,
-        "category": "web",
-        "slug": "web"
-       }],
+     projects: projectsFixture,
      showGrid: isMobile ? false : true,
      showTable: isMobile ? true : false,
      showCategory: {
