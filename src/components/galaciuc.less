@@ -1,0 +1,21 @@
+@import "../main";
+
+
+.galaciuc {
+  .blue-section-wrapper {
+    .blue-section-wrapper (@img_path: "../../assets/img/bag.png");
+  }
+  .blue-section {
+    .blue-section();
+
+    @media screen and (max-width: @screen-md) {
+      .link {
+        margin: @vertical-small-spacing/4 0;
+      }
+
+      .header-spacing {
+        height: 0;
+      }
+    }
+  }
+}
