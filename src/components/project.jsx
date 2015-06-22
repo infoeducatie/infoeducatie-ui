@@ -7,16 +7,12 @@ import React from "react";
 export var ProjectCard = React.createClass({
   displayName: "Project",
 
-  render() {
+  componentWillUnmount() {
+    console.log("demontez");
+  },
 
-    var categoryMapping = {
-      "utilitar": "utility",
-      "roboți": "robots",
-      "multimedia": "media",
-      "educațional": "educational",
-      "web": "web"
-    };
-    var className = "project-category-icon " + categoryMapping[this.props.category];
+  render() {
+    var className = "project-category-icon " + this.props.category;
 
     return <div className="item">
       <div className="participant-container">
@@ -31,17 +27,13 @@ export var ProjectCard = React.createClass({
           <Col md={12}>
             {this.props.authors.map(function(author) {
                 return <div className="author">{author}</div>;
-              })}
+            })}
             <Row className="large-spacing"></Row>
             <Row>
-              <Col md={1}>
-                <span className='map-marker' />
-              </Col>
-              <Col md={6}>
-                {this.props.county}
-              </Col>
+              <Col md={1}> <span className='map-marker' /> </Col>
+              <Col md={6}> {this.props.county} </Col>
               <Col md={1} mdOffset={2}>
-                <span className="comments">{this.props.comments}</span>
+                <span className="comments"> {this.props.comments} </span>
               </Col>
             </Row>
             <Row className="big-spacing"></Row>
@@ -49,7 +41,7 @@ export var ProjectCard = React.createClass({
         </Row>
       </div>
       <Row className="orange-section">
-        <span className="project-category">{this.props.category}</span>
+        <span className="project-category">{this.props.slug}</span>
         <span className={className} />
       </Row>
     </div>;
@@ -60,15 +52,7 @@ export var ProjectRow = React.createClass({
   displayName: "Project",
 
   render() {
-
-    var categoryMapping = {
-      "utilitar": "utility",
-      "roboți": "robots",
-      "multimedia": "media",
-      "educațional": "educational",
-      "web": "web"
-    };
-    var className = "project-category-icon " + categoryMapping[this.props.category];
+    var className = "project-category-icon " + this.props.category;
 
     return <Row>
       <Col md={12}>
@@ -96,7 +80,7 @@ export var ProjectRow = React.createClass({
           </Col>
         </Row>
         <Row className="orange-section">
-          <span className="project-category">{this.props.category}</span>
+          <span className="project-category">{this.props.slug}</span>
           <span className={className} />
         </Row>
       </Col>

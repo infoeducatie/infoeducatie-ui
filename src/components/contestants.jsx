@@ -21,72 +21,81 @@ export default React.createClass({
         "authors": ["claudia rujoiu", "dan stoian"],
         "county": "hunedoara",
         "comments": 7,
-        "category": "utilitar"
+        "category": "utility",
+        "slug": "utilitar"
        },
        {
         "title": "Acționarea automată și securizată a Căilor de Access",
         "authors": ["adriana-patricia blaj", "robert preda"],
         "county": "arad",
         "comments": 5,
-        "category": "roboți"
+        "category": "robots",
+        "slug": "roboți",
        },
        {
         "title": "Romania e Okay!",
         "authors": ["diana elena ghinea"],
         "county": "bucurești",
         "comments": 1,
-        "category": "educațional"
+        "category": "educational",
+        "slug": "educațional"
        },
        {
         "title": "Mica Unire",
         "authors": ["georgiana raluca bucutea", "roxana patricia datcu"],
         "county": "brașov",
         "comments": 13,
-        "category": "multimedia"
+        "category": "media",
+        "slug": "multimedia"
        },
        {
         "title": "Velocity Reporter",
         "authors": ["mihaela costache", "bogdan nechifor"],
         "county": "brăila",
         "comments": 5,
-        "category": "web"
+        "category": "web",
+        "slug": "web"
        },
        {
         "title": "Acționarea automată și securizată a Căilor de Access",
         "authors": ["adriana-patricia blaj", "robert preda"],
         "county": "arad",
         "comments": 5,
-        "category": "roboți"
+        "category": "robots",
+        "slug": "roboți"
        },
        {
         "title": "Romania e Okay!",
         "authors": ["diana elena ghinea"],
         "county": "bucurești",
         "comments": 1,
-        "category": "educațional"
+        "category": "educational",
+        "slug": "educațional"
        },
        {
         "title": "Mica Unire",
         "authors": ["georgiana raluca bucutea", "roxana patricia datcu"],
         "county": "brașov",
         "comments": 13,
-        "category": "multimedia"
+        "category": "media",
+        "slug": "multimedia"
        },
        {
         "title": "Velocity Reporter",
         "authors": ["mihaela costache", "bogdan nechifor"],
         "county": "brăila",
         "comments": 5,
-        "category": "web"
+        "category": "web",
+        "slug": "web"
        }],
      showGrid: true,
      showTable: false,
      showCategory: {
-        "educațional": true,
-        "utilitar": true,
+        "educational": true,
+        "utility": true,
         "web": true,
-        "multimedia": true,
-        "roboți": true
+        "media": true,
+        "robots": true
      }
    };
 
@@ -159,24 +168,34 @@ export default React.createClass({
           <Grid>
             <Row className="white-section">
               <Col mdOffset={2} md={1}>
-                <div onClick={this.toggleCategory.bind(this, "educațional")}
-                     className={"round-icon " + (this.state.showCategory["educațional"] ? "" : "inactive") }><span className="educational"></span></div>
+                <div onClick={this.toggleCategory.bind(this, "educational")}
+                     className={"round-icon " + (this.state.showCategory.educational ? "" : "inactive") }>
+                      <span className="educational" />
+                </div>
               </Col>
               <Col md={1}>
-                <div onClick={this.toggleCategory.bind(this, "multimedia")}
-                     className={"round-icon " + (this.state.showCategory.multimedia ? "" : "inactive") }><span className="media" /></div>
+                <div onClick={this.toggleCategory.bind(this, "media")}
+                     className={"round-icon " + (this.state.showCategory.media ? "" : "inactive") }>
+                      <span className="media" />
+                </div>
               </Col>
               <Col md={1}>
-                <div onClick={this.toggleCategory.bind(this, "roboți")}
-                     className={"round-icon " + (this.state.showCategory["roboți"] ? "" : "inactive") }><span className="robots" /></div>
+                <div onClick={this.toggleCategory.bind(this, "robots")}
+                     className={"round-icon " + (this.state.showCategory.robots ? "" : "inactive") }>
+                      <span className="robots" />
+                </div>
               </Col>
               <Col md={1}>
-                <div onClick={this.toggleCategory.bind(this, "utilitar")}
-                     className={"round-icon " + (this.state.showCategory.utilitar ? "" : "inactive") }><span className="utility" /></div>
+                <div onClick={this.toggleCategory.bind(this, "utility")}
+                     className={"round-icon " + (this.state.showCategory.utility ? "" : "inactive") }>
+                      <span className="utility" />
+                </div>
               </Col>
               <Col md={1}>
                 <div onClick={this.toggleCategory.bind(this, "web")}
-                     className={"round-icon " + (this.state.showCategory.web ? "" : "inactive") }><span className="web" /></div>
+                     className={"round-icon " + (this.state.showCategory.web ? "" : "inactive") }>
+                      <span className="web" />
+                </div>
               </Col>
               <Col mdOffset={2} md={1}>
                 <Glyphicon glyph="th-large" className={gridClassName} onClick={this.showGrid} />
