@@ -80,8 +80,14 @@ export default React.createClass({
   },
 
   render() {
-    var gridClassName = "icon hidden-xs " + (this.state.showGrid ? "" : "inactive");
-    var tableClassName = "icon hidden-xs " + (this.state.showTable ? "" : "inactive");
+    var gridClassName = ctx({
+      "icon hidden-xs": true,
+      "inactive": !this.state.showGrid
+    });
+    var tableClassName = ctx({
+      "icon hidden-xs": true,
+      "inactive": !this.state.showTable
+    });
     var currentCategory = this.state.currentCategory;
 
     return <div className="contestants">
