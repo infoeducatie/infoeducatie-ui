@@ -20,9 +20,9 @@ var FilterIcon = React.createClass({
   render() {
     var parentClasses = ctx({
       "round-icon": true,
-      "inactive": this.props.currentCategory != this.props.category && this.props.currentCategory != "all" 
+      "inactive": this.props.currentCategory !== this.props.category && this.props.currentCategory !== "all"
     });
-    var childClasses = ctx('section-icon', this.props.category);
+    var childClasses = ctx("section-icon", this.props.category);
 
     return <div onClick={this.toggleCategory} className={parentClasses}>
         <span className={childClasses} />
@@ -72,7 +72,7 @@ export default React.createClass({
   },
 
   toggleCategory(category) {
-    if (this.state.currentCategory == category) {
+    if (this.state.currentCategory === category) {
       category = "all";
     }
 
@@ -167,7 +167,7 @@ export default React.createClass({
                 <Row className="white-section projects-grid hidden-xs">
                     {
                      this.state.projects.map(function(project) {
-                      return project.category == currentCategory || currentCategory == "all" ?
+                      return project.category === currentCategory || currentCategory === "all" ?
                               <ProjectCard
                                 title={project.title}
                                 authors={project.authors}
@@ -183,7 +183,7 @@ export default React.createClass({
                   <Col md={12}>
                     {
                      this.state.projects.map(function(project) {
-                      return project.category == currentCategory || currentCategory == "all" ?
+                      return project.category === currentCategory || currentCategory === "all" ?
                               <ProjectRow
                                 title={project.title}
                                 authors={project.authors}
