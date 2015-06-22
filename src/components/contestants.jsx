@@ -135,28 +135,30 @@ export default React.createClass({
             <Header isLoggedIn={this.props.isLoggedIn} />
             <Row className="xsmall-spacing" />
             <Row>
-              <Col md={12}>
+              <Col>
                 <h1>Participanți InfoEducație Ediția 2015</h1>
               </Col>
             </Row>
             <Row>
-              <Col md={12}>
+              <Col>
                 <h2>Concurs Național de Informatică</h2>
               </Col>
             </Row>
             <Row className="big-spacing" />
             <Row>
-              <Col md={6} mdOffset={3} className="hidden-xs hidden-ms">
+              <Col md={6} mdOffset={3}
+                   sm={8} smOffset={2}
+                   xs={12}>
                 <Row className="stats">
-                  <Col md={4} xs={2} className="right-border">
+                  <Col xs={4} className="right-border">
                       <p className="description">Participanți</p>
                       <p className="value">75</p>
                   </Col>
-                  <Col md={4} xs={2} className="right-border">
+                  <Col xs={4} className="right-border">
                       <p className="description">Proiecte</p>
                       <p className="value">39</p>
                   </Col>
-                  <Col md={4} xs={2} >
+                  <Col xs={4}>
                       <p className="description">Județe</p>
                       <p className="value">17</p>
                   </Col>
