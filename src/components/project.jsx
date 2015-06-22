@@ -8,7 +8,7 @@ export var ProjectCard = React.createClass({
   displayName: "Project",
 
   render() {
-    var className = "project-category-icon " + this.props.category;
+    var className = "project-category-icon section-icon " + this.props.category;
 
     return <div className="item">
       <div className="participant-container">
@@ -48,7 +48,7 @@ export var ProjectRow = React.createClass({
   displayName: "Project",
 
   render() {
-    var className = "project-category-icon " + this.props.category;
+    var className = "project-category-icon section-icon " + this.props.category;
 
     return <Row>
       <Col md={12}>

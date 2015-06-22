@@ -65,19 +65,33 @@
   margin-bottom: @vertical-large-spacing;
 }
 
-.media {
-  .section-icon(@media-icon-path);
+.section-icon {
+  height: 50px;
+  width: 35px;
+  display: block;
+  background-size: 50px 35px;
+  background-repeat: no-repeat;
+
+  &.media {
+    background-image: url("../../assets/img/icons/media.png");
+  }
+
+  &.utility {
+    background-image: url("../../assets/img/icons/utility.png");
+  }
+
+  &.robots {
+    background-image: url("../../assets/img/icons/robots.png");
+  }
+
+  &.educational {
+    background-image: url("../../assets/img/icons/educational.png");
+  }
+
+  &.web {
+    background-image: url("../../assets/img/icons/web.png");
+  }
+
 }
 
-.utility {
-  .section-icon(@utility-icon-path);
-}
-.web {
-  .section-icon(@web-icon-path);
-}
-.educational {
-  .section-icon(@educational-icon-path);
-}
-.robots {
-  .section-icon(@robots-icon-path);
-}
+

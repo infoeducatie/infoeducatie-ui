@@ -172,31 +172,31 @@ export default React.createClass({
               <Col mdOffset={2} md={1}>
                 <div onClick={this.toggleCategory.bind(this, "educational")}
                      className={"round-icon " + (this.state.showCategory.educational ? "" : "inactive") }>
-                      <span className="educational" />
+                      <span className="section-icon educational" />
                 </div>
               </Col>
               <Col md={1}>
                 <div onClick={this.toggleCategory.bind(this, "media")}
                      className={"round-icon " + (this.state.showCategory.media ? "" : "inactive") }>
-                      <span className="media" />
+                      <span className="section-icon media" />
                 </div>
               </Col>
               <Col md={1}>
                 <div onClick={this.toggleCategory.bind(this, "robots")}
                      className={"round-icon " + (this.state.showCategory.robots ? "" : "inactive") }>
-                      <span className="robots" />
+                      <span className="section-icon robots" />
                 </div>
               </Col>
               <Col md={1}>
                 <div onClick={this.toggleCategory.bind(this, "utility")}
                      className={"round-icon " + (this.state.showCategory.utility ? "" : "inactive") }>
-                      <span className="utility" />
+                      <span className="section-icon utility" />
                 </div>
               </Col>
               <Col md={1}>
                 <div onClick={this.toggleCategory.bind(this, "web")}
                      className={"round-icon " + (this.state.showCategory.web ? "" : "inactive") }>
-                      <span className="web" />
+                      <span className="section-icon web" />
                 </div>
               </Col>
               <Col mdOffset={2} md={1}>
