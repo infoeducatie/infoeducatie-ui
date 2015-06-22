@@ -54,6 +54,25 @@ export default React.createClass({
                         </p>
                     </Col>
                 </Row>
+                <Row className="small-spacing" />
+                <Row>
+                    <Col mdOffset={2} md={9}>
+                        <div className="category yellow">
+                        </div>
+
+                        <div className="category blue">
+                        </div>
+
+                        <div className="category green">
+                        </div>
+
+                        <div className="category pink">
+                        </div>
+
+                        <div className="category black">
+                        </div>
+                    </Col>
+                </Row>
             </Grid>
         </div>;
     </div>;
