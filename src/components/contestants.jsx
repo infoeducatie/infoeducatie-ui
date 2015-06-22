@@ -2,12 +2,34 @@
 import React from "react";
 
 import { Grid, Col, Row, Glyphicon } from "react-bootstrap";
+import ctx from "classnames";
 
 import Header from "./header";
 import { ProjectCard, ProjectRow } from "./project";
 import projectsFixture from "../fixtures/projects";
 
 import "./contestants.less";
+
+var FilterIcon = React.createClass({
+  displayName: "Participanti",
+
+  toggleCategory() {
+    this.props.toggleCategory(this.props.category);
+  },
+
+  render() {
+    var parentClasses = ctx({
+      "round-icon": true,
+      "inactive": this.props.currentCategory != this.props.category && this.props.currentCategory != "all" 
+    });
+    var childClasses = ctx('section-icon', this.props.category);
+
+    return <div onClick={this.toggleCategory} className={parentClasses}>
+        <span className={childClasses} />
+    </div>;
+  }
+
+});
 
 
 export default React.createClass({
@@ -50,8 +72,9 @@ export default React.createClass({
   },
 
   toggleCategory(category) {
-    if (this.state.currentCategory == category)
+    if (this.state.currentCategory == category) {
       category = "all";
+    }
 
     this.setState( {currentCategory: category} );
   },
@@ -106,34 +129,29 @@ export default React.createClass({
             <Row className="big-spacing" />
             <Row className="white-section">
               <Col mdOffset={2} md={1}>
-                <div onClick={this.toggleCategory.bind(this, "educational")}
-                     className={"round-icon " + (this.state.currentCategory == "educational" || this.state.currentCategory == "all" ? "" : "inactive") }>
-                      <span className="section-icon educational" />
-                </div>
+                <FilterIcon currentCategory={this.state.currentCategory}
+                            toggleCategory={this.toggleCategory}
+                            category="educational" />
               </Col>
               <Col md={1}>
-                <div onClick={this.toggleCategory.bind(this, "media")}
-                     className={"round-icon " + (this.state.currentCategory == "media" || this.state.currentCategory == "all" ? "" : "inactive") }>
-                      <span className="section-icon media" />
-                </div>
+                <FilterIcon currentCategory={this.state.currentCategory}
+                            toggleCategory={this.toggleCategory}
+                            category="media" />
               </Col>
               <Col md={1}>
-                <div onClick={this.toggleCategory.bind(this, "robots")}
-                     className={"round-icon " + (this.state.currentCategory == "robots" || this.state.currentCategory == "all" ? "" : "inactive") }>
-                      <span className="section-icon robots" />
-                </div>
+                <FilterIcon currentCategory={this.state.currentCategory}
+                            toggleCategory={this.toggleCategory}
+                            category="robots" />
               </Col>
               <Col md={1}>
-                <div onClick={this.toggleCategory.bind(this, "utility")}
-                     className={"round-icon " + (this.state.currentCategory == "utility" || this.state.currentCategory == "all" ? "" : "inactive") }>
-                      <span className="section-icon utility" />
-                </div>
+                <FilterIcon currentCategory={this.state.currentCategory}
+                            toggleCategory={this.toggleCategory}
+                            category="utility" />
               </Col>
               <Col md={1}>
-                <div onClick={this.toggleCategory.bind(this, "web")}
-                     className={"round-icon " + (this.state.currentCategory == "web" || this.state.currentCategory == "all" ? "" : "inactive") }>
-                      <span className="section-icon web" />
-                </div>
+                <FilterIcon currentCategory={this.state.currentCategory}
+                            toggleCategory={this.toggleCategory}
+                            category="web" />
               </Col>
               <Col mdOffset={2} md={1}>
                 <Glyphicon glyph="th-large" className={gridClassName} onClick={this.showGrid} />
