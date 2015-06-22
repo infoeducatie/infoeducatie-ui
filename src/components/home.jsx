@@ -141,7 +141,8 @@ export default React.createClass({
                             <h6 className="edition">Ediția 23</h6>
                             <Row className="small-spacing" />
                             <p>
-                                <a href="#" className="link link-secondary">
+                                <a href="https://plus.google.com/+InfoeducatieRomania/photos"
+                                   className="link link-secondary">
                                     Mai multe poze
                                 </a>
                             </p>
