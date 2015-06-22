@@ -23,10 +23,7 @@ export default React.createClass({
           <Navbar toggleNavKey={0}>
             <Nav className="navbar-nav" eventKey={0} right ref="nav">
               <NavItemLink to="/">Acas&#259;</NavItemLink>
-              <NavItemLink to="news">&#350;tiri</NavItemLink>
-              <NavItemLink to="alumni">Alumni</NavItemLink>
-              <NavItemLink to="photos">Poze</NavItemLink>
-              <NavItemLink to="galaciuc">G&#259;l&#259;ciuc</NavItemLink>
+              <NavItemLink to="jury">Juriu</NavItemLink>
               {this.props.isLoggedIn ? <NavItem onClick={this.props.logout}>Delogare</NavItem>
                                      : <NavItem><SignIn login={this.props.login} /></NavItem>}
               <NavItemLink to="register">

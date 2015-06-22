@@ -2,6 +2,7 @@
 
 import React from "react";
 import {Grid, Row, Col} from "react-bootstrap";
+import {Link} from "react-router"
 
 import Header from "./header";
 
@@ -41,9 +42,9 @@ export default React.createClass({
                 <Row>
                     <Col md={4} mdOffset={2}>
                         <p className="left-button">
-                            <a href="#" className="link link-primary">
+                            <Link to={'register'} className="link link-primary">
                                 Înregistrează-te
-                            </a>
+                            </Link>
                         </p>
                     </Col>
                     <Col md={4}>
