@@ -150,6 +150,7 @@ export default React.createClass({
                                 title={project.title}
                                 authors={project.authors}
                                 category={project.category}
+                                category_slug={project.category_slug}
                                 county={project.county}
                                 comments={project.comments} /> : "";
                     })}
@@ -165,6 +166,7 @@ export default React.createClass({
                                 title={project.title}
                                 authors={project.authors}
                                 category={project.category}
+                                category_slug={project.category_slug}
                                 county={project.county}
                                 comments={project.comments} /> : "";
                     })}
