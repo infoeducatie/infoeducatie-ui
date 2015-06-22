@@ -42,7 +42,7 @@ export default React.createClass({
                 </Row>
                 <Row className="small-spacing" />
                 <Row>
-                    <Col mdOffset={2} md={8}>
+                    <Col mdOffset={1} md={10}>
                         <p className="about">
                             Organizat din 1993, este dedicat elevilor cu aptitudini,
                             înclinații și interes pentru crearea aplicațiilor
@@ -56,7 +56,7 @@ export default React.createClass({
                 </Row>
                 <Row className="small-spacing" />
                 <Row>
-                    <Col mdOffset={2} md={9}>
+                    <Col mdOffset={1} md={10}>
                         <div className="category yellow">
                             <div className="round-icon">
                                 <span className="section-icon web" />
@@ -91,6 +91,55 @@ export default React.createClass({
                             </div>
                             <div className="description">utilitar</div>
                         </div>
+                    </Col>
+                </Row>
+                <Row className="small-spacing" />
+                <Row>
+                    <Col mdOffset={1} md={10}>
+                        <h5>Participare la concurs</h5>
+                        <p className="about">
+                            La fiecare etapă vor fi prezentate lucrări
+                            realizate de către elevi, indiferent de anul de
+                            studiu (clasele IX - XII). Participarea la etapele
+                            ulterioare este hotărâtă de clasamentele etapelor
+                            anterioare.
+                        </p>
+                        <p className="about">
+                            În etapa finală există și un concurs <b>open</b>,
+                            pe echipe, pe parcursul a 24 de ore. Concursul
+                            constă în realizarea unei lucrări software pe o
+                            temă dată. Lucrarea îmbina elemente de <b>
+                            proiectare, programare și design</b>. În tot
+                            timpul taberei finale se vor organiza și sesiuni
+                            de comunicare pe teme de inginerie software.
+                        </p>
+                        <p className="about">
+                            Toate mijloacele IT sunt oferite de Colegiul
+                            Național Unirea, comunitatea Tulnici și Liceul Vidra.
+                        </p>
+                    </Col>
+                </Row>
+                <Row className="small-spacing" />
+                <Row>
+                    <Col mdOffset={1} md={10}>
+                        <h5>Condiții de participare</h5>
+                        <p className="about">
+                            Fiecare județ doritor poate participa cu o echipă
+                            de <b>4 elevi</b> și un <b>profesor însoțitor</b>,
+                            în următoarele condiții:
+                        </p>
+                        <p className="about listing">
+                            <span className="pink-dash" />
+                            minim trei lucrări (web, roboți sau IoT, multimedia, software educțional, software utilitar)
+                        </p>
+                        <p className="about listing">
+                            <span className="pink-dash" />
+                            cerinte hardware și software rezonabile
+                        </p>
+                        <p className="about listing">
+                            <span className="pink-dash" />
+                            nu se admit lucrări accesibile doar prin web
+                        </p>
                     </Col>
                 </Row>
             </Grid>

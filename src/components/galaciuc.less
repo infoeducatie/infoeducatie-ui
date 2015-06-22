@@ -32,15 +32,30 @@
   .white-section {
     text-align: center;
 
+    h5 {
+      text-align: left;
+      font-weight: bold;
+    }
+
     .about {
       font-size: 20px;
       text-align: left;
+      margin-top: 20px;
+
+      .pink-dash {
+        font-size: 30px;
+        margin-right: 10px;
+      }
+
+      &.listing {
+        margin-top: 10px;
+      }
     }
 
     .category {
       @category-height: 175px;
       height: @category-height;
-      width: 150px;
+      width: 165px;
       display: inline-block;
       float: left;
       margin-right: 15px;
