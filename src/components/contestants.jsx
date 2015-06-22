@@ -7,7 +7,6 @@ import Header from "./header";
 import { ProjectCard, ProjectRow } from "./project";
 
 import "./contestants.less";
-import "./jury.less";
 
 
 export default React.createClass({
