@@ -145,28 +145,30 @@ export default React.createClass({
               </Col>
             </Row>
             <Row className="big-spacing" />
-            <Row className="stats">
-              <Col md={6} mdOffset={3}
-                   sm={8} smOffset={2}
-                   xs={12}>
-                <Row className="inner-stats">
-                  <Col xs={4} className="right-border">
-                      <p className="description">Participanți</p>
-                      <p className="value">75</p>
-                  </Col>
-                  <Col xs={4} className="right-border">
-                      <p className="description">Proiecte</p>
-                      <p className="value">39</p>
-                  </Col>
-                  <Col xs={4}>
-                      <p className="description">Județe</p>
-                      <p className="value">17</p>
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
           </Grid>
         </div>
+        <Grid className="stats-section">
+          <Row>
+            <Col md={6} mdOffset={3}
+                 sm={8} smOffset={2}
+                 xs={12}>
+              <Row className="inner-stats">
+                <Col xs={4}>
+                    <p className="description">Participanți</p>
+                    <p className="value">75</p>
+                </Col>
+                <Col xs={4} className="border-left">
+                    <p className="description">Proiecte</p>
+                    <p className="value">39</p>
+                </Col>
+                <Col xs={4} className="border-left">
+                    <p className="description">Județe</p>
+                    <p className="value">17</p>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Grid>
         <div className="white-section-wrapper">
           <Grid>
             <Row className="big-spacing" />
