@@ -167,9 +167,9 @@ export default React.createClass({
             </Row>
           </Grid>
         </div>
-        <Row className="big-spacing" />
         <div className="white-section-wrapper">
           <Grid>
+            <Row className="big-spacing" />
             <Row className="white-section">
               <Col mdOffset={2} md={1}>
                 <div onClick={this.toggleCategory.bind(this, "educational")}
