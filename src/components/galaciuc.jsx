@@ -105,8 +105,8 @@ export default React.createClass({
                             anterioare.
                         </p>
                         <p className="about">
-                            În etapa finală există și un concurs <b>open</b>,
-                            pe echipe, pe parcursul a 24 de ore. Concursul
+                            În etapa finală există și un concurs <b>open</b>
+                            , pe echipe, pe parcursul a 24 de ore. Concursul
                             constă în realizarea unei lucrări software pe o
                             temă dată. Lucrarea îmbina elemente de <b>
                             proiectare, programare și design</b>. În tot
@@ -125,8 +125,8 @@ export default React.createClass({
                         <h5>Condiții de participare</h5>
                         <p className="about">
                             Fiecare județ doritor poate participa cu o echipă
-                            de <b>4 elevi</b> și un <b>profesor însoțitor</b>,
-                            în următoarele condiții:
+                            de <b>4 elevi</b> și un <b>profesor însoțitor</b>
+                            , în următoarele condiții:
                         </p>
                         <p className="about listing">
                             <span className="pink-dash" />
@@ -151,7 +151,7 @@ export default React.createClass({
                                 regulament concurs
                                 <span className="pink-dash" />
                             </div>
-                            <a href="http://google.com"><span className="section-icon doc" /></a>
+                            <a href="https://docs.google.com/document/d/1rnNdTlI2nrcevCe1URt2FOzU1UAMpCTkMms8-QbI1VE/pub" target="_blank"><span className="section-icon doc" /></a>
                         </div>
                     </Col>
                 </Row>
