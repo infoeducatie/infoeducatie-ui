@@ -146,7 +146,7 @@ export default React.createClass({
             </Row>
             <Row className="big-spacing" />
             <Row>
-              <Col md={6} mdOffset={3} className="middle-align hidden-xs hidden-ms">
+              <Col md={6} mdOffset={3} className="hidden-xs hidden-ms">
                 <Row className="stats">
                   <Col md={4} xs={2} className="right-border">
                       <p className="description">Participanți</p>
