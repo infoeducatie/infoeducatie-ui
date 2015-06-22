@@ -1,8 +1,9 @@
 @import "../styles/variables";
 
 .blue-section-wrapper (@img_path: "../../assets/img/banner_image.png"){
+  @blue-gradient: rgba(0, 129, 177, 0.7);
   background: linear-gradient(@blue-gradient, @blue-gradient), url(@img_path);
-  background-repeat: none;
+  background-repeat: no-repeat;
 }
 
 .blue-section (@min-height: @section-min-height * 2) {
@@ -10,19 +11,13 @@
   min-height: @min-height;
 
   h1 {
-    font-family: 'Shadows Into Light', cursive;
-    font-size: 8em;
-    @media screen and (max-width: @screen-sm) {
-      font-size: 5em;
-    }
-    color: @white;
+    font-size: @font-size-h1-big;
   }
 
-  h2 {
-    text-transform: uppercase;
-    color: @orange;
-    letter-spacing: @big-letter-spacing;
-    font-weight: 300;
+  @media screen and (max-width: @screen-sm) {
+    h1 {
+      font-size: @font-size-h1;
+    }
   }
 }
 
@@ -32,4 +27,10 @@
   background-image: url(@icon-path);
   background-size: 50px 35px;
   background-repeat: no-repeat;
+}
+
+.section-title {
+  letter-spacing: @medium-letter-spacing;
+  text-transform: uppercase;
+  font-weight: normal;
 }
