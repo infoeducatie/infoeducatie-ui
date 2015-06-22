@@ -82,25 +82,23 @@ export default React.createClass({
 
                         <Row className="small-spacing" />
 
-                        <p className="date">16 aprilie 2069</p>
-                        <p className="title">Deadline-ul de înscriere a fost
-                        prelungit.</p>
+                        <p className="date">30 iunie 2015</p>
+                        <p className="title">Au inceput inscrierile pentru
+                        InfoEducatie 2015</p>
 
-                        <p className="message">Deadline-ul de înscriere pentru
-                        InfoEducație Online a fost prelungit până marți 21
-                        aprilie. Sursele trebuie trimise până joi noaptea pe
-                        Github.</p>
+                        <p className="message">Vă invităm să vă faceți conturi
+                        pe noul website și să vă înregistrați proiectele.</p>
                     </Col>
                     <Col md={5} mdOffset={1} className="right">
                         <Row className="small-spacing" />
-                        <p className="date">18 martie 2015</p>
-                        <p className="message">Au inceput inscrierile pentru
-                        InfoEducatie 2015</p>
+                        <p className="date">28 iunie 2015</p>
+                        <p className="message">Am lansat noul website
+                        InfoEducație.</p>
 
                         <Row className="big-spacing" />
-                        <p className="date">08 martie 2015</p>
-                        <p className="message">Website-ul InfoEducatie Online
-                        2015 a fost actualizat</p>
+                        <p className="date">26 iunie 2015</p>
+                        <p className="message">Tabăra anul acesta va avea loc în
+                        perioada 2-8 august.</p>
                     </Col>
                 </Row>
                 <Row className="small-spacing" />
