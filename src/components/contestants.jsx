@@ -14,6 +14,8 @@ export default React.createClass({
   displayName: "Participanti",
 
   getInitialState: function() {
+    let isMobile = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) <= 768;
+
     return {
      projects: [
        {
@@ -88,8 +90,8 @@ export default React.createClass({
         "category": "web",
         "slug": "web"
        }],
-     showGrid: true,
-     showTable: false,
+     showGrid: isMobile ? false : true,
+     showTable: isMobile ? true : false,
      showCategory: {
         "educational": true,
         "utility": true,
