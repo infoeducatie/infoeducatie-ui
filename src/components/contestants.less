@@ -15,32 +15,35 @@
     }
 
     .stats {
-      color: @yellow;
-      background-color: @light-black;
       text-transform: uppercase;
-    }
+      color: @yellow;
 
-    .description {
-      margin-top: 20px;
-      font-weight: bold;
-      color: @white;
-    }
+      .inner-stats {
+        background-color: @light-black;
 
-    .value {
-      font-weight: bold;
-      margin-top: -20px;
-      font-size: 3em;
-      width: 100%;
-      height: 100%;
-    }
+        .description {
+          margin-top: 20px;
+          font-weight: bold;
+          color: @white;
+        }
 
-    .right-border:after {
-      content: "";
-      position: absolute;
-      width: 50%;
-      height: 50%;
-      bottom: 25px;
-      border-right: 2px solid @grey;
+        .value {
+          font-weight: bold;
+          margin-top: -20px;
+          font-size: 3em;
+          width: 100%;
+          height: 100%;
+        }
+
+        .right-border:after {
+          content: "";
+          position: absolute;
+          width: 50%;
+          height: 50%;
+          bottom: 25px;
+          border-right: 2px solid @grey;
+        }
+      }
     }
   }
 

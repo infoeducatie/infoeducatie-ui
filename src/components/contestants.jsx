@@ -145,11 +145,11 @@ export default React.createClass({
               </Col>
             </Row>
             <Row className="big-spacing" />
-            <Row>
+            <Row className="stats">
               <Col md={6} mdOffset={3}
                    sm={8} smOffset={2}
                    xs={12}>
-                <Row className="stats">
+                <Row className="inner-stats">
                   <Col xs={4} className="right-border">
                       <p className="description">Participanți</p>
                       <p className="value">75</p>
