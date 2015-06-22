@@ -27,16 +27,10 @@ export default React.createClass({
     let isMobile = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) <= 768;
 
     return {
-     projects: projectsFixture,
-     showGrid: isMobile ? false : true,
-     showTable: isMobile ? true : false,
-     showCategory: {
-        "educational": true,
-        "utility": true,
-        "web": true,
-        "media": true,
-        "robots": true
-     }
+      projects: projectsFixture,
+      showGrid: isMobile ? false : true,
+      showTable: isMobile ? true : false,
+      currentCategory: "all"
    };
 
   },
@@ -56,16 +50,16 @@ export default React.createClass({
   },
 
   toggleCategory(category) {
-    var newStates = this.state.showCategory;
-    newStates[category] = this.state.showCategory[category] ? false : true;
+    if (this.state.currentCategory == category)
+      category = "all";
 
-    this.setState({ showCategory: newStates });
+    this.setState( {currentCategory: category} );
   },
 
   render() {
     var gridClassName = "icon hidden-xs " + (this.state.showGrid ? "" : "inactive");
     var tableClassName = "icon hidden-xs " + (this.state.showTable ? "" : "inactive");
-    var categories = this.state.showCategory;
+    var currentCategory = this.state.currentCategory;
 
     return <div className="contestants">
         <div className="blue-section-wrapper">
@@ -109,31 +103,31 @@ export default React.createClass({
             <Row className="white-section">
               <Col mdOffset={2} md={1}>
                 <div onClick={this.toggleCategory.bind(this, "educational")}
-                     className={"round-icon " + (this.state.showCategory.educational ? "" : "inactive") }>
+                     className={"round-icon " + (this.state.currentCategory == "educational" || this.state.currentCategory == "all" ? "" : "inactive") }>
                       <span className="section-icon educational" />
                 </div>
               </Col>
               <Col md={1}>
                 <div onClick={this.toggleCategory.bind(this, "media")}
-                     className={"round-icon " + (this.state.showCategory.media ? "" : "inactive") }>
+                     className={"round-icon " + (this.state.currentCategory == "media" || this.state.currentCategory == "all" ? "" : "inactive") }>
                       <span className="section-icon media" />
                 </div>
               </Col>
               <Col md={1}>
                 <div onClick={this.toggleCategory.bind(this, "robots")}
-                     className={"round-icon " + (this.state.showCategory.robots ? "" : "inactive") }>
+                     className={"round-icon " + (this.state.currentCategory == "robots" || this.state.currentCategory == "all" ? "" : "inactive") }>
                       <span className="section-icon robots" />
                 </div>
               </Col>
               <Col md={1}>
                 <div onClick={this.toggleCategory.bind(this, "utility")}
-                     className={"round-icon " + (this.state.showCategory.utility ? "" : "inactive") }>
+                     className={"round-icon " + (this.state.currentCategory == "utility" || this.state.currentCategory == "all" ? "" : "inactive") }>
                       <span className="section-icon utility" />
                 </div>
               </Col>
               <Col md={1}>
                 <div onClick={this.toggleCategory.bind(this, "web")}
-                     className={"round-icon " + (this.state.showCategory.web ? "" : "inactive") }>
+                     className={"round-icon " + (this.state.currentCategory == "web" || this.state.currentCategory == "all" ? "" : "inactive") }>
                       <span className="section-icon web" />
                 </div>
               </Col>
@@ -151,7 +145,7 @@ export default React.createClass({
                 <Row className="white-section projects-grid hidden-xs">
                     {
                      this.state.projects.map(function(project) {
-                      return categories[project.category] ?
+                      return project.category == currentCategory || currentCategory == "all" ?
                               <ProjectCard
                                 title={project.title}
                                 authors={project.authors}
@@ -166,7 +160,7 @@ export default React.createClass({
                   <Col md={12}>
                     {
                      this.state.projects.map(function(project) {
-                      return categories[project.category] ?
+                      return project.category == currentCategory || currentCategory == "all" ?
                               <ProjectRow
                                 title={project.title}
                                 authors={project.authors}
