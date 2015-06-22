@@ -58,18 +58,33 @@ export default React.createClass({
                 <Row>
                     <Col mdOffset={2} md={9}>
                         <div className="category yellow">
+                            <div className="round-icon">
+                                <span className="section-icon web" />
+                            </div>
                         </div>
 
                         <div className="category blue">
+                            <div className="round-icon">
+                                <span className="section-icon robots" />
+                            </div>
                         </div>
 
                         <div className="category green">
+                            <div className="round-icon">
+                                <span className="section-icon media" />
+                            </div>
                         </div>
 
                         <div className="category pink">
+                            <div className="round-icon">
+                                <span className="section-icon educational" />
+                            </div>
                         </div>
 
                         <div className="category black">
+                            <div className="round-icon">
+                                <span className="section-icon utility" />
+                            </div>
                         </div>
                     </Col>
                 </Row>

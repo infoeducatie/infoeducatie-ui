@@ -38,7 +38,8 @@
     }
 
     .category {
-      height: 175px;
+      @category-height: 175px;
+      height: @category-height;
       width: 150px;
       display: inline-block;
       float: left;
@@ -62,6 +63,20 @@
 
       &.black {
         background-color: @light-black;
+      }
+
+      .round-icon {
+        @icon-height: 70px;
+        width: 70px;
+        height: @icon-height;
+        background-color: @light-black;
+        border-radius: 100%;
+        margin: @category-height / 5 auto;
+
+        .section-icon {
+          margin: @icon-height / 4 auto;
+          display: inline-block;
+        }
       }
 
     }
