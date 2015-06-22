@@ -2,22 +2,20 @@
 
 
 .contestants {
-  .row {
-    .row;
-  }
-
   .blue-section-wrapper {
     .blue-section-wrapper (@img_path: "../../assets/img/contestants.png");
   }
 
   .blue-section {
     .blue-section(@min-height: 500px);
+    color: @white;
 
     h1 {
       font-size: 6em;
     }
 
     .stats {
+      top: -50px;
       color: @yellow;
       height: 100px;
       position: absolute;
@@ -179,10 +177,10 @@
     }
 
     &.projects-grid {
-       -moz-column-width: 18em;
-       -webkit-column-width: 18em;
-       -moz-column-gap: 1em;
-       -webkit-column-gap:1em;
+       -moz-column-width: 15em;
+       -webkit-column-width: 15em;
+       -moz-column-gap: 0.5em;
+       -webkit-column-gap: 0.5em;
 
       .item {
         display: inline-block;

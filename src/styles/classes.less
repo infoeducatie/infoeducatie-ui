@@ -31,10 +31,15 @@
 }
 
 
-@vertical-xsmall-spacing: 2%;
-@vertical-small-spacing: 4%;
+@vertical-xxsmall-spacing: 12px;
+@vertical-xsmall-spacing: 2 * @vertical-xxsmall-spacing;
+@vertical-small-spacing: 2 * @vertical-xsmall-spacing;
 @vertical-big-spacing: 2 * @vertical-small-spacing;
 @vertical-large-spacing: 4 * @vertical-small-spacing;
+
+.xxsmall-spacing {
+  margin-bottom: @vertical-xxsmall-spacing;
+}
 
 .xsmall-spacing {
   margin-bottom: @vertical-xsmall-spacing;

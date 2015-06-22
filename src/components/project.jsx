@@ -12,19 +12,19 @@ export var ProjectCard = React.createClass({
 
     return <div className="item">
       <div className="participant-container">
-        <Row className="big-spacing"></Row>
+        <Row className="xsmall-spacing"></Row>
         <Row className="project-title">
           <Col md={10} mdOffset={1}>
             {this.props.title}
           </Col>
         </Row>
-        <Row className="big-spacing"></Row>
+        <Row className="xsmall-spacing"></Row>
         <Row className="project-details">
           <Col md={12}>
             {this.props.authors.map(function(author) {
                 return <div className="author">{author}</div>;
             })}
-            <Row className="large-spacing"></Row>
+            <Row className="xsmall-spacing"></Row>
             <Row>
               <Col md={1}> <span className='map-marker' /> </Col>
               <Col md={6}> {this.props.county} </Col>
@@ -32,7 +32,7 @@ export var ProjectCard = React.createClass({
                 <span className="comments"> {this.props.comments} </span>
               </Col>
             </Row>
-            <Row className="big-spacing"></Row>
+            <Row className="xsmall-spacing"></Row>
           </Col>
         </Row>
       </div>

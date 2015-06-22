@@ -133,7 +133,7 @@ export default React.createClass({
         <div className="blue-section-wrapper">
           <Grid className="blue-section">
             <Header isLoggedIn={this.props.isLoggedIn} />
-            <Row className="small-spacing" />
+            <Row className="xsmall-spacing" />
             <Row>
               <Col md={12}>
                 <h1>Participanți InfoEducație Ediția 2015</h1>
