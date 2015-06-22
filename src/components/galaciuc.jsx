@@ -32,6 +32,30 @@ export default React.createClass({
                 <Row className="small-spacing header-spacing" />
             </Grid>
         </div>
-      </div>;
+        <div className="white-section-wrapper">
+            <Grid className="white-section">
+                <Row className="small-spacing" />
+                <Row>
+                    <Col>
+                        <h3>Concursul interdisciplinar InfoEducație</h3>
+                    </Col>
+                </Row>
+                <Row className="small-spacing" />
+                <Row>
+                    <Col mdOffset={2} md={8}>
+                        <p className="description">
+                            Organizat din 1993, este dedicat elevilor cu aptitudini,
+                            înclinații și interes pentru crearea aplicațiilor
+                            informatice, atât de la profilul informatică cât
+                            și de la alte profile. Concursul se desfășoară în
+                            patru etape: pe unitatea școlară, locală, județeană
+                            și națională. Etapa națională se desfășoară în
+                            tabăra Galaciuc, județul Vrancea.
+                        </p>
+                    </Col>
+                </Row>
+            </Grid>
+        </div>;
+    </div>;
   }
 });
