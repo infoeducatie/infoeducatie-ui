@@ -155,6 +155,41 @@ export default React.createClass({
                         </div>
                     </Col>
                 </Row>
+                <Row className="small-spacing" />
+                <Row className="contact">
+                    <Col mdOffset={1} md={10}>
+                        <h5>Contact</h5>
+                        <p className="about listing">
+                            <span className="pink-dash" />
+                            Organizatori: contact@infoeducatie.ro (Emil Onea)
+                        </p>
+                        <p className="about listing">
+                            <span className="pink-dash" />
+                            Website: ping@infoeducatie.ro
+                        </p>
+                        <h5>Juriu</h5>
+                        <p className="about listing">
+                            <span className="pink-dash" />
+                            Software educațional: educational@infoeducatie.ro
+                        </p>
+                        <p className="about listing">
+                            <span className="pink-dash" />
+                            Multimedia: multimedia@infoeducatie.ro
+                        </p>
+                        <p className="about listing">
+                            <span className="pink-dash" />
+                            Software utilitar: utilitar@infoeducatie.ro
+                        </p>
+                        <p className="about listing">
+                            <span className="pink-dash" />
+                            Roboți: roboti@infoeducatie.ro
+                        </p>
+                        <p className="about listing">
+                            <span className="pink-dash" />
+                            Web: web@infoeducatie.ro
+                        </p>
+                    </Col>
+                </Row>
             </Grid>
         </div>
     </div>;
