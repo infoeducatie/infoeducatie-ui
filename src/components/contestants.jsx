@@ -30,7 +30,7 @@ export default React.createClass({
         "county": "arad",
         "comments": 5,
         "category": "robots",
-        "slug": "roboți",
+        "slug": "roboți"
        },
        {
         "title": "Romania e Okay!",

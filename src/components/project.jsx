@@ -7,10 +7,6 @@ import React from "react";
 export var ProjectCard = React.createClass({
   displayName: "Project",
 
-  componentWillUnmount() {
-    console.log("demontez");
-  },
-
   render() {
     var className = "project-category-icon " + this.props.category;
 
