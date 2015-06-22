@@ -32,7 +32,7 @@
   .white-section {
     text-align: center;
 
-    .description {
+    .about {
       font-size: 20px;
       text-align: left;
     }
@@ -69,14 +69,21 @@
         @icon-height: 70px;
         width: 70px;
         height: @icon-height;
-        background-color: @light-black;
+        background-color: @black;
         border-radius: 100%;
-        margin: @category-height / 5 auto;
+        margin: @category-height / 5 auto auto;
 
         .section-icon {
           margin: @icon-height / 4 auto;
           display: inline-block;
         }
+      }
+
+      .description {
+        color: @white;
+        text-transform: uppercase;
+        text-align: center;
+        margin-top: 15px;
       }
 
     }

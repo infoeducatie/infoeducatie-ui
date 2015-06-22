@@ -43,7 +43,7 @@ export default React.createClass({
                 <Row className="small-spacing" />
                 <Row>
                     <Col mdOffset={2} md={8}>
-                        <p className="description">
+                        <p className="about">
                             Organizat din 1993, este dedicat elevilor cu aptitudini,
                             înclinații și interes pentru crearea aplicațiilor
                             informatice, atât de la profilul informatică cât
@@ -61,30 +61,35 @@ export default React.createClass({
                             <div className="round-icon">
                                 <span className="section-icon web" />
                             </div>
+                            <div className="description">web</div>
                         </div>
 
                         <div className="category blue">
                             <div className="round-icon">
                                 <span className="section-icon robots" />
                             </div>
+                            <div className="description">roboți</div>
                         </div>
 
                         <div className="category green">
                             <div className="round-icon">
                                 <span className="section-icon media" />
                             </div>
+                            <div className="description">multimedia</div>
                         </div>
 
                         <div className="category pink">
                             <div className="round-icon">
                                 <span className="section-icon educational" />
                             </div>
+                            <div className="description">educațional</div>
                         </div>
 
                         <div className="category black">
                             <div className="round-icon">
                                 <span className="section-icon utility" />
                             </div>
+                            <div className="description">utilitar</div>
                         </div>
                     </Col>
                 </Row>
