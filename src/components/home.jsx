@@ -48,7 +48,7 @@ export default React.createClass({
                     </Col>
                     <Col md={4}>
                         <p className="right-button">
-                            <a href="#" className="link link-secondary">
+                            <a href="#news" className="link link-secondary">
                                 Mai multe...
                             </a>
                         </p>
@@ -78,7 +78,7 @@ export default React.createClass({
                 <Row className="row">
                     <Col md={5} className="left">
                         <Row className="small-spacing" />
-                        <h6>Știri</h6>
+                        <h6 id="news">Știri</h6>
 
                         <Row className="small-spacing" />
 
