@@ -1,6 +1,7 @@
 "use strict";
 
 import React from "react";
+import {Link} from "react-router";
 import {Grid, Row, Col} from "react-bootstrap";
 import {Link} from "react-router"
 
@@ -49,9 +50,9 @@ export default React.createClass({
                     </Col>
                     <Col md={4}>
                         <p className="right-button">
-                            <a href="#news" className="link link-secondary">
+                            <Link to="galaciuc" className="link link-secondary">
                                 Mai multe...
-                            </a>
+                            </Link>
                         </p>
                     </Col>
                 </Row>
