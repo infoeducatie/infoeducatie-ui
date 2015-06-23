@@ -7,6 +7,18 @@ import Header from "./header";
 
 import "./photos.less";
 
+import Cover2014 from "../../assets/img/2014.jpg";
+import Cover2013 from "../../assets/img/2013.jpg";
+import Cover2012 from "../../assets/img/2012.jpg";
+import Cover2011 from "../../assets/img/2011.jpg";
+import Cover2010 from "../../assets/img/2010.jpg";
+import Cover2009 from "../../assets/img/2009.jpg";
+import Cover2008 from "../../assets/img/2008.jpg";
+import Cover2007 from "../../assets/img/2007.jpg";
+import Cover2006 from "../../assets/img/2006.jpg";
+import Cover2005 from "../../assets/img/2005.jpg";
+import Cover2004 from "../../assets/img/2004.jpg";
+
 
 export default React.createClass({
   displayName: "Photos",
@@ -27,6 +39,112 @@ export default React.createClass({
                     <Col md={12}>
                         <h1>Albumul Foto InfoEducație</h1>
                         <h2>Oameni și aminitiri</h2>
+                    </Col>
+                </Row>
+            </Grid>
+        </div>
+        <div className="white-section-wrapper">
+            <Grid className="white-section">
+                <Row className="small-spacing" />
+                <Row>
+                    <Col md={10} mdOffset={1}>
+                        <Row>
+                            <div className="photo-cover">
+                                <img src={Cover2014} />
+                                <div className="year">
+                                    <span className="pink-dash" />
+                                        2014
+                                    <span className="pink-dash" />
+                                </div>
+                            </div>
+                            <div className="photo-cover">
+                                <img src={Cover2013} />
+                                <div className="year">
+                                    <span className="pink-dash" />
+                                        2013
+                                    <span className="pink-dash" />
+                                </div>
+                            </div>
+                            <div className="photo-cover">
+                                <img src={Cover2012} />
+                                <div className="year">
+                                    <span className="pink-dash" />
+                                        2012
+                                    <span className="pink-dash" />
+                                </div>
+
+                            </div>
+                            <div className="photo-cover">
+                                <img src={Cover2011} />
+                                <div className="year">
+                                    <span className="pink-dash" />
+                                        2011
+                                    <span className="pink-dash" />
+                                </div>
+
+                            </div>
+                            <div className="photo-cover">
+                                <img src={Cover2010} />
+                                <div className="year">
+                                    <span className="pink-dash" />
+                                        2010
+                                    <span className="pink-dash" />
+                                </div>
+
+                            </div>
+                            <div className="photo-cover">
+                                <img src={Cover2009} />
+                                <div className="year">
+                                    <span className="pink-dash" />
+                                        2009
+                                    <span className="pink-dash" />
+                                </div>
+
+                            </div>
+                            <div className="photo-cover">
+                                <img src={Cover2008} />
+                                <div className="year">
+                                    <span className="pink-dash" />
+                                        2008
+                                    <span className="pink-dash" />
+                                </div>
+
+                            </div>
+                            <div className="photo-cover">
+                                <img src={Cover2007} />
+                                <div className="year">
+                                    <span className="pink-dash" />
+                                        2007
+                                    <span className="pink-dash" />
+                                </div>
+
+                            </div>
+                            <div className="photo-cover">
+                                <img src={Cover2006} />
+                                <div className="year">
+                                    <span className="pink-dash" />
+                                        2006
+                                    <span className="pink-dash" />
+                                </div>
+
+                            </div>
+                            <div className="photo-cover">
+                                <img src={Cover2005} />
+                                <div className="year">
+                                    <span className="pink-dash" />
+                                        2005
+                                    <span className="pink-dash" />
+                                </div>
+                            </div>
+                            <div className="photo-cover">
+                                <img src={Cover2004} />
+                                <div className="year">
+                                    <span className="pink-dash" />
+                                        2004
+                                    <span className="pink-dash" />
+                                </div>
+                            </div>
+                        </Row>
                     </Col>
                 </Row>
             </Grid>
