@@ -45,8 +45,12 @@
       width: @wrapper-width;
       height: @wrapper-height;
 
+      a {
+        text-decoration: none;
+      }
+
       .year {
-        margin: 10px auto auto;
+        margin: -30px auto auto;
         text-align: center;
 
         .pink-dash {
@@ -65,11 +69,14 @@
         color: @white;
         border: 2px solid @white;
         border-radius: 50px;
-        z-index: 1000;
-        position: absolute;
+        z-index: -1;
+        position: relative;
         left: @wrapper-width / 4;
-        top: @wrapper-height / 2;
-        display: none;
+        top: -@wrapper-height / 2;
+
+        &:hover {
+          z-index: 2;
+        }
       }
 
 
@@ -78,13 +85,14 @@
         width: 100%;
         height: 80%;
         background-size: cover;
+        z-index: 1;
 
         &:hover {
           cursor: pointer;
           -webkit-filter: blur(2px);
 
           +.more-details {
-            display: block;
+            z-index: 2;
           }
         }
 

@@ -2,6 +2,7 @@
 
 import React from "react";
 import {Grid, Row, Col} from "react-bootstrap";
+import ctx from "classnames";
 
 import Header from "./header";
 
@@ -20,8 +21,44 @@ import Cover2005 from "../../assets/img/2005.jpg";
 import Cover2004 from "../../assets/img/2004.jpg";
 
 
+var PhotoWrapper = React.createClass({
+    displayName: "PhotoWrapper",
+
+    render() {
+        var className = ctx("cover", "year-" + this.props.year);
+        return <div className="photo-cover-wrapper">
+            <a href={this.props.link} target="_blank">
+                <div className={className}></div>
+                <div className="more-details">Fotografii</div>
+            </a>
+            <div className="year">
+                <span className="pink-dash" />
+                    {this.props.year}
+                <span className="pink-dash" />
+            </div>
+        </div>;
+    }
+});
+
+
 export default React.createClass({
   displayName: "Photos",
+  getInitialState() {
+    return {
+        "albums": [
+            {"year": 2014, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6126213014251955681"},
+            {"year": 2013, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6126511874123551857"},
+            {"year": 2012, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6126529418024686801"},
+            {"year": 2011, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6126950217304487537"},
+            {"year": 2010, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127300307304376961"},
+            {"year": 2009, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127325200239501089"},
+            {"year": 2008, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127559291932668561"},
+            {"year": 2007, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127715315645838257"},
+            {"year": 2006, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127337195835590657"},
+            {"year": 2005, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127307525772879729"},
+            {"year": 2004, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127315862395135249"},
+        ]};
+  },
 
   render() {
     return <div className="photos">
@@ -48,19 +85,10 @@ export default React.createClass({
                 <Row className="small-spacing" />
                 <Row>
                     <Col md={10} mdOffset={1}>
-                        <Row>
-                            <div className="photo-cover-wrapper">
-                                <a href="google.ro" target="_blank">
-                                    <div className="cover year-2014">
-                                    </div>
-                                    <div className="more-details">Fotografii</div>
-                                </a>
-                                <div className="year">
-                                    <span className="pink-dash" />
-                                        2014
-                                    <span className="pink-dash" />
-                                </div>
-                            </div>
+                        <Row>{this.state.albums.map(function(album) {
+                            return <PhotoWrapper year={album.year}
+                                                 link={album.link} />;
+                        })}
                         </Row>
                     </Col>
                 </Row>
