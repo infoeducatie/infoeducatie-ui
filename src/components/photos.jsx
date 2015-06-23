@@ -49,98 +49,15 @@ export default React.createClass({
                 <Row>
                     <Col md={10} mdOffset={1}>
                         <Row>
-                            <div className="photo-cover">
-                                <img src={Cover2014} />
+                            <div className="photo-cover-wrapper">
+                                <a href="google.ro" target="_blank">
+                                    <div className="cover year-2014">
+                                    </div>
+                                    <div className="more-details">Fotografii</div>
+                                </a>
                                 <div className="year">
                                     <span className="pink-dash" />
                                         2014
-                                    <span className="pink-dash" />
-                                </div>
-                            </div>
-                            <div className="photo-cover">
-                                <img src={Cover2013} />
-                                <div className="year">
-                                    <span className="pink-dash" />
-                                        2013
-                                    <span className="pink-dash" />
-                                </div>
-                            </div>
-                            <div className="photo-cover">
-                                <img src={Cover2012} />
-                                <div className="year">
-                                    <span className="pink-dash" />
-                                        2012
-                                    <span className="pink-dash" />
-                                </div>
-
-                            </div>
-                            <div className="photo-cover">
-                                <img src={Cover2011} />
-                                <div className="year">
-                                    <span className="pink-dash" />
-                                        2011
-                                    <span className="pink-dash" />
-                                </div>
-
-                            </div>
-                            <div className="photo-cover">
-                                <img src={Cover2010} />
-                                <div className="year">
-                                    <span className="pink-dash" />
-                                        2010
-                                    <span className="pink-dash" />
-                                </div>
-
-                            </div>
-                            <div className="photo-cover">
-                                <img src={Cover2009} />
-                                <div className="year">
-                                    <span className="pink-dash" />
-                                        2009
-                                    <span className="pink-dash" />
-                                </div>
-
-                            </div>
-                            <div className="photo-cover">
-                                <img src={Cover2008} />
-                                <div className="year">
-                                    <span className="pink-dash" />
-                                        2008
-                                    <span className="pink-dash" />
-                                </div>
-
-                            </div>
-                            <div className="photo-cover">
-                                <img src={Cover2007} />
-                                <div className="year">
-                                    <span className="pink-dash" />
-                                        2007
-                                    <span className="pink-dash" />
-                                </div>
-
-                            </div>
-                            <div className="photo-cover">
-                                <img src={Cover2006} />
-                                <div className="year">
-                                    <span className="pink-dash" />
-                                        2006
-                                    <span className="pink-dash" />
-                                </div>
-
-                            </div>
-                            <div className="photo-cover">
-                                <img src={Cover2005} />
-                                <div className="year">
-                                    <span className="pink-dash" />
-                                        2005
-                                    <span className="pink-dash" />
-                                </div>
-                            </div>
-                            <div className="photo-cover">
-                                <img src={Cover2004} />
-                                <div className="year">
-                                    <span className="pink-dash" />
-                                        2004
                                     <span className="pink-dash" />
                                 </div>
                             </div>

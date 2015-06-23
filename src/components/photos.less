@@ -37,11 +37,13 @@
   .white-section {
     color: @light-black;
 
-    .photo-cover {
+    .photo-cover-wrapper {
+      @wrapper-height: 220px;
+      @wrapper-width: 220px;
       display: inline-block;
       margin: 40px auto auto;
-      width: 220px;
-      height: 220px;
+      width: @wrapper-width;
+      height: @wrapper-height;
 
       .year {
         margin: 10px auto auto;
@@ -52,12 +54,74 @@
           margin-left: 10px;
           margin-right: 10px;
         }
+
       }
 
-      img {
+      .more-details {
+        padding: 5px;
+        font-size: 20px;
+        width: @wrapper-width / 2;
+        text-align: center;
+        color: @white;
+        border: 2px solid @white;
+        border-radius: 50px;
+        z-index: 1000;
+        position: absolute;
+        left: @wrapper-width / 4;
+        top: @wrapper-height / 2;
+        display: none;
+      }
+
+
+      .cover {
         display: inline-block;
         width: 100%;
         height: 80%;
+        background-size: cover;
+
+        &:hover {
+          cursor: pointer;
+          -webkit-filter: blur(2px);
+
+          +.more-details {
+            display: block;
+          }
+        }
+
+        &.year-2014 {
+          background-image: url(../../assets/img/2014.jpg);
+        }
+        &.year-2013 {
+          background-image: url(../../assets/img/2013.jpg);
+        }
+        &.year-2012 {
+          background-image: url(../../assets/img/2012.jpg);
+        }
+        &.year-2011 {
+          background-image: url(../../assets/img/2011.jpg);
+        }
+        &.year-2010 {
+          background-image: url(../../assets/img/2010.jpg);
+        }
+        &.year-2009 {
+          background-image: url(../../assets/img/2009.jpg);
+        }
+        &.year-2008 {
+          background-image: url(../../assets/img/2008.jpg);
+        }
+        &.year-2007 {
+          background-image: url(../../assets/img/2007.jpg);
+        }
+        &.year-2006 {
+          background-image: url(../../assets/img/2006.jpg);
+        }
+        &.year-2005 {
+          background-image: url(../../assets/img/2005.jpg);
+        }
+        &.year-2004 {
+          background-image: url(../../assets/img/2004.jpg);
+        }
+
       }
     }
   }
