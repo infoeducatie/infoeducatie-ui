@@ -84,6 +84,32 @@ export default React.createClass({
     });
   },
 
+  renderProjectRow(project) {
+    var row = null;
+
+    if (project.category === this.state.currentCategory ||
+        this.state.currentCategory === "all") {
+
+      row = <ProjectRow project={project} key={project.id} />;
+    }
+
+    return row;
+  },
+
+  renderTable() {
+    var table = null;
+
+    if (this.state.showTable) {
+      table = <Row className="projects-list">
+                <Col md={12}>
+                  {this.state.projects.map(this.renderProjectRow)}
+                </Col>
+              </Row>;
+    }
+
+    return table;
+  },
+
   renderProjectCard(project) {
     var card = null;
 
@@ -101,8 +127,8 @@ export default React.createClass({
 
     if (this.state.showGrid) {
       grid = <Row className="projects-grid hidden-xs">
-        {this.state.projects.map(this.renderProjectCard)}
-      </Row>;
+               {this.state.projects.map(this.renderProjectCard)}
+             </Row>;
     }
 
     return grid;
@@ -202,22 +228,7 @@ export default React.createClass({
       <Grid className="projects">
           <Row className="small-spacing" />
           {this.renderGrid()}
-          {this.state.showTable ?
-            <Row className="projects-list">
-              <Col md={12}>
-                {
-                 this.state.projects.map(function(project) {
-                  return project.category === currentCategory || currentCategory === "all" ?
-                          <ProjectRow
-                            title={project.title}
-                            authors={project.authors}
-                            category={project.category}
-                            category_slug={project.category_slug}
-                            county={project.county}
-                            comments={project.comments} /> : "";
-                })}
-              </Col>
-            </Row> : null}
+          {this.renderTable()}
         </Grid>
       </div>;
   }

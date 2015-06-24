@@ -10,7 +10,6 @@ export default[
    },
    {
     "id": 2,
-    "title": "Time Travel",
     "title": "Acționarea automată și securizată a Căilor de Access",
     "authors": ["adriana-patricia blaj", "robert preda"],
     "county": "arad",
@@ -20,7 +19,6 @@ export default[
    },
    {
     "id": 3,
-    "title": "Time Travel",
     "title": "Romania e Okay!",
     "authors": ["diana elena ghinea"],
     "county": "bucurești",
@@ -30,7 +28,6 @@ export default[
    },
    {
     "id": 4,
-    "title": "Time Travel",
     "title": "Mica Unire",
     "authors": ["georgiana raluca bucutea", "roxana patricia datcu"],
     "county": "brașov",
@@ -40,7 +37,6 @@ export default[
    },
    {
     "id": 5,
-    "title": "Time Travel",
     "title": "Velocity Reporter",
     "authors": ["mihaela costache", "bogdan nechifor"],
     "county": "brăila",
@@ -50,7 +46,6 @@ export default[
    },
    {
     "id": 6,
-    "title": "Time Travel",
     "title": "Acționarea automată și securizată a Căilor de Access",
     "authors": ["adriana-patricia blaj", "robert preda"],
     "county": "arad",
@@ -60,7 +55,6 @@ export default[
    },
    {
     "id": 7,
-    "title": "Time Travel",
     "title": "Romania e Okay!",
     "authors": ["diana elena ghinea"],
     "county": "bucurești",
@@ -70,7 +64,6 @@ export default[
    },
    {
     "id": 8,
-    "title": "Time Travel",
     "title": "Mica Unire",
     "authors": ["georgiana raluca bucutea", "roxana patricia datcu"],
     "county": "brașov",
@@ -80,7 +73,6 @@ export default[
    },
    {
     "id": 9,
-    "title": "Time Travel",
     "title": "Velocity Reporter",
     "authors": ["mihaela costache", "bogdan nechifor"],
     "county": "brăila",
