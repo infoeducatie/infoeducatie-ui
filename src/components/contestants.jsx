@@ -10,22 +10,24 @@ import projectsFixture from "../fixtures/projects";
 
 import "./contestants.less";
 
+
 var FilterIcon = React.createClass({
-  displayName: "Participanti",
+  displayName: "FilterIcon",
 
   toggleCategory() {
     this.props.toggleCategory(this.props.category);
   },
 
   render() {
-    var parentClasses = ctx({
+    let parentClasses = ctx({
       "round-icon": true,
-      "inactive": this.props.currentCategory !== this.props.category && this.props.currentCategory !== "all"
+      "inactive": (this.props.currentCategory !== this.props.category &&
+                   this.props.currentCategory !== "all")
     });
-    var childClasses = ctx("section-icon", this.props.category);
+    let childClasses = ctx("section-icon", this.props.category);
 
     return <div onClick={this.toggleCategory} className={parentClasses}>
-        <span className={childClasses} />
+      <span className={childClasses} />
     </div>;
   }
 
@@ -33,7 +35,7 @@ var FilterIcon = React.createClass({
 
 
 export default React.createClass({
-  displayName: "Participanti",
+  displayName: "Participants",
 
   getInitialState: function() {
     // on mobile we need to show only the list view
@@ -46,7 +48,8 @@ export default React.createClass({
     //    * 768px  => small (usually mobile devices)
     //    * 992px  => medium
     //    * 1200px => large
-    let isMobile = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) <= 768;
+    let isMobile = Math.max(document.documentElement.clientWidth,
+                            window.innerWidth || 0) <= 768;
 
     return {
       projects: projectsFixture,
@@ -76,11 +79,13 @@ export default React.createClass({
       category = "all";
     }
 
-    this.setState( {currentCategory: category} );
+    this.setState({
+      currentCategory: category
+    });
   },
 
   render() {
-    var gridClassName = ctx({
+    let gridClassName = ctx({
       "icon hidden-xs": true,
       "inactive": !this.state.showGrid
     });
@@ -160,10 +165,14 @@ export default React.createClass({
                             category="web" />
               </Col>
               <Col mdOffset={2} md={1}>
-                <Glyphicon glyph="th-large" className={gridClassName} onClick={this.showGrid} />
+                <Glyphicon glyph="th-large"
+                           className={gridClassName}
+                           onClick={this.showGrid} />
               </Col>
               <Col md={1}>
-                <Glyphicon glyph="align-justify" className={tableClassName} onClick={this.showTable} />
+                <Glyphicon glyph="align-justify"
+                           className={tableClassName}
+                           onClick={this.showTable} />
               </Col>
             </Row>
           </Grid>
