@@ -7,12 +7,21 @@
   <title>InfoEducatie</title>
   <script>
     window.config = {
-      API_URL: "http://localhost:3000/v1/"
+      API_URL: window.location.protocol + '//' +
+	       window.location.hostname + ":3000/v1/"
     };
   </script>
 </head>
 <body>
   <div id="app"></div>
-  <script src="http://localhost:9090/build/app.js"></script>
+  <script>
+    var jsPath = window.location.protocol + '//' +
+                 window.location.hostname + ":9090/build/app.js"
+
+    var js = document.createElement("script");
+    js.type = "text/javascript";
+    js.src = jsPath;
+    document.body.appendChild(js);
+  </script>
 </body>
 </html>
