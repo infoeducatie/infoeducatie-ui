@@ -16,12 +16,12 @@ export default React.createClass({
         <Grid className="blue-section">
           <Header isLoggedIn={this.props.isLoggedIn} />
           <Row>
-            <Col md={12}>
+            <Col>
               <h1>Înregistrare</h1>
             </Col>
           </Row>
           <Row>
-            <Col md={12}>
+            <Col>
               <h2>Momentan nu se pot face înregistrări.</h2>
             </Col>
           </Row>

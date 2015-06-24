@@ -14,7 +14,7 @@ export default React.createClass({
           {this.props.name}
         <span className="orange-dash">&mdash;</span>
       </div>
-      <Col md={12} className="jury-members">
+      <Col className="jury-members">
         {this.props.members.map(function(member) {
           return <div className="jury-member">
             <div className="jury-avatar"><img src={member.avatar} /></div>

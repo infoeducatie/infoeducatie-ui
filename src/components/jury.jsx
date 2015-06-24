@@ -83,12 +83,12 @@ export default React.createClass({
           <Grid className="blue-section">
             <Header isLoggedIn={this.props.isLoggedIn} />
             <Row>
-              <Col md={12}>
+              <Col>
                 <h1>Juriul InfoEduca&#355;ie</h1>
               </Col>
             </Row>
             <Row>
-              <Col md={12}>
+              <Col>
                 <h2>Membrii juriului pe categorii</h2>
               </Col>
             </Row>
@@ -106,7 +106,7 @@ export default React.createClass({
         <div className="orange-section-wrapper">
           <Grid className="orange-section">
             <Row>
-              <Col md={12} className="block">
+              <Col className="block">
                 <Row className="jury-criteria-desc">
                     <span className="pink-dash" />
                       criterii de jurizare
