@@ -80,11 +80,9 @@ export default React.createClass({
     var table = null;
 
     if (this.state.showTable) {
-      table = <Row className="projects-list">
-                <Col md={12}>
-                  {this.state.projects.map(this.renderProjectRow)}
-                </Col>
-              </Row>;
+      table = <Grid className="projects-list">
+                {this.state.projects.map(this.renderProjectRow)}
+              </Grid>;
     }
 
     return table;
@@ -106,9 +104,9 @@ export default React.createClass({
     var grid = null;
 
     if (this.state.showGrid) {
-      grid = <Row className="projects-grid">
+      grid = <Grid className="projects-grid">
                {this.state.projects.map(this.renderProjectCard)}
-             </Row>;
+             </Grid>;
     }
 
     return grid;
@@ -169,7 +167,7 @@ export default React.createClass({
       <Grid>
         <Row className="big-spacing" />
         <Row className="filter-buttons">
-          <Col smOffset={2} sm={1} xs={2}>
+          <Col smOffset={2} sm={1} xs={2} xsOffset={1}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="educational" />

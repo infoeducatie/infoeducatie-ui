@@ -3,29 +3,29 @@
 import React from "react";
 
 import ctx from "classnames";
-import { Row, Col } from "react-bootstrap";
+import { Grid, Row, Col } from "react-bootstrap";
 
 import "./project_card.less";
 
 
 export default React.createClass({
-  displayName: "ProjectRow",
+  displayName: "ProjectCard",
 
   render() {
     let className = ctx("project-category-icon", "section-icon",
                         this.props.project.category);
 
-    return <div className="item">
+    return <div className="project-card">
       <div className="participant-container">
         <Row className="xsmall-spacing" />
         <Row className="project-title">
           <Col md={10} mdOffset={1}>
-            {this.props.project.title}
+            <p>{this.props.project.title}</p>
           </Col>
         </Row>
         <Row className="xsmall-spacing" />
         <Row className="project-details">
-          <Col md={12}>
+          <Col>
             {this.props.project.authors.map(function(author) {
               return <p className="author" key={author.id}>
                 {author.name}
@@ -37,7 +37,7 @@ export default React.createClass({
                 <span className='map-marker' />
               </Col>
               <Col md={6}>
-                {this.props.project.county}
+                <p>{this.props.project.county}</p>
               </Col>
               <Col md={1} mdOffset={2}>
                 <span className="comments">
@@ -50,10 +50,10 @@ export default React.createClass({
         </Row>
       </div>
       <Row className="orange-section">
-        <span className="project-category">
-          {this.props.project.category_slug}
-        </span>
-        <span className={className} />
+        <Col md={8} className="project-category">
+          <p>{this.props.project.category_slug}</p>
+        </Col>
+        <Col md={4} className={className} />
       </Row>
     </div>;
   }

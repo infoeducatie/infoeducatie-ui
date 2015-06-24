@@ -2,85 +2,80 @@
 
 
 .project-row {
-  border-top: 1px solid @light-grey;
-  border-right: 1px solid @light-grey;
-  border-left: 1px solid @light-grey;
-  border-top-right-radius: 3px;
-  border-top-left-radius: 3px;
-  min-height: 100px;
 
-  .project-details {
-    margin-left: 2%;
+  .project-row-details {
+    border-top: 1px solid @light-grey;
+    border-right: 1px solid @light-grey;
+    border-left: 1px solid @light-grey;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    min-height: 100px;
 
-    .project-title {
-      font-size: 2em;
-      margin-right: 10%;
+    .project-details {
+      margin-left: 2%;
+
+      .project-title {
+        font-size: 2em;
+        margin-right: 10%;
+      }
+
+      .authors {
+        display: inline-block;
+
+        .author {
+          text-transform: uppercase;
+          margin-right: 8%;
+          color: @blue;
+        }
+      }
     }
 
-    .authors {
-      display: inline-block;
+    .project-other-details {
+      margin-top: 10%;
 
-      .author {
+      .map-marker {
+        display: inline-block;
+        background: url("../../../assets/img/icons/location.png") no-repeat;
+        width: 17px;
+        height: 24px;
+      }
+
+      .location {
         text-transform: uppercase;
-        margin-right: 8%;
-        color: @blue;
+      }
+
+      .comments {
+        display: inline-block;
+        background: url("../../../assets/img/icons/comments.png") no-repeat;
+        text-align: center;
+        width: 28px;
+        height: 25px;
+        color: @white;
       }
     }
   }
 
-  .project-other-details {
-    margin-top: 10%;
+  .orange-section {
+    font-size: 15px;
+    background-color: @orange;
+    text-transform: uppercase;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
 
-    .map-marker {
-      float: left;
-      background: url("../../../assets/img/icons/location.png");
-      width: 20px;
-      height: 20px;
-      background-size: 20px 20px;
-      margin-top: -2px;
+    .project-category {
+      opacity: 0.5;
+      margin-top: 10px;
     }
 
-    .location {
-      text-transform: uppercase;
-      margin-left: 10%;
+    .project-category-icon {
+      background-size: 60px 50px;
+      width: 60px;
+      filter: saturate(0);
+      height: 50px;
+
+      &.media {
+        margin-top: 0px;
+      }
     }
-
-    .comments {
-      float: right;
-      background: url("../../../assets/img/icons/comments.png");
-      text-align: center;
-      width: 25px;
-      height: 25px;
-      background-size: 25px 25px;
-      color: @white;
-    }
-  }
-
-}
-
-.orange-section {
-  font-size: 15px;
-  background-color: @orange;
-  text-transform: uppercase;
-  border-bottom-right-radius: 7px;
-  border-bottom-left-radius: 7px;
-  height: 60px;
-
-  .project-category {
-    margin-left: 35px;
-    margin-top: 20px;
-    float: left;
-    opacity: 0.5;
-  }
-
-  .project-category-icon {
-    background-size: 60px 50px;
-    float: left;
-    width: 60px;
-    margin-top: 10px;
-    margin-left: 25px;
-    -webkit-filter: saturate(0);
-    filter: saturate(0);
-    height: 50px;
   }
 }
