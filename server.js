@@ -5,6 +5,13 @@ var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
 var config = require('./webpack.local.config');
 
+var os = require("os");
+var host = os.hostname();
+
+config.output.publicPath = config.output.publicPath.replace("localhost", host)
+config.entry = config.entry.map(function(val) {
+  return val.replace("localhost", host)
+})
 
 /************************************************************
  *
@@ -36,7 +43,7 @@ new WebpackDevServer(webpack(config), {
   hot: true,
   noInfo: true,
   historyApiFallback: true
-}).listen(9090, 'localhost', function (err, result) {
+}).listen(9090, '0.0.0.0', function (err, result) {
   if (err) {
     console.log(err);
   }
