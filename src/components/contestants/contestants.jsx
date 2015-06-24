@@ -125,45 +125,47 @@ export default React.createClass({
     });
 
     return <div className="contestants">
-        <div className="blue-section-wrapper">
-          <Grid className="blue-section">
-            <Header isLoggedIn={this.props.isLoggedIn} />
-            <Row className="xsmall-spacing" />
-            <Row>
-              <Col>
-                <h1>Participanți InfoEducație Ediția 2015</h1>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <h2>Concurs Național de Informatică</h2>
-              </Col>
-            </Row>
-            <Row className="big-spacing" />
-          </Grid>
-        </div>
-        <Grid className="stats-section">
+      <div className="blue-section-wrapper">
+        <Grid className="blue-section">
+          <Header isLoggedIn={this.props.isLoggedIn} />
+          <Row className="xsmall-spacing" />
           <Row>
-            <Col md={6} mdOffset={3}
-                 sm={8} smOffset={2}
-                 xs={12}>
-              <Row className="inner-stats">
-                <Col xs={4}>
-                    <p className="description">Participanți</p>
-                    <p className="value">75</p>
-                </Col>
-                <Col xs={4} className="border-left">
-                    <p className="description">Proiecte</p>
-                    <p className="value">39</p>
-                </Col>
-                <Col xs={4} className="border-left">
-                    <p className="description">Județe</p>
-                    <p className="value">17</p>
-                </Col>
-              </Row>
+            <Col>
+              <h1>Participanți InfoEducație Ediția 2015</h1>
             </Col>
           </Row>
+          <Row>
+            <Col>
+              <h2>Concurs Național de Informatică</h2>
+            </Col>
+          </Row>
+          <Row className="big-spacing" />
         </Grid>
+      </div>
+
+      <Grid className="stats-section">
+        <Row>
+          <Col md={6} mdOffset={3}
+               sm={8} smOffset={2}
+               xs={12}>
+            <Row className="inner-stats">
+              <Col xs={4}>
+                  <p className="description">Participanți</p>
+                  <p className="value">75</p>
+              </Col>
+              <Col xs={4} className="border-left">
+                  <p className="description">Proiecte</p>
+                  <p className="value">39</p>
+              </Col>
+              <Col xs={4} className="border-left">
+                  <p className="description">Județe</p>
+                  <p className="value">17</p>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </Grid>
+
       <Grid>
         <Row className="big-spacing" />
         <Row className="filter-buttons">
@@ -204,11 +206,12 @@ export default React.createClass({
           </Col>
         </Row>
       </Grid>
+
       <Grid className="projects">
-          <Row className="small-spacing" />
-          {this.renderGrid()}
-          {this.renderTable()}
-        </Grid>
-      </div>;
+        <Row className="small-spacing" />
+        {this.renderGrid()}
+        {this.renderTable()}
+      </Grid>
+    </div>;
   }
 });
