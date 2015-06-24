@@ -8,4 +8,32 @@
   .blue-section {
     .blue-section();
   }
+
+  .alumnus-container {
+    .alumnus-name {
+      margin-top: 25px;
+      margin-bottom: 0px;
+      text-transform: uppercase;
+      letter-spacing: @medium-letter-spacing / 2;
+      font-weight: bold;
+    }
+
+    .alumnus-position {
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+
+    &.green {
+      color: @white;
+      background-color: @green;
+
+      .alumnus-name {
+        color: black;
+      }
+
+      .alumnus-position {
+        color: @white;
+      }
+    }
+  }
 }
