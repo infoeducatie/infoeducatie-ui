@@ -27,10 +27,12 @@ var PhotoWrapper = React.createClass({
     render() {
         var className = ctx("cover", "year-" + this.props.year);
         return <div className="photo-cover-wrapper">
-            <a href={this.props.link} target="_blank">
-                <div className={className}></div>
-                <div className="more-details">Fotografii</div>
-            </a>
+            <div className="photo-cover">
+                <a href={this.props.link} target="_blank">
+                    <div className={className}></div>
+                    <div className="more-details">Fotografii</div>
+                </a>
+            </div>
             <div className="year">
                 <span className="pink-dash" />
                     {this.props.year}
