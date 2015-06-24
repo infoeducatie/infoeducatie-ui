@@ -84,6 +84,30 @@ export default React.createClass({
     });
   },
 
+  renderProjectCard(project) {
+    var card = null;
+
+    if (project.category === this.state.currentCategory ||
+        this.state.currentCategory === "all") {
+
+      card = <ProjectCard project={project} key={project.id} />;
+    }
+
+    return card;
+  },
+
+  renderGrid() {
+    var grid = null;
+
+    if (this.state.showGrid) {
+      grid = <Row className="projects-grid hidden-xs">
+        {this.state.projects.map(this.renderProjectCard)}
+      </Row>;
+    }
+
+    return grid;
+  },
+
   render() {
     let gridClassName = ctx({
       "icon hidden-xs": true,
@@ -135,82 +159,66 @@ export default React.createClass({
             </Col>
           </Row>
         </Grid>
-        <div className="white-section-wrapper">
-          <Grid>
-            <Row className="big-spacing" />
-            <Row className="white-section">
-              <Col mdOffset={2} md={1}>
-                <FilterIcon currentCategory={this.state.currentCategory}
-                            toggleCategory={this.toggleCategory}
-                            category="educational" />
+      <Grid>
+        <Row className="big-spacing" />
+        <Row className="filter-buttons">
+          <Col mdOffset={2} md={1}>
+            <FilterIcon currentCategory={this.state.currentCategory}
+                        toggleCategory={this.toggleCategory}
+                        category="educational" />
+          </Col>
+          <Col md={1}>
+            <FilterIcon currentCategory={this.state.currentCategory}
+                        toggleCategory={this.toggleCategory}
+                        category="media" />
+          </Col>
+          <Col md={1}>
+            <FilterIcon currentCategory={this.state.currentCategory}
+                        toggleCategory={this.toggleCategory}
+                        category="robots" />
+          </Col>
+          <Col md={1}>
+            <FilterIcon currentCategory={this.state.currentCategory}
+                        toggleCategory={this.toggleCategory}
+                        category="utility" />
+          </Col>
+          <Col md={1}>
+            <FilterIcon currentCategory={this.state.currentCategory}
+                        toggleCategory={this.toggleCategory}
+                        category="web" />
+          </Col>
+          <Col mdOffset={2} md={1}>
+            <Glyphicon glyph="th-large"
+                       className={gridClassName}
+                       onClick={this.showGrid} />
+          </Col>
+          <Col md={1}>
+            <Glyphicon glyph="align-justify"
+                       className={tableClassName}
+                       onClick={this.showTable} />
+          </Col>
+        </Row>
+      </Grid>
+      <Grid className="projects">
+          <Row className="small-spacing" />
+          {this.renderGrid()}
+          {this.state.showTable ?
+            <Row className="projects-list">
+              <Col md={12}>
+                {
+                 this.state.projects.map(function(project) {
+                  return project.category === currentCategory || currentCategory === "all" ?
+                          <ProjectRow
+                            title={project.title}
+                            authors={project.authors}
+                            category={project.category}
+                            category_slug={project.category_slug}
+                            county={project.county}
+                            comments={project.comments} /> : "";
+                })}
               </Col>
-              <Col md={1}>
-                <FilterIcon currentCategory={this.state.currentCategory}
-                            toggleCategory={this.toggleCategory}
-                            category="media" />
-              </Col>
-              <Col md={1}>
-                <FilterIcon currentCategory={this.state.currentCategory}
-                            toggleCategory={this.toggleCategory}
-                            category="robots" />
-              </Col>
-              <Col md={1}>
-                <FilterIcon currentCategory={this.state.currentCategory}
-                            toggleCategory={this.toggleCategory}
-                            category="utility" />
-              </Col>
-              <Col md={1}>
-                <FilterIcon currentCategory={this.state.currentCategory}
-                            toggleCategory={this.toggleCategory}
-                            category="web" />
-              </Col>
-              <Col mdOffset={2} md={1}>
-                <Glyphicon glyph="th-large"
-                           className={gridClassName}
-                           onClick={this.showGrid} />
-              </Col>
-              <Col md={1}>
-                <Glyphicon glyph="align-justify"
-                           className={tableClassName}
-                           onClick={this.showTable} />
-              </Col>
-            </Row>
-          </Grid>
-          <Grid>
-              <Row className="small-spacing" />
-              {this.state.showGrid ?
-                <Row className="white-section projects-grid hidden-xs">
-                    {
-                     this.state.projects.map(function(project) {
-                      return project.category === currentCategory || currentCategory === "all" ?
-                              <ProjectCard
-                                title={project.title}
-                                authors={project.authors}
-                                category={project.category}
-                                category_slug={project.category_slug}
-                                county={project.county}
-                                comments={project.comments} /> : "";
-                    })}
-                </Row> : null}
-
-              {this.state.showTable ?
-                <Row className="white-section projects-list">
-                  <Col md={12}>
-                    {
-                     this.state.projects.map(function(project) {
-                      return project.category === currentCategory || currentCategory === "all" ?
-                              <ProjectRow
-                                title={project.title}
-                                authors={project.authors}
-                                category={project.category}
-                                category_slug={project.category_slug}
-                                county={project.county}
-                                comments={project.comments} /> : "";
-                    })}
-                  </Col>
-                </Row> : null}
-            </Grid>
-        </div>
+            </Row> : null}
+        </Grid>
       </div>;
   }
 });
