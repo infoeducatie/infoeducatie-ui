@@ -3,6 +3,8 @@ import React from "react";
 
 import ctx from "classnames";
 
+import "./filter_icon.less";
+
 
 export default React.createClass({
   displayName: "FilterIcon",

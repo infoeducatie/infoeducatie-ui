@@ -1,0 +1,86 @@
+@import "../../main";
+
+
+.project-row {
+  border-top: 1px solid @light-grey;
+  border-right: 1px solid @light-grey;
+  border-left: 1px solid @light-grey;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  min-height: 100px;
+
+  .project-details {
+    margin-left: 2%;
+
+    .project-title {
+      font-size: 2em;
+      margin-right: 10%;
+    }
+
+    .authors {
+      display: inline-block;
+
+      .author {
+        text-transform: uppercase;
+        margin-right: 8%;
+        color: @blue;
+      }
+    }
+  }
+
+  .project-other-details {
+    margin-top: 10%;
+
+    .map-marker {
+      float: left;
+      background: url("../../../assets/img/icons/location.png");
+      width: 20px;
+      height: 20px;
+      background-size: 20px 20px;
+      margin-top: -2px;
+    }
+
+    .location {
+      text-transform: uppercase;
+      margin-left: 10%;
+    }
+
+    .comments {
+      float: right;
+      background: url("../../../assets/img/icons/comments.png");
+      text-align: center;
+      width: 25px;
+      height: 25px;
+      background-size: 25px 25px;
+      color: @white;
+    }
+  }
+
+}
+
+.orange-section {
+  font-size: 15px;
+  background-color: @orange;
+  text-transform: uppercase;
+  border-bottom-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+  height: 60px;
+
+  .project-category {
+    margin-left: 35px;
+    margin-top: 20px;
+    float: left;
+    opacity: 0.5;
+  }
+
+  .project-category-icon {
+    background-size: 60px 50px;
+    float: left;
+    width: 60px;
+    margin-top: 10px;
+    margin-left: 25px;
+    -webkit-filter: saturate(0);
+    filter: saturate(0);
+    height: 50px;
+  }
+}

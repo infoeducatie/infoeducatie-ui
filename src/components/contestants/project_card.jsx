@@ -5,6 +5,8 @@ import React from "react";
 import ctx from "classnames";
 import { Row, Col } from "react-bootstrap";
 
+import "./project_card.less";
+
 
 export default React.createClass({
   displayName: "ProjectRow",
