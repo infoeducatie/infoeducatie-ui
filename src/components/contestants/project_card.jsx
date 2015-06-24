@@ -26,9 +26,11 @@ export default React.createClass({
         <Row className="xsmall-spacing" />
         <Row className="project-details">
           <Col md={12}>
-              {this.props.project.authors.map(function(author) {
-                return <div className="author" key={author.id}>{author.name}</div>;
-              })}
+            {this.props.project.authors.map(function(author) {
+              return <p className="author" key={author.id}>
+                {author.name}
+              </p>;
+            })}
             <Row className="xsmall-spacing" />
             <Row>
               <Col md={1}>
