@@ -20,7 +20,7 @@ import Schedule from "./components/schedule";
 import Contact from "./components/contact";
 import Results from "./components/results";
 import Footer from "./components/footer";
-import Contestants from "./components/contestants";
+import Contestants from "./components/contestants/contestants";
 import Sponsors from "./components/sponsors";
 import Blog from "./components/blog";
 
