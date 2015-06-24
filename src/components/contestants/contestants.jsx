@@ -1,41 +1,21 @@
 "use strict";
+
 import React from "react";
 
 import { Grid, Col, Row, Glyphicon } from "react-bootstrap";
 import ctx from "classnames";
 
-import Header from "./header";
-import { ProjectCard, ProjectRow } from "./project";
-import projectsFixture from "../fixtures/projects";
+import Header from "../header";
+import ProjectCard from "./project_card";
+import ProjectRow from "./project_row";
+import FilterIcon from "./filter_icon";
+import projectsFixture from "../../fixtures/projects";
 
 import "./contestants.less";
 
 
-var FilterIcon = React.createClass({
-  displayName: "FilterIcon",
-
-  toggleCategory() {
-    this.props.toggleCategory(this.props.category);
-  },
-
-  render() {
-    let parentClasses = ctx({
-      "round-icon": true,
-      "inactive": (this.props.currentCategory !== this.props.category &&
-                   this.props.currentCategory !== "all")
-    });
-    let childClasses = ctx("section-icon", this.props.category);
-
-    return <div onClick={this.toggleCategory} className={parentClasses}>
-      <span className={childClasses} />
-    </div>;
-  }
-
-});
-
-
 export default React.createClass({
-  displayName: "Participants",
+  displayName: "Contestants",
 
   getInitialState: function() {
     // on mobile we need to show only the list view
@@ -139,11 +119,10 @@ export default React.createClass({
       "icon hidden-xs": true,
       "inactive": !this.state.showGrid
     });
-    var tableClassName = ctx({
+    let tableClassName = ctx({
       "icon hidden-xs": true,
       "inactive": !this.state.showTable
     });
-    var currentCategory = this.state.currentCategory;
 
     return <div className="contestants">
         <div className="blue-section-wrapper">
