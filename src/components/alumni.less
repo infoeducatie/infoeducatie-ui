@@ -10,7 +10,10 @@
   }
 
   .alumnus-container {
+    color: @white;
+
     .alumnus-name {
+      color: @light-black;
       margin-top: 25px;
       margin-bottom: 0px;
       text-transform: uppercase;
@@ -21,19 +24,41 @@
     .alumnus-position {
       text-transform: uppercase;
       font-size: 13px;
+      color: @white;
+    }
+
+    .alumnus-image {
+      width: 75px;
+      height: 75px;
+      border-radius: 100%;
+      background-color: @grey;
+
+      img {
+        width: 100%;
+        height: 100%;
+        filter: grayscale(1);
+        padding: 10px;
+      }
     }
 
     &.green {
-      color: @white;
       background-color: @green;
+    }
+    &.orange {
+      background-color: @orange;
+    }
+
+    &.black {
+      background-color: @light-black;
 
       .alumnus-name {
-        color: black;
+        color: @orange;
       }
 
       .alumnus-position {
-        color: @white;
+        color: @light-grey;
       }
     }
+
   }
 }
