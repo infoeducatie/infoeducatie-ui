@@ -7,12 +7,7 @@
   }
 
   .blue-section {
-    .blue-section(@min-height: 500px);
-    color: @white;
-
-    h1 {
-      font-size: 6em;
-    }
+    .blue-section();
   }
 
   .stats-section {
@@ -53,14 +48,6 @@
   }
 
   .filter-buttons {
-    &.hidden {
-      display: none;
-    }
-
-    .col-md-1 {
-      float: left;
-    }
-
     .icon {
       cursor: pointer;
       font-size: 50px;
@@ -76,7 +63,6 @@
       width: 60px;
       border: 3px solid;
       border-radius: 100%;
-      text-align: center;
 
       &.inactive {
         border-color: @light-grey;
@@ -84,17 +70,14 @@
 
       span {
         background-size: 30px 25px;
-        display: inline-block;
-        margin: 13px auto;
-        -webkit-filter: saturate(0);
-        filter: saturate(0);
+        margin: 15px auto;
         height: 25px;
         width: 30px;
       }
     }
   }
 
-  .projects{
+  .projects {
 
     .projects-list{
 

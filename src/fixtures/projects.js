@@ -2,7 +2,15 @@ export default[
    {
     "id": 1,
     "title": "Time Travel",
-    "authors": ["claudia rujoiu", "dan stoian"],
+    "authors": [
+      {
+        "id": 1,
+        "name": "claudia rujoiu"
+      },
+      {
+        "id": 2,
+        "name": "dan stoian"
+      }],
     "county": "hunedoara",
     "comments": 7,
     "category": "utility",
@@ -11,7 +19,15 @@ export default[
    {
     "id": 2,
     "title": "Acționarea automată și securizată a Căilor de Access",
-    "authors": ["adriana-patricia blaj", "robert preda"],
+    "authors": [
+      {
+        "id": 1,
+        "name": "claudia rujoiu"
+      },
+      {
+        "id": 2,
+        "name": "dan stoian"
+      }],
     "county": "arad",
     "comments": 5,
     "category": "robots",
@@ -20,7 +36,15 @@ export default[
    {
     "id": 3,
     "title": "Romania e Okay!",
-    "authors": ["diana elena ghinea"],
+    "authors": [
+      {
+        "id": 1,
+        "name": "claudia rujoiu"
+      },
+      {
+        "id": 2,
+        "name": "dan stoian"
+      }],
     "county": "bucurești",
     "comments": 1,
     "category": "educational",
@@ -29,7 +53,15 @@ export default[
    {
     "id": 4,
     "title": "Mica Unire",
-    "authors": ["georgiana raluca bucutea", "roxana patricia datcu"],
+    "authors": [
+      {
+        "id": 1,
+        "name": "claudia rujoiu"
+      },
+      {
+        "id": 2,
+        "name": "dan stoian"
+      }],
     "county": "brașov",
     "comments": 13,
     "category": "media",
@@ -38,7 +70,15 @@ export default[
    {
     "id": 5,
     "title": "Velocity Reporter",
-    "authors": ["mihaela costache", "bogdan nechifor"],
+    "authors": [
+      {
+        "id": 1,
+        "name": "claudia rujoiu"
+      },
+      {
+        "id": 2,
+        "name": "dan stoian"
+      }],
     "county": "brăila",
     "comments": 5,
     "category": "web",
@@ -47,7 +87,15 @@ export default[
    {
     "id": 6,
     "title": "Acționarea automată și securizată a Căilor de Access",
-    "authors": ["adriana-patricia blaj", "robert preda"],
+    "authors": [
+      {
+        "id": 1,
+        "name": "claudia rujoiu"
+      },
+      {
+        "id": 2,
+        "name": "dan stoian"
+      }],
     "county": "arad",
     "comments": 5,
     "category": "robots",
@@ -56,7 +104,15 @@ export default[
    {
     "id": 7,
     "title": "Romania e Okay!",
-    "authors": ["diana elena ghinea"],
+    "authors": [
+      {
+        "id": 1,
+        "name": "claudia rujoiu"
+      },
+      {
+        "id": 2,
+        "name": "dan stoian"
+      }],
     "county": "bucurești",
     "comments": 1,
     "category": "educational",
@@ -65,7 +121,15 @@ export default[
    {
     "id": 8,
     "title": "Mica Unire",
-    "authors": ["georgiana raluca bucutea", "roxana patricia datcu"],
+    "authors": [
+      {
+        "id": 1,
+        "name": "claudia rujoiu"
+      },
+      {
+        "id": 2,
+        "name": "dan stoian"
+      }],
     "county": "brașov",
     "comments": 13,
     "category": "media",
@@ -74,7 +138,15 @@ export default[
    {
     "id": 9,
     "title": "Velocity Reporter",
-    "authors": ["mihaela costache", "bogdan nechifor"],
+    "authors": [
+      {
+        "id": 1,
+        "name": "claudia rujoiu"
+      },
+      {
+        "id": 2,
+        "name": "dan stoian"
+      }],
     "county": "brăila",
     "comments": 5,
     "category": "web",

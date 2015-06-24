@@ -106,7 +106,7 @@ export default React.createClass({
     var grid = null;
 
     if (this.state.showGrid) {
-      grid = <Row className="projects-grid hidden-xs">
+      grid = <Row className="projects-grid">
                {this.state.projects.map(this.renderProjectCard)}
              </Row>;
     }
@@ -167,37 +167,37 @@ export default React.createClass({
       <Grid>
         <Row className="big-spacing" />
         <Row className="filter-buttons">
-          <Col mdOffset={2} md={1}>
+          <Col smOffset={2} sm={1} xs={2}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="educational" />
           </Col>
-          <Col md={1}>
+          <Col sm={1} xs={2}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="media" />
           </Col>
-          <Col md={1}>
+          <Col sm={1} xs={2}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="robots" />
           </Col>
-          <Col md={1}>
+          <Col sm={1} xs={2}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="utility" />
           </Col>
-          <Col md={1}>
+          <Col sm={1} xs={2}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="web" />
           </Col>
-          <Col mdOffset={2} md={1}>
+          <Col smOffset={2} sm={1}>
             <Glyphicon glyph="th-large"
                        className={gridClassName}
                        onClick={this.showGrid} />
           </Col>
-          <Col md={1}>
+          <Col sm={1}>
             <Glyphicon glyph="align-justify"
                        className={tableClassName}
                        onClick={this.showTable} />

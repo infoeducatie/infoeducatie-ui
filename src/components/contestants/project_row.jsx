@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import ctx from "classanmes";
+import ctx from "classnames";
 import { Row, Col } from "react-bootstrap";
 
 
@@ -25,7 +25,7 @@ export default React.createClass({
                 </span>
                 <div className="authors">
                   {this.props.project.authors.map(function(author) {
-                    return <span className="author">{author}</span>;
+                    return <span className="author" key={author.key}>{author.name}</span>;
                   })}
                 </div>
               </Col>
