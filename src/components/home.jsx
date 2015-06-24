@@ -2,6 +2,7 @@
 
 import React from "react";
 import {Grid, Row, Col} from "react-bootstrap";
+import {Link} from "react-router"
 
 import Header from "./header";
 
@@ -41,14 +42,14 @@ export default React.createClass({
                 <Row>
                     <Col md={4} mdOffset={2}>
                         <p className="left-button">
-                            <a href="#" className="link link-primary">
+                            <Link to={'register'} className="link link-primary">
                                 Înregistrează-te
-                            </a>
+                            </Link>
                         </p>
                     </Col>
                     <Col md={4}>
                         <p className="right-button">
-                            <a href="#" className="link link-secondary">
+                            <a href="#news" className="link link-secondary">
                                 Mai multe...
                             </a>
                         </p>
@@ -78,29 +79,27 @@ export default React.createClass({
                 <Row className="row">
                     <Col md={5} className="left">
                         <Row className="small-spacing" />
-                        <h6>Știri</h6>
+                        <h6 id="news">Știri</h6>
 
                         <Row className="small-spacing" />
 
-                        <p className="date">16 aprilie 2069</p>
-                        <p className="title">Deadline-ul de înscriere a fost
-                        prelungit.</p>
+                        <p className="date">30 iunie 2015</p>
+                        <p className="title">Au inceput inscrierile pentru
+                        InfoEducatie 2015</p>
 
-                        <p className="message">Deadline-ul de înscriere pentru
-                        InfoEducație Online a fost prelungit până marți 21
-                        aprilie. Sursele trebuie trimise până joi noaptea pe
-                        Github.</p>
+                        <p className="message">Vă invităm să vă faceți conturi
+                        pe noul website și să vă înregistrați proiectele.</p>
                     </Col>
                     <Col md={5} mdOffset={1} className="right">
                         <Row className="small-spacing" />
-                        <p className="date">18 martie 2015</p>
-                        <p className="message">Au inceput inscrierile pentru
-                        InfoEducatie 2015</p>
+                        <p className="date">28 iunie 2015</p>
+                        <p className="message">Am lansat noul website
+                        InfoEducație.</p>
 
                         <Row className="big-spacing" />
-                        <p className="date">08 martie 2015</p>
-                        <p className="message">Website-ul InfoEducatie Online
-                        2015 a fost actualizat</p>
+                        <p className="date">26 iunie 2015</p>
+                        <p className="message">Tabăra anul acesta va avea loc în
+                        perioada 2-8 august.</p>
                     </Col>
                 </Row>
                 <Row className="small-spacing" />
@@ -143,7 +142,8 @@ export default React.createClass({
                             <h6 className="edition">Ediția 23</h6>
                             <Row className="small-spacing" />
                             <p>
-                                <a href="#" className="link link-secondary">
+                                <a href="https://plus.google.com/+InfoeducatieRomania/photos"
+                                   className="link link-secondary">
                                     Mai multe poze
                                 </a>
                             </p>
