@@ -18,14 +18,39 @@ export default React.createClass({
     return {
       alumni: [
         {
-          "description": "La momentul respectiv, era o joacă, acum infoarena este o organizație cu activitate solidă și cu un impact mare în randul tinerilor pasionați de informatică.",
-          "avatar": {CristiAvatar},
+          "description": `La momentul respectiv, era o joacă, acum infoarena
+                         este o organizație cu activitate solidă și cu un
+                         impact mare în randul tinerilor pasionați de
+                         informatică.`,
+          "avatar": CristiAvatar,
           "name": "Cristian Strat",
           "position": "growth @ twitter",
           "color": "green"
+        },
+        {
+          "description": `InfoEducație a fost probabil principalul motiv
+                         pentru care mi-a plăcut să fac web în anii de
+                         liceu. InfoEducație mi-a oferit ocazia de a vedea
+                         cât de bun sunt, să explorez, să nu mă mulțumesc cu
+                         puțin.`,
+          "avatar": CristiAvatar,
+          "name": "Octavian Costache",
+          "position": "software developer @ google",
+          "color": "orange"
+        },
+        {
+          "description": `Un eveniment excelent pentru oamenii cu idei,
+                         pentru elevii care pun efort și pasiune într-un
+                         proiect în afara școlii. Munca depusă contează
+                         acum, în concurs, dar va conta și în 2, 3, 5,
+                         10 ani.`,
+          "avatar": CristiAvatar,
+          "name": "Tudor Leu",
+          "position": "software engineer @ google checkout",
+          "color": "black"
         }
       ]
-    }
+    };
   },
 
   renderAlumnus(alumnus) {
@@ -39,7 +64,7 @@ export default React.createClass({
             <Row className="small-spacing" />
             <Row>
               <Col mdOffset={1} md={1}>
-                <Row className="small-spacing" />
+                <Row className="xsmall-spacing" />
                 <div className="alumnus-image"><img src={alumnus.avatar} /></div>
               </Col>
               <Col mdOffset={1} md={8}>
