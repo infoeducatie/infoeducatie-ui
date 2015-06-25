@@ -26,7 +26,7 @@ export default React.createClass({
             <Nav className="navbar-nav" ref="nav">
               <NavItemLink to="alumni">Alumni</NavItemLink>
               <NavItemLink to="forum">Forum</NavItemLink>
-              <NavItemLink to="schedule">Program</NavItemLink>
+              <NavItemLink to="calendar">Calendar</NavItemLink>
               <NavItemLink to="results">Rezultate</NavItemLink>
               <NavItemLink to="jury">Juriu</NavItemLink>
               <NavItemLink to="contact">Contact</NavItemLink>

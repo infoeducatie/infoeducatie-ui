@@ -16,7 +16,7 @@ import Dashboard from "./components/dashboard";
 import Jury from "./components/jury";
 import Home from "./components/home";
 import Forum from "./components/forum";
-import Schedule from "./components/schedule";
+import Calendar from "./components/calendar";
 import Contact from "./components/contact";
 import Results from "./components/results";
 import Footer from "./components/footer";
@@ -76,7 +76,7 @@ let routes = (
     <Route handler={Register} name="register" />
     <Route handler={Dashboard} name="dashboard" />
     <Route handler={Forum} name="forum" />
-    <Route handler={Schedule} name="schedule" />
+    <Route handler={Calendar} name="calendar" />
     <Route handler={Results} name="results" />
     <Route handler={Contact} name="contact" />
     <DefaultRoute handler={Home} />
