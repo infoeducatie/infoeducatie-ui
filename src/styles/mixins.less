@@ -1,9 +1,33 @@
 @import "../styles/variables";
 
+.gray-section-wrapper (@img_path: "../../assets/img/banner_image.png"){
+  @gray-gradient: rgba(0, 129, 177, 0.7);
+  background: linear-gradient(@gray-gradient, @gray-gradient), url(@img_path);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.gray-section (@min-height: @section-min-height * 2) {
+  text-align: center;
+  min-height: @min-height;
+
+  h1 {
+    font-size: @font-size-h1-big;
+    color: @white;
+  }
+
+  @media screen and (max-width: @screen-sm) {
+    h1 {
+      font-size: @font-size-h1;
+    }
+  }
+}
+
 .blue-section-wrapper (@img_path: "../../assets/img/banner_image.png"){
   @blue-gradient: rgba(0, 129, 177, 0.7);
   background: linear-gradient(@blue-gradient, @blue-gradient), url(@img_path);
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .blue-section (@min-height: @section-min-height * 2) {

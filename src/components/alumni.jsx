@@ -82,8 +82,8 @@ export default React.createClass({
 
   render() {
     return <div className="alumni">
-      <div className="blue-section-wrapper">
-        <Grid className="blue-section">
+      <div className="gray-section-wrapper">
+        <Grid className="gray-section">
           <Row>
             <Col>
               <Header isLoggedIn={this.props.isLoggedIn}
