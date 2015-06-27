@@ -28,7 +28,7 @@ export default React.createClass({
               <h2>istoric și regulament</h2>
             </Col>
           </Row>
-          <Row className="small-spacing" />
+          <Row className="big-spacing" />
         </Grid>
       </div>
       <Grid className="white-section">
