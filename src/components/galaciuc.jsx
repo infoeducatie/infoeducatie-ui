@@ -22,14 +22,13 @@ export default React.createClass({
                       logout={this.props.logout} />
             </Col>
           </Row>
-          <Row className="small-spacing header-spacing" />
           <Row>
             <Col>
               <h1>Despre Concursul InfoEducație</h1>
               <h2>istoric și regulament</h2>
             </Col>
           </Row>
-          <Row className="small-spacing header-spacing" />
+          <Row className="small-spacing" />
         </Grid>
       </div>
       <div className="white-section-wrapper">
