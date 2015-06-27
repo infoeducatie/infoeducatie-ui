@@ -2,6 +2,7 @@
 
 import React from "react";
 import $ from "jquery";
+import _ from "lodash";
 import { Grid, Col, Row, Input, ButtonInput } from "react-bootstrap";
 
 import Header from "./header";
@@ -20,7 +21,7 @@ export default React.createClass({
       errors: [],
       hasErrored: false,
       hasSubmited: false
-    }
+    };
   },
 
   render() {
@@ -91,7 +92,7 @@ export default React.createClass({
           return <li className="list-group-item list-group-item-danger"
                      key={error}>
             {error}
-          </li>
+          </li>;
         })}
       </ul>;
     }
@@ -102,7 +103,7 @@ export default React.createClass({
       return <div className="register-success">
         <p><img src={SuccessIcon} /></p>
         <p>Verifică căsuța ta pentru un email de confirmare.</p>
-      </div>
+      </div>;
     }
   },
 
@@ -137,28 +138,27 @@ export default React.createClass({
       url: window.config.API_URL + "users.json",
       data: data,
       success: this.onSignUpSuccess,
-      error: this.onSignUpError,
+      error: this.onSignUpError
     });
   },
 
-  onSignUpSuccess(data) {
+  onSignUpSuccess() {
     this.setState({
       hasSubmited: true
-    })
+    });
   },
 
   onSignUpError(data) {
     let errors = [];
-    for (let key in data.responseJSON) {
-      data.responseJSON[key].map((error) => {
+    _.forIn(data.responseJSON, (value, key) => {
+      value.map((error) => {
         errors.push(key + " " + error);
-      })
-    }
-    console.log(errors);
+      });
+    });
 
     this.setState({
       hasErrored: true,
       errors: errors
-    })
+    });
   }
 });
