@@ -17,7 +17,8 @@ export default React.createClass({
       email: "",
       password: "",
       passwordConfirmation: "",
-      hasErrored: true,
+      errors: [],
+      hasErrored: false,
       hasSubmited: false
     }
   },
@@ -53,30 +54,46 @@ export default React.createClass({
 
   renderForm() {
     if (!this.state.hasSubmited) {
-      return <form onSubmit={this.onFormSubmit}>
-        <Input
-          type="text"
-          placeholder="tuxi@pinguinescu.ro"
-          label="Adresa de email"
-          onChange={this.onEmailChange}
-          hasFeedback
-          ref="input" />
-        <Input
-          type="password"
-          placeholder="***************"
-          label="Parola"
-          onChange={this.onPasswordChange}
-          hasFeedback
-          ref="input" />
-        <Input
-          type="password"
-          placeholder="***************"
-          label="Confirmare parolă"
-          onChange={this.onPasswordConfirmationChange}
-          hasFeedback
-          ref="input" />
-        <ButtonInput type="submit" value="Înregistrează-te" />
-      </form>;
+      return <div>
+        <form onSubmit={this.onFormSubmit}>
+          <Input
+            type="text"
+            placeholder="tuxi@pinguinescu.ro"
+            label="Adresa de email"
+            onChange={this.onEmailChange}
+            hasFeedback
+            ref="input" />
+          <Input
+            type="password"
+            placeholder="***************"
+            label="Parola"
+            onChange={this.onPasswordChange}
+            hasFeedback
+            ref="input" />
+          <Input
+            type="password"
+            placeholder="***************"
+            label="Confirmare parolă"
+            onChange={this.onPasswordConfirmationChange}
+            hasFeedback
+            ref="input" />
+          <ButtonInput type="submit" value="Înregistrează-te" />
+        </form>
+        {this.renderErrors()}
+      </div>;
+    }
+  },
+
+  renderErrors() {
+    if (this.state.hasErrored) {
+      return <ul className="errors list-group">
+        {this.state.errors.map((error) => {
+          return <li className="list-group-item list-group-item-danger"
+                     key={error}>
+            {error}
+          </li>
+        })}
+      </ul>;
     }
   },
 
@@ -91,21 +108,18 @@ export default React.createClass({
 
   onEmailChange(event) {
     this.setState({
-      hasErrored: false,
       email: event.currentTarget.value
     });
   },
 
   onPasswordChange(event) {
     this.setState({
-      hasErrored: false,
       password: event.currentTarget.value
     });
   },
 
   onPasswordConfirmationChange(event) {
     this.setState({
-      hasErrored: false,
       passwordConfirmation: event.currentTarget.value
     });
   },
@@ -119,7 +133,7 @@ export default React.createClass({
     data["user[password_confirmation]"] = this.state.passwordConfirmation;
 
     $.ajax({
-      method: 'POST',
+      method: "POST",
       url: window.config.API_URL + "users.json",
       data: data,
       success: this.onSignUpSuccess,
@@ -134,7 +148,17 @@ export default React.createClass({
   },
 
   onSignUpError(data) {
-    // TODO @palcu: show errors
-    console.log(data);
+    let errors = [];
+    for (let key in data.responseJSON) {
+      data.responseJSON[key].map((error) => {
+        errors.push(key + " " + error);
+      })
+    }
+    console.log(errors);
+
+    this.setState({
+      hasErrored: true,
+      errors: errors
+    })
   }
 });
