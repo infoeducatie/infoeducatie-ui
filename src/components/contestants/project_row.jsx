@@ -46,11 +46,17 @@ export default React.createClass({
           </Col>
         </Row>
         <Row className="orange-section">
-          <Col sm={2} smOffset={1} xs={9} className="project-category">
-            <p>{this.props.project.category_slug}</p>
-          </Col>
-          <Col sm={1} xs={3}>
-            <p><span className={projectCategoryIconClasses} /></p>
+          <Col xs={12}>
+            <Row className="xxsmall-spacing" />
+            <Row>
+              <Col sm={2} smOffset={1} xs={9} className="project-category">
+                <p>{this.props.project.category_slug}</p>
+              </Col>
+              <Col sm={1} xs={3}>
+                <p><span className={projectCategoryIconClasses} /></p>
+              </Col>
+            </Row>
+            <Row className="xxsmall-spacing" />
           </Col>
         </Row>
         <Row className="small-spacing" />

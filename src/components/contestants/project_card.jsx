@@ -52,13 +52,19 @@ export default React.createClass({
         </Row>
       </div>
       <Row className="orange-section">
-        <Col sm={8}>
-          <p className="project-category">
-            {this.props.project.category_slug}
-          </p>
-        </Col>
-        <Col sm={4}>
-          <p><span className={projectCategoryIconClasses} /></p>
+        <Col xs={12}>
+          <Row className="xxsmall-spacing" />
+          <Row>
+            <Col sm={8}>
+              <p className="project-category">
+                {this.props.project.category_slug}
+              </p>
+            </Col>
+            <Col sm={4}>
+              <p><span className={projectCategoryIconClasses} /></p>
+            </Col>
+          </Row>
+          <Row className="xxsmall-spacing" />
         </Col>
       </Row>
       <Row className="xsmall-spacing" />
