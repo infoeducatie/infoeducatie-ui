@@ -10,25 +10,24 @@
   }
 
   .white-section {
-    text-align: center;
+    text-align: left;
 
-    h4 {
-      text-align: left;
+    li:before {
+      content: "\2014";
+      position: relative;
+      left: -5px;
+      font-size: 24px;
+      color: @pink;
     }
 
-    .about {
+    li {
+      list-style-type: none;
+      font-size: @font-size-base;
+    }
+
+    p {
       font-size: 20px;
-      text-align: left;
       margin-top: 20px;
-
-      .pink-dash {
-        font-size: 30px;
-        margin-right: 10px;
-      }
-
-      &.listing {
-        margin-top: 10px;
-      }
     }
 
     .box {
@@ -37,6 +36,7 @@
       border: 3px solid @light-grey;
 
       .rules {
+        text-align: center;
         margin-top: @box-height / 4;
 
         .description {
@@ -58,12 +58,6 @@
           width: 60px;
         }
 
-      }
-    }
-
-    .contact {
-      .listing {
-        margin-top: -10px;
       }
     }
 
@@ -97,6 +91,7 @@
 
       .round-icon {
         @icon-height: 70px;
+        text-align: center;
         width: 70px;
         height: @icon-height;
         background-color: @black;

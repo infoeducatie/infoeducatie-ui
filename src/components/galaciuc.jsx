@@ -115,19 +115,18 @@ export default React.createClass({
                   de <b>4 elevi</b> și un <b>profesor însoțitor</b>
                   , în următoarele condiții:
               </p>
-              <p className="about listing">
-                  <span className="pink-dash" />
+              <ul>
+                <li className="about">
                   minim trei lucrări (web, roboți sau IoT, multimedia,
                   software educțional, software utilitar)
-              </p>
-              <p className="about listing">
-                  <span className="pink-dash" />
+                </li>
+                <li className="about">
                   cerinte hardware și software rezonabile
-              </p>
-              <p className="about listing">
-                  <span className="pink-dash" />
+                </li>
+                <li className="about">
                   nu se admit lucrări accesibile doar prin web
-              </p>
+                </li>
+              </ul>
             </Row>
             <Row className="big-spacing" />
             <Row>
@@ -145,35 +144,32 @@ export default React.createClass({
             <Row className="small-spacing" />
             <Row className="contact">
               <h4>Contact</h4>
-              <p className="about listing">
-                <span className="pink-dash" />
-                Organizatori: contact@infoeducatie.ro (Emil Onea)
-              </p>
-              <p className="about listing">
-                <span className="pink-dash" />
-                Website: ping@infoeducatie.ro
-              </p>
+              <ul>
+                <li className="about">
+                  Organizatori: contact@infoeducatie.ro (Emil Onea)
+                </li>
+                <li className="about">
+                  Website: ping@infoeducatie.ro
+                </li>
+              </ul>
               <h4>Juriu</h4>
-              <p className="about listing">
-                <span className="pink-dash" />
-                Software educațional: educational@infoeducatie.ro
-              </p>
-              <p className="about listing">
-                <span className="pink-dash" />
-                Multimedia: multimedia@infoeducatie.ro
-              </p>
-              <p className="about listing">
-                <span className="pink-dash" />
-                Software utilitar: utilitar@infoeducatie.ro
-              </p>
-              <p className="about listing">
-                <span className="pink-dash" />
-                Roboți: roboti@infoeducatie.ro
-              </p>
-              <p className="about listing">
-                <span className="pink-dash" />
-                Web: web@infoeducatie.ro
-              </p>
+              <ul>
+                <li className="about">
+                  Software educațional: educational@infoeducatie.ro
+                </li>
+                <li className="about">
+                  Multimedia: multimedia@infoeducatie.ro
+                </li>
+                <li className="about">
+                  Software utilitar: utilitar@infoeducatie.ro
+                </li>
+                <li className="about">
+                  Roboți: roboti@infoeducatie.ro
+                </li>
+                <li className="about">
+                  Web: web@infoeducatie.ro
+                </li>
+              </ul>
             </Row>
           </Col>
         </Row>
