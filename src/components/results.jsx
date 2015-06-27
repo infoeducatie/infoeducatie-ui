@@ -65,7 +65,7 @@ export default React.createClass({
   renderTable() {
     return <Grid className="results-section">
       <Row>
-        <Col mdOffset={1} md={10}>
+        <Col>
           <Table responsive>
             <thead>
               <tr>
@@ -81,7 +81,7 @@ export default React.createClass({
             {this.state.results[this.state.currentCategory].map(function(result) {
               return <tr key={result.project.id}>
                 <td className="rank">{result.rank}</td>
-                <td>{result.project.name}</td>
+                <td className="name">{result.project.name}</td>
                 <td>
                   <ul className="list-unstyled">
                     {result.project.authors.map(function(author){

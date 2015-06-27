@@ -17,9 +17,24 @@
         text-transform: uppercase;
         height: 100px;
         text-align: center;
-        display: table-cell;
         vertical-align: middle;
+        display: table-cell;
         border-bottom: 10px solid @light-black;
+      }
+
+      td {
+        height: 75px;
+        vertical-align: middle;
+        display: table-cell;
+        border-bottom: 1px solid @pink;
+
+        &.rank {
+          text-transform: uppercase;
+          text-align: center;
+          color: @blue;
+          font-size: @font-size-h2;
+          letter-spacing: @big-letter-spacing;
+        }
       }
     }
   }
