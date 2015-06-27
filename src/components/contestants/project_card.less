@@ -3,26 +3,18 @@
 
 .project-card {
   display: inline-block;
-  padding:  10px;
-  width:  275px;
+  width: 100%;
 
   .participant-container {
     text-align: center;
+
     border-top: 4px solid @light-grey;
     border-right: 1px solid @light-grey;
     border-left: 1px solid @light-grey;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
 
-    position: relative;
-    display: block;
-
-    .project-title {
-      font-size: 2em;
-    }
-
     .project-details {
-      width: 85%;
       margin: 0 auto;
       text-transform: uppercase;
       text-align: left;
@@ -56,22 +48,22 @@
     text-transform: uppercase;
     border-bottom-right-radius: 7px;
     border-bottom-left-radius: 7px;
-    width: 100%;
+    @project-category-icon-height: 50px;
+
+    p {
+      margin: 0;
+      line-height: @project-category-icon-height;
+    }
 
     .project-category {
-      margin-top: 10px;
       opacity: 0.5;
     }
 
     .project-category-icon {
-      background-size: 60px 50px;
+      background-size: 60px @project-category-icon-height;
       width: 60px;
-      height: 50px;
+      height: @project-category-icon-height;
       filter: saturate(0);
-
-      &.media {
-        margin-top: 0px;
-      }
     }
   }
 }
