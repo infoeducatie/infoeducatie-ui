@@ -1,7 +1,7 @@
 "use strict";
 
 import React from "react";
-import { Grid, Col, Row, Glyphicon } from "react-bootstrap";
+import { Grid, Col, Row, Table } from "react-bootstrap";
 
 import Header from "./header";
 import FilterIcon from "./contestants/filter_icon";
@@ -63,7 +63,24 @@ export default React.createClass({
   },
 
   renderTable() {
-    return <Grid>
+    return <Grid className="results-section">
+      <Row>
+        <Col mdOffset={1} md={10}>
+          <Table responsive>
+            <thead>
+              <tr>
+                <th>premiul</th>
+                <th>numele lucrării</th>
+                <th>concurent</th>
+                <th>liceu</th>
+                <th>punctaj</th>
+                <th>open</th>
+                <th>total</th>
+              </tr>
+            </thead>
+          </Table>
+        </Col>
+      </Row>
     </Grid>;
   },
 
@@ -116,6 +133,7 @@ export default React.createClass({
                         category="web" />
           </Col>
         </Row>
+        <Row className="small-spacing" />
       </Grid>
       {this.renderTable()}
     </div>;
