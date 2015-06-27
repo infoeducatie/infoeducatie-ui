@@ -18,30 +18,44 @@ import $ from "jquery";
 export default React.createClass({
   displayName: "Footer",
 
+  emailRegex() {
+      return /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]{2,})+$/;
+  },
+
+  getInitialState() {
+    return {
+      newsletterEmail: ""
+    };
+  },
+
   newsletterEmailChange(event) {
-    this.setState({
-      newsletterEmail: event.currentTarget.value
-    });
+      this.setState({
+        newsletterEmail: event.currentTarget.value
+      });
+  },
+
+  newsletterValidationState() {
+    if (!this.state.newsletterEmail.length)
+      return;
+    if (this.emailRegex().exec(this.state.newsletterEmail))
+      return "success";
+    return "error";
   },
 
   newsletterSubmit(event) {
     event.preventDefault();
 
-    var re = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    if (!re.exec(this.state.newsletterEmail)) {
-      alert("Emailul nu este valid");
+    if (!this.emailRegex().exec(this.state.newsletterEmail))
       return;
-    }
 
     let data = { };
-    data['EMAIL'] = this.state.newsletterEmail;
-
+    data["EMAIL"] = this.state.newsletterEmail;
 
     $.ajax({
-      url: '//upir.us8.list-manage.com/subscribe/post-json' +
-           '?u=3f6ccc8a6a63be50b4bb9b1b1&id=3a8ffa6e4f&c=?',
-      method: 'POST',
-      dataType: 'jsonp',
+      url: "//upir.us8.list-manage.com/subscribe/post-json" +
+           "?u=3f6ccc8a6a63be50b4bb9b1b1&id=3a8ffa6e4f&c=?",
+      method: "POST",
+      dataType: "jsonp",
       data: data,
       error: this.newsletterSubscribeError,
       complete: this.newsletterSubscribeResponse,
@@ -50,12 +64,12 @@ export default React.createClass({
 
   newsletterSubscribeResponse(response) {
     let data = response.responseJSON;
-    if (data['result'] == 'error')
+    if (data["result"] == "error")
       alert("Adresa de email este deja inregistrata sau un email de " +
             "confirmare a inregistrarii este a fost trimis catre tine.");
     else
-      alert("Esti aproape gata. Mai trebuie sa confirmi inscrierea dand click" +
-            " pe link-ul trimis catre tine prin email");
+      alert("Esti aproape gata. Mai trebuie sa confirmi inscrierea dand click +
+            "pe link-ul trimis catre tine prin email");
   },
 
   render() {
@@ -85,10 +99,13 @@ export default React.createClass({
                 <Row className="small-spacing" />
                 <Row>
                   <Input required
+                         hasFeedback
+                         ref="newsletterInput"
                          type="text"
                          className="newsletter"
                          bsSize="large"
                          placeholder="Abonează-te la newsletter"
+                         bsStyle={this.newsletterValidationState()}
                          onChange={this.newsletterEmailChange} />
                 </Row>
                 <Row className="small-spacing" />
@@ -107,10 +124,10 @@ export default React.createClass({
         <Col md={6}>
           <Row>
             <ul className="social-logos">
-              <li><a href="https://www.facebook.com/infoeducatie" target="_blank"><img alt='Facebook' src={Facebook} /></a></li>
-              <li><a href="https://twitter.com/infoeducatie" target="_blank"><img alt='Twitter' src={Twitter} /></a></li>
-              <li><a href="https://plus.google.com/+InfoeducatieRomania" target="_blank"><img alt='Google+' src={Google} /></a></li>
-              <li><a href="https://github.com/infoeducatie" target="_blank"><img alt='Github' src={Github} /></a></li>
+              <li><a href="https://www.facebook.com/infoeducatie" target="_blank"><img alt="Facebook" src={Facebook} /></a></li>
+              <li><a href="https://twitter.com/infoeducatie" target="_blank"><img alt="Twitter" src={Twitter} /></a></li>
+              <li><a href="https://plus.google.com/+InfoeducatieRomania" target="_blank"><img alt="Google+" src={Google} /></a></li>
+              <li><a href="https://github.com/infoeducatie" target="_blank"><img alt="Github" src={Github} /></a></li>
             </ul>
           </Row>
           <Row>
