@@ -16,7 +16,7 @@ export default React.createClass({
       <div className="blue-section-wrapper">
         <Grid className="blue-section">
           <Row>
-            <Col md={12}>
+            <Col>
               <Header isLoggedIn={this.props.isLoggedIn}
                       login={this.props.login}
                       logout={this.props.logout} />
@@ -24,7 +24,7 @@ export default React.createClass({
           </Row>
           <Row className="small-spacing header-spacing" />
           <Row>
-            <Col md={12}>
+            <Col>
               <h1>Despre Concursul InfoEducație</h1>
               <h2>istoric și regulament</h2>
             </Col>
