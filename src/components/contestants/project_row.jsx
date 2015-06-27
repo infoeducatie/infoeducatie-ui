@@ -17,10 +17,10 @@ export default React.createClass({
         "project-category-icon", "section-icon", this.props.project.category);
 
     return <Row className="project-row">
-      <Col xs={12}>
+      <Col>
         <Row className="project-row-details">
-          <Col xs={12}>
-            <Row className="xsmall-spacing" />
+          <Col sm={10} smOffset={1}>
+            <Row className="small-spacing" />
             <Row>
               <Col sm={9} className="project-details">
                 <h3>{this.props.project.title}</h3>
@@ -42,11 +42,11 @@ export default React.createClass({
                 </p>
               </Col>
             </Row>
-            <Row className="xsmall-spacing" />
+            <Row className="small-spacing" />
           </Col>
         </Row>
         <Row className="orange-section">
-          <Col sm={2} xs={9} className="project-category">
+          <Col sm={2} smOffset={1} xs={9} className="project-category">
             <p>{this.props.project.category_slug}</p>
           </Col>
           <Col sm={1} xs={3}>
