@@ -2,36 +2,11 @@
 
 
 .photos {
-  color: @white;
-  .blue-section-wrapper {
-    .blue-section-wrapper (@img_path: "../../assets/img/bag.png");
+  .gray-section-wrapper {
+    .gray-section-wrapper (@img_path: "../../assets/img/photos.png");
   }
-  .blue-section {
-    .blue-section();
-
-    h1 {
-      font-size: @font-size-h1;
-    }
-
-    @media screen and (max-width: @screen-md) {
-      .link {
-        margin: @vertical-small-spacing/4 0;
-      }
-
-      .header-spacing {
-        height: 0;
-      }
-    }
-
-    @media screen and (min-width: @screen-md) {
-      .left-button {
-        text-align: right;
-      }
-
-      .right-button {
-        text-align: left;
-      }
-    }
+  .gray-section {
+    .gray-section();
   }
 
   .white-section {
