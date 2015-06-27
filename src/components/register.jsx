@@ -176,11 +176,16 @@ export default React.createClass({
 
   onSignUpError(data) {
     let errors = [];
-    _.forIn(data.responseJSON, (value, key) => {
-      value.map((error) => {
-        errors.push(key + " " + error);
+
+    if (data['status'] === 500) {
+      errors.push("Ne pare rău, avem o problemă cu servărul!");
+    } else {
+      _.forIn(data.responseJSON, (value, key) => {
+        value.map((error) => {
+          errors.push(key + " " + error);
+        });
       });
-    });
+    }
 
     this.setState({
       hasErrored: true,
