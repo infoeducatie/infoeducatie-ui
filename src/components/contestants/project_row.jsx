@@ -25,7 +25,9 @@ export default React.createClass({
                 <h3>{this.props.project.title}</h3>
                 <ul className="list-inline authors">
                   {this.props.project.authors.map(function(author) {
-                    return <li className="author" key={author.key}>{author.name}</li>;
+                    return <li className="author" key={author.id}>
+                      {author.name}
+                    </li>;
                   })}
                 </ul>
               </Col>
