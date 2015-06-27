@@ -12,34 +12,36 @@ export default React.createClass({
   displayName: "ProjectCard",
 
   render() {
-    let className = ctx("project-category-icon", "section-icon",
-                        this.props.project.category);
+    let projectCategoryIconClasses = ctx(
+        "project-category-icon", "section-icon", this.props.project.category);
 
     return <div className="project-card">
       <div className="participant-container">
         <Row className="xsmall-spacing" />
         <Row className="project-title">
-          <Col md={10} mdOffset={1}>
-            <p>{this.props.project.title}</p>
+          <Col xs={12}>
+            <h4>{this.props.project.title}</h4>
           </Col>
         </Row>
         <Row className="xsmall-spacing" />
         <Row className="project-details">
-          <Col>
-            {this.props.project.authors.map(function(author) {
-              return <p className="author" key={author.id}>
-                {author.name}
-              </p>;
-            })}
+          <Col xs={12}>
+            <ul className="list-unstyled">
+              {this.props.project.authors.map(function(author) {
+                return <li className="author" key={author.id}>
+                  {author.name}
+                </li>;
+              })}
+            </ul>
             <Row className="xsmall-spacing" />
             <Row>
-              <Col md={1}>
+              <Col xs={1}>
                 <span className='map-marker' />
               </Col>
-              <Col md={6}>
+              <Col xs={6}>
                 <p>{this.props.project.county}</p>
               </Col>
-              <Col md={1} mdOffset={2}>
+              <Col xs={1} xsOffset={2}>
                 <span className="comments">
                   {this.props.project.comments}
                 </span>
@@ -50,11 +52,16 @@ export default React.createClass({
         </Row>
       </div>
       <Row className="orange-section">
-        <Col md={8} className="project-category">
-          <p>{this.props.project.category_slug}</p>
+        <Col sm={8}>
+          <p className="project-category">
+            {this.props.project.category_slug}
+          </p>
         </Col>
-        <Col md={4} className={className} />
+        <Col sm={4}>
+          <p><span className={projectCategoryIconClasses} /></p>
+        </Col>
       </Row>
+      <Row className="xsmall-spacing" />
     </div>;
   }
 });
