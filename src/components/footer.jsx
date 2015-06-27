@@ -14,30 +14,9 @@ import Google from "../../assets/img/icons/gplus.png";
 import Github from "../../assets/img/icons/github.png";
 
 import NewsletterForm from "./newsletter-form";
-import NewsletterSucces from "./newsletter-succes";
 
 export default React.createClass({
   displayName: "Footer",
-
-  getInitialState() {
-    return {
-      newsletterSubscribed: false
-    };
-  },
-
-  setNewsletterSubscribed() {
-    this.setState({
-      newsletterSubscribed: true
-    });
-  },
-
-  renderNewsletterForm() {
-    if (this.state.newsletterSubscribed)
-      return <NewsletterSucces />
-
-    return <NewsletterForm
-              setNewsletterSubscribed={this.setNewsletterSubscribed} />
-  },
 
   render() {
     return <Grid className="footer">
@@ -60,7 +39,8 @@ export default React.createClass({
       <Row className="small-spacing" />
       <Row className="call-to-action">
         <Col md={6} className="left hidden-xs">
-          {this.renderNewsletterForm()}
+          <NewsletterForm
+              setNewsletterSubscribed={this.setNewsletterSubscribed} />
         </Col>
         <Col md={6} className="text-center">
           <Row>

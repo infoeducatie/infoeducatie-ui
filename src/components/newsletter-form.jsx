@@ -1,3 +1,5 @@
+"use strict";
+
 import $ from "jquery";
 import React from "react";
 import { Row, Col, Input, ButtonInput, ListGroup, ListGroupItem } from "react-bootstrap";
@@ -11,33 +13,38 @@ export default React.createClass({
 
   getInitialState() {
     return {
+      subscribed: false,
       hasErrored: false,
       newsletterEmail: ""
     };
   },
 
   onEmailChange(event) {
-      this.setState({
-        newsletterEmail: event.currentTarget.value
-      });
+    this.setState({
+      newsletterEmail: event.currentTarget.value
+    });
   },
 
   validationState() {
-    if (!this.state.newsletterEmail.length)
-      return;
-    if (this.getEmailRegex().exec(this.state.newsletterEmail))
+    if (!this.state.newsletterEmail.length) {
+      return null;
+    }
+    if (this.getEmailRegex().exec(this.state.newsletterEmail)) {
       return "success";
+    }
     return "error";
   },
 
   onSubmit(event) {
     event.preventDefault();
 
-    if (!this.getEmailRegex().exec(this.state.newsletterEmail))
-      return;
+    if (!this.getEmailRegex().exec(this.state.newsletterEmail)) {
+      return null;
+    }
 
-    let data = { };
-    data["EMAIL"] = this.state.newsletterEmail;
+    let data = {
+      "EMAIL": this.state.newsletterEmail
+    };
 
     $.ajax({
       url: "//upir.us8.list-manage.com/subscribe/post-json" +
@@ -45,30 +52,35 @@ export default React.createClass({
       method: "POST",
       dataType: "jsonp",
       data: data,
-      complete: this.subscribeResponse,
+      complete: this.subscribeResponse
     });
   },
 
   subscribeResponse(response) {
     let data = response.responseJSON;
-    if (data["result"] == "error")
+    if (data.result === "error") {
       this.setState({
         hasErrored: true
       });
-    else
-      this.props.setNewsletterSubscribed();
+    } else {
+      this.setState({
+        subscribed: true
+      });
+    }
   },
 
   renderError() {
-    return <ListGroup>
-      <ListGroupItem bsStyle="danger">
-        Adresa de email este deja inregistrata sau un email de
-        confirmare a fost deja trimis catre tine
-      </ListGroupItem>
-    </ListGroup>;
+    return <Row>
+      <ListGroup>
+        <ListGroupItem bsStyle="danger">
+          Adresa de email este deja înregistrată sau un email de
+          confirmare a fost deja trimis către tine.
+        </ListGroupItem>
+      </ListGroup>
+    </Row>;
   },
 
-  render() {
+  renderForm() {
     return <Row>
       <Col md={8} mdOffset={2}>
         <form onSubmit={this.onSubmit}>
@@ -83,9 +95,7 @@ export default React.createClass({
                    bsStyle={this.validationState()}
                    onChange={this.onEmailChange} />
           </Row>
-          <Row>
-            { this.state.hasErrored ? this.renderError() : null }
-          </Row>
+          { this.state.hasErrored ? this.renderError() : null }
           <Row>
               <ButtonInput type="submit"
                            value="Abonează-te"
@@ -95,5 +105,19 @@ export default React.createClass({
         </form>
       </Col>
     </Row>;
+  },
+
+  renderSucces() {
+    return <Col md={8} mdOffset={2}>
+      <Row className="small-spacing" />
+      <Row>
+        <p>Ești aproape înscris. Mai trebuie să confirmi înscrierea dând
+           click pe link-ul trimis către tine prin email.</p>
+      </Row>
+    </Col>;
+  },
+
+  render() {
+    return this.state.subscribed ? this.renderSucces() : this.renderForm();
   }
 });
