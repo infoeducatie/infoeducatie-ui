@@ -17,10 +17,11 @@ export default React.createClass({
     return <div className="header">
       <Row className="small-spacing" />
       <Row>
-        <Col md={12}>
+        <Col>
           <Navbar toggleNavKey={0}>
             <Nav className="navbar-nav" eventKey={0} right ref="nav">
               <NavItemLink to="/">Acas&#259;</NavItemLink>
+              <NavItemLink to="contestants">Participanți</NavItemLink>
               <NavItemLink to="jury">Juriu</NavItemLink>
               {this.props.isLoggedIn ? <NavItem onClick={this.props.logout}>Delogare</NavItem>
                                      : <NavItem><SignIn login={this.props.login} /></NavItem>}

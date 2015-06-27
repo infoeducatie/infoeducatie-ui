@@ -20,6 +20,9 @@ import Schedule from "./components/schedule";
 import Contact from "./components/contact";
 import Results from "./components/results";
 import Footer from "./components/footer";
+import Contestants from "./components/contestants/contestants";
+import Sponsors from "./components/sponsors";
+import Blog from "./components/blog";
 
 
 let App = React.createClass({
@@ -79,6 +82,9 @@ let routes = (
     <Route handler={Schedule} name="schedule" />
     <Route handler={Results} name="results" />
     <Route handler={Contact} name="contact" />
+    <Route handler={Contestants} name="contestants" />
+    <Route handler={Sponsors} name="sponsors" />
+    <Route handler={Blog} name="blog" />
     <DefaultRoute handler={Home} />
   </Route>
 );
