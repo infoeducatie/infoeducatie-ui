@@ -31,18 +31,12 @@ export default React.createClass({
           <Row className="small-spacing" />
         </Grid>
       </div>
-      <div className="white-section-wrapper">
-        <Grid className="white-section">
-          <Row className="small-spacing" />
-          <Row>
-            <Col>
-                <h3>Concursul interdisciplinar InfoEducație</h3>
-            </Col>
-          </Row>
-          <Row className="small-spacing" />
-          <Row>
-            <Col mdOffset={1} md={10}>
-              <p className="about">
+      <Grid className="white-section">
+        <Row>
+          <Col mdOffset={1} md={10}>
+            <Row className="small-spacing" />
+            <Row>
+                <p className="about">
                 Organizat din 1993, este dedicat elevilor cu aptitudini,
                 înclinații și interes pentru crearea aplicațiilor
                 informatice, atât de la profilul informatică cât
@@ -51,11 +45,9 @@ export default React.createClass({
                 și națională. Etapa națională se desfășoară în
                 tabăra Galaciuc, județul Vrancea.
               </p>
-            </Col>
-          </Row>
-          <Row className="small-spacing" />
-          <Row>
-            <Col mdOffset={1} md={10}>
+            </Row>
+            <Row className="small-spacing" />
+            <Row>
               <div className="category yellow">
                 <div className="round-icon">
                   <span className="section-icon web" />
@@ -90,11 +82,9 @@ export default React.createClass({
                 </div>
                 <div className="description">utilitar</div>
               </div>
-            </Col>
-          </Row>
-          <Row className="small-spacing" />
-          <Row>
-            <Col mdOffset={1} md={10}>
+            </Row>
+            <Row className="small-spacing" />
+            <Row>
               <h5>Participare la concurs</h5>
               <p className="about">
                   La fiecare etapă vor fi prezentate lucrări
@@ -116,11 +106,9 @@ export default React.createClass({
                   Toate mijloacele IT sunt oferite de Colegiul
                   Național Unirea, comunitatea Tulnici și Liceul Vidra.
               </p>
-            </Col>
-          </Row>
-          <Row className="small-spacing" />
-          <Row>
-            <Col mdOffset={1} md={10}>
+            </Row>
+            <Row className="small-spacing" />
+            <Row>
               <h5>Condiții de participare</h5>
               <p className="about">
                   Fiecare județ doritor poate participa cu o echipă
@@ -140,24 +128,22 @@ export default React.createClass({
                   <span className="pink-dash" />
                   nu se admit lucrări accesibile doar prin web
               </p>
-            </Col>
-          </Row>
-          <Row className="big-spacing" />
-          <Row>
-            <Col mdOffset={3} md={6} className="box">
-              <div className="rules">
-                <div className="description">
-                  <span className="pink-dash" />
-                  regulament concurs
-                  <span className="pink-dash" />
+            </Row>
+            <Row className="big-spacing" />
+            <Row>
+              <Col mdOffset={2} md={8} className="box">
+                <div className="rules">
+                  <div className="description">
+                    <span className="pink-dash" />
+                    regulament concurs
+                    <span className="pink-dash" />
+                  </div>
+                  <a href="https://docs.google.com/document/d/1rnNdTlI2nrcevCe1URt2FOzU1UAMpCTkMms8-QbI1VE/pub" target="_blank"><span className="section-icon doc" /></a>
                 </div>
-                <a href="https://docs.google.com/document/d/1rnNdTlI2nrcevCe1URt2FOzU1UAMpCTkMms8-QbI1VE/pub" target="_blank"><span className="section-icon doc" /></a>
-              </div>
-            </Col>
-          </Row>
-          <Row className="small-spacing" />
-          <Row className="contact">
-            <Col mdOffset={1} md={10}>
+              </Col>
+            </Row>
+            <Row className="small-spacing" />
+            <Row className="contact">
               <h5>Contact</h5>
               <p className="about listing">
                 <span className="pink-dash" />
@@ -188,10 +174,10 @@ export default React.createClass({
                 <span className="pink-dash" />
                 Web: web@infoeducatie.ro
               </p>
-            </Col>
-          </Row>
-        </Grid>
-      </div>
+            </Row>
+          </Col>
+        </Row>
+      </Grid>
     </div>;
   }
 });
