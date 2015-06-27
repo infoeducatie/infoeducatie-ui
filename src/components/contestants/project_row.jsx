@@ -22,12 +22,12 @@ export default React.createClass({
             <Row className="xsmall-spacing" />
             <Row>
               <Col mdOffset={1} md={8} xsOffset={3} className="project-details">
-                <span className="project-title">{this.props.project.title}</span>
-                <div className="authors">
+                <h3>{this.props.project.title}</h3>
+                <ul className="list-inline authors">
                   {this.props.project.authors.map(function(author) {
-                    return <span className="author" key={author.key}>{author.name}</span>;
+                    return <li className="author" key={author.key}>{author.name}</li>;
                   })}
-                </div>
+                </ul>
               </Col>
               <Col md={3}>
                 <Row className="project-other-details">
