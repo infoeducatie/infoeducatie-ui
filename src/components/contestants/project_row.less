@@ -4,44 +4,34 @@
 .project-row {
 
   .project-row-details {
-    border-top: 1px solid @light-grey;
-    border-right: 1px solid @light-grey;
-    border-left: 1px solid @light-grey;
-    border-top-right-radius: 3px;
-    border-top-left-radius: 3px;
-    min-height: 100px;
+    border: 1px solid @light-grey;
+    border-bottom: 0;
 
     .project-details {
-      margin-left: 2%;
-
-      .project-title {
-        font-size: 2em;
-        margin-right: 10%;
-      }
-
-      .authors {
+      h3, ul {
         display: inline-block;
-
+      }
+      h3 {
+        margin: 0;
+        margin-right: @grid-gutter-width * 2;
+      }
+      .authors {
         .author {
           text-transform: uppercase;
-          margin-right: 8%;
           color: @blue;
         }
       }
     }
 
     .project-other-details {
-      margin-top: 10%;
+      text-transform: uppercase;
 
-      .map-marker {
-        display: inline-block;
-        background: url("../../../assets/img/icons/location.png") no-repeat;
-        width: 17px;
-        height: 24px;
+      img {
+        margin-right: @grid-gutter-width / 3;
       }
 
-      .location {
-        text-transform: uppercase;
+      p {
+        margin: 0;
       }
 
       .comments {
@@ -51,27 +41,32 @@
         width: 28px;
         height: 25px;
         color: @white;
+        margin-left: @grid-gutter-width;
       }
     }
   }
 
   .orange-section {
-    font-size: 15px;
     background-color: @orange;
     text-transform: uppercase;
     border-bottom-right-radius: 7px;
     border-bottom-left-radius: 7px;
+    @project-category-icon-height: 50px;
 
     .project-category {
       opacity: 0.5;
-      margin-top: 10px;
+    }
+
+    p {
+      margin: 0;
+      line-height: @project-category-icon-height;
     }
 
     .project-category-icon {
-      background-size: 60px 50px;
+      background-size: 60px @project-category-icon-height;
       width: 60px;
       filter: brightness(120%);
-      height: 50px;
+      height: @project-category-icon-height;
 
       &.media {
         margin-top: 0px;

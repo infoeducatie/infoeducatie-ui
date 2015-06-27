@@ -4,6 +4,7 @@ import React from "react";
 
 import ctx from "classnames";
 import { Row, Col } from "react-bootstrap";
+import MapMarker from "../../../assets/img/icons/location.png";
 
 import "./project_row.less";
 
@@ -12,44 +13,47 @@ export default React.createClass({
   displayName: "ProjectRow",
 
   render() {
-    let className = ctx("project-category-icon", "section-icon",
-                        this.props.project.category);
+    let projectCategoryIconClasses = ctx(
+        "project-category-icon", "section-icon", this.props.project.category);
 
     return <Row className="project-row">
-      <Col>
+      <Col xs={12}>
         <Row className="project-row-details">
-          <Col>
-            <Row className="xsmall-spacing" />
+          <Col sm={10} smOffset={1}>
+            <Row className="small-spacing" />
             <Row>
-              <Col mdOffset={1} md={8} xsOffset={3} className="project-details">
-                <span className="project-title">{this.props.project.title}</span>
-                <div className="authors">
+              <Col sm={8} md={9} className="project-details">
+                <h3>{this.props.project.title}</h3>
+                <ul className="list-inline authors">
                   {this.props.project.authors.map(function(author) {
-                    return <span className="author" key={author.key}>{author.name}</span>;
+                    return <li className="author" key={author.id}>
+                      {author.name}
+                    </li>;
                   })}
-                </div>
+                </ul>
               </Col>
-              <Col md={3}>
-                <Row className="project-other-details">
-                  <Col md={1} xsOffset={2} xs={1} className="map-marker" />
-                  <Col md={1} xs={1} className="location">
-                    <p>{this.props.project.county}</p>
-                  </Col>
-                  <Col mdOffset={6} xsOffset={6} className="comments">
-                    <p>{this.props.project.comments}</p>
-                  </Col>
-                </Row>
+              <Col sm={4} md={3} className="project-other-details">
+                <p>
+                  <img src={MapMarker} />
+                  {this.props.project.county}
+                  <span className="comments">
+                    {this.props.project.comments}
+                  </span>
+                </p>
               </Col>
             </Row>
-            <Row className="xsmall-spacing" />
+            <Row className="small-spacing" />
           </Col>
         </Row>
         <Row className="orange-section">
-          <Col md={2} xs={3} className="project-category">
+          <Col sm={2} smOffset={1} xs={9} className="project-category">
             <p>{this.props.project.category_slug}</p>
           </Col>
-          <Col md={1} xs={1} className={className} />
+          <Col sm={1} xs={3}>
+            <p><span className={projectCategoryIconClasses} /></p>
+          </Col>
         </Row>
+        <Row className="small-spacing" />
       </Col>
     </Row>;
   }
