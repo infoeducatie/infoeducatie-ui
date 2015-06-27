@@ -12,6 +12,13 @@
     min-height: 100px;
 
     .project-details {
+      h3, ul {
+        display: inline-block;
+      }
+      h3 {
+        margin: 0;
+        margin-right: 20px;
+      }
       .authors {
         .author {
           text-transform: uppercase;
@@ -21,15 +28,10 @@
     }
 
     .project-other-details {
-      .map-marker {
-        display: inline-block;
-        background: url("../../../assets/img/icons/location.png") no-repeat;
-        width: 17px;
-        height: 24px;
-      }
+      text-transform: uppercase;
 
-      .location {
-        text-transform: uppercase;
+      img {
+        margin-right: 10px;
       }
 
       .comments {
@@ -39,27 +41,33 @@
         width: 28px;
         height: 25px;
         color: @white;
+        margin-left: 30px;
       }
     }
   }
 
   .orange-section {
-    font-size: 15px;
     background-color: @orange;
     text-transform: uppercase;
     border-bottom-right-radius: 7px;
     border-bottom-left-radius: 7px;
+    @project-category-icon-height: 50px;
 
     .project-category {
       opacity: 0.5;
-      margin-top: 10px;
+    }
+
+    p {
+      margin: 0;
+      line-height: @project-category-icon-height;
     }
 
     .project-category-icon {
-      background-size: 60px 50px;
+      background-size: 60px @project-category-icon-height;
       width: 60px;
+      height: @project-category-icon-height;
+
       filter: saturate(0);
-      height: 50px;
 
       &.media {
         margin-top: 0px;
