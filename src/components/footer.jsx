@@ -2,7 +2,7 @@
 
 import React from "react";
 import Router from "react-router";
-import { Navbar, Nav, NavItem, Row, Col, Thumbnail, Grid } from "react-bootstrap";
+import { Navbar, Nav, NavItem, Row, Col, Thumbnail, Grid, Input, ButtonInput } from "react-bootstrap";
 import { NavItemLink } from "react-router-bootstrap";
 
 let { Route, Link, RouteHandler } = Router; // eslint-disable-line
@@ -13,15 +13,57 @@ import Twitter from "../../assets/img/icons/twitter.png";
 import Google from "../../assets/img/icons/gplus.png";
 import Github from "../../assets/img/icons/github.png";
 
+import $ from "jquery";
+
 export default React.createClass({
   displayName: "Footer",
+
+  newsletterEmailChange(event) {
+    this.setState({
+      newsletterEmail: event.currentTarget.value
+    });
+  },
+
+  newsletterSubmit(event) {
+    event.preventDefault();
+
+    var re = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if (!re.exec(this.state.newsletterEmail)) {
+      alert("Emailul nu este valid");
+      return;
+    }
+
+    let data = { };
+    data['EMAIL'] = this.state.newsletterEmail;
+
+
+    $.ajax({
+      url: '//upir.us8.list-manage.com/subscribe/post-json' +
+           '?u=3f6ccc8a6a63be50b4bb9b1b1&id=3a8ffa6e4f&c=?',
+      method: 'POST',
+      dataType: 'jsonp',
+      data: data,
+      error: this.newsletterSubscribeError,
+      complete: this.newsletterSubscribeResponse,
+    });
+  },
+
+  newsletterSubscribeResponse(response) {
+    let data = response.responseJSON;
+    if (data['result'] == 'error')
+      alert("Adresa de email este deja inregistrata sau un email de " +
+            "confirmare a inregistrarii este a fost trimis catre tine.");
+    else
+      alert("Esti aproape gata. Mai trebuie sa confirmi inscrierea dand click" +
+            " pe link-ul trimis catre tine prin email");
+  },
 
   render() {
     return <Grid className="footer">
       <Row className="small-spacing" />
       <Row className="small-spacing second" />
       <Row>
-        <Col md={12}>
+        <Col>
           <Navbar>
             <Nav className="navbar-nav" ref="nav">
               <NavItemLink to="alumni">Alumni</NavItemLink>
@@ -37,9 +79,30 @@ export default React.createClass({
       <Row className="small-spacing" />
       <Row className="call-to-action">
         <Col md={6} className="left hidden-xs">
-          <Row><p className="newsletter">aboneaz&#258;-te la newsletter</p></Row>
-          <Row className="small-spacing" />
-          <Row><p className="signup"><a href="#" className="link link-ternary">Înscrie-te</a></p></Row>
+          <Row onSumbmit={this.newsletterSubmit}>
+            <Col md={8} mdOffset={2}>
+              <form onSubmit={this.newsletterSubmit}>
+                <Row className="small-spacing" />
+                <Row>
+                  <Input required
+                         type="text"
+                         className="newsletter"
+                         bsSize="large"
+                         placeholder="Abonează-te la newsletter"
+                         onChange={this.newsletterEmailChange} />
+                </Row>
+                <Row className="small-spacing" />
+                <Row>
+                  <p className="signup">
+                    <ButtonInput type="submit"
+                                 value="Abonează-te"
+                                 className="link link-ternary" />
+                  </p>
+                </Row>
+                <Row className="small-spacing" />
+              </form>
+            </Col>
+          </Row>
         </Col>
         <Col md={6}>
           <Row>
