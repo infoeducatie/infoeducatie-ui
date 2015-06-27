@@ -15,7 +15,7 @@ export default React.createClass({
   getInitialState: function() {
     return {
       currentCategory: "all"
-    }
+    };
   },
 
   toggleCategory(category) {
