@@ -12,18 +12,24 @@
 
   .results-section {
     table {
+      @cell-height: 90px;
+
       th {
         background-color: @orange;
         text-transform: uppercase;
-        height: 100px;
+        height: @cell-height;
         text-align: center;
         vertical-align: middle;
         display: table-cell;
         border-bottom: 10px solid @light-black;
+
+        &.left {
+          text-align: left;
+        }
       }
 
       td {
-        height: 75px;
+        height: @cell-height;
         vertical-align: middle;
         display: table-cell;
         border-bottom: 1px solid @pink;
@@ -34,6 +40,20 @@
           color: @blue;
           font-size: @font-size-h2;
           letter-spacing: @big-letter-spacing;
+        }
+
+        &.title {
+          font-size: @font-size-h5;
+        }
+
+        &.score {
+          font-weight: bold;
+          text-align: center;
+        }
+
+        .author {
+          text-transform: uppercase;
+          color: @blue;
         }
       }
     }

@@ -70,18 +70,18 @@ export default React.createClass({
             <thead>
               <tr>
                 <th>premiul</th>
-                <th>numele lucrării</th>
-                <th>concurent</th>
-                <th>liceu</th>
-                <th>punctaj</th>
-                <th>open</th>
+                <th className="left">numele lucrării</th>
+                <th className="left">concurent</th>
+                <th className="left hidden-xs">liceu</th>
+                <th className="hidden-xs">punctaj</th>
+                <th className="hidden-xs">open</th>
                 <th>total</th>
               </tr>
             </thead>
             {this.state.results[this.state.currentCategory].map(function(result) {
               return <tr key={result.project.id}>
                 <td className="rank">{result.rank}</td>
-                <td className="name">{result.project.name}</td>
+                <td className="title">{result.project.name}</td>
                 <td>
                   <ul className="list-unstyled">
                     {result.project.authors.map(function(author){
@@ -91,10 +91,10 @@ export default React.createClass({
                       })}
                   </ul>
                 </td>
-                <td>{result.project.school}</td>
-                <td>{result.project.score}</td>
-                <td>{result.project.open}</td>
-                <td>{result.project.total}</td>
+                <td className="hidden-xs">{result.project.school}</td>
+                <td className="hidden-xs score">{result.project.score}</td>
+                <td className="hidden-xs score">{result.project.open}</td>
+                <td className="score">{result.project.total}</td>
               </tr>;
             })}
           </Table>
