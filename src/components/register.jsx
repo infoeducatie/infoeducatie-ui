@@ -57,7 +57,7 @@ export default React.createClass({
       return <div>
         <form onSubmit={this.onFormSubmit}>
           <Input
-            type="text"
+            type="email"
             placeholder="tuxi@pinguinescu.ro"
             label="Adresa de email"
             onChange={this.onEmailChange}
