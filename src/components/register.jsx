@@ -1,6 +1,7 @@
 "use strict";
 
 import React from "react";
+import $ from "jquery";
 import { Grid, Col, Row, Input, ButtonInput } from "react-bootstrap";
 
 import Header from "./header";
@@ -93,6 +94,28 @@ export default React.createClass({
 
   onFormSubmit(event) {
     event.preventDefault();
-    //TODO @palcu: do AJAX call
+
+    let data = { };
+    data["user[email]"] = this.state.email;
+    data["user[password]"] = this.state.password;
+    data["user[password_confirmation]"] = this.state.passwordConfirmation;
+
+    $.ajax({
+      method: 'POST',
+      url: window.config.API_URL + "users",
+      data: data,
+      success: this.onSignUpSuccess,
+      error: this.onSignUpError,
+    });
+  },
+
+  onSignUpSuccess(data) {
+    // TODO @palcu: show confirmation message
+    console.log(data);
+  },
+
+  onSignUpError(data) {
+    // TODO @palcu: show errors
+    console.log(data);
   }
 });
