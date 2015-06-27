@@ -63,7 +63,7 @@ export default React.createClass({
       <Row className="small-spacing" />
       <Row className="small-spacing second" />
       <Row>
-        <Col md={12}>
+        <Col>
           <Navbar>
             <Nav className="navbar-nav" ref="nav">
               <NavItemLink to="alumni">Alumni</NavItemLink>
