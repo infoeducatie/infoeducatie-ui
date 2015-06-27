@@ -16,7 +16,7 @@ export default React.createClass({
     return {
       currentCategory: "educational",
       results: {
-        web: [
+        educational: [
           { rank: "I",
             project: {
               id: 1,
@@ -78,6 +78,25 @@ export default React.createClass({
                 <th>total</th>
               </tr>
             </thead>
+            {this.state.results[this.state.currentCategory].map(function(result) {
+              return <tr key={result.project.id}>
+                <td className="rank">{result.rank}</td>
+                <td>{result.project.name}</td>
+                <td>
+                  <ul className="list-unstyled">
+                    {result.project.authors.map(function(author){
+                        return <li className="author" key={author.id}>
+                          {author.name}
+                        </li>;
+                      })}
+                  </ul>
+                </td>
+                <td>{result.project.school}</td>
+                <td>{result.project.score}</td>
+                <td>{result.project.open}</td>
+                <td>{result.project.total}</td>
+              </tr>;
+            })}
           </Table>
         </Col>
       </Row>
