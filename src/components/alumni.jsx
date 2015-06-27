@@ -8,7 +8,9 @@ import {Grid, Row, Col} from "react-bootstrap";
 import Header from "./header";
 
 import "./alumni.less";
-import CristiAvatar from "../../assets/img/cristi.png";
+import CristiAvatar from "../../assets/img/alumni/cristi.png";
+import ViviAvatar from "../../assets/img/alumni/vivi.png";
+import LeuAvatar from "../../assets/img/alumni/leu.png";
 
 
 export default React.createClass({
@@ -33,7 +35,7 @@ export default React.createClass({
                          liceu. InfoEducație mi-a oferit ocazia de a vedea
                          cât de bun sunt, să explorez, să nu mă mulțumesc cu
                          puțin.`,
-          "avatar": CristiAvatar,
+          "avatar": ViviAvatar,
           "name": "Octavian Costache",
           "position": "software developer @ google",
           "color": "orange"
@@ -44,7 +46,7 @@ export default React.createClass({
                          proiect în afara școlii. Munca depusă contează
                          acum, în concurs, dar va conta și în 2, 3, 5,
                          10 ani.`,
-          "avatar": CristiAvatar,
+          "avatar": LeuAvatar,
           "name": "Tudor Leu",
           "position": "software engineer @ google checkout",
           "color": "black"
