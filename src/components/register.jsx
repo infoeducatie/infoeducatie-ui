@@ -5,6 +5,7 @@ import $ from "jquery";
 import { Grid, Col, Row, Input, ButtonInput } from "react-bootstrap";
 
 import Header from "./header";
+import SuccessIcon from "../../assets/img/ellipse-tick.png"
 import "./register.less";
 
 
@@ -16,7 +17,8 @@ export default React.createClass({
       email: "",
       password: "",
       passwordConfirmation: "",
-      hasErrored: false
+      hasErrored: true,
+      hasSubmited: false
     }
   },
 
@@ -41,34 +43,50 @@ export default React.createClass({
         <Row className="small-spacing" />
         <Row>
           <Col md={6} mdOffset={3} sm={8} smOffset={2}>
-            <form onSubmit={this.onFormSubmit}>
-              <Input
-                type="text"
-                placeholder="tuxi@pinguinescu.ro"
-                label="Adresa de email"
-                onChange={this.onEmailChange}
-                hasFeedback
-                ref="input" />
-              <Input
-                type="password"
-                placeholder="***************"
-                label="Parola"
-                onChange={this.onPasswordChange}
-                hasFeedback
-                ref="input" />
-              <Input
-                type="password"
-                placeholder="***************"
-                label="Confirmare parolă"
-                onChange={this.onPasswordConfirmationChange}
-                hasFeedback
-                ref="input" />
-              <ButtonInput type="submit" value="Înregistrează-te" />
-            </form>
+            {this.renderForm()}
+            {this.renderSuccess()}
           </Col>
         </Row>
       </Grid>
     </div>;
+  },
+
+  renderForm() {
+    if (!this.state.hasSubmited) {
+      return <form onSubmit={this.onFormSubmit}>
+        <Input
+          type="text"
+          placeholder="tuxi@pinguinescu.ro"
+          label="Adresa de email"
+          onChange={this.onEmailChange}
+          hasFeedback
+          ref="input" />
+        <Input
+          type="password"
+          placeholder="***************"
+          label="Parola"
+          onChange={this.onPasswordChange}
+          hasFeedback
+          ref="input" />
+        <Input
+          type="password"
+          placeholder="***************"
+          label="Confirmare parolă"
+          onChange={this.onPasswordConfirmationChange}
+          hasFeedback
+          ref="input" />
+        <ButtonInput type="submit" value="Înregistrează-te" />
+      </form>;
+    }
+  },
+
+  renderSuccess() {
+    if (this.state.hasSubmited) {
+      return <div className="register-success">
+        <p><img src={SuccessIcon} /></p>
+        <p>Verifică căsuța ta pentru un email de confirmare.</p>
+      </div>
+    }
   },
 
   onEmailChange(event) {
@@ -102,7 +120,7 @@ export default React.createClass({
 
     $.ajax({
       method: 'POST',
-      url: window.config.API_URL + "users",
+      url: window.config.API_URL + "users.json",
       data: data,
       success: this.onSignUpSuccess,
       error: this.onSignUpError,
@@ -110,8 +128,9 @@ export default React.createClass({
   },
 
   onSignUpSuccess(data) {
-    // TODO @palcu: show confirmation message
-    console.log(data);
+    this.setState({
+      hasSubmited: true
+    })
   },
 
   onSignUpError(data) {
