@@ -2,7 +2,7 @@
 
 import React from "react";
 import Router from "react-router";
-import { Navbar, Nav, NavItem, Row, Col, Thumbnail, Grid, Input, ButtonInput } from "react-bootstrap";
+import { Navbar, Nav, NavItem, Row, Col, Thumbnail, Grid } from "react-bootstrap";
 import { NavItemLink } from "react-router-bootstrap";
 
 let { Route, Link, RouteHandler } = Router; // eslint-disable-line
@@ -13,63 +13,30 @@ import Twitter from "../../assets/img/icons/twitter.png";
 import Google from "../../assets/img/icons/gplus.png";
 import Github from "../../assets/img/icons/github.png";
 
-import $ from "jquery";
+import NewsletterForm from "./newsletter-form";
+import NewsletterSucces from "./newsletter-succes";
 
 export default React.createClass({
   displayName: "Footer",
 
-  emailRegex() {
-      return /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]{2,})+$/;
-  },
-
   getInitialState() {
     return {
-      newsletterEmail: ""
+      newsletterSubscribed: false
     };
   },
 
-  newsletterEmailChange(event) {
-      this.setState({
-        newsletterEmail: event.currentTarget.value
-      });
-  },
-
-  newsletterValidationState() {
-    if (!this.state.newsletterEmail.length)
-      return;
-    if (this.emailRegex().exec(this.state.newsletterEmail))
-      return "success";
-    return "error";
-  },
-
-  newsletterSubmit(event) {
-    event.preventDefault();
-
-    if (!this.emailRegex().exec(this.state.newsletterEmail))
-      return;
-
-    let data = { };
-    data["EMAIL"] = this.state.newsletterEmail;
-
-    $.ajax({
-      url: "//upir.us8.list-manage.com/subscribe/post-json" +
-           "?u=3f6ccc8a6a63be50b4bb9b1b1&id=3a8ffa6e4f&c=?",
-      method: "POST",
-      dataType: "jsonp",
-      data: data,
-      error: this.newsletterSubscribeError,
-      complete: this.newsletterSubscribeResponse,
+  setNewsletterSubscribed() {
+    this.setState({
+      newsletterSubscribed: true
     });
   },
 
-  newsletterSubscribeResponse(response) {
-    let data = response.responseJSON;
-    if (data["result"] == "error")
-      alert("Adresa de email este deja inregistrata sau un email de " +
-            "confirmare a inregistrarii este a fost trimis catre tine.");
-    else
-      alert("Esti aproape gata. Mai trebuie sa confirmi inscrierea dand click +
-            "pe link-ul trimis catre tine prin email");
+  renderNewsletterForm() {
+    if (this.state.newsletterSubscribed)
+      return <NewsletterSucces />
+
+    return <NewsletterForm
+              setNewsletterSubscribed={this.setNewsletterSubscribed} />
   },
 
   render() {
@@ -93,42 +60,18 @@ export default React.createClass({
       <Row className="small-spacing" />
       <Row className="call-to-action">
         <Col md={6} className="left hidden-xs">
-          <Row onSumbmit={this.newsletterSubmit}>
-            <Col md={8} mdOffset={2}>
-              <form onSubmit={this.newsletterSubmit}>
-                <Row className="small-spacing" />
-                <Row>
-                  <Input required
-                         hasFeedback
-                         ref="newsletterInput"
-                         type="text"
-                         className="newsletter"
-                         bsSize="large"
-                         placeholder="Abonează-te la newsletter"
-                         bsStyle={this.newsletterValidationState()}
-                         onChange={this.newsletterEmailChange} />
-                </Row>
-                <Row className="small-spacing" />
-                <Row>
-                  <p className="signup">
-                    <ButtonInput type="submit"
-                                 value="Abonează-te"
-                                 className="link link-ternary" />
-                  </p>
-                </Row>
-                <Row className="small-spacing" />
-              </form>
-            </Col>
-          </Row>
+          {this.renderNewsletterForm()}
         </Col>
-        <Col md={6}>
+        <Col md={6} className="text-center">
           <Row>
-            <ul className="social-logos">
-              <li><a href="https://www.facebook.com/infoeducatie" target="_blank"><img alt="Facebook" src={Facebook} /></a></li>
-              <li><a href="https://twitter.com/infoeducatie" target="_blank"><img alt="Twitter" src={Twitter} /></a></li>
-              <li><a href="https://plus.google.com/+InfoeducatieRomania" target="_blank"><img alt="Google+" src={Google} /></a></li>
-              <li><a href="https://github.com/infoeducatie" target="_blank"><img alt="Github" src={Github} /></a></li>
-            </ul>
+            <Col>
+              <ul className="social-logos list-inline">
+                <li><a href="https://www.facebook.com/infoeducatie" target="_blank"><img alt="Facebook" src={Facebook} /></a></li>
+                <li><a href="https://twitter.com/infoeducatie" target="_blank"><img alt="Twitter" src={Twitter} /></a></li>
+                <li><a href="https://plus.google.com/+InfoeducatieRomania" target="_blank"><img alt="Google+" src={Google} /></a></li>
+                <li><a href="https://github.com/infoeducatie" target="_blank"><img alt="Github" src={Github} /></a></li>
+              </ul>
+            </Col>
           </Row>
           <Row>
             <p className="privacy">
