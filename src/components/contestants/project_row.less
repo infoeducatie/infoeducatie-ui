@@ -4,11 +4,8 @@
 .project-row {
 
   .project-row-details {
-    border-top: 1px solid @light-grey;
-    border-right: 1px solid @light-grey;
-    border-left: 1px solid @light-grey;
-    border-top-right-radius: 3px;
-    border-top-left-radius: 3px;
+    border: 1px solid @light-grey;
+    border-bottom: 0;
 
     .project-details {
       h3, ul {
@@ -30,7 +27,11 @@
       text-transform: uppercase;
 
       img {
-        margin-right: 10px;
+        margin-right: @grid-gutter-width / 3;
+      }
+
+      p {
+        margin: 0;
       }
 
       .comments {

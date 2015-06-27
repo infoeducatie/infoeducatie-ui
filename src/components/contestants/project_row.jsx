@@ -22,7 +22,7 @@ export default React.createClass({
           <Col sm={10} smOffset={1}>
             <Row className="small-spacing" />
             <Row>
-              <Col sm={9} className="project-details">
+              <Col sm={8} md={9} className="project-details">
                 <h3>{this.props.project.title}</h3>
                 <ul className="list-inline authors">
                   {this.props.project.authors.map(function(author) {
@@ -32,7 +32,7 @@ export default React.createClass({
                   })}
                 </ul>
               </Col>
-              <Col sm={3} className="project-other-details">
+              <Col sm={4} md={3} className="project-other-details">
                 <p>
                   <img src={MapMarker} />
                   {this.props.project.county}
