@@ -113,7 +113,8 @@ export default React.createClass({
     if (this.state.hasSubmited) {
       return <div className="register-success">
         <p><img src={SuccessIcon} /></p>
-        <p>Verifică căsuța ta pentru un email de confirmare.</p>
+        <p>Verifică căsuța ta de poștă electronică pentru un mesaj de
+        confirmare.</p>
       </div>;
     }
   },
