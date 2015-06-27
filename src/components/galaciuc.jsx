@@ -16,14 +16,14 @@ export default React.createClass({
       <div className="blue-section-wrapper">
         <Grid className="blue-section">
           <Row>
-            <Col>
+            <Col xs={12}>
               <Header isLoggedIn={this.props.isLoggedIn}
                       login={this.props.login}
                       logout={this.props.logout} />
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col xs={12}>
               <h1>Despre Concursul InfoEducație</h1>
               <h2>istoric și regulament</h2>
             </Col>
@@ -33,7 +33,7 @@ export default React.createClass({
       </div>
       <Grid className="white-section">
         <Row>
-          <Col mdOffset={1} md={10}>
+          <Col mdOffset={1} md={10} xsOffset={1}>
             <Row className="small-spacing" />
             <Row>
                 <p className="about">
@@ -48,40 +48,42 @@ export default React.createClass({
             </Row>
             <Row className="small-spacing" />
             <Row>
-              <div className="category yellow">
-                <div className="round-icon">
-                  <span className="section-icon web" />
+              <Col xs={12}>
+                <div className="category yellow">
+                  <div className="round-icon">
+                    <span className="section-icon web" />
+                  </div>
+                  <div className="description">web</div>
                 </div>
-                <div className="description">web</div>
-              </div>
 
-              <div className="category blue">
-                <div className="round-icon">
-                  <span className="section-icon robots" />
+                <div className="category blue">
+                  <div className="round-icon">
+                    <span className="section-icon robots" />
+                  </div>
+                  <div className="description">roboți</div>
                 </div>
-                <div className="description">roboți</div>
-              </div>
 
-              <div className="category green">
-                <div className="round-icon">
-                  <span className="section-icon media" />
+                <div className="category green">
+                  <div className="round-icon">
+                    <span className="section-icon media" />
+                  </div>
+                  <div className="description">multimedia</div>
                 </div>
-                <div className="description">multimedia</div>
-              </div>
 
-              <div className="category pink">
-                <div className="round-icon">
-                  <span className="section-icon educational" />
+                <div className="category pink">
+                  <div className="round-icon">
+                    <span className="section-icon educational" />
+                  </div>
+                  <div className="description">educațional</div>
                 </div>
-                <div className="description">educațional</div>
-              </div>
 
-              <div className="category black">
-                <div className="round-icon">
-                  <span className="section-icon utility" />
+                <div className="category black">
+                  <div className="round-icon">
+                    <span className="section-icon utility" />
+                  </div>
+                  <div className="description">utilitar</div>
                 </div>
-                <div className="description">utilitar</div>
-              </div>
+              </Col>
             </Row>
             <Row className="small-spacing" />
             <Row>
@@ -130,12 +132,14 @@ export default React.createClass({
             </Row>
             <Row className="big-spacing" />
             <Row>
-              <Col mdOffset={2} md={8} className="box">
+              <Col mdOffset={2} md={8} xs={10} xsOffset={1} className="box">
                 <div className="rules">
                   <div className="description">
-                    <span className="pink-dash" />
-                    regulament concurs
-                    <span className="pink-dash" />
+                    <h4>
+                      <span className="pink-dash hidden-xs" />
+                      regulament concurs
+                      <span className="pink-dash hidden-xs" />
+                    </h4>
                   </div>
                   <a href="https://docs.google.com/document/d/1rnNdTlI2nrcevCe1URt2FOzU1UAMpCTkMms8-QbI1VE/pub" target="_blank"><span className="section-icon doc" /></a>
                 </div>
