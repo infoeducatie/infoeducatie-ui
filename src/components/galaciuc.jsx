@@ -85,7 +85,7 @@ export default React.createClass({
             </Row>
             <Row className="small-spacing" />
             <Row>
-              <h5>Participare la concurs</h5>
+              <h4>Participare la concurs</h4>
               <p className="about">
                   La fiecare etapă vor fi prezentate lucrări
                   realizate de către elevi, indiferent de anul de
@@ -109,7 +109,7 @@ export default React.createClass({
             </Row>
             <Row className="small-spacing" />
             <Row>
-              <h5>Condiții de participare</h5>
+              <h4>Condiții de participare</h4>
               <p className="about">
                   Fiecare județ doritor poate participa cu o echipă
                   de <b>4 elevi</b> și un <b>profesor însoțitor</b>
@@ -144,7 +144,7 @@ export default React.createClass({
             </Row>
             <Row className="small-spacing" />
             <Row className="contact">
-              <h5>Contact</h5>
+              <h4>Contact</h4>
               <p className="about listing">
                 <span className="pink-dash" />
                 Organizatori: contact@infoeducatie.ro (Emil Onea)
@@ -153,7 +153,7 @@ export default React.createClass({
                 <span className="pink-dash" />
                 Website: ping@infoeducatie.ro
               </p>
-              <h5>Juriu</h5>
+              <h4>Juriu</h4>
               <p className="about listing">
                 <span className="pink-dash" />
                 Software educațional: educational@infoeducatie.ro
