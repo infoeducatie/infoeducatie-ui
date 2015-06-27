@@ -18,6 +18,8 @@ export default React.createClass({
       email: "",
       password: "",
       passwordConfirmation: "",
+      firstName: "",
+      lastName: "",
       errors: [],
       hasErrored: false,
       hasSubmited: false
@@ -58,26 +60,35 @@ export default React.createClass({
       return <div>
         <form onSubmit={this.onFormSubmit}>
           <Input
+            type="text"
+            placeholder="Tuxi"
+            label="Prenume"
+            onChange={this.onFirstNameChange}
+            required />
+          <Input
+            type="text"
+            placeholder="Pinguinescu"
+            label="Nume"
+            onChange={this.onLastNameChange}
+            required />
+          <Input
             type="email"
             placeholder="tuxi@pinguinescu.ro"
             label="Adresa de email"
             onChange={this.onEmailChange}
-            hasFeedback
-            ref="input" />
+            required />
           <Input
             type="password"
             placeholder="***************"
             label="Parola"
             onChange={this.onPasswordChange}
-            hasFeedback
-            ref="input" />
+            required />
           <Input
             type="password"
             placeholder="***************"
             label="Confirmare parolă"
             onChange={this.onPasswordConfirmationChange}
-            hasFeedback
-            ref="input" />
+            required />
           <ButtonInput type="submit" value="Înregistrează-te" />
         </form>
         {this.renderErrors()}
@@ -110,6 +121,18 @@ export default React.createClass({
   onEmailChange(event) {
     this.setState({
       email: event.currentTarget.value
+    });
+  },
+
+  onFirstNameChange(event) {
+    this.setState({
+      firstName: event.currentTarget.value
+    });
+  },
+
+  onLastNameChange(event) {
+    this.setState({
+      lastName: event.currentTarget.value
     });
   },
 
