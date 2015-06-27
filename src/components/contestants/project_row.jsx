@@ -17,7 +17,7 @@ export default React.createClass({
         "project-category-icon", "section-icon", this.props.project.category);
 
     return <Row className="project-row">
-      <Col>
+      <Col xs={12}>
         <Row className="project-row-details">
           <Col sm={10} smOffset={1}>
             <Row className="small-spacing" />
