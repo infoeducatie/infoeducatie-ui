@@ -154,6 +154,8 @@ export default React.createClass({
 
     let data = { };
     data["user[email]"] = this.state.email;
+    data["user[first_name]"] = this.state.firstName;
+    data["user[last_name]"] = this.state.lastName;
     data["user[password]"] = this.state.password;
     data["user[password_confirmation]"] = this.state.passwordConfirmation;
 
