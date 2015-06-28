@@ -4,13 +4,13 @@ import React from "react";
 import { Grid, Col, Row, PanelGroup, Panel } from "react-bootstrap";
 
 import Header from "./header";
-import "./register-project.less";
+import "./register-in-contest.less";
 
 export default React.createClass({
-  displayName: "RegisterProjectPage",
+  displayName: "RegisterInContest",
 
   render() {
-    return <div className="register-project">
+    return <div className="register-in-contest">
       <div className="blue-section-wrapper">
         <Grid className="blue-section">
           <Header isLoggedIn={this.props.isLoggedIn} />
@@ -30,11 +30,10 @@ export default React.createClass({
         <Col sm={6} smOffset={3}>
           <Row className="small-spacing" />
           <PanelGroup onSelect={this.handleSelect}
-                      defaultActiveKey='2'
+                      defaultActiveKey='1'
                       accordion>
             <Panel header='Înregistrare Participant'
-                   eventKey='1'
-                   bsStyle='success'>
+                   eventKey='1'>
               Formular de înregistrare participant
             </Panel>
             <Panel header='Înregistrare Proiect'

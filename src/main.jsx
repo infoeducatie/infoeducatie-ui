@@ -11,7 +11,7 @@ import News from "./components/news";
 import Photos from "./components/photos";
 import Alumni from "./components/alumni";
 import Galaciuc from "./components/galaciuc";
-import RegisterProject from "./components/register-project";
+import RegisterInContest from "./components/register-in-contest";
 import Register from "./components/register";
 import Dashboard from "./components/dashboard";
 import Jury from "./components/jury";
@@ -73,7 +73,7 @@ let routes = (
   <Route path="/" handler={App}>
     <Route handler={Home} name="home" />
     <Route handler={Jury} name="jury" />
-    <Route handler={RegisterProject} name="register-project" />
+    <Route handler={RegisterInContest} name="register-in-contest" />
     <Route handler={News} name="news" />
     <Route handler={Alumni} name="alumni" />
     <Route handler={Photos} name="photos" />
