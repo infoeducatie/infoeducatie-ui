@@ -2,7 +2,8 @@
 
 import React from "react";
 import Router from "react-router";
-import { Navbar, Nav, NavItem, Row, Col, Thumbnail, Grid, Input, ButtonInput } from "react-bootstrap";
+import { Navbar, Nav, NavItem, Row, Col, Thumbnail, Grid,
+         Input, ButtonInput } from "react-bootstrap";
 import { NavItemLink } from "react-router-bootstrap";
 
 let { Route, Link, RouteHandler } = Router; // eslint-disable-line
