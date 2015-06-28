@@ -33,19 +33,17 @@ export default React.createClass({
       </div>
       <Grid className="white-section">
         <Row>
-          <Col mdOffset={1} md={10} xsOffset={1}>
+          <Col mdOffset={1} md={10}>
             <Row className="small-spacing" />
-            <Row>
-                <p className="about">
-                Organizat din 1993, este dedicat elevilor cu aptitudini,
-                înclinații și interes pentru crearea aplicațiilor
-                informatice, atât de la profilul informatică cât
-                și de la alte profile. Concursul se desfășoară în
-                patru etape: pe unitatea școlară, locală, județeană
-                și națională. Etapa națională se desfășoară în
-                tabăra Galaciuc, județul Vrancea.
-              </p>
-            </Row>
+            <p className="about">
+              Organizat din 1993, este dedicat elevilor cu aptitudini,
+              înclinații și interes pentru crearea aplicațiilor
+              informatice, atât de la profilul informatică cât
+              și de la alte profile. Concursul se desfășoară în
+              patru etape: pe unitatea școlară, locală, județeană
+              și națională. Etapa națională se desfășoară în
+              tabăra Galaciuc, județul Vrancea.
+            </p>
             <Row className="small-spacing" />
             <Row>
               <Col xs={12}>
@@ -86,50 +84,46 @@ export default React.createClass({
               </Col>
             </Row>
             <Row className="small-spacing" />
-            <Row>
-              <h4>Participare la concurs</h4>
-              <p className="about">
-                  La fiecare etapă vor fi prezentate lucrări
-                  realizate de către elevi, indiferent de anul de
-                  studiu (clasele IX - XII). Participarea la etapele
-                  ulterioare este hotărâtă de clasamentele etapelor
-                  anterioare.
-              </p>
-              <p className="about">
-                  În etapa finală există și un concurs <em>open</em>
-                  , pe echipe, pe parcursul a 24 de ore. Concursul
-                  constă în realizarea unei lucrări software pe o
-                  temă dată. Lucrarea îmbina elemente de <em>
-                  proiectare, programare și design</em>. În tot
-                  timpul taberei finale se vor organiza și sesiuni
-                  de comunicare pe teme de inginerie software.
-              </p>
-              <p className="about">
-                  Toate mijloacele IT sunt oferite de Colegiul
-                  Național Unirea, comunitatea Tulnici și Liceul Vidra.
-              </p>
-            </Row>
+            <h4>Participare la concurs</h4>
+            <p className="about">
+                La fiecare etapă vor fi prezentate lucrări
+                realizate de către elevi, indiferent de anul de
+                studiu (clasele IX - XII). Participarea la etapele
+                ulterioare este hotărâtă de clasamentele etapelor
+                anterioare.
+            </p>
+            <p className="about">
+                În etapa finală există și un concurs <em>open</em>
+                , pe echipe, pe parcursul a 24 de ore. Concursul
+                constă în realizarea unei lucrări software pe o
+                temă dată. Lucrarea îmbina elemente de <em>
+                proiectare, programare și design</em>. În tot
+                timpul taberei finale se vor organiza și sesiuni
+                de comunicare pe teme de inginerie software.
+            </p>
+            <p className="about">
+                Toate mijloacele IT sunt oferite de Colegiul
+                Național Unirea, comunitatea Tulnici și Liceul Vidra.
+            </p>
             <Row className="small-spacing" />
-            <Row>
-              <h4>Condiții de participare</h4>
-              <p className="about">
-                  Fiecare județ doritor poate participa cu o echipă
-                  de <em>4 elevi</em> și un <em>profesor însoțitor</em>
-                  , în următoarele condiții:
-              </p>
-              <ul>
-                <li className="about">
-                  minim trei lucrări (web, roboți sau IoT, multimedia,
-                  software educțional, software utilitar)
-                </li>
-                <li className="about">
-                  cerinte hardware și software rezonabile
-                </li>
-                <li className="about">
-                  nu se admit lucrări accesibile doar prin web
-                </li>
-              </ul>
-            </Row>
+            <h4>Condiții de participare</h4>
+            <p className="about">
+                Fiecare județ doritor poate participa cu o echipă
+                de <em>4 elevi</em> și un <em>profesor însoțitor</em>
+                , în următoarele condiții:
+            </p>
+            <ul>
+              <li className="about">
+                minim trei lucrări (web, roboți sau IoT, multimedia,
+                software educțional, software utilitar)
+              </li>
+              <li className="about">
+                cerinte hardware și software rezonabile
+              </li>
+              <li className="about">
+                nu se admit lucrări accesibile doar prin web
+              </li>
+            </ul>
             <Row className="big-spacing" />
             <Row>
               <Col mdOffset={2} md={8} xs={10} xsOffset={1} className="box">
