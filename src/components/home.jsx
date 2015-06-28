@@ -34,8 +34,7 @@ export default React.createClass({
                 </Row>
                 <Row>
                     <Col>
-                        <h5 className="tagline">The best software engineering
-                        contest in the world.</h5>
+                        <h5 className="tagline">Perseverează, mergi mai departe!</h5>
                     </Col>
                 </Row>
                 <Row className="small-spacing" />
