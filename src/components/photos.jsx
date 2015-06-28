@@ -5,6 +5,7 @@ import {Grid, Row, Col} from "react-bootstrap";
 import ctx from "classnames";
 
 import Header from "./header";
+import PhotoWrapper from "./photo-wrapper.jsx";
 
 import "./photos.less";
 
@@ -19,31 +20,6 @@ import Cover2007 from "../../assets/img/2007.jpg";
 import Cover2006 from "../../assets/img/2006.jpg";
 import Cover2005 from "../../assets/img/2005.jpg";
 import Cover2004 from "../../assets/img/2004.jpg";
-
-
-var PhotoWrapper = React.createClass({
-    displayName: "PhotoWrapper",
-
-    render() {
-        var className = ctx("cover", "year-" + this.props.year,
-            {hover: this.props.hovered});
-        return <div className="photo-cover-wrapper">
-            <div className="photo-cover">
-                <a href={this.props.link} target="_blank"
-                   className={this.props.year}
-                   onMouseOver={this.props.onHover}>
-                    <div className={className}></div>
-                    <div className="more-details">Fotografii</div>
-                </a>
-            </div>
-            <div className="year">
-                <span className="pink-dash" />
-                    {this.props.year}
-                <span className="pink-dash" />
-            </div>
-        </div>;
-    }
-});
 
 
 export default React.createClass({
