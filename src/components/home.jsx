@@ -56,7 +56,7 @@ export default React.createClass({
                     <Col md={4}>
                         <p className="right-button">
                             <Link to="about" className="link link-secondary">
-                                Mai multe...
+                                Află mai multe...
                             </Link>
                         </p>
                     </Col>
