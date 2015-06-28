@@ -44,7 +44,19 @@ export default {
       open: 76.56,
       total: 69.71
     }
-  }
+  },
+  { rank: "M",
+      project: {
+        id: 4,
+        name: "Idea Storm",
+        authors: [{id: 6, name: "Chitu-Costinean Paul Luchian"},
+                  {id: 7, name: "Zugravu-Herciu Alexandru Ioan"}],
+        school: "Liceul Teoretic \"Grigore Moisil\"",
+        score: 69.93,
+        open: 64.5,
+        total: 67.22
+      }
+    }
   ],
     robots: [
     {"rank": "I",
@@ -99,7 +111,7 @@ export default {
         {"id": 2, "name": "Aleksandra Kielar"},
         {"id": 3, "name": "Tomasz Sala"},
         {"id": 4, "name": "Katarzyna Banaszak"},
-        {"id": 5, "name": "Patryk Galczynski"},
+        {"id": 5, "name": "Patryk Galczynski"}
         ],
         "school": "V LO Krakow",
         "score": "82",
