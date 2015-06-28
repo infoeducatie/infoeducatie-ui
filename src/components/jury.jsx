@@ -83,12 +83,12 @@ export default React.createClass({
           <Grid className="blue-section">
             <Header isLoggedIn={this.props.isLoggedIn} />
             <Row>
-              <Col>
+              <Col xs={12}>
                 <h1>Juriul InfoEduca&#355;ie</h1>
               </Col>
             </Row>
             <Row>
-              <Col>
+              <Col xs={12}>
                 <h2>Membrii juriului pe categorii</h2>
               </Col>
             </Row>

@@ -15,12 +15,12 @@ export default React.createClass({
         <Grid className="blue-section">
           <Header isLoggedIn={this.props.isLoggedIn} />
           <Row>
-            <Col>
+            <Col xs={12}>
               <h1>Înregistrează un proiect</h1>
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col xs={12}>
               <h2>Te rugăm să completezi acest formular cu grijă</h2>
             </Col>
           </Row>
