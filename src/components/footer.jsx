@@ -18,46 +18,6 @@ import NewsletterForm from "./newsletter-form";
 export default React.createClass({
   displayName: "Footer",
 
-  newsletterEmailChange(event) {
-    this.setState({
-      newsletterEmail: event.currentTarget.value
-    });
-  },
-
-  newsletterSubmit(event) {
-    event.preventDefault();
-
-    var re = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    if (!re.exec(this.state.newsletterEmail)) {
-      alert("Emailul nu este valid");
-      return;
-    }
-
-    let data = { };
-    data['EMAIL'] = this.state.newsletterEmail;
-
-
-    $.ajax({
-      url: '//upir.us8.list-manage.com/subscribe/post-json' +
-           '?u=3f6ccc8a6a63be50b4bb9b1b1&id=3a8ffa6e4f&c=?',
-      method: 'POST',
-      dataType: 'jsonp',
-      data: data,
-      error: this.newsletterSubscribeError,
-      complete: this.newsletterSubscribeResponse,
-    });
-  },
-
-  newsletterSubscribeResponse(response) {
-    let data = response.responseJSON;
-    if (data['result'] == 'error')
-      alert("Adresa de email este deja inregistrata sau un email de " +
-            "confirmare a inregistrarii este a fost trimis catre tine.");
-    else
-      alert("Esti aproape gata. Mai trebuie sa confirmi inscrierea dand click" +
-            " pe link-ul trimis catre tine prin email");
-  },
-
   render() {
     return <Grid className="footer">
       <Row className="small-spacing" />
