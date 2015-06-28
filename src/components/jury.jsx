@@ -64,7 +64,7 @@ export default React.createClass({
         {"avatar": DefaultAvatar, "name": "Narcisa Dima", "occupation": "Profesor @ Liceul 'Ion Barbu' Pitesti"},
         {"avatar": DefaultAvatar, "name": "Istrate Nicolae", "occupation": "Profesor @ Colegiul National 'Ienachita Vacarescu' din Targoviste"},
         {"avatar": AndreiAAvatar, "name": "Andrei Adoamnei", "occupation": "Head of Development @ Conversion Network LLC"},
-        {"avatar": RobertAvatar, "name": "Robert Dolca", "occupation": "Inginer Software @ Intel"},
+        {"avatar": DefaultAvatar, "name": "Robert Dolca", "occupation": "Inginer Software @ Intel"},
         {"avatar": AlexPAvatar, "name": "Alex Palcuie", "occupation": "Referent @ Cancelaria Prim-Ministrului"},
         {"avatar": SabinMarcuAvatar, "name": "Sabin Marcu", "occupation": "student @ University of Southampton"}
     ];
