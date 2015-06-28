@@ -2,7 +2,6 @@
 
 
 .footer {
-  text-transform: uppercase;
 
   .small-spacing.second {
     border-bottom: 3px @light-grey solid;
@@ -17,33 +16,9 @@
 
       .newsletter {
         padding: 15px;
-        display: inline-block;
         text-align: center;
-        margin: 0 auto;
         border: solid @light-grey;
       }
-    }
-
-    .social-logos {
-      margin-top: 25px;
-      list-style-type: none;
-
-      li {
-        float: left;
-        margin-left: 10px;
-      }
-    }
-
-    .privacy {
-      margin-left: 75px;
-      text-transform: none;
-      margin-top: 20px;
-    }
-
-    .copyright {
-      text-transform: none;
-      margin-left: 110px;
-      margin-top: 10px;
     }
   }
 
@@ -51,16 +26,23 @@
     text-align: center;
     letter-spacing: @medium-letter-spacing;
 
-    .navbar-nav {
-      @media (min-width: 768px) {
-        display: inline-block;
-        float: none;
-        vertical-align: top;
+    @media screen and (min-width: @screen-sm) {
+      // http://stackoverflow.com/questions/14601425/bootstrap-navbar-justify-span-menu-items-occupying-full-width
+      .navbar-nav {
+        display: table;
+        width: 100%;
+
+        li {
+          width: auto;
+          float: none;
+          display: table-cell;
+        }
       }
+    }
 
+    .navbar-nav {
+      text-transform: uppercase;
       li {
-        margin: 0 30px;
-
         &.active {
           a {
             color: @grey;
@@ -68,9 +50,11 @@
         }
         a {
           color: @pink;
-
           &:hover {
             color: @grey;
+          }
+          &:visited {
+            color: @pink;
           }
         }
       }

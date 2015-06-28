@@ -34,8 +34,7 @@ export default React.createClass({
                 </Row>
                 <Row>
                     <Col>
-                        <h5 className="tagline">The best software engineering
-                        contest in the world.</h5>
+                        <h5 className="tagline">Perseverează, mergi mai departe!</h5>
                     </Col>
                 </Row>
                 <Row className="small-spacing" />
@@ -49,7 +48,7 @@ export default React.createClass({
                     </Col>
                     <Col md={4}>
                         <p className="right-button">
-                            <Link to="galaciuc" className="link link-secondary">
+                            <Link to="about" className="link link-secondary">
                                 Mai multe...
                             </Link>
                         </p>
