@@ -10,6 +10,13 @@ import "./home.less";
 import Google from "../../assets/img/sponsors/google.png";
 import Intel from "../../assets/img/sponsors/intel.png";
 import Orange from "../../assets/img/sponsors/orange.png";
+import EasyHost from "../../assets/img/sponsors/easyhost.png";
+import Cisco from "../../assets/img/sponsors/cisco.png";
+import Intuitext from "../../assets/img/sponsors/intuitext.gif";
+import Apdetic from "../../assets/img/sponsors/apdetic.png";
+import TotalSoft from "../../assets/img/sponsors/totalsoft.gif";
+import Upir from "../../assets/img/sponsors/upir.png";
+import MEN from "../../assets/img/sponsors/edu.jpg";
 
 export default React.createClass({
   displayName: "Home",
@@ -155,18 +162,49 @@ export default React.createClass({
 
         <div className="sponsors-section-wrapper">
             <Grid className="sponsors-section">
-                <Row className="big-spacing" />
+                <Row className="small-spacing" />
                 <Row>
-                    <Col>
+                    <Col xs={12}>
                         <h4>Sponsori Gold</h4>
                     </Col>
                 </Row>
                 <Row>
-                    <Col>
+                    <Col xs={12}>
                         <p className="logos">
                             <img src={Google} />
                             <img src={Intel} />
                             <img src={Orange} />
+                        </p>
+                    </Col>
+                </Row>
+                <Row className="small-spacing" />
+                <Row>
+                    <Col xs={12}>
+                        <h4>Sponsori Silver</h4>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12}>
+                        <p className="logos">
+                            <img src={EasyHost} />
+                            <img src={Cisco} />
+                            <img src={Intuitext} /> <br />
+                            <img src={Apdetic} />
+                            <img src={TotalSoft} />
+                        </p>
+                    </Col>
+                </Row>
+                <Row className="small-spacing" />
+                <Row>
+                    <Col xs={12}>
+                        <h4>Parteneri Educaționali</h4>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12}>
+                        <p className="logos">
+                            <img src={Upir} />
+                            <img src={MEN} />
                         </p>
                     </Col>
                 </Row>
