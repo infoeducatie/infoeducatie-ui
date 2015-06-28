@@ -15,7 +15,7 @@ export default React.createClass({
 
   getInitialState: function() {
     return {
-      currentCategory: "robots",
+      currentCategory: "web",
       results: resultsFixture
     };
   },
