@@ -7,6 +7,7 @@ import { Grid, Col, Row, Input, ButtonInput } from "react-bootstrap";
 
 import Header from "./header";
 import SuccessIcon from "../../assets/img/ellipse-tick.png"
+import Spinner from "../../assets/img/spinner.gif"
 import "./register.less";
 
 
@@ -22,7 +23,8 @@ export default React.createClass({
       lastName: "",
       errors: [],
       hasErrored: false,
-      hasSubmited: false
+      hasSubmited: false,
+      waitingForServerResponse: false
     };
   },
 
@@ -89,7 +91,10 @@ export default React.createClass({
             label="Confirmare parolă"
             onChange={this.onPasswordConfirmationChange}
             required />
-          <ButtonInput type="submit" value="Înregistrează-te" />
+          <ButtonInput type="submit"
+                       value="Înregistrează-te"
+                       disabled={this.state.waitingForServerResponse} />
+          {this.state.waitingForServerResponse ? <img src={Spinner} /> : null}
         </form>
         {this.renderErrors()}
       </div>;
@@ -98,8 +103,14 @@ export default React.createClass({
 
   renderErrors() {
     if (this.state.hasErrored) {
+      let errors = _.clone(this.state.errors);
+
+      if (!errors.length) {
+        errors.push("Ne pare rău, avem o problemă cu servărul!");
+      }
+
       return <ul className="errors list-group">
-        {this.state.errors.map((error) => {
+        {errors.map((error) => {
           return <li className="list-group-item list-group-item-danger"
                      key={error}>
             {error}
@@ -151,6 +162,13 @@ export default React.createClass({
 
   onFormSubmit(event) {
     event.preventDefault();
+    if (this.state.waitingForServerResponse) {
+      return false;
+    }
+
+    this.setState({
+      waitingForServerResponse: true
+    });
 
     let data = { };
     data["user[email]"] = this.state.email;
@@ -175,21 +193,23 @@ export default React.createClass({
   },
 
   onSignUpError(data) {
+    this.setState({
+      hasErrored: true,
+      waitingForServerResponse: false
+    });
+
     let errors = [];
 
-    if (data.status === 500) {
-      errors.push("Ne pare rău, avem o problemă cu servărul!");
-    } else {
+    if (("responseJSON" in data) && _.isArray(data.responseJSON)) {
       _.forIn(data.responseJSON, (value, key) => {
         value.map((error) => {
           errors.push(key + " " + error);
         });
       });
-    }
 
-    this.setState({
-      hasErrored: true,
-      errors: errors
-    });
+      this.setState({
+        errors: errors
+      });
+    }
   }
 });
