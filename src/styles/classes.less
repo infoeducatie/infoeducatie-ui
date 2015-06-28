@@ -5,8 +5,15 @@
   padding: 20px;
   color: @white;
 
+  &:focus {
+    outline: none;
+  }
+
   &:hover {
     color: @white;
+    &:focus {
+      outline: none;
+    }
   }
 
   &.link-primary {
@@ -85,11 +92,14 @@
   }
 
   &.educational {
-    background-image: url("../../assets/img/icons/educational.png");
+   background-image: url("../../assets/img/icons/educational.png");
   }
 
   &.web {
     background-image: url("../../assets/img/icons/web.png");
   }
 
+  &.doc {
+    background-image: url("../../assets/img/icons/doc.png");
+  }
 }
