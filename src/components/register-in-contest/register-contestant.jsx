@@ -12,27 +12,26 @@ export default React.createClass({
       hasErrored: false,
       waitingForServerResponse: false,
       errors: [],
-      contestantAddress: '',
-      contestantCity: '',
-      contestantCounty: '',
-      contestantCountry: '',
-      contestantZIP: '',
-      contestantCNP: '',
-      contestantIDCardType: '',
-      contestantIDCardNumber: '',
-      contestantPhoneNumber: '',
-      contestantSchoolName: '',
-      contestantGradeNumber: '',
-      schoolCity: '',
-      schoolCounty: '',
-      schoolCountry: '',
+      contestantAddress: "",
+      contestantCity: "",
+      contestantCounty: "",
+      contestantCountry: "",
+      contestantZIP: "",
+      contestantCNP: "",
+      contestantIDCardType: "",
+      contestantIDCardNumber: "",
+      contestantPhoneNumber: "",
+      contestantSchoolName: "",
+      contestantGradeNumber: "",
+      schoolCity: "",
+      schoolCounty: "",
+      schoolCountry: "",
       // TODO @palcu: add fallback with jQuery custom plugin
-      contestantBirthday: '',
-      teacherFirstName: '',
-      teacherLastName: '',
-      officialParticipant: 'false',
-      presentInCamp: 'false',
-      payingCampAcommodation: 'false',
+      contestantBirthday: "",
+      teacherFirstName: "",
+      teacherLastName: "",
+      officialParticipant: "false",
+      presentInCamp: "false"
     };
   },
 
@@ -98,18 +97,19 @@ export default React.createClass({
         label="Școala"
         onChange={this.onSchoolNameChange}
         required />
-      <Input type='select'
-             label='Clasa'
+      <Input type="select"
+             label="Clasa"
              value={this.state.gradeNumber}
-             onChange={this.onGradeNumberChange}>
-        <option value='5'>Clasa a V-a</option>
-        <option value='6'>Clasa a VI-a</option>
-        <option value='7'>Clasa a VII-a</option>
-        <option value='8'>Clasa a VIII-a</option>
-        <option value='9'>Clasa a XI-a</option>
-        <option value='10'>Clasa a X-a</option>
-        <option value='11'>Clasa a XI-a</option>
-        <option value='12'>Clasa a XII-a</option>
+             onChange={this.onGradeNumberChange}
+             required>
+        <option value="5">Clasa a V-a</option>
+        <option value="6">Clasa a VI-a</option>
+        <option value="7">Clasa a VII-a</option>
+        <option value="8">Clasa a VIII-a</option>
+        <option value="9">Clasa a XI-a</option>
+        <option value="10">Clasa a X-a</option>
+        <option value="11">Clasa a XI-a</option>
+        <option value="12">Clasa a XII-a</option>
       </Input>
       <Input
         type="text"
@@ -146,31 +146,35 @@ export default React.createClass({
         label="Numele Profesorului"
         onChange={this.onTeacherLastNameChange}
         required />
-      <Input type='select'
-             label='Te-ai calificat la faza județeană?'
+      <Input type="select"
+             label="Te-ai calificat la faza județeană?"
              value={this.state.officialParticipant}
              onChange={this.onOfficialParticipantChange}>
-        <option value='true'>Da</option>
-        <option value='false'>Nu</option>
+        <option value="true">Da</option>
+        <option value="false">Nu</option>
       </Input>
-      <Input type='select'
-             label='Vei fi prezent în tabără?'
+      <Input type="select"
+             label="Vei fi prezent în tabără?"
              value={this.state.presentInCamp}
              onChange={this.onPresentInCampChange}>
-        <option value='true'>Da</option>
-        <option value='false'>Nu</option>
+        <option value="true">Da</option>
+        <option value="false">Nu</option>
       </Input>
-      { this.state.presentInCamp === 'true' && this.state.officialParticipant === 'true' ?
-          <Input type='select'
-                 label='Vei participa pe un loc gratuit?'
+      { this.state.presentInCamp === "true" && this.state.officialParticipant === "true" ?
+          <Input type="select"
+                 label="Vei participa pe un loc gratuit?"
                  value={this.state.payingCampAcommodation}
                  onChange={this.onPayingCampAcommodation}>
-            <option value='false'>Da, locul gratuit aferent proiectului.</option>
-            <option value='true'>Nu, sunt al doilea participant de la proiect.</option>
+            <option value="false">Da, locul gratuit aferent proiectului.</option>
+            <option value="true">Nu, sunt al doilea participant de la proiect.</option>
           </Input> : null }
-      { this.state.payingCampAcommodation === 'true' ? 'warning' : null}
+      { this.state.payingCampAcommodation === "true" ?
+        <p className="alert alert-warning">
+          La sosirea în tabără va trebui să achiți suma pentru cazare și masă.
+        </p>
+        : null }
       <ButtonInput type="submit"
-                   value="Trimite"
+                   value="Pasul următor"
                    disabled={this.state.waitingForServerResponse} />
     </form>;
   },
@@ -278,9 +282,9 @@ export default React.createClass({
   },
 
   onOfficialParticipantChange(event) {
-    if (this.state.presentInCamp === 'true') {
+    if (this.state.presentInCamp === "true") {
       this.setState({
-        payingCampAcommodation: 'true'
+        payingCampAcommodation: "true"
       });
     }
     this.setState({
@@ -290,18 +294,18 @@ export default React.createClass({
 
   onPresentInCampChange(event) {
     /// XXX: here be dragons flying
-    if (event.currentTarget.value === 'true') {
+    if (event.currentTarget.value === "true") {
       this.setState({
-        payingCampAcommodation: 'true'
+        payingCampAcommodation: "true"
       });
     } else {
       this.setState({
-        payingCampAcommodation: 'false'
+        payingCampAcommodation: "false"
       });
     }
 
     this.setState({
-      presentInCamp: event.currentTarget.value,
+      presentInCamp: event.currentTarget.value
     });
   },
 
@@ -313,6 +317,6 @@ export default React.createClass({
 
   onFormSubmit(event) {
     event.preventDefault();
-    // TODO @palcu: submit form and do magic
+    // TODO @palcu: send to server
   }
 });
