@@ -82,7 +82,6 @@ let routes = (
     <Route handler={Schedule} name="schedule" />
     <Route handler={Results} name="results" />
     <Route handler={Kitchen} name="kitchen" />
-    <Route handler={Contact} name="contact" />
     <Route handler={Contestants} name="contestants" />
     <Route handler={Sponsors} name="sponsors" />
     <Route handler={Blog} name="blog" />
