@@ -77,7 +77,9 @@ export default React.createClass({
           <Row className="xsmall-spacing" />
           <Row>
             <Col>
-              <h1>Rezultate InfoEducație</h1>
+              <h1>Rezultate InfoEducație <br />
+              Ediția 2014
+              </h1>
             </Col>
           </Row>
           <Row>
