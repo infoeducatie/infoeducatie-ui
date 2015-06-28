@@ -97,10 +97,13 @@ export default React.createClass({
                 <p>
                     În etapa finală există și un concurs <em>open</em>
                     , pe echipe, pe parcursul a 24 de ore. Concursul
-                    constă în realizarea unei lucrări software pe o
-                    temă dată. Lucrarea îmbina elemente de <em>
-                    proiectare, programare și design</em>. Pe întreaga durată
-                    a taberei se vor se vor organiza și sesiuni de comunicare
+                    constă în realizarea unei lucrări pe o
+                    temă dată. Lucrarea va îmbina elemente de <em>
+                    proiectare, programare și design</em>.
+                </p>
+                <p>
+                    Pe întreaga durată
+                    a taberei se vor organiza și sesiuni de comunicare
                     pe teme de inginerie software.
                 </p>
                 <p>
@@ -110,8 +113,8 @@ export default React.createClass({
                 <Row className="small-spacing" />
                 <h4>Condiții de participare</h4>
                 <p>
-                    Fiecare județ doritor poate participa cu o echipă
-                    de <em>5 elevi</em> și un <em>profesor însoțitor</em>
+                    Fiecare județ doritor poate participa cu maximum
+                    <em>5 elevi</em> și un <em>profesor însoțitor</em>
                     , în următoarele condiții:
                 </p>
                 <ul>
@@ -121,9 +124,6 @@ export default React.createClass({
                   </li>
                   <li>
                     cerinte hardware și software rezonabile
-                  </li>
-                  <li>
-                    nu se admit lucrări accesibile exclusiv online
                   </li>
                 </ul>
               </Col>
