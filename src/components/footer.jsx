@@ -38,11 +38,10 @@ export default React.createClass({
       </Row>
       <Row className="small-spacing" />
       <Row className="call-to-action">
-        <Col xs={6} className="left hidden-xs">
-          <NewsletterForm
-              setNewsletterSubscribed={this.setNewsletterSubscribed} />
+        <Col sm={6} className="left">
+          <NewsletterForm />
         </Col>
-        <Col xs={6} className="text-center">
+        <Col sm={6} className="text-center">
           <Row>
             <Col xs={12}>
               <ul className="social-logos list-inline">
