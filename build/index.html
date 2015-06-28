@@ -5,12 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>InfoEducatie</title>
+  <script src="//cdn.ravenjs.com/1.1.15/jquery,native/raven.min.js"></script>
   <script>
     window.config = {
       API_URL: "http://api.infoeducatie.ro/v1/",
       MAILCHIMP_URL: "//upir.us8.list-manage.com/subscribe/post-json" +
                      "?u=3f6ccc8a6a63be50b4bb9b1b1&id=3a8ffa6e4f&c=?"
     };
+    Raven.config('http://b508fb1c2d0f4f93a940353142ea75d0@sentry.infoeducatie.ro/5', {
+      whitelistUrls: ['infoeducatie.ro/']
+    }).install();
   </script>
 </head>
 <body>
