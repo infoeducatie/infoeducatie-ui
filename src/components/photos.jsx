@@ -25,10 +25,13 @@ var PhotoWrapper = React.createClass({
     displayName: "PhotoWrapper",
 
     render() {
-        var className = ctx("cover", "year-" + this.props.year);
+        var className = ctx("cover", "year-" + this.props.year,
+            {hover: this.props.hovered});
         return <div className="photo-cover-wrapper">
             <div className="photo-cover">
-                <a href={this.props.link} target="_blank">
+                <a href={this.props.link} target="_blank"
+                   className={this.props.year}
+                   onMouseOver={this.props.onHover}>
                     <div className={className}></div>
                     <div className="more-details">Fotografii</div>
                 </a>
@@ -47,7 +50,8 @@ export default React.createClass({
   displayName: "Photos",
   getInitialState() {
     return {
-        "albums": [
+        hoveredYear: 0,
+        albums: [
             {"year": 2014, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6126213014251955681"},
             {"year": 2013, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6126511874123551857"},
             {"year": 2012, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6126529418024686801"},
@@ -88,14 +92,23 @@ export default React.createClass({
                 <Row>
                     <Col md={10} mdOffset={1}>
                         <Row>{this.state.albums.map(function(album) {
+                            let hovered = (album.year === this.state.hoveredYear);
                             return <PhotoWrapper year={album.year}
-                                                 link={album.link} />;
-                        })}
+                                                 link={album.link}
+                                                 onHover={this.onCoverHover}
+                                                 hovered={hovered} />;
+                        }.bind(this))}
                         </Row>
                     </Col>
                 </Row>
             </Grid>
         </div>
     </div>;
+  },
+
+  onCoverHover(event) {
+    this.setState({
+        hoveredYear: parseInt(event.currentTarget.className)
+    });
   }
 });
