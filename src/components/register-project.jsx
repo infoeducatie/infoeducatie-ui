@@ -1,7 +1,7 @@
 "use strict";
 
 import React from "react";
-import { Grid, Col, Row } from "react-bootstrap";
+import { Grid, Col, Row, PanelGroup, Panel } from "react-bootstrap";
 
 import Header from "./header";
 import "./register-project.less";
@@ -26,6 +26,32 @@ export default React.createClass({
           </Row>
         </Grid>
       </div>
+      <Grid>
+        <Col sm={6} smOffset={3}>
+          <Row className="small-spacing" />
+          <PanelGroup onSelect={this.handleSelect}
+                      defaultActiveKey='2'
+                      accordion>
+            <Panel header='Înregistrare Participant'
+                   eventKey='1'
+                   bsStyle='success'>
+              Formular de înregistrare participant
+            </Panel>
+            <Panel header='Înregistrare Proiect'
+                   eventKey='2'>
+              Formular de înregistrare proiect
+            </Panel>
+            <Panel header='Înregistrare Coechipier'
+                   eventKey='3'>
+              Formular de înregistrare coechipier
+            </Panel>
+            <Panel header='Finalizare'
+                   eventKey='4'>
+              Aici confirmă...
+            </Panel>
+          </PanelGroup>
+        </Col>
+      </Grid>
     </div>;
   }
 });
