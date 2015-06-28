@@ -141,10 +141,10 @@ export default React.createClass({
                             <h6 className="edition">Ediția 23</h6>
                             <Row className="small-spacing" />
                             <p>
-                                <a href="https://plus.google.com/+InfoeducatieRomania/photos"
+                                <Link to="photos"
                                    className="link link-secondary">
                                     Mai multe poze
-                                </a>
+                                </Link>
                             </p>
                         </div>
                     </Col>
