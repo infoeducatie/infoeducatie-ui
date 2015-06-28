@@ -84,46 +84,50 @@ export default React.createClass({
               </Col>
             </Row>
             <Row className="small-spacing" />
-            <h4>Participare la concurs</h4>
-            <p>
-                La fiecare etapă vor fi prezentate lucrări
-                realizate de către elevi, indiferent de anul de
-                studiu (clasele IX - XII). Participarea la etapele
-                ulterioare este hotărâtă de clasamentele etapelor
-                anterioare.
-            </p>
-            <p>
-                În etapa finală există și un concurs <em>open</em>
-                , pe echipe, pe parcursul a 24 de ore. Concursul
-                constă în realizarea unei lucrări software pe o
-                temă dată. Lucrarea îmbina elemente de <em>
-                proiectare, programare și design</em>. În tot
-                timpul taberei finale se vor organiza și sesiuni
-                de comunicare pe teme de inginerie software.
-            </p>
-            <p>
-                Toate mijloacele IT sunt oferite de Colegiul
-                Național Unirea, comunitatea Tulnici și Liceul Vidra.
-            </p>
-            <Row className="small-spacing" />
-            <h4>Condiții de participare</h4>
-            <p>
-                Fiecare județ doritor poate participa cu o echipă
-                de <em>4 elevi</em> și un <em>profesor însoțitor</em>
-                , în următoarele condiții:
-            </p>
-            <ul>
-              <li>
-                minim trei lucrări (web, roboți sau IoT, multimedia,
-                software educțional, software utilitar)
-              </li>
-              <li>
-                cerinte hardware și software rezonabile
-              </li>
-              <li>
-                nu se admit lucrări accesibile doar prin web
-              </li>
-            </ul>
+            <Row>
+              <Col xs={12}>
+                <h4>Participare la concurs</h4>
+                <p>
+                    La fiecare etapă vor fi prezentate lucrări
+                    realizate de către elevi, indiferent de anul de
+                    studiu (clasele IX - XII). Participarea la etapele
+                    ulterioare este hotărâtă de clasamentele etapelor
+                    anterioare.
+                </p>
+                <p>
+                    În etapa finală există și un concurs <em>open</em>
+                    , pe echipe, pe parcursul a 24 de ore. Concursul
+                    constă în realizarea unei lucrări software pe o
+                    temă dată. Lucrarea îmbina elemente de <em>
+                    proiectare, programare și design</em>. Pe întreaga durată
+                    a taberei se vor se vor organiza și sesiuni de comunicare
+                    pe teme de inginerie software.
+                </p>
+                <p>
+                    Toate mijloacele IT sunt oferite de Colegiul
+                    Național Unirea, comunitatea Tulnici și Liceul Vidra.
+                </p>
+                <Row className="small-spacing" />
+                <h4>Condiții de participare</h4>
+                <p>
+                    Fiecare județ doritor poate participa cu o echipă
+                    de <em>5 elevi</em> și un <em>profesor însoțitor</em>
+                    , în următoarele condiții:
+                </p>
+                <ul>
+                  <li>
+                    minim trei lucrări (web, roboți sau IoT, multimedia,
+                    software educțional, software utilitar)
+                  </li>
+                  <li>
+                    cerinte hardware și software rezonabile
+                  </li>
+                  <li>
+                    nu se admit lucrări accesibile exclusiv online
+                  </li>
+                </ul>
+              </Col>
+            </Row>
             <Row className="big-spacing" />
             <Row>
               <Col mdOffset={2} md={8} xs={10} xsOffset={1} className="box">
