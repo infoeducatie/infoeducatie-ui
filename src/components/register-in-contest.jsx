@@ -5,6 +5,7 @@ import { Grid, Col, Row, PanelGroup, Panel } from "react-bootstrap";
 
 import Header from "./header";
 import "./register-in-contest.less";
+import RegisterContestant from "./register-in-contest/register-contestant"
 
 export default React.createClass({
   displayName: "RegisterInContest",
@@ -34,7 +35,7 @@ export default React.createClass({
                       accordion>
             <Panel header='Înregistrare Participant'
                    eventKey='1'>
-              Formular de înregistrare participant
+              <RegisterContestant />
             </Panel>
             <Panel header='Înregistrare Proiect'
                    eventKey='2'>
