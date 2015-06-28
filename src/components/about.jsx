@@ -5,7 +5,7 @@ import React from "react";
 import { Row, Col, Grid } from "react-bootstrap";
 import Header from "./header";
 
-import "./galaciuc.less"
+import "./about.less"
 
 
 export default React.createClass({
