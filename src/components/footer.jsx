@@ -23,7 +23,7 @@ export default React.createClass({
       <Row className="small-spacing" />
       <Row className="small-spacing second" />
       <Row>
-        <Col>
+        <Col xs={12}>
           <Navbar>
             <Nav className="navbar-nav" ref="nav">
               <NavItemLink to="alumni">Alumni</NavItemLink>
@@ -38,13 +38,13 @@ export default React.createClass({
       </Row>
       <Row className="small-spacing" />
       <Row className="call-to-action">
-        <Col md={6} className="left hidden-xs">
+        <Col xs={6} className="left hidden-xs">
           <NewsletterForm
               setNewsletterSubscribed={this.setNewsletterSubscribed} />
         </Col>
-        <Col md={6} className="text-center">
+        <Col xs={6} className="text-center">
           <Row>
-            <Col>
+            <Col xs={12}>
               <ul className="social-logos list-inline">
                 <li><a href="https://www.facebook.com/infoeducatie" target="_blank"><img alt="Facebook" src={Facebook} /></a></li>
                 <li><a href="https://twitter.com/infoeducatie" target="_blank"><img alt="Twitter" src={Twitter} /></a></li>
@@ -54,14 +54,18 @@ export default React.createClass({
             </Col>
           </Row>
           <Row>
-            <p className="privacy">
-              Protec&#355;ia datelor / Termene &amp; condi&#355;ii
-            </p>
+            <Col xs={12}>
+             <p className="privacy">
+                Protec&#355;ia datelor / Termene &amp; condi&#355;ii
+              </p>
+            </Col>
           </Row>
           <Row>
-            <p className="copyright">
-              &copy; 2015 InfoEduca&#355;ie
-            </p>
+            <Col xs={12}>
+              <p className="copyright">
+                &copy; 2015 InfoEduca&#355;ie
+              </p>
+            </Col>
           </Row>
         </Col>
       </Row>
