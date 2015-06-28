@@ -40,7 +40,7 @@ export default React.createClass({
           </Row>
           <Row>
             <Col xs={12}>
-              <h2>Trebuie să îți faci un cont nou</h2>
+              <h2>Înregistrările vor începe pe 3 iulie.</h2>
             </Col>
           </Row>
         </Grid>
@@ -49,8 +49,6 @@ export default React.createClass({
         <Row className="small-spacing" />
         <Row>
           <Col md={6} mdOffset={3} sm={8} smOffset={2}>
-            {this.renderForm()}
-            {this.renderSuccess()}
           </Col>
         </Row>
       </Grid>
