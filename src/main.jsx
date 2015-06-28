@@ -9,7 +9,7 @@ import "./main.less";
 
 import Photos from "./components/photos";
 import Alumni from "./components/alumni";
-import Galaciuc from "./components/galaciuc";
+import About from "./components/about";
 import Register from "./components/register";
 import Jury from "./components/jury";
 import Home from "./components/home";
@@ -69,7 +69,7 @@ let routes = (
     <Route handler={Jury} name="jury" />
     <Route handler={Alumni} name="alumni" />
     <Route handler={Photos} name="photos" />
-    <Route handler={Galaciuc} name="galaciuc" />
+    <Route handler={About} name="about" />
     <Route handler={Register} name="register" />
     <Route handler={Schedule} name="schedule" />
     <Route handler={Results} name="results" />
