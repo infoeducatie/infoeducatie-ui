@@ -60,6 +60,7 @@ export default React.createClass({
   renderForm() {
     if (!this.state.hasSubmited) {
       return <div>
+        {this.renderErrors()}
         <form onSubmit={this.onFormSubmit}>
           <Input
             type="text"
@@ -96,7 +97,6 @@ export default React.createClass({
                        disabled={this.state.waitingForServerResponse} />
           {this.state.waitingForServerResponse ? <img src={Spinner} /> : null}
         </form>
-        {this.renderErrors()}
       </div>;
     }
   },
