@@ -58,20 +58,23 @@ export default React.createClass({
   renderAlumnus(alumnus) {
     let className = ctx("alumnus-container", alumnus.color);
 
-    return <Row>
-      <Col mdOffset={3} md={6}>
+    return <Row key={alumnus.name}>
+      <Col mdOffset={2} md={8} smOffset={1} sm={10}>
         <Row className="small-spacing" />
         <Row>
-          <Col className={className}>
+          <Col className={className} xs={12}>
             <Row className="small-spacing" />
             <Row>
-              <Col mdOffset={1} md={1}>
+              <Col xs={3} xsOffset={1}>
                 <Row className="xsmall-spacing" />
-                <div className="alumnus-image"><img src={alumnus.avatar} /></div>
+                <div className="alumnus-image">
+                  <img src={alumnus.avatar} />
+                </div>
               </Col>
-              <Col mdOffset={1} md={8}>
+              <Col xs={7} xsOffset={1}>
                 <p>{alumnus.description}</p>
-                <p className="alumnus-name">{alumnus.name}</p>
+                <Row className="small-spacing" />
+                <h5 className="alumnus-name">{alumnus.name}</h5>
                 <p className="alumnus-position">{alumnus.position}</p>
               </Col>
             </Row>
@@ -87,14 +90,14 @@ export default React.createClass({
       <div className="gray-section-wrapper">
         <Grid className="gray-section">
           <Row>
-            <Col>
+            <Col xs={12}>
               <Header isLoggedIn={this.props.isLoggedIn}
                       login={this.props.login}
                       logout={this.props.logout} />
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col xs={12}>
               <h1>Alumni InfoEducație</h1>
               <h2>Generația IT din România</h2>
             </Col>
