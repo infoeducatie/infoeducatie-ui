@@ -2,7 +2,7 @@
 
 import React from "react";
 import Router from "react-router";
-import { Navbar, Nav, NavItem, Row, Col, Thumbnail, Grid } from "react-bootstrap";
+import { Navbar, Nav, NavItem, Row, Col, Thumbnail, Grid, NavItem } from "react-bootstrap";
 import { NavItemLink } from "react-router-bootstrap";
 
 let { Route, Link, RouteHandler } = Router; // eslint-disable-line
@@ -13,6 +13,7 @@ import Twitter from "../../assets/img/icons/twitter.png";
 import Google from "../../assets/img/icons/gplus.png";
 import Github from "../../assets/img/icons/github.png";
 
+import NewsletterForm from "./newsletter-form";
 
 export default React.createClass({
   displayName: "Footer",
@@ -22,12 +23,12 @@ export default React.createClass({
       <Row className="small-spacing" />
       <Row className="small-spacing second" />
       <Row>
-        <Col>
+        <Col xs={12}>
           <Navbar>
             <Nav className="navbar-nav" ref="nav">
               <NavItemLink to="alumni">Alumni</NavItemLink>
-              <NavItemLink to="forum">Forum</NavItemLink>
-              <NavItemLink to="schedule">Program</NavItemLink>
+              <NavItem target="_blank" href="http://community.infoeducatie.ro">Forum</NavItem>
+              <NavItem target="_blank" href="http://blog.infoeducatie.ro">Blog</NavItem>
               <NavItemLink to="results">Rezultate</NavItemLink>
               <NavItemLink to="jury">Juriu</NavItemLink>
               <NavItemLink to="galaciuc">Contact</NavItemLink>
@@ -37,29 +38,33 @@ export default React.createClass({
       </Row>
       <Row className="small-spacing" />
       <Row className="call-to-action">
-        <Col md={6} className="left hidden-xs">
-          <Row><p className="newsletter">aboneaz&#258;-te la newsletter</p></Row>
-          <Row className="small-spacing" />
-          <Row><p className="signup"><a href="#" className="link link-ternary">Înscrie-te</a></p></Row>
+        <Col sm={6} className="left">
+          <NewsletterForm />
         </Col>
-        <Col md={6}>
+        <Col sm={6} className="text-center">
           <Row>
-            <ul className="social-logos">
-              <li><a href="https://www.facebook.com/infoeducatie" target="_blank"><img alt='Facebook' src={Facebook} /></a></li>
-              <li><a href="https://twitter.com/infoeducatie" target="_blank"><img alt='Twitter' src={Twitter} /></a></li>
-              <li><a href="https://plus.google.com/+InfoeducatieRomania" target="_blank"><img alt='Google+' src={Google} /></a></li>
-              <li><a href="https://github.com/infoeducatie" target="_blank"><img alt='Github' src={Github} /></a></li>
-            </ul>
+            <Col xs={12}>
+              <ul className="social-logos list-inline">
+                <li><a href="https://www.facebook.com/infoeducatie" target="_blank"><img alt="Facebook" src={Facebook} /></a></li>
+                <li><a href="https://twitter.com/infoeducatie" target="_blank"><img alt="Twitter" src={Twitter} /></a></li>
+                <li><a href="https://plus.google.com/+InfoeducatieRomania" target="_blank"><img alt="Google+" src={Google} /></a></li>
+                <li><a href="https://github.com/infoeducatie" target="_blank"><img alt="Github" src={Github} /></a></li>
+              </ul>
+            </Col>
           </Row>
           <Row>
-            <p className="privacy">
-              Protec&#355;ia datelor / Termene &amp; condi&#355;ii
-            </p>
+            <Col xs={12}>
+             <p className="privacy">
+                Protec&#355;ia datelor / Termene &amp; condi&#355;ii
+              </p>
+            </Col>
           </Row>
           <Row>
-            <p className="copyright">
-              &copy; 2015 InfoEduca&#355;ie
-            </p>
+            <Col xs={12}>
+              <p className="copyright">
+                &copy; 2015 InfoEduca&#355;ie
+              </p>
+            </Col>
           </Row>
         </Col>
       </Row>

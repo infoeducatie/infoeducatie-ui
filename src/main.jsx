@@ -7,22 +7,17 @@ let { Route, RouteHandler, DefaultRoute } = Router; // eslint-disable-line
 import "babel-core/polyfill";
 import "./main.less";
 
-import News from "./components/news";
 import Photos from "./components/photos";
 import Alumni from "./components/alumni";
-import Galaciuc from "./components/galaciuc";
+import About from "./components/about";
 import Register from "./components/register";
-import Dashboard from "./components/dashboard";
 import Jury from "./components/jury";
 import Home from "./components/home";
-import Forum from "./components/forum";
 import Schedule from "./components/schedule";
 import Results from "./components/results";
 import Kitchen from "./components/kitchen";
 import Footer from "./components/footer";
 import Contestants from "./components/contestants/contestants";
-import Sponsors from "./components/sponsors";
-import Blog from "./components/blog";
 
 
 let App = React.createClass({
@@ -72,19 +67,14 @@ let routes = (
   <Route path="/" handler={App}>
     <Route handler={Home} name="home" />
     <Route handler={Jury} name="jury" />
-    <Route handler={News} name="news" />
     <Route handler={Alumni} name="alumni" />
     <Route handler={Photos} name="photos" />
-    <Route handler={Galaciuc} name="galaciuc" />
+    <Route handler={About} name="about" />
     <Route handler={Register} name="register" />
-    <Route handler={Dashboard} name="dashboard" />
-    <Route handler={Forum} name="forum" />
     <Route handler={Schedule} name="schedule" />
     <Route handler={Results} name="results" />
     <Route handler={Kitchen} name="kitchen" />
     <Route handler={Contestants} name="contestants" />
-    <Route handler={Sponsors} name="sponsors" />
-    <Route handler={Blog} name="blog" />
     <DefaultRoute handler={Home} />
   </Route>
 );
