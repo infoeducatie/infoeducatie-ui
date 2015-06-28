@@ -13,6 +13,7 @@ import Twitter from "../../assets/img/icons/twitter.png";
 import Google from "../../assets/img/icons/gplus.png";
 import Github from "../../assets/img/icons/github.png";
 
+
 export default React.createClass({
   displayName: "Footer",
 
@@ -21,7 +22,7 @@ export default React.createClass({
       <Row className="small-spacing" />
       <Row className="small-spacing second" />
       <Row>
-        <Col md={12}>
+        <Col>
           <Navbar>
             <Nav className="navbar-nav" ref="nav">
               <NavItemLink to="alumni">Alumni</NavItemLink>
@@ -29,7 +30,7 @@ export default React.createClass({
               <NavItemLink to="schedule">Program</NavItemLink>
               <NavItemLink to="results">Rezultate</NavItemLink>
               <NavItemLink to="jury">Juriu</NavItemLink>
-              <NavItemLink to="contact">Contact</NavItemLink>
+              <NavItemLink to="galaciuc">Contact</NavItemLink>
             </Nav>
           </Navbar>
         </Col>
