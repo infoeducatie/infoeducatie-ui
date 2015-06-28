@@ -35,7 +35,7 @@ export default React.createClass({
         <Row>
           <Col mdOffset={1} md={10}>
             <Row className="small-spacing" />
-            <p className="about">
+            <p>
               Organizat din 1993, este dedicat elevilor cu aptitudini,
               înclinații și interes pentru crearea aplicațiilor
               informatice, atât de la profilul informatică cât
@@ -85,14 +85,14 @@ export default React.createClass({
             </Row>
             <Row className="small-spacing" />
             <h4>Participare la concurs</h4>
-            <p className="about">
+            <p>
                 La fiecare etapă vor fi prezentate lucrări
                 realizate de către elevi, indiferent de anul de
                 studiu (clasele IX - XII). Participarea la etapele
                 ulterioare este hotărâtă de clasamentele etapelor
                 anterioare.
             </p>
-            <p className="about">
+            <p>
                 În etapa finală există și un concurs <em>open</em>
                 , pe echipe, pe parcursul a 24 de ore. Concursul
                 constă în realizarea unei lucrări software pe o
@@ -101,26 +101,26 @@ export default React.createClass({
                 timpul taberei finale se vor organiza și sesiuni
                 de comunicare pe teme de inginerie software.
             </p>
-            <p className="about">
+            <p>
                 Toate mijloacele IT sunt oferite de Colegiul
                 Național Unirea, comunitatea Tulnici și Liceul Vidra.
             </p>
             <Row className="small-spacing" />
             <h4>Condiții de participare</h4>
-            <p className="about">
+            <p>
                 Fiecare județ doritor poate participa cu o echipă
                 de <em>4 elevi</em> și un <em>profesor însoțitor</em>
                 , în următoarele condiții:
             </p>
             <ul>
-              <li className="about">
+              <li>
                 minim trei lucrări (web, roboți sau IoT, multimedia,
                 software educțional, software utilitar)
               </li>
-              <li className="about">
+              <li>
                 cerinte hardware și software rezonabile
               </li>
-              <li className="about">
+              <li>
                 nu se admit lucrări accesibile doar prin web
               </li>
             </ul>
@@ -143,28 +143,28 @@ export default React.createClass({
             <Row className="contact">
               <h4>Contact</h4>
               <ul>
-                <li className="about">
+                <li>
                   Organizatori: contact@infoeducatie.ro (Emil Onea)
                 </li>
-                <li className="about">
+                <li>
                   Website: ping@infoeducatie.ro
                 </li>
               </ul>
               <h4>Juriu</h4>
               <ul>
-                <li className="about">
+                <li>
                   Software educațional: educational@infoeducatie.ro
                 </li>
-                <li className="about">
+                <li>
                   Multimedia: multimedia@infoeducatie.ro
                 </li>
-                <li className="about">
+                <li>
                   Software utilitar: utilitar@infoeducatie.ro
                 </li>
-                <li className="about">
+                <li>
                   Roboți: roboti@infoeducatie.ro
                 </li>
-                <li className="about">
+                <li>
                   Web: web@infoeducatie.ro
                 </li>
               </ul>
