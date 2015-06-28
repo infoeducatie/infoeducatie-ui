@@ -26,11 +26,10 @@ export default React.createClass({
         <Col xs={12}>
           <Navbar>
             <Nav className="navbar-nav" ref="nav">
-              <NavItemLink to="alumni">Alumni</NavItemLink>
               <NavItem target="_blank" href="http://community.infoeducatie.ro">Forum</NavItem>
               <NavItem target="_blank" href="http://blog.infoeducatie.ro">Blog</NavItem>
-              <NavItemLink to="results">Rezultate</NavItemLink>
-              <NavItemLink to="jury">Juriu</NavItemLink>
+              <NavItemLink to="photos">Fotografii</NavItemLink>
+              <NavItemLink to="register">Înregistrare</NavItemLink>
               <NavItemLink to="about">Contact</NavItemLink>
             </Nav>
           </Navbar>
