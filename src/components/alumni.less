@@ -1,0 +1,61 @@
+@import "../main";
+
+
+.alumni {
+  .gray-section-wrapper {
+    .gray-section-wrapper (@img_path: "../../assets/img/alumni.png");
+  }
+  .gray-section {
+    .gray-section();
+  }
+
+  .alumnus-container {
+    color: @white;
+
+    .alumnus-name {
+      color: @light-black;
+      text-transform: uppercase;
+      letter-spacing: @medium-letter-spacing / 2;
+      font-weight: bold;
+    }
+
+    .alumnus-position {
+      text-transform: uppercase;
+      color: @white;
+    }
+
+    .alumnus-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 100%;
+      background-color: @grey;
+
+      img {
+        width: 100%;
+        height: 100%;
+        filter: grayscale(1);
+        padding: 10px;
+      }
+    }
+
+    &.green {
+      background-color: @green;
+    }
+    &.orange {
+      background-color: @orange;
+    }
+
+    &.black {
+      background-color: @light-black;
+
+      .alumnus-name {
+        color: @orange;
+      }
+
+      .alumnus-position {
+        color: @light-grey;
+      }
+    }
+
+  }
+}
