@@ -1,0 +1,55 @@
+@import "../../main";
+
+
+.contestants {
+  .blue-section-wrapper {
+    .blue-section-wrapper (@img_path: "../../assets/img/contestants.png");
+  }
+
+  .blue-section {
+    .blue-section();
+  }
+
+  .stats-section {
+    @section-height: 112px;
+    margin-top: -@section-height/2;
+
+    text-transform: uppercase;
+    color: @yellow;
+    text-align: center;
+
+    .inner-stats {
+      background-color: @light-black;
+
+      .description {
+        margin-top: 20px;
+        font-weight: bold;
+        color: @white;
+      }
+
+      .value {
+        font-weight: bold;
+        margin-top: -20px;
+        font-size: 3em;
+        width: 100%;
+        height: 100%;
+      }
+
+      .border-left:after {
+        // http://stackoverflow.com/questions/3953293/how-to-control-border-height
+        content: "";
+        border-left: 2px solid @grey;
+        position: absolute;
+        height: 50%;
+        left: 0;
+        top: 25%;
+      }
+    }
+  }
+
+  .projects-grid {
+    //http://stackoverflow.com/questions/22148063/making-a-pinterest-like-grid-with-bootstrap-the-boxes-are-not-displayed-right-b
+    column-width: 15em;
+    column-gap: @grid-gutter-width;
+  }
+}

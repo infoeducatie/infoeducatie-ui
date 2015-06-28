@@ -31,8 +31,19 @@
 }
 
 
-@vertical-small-spacing: 48px;
+@vertical-xxsmall-spacing: 12px;
+@vertical-xsmall-spacing: 2 * @vertical-xxsmall-spacing;
+@vertical-small-spacing: 2 * @vertical-xsmall-spacing;
 @vertical-big-spacing: 2 * @vertical-small-spacing;
+@vertical-large-spacing: 4 * @vertical-small-spacing;
+
+.xxsmall-spacing {
+  margin-bottom: @vertical-xxsmall-spacing;
+}
+
+.xsmall-spacing {
+  margin-bottom: @vertical-xsmall-spacing;
+}
 
 .small-spacing {
   height: @vertical-small-spacing;
@@ -48,4 +59,40 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.large-spacing {
+  margin-bottom: @vertical-large-spacing;
+}
+
+.section-icon {
+  height: 35px;
+  width: 50px;
+  display: block;
+  background-size: 50px 35px;
+  background-repeat: no-repeat;
+
+  &.media {
+    background-image: url("../../assets/img/icons/media.png");
+  }
+
+  &.utility {
+    background-image: url("../../assets/img/icons/utility.png");
+  }
+
+  &.robots {
+    background-image: url("../../assets/img/icons/robots.png");
+  }
+
+  &.educational {
+   background-image: url("../../assets/img/icons/educational.png");
+  }
+
+  &.web {
+    background-image: url("../../assets/img/icons/web.png");
+  }
+
+  &.doc {
+    background-image: url("../../assets/img/icons/doc.png");
+  }
 }

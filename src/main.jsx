@@ -17,9 +17,12 @@ import Jury from "./components/jury";
 import Home from "./components/home";
 import Forum from "./components/forum";
 import Schedule from "./components/schedule";
-import Contact from "./components/contact";
 import Results from "./components/results";
+import Kitchen from "./components/kitchen";
 import Footer from "./components/footer";
+import Contestants from "./components/contestants/contestants";
+import Sponsors from "./components/sponsors";
+import Blog from "./components/blog";
 
 
 let App = React.createClass({
@@ -78,7 +81,10 @@ let routes = (
     <Route handler={Forum} name="forum" />
     <Route handler={Schedule} name="schedule" />
     <Route handler={Results} name="results" />
-    <Route handler={Contact} name="contact" />
+    <Route handler={Kitchen} name="kitchen" />
+    <Route handler={Contestants} name="contestants" />
+    <Route handler={Sponsors} name="sponsors" />
+    <Route handler={Blog} name="blog" />
     <DefaultRoute handler={Home} />
   </Route>
 );

@@ -1,0 +1,33 @@
+@import "../../main";
+
+
+.filter-buttons {
+  .icon {
+    cursor: pointer;
+    font-size: 50px;
+
+    &.inactive {
+      color: @dark-gray;
+    }
+  }
+
+  .round-icon {
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    border: 3px solid;
+    border-radius: 100%;
+
+    &.inactive {
+      border-color: @light-grey;
+    }
+
+    span {
+      filter: contrast(0);
+      background-size: 30px 25px;
+      margin: 10px auto;
+      height: 25px;
+      width: 30px;
+    }
+  }
+}

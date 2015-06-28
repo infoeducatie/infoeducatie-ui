@@ -1,8 +1,8 @@
 "use strict";
 
 import React from "react";
+import {Link} from "react-router";
 import {Grid, Row, Col} from "react-bootstrap";
-import {Link} from "react-router"
 
 import Header from "./header";
 
@@ -19,7 +19,7 @@ export default React.createClass({
         <div className="blue-section-wrapper">
             <Grid className="blue-section">
                 <Row>
-                    <Col md={12}>
+                    <Col>
                         <Header isLoggedIn={this.props.isLoggedIn}
                                 login={this.props.login}
                                 logout={this.props.logout} />
@@ -27,13 +27,13 @@ export default React.createClass({
                 </Row>
                 <Row className="big-spacing header-spacing" />
                 <Row>
-                    <Col md={12}>
+                    <Col>
                         <h1>InfoEducație Ediția 2015</h1>
                         <h2>Concurs Național de Informatică</h2>
                     </Col>
                 </Row>
                 <Row>
-                    <Col md={12}>
+                    <Col>
                         <h5 className="tagline">The best software engineering
                         contest in the world.</h5>
                     </Col>
@@ -49,9 +49,9 @@ export default React.createClass({
                     </Col>
                     <Col md={4}>
                         <p className="right-button">
-                            <a href="#news" className="link link-secondary">
+                            <Link to="galaciuc" className="link link-secondary">
                                 Mai multe...
-                            </a>
+                            </Link>
                         </p>
                     </Col>
                 </Row>
@@ -158,12 +158,12 @@ export default React.createClass({
             <Grid className="sponsors-section">
                 <Row className="big-spacing" />
                 <Row>
-                    <Col md={12}>
+                    <Col>
                         <h4>Sponsori Gold</h4>
                     </Col>
                 </Row>
                 <Row>
-                    <Col md={12}>
+                    <Col>
                         <p className="logos">
                             <img src={Google} />
                             <img src={Intel} />

@@ -27,11 +27,13 @@
   @blue-gradient: rgba(0, 129, 177, 0.7);
   background: linear-gradient(@blue-gradient, @blue-gradient), url(@img_path);
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.blue-section (@min-height: @section-min-height * 2) {
+.blue-section (@min-height: 500px) {
   text-align: center;
   min-height: @min-height;
+  color: @white;
 
   h1 {
     font-size: @font-size-h1-big;
