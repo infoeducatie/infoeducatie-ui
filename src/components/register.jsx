@@ -106,7 +106,7 @@ export default React.createClass({
       let errors = _.clone(this.state.errors);
 
       if (!errors.length) {
-        errors.push("Ne pare rău, avem o problemă cu servărul!");
+        errors.push("Ne pare rău, avem o problemă cu serverul!");
       }
 
       return <ul className="errors list-group">
