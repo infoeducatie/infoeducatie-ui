@@ -177,7 +177,7 @@ export default React.createClass({
   onSignUpError(data) {
     let errors = [];
 
-    if (data['status'] === 500) {
+    if (data.status === 500) {
       errors.push("Ne pare rău, avem o problemă cu servărul!");
     } else {
       _.forIn(data.responseJSON, (value, key) => {
