@@ -82,18 +82,18 @@ export default React.createClass({
 
                         <Row className="small-spacing" />
 
-                        <p className="date">30 iunie 2015</p>
-                        <p className="title">Au inceput inscrierile pentru
-                        InfoEducatie 2015</p>
+                        <p className="date">28 iunie 2015</p>
+                        <p className="title">Am lansat noul website
+                        InfoEducație.</p>
 
-                        <p className="message">Vă invităm să vă faceți conturi
-                        pe noul website și să vă înregistrați proiectele.</p>
+                        <p className="message">Vă invităm să ne oferiți feedback
+                        pe <a href="http://community.infoeducatie.ro/t/noul-website-infoeducatie-2015/3646">forum</a>.</p>
                     </Col>
                     <Col md={5} mdOffset={1} className="right">
                         <Row className="small-spacing" />
                         <p className="date">28 iunie 2015</p>
-                        <p className="message">Am lansat noul website
-                        InfoEducație.</p>
+                        <p className="message">Înregistrările vor începe în
+                        câteva zile.</p>
 
                         <Row className="big-spacing" />
                         <p className="date">26 iunie 2015</p>
