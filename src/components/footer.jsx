@@ -31,7 +31,7 @@ export default React.createClass({
               <NavItem target="_blank" href="http://blog.infoeducatie.ro">Blog</NavItem>
               <NavItemLink to="results">Rezultate</NavItemLink>
               <NavItemLink to="jury">Juriu</NavItemLink>
-              <NavItemLink to="galaciuc">Contact</NavItemLink>
+              <NavItemLink to="about">Contact</NavItemLink>
             </Nav>
           </Navbar>
         </Col>
