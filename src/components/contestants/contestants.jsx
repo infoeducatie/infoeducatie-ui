@@ -167,7 +167,7 @@ export default React.createClass({
       <Grid>
         <Row className="big-spacing" />
         <Row className="filter-buttons">
-          <Col smOffset={2} sm={1} xs={2} xsOffset={1}>
+          <Col smOffset={2} sm={1} xs={2}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="educational" />
