@@ -33,6 +33,7 @@ npm start
 - `index.dev.html` - Index file w/ settings for development
 - `Procfile` - The command in this file is used by Heroku to run the server
 - `app.json` - Manifest file for Heroku that defines how your code should be built and bootstrapped into a live application
+- `build.sh` - Used by the npm build targets. Copies the right index file in the build folder and creates a bundle based on the environment provided as parameter
 
 ## Commands
 
