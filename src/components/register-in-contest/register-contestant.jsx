@@ -317,6 +317,7 @@ export default React.createClass({
 
   onFormSubmit(event) {
     event.preventDefault();
+    console.log(this.state)
     // TODO @palcu: send to server
   }
 });
