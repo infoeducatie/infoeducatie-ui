@@ -26,7 +26,7 @@ config.entry = config.entry.map(function(val) {
 
 // Serve index page
 app.get('*', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/index.local.html');
 });
 
 
