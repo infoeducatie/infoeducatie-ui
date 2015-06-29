@@ -192,6 +192,11 @@ export default React.createClass({
                         toggleCategory={this.toggleCategory}
                         category="web" />
           </Col>
+          <Col sm={1} xs={2}>
+            <FilterIcon currentCategory={this.state.currentCategory}
+                        toggleCategory={this.toggleCategory}
+                        category="all" />
+          </Col>
           <Col smOffset={2} sm={1}>
             <Glyphicon glyph="th-large"
                        className={gridClassName}
