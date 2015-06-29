@@ -5,8 +5,8 @@
   "main": "src/main.jsx",
   "scripts": {
     "start": "node server.js",
-    "build": "mkdir -p build && cp index.prod.html build/index.html && ./node_modules/webpack/bin/webpack.js -p --config webpack.stage-prod.config.js",
-    "stagebuild": "mkdir -p build && cp index.stage.html build/index.html && ./node_modules/webpack/bin/webpack.js -p --config webpack.stage-prod.config.js",
+    "build": "mkdir -p build && cat index.prod.html | sed \"s/GIT_HASH/`git rev-parse --short HEAD`/g\" >  build/index.html && ./node_modules/webpack/bin/webpack.js -p --config webpack.stage-prod.config.js",
+    "stagebuild": "mkdir -p build && cat index.stage.html | sed \"s/GIT_HASH/`git rev-parse --short HEAD`/g\" > build/index.html && ./node_modules/webpack/bin/webpack.js -p --config webpack.stage-prod.config.js",
     "test": "./node_modules/gulp/bin/gulp.js lint && PHANTOMJS_BIN=./node_modules/.bin/phantomjs ./node_modules/karma/bin/karma start karma.config.js",
     "test-debug": "./node_modules/karma/bin/karma start karma-debug.config.js",
     "test-cross-browser": "./node_modules/karma/bin/karma start karma.cross-browser.config.js",
