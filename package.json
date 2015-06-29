@@ -5,14 +5,14 @@
   "main": "src/main.jsx",
   "scripts": {
     "start": "node server.js",
-    "build": "mkdir -p build && cp index.prod.html build/index.html && ./node_modules/webpack/bin/webpack.js -p --config webpack.prod.config.js",
-    "devbuild": "mkdir -p build && cp index.dev.html build/index.html && ./node_modules/webpack/bin/webpack.js -p --config webpack.prod.config.js",
+    "build": "mkdir -p build && cp index.prod.html build/index.html && ./node_modules/webpack/bin/webpack.js -p --config webpack.stage-prod.config.js",
+    "stagebuild": "mkdir -p build && cp index.stage.html build/index.html && ./node_modules/webpack/bin/webpack.js -p --config webpack.stage-prod.config.js",
     "test": "./node_modules/gulp/bin/gulp.js lint && PHANTOMJS_BIN=./node_modules/.bin/phantomjs ./node_modules/karma/bin/karma start karma.config.js",
     "test-debug": "./node_modules/karma/bin/karma start karma-debug.config.js",
     "test-cross-browser": "./node_modules/karma/bin/karma start karma.cross-browser.config.js",
     "coveralls": "cat coverage/lcov.info | coveralls",
     "clean": "rm -rf build",
-    "postinstall": "bash -c 'if [ \"$APP_ENV\" == 'dev' ]; then npm run devbuild; else npm run build; fi'"
+    "postinstall": "bash -c 'if [ \"$APP_ENV\" == 'dev' ]; then npm run stagebuild; else npm run build; fi'"
   },
   "repository": {
     "type": "git",
