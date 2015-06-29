@@ -4,8 +4,8 @@ import React from "react";
 import { Grid, Col, Row } from "react-bootstrap";
 
 import Header from "./header";
-import JuryDescription from "./jury_description.jsx";
-import Authentication from "../mixins/authentication.jsx";
+import JuryDescription from "./jury-description";
+import Authentication from "../mixins/authentication";
 
 import "./jury.less";
 
@@ -64,7 +64,7 @@ export default React.createClass({
         {"avatar": DefaultAvatar, "name": "Narcisa Dima", "occupation": "Profesor @ Liceul 'Ion Barbu' Pitesti"},
         {"avatar": DefaultAvatar, "name": "Istrate Nicolae", "occupation": "Profesor @ Colegiul National 'Ienachita Vacarescu' din Targoviste"},
         {"avatar": AndreiAAvatar, "name": "Andrei Adoamnei", "occupation": "Head of Development @ Conversion Network LLC"},
-        {"avatar": RobertAvatar, "name": "Robert Dolca", "occupation": "Inginer Software @ Intel"},
+        {"avatar": DefaultAvatar, "name": "Robert Dolca", "occupation": "Inginer Software @ Intel"},
         {"avatar": AlexPAvatar, "name": "Alex Palcuie", "occupation": "Referent @ Cancelaria Prim-Ministrului"},
         {"avatar": SabinMarcuAvatar, "name": "Sabin Marcu", "occupation": "student @ University of Southampton"}
     ];
@@ -83,12 +83,12 @@ export default React.createClass({
           <Grid className="blue-section">
             <Header isLoggedIn={this.props.isLoggedIn} />
             <Row>
-              <Col md={12}>
+              <Col>
                 <h1>Juriul InfoEduca&#355;ie</h1>
               </Col>
             </Row>
             <Row>
-              <Col md={12}>
+              <Col>
                 <h2>Membrii juriului pe categorii</h2>
               </Col>
             </Row>
@@ -96,17 +96,17 @@ export default React.createClass({
         </div>
 
         <Grid>
-          <JuryDescription iconClass="educational" name="educațional" members={educational}/>
-          <JuryDescription iconClass="media" name="multimedia" members={media}/>
-          <JuryDescription iconClass="robots" name="roboți" members={robots}/>
-          <JuryDescription iconClass="utility" name="utilitar" members={utilitar}/>
-          <JuryDescription iconClass="web" name="web" members={web}/>
+          <JuryDescription iconClass="section-icon educational" name="educațional" members={educational}/>
+          <JuryDescription iconClass="section-icon media" name="multimedia" members={media}/>
+          <JuryDescription iconClass="section-icon robots" name="roboți" members={robots}/>
+          <JuryDescription iconClass="section-icon utility" name="utilitar" members={utilitar}/>
+          <JuryDescription iconClass="section-icon web" name="web" members={web}/>
         </Grid>
 
         <div className="orange-section-wrapper">
           <Grid className="orange-section">
             <Row>
-              <Col md={12} className="block">
+              <Col className="block">
                 <Row className="jury-criteria-desc">
                     <span className="pink-dash" />
                       criterii de jurizare

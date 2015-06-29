@@ -4,7 +4,7 @@ import React from "react";
 
 
 export default React.createClass({
-  displayName: "GalaciucPage",
+  displayName: "KitchenPage",
 
   render() {
     return <div>
