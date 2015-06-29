@@ -3,7 +3,7 @@ var app = express();
 
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.local.config');
+var config = require('./webpack.dev.config');
 
 var os = require("os");
 var host = os.hostname();
@@ -26,7 +26,7 @@ config.entry = config.entry.map(function(val) {
 
 // Serve index page
 app.get('*', function(req, res) {
-  res.sendFile(__dirname + '/index.local.html');
+  res.sendFile(__dirname + '/index.dev.html');
 });
 
 

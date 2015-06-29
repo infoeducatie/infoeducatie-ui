@@ -7,23 +7,15 @@
   <title>InfoEducatie</title>
   <script>
     window.config = {
-      API_URL: window.location.protocol + '//' +
-	       window.location.hostname + ":3000/v1/",
+      API_URL: "http://api.dev.infoeducatie.ro/v1/",
       MAILCHIMP_URL: "//upir.us8.list-manage.com/subscribe/post-json" +
                      "?u=3f6ccc8a6a63be50b4bb9b1b1&id=3a8ffa6e4f&c=?",
+      SENTRY_DSN: "http://b508fb1c2d0f4f93a940353142ea75d0@sentry.infoeducatie.ro/5"
     };
   </script>
 </head>
 <body>
   <div id="app"></div>
-  <script>
-    var jsPath = window.location.protocol + '//' +
-                 window.location.hostname + ":9090/build/app.js"
-
-    var js = document.createElement("script");
-    js.type = "text/javascript";
-    js.src = jsPath;
-    document.body.appendChild(js);
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
