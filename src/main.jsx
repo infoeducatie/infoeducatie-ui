@@ -15,7 +15,7 @@ import About from "./components/about";
 import Register from "./components/register";
 import Jury from "./components/jury";
 import Home from "./components/home";
-import Schedule from "./components/schedule";
+import Calendar from "./components/calendar";
 import Results from "./components/results";
 import Kitchen from "./components/kitchen";
 import Footer from "./components/footer";
@@ -72,7 +72,7 @@ let routes = (
     <Route handler={Photos} name="photos" />
     <Route handler={About} name="about" />
     <Route handler={Register} name="register" />
-    <Route handler={Schedule} name="schedule" />
+    <Route handler={Calendar} name="calendar" />
     <Route handler={Results} name="results" />
     <Route handler={Kitchen} name="kitchen" />
     <Route handler={Contestants} name="contestants" />

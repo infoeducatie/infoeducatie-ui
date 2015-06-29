@@ -48,8 +48,7 @@ export default React.createClass({
       <Grid>
         <Row className="small-spacing" />
         <Row>
-          <Col md={6} mdOffset={3} sm={8} smOffset={2}>
-          </Col>
+          <Col md={6} mdOffset={3} sm={8} smOffset={2} />
         </Row>
       </Grid>
     </div>;

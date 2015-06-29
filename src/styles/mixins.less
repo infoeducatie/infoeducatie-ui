@@ -1,6 +1,6 @@
 @import "../styles/variables";
 
-.gray-section-wrapper (@img_path: "../../assets/img/banner_image.png"){
+.gray-section-wrapper (@img_path){
   background: url(@img_path);
   background-repeat: no-repeat;
   background-size: cover;
@@ -22,7 +22,7 @@
   }
 }
 
-.blue-section-wrapper (@img_path: "../../assets/img/banner_image.png"){
+.blue-section-wrapper (@img_path){
   @blue-gradient: rgba(0, 129, 177, 0.7);
   background: linear-gradient(@blue-gradient, @blue-gradient), url(@img_path);
   background-repeat: no-repeat;
