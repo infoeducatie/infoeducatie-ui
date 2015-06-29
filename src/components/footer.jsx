@@ -2,7 +2,7 @@
 
 import React from "react";
 import Router from "react-router";
-import { Navbar, Nav, NavItem, Row, Col, Thumbnail, Grid } from "react-bootstrap";
+import { Navbar, Nav, NavItem, Row, Col, Thumbnail, Grid, NavItem } from "react-bootstrap";
 import { NavItemLink } from "react-router-bootstrap";
 
 let { Route, Link, RouteHandler } = Router; // eslint-disable-line
@@ -26,12 +26,11 @@ export default React.createClass({
         <Col xs={12}>
           <Navbar>
             <Nav className="navbar-nav" ref="nav">
-              <NavItemLink to="alumni">Alumni</NavItemLink>
-              <NavItemLink to="forum">Forum</NavItemLink>
-              <NavItemLink to="schedule">Program</NavItemLink>
-              <NavItemLink to="results">Rezultate</NavItemLink>
-              <NavItemLink to="jury">Juriu</NavItemLink>
-              <NavItemLink to="galaciuc">Contact</NavItemLink>
+              <NavItem target="_blank" href="http://community.infoeducatie.ro">Forum</NavItem>
+              <NavItem target="_blank" href="http://blog.infoeducatie.ro">Blog</NavItem>
+              <NavItemLink to="photos">Fotografii</NavItemLink>
+              <NavItemLink to="register">Înregistrare</NavItemLink>
+              <NavItemLink to="about">Contact</NavItemLink>
             </Nav>
           </Navbar>
         </Col>

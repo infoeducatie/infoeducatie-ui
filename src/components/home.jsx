@@ -10,6 +10,13 @@ import "./home.less";
 import Google from "../../assets/img/sponsors/google.png";
 import Intel from "../../assets/img/sponsors/intel.png";
 import Orange from "../../assets/img/sponsors/orange.png";
+import EasyHost from "../../assets/img/sponsors/easyhost.png";
+import Cisco from "../../assets/img/sponsors/cisco.png";
+import Intuitext from "../../assets/img/sponsors/intuitext.gif";
+import Apdetic from "../../assets/img/sponsors/apdetic.png";
+import TotalSoft from "../../assets/img/sponsors/totalsoft.gif";
+import Upir from "../../assets/img/sponsors/upir.png";
+import MEN from "../../assets/img/sponsors/edu.jpg";
 
 export default React.createClass({
   displayName: "Home",
@@ -34,8 +41,7 @@ export default React.createClass({
                 </Row>
                 <Row>
                     <Col>
-                        <h5 className="tagline">The best software engineering
-                        contest in the world.</h5>
+                        <h5 className="tagline">Perseverează, mergi mai departe!</h5>
                     </Col>
                 </Row>
                 <Row className="small-spacing" />
@@ -49,8 +55,8 @@ export default React.createClass({
                     </Col>
                     <Col md={4}>
                         <p className="right-button">
-                            <Link to="galaciuc" className="link link-secondary">
-                                Mai multe...
+                            <Link to="about" className="link link-secondary">
+                                Despre concurs
                             </Link>
                         </p>
                     </Col>
@@ -83,18 +89,18 @@ export default React.createClass({
 
                         <Row className="small-spacing" />
 
-                        <p className="date">30 iunie 2015</p>
-                        <p className="title">Au inceput inscrierile pentru
-                        InfoEducatie 2015</p>
+                        <p className="date">28 iunie 2015</p>
+                        <p className="title">Am lansat noul website
+                        InfoEducație.</p>
 
-                        <p className="message">Vă invităm să vă faceți conturi
-                        pe noul website și să vă înregistrați proiectele.</p>
+                        <p className="message">Vă invităm să ne oferiți feedback
+                        pe <a href="http://community.infoeducatie.ro/t/noul-website-infoeducatie-2015/3646">forum</a>.</p>
                     </Col>
                     <Col md={5} mdOffset={1} className="right">
                         <Row className="small-spacing" />
                         <p className="date">28 iunie 2015</p>
-                        <p className="message">Am lansat noul website
-                        InfoEducație.</p>
+                        <p className="message">Înregistrările vor începe pe 3
+                        iulie.</p>
 
                         <Row className="big-spacing" />
                         <p className="date">26 iunie 2015</p>
@@ -142,10 +148,10 @@ export default React.createClass({
                             <h6 className="edition">Ediția 23</h6>
                             <Row className="small-spacing" />
                             <p>
-                                <a href="https://plus.google.com/+InfoeducatieRomania/photos"
+                                <Link to="photos"
                                    className="link link-secondary">
                                     Mai multe poze
-                                </a>
+                                </Link>
                             </p>
                         </div>
                     </Col>
@@ -156,18 +162,49 @@ export default React.createClass({
 
         <div className="sponsors-section-wrapper">
             <Grid className="sponsors-section">
-                <Row className="big-spacing" />
+                <Row className="small-spacing" />
                 <Row>
-                    <Col>
+                    <Col xs={12}>
                         <h4>Sponsori Gold</h4>
                     </Col>
                 </Row>
                 <Row>
-                    <Col>
+                    <Col xs={12}>
                         <p className="logos">
                             <img src={Google} />
                             <img src={Intel} />
                             <img src={Orange} />
+                        </p>
+                    </Col>
+                </Row>
+                <Row className="small-spacing" />
+                <Row>
+                    <Col xs={12}>
+                        <h4>Sponsori Silver</h4>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12}>
+                        <p className="logos">
+                            <img src={EasyHost} />
+                            <img src={Cisco} />
+                            <img src={Intuitext} /> <br />
+                            <img src={Apdetic} />
+                            <img src={TotalSoft} />
+                        </p>
+                    </Col>
+                </Row>
+                <Row className="small-spacing" />
+                <Row>
+                    <Col xs={12}>
+                        <h4>Parteneri Educaționali</h4>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12}>
+                        <p className="logos">
+                            <img src={Upir} />
+                            <img src={MEN} />
                         </p>
                     </Col>
                 </Row>

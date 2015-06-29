@@ -40,7 +40,7 @@ export default React.createClass({
           </Row>
           <Row>
             <Col xs={12}>
-              <h2>Trebuie să îți faci un cont nou</h2>
+              <h2>Înregistrările vor începe pe 3 iulie.</h2>
             </Col>
           </Row>
         </Grid>
@@ -48,10 +48,7 @@ export default React.createClass({
       <Grid>
         <Row className="small-spacing" />
         <Row>
-          <Col md={6} mdOffset={3} sm={8} smOffset={2}>
-            {this.renderForm()}
-            {this.renderSuccess()}
-          </Col>
+          <Col md={6} mdOffset={3} sm={8} smOffset={2} />
         </Row>
       </Grid>
     </div>;
@@ -106,7 +103,7 @@ export default React.createClass({
       let errors = _.clone(this.state.errors);
 
       if (!errors.length) {
-        errors.push("Ne pare rău, avem o problemă cu servărul!");
+        errors.push("Ne pare rău, avem o problemă cu serverul!");
       }
 
       return <ul className="errors list-group">

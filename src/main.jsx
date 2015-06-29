@@ -2,29 +2,25 @@
 
 import React from "react";
 import Router from "react-router";
+import Raven from "raven-js"
+
 let { Route, RouteHandler, DefaultRoute } = Router; // eslint-disable-line
 
 import "babel-core/polyfill";
 import "./main.less";
 
-import News from "./components/news";
 import Photos from "./components/photos";
 import Alumni from "./components/alumni";
-import Galaciuc from "./components/galaciuc";
 import RegisterInContest from "./components/register-in-contest";
+import About from "./components/about";
 import Register from "./components/register";
-import Dashboard from "./components/dashboard";
 import Jury from "./components/jury";
 import Home from "./components/home";
-import Forum from "./components/forum";
-import Schedule from "./components/schedule";
+import Calendar from "./components/calendar";
 import Results from "./components/results";
 import Kitchen from "./components/kitchen";
 import Footer from "./components/footer";
 import Contestants from "./components/contestants/contestants";
-import Sponsors from "./components/sponsors";
-import Blog from "./components/blog";
-
 
 let App = React.createClass({
   displayName: "App",
@@ -74,19 +70,14 @@ let routes = (
     <Route handler={Home} name="home" />
     <Route handler={Jury} name="jury" />
     <Route handler={RegisterInContest} name="register-in-contest" />
-    <Route handler={News} name="news" />
     <Route handler={Alumni} name="alumni" />
     <Route handler={Photos} name="photos" />
-    <Route handler={Galaciuc} name="galaciuc" />
+    <Route handler={About} name="about" />
     <Route handler={Register} name="register" />
-    <Route handler={Dashboard} name="dashboard" />
-    <Route handler={Forum} name="forum" />
-    <Route handler={Schedule} name="schedule" />
+    <Route handler={Calendar} name="calendar" />
     <Route handler={Results} name="results" />
     <Route handler={Kitchen} name="kitchen" />
     <Route handler={Contestants} name="contestants" />
-    <Route handler={Sponsors} name="sponsors" />
-    <Route handler={Blog} name="blog" />
     <DefaultRoute handler={Home} />
   </Route>
 );
@@ -94,5 +85,13 @@ let routes = (
 Router.run(routes, Router.HistoryLocation, (Root) => {
   React.render(<Root />, document.getElementById("app"));
 });
+
+if ("SENTRY_DSN" in window.config && window.config.SENTRY_DSN.length) {
+  Raven.config(window.config.SENTRY_DSN, {
+    whitelistUrls: [/((ui\.dev|www|new)\.)?infoeducatie\.ro/]
+  }).install();
+} else {
+  Raven.config(false);
+}
 
 export default App;

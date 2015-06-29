@@ -14,6 +14,8 @@ export default React.createClass({
   displayName: "Header",
 
   render() {
+    // TODO @palcu: refactor this when in React you will be able to return
+    // multiple values
     return <div className="header">
       <Row className="small-spacing" />
       <Navbar toggleNavKey={0}>
@@ -26,6 +28,8 @@ export default React.createClass({
   renderRegisterLinks() {
     return <Nav className="navbar-nav" eventKey={0} right ref="nav">
       <NavItemLink to="/">Acas&#259;</NavItemLink>
+      <NavItemLink to="alumni">Alumni</NavItemLink>
+      <NavItemLink to="results">Rezultate</NavItemLink>
       <NavItemLink to="contestants">Participanți</NavItemLink>
       <NavItemLink to="jury">Juriu</NavItemLink>
       <NavItem onClick={this.props.logout}>Delogare</NavItem>
@@ -36,6 +40,8 @@ export default React.createClass({
   renderUnregisterLinks() {
     return <Nav className="navbar-nav" eventKey={0} right ref="nav">
       <NavItemLink to="/">Acas&#259;</NavItemLink>
+      <NavItemLink to="alumni">Alumni</NavItemLink>
+      <NavItemLink to="results">Rezultate</NavItemLink>
       <NavItemLink to="contestants">Participanți</NavItemLink>
       <NavItemLink to="jury">Juriu</NavItemLink>
       <NavItem><SignIn login={this.props.login} /></NavItem>

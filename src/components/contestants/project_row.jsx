@@ -20,7 +20,7 @@ export default React.createClass({
       <Col xs={12}>
         <Row className="project-row-details">
           <Col sm={10} smOffset={1}>
-            <Row className="small-spacing" />
+            <Row className="xsmall-spacing" />
             <Row>
               <Col sm={8} md={9} className="project-details">
                 <h3>{this.props.project.title}</h3>
@@ -42,12 +42,11 @@ export default React.createClass({
                 </p>
               </Col>
             </Row>
-            <Row className="small-spacing" />
+            <Row className="xxsmall-spacing" />
           </Col>
         </Row>
         <Row className="orange-section">
           <Col xs={12}>
-            <Row className="xxsmall-spacing" />
             <Row>
               <Col sm={2} smOffset={1} xs={9} className="project-category">
                 <p>{this.props.project.category_slug}</p>
@@ -56,7 +55,6 @@ export default React.createClass({
                 <p><span className={projectCategoryIconClasses} /></p>
               </Col>
             </Row>
-            <Row className="xxsmall-spacing" />
           </Col>
         </Row>
         <Row className="small-spacing" />
