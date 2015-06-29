@@ -4,7 +4,7 @@
   "description": "Frontend for infoeducatie.ro",
   "main": "src/main.jsx",
   "scripts": {
-    "start": "node server.js",
+    "start": "node server.dev.js",
     "build": "./build.sh prod",
     "stagebuild": "./build.sh stage",
     "test": "./node_modules/gulp/bin/gulp.js lint && PHANTOMJS_BIN=./node_modules/.bin/phantomjs ./node_modules/karma/bin/karma start karma.config.js",
