@@ -89,7 +89,7 @@ if ("SENTRY_DSN" in window.config && window.config.SENTRY_DSN.length) {
     whitelistUrls: [/((ui\.dev|www|new)\.)?infoeducatie\.ro/]
   }).install();
 } else {
-  Raven.config(false)
+  Raven.config(false);
 }
 
 export default App;
