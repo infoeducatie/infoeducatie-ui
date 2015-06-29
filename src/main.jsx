@@ -2,6 +2,8 @@
 
 import React from "react";
 import Router from "react-router";
+import Raven from "raven-js"
+
 let { Route, RouteHandler, DefaultRoute } = Router; // eslint-disable-line
 
 import "babel-core/polyfill";
@@ -18,7 +20,6 @@ import Results from "./components/results";
 import Kitchen from "./components/kitchen";
 import Footer from "./components/footer";
 import Contestants from "./components/contestants/contestants";
-
 
 let App = React.createClass({
   displayName: "App",
@@ -82,5 +83,13 @@ let routes = (
 Router.run(routes, Router.HistoryLocation, (Root) => {
   React.render(<Root />, document.getElementById("app"));
 });
+
+if ("SENTRY_DSN" in window.config && window.config.SENTRY_DSN.length) {
+  Raven.config(window.config.SENTRY_DSN, {
+    whitelistUrls: [/((ui\.dev|www|new)\.)?infoeducatie\.ro/]
+  }).install();
+} else {
+  Raven.config(false);
+}
 
 export default App;
