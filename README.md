@@ -23,18 +23,20 @@ npm start
 ## Folder layout
 
 - `build` - Javascript and CSS bundles
-  - `index.html` - Index file w/ settings for development
 - `src`
   - `components` - React components and LESS files for each component
   - `lib` - Helper libraries
   - `mixins` - React mixins
 - `main.jsx` - Main entry point with the router
-- `index.html` - Index file w/ settings for production
+- `index.prod.html` - Index file w/ settings for production
+- `index.dev.html` - Index file w/ settings for staging
+- `index.local.html` - Index file w/ settings for local development
 
 ## Commands
 
 - `gulp` - lints the code
-- `npm run build` - bundles the code for deploying
+- `npm run build` - bundles the code for production deploying
+- `npm run devbuild` - bundles the code for staging deploying
 - `npm test` - run tests using PhantomJS
 - `npm run test-debug` - run tests using Google Chrome and enable js debugger
 
