@@ -1,10 +1,14 @@
 "use strict";
 
 import React from "react";
+import DeepLinkedStateMixin from "react-deep-link-state";
+import $ from "jquery";
+import _ from "lodash";
 import { Input, ButtonInput } from "react-bootstrap";
 
 export default React.createClass({
   displayName: "RegisterContestant",
+  mixins: [DeepLinkedStateMixin],
 
   getInitialState() {
     return {
@@ -12,24 +16,31 @@ export default React.createClass({
       hasErrored: false,
       waitingForServerResponse: false,
       errors: [],
-      contestantAddress: "",
-      contestantCity: "",
-      contestantCounty: "",
-      contestantCountry: "",
-      contestantZIP: "",
-      contestantCNP: "",
-      contestantIDCardType: "",
-      contestantIDCardNumber: "",
-      contestantPhoneNumber: "",
-      contestantSchoolName: "",
-      contestantGradeNumber: "",
-      schoolCity: "",
-      schoolCounty: "",
-      schoolCountry: "",
-      // TODO @palcu: add fallback with jQuery custom plugin
-      contestantBirthday: "",
-      teacherFirstName: "",
-      teacherLastName: "",
+
+      contestant: {
+        address: "",
+        city: "",
+        county: "",
+        country: "",
+        zip_code: "",
+
+        sex: "male",
+        cnp: "",
+        id_card_type: "",
+        id_card_number: "",
+        phone_number: "",
+        // TODO @palcu: add fallback with jQuery custom plugin
+        date_of_birth: "",
+        school_name: "",
+        grade: "5",
+        school_county: "",
+        school_city: "",
+        school_country: "",
+
+        mentoring_teacher_first_name: "",
+        mentoring_teacher_last_name: "",
+      },
+
       officialParticipant: "false",
       presentInCamp: "false"
     };
@@ -41,66 +52,72 @@ export default React.createClass({
         type="text"
         placeholder="1 Infinite Loop"
         label="Adresa"
-        onChange={this.onAdressChange}
+        valueLink={this.deepLinkState(['contestant', 'address'])}
         required />
+      <Input type="select"
+             label="Gen"
+             valueLink={this.deepLinkState(['contestant', 'sex'])}>
+        <option value="male">Masculin</option>
+        <option value="female">Feminin</option>
+        <option value="undisclosed">N/A</option>
+      </Input>
       <Input
         type="text"
         placeholder="Gălăciuc"
         label="Oraș"
-        onChange={this.onCityChange}
+        valueLink={this.deepLinkState(['contestant', 'city'])}
         required />
       <Input
         type="text"
         placeholder="Vrancea"
         label="Județ"
-        onChange={this.onCountyChange}
+        valueLink={this.deepLinkState(['contestant', 'county'])}
         required />
       <Input
         type="text"
         placeholder="România"
         label="Țara"
-        onChange={this.onCountryChange}
+        valueLink={this.deepLinkState(['contestant', 'country'])}
         required />
       <Input
         type="text"
         placeholder="123456"
         label="Cod Poștal"
-        onChange={this.onZIPChange}
+        valueLink={this.deepLinkState(['contestant', 'zip_code'])}
         required />
       <Input
         type="text"
         placeholder="1234567890123"
-        label="Codul Numeric Personal"
-        onChange={this.onCNPChange}
+        label="CNP"
+        valueLink={this.deepLinkState(['contestant', 'cnp'])}
         required />
       <Input
         type="text"
         placeholder="AA"
         label="Seria CI"
-        onChange={this.onIDCardTypeChange}
+        valueLink={this.deepLinkState(['contestant', 'id_card_type'])}
         required />
       <Input
         type="text"
         placeholder="123456"
         label="Număr CI"
-        onChange={this.onIDCardNumberChange}
+        valueLink={this.deepLinkState(['contestant', 'id_card_number'])}
         required />
       <Input
         type="text"
         placeholder="0721234567"
         label="Număr De Telefon"
-        onChange={this.onPhoneNumberChange}
+        valueLink={this.deepLinkState(['contestant', 'phone_number'])}
         required />
       <Input
         type="text"
         placeholder="Liceul Numărul 9"
         label="Școala"
-        onChange={this.onSchoolNameChange}
+        valueLink={this.deepLinkState(['contestant', 'school_name'])}
         required />
       <Input type="select"
              label="Clasa"
-             value={this.state.gradeNumber}
-             onChange={this.onGradeNumberChange}
+             valueLink={this.deepLinkState(['contestant', 'grade'])}
              required>
         <option value="5">Clasa a V-a</option>
         <option value="6">Clasa a VI-a</option>
@@ -115,36 +132,36 @@ export default React.createClass({
         type="text"
         placeholder="București"
         label="Orașul Școlii"
-        onChange={this.onSchoolCityChange}
+        valueLink={this.deepLinkState(['contestant', 'school_city'])}
         required />
       <Input
         type="text"
         placeholder="București"
         label="Județul Școlii"
-        onChange={this.onSchoolCountyChange}
+        valueLink={this.deepLinkState(['contestant', 'school_county'])}
         required />
       <Input
         type="text"
         placeholder="România"
         label="Țara Școlii"
-        onChange={this.onSchoolCountryChange}
+        valueLink={this.deepLinkState(['contestant', 'school_country'])}
         required />
       <Input
         type="date"
         label="Data Nașterii"
-        onChange={this.onBirthdayChange}
+        valueLink={this.deepLinkState(['contestant', 'date_of_birth'])}
         required />
       <Input
         type="text"
         placeholder="Ion"
-        label="Prenumele Profesorului"
-        onChange={this.onTeacherFirstNameChange}
+        label="Prenumele Profesorului Îndrumător"
+        valueLink={this.deepLinkState(['contestant', 'mentoring_teacher_first_name'])}
         required />
       <Input
         type="text"
         placeholder="Popescu"
         label="Numele Profesorului"
-        onChange={this.onTeacherLastNameChange}
+        valueLink={this.deepLinkState(['contestant', 'mentoring_teacher_last_name'])}
         required />
       <Input type="select"
              label="Te-ai calificat la faza județeană?"
@@ -176,109 +193,27 @@ export default React.createClass({
       <ButtonInput type="submit"
                    value="Pasul următor"
                    disabled={this.state.waitingForServerResponse} />
+      {this.renderErrors()}
     </form>;
   },
 
-  onAdressChange(event) {
-    this.setState({
-      contestantAddress: event.currentTarget.value
-    });
-  },
+  renderErrors() {
+    if (this.state.hasErrored) {
+      let errors = _.clone(this.state.errors);
 
-  onCityChange(event) {
-    this.setState({
-      contestantCity: event.currentTarget.value
-    });
-  },
+      if (!errors.length) {
+        errors.push("Ne pare rău, avem o problemă cu serverul!");
+      }
 
-  onCountyChange(event) {
-    this.setState({
-      contestantCounty: event.currentTarget.value
-    });
-  },
-
-  onCountryChange(event) {
-    this.setState({
-      contestantCountry: event.currentTarget.value
-    });
-  },
-
-  onZIPChange(event) {
-    this.setState({
-      contestantZIP: event.currentTarget.value
-    });
-  },
-
-  onCNPChange(event) {
-    this.setState({
-      contestantCNP: event.currentTarget.value
-    });
-  },
-
-  onIDCardTypeChange(event) {
-    this.setState({
-      contestantIDCardType: event.currentTarget.value
-    });
-  },
-
-  onIDCardNumberChange(event) {
-    this.setState({
-      contestantIDCardNumber: event.currentTarget.value
-    });
-  },
-
-  onPhoneNumberChange(event) {
-    this.setState({
-      contestantPhoneNumber: event.currentTarget.value
-    });
-  },
-
-  onSchoolNameChange(event) {
-    this.setState({
-      contestantSchoolName: event.currentTarget.value
-    });
-  },
-
-  onGradeNumberChange(event) {
-    this.setState({
-      contestantGradeNumber: event.currentTarget.value
-    });
-  },
-
-  onSchoolCityChange(event) {
-    this.setState({
-      schoolCity: event.currentTarget.value
-    });
-  },
-
-  onSchoolCountyChange(event) {
-    this.setState({
-      schoolCounty: event.currentTarget.value
-    });
-  },
-
-  onSchoolCountryChange(event) {
-    this.setState({
-      schoolCountry: event.currentTarget.value
-    });
-  },
-
-  onBirthdayChange(event) {
-    this.setState({
-      contestantBirthday: event.currentTarget.value
-    });
-  },
-
-  onTeacherFirstNameChange(event) {
-    this.setState({
-      teacherFirstName: event.currentTarget.value
-    });
-  },
-
-  onTeacherLastNameChange(event) {
-    this.setState({
-      teacherLastName: event.currentTarget.value
-    });
+      return <ul className="errors list-group">
+        {errors.map((error) => {
+          return <li className="list-group-item list-group-item-danger"
+                     key={error}>
+            {error}
+          </li>;
+        })}
+      </ul>;
+    }
   },
 
   onOfficialParticipantChange(event) {
@@ -317,7 +252,60 @@ export default React.createClass({
 
   onFormSubmit(event) {
     event.preventDefault();
-    console.log(this.state)
-    // TODO @palcu: send to server
+    if (this.state.waitingForServerResponse) {
+      return false;
+    }
+
+    this.setState({
+      waitingForServerResponse: true
+    });
+
+    debugger;
+    let data = {};
+    _.forIn(this.state.contestant, (key, value) => {
+      data[key] = value;
+    });
+    data["official"] = this.state.officialParticipant;
+    data["present_in_camp"] = this.state.presentInCamp;
+
+    let headers = {
+      "Authorization": this.props.currentUser.access_token
+    }
+
+    $.ajax({
+      method: "POST",
+      url: window.config.API_URL + "contestants.json",
+      headers: headers,
+      data: data,
+      success: this.onRequestSuccess,
+      error: this.onRequestError
+    });
+  },
+
+  onRequestSuccess(data) {
+    this.setState({
+      hasSubmited: true
+    });
+  },
+
+  onRequestError(data) {
+    this.setState({
+      hasErrored: true,
+      waitingForServerResponse: false
+    });
+
+    let errors = [];
+
+    if (("responseJSON" in data) && _.isArray(data.responseJSON)) {
+      _.forIn(data.responseJSON, (value, key) => {
+        value.map((error) => {
+          errors.push(key + " " + error);
+        });
+      });
+
+      this.setState({
+        errors: errors
+      });
+    }
   }
 });

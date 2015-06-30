@@ -26,7 +26,7 @@ let App = React.createClass({
   displayName: "App",
 
   getInitialState() {
-    let user = localStorage.getItem("user");
+    let user = JSON.parse(localStorage.getItem("user"));
     return {
       currentUser: user,
       isLoggedIn: user ? true : false

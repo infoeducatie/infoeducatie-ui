@@ -35,7 +35,7 @@ export default React.createClass({
                       accordion>
             <Panel header='Înregistrare Participant'
                    eventKey='1'>
-              <RegisterContestant />
+              <RegisterContestant currentUser={this.props.currentUser} />
             </Panel>
             <Panel header='Înregistrare Proiect'
                    eventKey='2'>
