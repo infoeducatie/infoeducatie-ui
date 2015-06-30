@@ -38,7 +38,7 @@ export default React.createClass({
         school_country: "",
 
         mentoring_teacher_first_name: "",
-        mentoring_teacher_last_name: "",
+        mentoring_teacher_last_name: ""
       },
 
       officialParticipant: "false",
@@ -52,11 +52,11 @@ export default React.createClass({
         type="text"
         placeholder="1 Infinite Loop"
         label="Adresa"
-        valueLink={this.deepLinkState(['contestant', 'address'])}
+        valueLink={this.deepLinkState(["contestant", "address"])}
         required />
       <Input type="select"
              label="Gen"
-             valueLink={this.deepLinkState(['contestant', 'sex'])}>
+             valueLink={this.deepLinkState(["contestant", "sex"])}>
         <option value="male">Masculin</option>
         <option value="female">Feminin</option>
         <option value="undisclosed">N/A</option>
@@ -65,59 +65,59 @@ export default React.createClass({
         type="text"
         placeholder="Gălăciuc"
         label="Oraș"
-        valueLink={this.deepLinkState(['contestant', 'city'])}
+        valueLink={this.deepLinkState(["contestant", "city"])}
         required />
       <Input
         type="text"
         placeholder="Vrancea"
         label="Județ"
-        valueLink={this.deepLinkState(['contestant', 'county'])}
+        valueLink={this.deepLinkState(["contestant", "county"])}
         required />
       <Input
         type="text"
         placeholder="România"
         label="Țara"
-        valueLink={this.deepLinkState(['contestant', 'country'])}
+        valueLink={this.deepLinkState(["contestant", "country"])}
         required />
       <Input
         type="text"
         placeholder="123456"
         label="Cod Poștal"
-        valueLink={this.deepLinkState(['contestant', 'zip_code'])}
+        valueLink={this.deepLinkState(["contestant", "zip_code"])}
         required />
       <Input
         type="text"
         placeholder="1234567890123"
         label="CNP"
-        valueLink={this.deepLinkState(['contestant', 'cnp'])}
+        valueLink={this.deepLinkState(["contestant", "cnp"])}
         required />
       <Input
         type="text"
         placeholder="AA"
         label="Seria CI"
-        valueLink={this.deepLinkState(['contestant', 'id_card_type'])}
+        valueLink={this.deepLinkState(["contestant", "id_card_type"])}
         required />
       <Input
         type="text"
         placeholder="123456"
         label="Număr CI"
-        valueLink={this.deepLinkState(['contestant', 'id_card_number'])}
+        valueLink={this.deepLinkState(["contestant", "id_card_number"])}
         required />
       <Input
         type="text"
         placeholder="0721234567"
         label="Număr De Telefon"
-        valueLink={this.deepLinkState(['contestant', 'phone_number'])}
+        valueLink={this.deepLinkState(["contestant", "phone_number"])}
         required />
       <Input
         type="text"
         placeholder="Liceul Numărul 9"
         label="Școala"
-        valueLink={this.deepLinkState(['contestant', 'school_name'])}
+        valueLink={this.deepLinkState(["contestant", "school_name"])}
         required />
       <Input type="select"
              label="Clasa"
-             valueLink={this.deepLinkState(['contestant', 'grade'])}
+             valueLink={this.deepLinkState(["contestant", "grade"])}
              required>
         <option value="5">Clasa a V-a</option>
         <option value="6">Clasa a VI-a</option>
@@ -132,36 +132,36 @@ export default React.createClass({
         type="text"
         placeholder="București"
         label="Orașul Școlii"
-        valueLink={this.deepLinkState(['contestant', 'school_city'])}
+        valueLink={this.deepLinkState(["contestant", "school_city"])}
         required />
       <Input
         type="text"
         placeholder="București"
         label="Județul Școlii"
-        valueLink={this.deepLinkState(['contestant', 'school_county'])}
+        valueLink={this.deepLinkState(["contestant", "school_county"])}
         required />
       <Input
         type="text"
         placeholder="România"
         label="Țara Școlii"
-        valueLink={this.deepLinkState(['contestant', 'school_country'])}
+        valueLink={this.deepLinkState(["contestant", "school_country"])}
         required />
       <Input
         type="date"
         label="Data Nașterii"
-        valueLink={this.deepLinkState(['contestant', 'date_of_birth'])}
+        valueLink={this.deepLinkState(["contestant", "date_of_birth"])}
         required />
       <Input
         type="text"
         placeholder="Ion"
         label="Prenumele Profesorului Îndrumător"
-        valueLink={this.deepLinkState(['contestant', 'mentoring_teacher_first_name'])}
+        valueLink={this.deepLinkState(["contestant", "mentoring_teacher_first_name"])}
         required />
       <Input
         type="text"
         placeholder="Popescu"
         label="Numele Profesorului"
-        valueLink={this.deepLinkState(['contestant', 'mentoring_teacher_last_name'])}
+        valueLink={this.deepLinkState(["contestant", "mentoring_teacher_last_name"])}
         required />
       <Input type="select"
              label="Te-ai calificat la faza județeană?"
@@ -260,17 +260,18 @@ export default React.createClass({
       waitingForServerResponse: true
     });
 
-    debugger;
     let data = {};
-    _.forIn(this.state.contestant, (key, value) => {
-      data[key] = value;
+    _.forIn(this.state.contestant, (value, key) => {
+      let transformedKey = `contestant[${key}]`;
+      data[transformedKey] = value;
     });
-    data["official"] = this.state.officialParticipant;
-    data["present_in_camp"] = this.state.presentInCamp;
+    data["contestant[official]"] = this.state.officialParticipant;
+    data["contestant[present_in_camp]"] = this.state.presentInCamp;
+    data["contestant[paying_camp_accommodation]"] = false;
 
     let headers = {
       "Authorization": this.props.currentUser.access_token
-    }
+    };
 
     $.ajax({
       method: "POST",
@@ -282,7 +283,7 @@ export default React.createClass({
     });
   },
 
-  onRequestSuccess(data) {
+  onRequestSuccess() {
     this.setState({
       hasSubmited: true
     });
