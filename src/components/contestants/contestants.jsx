@@ -170,27 +170,32 @@ export default React.createClass({
           <Col smOffset={2} sm={1} xs={2} xsOffset={1}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
-                        category="educational" />
+                        category="web" />
+            <p>Web</p>
           </Col>
           <Col sm={1} xs={2}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
-                        category="media" />
+                        category="educational" />
+            <p>Educațional</p>
           </Col>
           <Col sm={1} xs={2}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="robots" />
+            <p>Roboți</p>
           </Col>
           <Col sm={1} xs={2}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="utility" />
+            <p>Utilitar</p>
           </Col>
           <Col sm={1} xs={2}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
-                        category="web" />
+                        category="media" />
+            <p>Multimedia</p>
           </Col>
           <Col smOffset={2} sm={1}>
             <Glyphicon glyph="th-large"
