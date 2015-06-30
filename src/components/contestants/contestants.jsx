@@ -7,7 +7,6 @@ import ctx from "classnames";
 
 import Header from "../header";
 import ProjectCard from "./project_card";
-import ProjectRow from "./project_row";
 import FilterIcon from "./filter_icon";
 import projectsFixture from "../../fixtures/projects";
 
