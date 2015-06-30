@@ -6,6 +6,7 @@ import { Grid, Col, Row, PanelGroup, Panel } from "react-bootstrap";
 import Header from "./header";
 import "./register-in-contest.less";
 import RegisterContestant from "./register-in-contest/register-contestant"
+import RegisterProject from "./register-in-contest/register-project"
 
 export default React.createClass({
   displayName: "RegisterInContest",
@@ -38,7 +39,7 @@ export default React.createClass({
         <Col sm={6} smOffset={3}>
           <Row className="small-spacing" />
           <PanelGroup onSelect={this.handleSelect}
-                      defaultActiveKey='1'
+                      defaultActiveKey='2'
                       accordion>
             <Panel header='Înregistrare Participant'
                    eventKey='1'>
@@ -48,7 +49,7 @@ export default React.createClass({
             </Panel>
             <Panel header='Înregistrare Proiect'
                    eventKey='2'>
-              Formular de înregistrare proiect
+              <RegisterProject currentUser={this.props.currentUser} />
             </Panel>
             <Panel header='Înregistrare Coechipier'
                    eventKey='3'>
