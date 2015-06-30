@@ -235,7 +235,7 @@ export default React.createClass({
     /// XXX: here be dragons flying
     this.setState({
         payingCampAcommodation:
-            (event.currentTarget.value === "true").toString();
+            (event.currentTarget.value === "true").toString()ș
     })
 
     this.setState({
@@ -266,6 +266,7 @@ export default React.createClass({
     });
     data["contestant[official]"] = this.state.officialParticipant;
     data["contestant[present_in_camp]"] = this.state.presentInCamp;
+    data["contestant[paying_camp_accommodation]"] = false;
 
     let headers = {
       "Authorization": this.props.currentUser.access_token
