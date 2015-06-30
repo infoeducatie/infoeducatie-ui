@@ -42,7 +42,7 @@ export default React.createClass({
         valueLink={this.deepLinkState(["project", "title"])}
         required />
       <Input type="select"
-             label="Gen"
+             label="Categorie"
              valueLink={this.deepLinkState(["project", "category_id"])}
              required>
         <option value="0">Software Educațional</option>
