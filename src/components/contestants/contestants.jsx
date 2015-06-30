@@ -201,6 +201,7 @@ export default React.createClass({
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="all" />
+            <p>Resetează</p>
           </Col>
           <Col smOffset={2} sm={1}>
             <Glyphicon glyph="th-large"
