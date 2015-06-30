@@ -3,14 +3,12 @@
 import React from "react";
 import { Grid, Col, Row, PanelGroup, Panel } from "react-bootstrap";
 
-import Authentication from "../mixins/authentication";
 import Header from "./header";
 import "./register-in-contest.less";
 import RegisterContestant from "./register-in-contest/register-contestant"
 
 export default React.createClass({
   displayName: "RegisterInContest",
-  mixins: [Authentication],
 
   getInitialState() {
     return {
