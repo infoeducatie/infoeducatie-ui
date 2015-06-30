@@ -69,7 +69,8 @@ let routes = (
   <Route path="/" handler={App}>
     <Route handler={Home} name="home" />
     <Route handler={Jury} name="jury" />
-    <Route handler={RegisterInContest} name="register-in-contest" />
+    <Route handler={RegisterInContest} name="register-in-contest"
+           onEnter={function(){console.log('aici')}} />
     <Route handler={Alumni} name="alumni" />
     <Route handler={Photos} name="photos" />
     <Route handler={About} name="about" />
