@@ -12,7 +12,6 @@ export default React.createClass({
 
   getInitialState() {
     return {
-      hasSubmited: false,
       hasErrored: false,
       waitingForServerResponse: false,
       errors: [],
@@ -278,14 +277,8 @@ export default React.createClass({
       url: window.config.API_URL + "contestants.json",
       headers: headers,
       data: data,
-      success: this.onRequestSuccess,
+      success: this.props.hasSubmited,
       error: this.onRequestError
-    });
-  },
-
-  onRequestSuccess() {
-    this.setState({
-      hasSubmited: true
     });
   },
 

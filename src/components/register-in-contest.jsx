@@ -10,6 +10,13 @@ import RegisterContestant from "./register-in-contest/register-contestant"
 export default React.createClass({
   displayName: "RegisterInContest",
 
+  getInitialState() {
+    return {
+      // TODO @palcu: take this from current endpoint
+      hasSubmitedParticipantForm: false
+    };
+  },
+
   render() {
     return <div className="register-in-contest">
       <div className="blue-section-wrapper">
@@ -35,7 +42,9 @@ export default React.createClass({
                       accordion>
             <Panel header='Înregistrare Participant'
                    eventKey='1'>
-              <RegisterContestant currentUser={this.props.currentUser} />
+              {this.state.hasSubmitedParticipantForm ? this.renderSuccess() :
+                  <RegisterContestant currentUser={this.props.currentUser}
+                                      hasSubmited={this.submitParticipant} />}
             </Panel>
             <Panel header='Înregistrare Proiect'
                    eventKey='2'>
@@ -53,5 +62,18 @@ export default React.createClass({
         </Col>
       </Grid>
     </div>;
+  },
+
+  renderSuccess() {
+    // TODO: @palcu make this pretty
+    return <div className="success">
+      Ai trimis formularul cu succes.
+    </div>
+  },
+
+  submitParticipant() {
+    this.setState({
+      hasSubmitedParticipantForm: true
+    });
   }
 });
