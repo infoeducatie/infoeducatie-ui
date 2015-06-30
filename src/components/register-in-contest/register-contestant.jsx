@@ -6,10 +6,12 @@ import $ from "jquery";
 import _ from "lodash";
 import { Input, ButtonInput } from "react-bootstrap";
 
+import Authentication from "../../mixins/authentication";
+
 
 export default React.createClass({
   displayName: "RegisterContestant",
-  mixins: [DeepLinkedStateMixin],
+  mixins: [DeepLinkedStateMixin, Authentication],
 
   getInitialState() {
     return {
@@ -233,8 +235,8 @@ export default React.createClass({
     /// XXX: here be dragons flying
     this.setState({
         payingCampAcommodation:
-            (event.currentTarget.value === "true").toString()
-    });
+            (event.currentTarget.value === "true").toString();
+    })
 
     this.setState({
       presentInCamp: event.currentTarget.value
