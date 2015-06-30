@@ -79,6 +79,13 @@ export default React.createClass({
   },
 
   getFormData() {
-    return {};
+    let data = {};
+
+    _.forIn(this.state.project, (value, key) => {
+      let transformedKey = `project[${key}]`;
+      data[transformedKey] = value;
+    });
+
+    return data;
   }
 });
