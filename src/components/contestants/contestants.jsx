@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { Grid, Col, Row, Glyphicon } from "react-bootstrap";
+import { Grid, Col, Row, Glyphicon, Table } from "react-bootstrap";
 import ctx from "classnames";
 
 import Header from "../header";
@@ -64,28 +64,42 @@ export default React.createClass({
     });
   },
 
-  renderProjectRow(project) {
-    var row = null;
+  renderProjectRow(project){
+    let row = null;
 
-    if (project.category === this.state.currentCategory ||
+    if (this.state.currentCategory === project.category ||
         this.state.currentCategory === "all") {
-
-      row = <ProjectRow project={project} key={project.id} />;
+      row = <tr>
+        <td className="county">{project.county}</td>
+        <td className="title">{project.title}</td>
+        <td className="authors">
+          <ul className="list-unstyled">
+            {project.authors.map(function(author){
+              return <li className="author">{author.name}</li>;
+            })}
+          </ul>
+        </td>
+        <td className="category">{project.category_slug}</td>
+      </tr>;
     }
 
     return row;
   },
 
   renderTable() {
-    var table = null;
-
-    if (this.state.showTable) {
-      table = <Grid className="projects-list">
-                {this.state.projects.map(this.renderProjectRow)}
-              </Grid>;
-    }
-
-    return table;
+    return <Table responsive>
+      <thead>
+        <tr>
+          <th>județ</th>
+          <th>titlul lucrării</th>
+          <th>categorie</th>
+          <th>concurent</th>
+        </tr>
+      </thead>
+      <tbody>
+         {this.state.projects.map(this.renderProjectRow)}
+      </tbody>
+    </Table>;
   },
 
   renderProjectCard(project) {
