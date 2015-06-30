@@ -5,6 +5,7 @@ import { Grid, Col, Row } from "react-bootstrap";
 
 import Header from "./header";
 import JuryDescription from "./jury-description";
+import Authentication from "../mixins/authentication";
 
 import "./jury.less";
 
