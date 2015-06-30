@@ -5,7 +5,6 @@ import $ from "jquery";
 import _ from "lodash";
 import { Grid, Col, Row, Input, ButtonInput } from "react-bootstrap";
 
-import Authentication from "../mixins/authentication";
 import Header from "./header";
 import SuccessIcon from "../../assets/img/ellipse-tick.png"
 import Spinner from "../../assets/img/spinner.gif"
@@ -14,7 +13,6 @@ import "./register.less";
 
 export default React.createClass({
   displayName: "Register",
-  mixins: [Authentication],
 
   getInitialState() {
     return {

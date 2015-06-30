@@ -6,7 +6,7 @@ import $ from "jquery";
 import _ from "lodash";
 import { Input, ButtonInput } from "react-bootstrap";
 
-import Authentication from "../mixins/authentication";
+import Authentication from "../../mixins/authentication";
 
 
 export default React.createClass({
@@ -52,12 +52,6 @@ export default React.createClass({
 
   render() {
     return <form onSubmit={this.onFormSubmit} className="RegisterContestant">
-      <Input
-        type="text"
-        placeholder="1 Infinite Loop"
-        label="Adresa"
-        valueLink={this.deepLinkState(["contestant", "address"])}
-        required />
       <Input type="select"
              label="Gen"
              valueLink={this.deepLinkState(["contestant", "sex"])}>
@@ -65,6 +59,12 @@ export default React.createClass({
         <option value="female">Feminin</option>
         <option value="undisclosed">N/A</option>
       </Input>
+      <Input
+        type="text"
+        placeholder="1 Infinite Loop"
+        label="Adresa"
+        valueLink={this.deepLinkState(["contestant", "address"])}
+        required />
       <Input
         type="text"
         placeholder="Gălăciuc"
@@ -233,15 +233,10 @@ export default React.createClass({
 
   onPresentInCampChange(event) {
     /// XXX: here be dragons flying
-    if (event.currentTarget.value === "true") {
-      this.setState({
-        payingCampAcommodation: "true"
-      });
-    } else {
-      this.setState({
-        payingCampAcommodation: "false"
-      });
-    }
+    this.setState({
+        payingCampAcommodation:
+            (event.currentTarget.value === "true").toString()ș
+    })
 
     this.setState({
       presentInCamp: event.currentTarget.value
