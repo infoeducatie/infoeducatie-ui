@@ -23,18 +23,23 @@ npm start
 ## Folder layout
 
 - `build` - Javascript and CSS bundles
-  - `index.html` - Index file w/ settings for development
 - `src`
   - `components` - React components and LESS files for each component
   - `lib` - Helper libraries
   - `mixins` - React mixins
 - `main.jsx` - Main entry point with the router
-- `index.html` - Index file w/ settings for production
+- `index.prod.html` - Index file w/ settings for production
+- `index.stage.html` - Index file w/ settings for staging
+- `index.dev.html` - Index file w/ settings for development
+- `Procfile` - The command in this file is used by Heroku to run the server
+- `app.json` - Manifest file for Heroku that defines how your code should be built and bootstrapped into a live application
+- `build.sh` - Used by the npm build targets. Copies the right index file in the build folder and creates a bundle based on the environment provided as parameter
 
 ## Commands
 
 - `gulp` - lints the code
-- `npm run build` - bundles the code for deploying
+- `npm run build` - bundles the code for production deploying
+- `npm run stagebuild` - bundles the code for staging deploying
 - `npm test` - run tests using PhantomJS
 - `npm run test-debug` - run tests using Google Chrome and enable js debugger
 

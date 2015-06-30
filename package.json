@@ -4,14 +4,15 @@
   "description": "Frontend for infoeducatie.ro",
   "main": "src/main.jsx",
   "scripts": {
-    "start": "node server.js",
-    "build": "./node_modules/webpack/bin/webpack.js -p --config webpack.production.config.js",
+    "start": "node server.dev.js",
+    "build": "./build.sh prod",
+    "stagebuild": "./build.sh stage",
     "test": "./node_modules/gulp/bin/gulp.js lint && PHANTOMJS_BIN=./node_modules/.bin/phantomjs ./node_modules/karma/bin/karma start karma.config.js",
     "test-debug": "./node_modules/karma/bin/karma start karma-debug.config.js",
     "test-cross-browser": "./node_modules/karma/bin/karma start karma.cross-browser.config.js",
     "coveralls": "cat coverage/lcov.info | coveralls",
-    "clean": "rm -f build/app.js; find build/* | grep -v index.html | xargs rm -f",
-    "postinstall": "npm run build"
+    "clean": "rm -rf build",
+    "postinstall": "bash -c 'if [ \"$APP_ENV\" == 'dev' ]; then npm run stagebuild; else npm run build; fi'"
   },
   "repository": {
     "type": "git",
