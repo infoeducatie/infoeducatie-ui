@@ -6,9 +6,12 @@ import $ from "jquery";
 import _ from "lodash";
 import { Input, ButtonInput } from "react-bootstrap";
 
+import Authentication from "../mixins/authentication";
+
+
 export default React.createClass({
   displayName: "RegisterContestant",
-  mixins: [DeepLinkedStateMixin],
+  mixins: [DeepLinkedStateMixin, Authentication],
 
   getInitialState() {
     return {
