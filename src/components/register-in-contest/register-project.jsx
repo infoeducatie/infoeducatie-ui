@@ -22,7 +22,7 @@ export default React.createClass({
       project: {
         /*eslint-disable */
         title: "",
-        category_id: "web",
+        category: "web",
         description: "",
         technical_description: "",
         system_requirements: "",
@@ -43,7 +43,7 @@ export default React.createClass({
         required />
       <Input type="select"
              label="Categorie"
-             valueLink={this.deepLinkState(["project", "category_id"])}
+             valueLink={this.deepLinkState(["project", "category"])}
              required>
         <option value="educational">Software Educațional</option>
         <option value="utilitar">Software Utilitar</option>
