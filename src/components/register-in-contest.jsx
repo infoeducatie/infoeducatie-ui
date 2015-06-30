@@ -68,7 +68,7 @@ export default React.createClass({
     // TODO: @palcu make this pretty
     return <div className="success">
       Ai trimis formularul cu succes.
-    </div>
+    </div>;
   },
 
   submitParticipant() {

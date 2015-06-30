@@ -17,6 +17,7 @@ export default React.createClass({
       errors: [],
 
       contestant: {
+        /*eslint-disable */
         address: "",
         city: "",
         county: "",
@@ -38,6 +39,7 @@ export default React.createClass({
 
         mentoring_teacher_first_name: "",
         mentoring_teacher_last_name: ""
+        /*eslint-enable */
       },
 
       officialParticipant: "false",
