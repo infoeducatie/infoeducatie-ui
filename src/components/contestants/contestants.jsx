@@ -1,6 +1,7 @@
 "use strict";
 
 import $ from "jquery";
+import _ from "lodash";
 import React from "react";
 
 import { Grid, Col, Row, Glyphicon, Table } from "react-bootstrap";
@@ -18,22 +19,7 @@ export default React.createClass({
   displayName: "Contestants",
 
   componentDidMount() {
-    $.ajax({
-      method: "GET",
-      url: window.config.API_URL + "projects.json",
-      success: (data) => {
-        this.setState({
-          projects: data
-        });
-      },
-      error: () => {
-        this.setState({
-          showGrid: false,
-          showTable: false,
-          hasErrors: true,
-        });
-      }
-    });
+    this.getContestants();
   },
 
   getInitialState: function() {
@@ -46,6 +32,25 @@ export default React.createClass({
       currentCategory: "all"
    };
 
+  },
+
+  getContestants() {
+    $.ajax({
+      method: "GET",
+      url: window.config.API_URL + "projects.json",
+      success: (data) => {
+        this.setState({
+          projects: data
+        });
+      },
+      error: () => {
+        this.setState({
+          showGrid: false,
+          showTable: false,
+          hasErrors: true
+        });
+      }
+    });
   },
 
   showGrid() {
