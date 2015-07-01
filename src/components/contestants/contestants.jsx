@@ -30,7 +30,7 @@ export default React.createClass({
         this.setState({
           showGrid: false,
           showTable: false,
-          showError: true,
+          hasErrors: true,
         });
       }
     });
@@ -39,7 +39,8 @@ export default React.createClass({
   getInitialState: function() {
     return {
       projects: [],
-      showError: false,
+      errors: [],
+      hasErrors: false,
       showGrid: false,
       showTable: true,
       currentCategory: "all"
@@ -69,6 +70,25 @@ export default React.createClass({
     this.setState({
       currentCategory: category
     });
+  },
+
+  renderErrors() {
+    if (this.state.hasErrored) {
+      let errors = _.clone(this.state.errors);
+
+      if (!errors.length) {
+        errors.push("Datele nu au putut fi luate de pe server.");
+      }
+
+      return <ul className="errors list-group">
+        {errors.map((error) => {
+          return <li className="list-group-item list-group-item-danger"
+                     key={error}>
+            {error}
+          </li>;
+        })}
+      </ul>;
+    }
   },
 
   renderProjectRow(project){
@@ -252,6 +272,7 @@ export default React.createClass({
         <Row className="small-spacing" />
         {this.renderGrid()}
         {this.renderTable()}
+        {this.renderErrors()}
       </Grid>
     </div>;
   }
