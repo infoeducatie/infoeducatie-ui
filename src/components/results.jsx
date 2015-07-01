@@ -73,7 +73,9 @@ export default React.createClass({
     return <div className="results">
       <div className="blue-section-wrapper">
         <Grid className="blue-section">
-          <Header isLoggedIn={this.props.isLoggedIn} />
+          <Header isLoggedIn={this.props.isLoggedIn}
+                  login={this.props.login}
+                  logout={this.props.logout} />
           <Row className="xsmall-spacing" />
           <Row>
             <Col>

@@ -23,7 +23,9 @@ export default React.createClass({
     return <div className="register-in-contest">
       <div className="blue-section-wrapper">
         <Grid className="blue-section">
-          <Header isLoggedIn={this.props.isLoggedIn} />
+          <Header isLoggedIn={this.props.isLoggedIn}
+                  login={this.props.login}
+                  logout={this.props.logout} />
           <Row>
             <Col xs={12}>
               <h1>Înregistrează un proiect</h1>

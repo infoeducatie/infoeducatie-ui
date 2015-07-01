@@ -80,7 +80,9 @@ export default React.createClass({
     return <div className="jury">
         <div className="blue-section-wrapper">
           <Grid className="blue-section">
-            <Header isLoggedIn={this.props.isLoggedIn} />
+            <Header isLoggedIn={this.props.isLoggedIn}
+                    login={this.props.login}
+                    logout={this.props.logout} />
             <Row>
               <Col xs={12}>
                 <h1>Juriul InfoEduca&#355;ie</h1>
