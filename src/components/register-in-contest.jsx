@@ -12,14 +12,22 @@ export default React.createClass({
   displayName: "RegisterInContest",
 
   getInitialState() {
+    // TODO @palcu: add logic for the other forms
+    let activePanelKey = 1;
+    if (this.props.current.registration.has_contestant) {
+      activePanelKey++;
+    }
+
     return {
-      // TODO @palcu: take this from current endpoint
-      hasSubmitedParticipantForm: false,
-      hasSubmitedProjectForm: false
+      hasSubmitedParticipantForm:
+          this.props.current.registration.has_contestant,
+      hasSubmitedProjectForm: false,
+      activePanelKey: String(activePanelKey)
     };
   },
 
   render() {
+    console.log(this.state)
     return <div className="register-in-contest">
       <div className="blue-section-wrapper">
         <Grid className="blue-section">
@@ -41,17 +49,20 @@ export default React.createClass({
       <Grid>
         <Col sm={6} smOffset={3}>
           <Row className="small-spacing" />
-          <PanelGroup onSelect={this.handleSelect}
-                      defaultActiveKey='2'
+          <PanelGroup onSelect={this.onHandlePanelSelect}
+                      activeKey={this.state.activePanelKey}
                       accordion>
             <Panel header='Înregistrare Participant'
-                   eventKey='1'>
+                   eventKey='1'
+                   bsStyle={this.getPanelStyle(
+                                this.state.hasSubmitedParticipantForm)}>
               {this.state.hasSubmitedParticipantForm ? this.renderSuccess() :
                   <RegisterContestant current={this.props.current}
                                       hasSubmited={this.submitParticipant} />}
             </Panel>
             <Panel header='Înregistrare Proiect'
-                   eventKey='2'>
+                   eventKey='2'
+                   expanded>
               {this.state.hasSubmitedProjectForm ? this.renderSuccess() :
                   <RegisterProject current={this.props.current}
                                    hasSubmited={this.submitProject} />}
@@ -75,6 +86,16 @@ export default React.createClass({
     return <div className="success">
       Ai trimis formularul cu succes.
     </div>;
+  },
+
+  getPanelStyle(status) {
+    return status ? 'success' : 'default';
+  },
+
+  onHandlePanelSelect(nextActivePanelKey) {
+    this.setState({
+      activePanelKey: nextActivePanelKey
+    });
   },
 
   submitParticipant() {

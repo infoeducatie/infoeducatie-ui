@@ -37,6 +37,9 @@ let App = React.createClass({
           total_participants: 0,
           total_projects: 0,
           total_counties: 0
+        },
+        registration: {
+          has_contestant: false
         }
       }
     }
