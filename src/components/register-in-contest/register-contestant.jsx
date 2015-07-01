@@ -285,14 +285,13 @@ export default React.createClass({
     data["contestant[present_in_camp]"] = this.state.presentInCamp;
     data["contestant[paying_camp_accommodation]"] = false;
 
-    let headers = {
-      "Authorization": this.props.currentUser.access_token
-    };
-
     $.ajax({
       method: "POST",
-      url: window.config.API_URL + "contestants.json",
-      headers: headers,
+      url: window.config.API_URL + "contestants",
+      beforeSend: function (request) {
+        request.setRequestHeader("Authorization",
+                                 this.props.currentUser.access_token);
+      }.bind(this),
       data: data,
       success: this.props.hasSubmited,
       error: this.onRequestError
