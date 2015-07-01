@@ -42,7 +42,7 @@ let App = React.createClass({
           has_contestant: false
         }
       }
-    }
+    };
   },
 
   getInitialState() {

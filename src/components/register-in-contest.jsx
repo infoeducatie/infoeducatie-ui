@@ -27,7 +27,6 @@ export default React.createClass({
   },
 
   render() {
-    console.log(this.state)
     return <div className="register-in-contest">
       <div className="blue-section-wrapper">
         <Grid className="blue-section">
@@ -52,27 +51,27 @@ export default React.createClass({
           <PanelGroup onSelect={this.onHandlePanelSelect}
                       activeKey={this.state.activePanelKey}
                       accordion>
-            <Panel header='Înregistrare Participant'
-                   eventKey='1'
+            <Panel header="Înregistrare Participant"
+                   eventKey="1"
                    bsStyle={this.getPanelStyle(
                                 this.state.hasSubmitedParticipantForm)}>
               {this.state.hasSubmitedParticipantForm ? this.renderSuccess() :
                   <RegisterContestant current={this.props.current}
                                       hasSubmited={this.submitParticipant} />}
             </Panel>
-            <Panel header='Înregistrare Proiect'
-                   eventKey='2'
+            <Panel header="Înregistrare Proiect"
+                   eventKey="2"
                    expanded>
               {this.state.hasSubmitedProjectForm ? this.renderSuccess() :
                   <RegisterProject current={this.props.current}
                                    hasSubmited={this.submitProject} />}
             </Panel>
-            <Panel header='Înregistrare Coechipier'
-                   eventKey='3'>
+            <Panel header="Înregistrare Coechipier"
+                   eventKey="3">
               Formular de înregistrare coechipier
             </Panel>
-            <Panel header='Finalizare'
-                   eventKey='4'>
+            <Panel header="Finalizare"
+                   eventKey="4">
               Aici confirmă...
             </Panel>
           </PanelGroup>
@@ -89,7 +88,7 @@ export default React.createClass({
   },
 
   getPanelStyle(status) {
-    return status ? 'success' : 'default';
+    return status ? "success" : "default";
   },
 
   onHandlePanelSelect(nextActivePanelKey) {

@@ -2,6 +2,7 @@
   "parser": "babel-eslint",
   "rules": {
     "blockBindings": true,
+    "camelcase": false,
     "forOf": true,
     "jsx": true,
     "classes": true,
