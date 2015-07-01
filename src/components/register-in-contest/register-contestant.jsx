@@ -1,10 +1,11 @@
 "use strict";
 
-import React from "react";
-import DeepLinkedStateMixin from "react-deep-link-state";
 import $ from "jquery";
 import _ from "lodash";
+import React from "react";
 import { Input, ButtonInput } from "react-bootstrap";
+import DeepLinkedStateMixin from "react-deep-link-state";
+
 
 export default React.createClass({
   displayName: "RegisterContestant",
