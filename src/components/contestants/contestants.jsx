@@ -75,19 +75,23 @@ export default React.createClass({
   },
 
   renderTable() {
-    return <Table responsive>
-      <thead>
-        <tr>
-          <th>județ</th>
-          <th>titlul lucrării</th>
-          <th>categorie</th>
-          <th>concurent</th>
-        </tr>
-      </thead>
-      <tbody>
-         {this.state.projects.map(this.renderProjectRow)}
-      </tbody>
-    </Table>;
+    return <Row>
+      <Col md={8} mdOffset={2}>
+        <Table responsive>
+          <thead>
+            <tr>
+              <th>județ</th>
+              <th>titlul lucrării</th>
+              <th>categorie</th>
+              <th>concurent</th>
+            </tr>
+          </thead>
+          <tbody>
+             {this.state.projects.map(this.renderProjectRow)}
+          </tbody>
+        </Table>
+      </Col>
+    </Row>;
   },
 
   renderProjectCard(project) {
