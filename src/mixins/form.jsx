@@ -50,10 +50,9 @@ export default {
     $.ajax({
       method: "POST",
       url: window.config.API_URL + this.props.formEndpoint,
-      beforeSend: function (request) {
-        request.setRequestHeader("Authorization",
-                                 this.props.currentUser.access_token);
-      }.bind(this),
+      headers: {
+        Authorization: this.props.currentUser.access_token
+      },
       data: data,
       success: this.props.hasSubmited,
       error: this.onRequestError
