@@ -64,7 +64,6 @@ export default React.createClass({
              valueLink={this.deepLinkState(["contestant", "sex"])}>
         <option value="1">Masculin</option>
         <option value="2">Feminin</option>
-        <option value="3">N/A</option>
       </Input>
       <Input
         type="text"
