@@ -17,23 +17,10 @@ export default React.createClass({
   displayName: "Contestants",
 
   getInitialState: function() {
-    // on mobile we need to show only the list view
-    // for that, the best way is to avoid rendering the grid view
-    //
-    // we used
-    // http://stackoverflow.com/questions/1248081/get-the-browser-viewport-dimensions-with-javascript
-    // get the width of the viewport and we know that bootstrap has 3 responsive
-    // breakpoints (http://stackoverflow.com/questions/18575582/how-to-detect-responsive-breakpoints-of-twitter-bootstrap-3-using-javascript)
-    //    * 768px  => small (usually mobile devices)
-    //    * 992px  => medium
-    //    * 1200px => large
-    let isMobile = Math.max(document.documentElement.clientWidth,
-                            window.innerWidth || 0) <= 768;
-
     return {
       projects: projectsFixture,
-      showGrid: isMobile ? false : true,
-      showTable: isMobile ? true : false,
+      showGrid: false,
+      showTable: true,
       currentCategory: "all"
    };
 
