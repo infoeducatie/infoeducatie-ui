@@ -60,26 +60,26 @@ export default React.createClass({
           file: MobilePDF
         }
       }
-    }
+    };
   },
 
   setCountPages(pageCount) {
     this.setState({
       pageCount: pageCount
-    })
+    });
   },
 
   increasePageNumber() {
     let pageNumber = this.state.pageNumber;
     this.setState({
       pageNumber: pageNumber < this.state.pageCount ? pageNumber + 1 : pageNumber
-    })
+    });
   },
 
   decreasePageNumber() {
     this.setState({
-      pageNumber: this.state.pageNumber == 1 ? 1 : this.state.pageNumber - 1
-    })
+      pageNumber: this.state.pageNumber === 1 ? 1 : this.state.pageNumber - 1
+    });
   },
 
   render() {
