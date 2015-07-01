@@ -26,13 +26,6 @@ import AlexComanAvatar from "../../assets/img/jury/alex_coman.png";
 import DefaultAvatar from "../../assets/img/jury/default.png";
 import DefaultDocument from "../../assets/img/icons/doc.png";
 
-import UtilityPDF from "../../assets/static/utility.pdf";
-import EducationalPDF from "../../assets/static/educational.pdf";
-import WebPDF from "../../assets/static/web.pdf";
-import MediaPDF from "../../assets/static/media.pdf";
-import MobilePDF from "../../assets/static/mobile.pdf";
-import RobotsPDF from "../../assets/static/robots.pdf";
-
 
 export default React.createClass({
   displayName: "Jury",
@@ -78,12 +71,12 @@ export default React.createClass({
     ];
 
     var criteria = [
-      {"name": "Educațional", "file": EducationalPDF},
-      {"name": "Multimedia", "file": MediaPDF},
-      {"name": "Mobile", "file": MobilePDF},
-      {"name": "Roboți", "file": RobotsPDF},
-      {"name": "Utilitar", "file": UtilityPDF},
-      {"name": "Web", "file": WebPDF}
+      {"name": "Educațional", "type": "educational"},
+      {"name": "Multimedia", "type": "multimedia"},
+      {"name": "Mobile", "type": "mobile"},
+      {"name": "Roboți", "type": "robototi"},
+      {"name": "Utilitar", "type": "utilitar"},
+      {"name": "Web", "type": "web"}
     ];
 
     return <div className="jury">
@@ -125,7 +118,7 @@ export default React.createClass({
                     return <div className="jury-criteria">
                       <div className="jury-criteria-txt">{doc.name}</div>
                       <div className="jury-criteria-img">
-                        <Link to="static-pdf">sdasd</Link>
+                        <Link to={`/static/${doc.type}`}><img src={DefaultDocument} alt={doc.name} /></Link>
                       </div>
                     </div>;
                   })}

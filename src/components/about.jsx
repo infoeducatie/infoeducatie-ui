@@ -3,6 +3,8 @@
 import React from "react";
 
 import { Row, Col, Grid } from "react-bootstrap";
+import { Link } from "react-router"
+
 import Header from "./header";
 
 import "./about.less"
@@ -139,7 +141,7 @@ export default React.createClass({
                       <span className="pink-dash hidden-xs" />
                     </h4>
                   </div>
-                  <a href="https://docs.google.com/document/d/1rnNdTlI2nrcevCe1URt2FOzU1UAMpCTkMms8-QbI1VE/pub" target="_blank"><span className="section-icon doc" /></a>
+                  <Link to="/static/regulament"><span className="section-icon doc" /></Link>
                 </div>
               </Col>
             </Row>

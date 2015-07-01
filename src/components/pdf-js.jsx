@@ -18,9 +18,9 @@ export default React.createClass({
     PDFJS.getDocument(this.props.file).then(function(pdf) {
       pdf.getPage(self.props.page).then(function(page) {
         self.setState({pdfPage: page, pdf: pdf});
+        self.props.setCountPages(pdf.numPages);
       });
     });
-    this.props.setCountPages(this.state.pdf.numPages);
   },
 
   componentWillReceiveProps(newProps) {

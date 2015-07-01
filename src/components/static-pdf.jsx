@@ -9,6 +9,12 @@ import PDFJS from "./pdf-js";
 import "./static-pdf.less";
 
 import UtilityPDF from "../../assets/static/utility.pdf";
+import EducationalPDF from "../../assets/static/educational.pdf";
+import WebPDF from "../../assets/static/web.pdf";
+import MediaPDF from "../../assets/static/media.pdf";
+import MobilePDF from "../../assets/static/mobile.pdf";
+import RobotsPDF from "../../assets/static/robots.pdf";
+import RegulamentPDF from "../../assets/static/regulament.pdf";
 
 
 export default React.createClass({
@@ -17,10 +23,42 @@ export default React.createClass({
     return {
       pageNumber: 1,
       pageCount: 1,
-      regulament: {
-        title: "Regulament InfoEducație Ediția 2015",
-        subtitle: "Concurs Național de Informatică",
-        file: UtilityPDF
+      statics: {
+        regulament: {
+          title: "Regulament InfoEducație Ediția 2015",
+          subtitle: "Concurs Național de Informatică",
+          file: RegulamentPDF
+        },
+        utilitar: {
+          title: "Criterii de Jurizare",
+          subtitle: "Secțiunea Software Utilitar",
+          file: UtilityPDF
+        },
+        educational: {
+          title: "Criterii de Jurizare",
+          subtitle: "Secțiunea Software Educational",
+          file: EducationalPDF
+        },
+        web: {
+          title: "Criterii de Jurizare",
+          subtitle: "Secțiunea Web",
+          file: WebPDF
+        },
+        multimedia: {
+          title: "Criterii de Jurizare",
+          subtitle: "Secțiunea Multimedia",
+          file: MediaPDF
+        },
+        roboti: {
+          title: "Criterii de Jurizare",
+          subtitle: "Secțiunea Roboți",
+          file: RobotsPDF
+        },
+        mobile: {
+          title: "Criterii de Jurizare",
+          subtitle: "Secțiunea Mobile",
+          file: MobilePDF
+        }
       }
     }
   },
@@ -45,7 +83,7 @@ export default React.createClass({
   },
 
   render() {
-    let pdf = this.state[this.props.params.type];
+    let pdf = this.state.statics[this.props.params.type];
 
     return <div className="static-pdf">
       <div className="blue-section-wrapper">
