@@ -55,7 +55,9 @@
 
   .projects {
     table {
-      @cell-height: 90px;
+      @cell-height: 40px;
+      // TODO: @vtemian @palcu trebuie sa schimbam asta:
+      font-size: 70%;
 
       th {
         background-color: @orange;
@@ -79,18 +81,14 @@
 
         &.county {
           text-transform: uppercase;
-          font-size: @font-size-h4;
           color: @blue;
         }
 
         &.category {
           text-transform: uppercase;
-          font-size: @font-size-h4;
         }
 
         &.title {
-          font-size: @font-size-h5;
-
           a {
             text-decoration: none;
             color: @black;
