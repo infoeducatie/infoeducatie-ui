@@ -24,7 +24,7 @@ export default React.createClass({
         country: "",
         zip_code: "",
 
-        sex: "male",
+        sex: "1",
         cnp: "",
         id_card_type: "",
         id_card_number: "",
@@ -58,9 +58,9 @@ export default React.createClass({
       <Input type="select"
              label="Gen"
              valueLink={this.deepLinkState(["contestant", "sex"])}>
-        <option value="male">Masculin</option>
-        <option value="female">Feminin</option>
-        <option value="undisclosed">N/A</option>
+        <option value="1">Masculin</option>
+        <option value="2">Feminin</option>
+        <option value="3">N/A</option>
       </Input>
       <Input
         type="text"
