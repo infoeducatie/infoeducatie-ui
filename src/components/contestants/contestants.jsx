@@ -55,7 +55,7 @@ export default React.createClass({
 
     if (this.state.currentCategory === project.category ||
         this.state.currentCategory === "all") {
-      row = <tr>
+      row = <tr key={project.id}>
         <td className="county">{project.county}</td>
         <td className="title">
           <a href={project.forum_link} target="_blank">{project.title}</a>
@@ -63,7 +63,7 @@ export default React.createClass({
         <td className="authors">
           <ul className="list-unstyled">
             {project.authors.map(function(author){
-              return <li className="author">{author.name}</li>;
+              return <li className="author" key={author.id}>{author.name}</li>;
             })}
           </ul>
         </td>
