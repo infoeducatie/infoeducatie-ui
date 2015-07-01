@@ -291,7 +291,7 @@ export default React.createClass({
       beforeSend: function (request) {
         request.setRequestHeader("Authorization",
                                  this.props.currentUser.access_token);
-      },
+      }.bind(this),
       data: data,
       success: this.props.hasSubmited,
       error: this.onRequestError
