@@ -1,10 +1,11 @@
 "use strict";
 
-import React from "react";
-import DeepLinkedStateMixin from "react-deep-link-state";
 import $ from "jquery";
 import _ from "lodash";
+import React from "react";
 import { Input, ButtonInput } from "react-bootstrap";
+import DeepLinkedStateMixin from "react-deep-link-state";
+
 
 export default React.createClass({
   displayName: "RegisterContestant",
@@ -24,7 +25,7 @@ export default React.createClass({
         country: "",
         zip_code: "",
 
-        sex: "male",
+        sex: "1",
         cnp: "",
         id_card_type: "",
         id_card_number: "",
@@ -38,7 +39,10 @@ export default React.createClass({
         school_country: "",
 
         mentoring_teacher_first_name: "",
-        mentoring_teacher_last_name: ""
+        mentoring_teacher_last_name: "",
+
+        accompanying_teacher_first_name: "",
+        accompanying_teacher_last_name: ""
         /*eslint-enable */
       },
 
@@ -58,9 +62,8 @@ export default React.createClass({
       <Input type="select"
              label="Gen"
              valueLink={this.deepLinkState(["contestant", "sex"])}>
-        <option value="male">Masculin</option>
-        <option value="female">Feminin</option>
-        <option value="undisclosed">N/A</option>
+        <option value="1">Masculin</option>
+        <option value="2">Feminin</option>
       </Input>
       <Input
         type="text"
@@ -161,8 +164,20 @@ export default React.createClass({
       <Input
         type="text"
         placeholder="Popescu"
-        label="Numele Profesorului"
+        label="Numele Profesorului Îndrumător"
         valueLink={this.deepLinkState(["contestant", "mentoring_teacher_last_name"])}
+        required />
+      <Input
+        type="text"
+        placeholder="Maria"
+        label="Prenumele Profesorului Însoțitor"
+        valueLink={this.deepLinkState(["contestant", "accompanying_teacher_first_name"])}
+        required />
+      <Input
+        type="text"
+        placeholder="Popescu"
+        label="Numele Profesorului Însoțitor"
+        valueLink={this.deepLinkState(["contestant", "accompanying_teacher_last_name"])}
         required />
       <Input type="select"
              label="Te-ai calificat la faza județeană?"
@@ -203,7 +218,7 @@ export default React.createClass({
       let errors = _.clone(this.state.errors);
 
       if (!errors.length) {
-        errors.push("Ne pare rău, avem o problemă cu serverul!");
+        errors.push("Formularul nu a putut fi trimis.");
       }
 
       return <ul className="errors list-group">
