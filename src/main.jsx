@@ -1,11 +1,10 @@
 "use strict";
 
+import $ from "jquery";
+import Raven from "raven-js"
 import React from "react";
 import Router from "react-router";
-import Raven from "raven-js"
-
 let { Route, RouteHandler, DefaultRoute } = Router; // eslint-disable-line
-
 import "babel-core/polyfill";
 import "./main.less";
 
@@ -22,19 +21,21 @@ import Kitchen from "./components/kitchen";
 import Footer from "./components/footer";
 import Contestants from "./components/contestants/contestants";
 
+
 let App = React.createClass({
   displayName: "App",
 
   getInitialState() {
     let user = JSON.parse(localStorage.getItem("user"));
     return {
+      current: null,
       currentUser: user,
       isLoggedIn: user ? true : false
     };
   },
 
   componentDidMount() {
-    // TODO @palcu: Do API request to /current and re-render whole app
+    this.getCurrent();
   },
 
   render() {
@@ -42,7 +43,8 @@ let App = React.createClass({
       <RouteHandler currentUser={this.state.currentUser}
                     isLoggedIn={this.state.isLoggedIn}
                     login={this.login}
-                    logout={this.logout} />
+                    logout={this.logout}
+                    current={this.state.current} />
       <Footer />
     </div>;
   },
@@ -53,6 +55,7 @@ let App = React.createClass({
       currentUser: user
     });
     localStorage.setItem("user", JSON.stringify(user));
+    this.getCurrent();
   },
 
   logout() {
@@ -61,6 +64,27 @@ let App = React.createClass({
       isLoggedIn: false,
       currentUser: null
     });
+  },
+
+  getCurrent() {
+    if (this.state.currentUser) {
+      $.ajax({
+        method: "GET",
+        url: window.config.API_URL + "current.json",
+        headers: {
+          Authorization: this.state.currentUser.access_token
+        },
+        success: (data) => {
+          this.setState({
+            current: data
+          });
+        },
+        error: () => {
+          // This means the user token has expired.
+          this.logout();
+        }
+      });
+    }
   }
 });
 
