@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Grid, Col, Row } from "react-bootstrap";
+import { Link } from "react-router"
 
 import Header from "./header";
 import JuryDescription from "./jury-description";
@@ -69,12 +70,12 @@ export default React.createClass({
     ];
 
     var criteria = [
-      {"name": "Educațional", "link": "https://docs.google.com/document/d/10ygW8gpijQJE94CbMMNxhrt_ju3X-tMjPATf7WcjTW8/pub"},
-      {"name": "Multimedia", "link": "https://docs.google.com/document/d/12UY9ByKQt7CpBj11vwg1HPrsKOH-uTL9kFCEdxBgvAY/pub"},
-      {"name": "Mobile", "link": "https://docs.google.com/document/d/1jqwoAduZoHjnj01Q6eQE0DWNB-DeMQouLumkW753mUA/pub"},
-      {"name": "Roboți", "link": "https://docs.google.com/document/d/1n0yoqA3n9heBiYWgmeg-lfXYPvSMVMRhGZrHRYKhDVk/pub"},
-      {"name": "Utilitar", "link": "https://docs.google.com/document/d/19HTucZgQWY92nZ-NDoKRWlE63hipb_IkZVcMxHyOCdc/pub"},
-      {"name": "Web", "link": "https://docs.google.com/document/d/1ZgdZz_5JHJSZyxWnZWzP162NZ2H3CkBojyp5p6cKNDI/pub"}
+      {"name": "Educațional", "type": "educational"},
+      {"name": "Multimedia", "type": "multimedia"},
+      {"name": "Mobile", "type": "mobile"},
+      {"name": "Roboți", "type": "robototi"},
+      {"name": "Utilitar", "type": "utilitar"},
+      {"name": "Web", "type": "web"}
     ];
 
     return <div className="jury">
@@ -115,7 +116,9 @@ export default React.createClass({
                   {criteria.map(function(doc) {
                     return <div className="jury-criteria">
                       <div className="jury-criteria-txt">{doc.name}</div>
-                      <div className="jury-criteria-img"><a href={doc.link} target="_blank"><img src={DefaultDocument} alt={doc.link} /></a></div>
+                      <div className="jury-criteria-img">
+                        <Link to={`/static/${doc.type}`}><img src={DefaultDocument} alt={doc.name} /></Link>
+                      </div>
                     </div>;
                   })}
                 </Row>

@@ -21,6 +21,8 @@ import Results from "./components/results";
 import Kitchen from "./components/kitchen";
 import Footer from "./components/footer";
 import Contestants from "./components/contestants/contestants";
+import StaticPDF from "./components/static-pdf";
+
 
 let App = React.createClass({
   displayName: "App",
@@ -78,6 +80,9 @@ let routes = (
     <Route handler={Results} name="results" />
     <Route handler={Kitchen} name="kitchen" />
     <Route handler={Contestants} name="contestants" />
+
+    <Route handler={StaticPDF} name="static" path="/static/:type" />
+
     <DefaultRoute handler={Home} />
   </Route>
 );
