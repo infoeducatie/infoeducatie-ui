@@ -64,7 +64,7 @@ export default {
       let errors = _.clone(this.state.errors);
 
       if (!errors.length) {
-        errors.push("Ne pare rău, avem o problemă cu serverul!");
+        errors.push("Formularul nu a putut fi trimis.");
       }
 
       return <ul className="errors list-group">
