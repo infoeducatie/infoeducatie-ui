@@ -2,12 +2,11 @@
 
 import React from "react";
 
-import { Grid, Col, Row, Glyphicon } from "react-bootstrap";
+import { Grid, Col, Row, Glyphicon, Table } from "react-bootstrap";
 import ctx from "classnames";
 
 import Header from "../header";
 import ProjectCard from "./project_card";
-import ProjectRow from "./project_row";
 import FilterIcon from "./filter_icon";
 import projectsFixture from "../../fixtures/projects";
 
@@ -18,23 +17,10 @@ export default React.createClass({
   displayName: "Contestants",
 
   getInitialState: function() {
-    // on mobile we need to show only the list view
-    // for that, the best way is to avoid rendering the grid view
-    //
-    // we used
-    // http://stackoverflow.com/questions/1248081/get-the-browser-viewport-dimensions-with-javascript
-    // get the width of the viewport and we know that bootstrap has 3 responsive
-    // breakpoints (http://stackoverflow.com/questions/18575582/how-to-detect-responsive-breakpoints-of-twitter-bootstrap-3-using-javascript)
-    //    * 768px  => small (usually mobile devices)
-    //    * 992px  => medium
-    //    * 1200px => large
-    let isMobile = Math.max(document.documentElement.clientWidth,
-                            window.innerWidth || 0) <= 768;
-
     return {
       projects: projectsFixture,
-      showGrid: isMobile ? false : true,
-      showTable: isMobile ? true : false,
+      showGrid: false,
+      showTable: true,
       currentCategory: "all"
    };
 
@@ -64,28 +50,48 @@ export default React.createClass({
     });
   },
 
-  renderProjectRow(project) {
-    var row = null;
+  renderProjectRow(project){
+    let row = null;
 
-    if (project.category === this.state.currentCategory ||
+    if (this.state.currentCategory === project.category ||
         this.state.currentCategory === "all") {
-
-      row = <ProjectRow project={project} key={project.id} />;
+      row = <tr key={project.id}>
+        <td className="county">{project.county}</td>
+        <td className="title">
+          <a href={project.forum_link} target="_blank">{project.title}</a>
+        </td>
+        <td className="authors">
+          <ul className="list-unstyled">
+            {project.authors.map(function(author){
+              return <li className="author" key={author.id}>{author.name}</li>;
+            })}
+          </ul>
+        </td>
+        <td className="category">{project.category_slug}</td>
+      </tr>;
     }
 
     return row;
   },
 
   renderTable() {
-    var table = null;
-
-    if (this.state.showTable) {
-      table = <Grid className="projects-list">
-                {this.state.projects.map(this.renderProjectRow)}
-              </Grid>;
-    }
-
-    return table;
+    return <Row>
+      <Col md={8} mdOffset={2}>
+        <Table responsive>
+          <thead>
+            <tr>
+              <th>județ</th>
+              <th>titlul lucrării</th>
+              <th>categorie</th>
+              <th>concurent</th>
+            </tr>
+          </thead>
+          <tbody>
+             {this.state.projects.map(this.renderProjectRow)}
+          </tbody>
+        </Table>
+      </Col>
+    </Row>;
   },
 
   renderProjectCard(project) {

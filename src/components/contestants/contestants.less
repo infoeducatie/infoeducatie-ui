@@ -52,4 +52,61 @@
     column-width: 15em;
     column-gap: @grid-gutter-width;
   }
+
+  .projects {
+    table {
+      @cell-height: 40px;
+      // TODO: @vtemian @palcu trebuie sa schimbam asta:
+      font-size: 14px;
+
+      th {
+        background-color: @orange;
+        text-transform: uppercase;
+        height: @cell-height;
+        text-align: center;
+        vertical-align: middle;
+        display: table-cell;
+        border-bottom: 10px solid @light-black;
+
+        &.left {
+          text-align: left;
+        }
+      }
+
+      td {
+        height: @cell-height;
+        vertical-align: middle;
+        display: table-cell;
+        border-bottom: 1px solid @pink;
+
+        &.county {
+          text-transform: uppercase;
+          color: @blue;
+        }
+
+        &.category {
+          text-transform: uppercase;
+        }
+
+        &.title {
+          a {
+            text-decoration: none;
+            color: @black;
+          }
+        }
+
+        &.score {
+          font-weight: bold;
+          text-align: center;
+        }
+
+        &.authors {
+          .author {
+            text-transform: uppercase;
+            color: @blue;
+          }
+        }
+      }
+    }
+  }
 }
