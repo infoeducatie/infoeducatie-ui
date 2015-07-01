@@ -99,8 +99,8 @@ export default React.createClass({
                     <Col md={5} mdOffset={1} className="right">
                         <Row className="small-spacing" />
                         <p className="date">28 iunie 2015</p>
-                        <p className="message">Înregistrările vor începe pe 3
-                        iulie.</p>
+                        <p className="message">Înregistrările vor începe în
+                        câteva zile.</p>
 
                         <Row className="big-spacing" />
                         <p className="date">26 iunie 2015</p>
