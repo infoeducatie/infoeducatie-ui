@@ -15,7 +15,7 @@ export default React.createClass({
     return {
       // TODO @palcu: take this from current endpoint
       hasSubmitedParticipantForm: false,
-      hasSubmitedProject: false
+      hasSubmitedProjectForm: false
     };
   },
 
@@ -47,13 +47,13 @@ export default React.createClass({
             <Panel header='Înregistrare Participant'
                    eventKey='1'>
               {this.state.hasSubmitedParticipantForm ? this.renderSuccess() :
-                  <RegisterContestant currentUser={this.props.currentUser}
+                  <RegisterContestant current={this.props.current}
                                       hasSubmited={this.submitParticipant} />}
             </Panel>
             <Panel header='Înregistrare Proiect'
                    eventKey='2'>
-              {this.state.hasSubmitedParticipantForm ? this.renderSuccess() :
-                  <RegisterProject currentUser={this.props.currentUser}
+              {this.state.hasSubmitedProjectForm ? this.renderSuccess() :
+                  <RegisterProject current={this.props.current}
                                    hasSubmited={this.submitProject} />}
             </Panel>
             <Panel header='Înregistrare Coechipier'

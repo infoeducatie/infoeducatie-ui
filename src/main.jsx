@@ -40,11 +40,10 @@ let App = React.createClass({
 
   render() {
     return <div className="main">
-      <RouteHandler currentUser={this.state.currentUser}
+      <RouteHandler current={this.state.current}
                     isLoggedIn={this.state.isLoggedIn}
                     login={this.login}
-                    logout={this.logout}
-                    current={this.state.current} />
+                    logout={this.logout} />
       <Footer />
     </div>;
   },
