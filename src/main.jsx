@@ -30,7 +30,7 @@ let App = React.createClass({
     return {
       current: {
         edition: {
-          motto: 'Perseverează, mergi mai departe!',
+          motto: "Perseverează, mergi mai departe!",
           year: 2015
         },
         stats: {
