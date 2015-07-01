@@ -57,7 +57,9 @@ export default React.createClass({
         this.state.currentCategory === "all") {
       row = <tr>
         <td className="county">{project.county}</td>
-        <td className="title">{project.title}</td>
+        <td className="title">
+          <a href={project.forum_link} target="_blank">{project.title}</a>
+        </td>
         <td className="authors">
           <ul className="list-unstyled">
             {project.authors.map(function(author){

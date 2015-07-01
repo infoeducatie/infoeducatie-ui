@@ -20,7 +20,9 @@ export default React.createClass({
         <Row className="xsmall-spacing" />
         <Row className="project-title">
           <Col xs={12}>
-            <h4>{this.props.project.title}</h4>
+            <a href={this.props.project.forum_link} target="_blank">
+              <h4>{this.props.project.title}</h4>
+            </a>
           </Col>
         </Row>
         <Row className="xsmall-spacing" />

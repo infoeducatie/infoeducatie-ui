@@ -14,7 +14,8 @@ export default[
     "county": "hunedoara",
     "comments": 7,
     "category": "utility",
-    "category_slug": "utilitar"
+    "category_slug": "utilitar",
+    "forum_link": "http://community.infoeducatie.ro/t/timetraveler-software-utilitar-hunedoara-lucrari-2015-online/3608"
    },
    {
     "id": 2,
@@ -31,11 +32,12 @@ export default[
     "county": "arad",
     "comments": 5,
     "category": "robots",
-    "category_slug": "roboți"
+    "category_slug": "roboți",
+    "forum_link": "http://community.infoeducatie.ro/t/actionare-automata-si-securizata-a-cailor-de-acces-roboti-arad-2015-online/2600"
    },
    {
     "id": 3,
-    "title": "Romania e Okay!",
+    "title": "Româna e Okay!",
     "authors": [
       {
         "id": 1,
@@ -48,7 +50,8 @@ export default[
     "county": "bucurești",
     "comments": 1,
     "category": "educational",
-    "category_slug": "educațional"
+    "category_slug": "educațional",
+    "forum_link": "http://community.infoeducatie.ro/t/romana-e-okay-software-educational-bucuresti-2015-online/3419"
    },
    {
     "id": 4,
@@ -65,7 +68,8 @@ export default[
     "county": "brașov",
     "comments": 13,
     "category": "media",
-    "category_slug": "multimedia"
+    "category_slug": "multimedia",
+    "forum_link": "http://community.infoeducatie.ro/t/mica-unire-multimedia-brasov-lucrari-2015-online/3622"
    },
    {
     "id": 5,
@@ -82,7 +86,8 @@ export default[
     "county": "brăila",
     "comments": 5,
     "category": "web",
-    "category_slug": "web"
+    "category_slug": "web",
+    "forum_link": "http://community.infoeducatie.ro/t/velocity-reporting-web-braila-2015-online/3416"
    },
    {
     "id": 6,
@@ -99,11 +104,12 @@ export default[
     "county": "arad",
     "comments": 5,
     "category": "robots",
-    "category_slug": "roboți"
+    "category_slug": "roboți",
+    "forum_link": "http://community.infoeducatie.ro/t/actionare-automata-si-securizata-a-cailor-de-acces-roboti-arad-2015-online/2600"
    },
    {
     "id": 7,
-    "title": "Romania e Okay!",
+    "title": "Româna e Okay!",
     "authors": [
       {
         "id": 1,
@@ -116,7 +122,8 @@ export default[
     "county": "bucurești",
     "comments": 1,
     "category": "educational",
-    "category_slug": "educațional"
+    "category_slug": "educațional",
+    "forum_link": "http://community.infoeducatie.ro/t/romana-e-okay-software-educational-bucuresti-2015-online/3419"
    },
    {
     "id": 8,
@@ -133,7 +140,8 @@ export default[
     "county": "brașov",
     "comments": 13,
     "category": "media",
-    "category_slug": "multimedia"
+    "category_slug": "multimedia",
+    "forum_link": "http://community.infoeducatie.ro/t/mica-unire-multimedia-brasov-lucrari-2015-online/3622"
    },
    {
     "id": 9,
@@ -150,6 +158,7 @@ export default[
     "county": "brăila",
     "comments": 5,
     "category": "web",
-    "category_slug": "web"
+    "category_slug": "web",
+    "forum_link": "http://community.infoeducatie.ro/t/velocity-reporting-web-braila-2015-online/3416"
    }
 ]
