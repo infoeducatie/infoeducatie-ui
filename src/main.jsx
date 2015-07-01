@@ -26,10 +26,26 @@ import Contestants from "./components/contestants/contestants";
 let App = React.createClass({
   displayName: "App",
 
+  getDefaultProps() {
+    return {
+      current: {
+        edition: {
+          motto: 'Perseverează, mergi mai departe!',
+          year: 2015
+        },
+        stats: {
+          total_participants: 0,
+          total_projects: 0,
+          total_counties: 0
+        }
+      }
+    }
+  },
+
   getInitialState() {
     let accesToken = ReactCookie.load("accesToken");
     return {
-      current: null,
+      current: this.props.current,
       isLoggedIn: accesToken ? true : false
     };
   },
@@ -56,7 +72,8 @@ let App = React.createClass({
   logout() {
     ReactCookie.remove("accesToken");
     this.setState({
-      current: null,
+      // TODO @palcu: remove this when current is ready
+      current: this.props.current,
       isLoggedIn: false
     });
   },
