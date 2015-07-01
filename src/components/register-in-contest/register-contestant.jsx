@@ -161,7 +161,7 @@ export default React.createClass({
       <Input
         type="text"
         placeholder="Popescu"
-        label="Numele Profesorului"
+        label="Numele Profesorului Îndrumător"
         valueLink={this.deepLinkState(["contestant", "mentoring_teacher_last_name"])}
         required />
       <Input type="select"
