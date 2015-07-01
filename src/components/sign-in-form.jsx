@@ -34,7 +34,7 @@ export default React.createClass({
   render() {
     return <div>
       <form onSubmit={this.onSubmit}>
-        <Input type="text"
+        <Input type="email"
                label="Adresa de email"
                onChange={this.onEmailChange} />
         <Input type="password"
