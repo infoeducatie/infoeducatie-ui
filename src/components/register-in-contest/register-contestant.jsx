@@ -287,7 +287,7 @@ export default React.createClass({
 
     $.ajax({
       method: "POST",
-      url: window.config.API_URL + "contestants",
+      url: window.config.API_URL + "contestants.json",
       beforeSend: function (request) {
         request.setRequestHeader("Authorization",
                                  this.props.currentUser.access_token);
