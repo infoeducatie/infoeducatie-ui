@@ -47,14 +47,13 @@ export default {
 
     let data = this.getFormData();
 
-    let headers = {
-      "Authorization": this.props.currentUser.access_token
-    };
-
     $.ajax({
       method: "POST",
       url: window.config.API_URL + this.props.formEndpoint,
-      headers: headers,
+      beforeSend: function (request) {
+        request.setRequestHeader("Authorization",
+                                 this.props.currentUser.access_token);
+      }.bind(this),
       data: data,
       success: this.props.hasSubmited,
       error: this.onRequestError
