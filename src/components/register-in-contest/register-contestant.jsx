@@ -288,10 +288,9 @@ export default React.createClass({
     $.ajax({
       method: "POST",
       url: window.config.API_URL + "contestants.json",
-      beforeSend: function (request) {
-        request.setRequestHeader("Authorization",
-                                 this.props.currentUser.access_token);
-      }.bind(this),
+      headers: {
+        Authorization: this.props.currentUser.access_token
+      },
       data: data,
       success: this.props.hasSubmited,
       error: this.onRequestError
