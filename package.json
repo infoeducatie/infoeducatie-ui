@@ -12,7 +12,7 @@
     "test-cross-browser": "./node_modules/karma/bin/karma start karma.cross-browser.config.js",
     "coveralls": "cat coverage/lcov.info | coveralls",
     "clean": "rm -rf build",
-    "postinstall": "bash -c 'if [ \"$APP_ENV\" == 'dev' ]; then npm run stagebuild; else npm run build; fi'"
+    "postinstall": "bash -c 'if [ \"$APP_ENV\" == 'stage' ]; then npm run stagebuild; else npm run build; fi'"
   },
   "repository": {
     "type": "git",
