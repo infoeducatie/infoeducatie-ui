@@ -3,6 +3,7 @@
 import $ from "jquery";
 import Raven from "raven-js"
 import React from "react";
+import ReactCookie from "react-cookie";
 import Router from "react-router";
 let { Route, RouteHandler, DefaultRoute } = Router; // eslint-disable-line
 import "babel-core/polyfill";
@@ -26,11 +27,10 @@ let App = React.createClass({
   displayName: "App",
 
   getInitialState() {
-    let user = JSON.parse(localStorage.getItem("user"));
+    let accesToken = ReactCookie.load("accesToken");
     return {
       current: null,
-      currentUser: user,
-      isLoggedIn: user ? true : false
+      isLoggedIn: accesToken ? true : false
     };
   },
 
@@ -50,33 +50,31 @@ let App = React.createClass({
   },
 
   login(user) {
-    this.setState({
-      isLoggedIn: true,
-      currentUser: user
-    });
-    localStorage.setItem("user", JSON.stringify(user));
+    ReactCookie.save("accesToken", user.access_token);
     this.getCurrent();
   },
 
   logout() {
-    localStorage.removeItem("user");
+    ReactCookie.remove("accesToken");
     this.setState({
-      isLoggedIn: false,
-      currentUser: null
+      current: null,
+      isLoggedIn: false
     });
   },
 
   getCurrent() {
-    if (this.state.currentUser) {
+    let accesToken = ReactCookie.load("accesToken");
+    if (accesToken) {
       $.ajax({
         method: "GET",
         url: window.config.API_URL + "current.json",
         headers: {
-          Authorization: this.state.currentUser.access_token
+          Authorization: accesToken
         },
         success: (data) => {
           this.setState({
-            current: data
+            current: data,
+            isLoggedIn: true
           });
         },
         error: () => {
