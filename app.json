@@ -7,6 +7,9 @@
     },
     "PORT":{
       "required":true
+    },
+    "APP_ENV":{
+      "required":true
     }
   },
   "addons":[]

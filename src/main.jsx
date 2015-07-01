@@ -11,6 +11,7 @@ import "./main.less";
 
 import Photos from "./components/photos";
 import Alumni from "./components/alumni";
+import RegisterInContest from "./components/register-in-contest";
 import About from "./components/about";
 import Register from "./components/register";
 import Jury from "./components/jury";
@@ -27,7 +28,7 @@ let App = React.createClass({
   displayName: "App",
 
   getInitialState() {
-    let user = localStorage.getItem("user");
+    let user = JSON.parse(localStorage.getItem("user"));
     return {
       currentUser: user,
       isLoggedIn: user ? true : false
@@ -70,6 +71,7 @@ let routes = (
   <Route path="/" handler={App}>
     <Route handler={Home} name="home" />
     <Route handler={Jury} name="jury" />
+    <Route handler={RegisterInContest} name="register-in-contest" />
     <Route handler={Alumni} name="alumni" />
     <Route handler={Photos} name="photos" />
     <Route handler={About} name="about" />

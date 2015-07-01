@@ -14,23 +14,38 @@ export default React.createClass({
   displayName: "Header",
 
   render() {
+    // TODO @palcu: refactor this when in React you will be able to return
+    // multiple values
     return <div className="header">
       <Row className="small-spacing" />
-      <Row>
-        <Col>
-          <Navbar toggleNavKey={0}>
-            <Nav className="navbar-nav" eventKey={0} right ref="nav">
-              <NavItemLink to="/">Acas&#259;</NavItemLink>
-              <NavItemLink to="alumni">Alumni</NavItemLink>
-              <NavItemLink to="results">Rezultate</NavItemLink>
-              <NavItemLink to="contestants">Participanți</NavItemLink>
-              <NavItemLink to="jury">Juriu</NavItemLink>
-              {this.props.isLoggedIn ? <NavItem onClick={this.props.logout}>Delogare</NavItem>
-                                     : <NavItem><SignIn login={this.props.login} /></NavItem>}
-            </Nav>
-          </Navbar>
-        </Col>
-      </Row>
+      <Navbar toggleNavKey={0}>
+        {this.props.isLoggedIn ? this.renderRegisterLinks()
+                               : this.renderUnregisterLinks()}
+      </Navbar>
     </div>;
+  },
+
+  renderRegisterLinks() {
+    return <Nav className="navbar-nav" eventKey={0} right ref="nav">
+      <NavItemLink to="/">Acas&#259;</NavItemLink>
+      <NavItemLink to="alumni">Alumni</NavItemLink>
+      <NavItemLink to="results">Rezultate</NavItemLink>
+      <NavItemLink to="contestants">Participanți</NavItemLink>
+      <NavItemLink to="jury">Juriu</NavItemLink>
+      <NavItem onClick={this.props.logout}>Delogare</NavItem>
+      <NavItemLink to="register-in-contest">Înscrie Proiect</NavItemLink>
+    </Nav>;
+  },
+
+  renderUnregisterLinks() {
+    return <Nav className="navbar-nav" eventKey={0} right ref="nav">
+      <NavItemLink to="/">Acas&#259;</NavItemLink>
+      <NavItemLink to="alumni">Alumni</NavItemLink>
+      <NavItemLink to="results">Rezultate</NavItemLink>
+      <NavItemLink to="contestants">Participanți</NavItemLink>
+      <NavItemLink to="jury">Juriu</NavItemLink>
+      <NavItem><SignIn login={this.props.login} /></NavItem>
+      <NavItemLink to="register">Înregistrează-te</NavItemLink>
+    </Nav>;
   }
 });
