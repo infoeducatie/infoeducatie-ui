@@ -23,7 +23,7 @@ export default React.createClass({
       project: {
         /*eslint-disable */
         title: "",
-        category_name: "web",
+        category: "web",
         description: "",
         technical_description: "",
         system_requirements: "",
@@ -44,7 +44,7 @@ export default React.createClass({
         required />
       <Input type="select"
              label="Categorie"
-             valueLink={this.deepLinkState(["project", "category_name"])}
+             valueLink={this.deepLinkState(["project", "category"])}
              required>
         <option value="educational">Software Educațional</option>
         <option value="utilitar">Software Utilitar</option>
@@ -67,11 +67,13 @@ export default React.createClass({
       <Input type="url"
              placeholder="http://..."
              valueLink={this.deepLinkState(["project", "source_url"])}
-             label="Adresa lucrării" />
+             label="Adresa surselor și a documentației"
+             required />
       <Input type="url"
              placeholder="http://..."
-             label="Adresa surselor"
-             valueLink={this.deepLinkState(["project", "homepage"])} />
+             label="Adresa lucrării"
+             valueLink={this.deepLinkState(["project", "homepage"])}
+             required={this.state.project.category === "web"} />
       <ButtonInput type="submit"
                    value="Pasul următor"
                    disabled={this.state.waitingForServerResponse} />
