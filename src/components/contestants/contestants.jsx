@@ -1,5 +1,6 @@
 "use strict";
 
+import $ from "jquery";
 import React from "react";
 
 import { Grid, Col, Row, Glyphicon, Table } from "react-bootstrap";
@@ -16,9 +17,29 @@ import "./contestants.less";
 export default React.createClass({
   displayName: "Contestants",
 
+  componentDidMount() {
+    $.ajax({
+      method: "GET",
+      url: window.config.API_URL + "projects.json",
+      success: (data) => {
+        this.setState({
+          projects: data
+        });
+      },
+      error: () => {
+        this.setState({
+          showGrid: false,
+          showTable: false,
+          showError: true,
+        });
+      }
+    });
+  },
+
   getInitialState: function() {
     return {
-      projects: projectsFixture,
+      projects: [],
+      showError: false,
       showGrid: false,
       showTable: true,
       currentCategory: "all"
@@ -58,16 +79,16 @@ export default React.createClass({
       row = <tr key={project.id}>
         <td className="county">{project.county}</td>
         <td className="title">
-          <a href={project.forum_link} target="_blank">{project.title}</a>
+          <a href={project.discourse_url} target="_blank">{project.title}</a>
         </td>
         <td className="authors">
           <ul className="list-unstyled">
-            {project.authors.map(function(author){
-              return <li className="author" key={author.id}>{author.name}</li>;
+            {project.contestants.map(function(contestant){
+              return <li className="author" key={contestant.id}>{contestant.name}</li>;
             })}
           </ul>
         </td>
-        <td className="category">{project.category_slug}</td>
+        <td className="category">{project.category}</td>
       </tr>;
     }
 
@@ -75,27 +96,32 @@ export default React.createClass({
   },
 
   renderTable() {
-    return <Row>
-      <Col md={8} mdOffset={2}>
-        <Table responsive>
-          <thead>
-            <tr>
-              <th>județ</th>
-              <th>titlul lucrării</th>
-              <th>categorie</th>
-              <th>concurent</th>
-            </tr>
-          </thead>
-          <tbody>
-             {this.state.projects.map(this.renderProjectRow)}
-          </tbody>
-        </Table>
-      </Col>
-    </Row>;
+    let table = null;
+
+    if (this.state.showTable) {
+      table = <Row>
+        <Col md={8} mdOffset={2}>
+          <Table responsive>
+            <thead>
+              <tr>
+                <th>județ</th>
+                <th>titlul lucrării</th>
+                <th>concurent</th>
+                <th>categorie</th>
+              </tr>
+            </thead>
+            <tbody>
+               {this.state.projects.map(this.renderProjectRow)}
+            </tbody>
+          </Table>
+        </Col>
+      </Row>;
+    }
+    return table;
   },
 
   renderProjectCard(project) {
-    var card = null;
+    let card = null;
 
     if (project.category === this.state.currentCategory ||
         this.state.currentCategory === "all") {
@@ -107,7 +133,7 @@ export default React.createClass({
   },
 
   renderGrid() {
-    var grid = null;
+    let grid = null;
 
     if (this.state.showGrid) {
       grid = <Grid className="projects-grid">
