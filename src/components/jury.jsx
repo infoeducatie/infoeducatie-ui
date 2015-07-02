@@ -17,7 +17,7 @@ import RobertaTomegaAvatar from "../../assets/img/jury/roberta_tomega.png";
 import LuizaBubatuAvatar from "../../assets/img/jury/luiza_bubatu.png";
 import RazvanDeaconescuAvatar from "../../assets/img/jury/razvan_deaconescu.png";
 import JulianAvatar from "../../assets/img/jury/julian_atanasoae.png";
-import AndreiMAvatar from "../../assets/img/jury/andrei_munteanu.png";
+import AndreiMAvatar from "../../assets/img/jury/andrei_muntean.png";
 import AlexCiteaAvatar from "../../assets/img/jury/alex_citea.png";
 import AlexComanAvatar from "../../assets/img/jury/alex_coman.png";
 
@@ -31,16 +31,16 @@ export default React.createClass({
 
     var educational = [
         {"avatar": DefaultAvatar, "name": "Daniel Popa", "occupation": "profesor @ Colegiul National 'Aurel Vlaicu' Orastie"},
-        {"avatar": RazvanDeaconescuAvatar, "name": "Razvan Deaconescu", "occupation": "Sef lucrari @ Universitatea 'Politehnica' Bucuresti"},
-        {"avatar": DefaultAvatar, "name": "Ovidiu Rosca", "occupation": "Profesor @ Liceul 'Dragos Voda' Sighetu Marmatiei"},
+        {"avatar": RazvanDeaconescuAvatar, "name": "Răzvan Deaconescu", "occupation": "Sef lucrari @ Universitatea 'Politehnica' Bucuresti"},
+        {"avatar": DefaultAvatar, "name": "Ovidiu Roșca", "occupation": "Profesor @ Liceul 'Dragos Voda' Sighetu Marmatiei"},
         {"avatar": DefaultAvatar, "name": "Emilian Bacila", "occupation": "student @ University of Cambridge"},
-        {"avatar": AndreiMAvatar, "name": "Andrei Munteanu", "occupation": "student @ University of Manchester"},
-        {"avatar": JulianAvatar, "name": "Iulian Atanasoaie", "occupation": "student @ Facultatea de Matematică și Informatică din București"}
+        {"avatar": AndreiMAvatar, "name": "Andrei Muntean", "occupation": "student @ University of Manchester"},
+        {"avatar": JulianAvatar, "name": "Iulian Atănăsoae", "occupation": "student @ Facultatea de Matematică și Informatică din București"}
     ];
     var media = [
         {"avatar": DefaultAvatar, "name": "Florentina Hora", "occupation": "Profesor @ Colegiul National 'Samuil Vulcan' Beius"},
         {"avatar": DefaultAvatar, "name": "Andreea Popescu", "occupation": "QA Engineer @ Zitec"},
-        {"avatar": RobertaTomegaAvatar, "name": "Roberta Tomega", "occupation": "studenta @ Universitatea Politehnica Timișoara"},
+        {"avatar": RobertaTomegaAvatar, "name": "Roberta Tomegea", "occupation": "studenta @ Universitatea Politehnica Timișoara"},
         {"avatar": LuizaBubatuAvatar, "name": "Luiza Bubatu", "occupation": "studenta @ Universitatea Tehnică Cluj-Napoca"},
         {"avatar": DefaultAvatar, "name": "Carmen Lascoiu", "occupation": "studenta @ Universitatea Națională de Arte Teatrale 'I. L. Caragiale' București"}
     ];
@@ -52,9 +52,9 @@ export default React.createClass({
         {"avatar": DefaultAvatar, "name": "Mircea Bratan", "occupation": "Inginer Software @ Tremend Software Consulting"}
     ];
     var utilitar = [
-        {"avatar": DefaultAvatar, "name": "Spatarel Dan", "occupation": "Profesor @ Colegiul National Tudor Vianu Bucuresti"},
-        {"avatar": DefaultAvatar, "name": "Claudiua Buran", "occupation": "Profesor @ Colegiul National Samuil Vulcan Beius, jud. Bihor"},
-        {"avatar": AlexCiteaAvatar, "name": "Alex Vasile Iosif Citea", "occupation": "Malware Analyst @ Bitdefender"},
+        {"avatar": DefaultAvatar, "name": "Spătărel Dan", "occupation": "Profesor @ Colegiul National Tudor Vianu Bucuresti"},
+        {"avatar": DefaultAvatar, "name": "Claudia Buran", "occupation": "Profesor @ Colegiul National Samuil Vulcan Beius, jud. Bihor"},
+        {"avatar": AlexCiteaAvatar, "name": "Alexandru Cîtea", "occupation": "Malware Analyst @ Bitdefender"},
         {"avatar": AlexComanAvatar, "name": "Alexandru Coman", "occupation": "Cloud Engineer  @ Cloudbase"},
         {"avatar": VladAvatar, "name": "Vlad Temian", "occupation": "Software Developer @ Presslabs"},
         {"avatar": DefaultAvatar, "name": "Alexandru Buicescu", "occupation": "Inginer Software @ Indycoding"}
