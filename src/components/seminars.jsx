@@ -17,7 +17,7 @@ export default React.createClass({
   getInitialState() {
     return {
       seminars: seminarFixtures
-    }
+    };
   },
 
   renderSeminar(seminar) {
