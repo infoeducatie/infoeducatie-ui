@@ -5,7 +5,7 @@ import Raven from "raven-js"
 import React from "react";
 import ReactCookie from "react-cookie";
 import Router from "react-router";
-let { Route, RouteHandler, DefaultRoute } = Router; // eslint-disable-line
+let { Route, RouteHandler, DefaultRoute, Navigation } = Router; // eslint-disable-line
 import "babel-core/polyfill";
 import "./main.less";
 
@@ -26,6 +26,7 @@ import Seminars from "./components/seminars";
 
 let App = React.createClass({
   displayName: "App",
+  mixins: [Navigation],
 
   getDefaultProps() {
     return {
@@ -61,6 +62,7 @@ let App = React.createClass({
   render() {
     return <div className="main">
       <RouteHandler current={this.state.current}
+                    refreshCurrent={this.getCurrent}
                     isLoggedIn={this.state.isLoggedIn}
                     login={this.login}
                     logout={this.logout} />
@@ -76,10 +78,10 @@ let App = React.createClass({
   logout() {
     ReactCookie.remove("accesToken");
     this.setState({
-      // TODO @palcu: remove this when current is ready
-      current: this.props.current,
       isLoggedIn: false
     });
+    this.getCurrent();
+    this.transitionTo("/");
   },
 
   getCurrent() {

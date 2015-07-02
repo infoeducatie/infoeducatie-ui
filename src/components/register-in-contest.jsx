@@ -7,24 +7,10 @@ import Header from "./header";
 import "./register-in-contest.less";
 import RegisterContestant from "./register-in-contest/register-contestant"
 import RegisterProject from "./register-in-contest/register-project"
+import RegisterFinish from "./register-in-contest/register-finish"
 
 export default React.createClass({
   displayName: "RegisterInContest",
-
-  getInitialState() {
-    // TODO @palcu: add logic for the other forms
-    let activePanelKey = 1;
-    if (this.props.current.registration.has_contestant) {
-      activePanelKey++;
-    }
-
-    return {
-      hasSubmitedParticipantForm:
-          this.props.current.registration.has_contestant,
-      hasSubmitedProjectForm: false,
-      activePanelKey: String(activePanelKey)
-    };
-  },
 
   render() {
     return <div className="register-in-contest">
@@ -35,12 +21,12 @@ export default React.createClass({
                   logout={this.props.logout} />
           <Row>
             <Col xs={12}>
-              <h1>Înregistrează un proiect</h1>
+              <h1>Înregistrează-te în concurs</h1>
             </Col>
           </Row>
           <Row>
             <Col xs={12}>
-              <h2>Te rugăm să completezi acest formular cu grijă</h2>
+              <h2>Te rugăm să completezi acest formular cu grijă!</h2>
             </Col>
           </Row>
         </Grid>
@@ -49,31 +35,44 @@ export default React.createClass({
         <Col sm={6} smOffset={3}>
           <Row className="small-spacing" />
           <PanelGroup onSelect={this.onHandlePanelSelect}
-                      activeKey={this.state.activePanelKey}
                       accordion>
+
             <Panel header="Înregistrare Participant"
                    eventKey="1"
                    bsStyle={this.getPanelStyle(
-                                this.state.hasSubmitedParticipantForm)}>
-              {this.state.hasSubmitedParticipantForm ? this.renderSuccess() :
-                  <RegisterContestant current={this.props.current}
-                                      hasSubmited={this.submitParticipant} />}
+                                this.props.current.registration.has_contestant)}>
+              {this.renderContestantForm()}
             </Panel>
             <Panel header="Înregistrare Proiect"
                    eventKey="2"
+                   bsStyle={this.getPanelStyle(
+                                this.props.current.registration.has_pending_project ||
+                                this.props.current.registration.has_projects)}
                    expanded>
-              {this.state.hasSubmitedProjectForm ? this.renderSuccess() :
-                  <RegisterProject current={this.props.current}
-                                   hasSubmited={this.submitProject} />}
+              {this.renderRegisterProjectForm()}
             </Panel>
+
+            <Panel header="Capturi de Ecran"
+                   eventKey="3"
+                   bsStyle="warning">
+              Încă nu e gata...
+            </Panel>
+
             <Panel header="Înregistrare Coechipier"
-                   eventKey="3">
-              Formular de înregistrare coechipier
+                   eventKey="4"
+                   bsStyle="warning">
+              Încă nu e gata...
             </Panel>
+
             <Panel header="Finalizare"
-                   eventKey="4">
-              Aici confirmă...
+                   eventKey="5"
+                   bsStyle={this.getPanelStyle(
+                       !this.props.current.registration.has_pending_project &&
+                       this.props.current.registration.has_projects)}>
+              {this.renderFinishForm()}
             </Panel>
+            <Row className="small-spacing" />
+            {this.renderRegisteredProjects()}
           </PanelGroup>
         </Col>
       </Grid>
@@ -83,8 +82,72 @@ export default React.createClass({
   renderSuccess() {
     // TODO: @palcu make this pretty
     return <div className="success">
-      Ai trimis formularul cu succes.
+      Ai trimis terminat acest pas cu succes.
     </div>;
+  },
+
+  renderUnavailableStep() {
+    return <div className="success">
+      Termină ceilalți pași înainte să îl completezi pe acesta.
+    </div>;
+  },
+
+  renderContestantForm() {
+    if (this.props.current.registration.has_contestant) {
+      return this.renderSuccess();
+    }
+    else {
+      return <RegisterContestant current={this.props.current}
+                                 hasSubmited={this.submitProject} />;
+    }
+  },
+
+  renderRegisterProjectForm() {
+    if (this.props.current.registration.has_pending_project ||
+        this.props.current.registration.has_projects) {
+      return this.renderSuccess();
+    }
+    else if (!this.props.current.registration.has_contestant) {
+      return this.renderUnavailableStep();
+    }
+    else {
+      return <RegisterProject current={this.props.current}
+                              hasSubmited={this.submitProject} />;
+    }
+  },
+
+  renderFinishForm() {
+    let formEndpoint = "";
+    if (this.props.current.registration.has_contestant) {
+      formEndpoint = `projects/${this.props.current.registration.pending_project.id}/finish`;
+    }
+    if (this.props.current.registration.has_pending_project) {
+      return <RegisterFinish current={this.props.current}
+                             hasSubmited={this.submitFinish}
+                             formEndpoint={formEndpoint} />;
+    }
+    if (!this.props.current.registration.has_pending_project &&
+        this.props.current.registration.has_projects) {
+      return this.renderSuccess();
+    }
+    if (!this.props.current.registration.has_pending_project &&
+        !this.props.current.registration.has_projects) {
+      return this.renderUnavailableStep();
+    }
+  },
+
+  renderRegisteredProjects() {
+    if (!this.props.current.registration.has_contestant ||
+        !this.props.current.registration.projects.length) {
+      return <p>Nu ai niciun proiect înscris.</p>;
+    }
+    return <div><p>Proiectele inscrise de tine până acum:</p><ul>
+      {this.props.current.registration.projects.map((project) => {
+        if (project.finished) {
+          return <li key={project.id}>{project.title}</li>;
+        }
+      })}
+    </ul></div>;
   },
 
   getPanelStyle(status) {
@@ -98,14 +161,14 @@ export default React.createClass({
   },
 
   submitParticipant() {
-    this.setState({
-      hasSubmitedParticipantForm: true
-    });
+    this.props.refreshCurrent();
   },
 
   submitProject() {
-    this.setState({
-      hasSubmitedProjectForm: true
-    });
+    this.props.refreshCurrent();
+  },
+
+  submitFinish() {
+    this.props.refreshCurrent();
   }
 });
