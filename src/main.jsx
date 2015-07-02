@@ -5,7 +5,7 @@ import Raven from "raven-js"
 import React from "react";
 import ReactCookie from "react-cookie";
 import Router from "react-router";
-let { Route, RouteHandler, DefaultRoute } = Router; // eslint-disable-line
+let { Route, RouteHandler, DefaultRoute, Navigation } = Router; // eslint-disable-line
 import "babel-core/polyfill";
 import "./main.less";
 
@@ -25,6 +25,7 @@ import Contestants from "./components/contestants/contestants";
 
 let App = React.createClass({
   displayName: "App",
+  mixins: [Navigation],
 
   getDefaultProps() {
     return {
@@ -80,6 +81,7 @@ let App = React.createClass({
       current: this.props.current,
       isLoggedIn: false
     });
+    this.transitionTo('/');
   },
 
   getCurrent() {
