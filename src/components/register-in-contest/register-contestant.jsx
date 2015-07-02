@@ -293,7 +293,7 @@ export default React.createClass({
       },
       xhrFields: {
         withCredentials: true
-      }
+      },
       data: data,
       success: this.props.hasSubmited,
       error: this.onRequestError
