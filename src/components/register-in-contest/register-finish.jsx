@@ -9,14 +9,8 @@ import FormMixin from "../../mixins/form"
 
 
 export default React.createClass({
-  displayName: "RegisterProject",
+  displayName: "RegisterFinish",
   mixins: [FormMixin],
-
-  getDefaultProps() {
-    return {
-      formEndpoint: "projects.json"
-    };
-  },
 
   render() {
     return <form onSubmit={this.onFormSubmit}>

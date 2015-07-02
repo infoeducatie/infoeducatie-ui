@@ -95,8 +95,8 @@ export default React.createClass({
       return this.renderSuccess();
     }
     else {
-      return <RegisterProject current={this.props.current}
-                              hasSubmited={this.submitProject} />
+      return <RegisterContestant current={this.props.current}
+                                 hasSubmited={this.submitProject} />
     }
   },
 
