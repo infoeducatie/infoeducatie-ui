@@ -60,6 +60,7 @@ let App = React.createClass({
   render() {
     return <div className="main">
       <RouteHandler current={this.state.current}
+                    refreshCurrent={this.getCurrent}
                     isLoggedIn={this.state.isLoggedIn}
                     login={this.login}
                     logout={this.logout} />
