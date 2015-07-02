@@ -32,6 +32,12 @@ export default React.createClass({
     });
   },
 
+  componentDidMount() {
+    if (location.search.indexOf("login=true") > 0) {
+      this.openModal();
+    }
+  },
+
   render() {
     return <span onClick={this.openModal}>Autentificare</span>;
   },
