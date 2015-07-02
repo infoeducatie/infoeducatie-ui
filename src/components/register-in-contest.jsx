@@ -71,6 +71,8 @@ export default React.createClass({
                        this.props.current.registration.has_projects)}>
               {this.renderFinishForm()}
             </Panel>
+            <Row className="small-spacing" />
+            {this.renderRegisteredProjects()}
           </PanelGroup>
         </Col>
       </Grid>
@@ -132,6 +134,21 @@ export default React.createClass({
         !this.props.current.registration.has_projects) {
       return this.renderUnavailableStep();
     }
+  },
+
+  renderRegisteredProjects() {
+    if (!this.props.current.registration.has_contestant ||
+        !this.props.current.registration.projects.length) {
+      return <p>Nu ai niciun proiect înscris.</p>
+    }
+    return <div><p>Proiectele inscrise de tine până acum:</p><ul>
+      {this.props.current.registration.projects.map((project) => {
+        console.log('aici')
+        if (project.finished) {
+          return <li key={project.id}>{project.title}</li>;
+        }
+      })}
+    </ul></div>
   },
 
   getPanelStyle(status) {
