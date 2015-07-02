@@ -35,13 +35,18 @@ export default React.createClass({
                 <Row className="big-spacing header-spacing" />
                 <Row>
                     <Col>
-                        <h1>InfoEducație Ediția 2015</h1>
+                        <h1>
+                            InfoEducație Ediția&nbsp;
+                            {this.props.current.edition.year}
+                        </h1>
                         <h2>Concurs Național de Informatică</h2>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <h5 className="tagline">Perseverează, mergi mai departe!</h5>
+                        <h5 className="tagline">
+                            {this.props.current.edition.motto}
+                        </h5>
                     </Col>
                 </Row>
                 <Row className="small-spacing" />

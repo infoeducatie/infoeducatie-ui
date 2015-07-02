@@ -51,7 +51,7 @@ export default {
       method: "POST",
       url: window.config.API_URL + this.props.formEndpoint,
       headers: {
-        Authorization: this.props.currentUser.access_token
+        Authorization: this.props.current.user.access_token
       },
       data: data,
       success: this.props.hasSubmited,

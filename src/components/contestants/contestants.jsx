@@ -131,7 +131,9 @@ export default React.createClass({
     return <div className="contestants">
       <div className="blue-section-wrapper">
         <Grid className="blue-section">
-          <Header isLoggedIn={this.props.isLoggedIn} />
+          <Header isLoggedIn={this.props.isLoggedIn}
+                  login={this.props.login}
+                  logout={this.props.logout} />
           <Row className="xsmall-spacing" />
           <Row>
             <Col>
@@ -155,15 +157,21 @@ export default React.createClass({
             <Row className="inner-stats">
               <Col xs={4}>
                   <p className="description">Participanți</p>
-                  <p className="value">75</p>
+                  <p className="value">
+                    {this.props.current.stats.total_participants}
+                  </p>
               </Col>
               <Col xs={4} className="border-left">
                   <p className="description">Proiecte</p>
-                  <p className="value">39</p>
+                  <p className="value">
+                    {this.props.current.stats.total_projects}
+                  </p>
               </Col>
               <Col xs={4} className="border-left">
                   <p className="description">Județe</p>
-                  <p className="value">17</p>
+                  <p className="value">
+                    {this.props.current.stats.total_counties}
+                  </p>
               </Col>
             </Row>
           </Col>

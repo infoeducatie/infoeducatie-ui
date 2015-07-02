@@ -1,11 +1,11 @@
 "use strict";
 
-import React from "react";
-import Router from "react-router";
+import $ from "jquery";
 import Raven from "raven-js"
-
+import React from "react";
+import ReactCookie from "react-cookie";
+import Router from "react-router";
 let { Route, RouteHandler, DefaultRoute } = Router; // eslint-disable-line
-
 import "babel-core/polyfill";
 import "./main.less";
 
@@ -23,24 +23,44 @@ import Footer from "./components/footer";
 import Contestants from "./components/contestants/contestants";
 import Seminars from "./components/seminars";
 
+
 let App = React.createClass({
   displayName: "App",
 
-  getInitialState() {
-    let user = JSON.parse(localStorage.getItem("user"));
+  getDefaultProps() {
     return {
-      currentUser: user,
-      isLoggedIn: user ? true : false
+      current: {
+        edition: {
+          motto: "Perseverează, mergi mai departe!",
+          year: 2015
+        },
+        stats: {
+          total_participants: 0,
+          total_projects: 0,
+          total_counties: 0
+        },
+        registration: {
+          has_contestant: false
+        }
+      }
+    };
+  },
+
+  getInitialState() {
+    let accesToken = ReactCookie.load("accesToken");
+    return {
+      current: this.props.current,
+      isLoggedIn: accesToken ? true : false
     };
   },
 
   componentDidMount() {
-    // TODO @palcu: Do API request to /current and re-render whole app
+    this.getCurrent();
   },
 
   render() {
     return <div className="main">
-      <RouteHandler currentUser={this.state.currentUser}
+      <RouteHandler current={this.state.current}
                     isLoggedIn={this.state.isLoggedIn}
                     login={this.login}
                     logout={this.logout} />
@@ -49,19 +69,40 @@ let App = React.createClass({
   },
 
   login(user) {
-    this.setState({
-      isLoggedIn: true,
-      currentUser: user
-    });
-    localStorage.setItem("user", JSON.stringify(user));
+    ReactCookie.save("accesToken", user.access_token);
+    this.getCurrent();
   },
 
   logout() {
-    localStorage.removeItem("user");
+    ReactCookie.remove("accesToken");
     this.setState({
-      isLoggedIn: false,
-      currentUser: null
+      // TODO @palcu: remove this when current is ready
+      current: this.props.current,
+      isLoggedIn: false
     });
+  },
+
+  getCurrent() {
+    let accesToken = ReactCookie.load("accesToken");
+    if (accesToken) {
+      $.ajax({
+        method: "GET",
+        url: window.config.API_URL + "current.json",
+        headers: {
+          Authorization: accesToken
+        },
+        success: (data) => {
+          this.setState({
+            current: data,
+            isLoggedIn: true
+          });
+        },
+        error: () => {
+          // This means the user token has expired.
+          this.logout();
+        }
+      });
+    }
   }
 });
 

@@ -12,10 +12,17 @@ export default React.createClass({
   displayName: "RegisterInContest",
 
   getInitialState() {
+    // TODO @palcu: add logic for the other forms
+    let activePanelKey = 1;
+    if (this.props.current.registration.has_contestant) {
+      activePanelKey++;
+    }
+
     return {
-      // TODO @palcu: take this from current endpoint
-      hasSubmitedParticipantForm: false,
-      hasSubmitedProject: false
+      hasSubmitedParticipantForm:
+          this.props.current.registration.has_contestant,
+      hasSubmitedProjectForm: false,
+      activePanelKey: String(activePanelKey)
     };
   },
 
@@ -23,7 +30,9 @@ export default React.createClass({
     return <div className="register-in-contest">
       <div className="blue-section-wrapper">
         <Grid className="blue-section">
-          <Header isLoggedIn={this.props.isLoggedIn} />
+          <Header isLoggedIn={this.props.isLoggedIn}
+                  login={this.props.login}
+                  logout={this.props.logout} />
           <Row>
             <Col xs={12}>
               <h1>Înregistrează un proiect</h1>
@@ -39,27 +48,30 @@ export default React.createClass({
       <Grid>
         <Col sm={6} smOffset={3}>
           <Row className="small-spacing" />
-          <PanelGroup onSelect={this.handleSelect}
-                      defaultActiveKey='2'
+          <PanelGroup onSelect={this.onHandlePanelSelect}
+                      activeKey={this.state.activePanelKey}
                       accordion>
-            <Panel header='Înregistrare Participant'
-                   eventKey='1'>
+            <Panel header="Înregistrare Participant"
+                   eventKey="1"
+                   bsStyle={this.getPanelStyle(
+                                this.state.hasSubmitedParticipantForm)}>
               {this.state.hasSubmitedParticipantForm ? this.renderSuccess() :
-                  <RegisterContestant currentUser={this.props.currentUser}
+                  <RegisterContestant current={this.props.current}
                                       hasSubmited={this.submitParticipant} />}
             </Panel>
-            <Panel header='Înregistrare Proiect'
-                   eventKey='2'>
-              {this.state.hasSubmitedParticipantForm ? this.renderSuccess() :
-                  <RegisterProject currentUser={this.props.currentUser}
+            <Panel header="Înregistrare Proiect"
+                   eventKey="2"
+                   expanded>
+              {this.state.hasSubmitedProjectForm ? this.renderSuccess() :
+                  <RegisterProject current={this.props.current}
                                    hasSubmited={this.submitProject} />}
             </Panel>
-            <Panel header='Înregistrare Coechipier'
-                   eventKey='3'>
+            <Panel header="Înregistrare Coechipier"
+                   eventKey="3">
               Formular de înregistrare coechipier
             </Panel>
-            <Panel header='Finalizare'
-                   eventKey='4'>
+            <Panel header="Finalizare"
+                   eventKey="4">
               Aici confirmă...
             </Panel>
           </PanelGroup>
@@ -73,6 +85,16 @@ export default React.createClass({
     return <div className="success">
       Ai trimis formularul cu succes.
     </div>;
+  },
+
+  getPanelStyle(status) {
+    return status ? "success" : "default";
+  },
+
+  onHandlePanelSelect(nextActivePanelKey) {
+    this.setState({
+      activePanelKey: nextActivePanelKey
+    });
   },
 
   submitParticipant() {
