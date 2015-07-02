@@ -19,38 +19,37 @@ export default React.createClass({
   displayName: "Contestants",
 
   componentDidMount() {
-    this.getContestants();
+    $.ajax({
+      method: "GET",
+      url: window.config.API_URL + "projects.json",
+      success: this.onSuccess,
+      error: this.onError
+    });
+  },
+
+  onError() {
+    this.setState({
+      showGrid: false,
+      showTable: false,
+      hasError: true
+    });
+  },
+
+  onSuccess(data) {
+    this.setState({
+      projects: data
+    });
   },
 
   getInitialState: function() {
     return {
       projects: [],
-      errors: [],
-      hasErrors: false,
+      hasError: false,
       showGrid: false,
       showTable: true,
       currentCategory: "all"
    };
 
-  },
-
-  getContestants() {
-    $.ajax({
-      method: "GET",
-      url: window.config.API_URL + "projects.json",
-      success: (data) => {
-        this.setState({
-          projects: data
-        });
-      },
-      error: () => {
-        this.setState({
-          showGrid: false,
-          showTable: false,
-          hasErrors: true
-        });
-      }
-    });
   },
 
   showGrid() {
@@ -78,21 +77,8 @@ export default React.createClass({
   },
 
   renderErrors() {
-    if (this.state.hasErrored) {
-      let errors = _.clone(this.state.errors);
-
-      if (!errors.length) {
-        errors.push("Datele nu au putut fi luate de pe server.");
-      }
-
-      return <ul className="errors list-group">
-        {errors.map((error) => {
-          return <li className="list-group-item list-group-item-danger"
-                     key={error}>
-            {error}
-          </li>;
-        })}
-      </ul>;
+    if (this.state.hasError) {
+      return <p>"Datele nu au putut fi luate de pe server."</p>
     }
   },
 
