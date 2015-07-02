@@ -29,7 +29,7 @@ export default React.createClass({
   renderTable() {
     return <Grid className="results-section">
       <Row>
-        <Col>
+        <Col md={8} mdOffset={2}>
           <Table responsive>
             <thead>
               <tr>

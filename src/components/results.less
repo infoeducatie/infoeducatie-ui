@@ -12,7 +12,9 @@
 
   .results-section {
     table {
-      @cell-height: 90px;
+      @cell-height: 40px;
+      // TODO: @vtemian @palcu trebuie sa schimbam asta:
+      font-size: 14px;
 
       th {
         background-color: @orange;
@@ -38,12 +40,7 @@
           text-transform: uppercase;
           text-align: center;
           color: @blue;
-          font-size: @font-size-h2;
           letter-spacing: @big-letter-spacing;
-        }
-
-        &.title {
-          font-size: @font-size-h5;
         }
 
         &.score {
@@ -52,6 +49,7 @@
         }
 
         .author {
+          margin-top: 5px;
           text-transform: uppercase;
           color: @blue;
         }
