@@ -73,6 +73,7 @@ let App = React.createClass({
   login(user) {
     ReactCookie.save("accesToken", user.access_token);
     this.getCurrent();
+    this.transitionTo("register-in-contest");
   },
 
   logout() {
