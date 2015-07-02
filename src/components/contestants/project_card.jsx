@@ -21,7 +21,7 @@ export default React.createClass({
         <Row className="project-title">
           <Col xs={12}>
             <h4>
-              <a href={this.props.project.forum_link} target="_blank">
+              <a href={this.props.project.discourse_url} target="_blank">
                 {this.props.project.title}
               </a>
             </h4>
@@ -31,9 +31,9 @@ export default React.createClass({
         <Row className="project-details">
           <Col xs={12}>
             <ul className="list-unstyled">
-              {this.props.project.authors.map(function(author) {
-                return <li className="author" key={author.id}>
-                  {author.name}
+              {this.props.project.contestants.map(function(contestant) {
+                return <li className="author" key={contestant.id}>
+                  {contestant.name}
                 </li>;
               })}
             </ul>
@@ -47,7 +47,7 @@ export default React.createClass({
               </Col>
               <Col xs={1} xsOffset={2}>
                 <span className="comments">
-                  {this.props.project.comments}
+                  {this.props.project.discourse_comments_count}
                 </span>
               </Col>
             </Row>
