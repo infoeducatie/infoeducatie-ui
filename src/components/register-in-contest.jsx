@@ -13,17 +13,14 @@ export default React.createClass({
 
   getInitialState() {
     // TODO @palcu: add logic for the other forms
-    let activePanelKey = 1;
+    let currentStep = 1;
     if (this.props.current.registration.has_contestant) {
-      activePanelKey++;
+      currentStep++;
     }
 
     return {
-      hasSubmitedParticipantForm:
-          this.props.current.registration.has_contestant,
-      hasSubmitedProjectForm:
-          !this.props.current.registration.has_pending_project,
-      activePanelKey: String(activePanelKey)
+      currentStep: currentStep,
+      activePanelKey: String(currentStep)
     };
   },
 
@@ -61,13 +58,10 @@ export default React.createClass({
                   <RegisterContestant current={this.props.current}
                                       hasSubmited={this.submitParticipant} />}
             </Panel>
-            <
-            Panel header="Înregistrare Proiect"
+            <Panel header="Înregistrare Proiect"
                    eventKey="2"
                    expanded>
-              {this.state.hasSubmitedProjectForm ? this.renderSuccess() :
-                  <RegisterProject current={this.props.current}
-                                   hasSubmited={this.submitProject} />}
+              {this.renderRegisterProjectForm()}
             </Panel>
 
             <Panel header="Capturi de Ecran"
@@ -82,7 +76,7 @@ export default React.createClass({
 
             <Panel header="Finalizare"
                    eventKey="5">
-              Aici confirmă...
+              {this.renderFinishForm()}
             </Panel>
           </PanelGroup>
         </Col>
@@ -93,8 +87,43 @@ export default React.createClass({
   renderSuccess() {
     // TODO: @palcu make this pretty
     return <div className="success">
-      Ai trimis formularul cu succes.
+      Ai trimis terminat acest pas cu succes.
     </div>;
+  },
+
+  renderUnavailableStep() {
+    return <div className="success">
+      Termină ceilalți pași înainte să îl completezi pe acesta.
+    </div>;
+  },
+
+  renderRegisterProjectForm() {
+    if (this.props.current.registration.has_pending_project) {
+      return this.renderSuccess();
+    }
+    else if (!this.props.current.registration.has_contestant) {
+      return this.renderUnavailableStep();
+    }
+    else {
+      return <RegisterProject current={this.props.current}
+                              hasSubmited={this.submitProject} />
+    }
+  },
+
+  renderFinishForm() {
+    if (!this.props.current.registration.has_pending_project &&
+        this.props.current.registration.has_contestant) {
+      return this.renderSuccess();
+    }
+    else if (!this.props.current.registration.has_contestant ||
+             this.props.current.registration.has_pending_project) {
+      return this.renderUnavailableStep();
+    }
+    else {
+      return <p>
+        Aici va fi un buton sa confirmi proiectul.
+      </p>
+    }
   },
 
   getPanelStyle(status) {
@@ -108,16 +137,10 @@ export default React.createClass({
   },
 
   submitParticipant() {
-    this.setState({
-      hasSubmitedParticipantForm: true
-    });
     this.props.refreshCurrent();
   },
 
   submitProject() {
-    this.setState({
-      hasSubmitedProjectForm: true
-    });
     this.props.refreshCurrent();
   }
 });
