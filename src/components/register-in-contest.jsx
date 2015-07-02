@@ -12,16 +12,20 @@ export default React.createClass({
   displayName: "RegisterInContest",
 
   getInitialState() {
-    // TODO @palcu: add logic for the other forms
-    let currentStep = 1;
-    if (this.props.current.registration.has_contestant) {
-      currentStep++;
-    }
+    let currentStep = this._getCurrentStep(this.props.current.registration);
 
     return {
       currentStep: currentStep,
       activePanelKey: String(currentStep)
     };
+  },
+
+  componentWillReceiveProps(nextProps) {
+    let nextStep = this._getCurrentStep(nextProps.current.registration);
+    this.setState({
+      currentStep: nextStep,
+      activePanelKey: String(nextStep)
+    })
   },
 
   render() {
@@ -53,10 +57,8 @@ export default React.createClass({
             <Panel header="Înregistrare Participant"
                    eventKey="1"
                    bsStyle={this.getPanelStyle(
-                                this.state.hasSubmitedParticipantForm)}>
-              {this.state.hasSubmitedParticipantForm ? this.renderSuccess() :
-                  <RegisterContestant current={this.props.current}
-                                      hasSubmited={this.submitParticipant} />}
+                                this.props.current.registration.has_contestant)}>
+              {this.renderContestantForm()}
             </Panel>
             <Panel header="Înregistrare Proiect"
                    eventKey="2"
@@ -97,6 +99,16 @@ export default React.createClass({
     </div>;
   },
 
+  renderContestantForm() {
+    if (this.props.current.registration.has_contestant) {
+      return this.renderSuccess();
+    }
+    else {
+      return <RegisterProject current={this.props.current}
+                              hasSubmited={this.submitProject} />
+    }
+  },
+
   renderRegisterProjectForm() {
     if (this.props.current.registration.has_pending_project) {
       return this.renderSuccess();
@@ -111,18 +123,18 @@ export default React.createClass({
   },
 
   renderFinishForm() {
-    if (!this.props.current.registration.has_pending_project &&
-        this.props.current.registration.has_contestant) {
-      return this.renderSuccess();
-    }
-    else if (!this.props.current.registration.has_contestant ||
-             this.props.current.registration.has_pending_project) {
-      return this.renderUnavailableStep();
-    }
-    else {
+    if (this.props.current.registration.has_pending_project) {
       return <p>
         Aici va fi un buton sa confirmi proiectul.
-      </p>
+      </p>;
+    }
+    if (!this.props.current.registration.has_pending_project &&
+        this.props.current.registration.has_projects) {
+      return this.renderSuccess();
+    }
+    if (!this.props.current.registration.has_pending_project &&
+        !this.props.current.registration.has_projects) {
+      return this.renderUnavailableStep();
     }
   },
 
@@ -142,5 +154,14 @@ export default React.createClass({
 
   submitProject() {
     this.props.refreshCurrent();
-  }
+  },
+
+  _getCurrentStep(registration) {
+    if (!registration.has_contestant)
+      return 1;
+    else if (!registration.has_pending_project)
+      return 2;
+    else
+      return 5;
+  },
 });
