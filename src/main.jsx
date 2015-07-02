@@ -81,7 +81,7 @@ let App = React.createClass({
       current: this.props.current,
       isLoggedIn: false
     });
-    this.transitionTo('/');
+    this.transitionTo("/");
   },
 
   getCurrent() {

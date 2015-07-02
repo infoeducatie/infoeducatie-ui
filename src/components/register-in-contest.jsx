@@ -98,7 +98,7 @@ export default React.createClass({
     }
     else {
       return <RegisterContestant current={this.props.current}
-                                 hasSubmited={this.submitProject} />
+                                 hasSubmited={this.submitProject} />;
     }
   },
 
@@ -112,19 +112,19 @@ export default React.createClass({
     }
     else {
       return <RegisterProject current={this.props.current}
-                              hasSubmited={this.submitProject} />
+                              hasSubmited={this.submitProject} />;
     }
   },
 
   renderFinishForm() {
-    let formEndpoint = '';
+    let formEndpoint = "";
     if (this.props.current.registration.has_contestant) {
       formEndpoint = `projects/${this.props.current.registration.pending_project.id}/finish`;
     }
     if (this.props.current.registration.has_pending_project) {
       return <RegisterFinish current={this.props.current}
                              hasSubmited={this.submitFinish}
-                             formEndpoint={formEndpoint} />
+                             formEndpoint={formEndpoint} />;
     }
     if (!this.props.current.registration.has_pending_project &&
         this.props.current.registration.has_projects) {
@@ -139,16 +139,15 @@ export default React.createClass({
   renderRegisteredProjects() {
     if (!this.props.current.registration.has_contestant ||
         !this.props.current.registration.projects.length) {
-      return <p>Nu ai niciun proiect înscris.</p>
+      return <p>Nu ai niciun proiect înscris.</p>;
     }
     return <div><p>Proiectele inscrise de tine până acum:</p><ul>
       {this.props.current.registration.projects.map((project) => {
-        console.log('aici')
         if (project.finished) {
           return <li key={project.id}>{project.title}</li>;
         }
       })}
-    </ul></div>
+    </ul></div>;
   },
 
   getPanelStyle(status) {
@@ -171,5 +170,5 @@ export default React.createClass({
 
   submitFinish() {
     this.props.refreshCurrent();
-  },
+  }
 });
