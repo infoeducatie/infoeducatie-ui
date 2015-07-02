@@ -291,6 +291,9 @@ export default React.createClass({
       headers: {
         Authorization: this.props.current.user.access_token
       },
+      xhrFields: {
+        withCredentials: true
+      }
       data: data,
       success: this.props.hasSubmited,
       error: this.onRequestError
