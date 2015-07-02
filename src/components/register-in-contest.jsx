@@ -7,26 +7,10 @@ import Header from "./header";
 import "./register-in-contest.less";
 import RegisterContestant from "./register-in-contest/register-contestant"
 import RegisterProject from "./register-in-contest/register-project"
+import RegisterFinish from "./register-in-contest/register-finish"
 
 export default React.createClass({
   displayName: "RegisterInContest",
-
-  getInitialState() {
-    let currentStep = this._getCurrentStep(this.props.current.registration);
-
-    return {
-      currentStep: currentStep,
-      activePanelKey: String(currentStep)
-    };
-  },
-
-  componentWillReceiveProps(nextProps) {
-    let nextStep = this._getCurrentStep(nextProps.current.registration);
-    this.setState({
-      currentStep: nextStep,
-      activePanelKey: String(nextStep)
-    })
-  },
 
   render() {
     return <div className="register-in-contest">
@@ -51,7 +35,6 @@ export default React.createClass({
         <Col sm={6} smOffset={3}>
           <Row className="small-spacing" />
           <PanelGroup onSelect={this.onHandlePanelSelect}
-                      activeKey={this.state.activePanelKey}
                       accordion>
 
             <Panel header="Înregistrare Participant"
@@ -62,22 +45,30 @@ export default React.createClass({
             </Panel>
             <Panel header="Înregistrare Proiect"
                    eventKey="2"
+                   bsStyle={this.getPanelStyle(
+                                this.props.current.registration.has_pending_project ||
+                                this.props.current.registration.has_projects)}
                    expanded>
               {this.renderRegisterProjectForm()}
             </Panel>
 
             <Panel header="Capturi de Ecran"
-                   eventKey="3">
+                   eventKey="3"
+                   bsStyle="warning">
               Încă nu e gata...
             </Panel>
 
             <Panel header="Înregistrare Coechipier"
-                   eventKey="4">
+                   eventKey="4"
+                   bsStyle="warning">
               Încă nu e gata...
             </Panel>
 
             <Panel header="Finalizare"
-                   eventKey="5">
+                   eventKey="5"
+                   bsStyle={this.getPanelStyle(
+                       !this.props.current.registration.has_pending_project &&
+                       this.props.current.registration.has_projects)}>
               {this.renderFinishForm()}
             </Panel>
           </PanelGroup>
@@ -110,7 +101,8 @@ export default React.createClass({
   },
 
   renderRegisterProjectForm() {
-    if (this.props.current.registration.has_pending_project) {
+    if (this.props.current.registration.has_pending_project ||
+        this.props.current.registration.has_projects) {
       return this.renderSuccess();
     }
     else if (!this.props.current.registration.has_contestant) {
@@ -123,10 +115,14 @@ export default React.createClass({
   },
 
   renderFinishForm() {
+    let formEndpoint = '';
+    if (this.props.current.registration.has_contestant) {
+      formEndpoint = `projects/${this.props.current.registration.pending_project.id}/finish`;
+    }
     if (this.props.current.registration.has_pending_project) {
-      return <p>
-        Aici va fi un buton sa confirmi proiectul.
-      </p>;
+      return <RegisterFinish current={this.props.current}
+                             hasSubmited={this.submitFinish}
+                             formEndpoint={formEndpoint} />
     }
     if (!this.props.current.registration.has_pending_project &&
         this.props.current.registration.has_projects) {
@@ -156,12 +152,7 @@ export default React.createClass({
     this.props.refreshCurrent();
   },
 
-  _getCurrentStep(registration) {
-    if (!registration.has_contestant)
-      return 1;
-    else if (!registration.has_pending_project)
-      return 2;
-    else
-      return 5;
+  submitFinish() {
+    this.props.refreshCurrent();
   },
 });
