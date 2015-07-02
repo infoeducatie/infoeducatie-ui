@@ -82,7 +82,7 @@ export default React.createClass({
   renderSuccess() {
     // TODO: @palcu make this pretty
     return <div className="success">
-      Ai trimis terminat acest pas cu succes.
+      Ai terminat acest pas cu succes.
     </div>;
   },
 
