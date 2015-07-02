@@ -77,7 +77,7 @@ export default React.createClass({
 
   renderErrors() {
     if (this.state.hasError) {
-      return <p>"Datele nu au putut fi luate de pe server."</p>
+      return <p>"Datele nu au putut fi luate de pe server."</p>;
     }
   },
 
