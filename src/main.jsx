@@ -77,10 +77,9 @@ let App = React.createClass({
   logout() {
     ReactCookie.remove("accesToken");
     this.setState({
-      // TODO @palcu: remove this when current is ready
-      current: this.props.current,
       isLoggedIn: false
     });
+    this.getCurrent();
     this.transitionTo("/");
   },
 
