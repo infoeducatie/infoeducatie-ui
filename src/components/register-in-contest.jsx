@@ -108,11 +108,11 @@ export default React.createClass({
   renderFormOrMessage(renderForm, formId) {
     if (formId < this.props.user.registration_step_number) {
       return this.renderSuccess();
-    } else if (formId === this.props.user.registration_step_number) {
-      return renderForm();
-    } else {
-      return this.renderUnavailableStep();
     }
+    if (formId === this.props.user.registration_step_number) {
+      return renderForm();
+    }
+    return this.renderUnavailableStep();
   },
 
   renderSuccess() {
