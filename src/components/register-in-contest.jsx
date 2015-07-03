@@ -107,7 +107,7 @@ export default React.createClass({
 
   renderFormOrMessage(renderForm, formId) {
     if (formId < this.props.user.registration_step_number) {
-      return this.renderSuccess();
+      return this.renderSuccessStep();
     }
     if (formId === this.props.user.registration_step_number) {
       return renderForm();
@@ -115,7 +115,7 @@ export default React.createClass({
     return this.renderUnavailableStep();
   },
 
-  renderSuccess() {
+  renderSuccessStep() {
     return <div className="success">
       Ai terminat acest pas cu succes.
     </div>;
