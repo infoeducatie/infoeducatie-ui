@@ -111,19 +111,19 @@ export default React.createClass({
           <Col sm={1} xs={2}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
-                        category="robots" />
+                        category="roboti" />
             <p>Roboți</p>
           </Col>
           <Col sm={1} xs={2}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
-                        category="utility" />
+                        category="utilitar" />
             <p>Utilitar</p>
           </Col>
           <Col sm={1} xs={2}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
-                        category="media" />
+                        category="multimedia" />
             <p>Multimedia</p>
           </Col>
         </Row>
