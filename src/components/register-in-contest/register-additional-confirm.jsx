@@ -8,7 +8,7 @@ import FormMixin from "../../mixins/form"
 
 
 export default React.createClass({
-  displayName: "RegisterFinish",
+  displayName: "RegisterAdditionalConfirm",
   mixins: [FormMixin],
 
   render() {
@@ -21,6 +21,8 @@ export default React.createClass({
   },
 
   getFormData() {
-    return {};
+    return {
+      contestant_id: this.props.contestantId
+    };
   }
 });

@@ -70,7 +70,7 @@ export default {
   }
 
   ],
-    robots: [
+    roboti: [
     {"rank": "I",
       "project": {"id": 1,
         "name": "RoboLine",
@@ -118,7 +118,7 @@ export default {
         "total": "60.9"}},
     {"rank": "M",
       "project": {"id": 8,
-        "name": "Fight of robots- MiniSumo",
+        "name": "Fight of roboti- MiniSumo",
         "authors": [{"id": 1, "name": "Szymon Gula"},
         {"id": 2, "name": "Aleksandra Kielar"},
         {"id": 3, "name": "Tomasz Sala"},
@@ -195,7 +195,7 @@ export default {
         "open": "",
         "total": "77.71"}}
   ],
-    media: [
+    multimedia: [
     {"rank": "I",
       "project": {"id": 1,
         "name": "Vise in umbra",
@@ -269,7 +269,7 @@ export default {
         "open": "",
         "total": "56.8"}}
   ],
-    utility: [ {"rank": "I",
+    utilitar: [ {"rank": "I",
       "project": {"id": 1,
         "name": "Noriy",
         "authors": [{"id": 1, "name": "Ionascu Alexandru"},

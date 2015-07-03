@@ -110,15 +110,15 @@ export default React.createClass({
 
   renderFormOrMessage(renderForm, formId) {
     if (formId < this.props.user.registration_step_number) {
-      return this.renderSuccess();
-    } else if (formId === this.props.user.registration_step_number) {
-      return renderForm();
-    } else {
-      return this.renderUnavailableStep();
+      return this.renderSuccessStep();
     }
+    if (formId === this.props.user.registration_step_number) {
+      return renderForm();
+    }
+    return this.renderUnavailableStep();
   },
 
-  renderSuccess() {
+  renderSuccessStep() {
     return <div className="success">
       Ai terminat acest pas cu succes.
     </div>;
@@ -138,7 +138,8 @@ export default React.createClass({
   renderAdditonalForm() {
     return <div>
         <RegisterAdditionalWrapper access_token={this.props.user.access_token}
-                                   onSubmit={this.props.refreshCurrent} />
+                                   onSubmit={this.props.refreshCurrent}
+                                   pendingProject={this.props.registration.pending_project} />
         {this.renderSkipAdditionalContestant()}
     </div>;
   },
@@ -154,7 +155,7 @@ export default React.createClass({
 
   renderProjectForm() {
     return <div>
-      <p>Daca nu vrei sa inscrii niciun proiect&nbsp;
+      <p>Dacă nu vrei sa inscrii niciun proiect&nbsp;
         <a href="#" data-step={6} onClick={this.onUpdateRegistrationStep}>
         click aici</a>.
       </p>
@@ -193,6 +194,8 @@ export default React.createClass({
           return <li key={project.id}>{project.title}</li>;
         })}
       </ul>
+      <p>Proiectele vor trebui să fie aprobate ca să apară în secțiunea de
+      participanți</p>
     </div>;
   },
 
@@ -232,10 +235,12 @@ export default React.createClass({
   },
 
   _getPanelStyle(panelId) {
-    if (panelId < this.props.user.registration_step_number)
+    if (panelId < this.props.user.registration_step_number) {
       return "success";
-    if (panelId === this.props.user.registration_step_number)
+    }
+    if (panelId === this.props.user.registration_step_number) {
       return "default";
+    }
     return "warning";
   }
 });

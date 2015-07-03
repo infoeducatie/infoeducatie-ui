@@ -86,25 +86,28 @@ let App = React.createClass({
 
   getCurrent() {
     let accesToken = ReactCookie.load("accesToken");
+    let headers = {};
+
     if (accesToken) {
-      $.ajax({
-        method: "GET",
-        url: window.config.API_URL + "current.json",
-        headers: {
-          Authorization: accesToken
-        },
-        success: (data) => {
-          this.setState({
-            current: data,
-            isLoggedIn: true
-          });
-        },
-        error: () => {
-          // This means the user token has expired.
-          this.logout();
-        }
-      });
+      headers = {
+        Authorization: accesToken
+      };
     }
+    $.ajax({
+      method: "GET",
+      url: window.config.API_URL + "current.json",
+      headers: headers,
+      success: (data) => {
+        this.setState({
+          current: data,
+          isLoggedIn: data.is_logged_in
+        });
+      },
+      error: () => {
+        // This means the user token has expired.
+        this.logout();
+      }
+    });
   }
 });
 
