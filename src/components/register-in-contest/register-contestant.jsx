@@ -289,10 +289,10 @@ export default React.createClass({
       method: "POST",
       url: window.config.API_URL + "contestants.json",
       headers: {
-        Authorization: this.props.current.user.access_token
+        Authorization: this.props.access_token
       },
       data: data,
-      success: this.props.hasSubmited,
+      success: this.props.onSubmit,
       error: this.onRequestError
     });
   },

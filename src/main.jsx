@@ -39,9 +39,6 @@ let App = React.createClass({
           total_participants: 0,
           total_projects: 0,
           total_counties: 0
-        },
-        registration: {
-          has_contestant: false
         }
       }
     };
@@ -62,6 +59,8 @@ let App = React.createClass({
   render() {
     return <div className="main">
       <RouteHandler current={this.state.current}
+                    user={this.state.current.user}
+                    registration={this.state.current.registration}
                     refreshCurrent={this.getCurrent}
                     isLoggedIn={this.state.isLoggedIn}
                     login={this.login}
