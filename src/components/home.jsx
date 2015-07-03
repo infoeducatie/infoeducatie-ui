@@ -1,5 +1,6 @@
 "use strict";
 
+import _ from "lodash";
 import React from "react";
 import {Link} from "react-router";
 import {Grid, Row, Col, Glyphicon} from "react-bootstrap";
@@ -23,6 +24,10 @@ export default React.createClass({
 
   getInitialState() {
     return {
+      currentNewsPage: 1,
+      newsPerPage: 2,
+      canShowNext: true,
+      canShowPrevious: false,
       news: [
         {
           "title": "Anul acesta InfoEducație aaaa",
@@ -43,9 +48,88 @@ export default React.createClass({
                                 sunt disponibile pe YouTube.`,
           "body": null,
           "date": "04 mai 2015"
+        },
+        {
+          "title": "Anul acesta InfoEducație aaaa",
+          "small_description": `Lista cu prezentările online programate poate fi
+                                gasită pe pagina de calendar. Inregistrarile
+                                sunt disponibile pe YouTube.`,
+          "body": `Lista cu prezentările online programate poate fi gasită pe
+                   pagina de calendar. Inregistrarile sunt disponibile pe
+                   YouTube. La momentul respectiv părea o joacă, acum infoarena
+                   este o organizație cu o activitate foarte solidă și cu un
+                   impact mare în rândul elevilor pasionați de informatică.`,
+          "date": "28 aprilie 2015"
+        },
+        {
+          "title": "Merge paginarea",
+          "small_description": `Deadline-ul de înscriere pentru InfoEducație
+                                Online a fost prelungit până marți, 21
+                                aprilie. Sursele trebuie trimise până joi, 23
+                                aprilie, via email către juriu (link github
+                                sau arhivă).`,
+          "body": `Lista cu prezentările online programate poate fi gasită pe
+                   pagina de calendar. Inregistrarile sunt disponibile pe
+                   YouTube. La momentul respectiv părea o joacă, acum infoarena
+                   este o organizație cu o activitate foarte solidă și cu un
+                   impact mare în rândul elevilor pasionați de informatică.`,
+          "date": "24 aprilie 2015"
+        },
+        {
+          "title": "Tot merge paginarea",
+          "small_description": `Lista cu prezentările online programate poate fi
+                                gasită pe pagina de calendar. Inregistrarile
+                                sunt disponibile pe YouTube.`,
+          "body": `Lista cu prezentările online programate poate fi gasită pe
+                   pagina de calendar. Inregistrarile sunt disponibile pe
+                   YouTube. La momentul respectiv părea o joacă, acum infoarena
+                   este o organizație cu o activitate foarte solidă și cu un
+                   impact mare în rândul elevilor pasionați de informatică.`,
+          "date": "28 februarie 2015"
         }
       ]
     };
+  },
+
+  showNextNewsPage() {
+
+    if (this.state.currentNewsPage * this.state.newsPerPage <
+        this.state.news.length) {
+      let canShowNext = (this.state.currentNewsPage + 1) * this.state.newsPerPage <
+                        this.state.news.length;
+      this.setState({
+        currentNewsPage: this.state.currentNewsPage + 1,
+        canShowNext: canShowNext,
+        canShowPrevious: true
+      });
+    } else {
+      this.setState({
+        canShowNext: false,
+        canShowPrevious: true
+      });
+    }
+  },
+
+  showPreviousNewsPage() {
+    if (this.state.currentNewsPage > 1) {
+      let canShowPrevious = this.state.currentNewsPage - 1 > 1;
+      this.setState({
+        currentNewsPage: this.state.currentNewsPage - 1,
+        canShowPrevious: canShowPrevious,
+        canShowNext: true
+      });
+    } else {
+      this.setState({
+        canShowPrevious: false,
+        canShowNext: true
+      });
+    }
+  },
+
+  renderNews() {
+    let news = _.clone(this.state.news);
+    news = news.splice((this.state.currentNewsPage - 1) * this.state.newsPerPage, this.state.newsPerPage);
+    return news.map(this.renderNormalNews);
   },
 
   renderNormalNews(news) {
@@ -145,20 +229,24 @@ export default React.createClass({
                         </Row>
                     </Col>
                     <Col md={5} mdOffset={1} className="right">
-                      {this.state.news.map(this.renderNormalNews)}
+                      {this.renderNews()}
                       <Row className="xsmall-spacing" />
                       <Row>
                         <Col md={4} mdOffset={2}>
-                          <div className="pagination-icon">
+                          {this.state.canShowPrevious ?
+                            <div className="pagination-icon"
+                               onClick={this.showPreviousNewsPage}>
                             <Glyphicon glyph="chevron-left" />
                             &nbsp;anterioare
-                          </div>
+                          </div> : null}
                         </Col>
                         <Col md={4}>
-                          <div className="pagination-icon">
+                          {this.state.canShowNext ? 
+                            <div className="pagination-icon"
+                               onClick={this.showNextNewsPage}>
                             următoare &nbsp;
                             <Glyphicon glyph="chevron-right" />
-                          </div>
+                          </div> : null}
                         </Col>
                       </Row>
                     </Col>
