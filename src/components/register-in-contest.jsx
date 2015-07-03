@@ -229,7 +229,10 @@ export default React.createClass({
   },
 
   _getPanelStyle(panelId) {
-    return panelId < this.props.user.registration_step_number ? "success"
-                                                              : "default";
+    if (panelId < this.props.user.registration_step_number)
+      return "success";
+    if (panelId === this.props.user.registration_step_number)
+      return "default";
+    return "warning";
   }
 });
