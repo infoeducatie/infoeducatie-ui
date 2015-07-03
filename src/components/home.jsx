@@ -21,6 +21,49 @@ import MEN from "../../assets/img/sponsors/edu.jpg";
 export default React.createClass({
   displayName: "Home",
 
+  getInitialState() {
+    return {
+      news: [
+        {
+          "title": "Anul acesta InfoEducație aaaa",
+          "small_description": `Lista cu prezentările online programate poate fi
+                                gasită pe pagina de calendar. Inregistrarile
+                                sunt disponibile pe YouTube.`,
+          "body": `Lista cu prezentările online programate poate fi gasită pe
+                   pagina de calendar. Inregistrarile sunt disponibile pe
+                   YouTube. La momentul respectiv părea o joacă, acum infoarena
+                   este o organizație cu o activitate foarte solidă și cu un
+                   impact mare în rândul elevilor pasionați de informatică.`,
+          "date": "28 iunie 2015"
+        },
+        {
+          "title": "Anul acesta InfoEducație aaaa",
+          "small_description": `Lista cu prezentările online programate poate fi
+                                gasită pe pagina de calendar. Inregistrarile
+                                sunt disponibile pe YouTube.`,
+          "body": null,
+          "date": "04 mai 2015"
+        }
+      ]
+    };
+  },
+
+  renderNormalNews(news) {
+    let read_more = null;
+    if (news.body) {
+      read_more = <a className="link link-secondary">mai mult</a>;
+    }
+
+    return <div>
+      <Row className="xsmall-spacing" />
+      <Row>
+        <p className="date">{news.date}</p>
+        <p className="title">{news.title}</p>
+        <p className="message">{news.small_description} {read_more}</p>
+      </Row>
+    </div>;
+  },
+
   render() {
     return <div className="home">
         <div className="blue-section-wrapper">
@@ -102,19 +145,7 @@ export default React.createClass({
                         </Row>
                     </Col>
                     <Col md={5} mdOffset={1} className="right">
-                        <Row className="xsmall-spacing" />
-                        <Row>
-                          <p className="date">28 iunie 2015</p>
-                          <p className="title">Anul acesta InfoEducație aaaa</p>
-                          <p className="message">Lista cu prezentările online programate poate fi gasită pe pagina de calendar. Inregistrarile sunt disponibile pe YouTube. <a className="link link-secondary">mai mult</a></p>
-                        </Row>
-
-                        <Row className="xsmall-spacing" />
-                        <Row>
-                          <p className="date">4 mai 2015</p>
-                          <p className="title">Anul acesta InfoEducație aaaa</p>
-                          <p className="message">Lista cu prezentările online programate poate fi gasită pe pagina de calendar. Inregistrarile sunt disponibile pe YouTube. <a className="link link-secondary">mai mult</a></p>
-                        </Row>
+                      {this.state.news.map(this.renderNormalNews)}
                     </Col>
                 </Row>
                 <Row className="small-spacing" />
