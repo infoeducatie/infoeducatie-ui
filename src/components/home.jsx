@@ -128,13 +128,14 @@ export default React.createClass({
   },
 
   renderNews() {
-    let news = _.clone(this.state.news);
-    news = news.splice((this.state.currentNewsPage - 1) * this.state.newsPerPage, this.state.newsPerPage);
-    return news.map(function(news) {
-      return <News body={news.body}
-                   title={news.title}
-                   small_description={news.small_description}
-                   date={news.date} />
+    let clone_news = _.clone(this.state.news);
+    let news = clone_news.splice((this.state.currentNewsPage - 1) * this.state.newsPerPage, this.state.newsPerPage);
+
+    return news.map(function(article) {
+      return <News body={article.body}
+                   title={article.title}
+                   small_description={article.small_description}
+                   date={article.date} />;
     });
   },
 
@@ -231,7 +232,7 @@ export default React.createClass({
                           </div> : null}
                         </Col>
                         <Col md={4}>
-                          {this.state.canShowNext ? 
+                          {this.state.canShowNext ?
                             <div className="pagination-icon"
                                onClick={this.showNextNewsPage}>
                             următoare &nbsp;

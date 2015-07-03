@@ -12,7 +12,7 @@ export default React.createClass({
 
   getInitialState() {
     return {
-      isModalOpen: false,
+      isModalOpen: false
     };
   },
 
@@ -24,7 +24,7 @@ export default React.createClass({
 
   closeModal() {
     this.setState({
-      isModalOpen: false,
+      isModalOpen: false
     });
   },
 
@@ -45,7 +45,6 @@ export default React.createClass({
   },
 
   renderOverlay() {
-    console.log("plm");
     if (!this.state.isModalOpen) {
       return null;
     }
