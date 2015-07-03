@@ -26,7 +26,7 @@ export default React.createClass({
           id: 0,
           title: ""
         },
-        projects: []
+        finished_projects: []
       }
     };
   },
@@ -152,16 +152,14 @@ export default React.createClass({
   },
 
   renderRegisteredProjects() {
-    if (!this.props.registration.projects.length) {
+    if (!this.props.registration.finished_projects.length) {
       return <p>Nu ai niciun proiect înscris.</p>;
     }
     return <div>
       <p>Proiectele inscrise de tine până acum:</p>
       <ul>
-        {this.props.registration.projects.map((project) => {
-          if (project.finished) {
-            return <li key={project.id}>{project.title}</li>;
-          }
+        {this.props.registration.finished_projects.map((project) => {
+          return <li key={project.id}>{project.title}</li>;
         })}
       </ul>
     </div>;
