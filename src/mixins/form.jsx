@@ -20,6 +20,13 @@ export default {
     };
   },
 
+  componentWillReceiveProps() {
+    this.setState({
+      hasErrored: false,
+      errors: []
+    });
+  },
+
   onRequestError(data) {
     this.setState({
       hasErrored: true,

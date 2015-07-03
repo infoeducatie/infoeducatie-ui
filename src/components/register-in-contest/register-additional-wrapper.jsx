@@ -5,6 +5,7 @@ import _ from "lodash";
 import { Input, ButtonInput } from "react-bootstrap";
 
 import RegisterAdditionalSearch from "./register-additional-search";
+import RegisterAdditionalConfirm from "./register-additional-confirm";
 
 
 export default React.createClass({
@@ -35,7 +36,13 @@ export default React.createClass({
     if (!this.state.additionalContestant.length) {
       return <p>Nu a fost găsit niciun participant</p>;
     }
-    return <p>Celalalt formular</p>;
+    return <div>
+      <p>A fost gasit utilizatorul&nbsp;
+      <em>{this.state.additionalContestant[0].name}</em> de la liceul <em>
+      {this.state.additionalContestant[0].school_name}</em>.</p>
+      {/*TODO @palcu: after Robert gives me the endpoint, put it here*/}
+      <RegisterAdditionalConfirm onSubmit={this.props.onSubmit} />
+    </div>
   },
 
   onRegisterAdditionalSearchSubmit(data) {
