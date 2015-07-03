@@ -137,7 +137,8 @@ export default React.createClass({
   renderAdditonalForm() {
     return <div>
         <RegisterAdditionalWrapper access_token={this.props.user.access_token}
-                                   onSubmit={this.props.refreshCurrent} />
+                                   onSubmit={this.props.refreshCurrent}
+                                   pendingProject={this.props.registration.pending_project} />
         {this.renderSkipAdditionalContestant()}
     </div>;
   },

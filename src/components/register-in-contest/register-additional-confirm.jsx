@@ -22,6 +22,8 @@ export default React.createClass({
   },
 
   getFormData() {
-    return {};
+    return {
+      contestant_id: this.props.contestantId
+    };
   }
 });

@@ -36,12 +36,16 @@ export default React.createClass({
     if (!this.state.additionalContestant.length) {
       return <p>Nu a fost găsit niciun participant</p>;
     }
+    let formEndpoint = `projects/${this.props.pendingProject.id}/collaborators`;
     return <div>
       <p>A fost gasit utilizatorul&nbsp;
       <em>{this.state.additionalContestant[0].name}</em> de la liceul <em>
       {this.state.additionalContestant[0].school_name}</em>.</p>
-      {/*TODO @palcu: after Robert gives me the endpoint, put it here*/}
-      <RegisterAdditionalConfirm onSubmit={this.props.onSubmit} />
+
+      <RegisterAdditionalConfirm onSubmit={this.props.onSubmit}
+                                 formEndpoint={formEndpoint}
+                                 access_token={this.props.access_token}
+                                 contestantId={this.state.additionalContestant[0].id} />
     </div>;
   },
 
