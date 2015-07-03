@@ -1,5 +1,6 @@
 "use strict";
 
+import $ from "jquery";
 import React from "react";
 import { Grid, Col, Row, PanelGroup, Panel } from "react-bootstrap";
 
@@ -134,13 +135,20 @@ export default React.createClass({
 
   renderWIPStep() {
     return <p>
+      {this.renderSkipAdditionalContestant()}
       Încă nu e gata...
     </p>;
   },
 
   renderProjectForm() {
-    return <RegisterProject access_token={this.props.user.access_token}
-                            onSubmit={this.props.refreshCurrent} />;
+    return <div>
+      <p>Daca nu vrei sa inscrii niciun proiect&nbsp;
+        <a href="#" data-step={6} onClick={this.onUpdateRegistrationStep}>
+        click aici</a>.
+      </p>
+      <RegisterProject access_token={this.props.user.access_token}
+                       onSubmit={this.props.refreshCurrent} />
+    </div>
   },
 
   renderFinishForm() {
@@ -152,10 +160,21 @@ export default React.createClass({
   },
 
   renderRegisteredProjects() {
-    if (!this.props.registration.finished_projects.length) {
-      return <p>Nu ai niciun proiect înscris.</p>;
+    let registerAnother = null;
+    if (this.props.user.registration_step_number === 6) {
+      registerAnother = <p>Pentru a înscrie un alt proiect&nbsp;
+          <a href="#" data-step={2} onClick={this.onUpdateRegistrationStep}>
+          click aici</a>.</p>;
     }
+
+    if (!this.props.registration.finished_projects.length) {
+      return <div>
+        {registerAnother}
+      </div>
+    }
+
     return <div>
+      {registerAnother}
       <p>Proiectele inscrise de tine până acum:</p>
       <ul>
         {this.props.registration.finished_projects.map((project) => {
@@ -165,10 +184,39 @@ export default React.createClass({
     </div>;
   },
 
+  renderSkipAdditionalContestant() {
+    return <div>
+      <p>Dacă nu dorești să mai înscrii un coechipier,&nbsp;
+      <a href="#" data-step='3' onClick={this.onUpdateRegistrationStep}>click aici
+      </a>.</p>
+    </div>
+  },
+
   onHandlePanelSelect(nextActivePanelKey) {
     this.setState({
       activePanelKey: nextActivePanelKey
     });
+  },
+
+  onUpdateRegistrationStep(event) {
+    event.preventDefault();
+    let step_number = parseInt(event.target.attributes["data-step"].value);
+
+    $.ajax({
+      method: "POST",
+      url: window.config.API_URL + "contestants/update_registration_step_number",
+      headers: {
+        Authorization: this.props.user.access_token
+      },
+      data: {step_number: step_number},
+      success: this.props.refreshCurrent,
+      error: this.showError
+    })
+  },
+
+  showError() {
+    // TODO @palcu: make this in a better way
+    window.alert("Nu a mers");
   },
 
   _getPanelStyle(panelId) {
