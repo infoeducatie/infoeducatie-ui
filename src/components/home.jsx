@@ -87,30 +87,34 @@ export default React.createClass({
 
         <div className="green-section-wrapper">
             <Grid className="green-section">
-                <Row className="row">
+                <Row>
                     <Col md={5} className="left">
-                        <Row className="small-spacing" />
+                        <Row className="xsmall-spacing" />
                         <h6 id="news">Știri</h6>
+                        <Row className="xsmall-spacing" />
 
-                        <Row className="small-spacing" />
+                        <Row className="pinned-news">
+                          <p className="date">28 iunie 2015</p>
+                          <p className="title">Anul acesta InfoEducație aaaa</p>
 
-                        <p className="date">28 iunie 2015</p>
-                        <p className="title">Am lansat noul website
-                        InfoEducație.</p>
-
-                        <p className="message">Vă invităm să ne oferiți feedback
-                        pe <a href="http://community.infoeducatie.ro/t/noul-website-infoeducatie-2015/3646">forum</a>.</p>
+                          <p className="message">Vă invităm să ne oferiți feedback
+                          pe <a href="http://community.infoeducatie.ro/t/noul-website-infoeducatie-2015/3646">forum</a>.</p>
+                        </Row>
                     </Col>
                     <Col md={5} mdOffset={1} className="right">
-                        <Row className="small-spacing" />
-                        <p className="date">28 iunie 2015</p>
-                        <p className="message">Înregistrările vor începe în
-                        câteva zile.</p>
+                        <Row className="xsmall-spacing" />
+                        <Row>
+                          <p className="date">28 iunie 2015</p>
+                          <p className="title">Anul acesta InfoEducație aaaa</p>
+                          <p className="message">Lista cu prezentările online programate poate fi gasită pe pagina de calendar. Inregistrarile sunt disponibile pe YouTube. <a className="link link-secondary">mai mult</a></p>
+                        </Row>
 
-                        <Row className="big-spacing" />
-                        <p className="date">26 iunie 2015</p>
-                        <p className="message">Tabăra anul acesta va avea loc în
-                        perioada 2-8 august.</p>
+                        <Row className="xsmall-spacing" />
+                        <Row>
+                          <p className="date">4 mai 2015</p>
+                          <p className="title">Anul acesta InfoEducație aaaa</p>
+                          <p className="message">Lista cu prezentările online programate poate fi gasită pe pagina de calendar. Inregistrarile sunt disponibile pe YouTube. <a className="link link-secondary">mai mult</a></p>
+                        </Row>
                     </Col>
                 </Row>
                 <Row className="small-spacing" />
