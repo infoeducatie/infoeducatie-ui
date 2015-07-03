@@ -1,5 +1,6 @@
 "use strict";
 
+import $ from "jquery";
 import React from "react";
 import { Grid, Col, Row, PanelGroup, Panel } from "react-bootstrap";
 
@@ -8,6 +9,7 @@ import "./register-in-contest.less";
 import RegisterContestant from "./register-in-contest/register-contestant"
 import RegisterProject from "./register-in-contest/register-project"
 import RegisterFinish from "./register-in-contest/register-finish"
+import RegisterAdditionalWrapper from "./register-in-contest/register-additional-wrapper"
 
 export default React.createClass({
   displayName: "RegisterInContest",
@@ -80,16 +82,16 @@ export default React.createClass({
               {this.renderFormOrMessage(this.renderProjectForm, 2)}
             </Panel>
 
-            <Panel header="Capturi de Ecran"
+            <Panel header="Adăugare Capturi de Ecran"
                    eventKey="3"
                    bsStyle={this._getPanelStyle(3)}>
               {this.renderFormOrMessage(this.renderWIPStep, 3)}
             </Panel>
 
-            <Panel header="Înregistrare Coechipier"
+            <Panel header="Adăugare Coechipier"
                    eventKey="4"
                    bsStyle={this._getPanelStyle(4)}>
-              {this.renderFormOrMessage(this.renderWIPStep, 4)}
+              {this.renderFormOrMessage(this.renderAdditonalForm, 4)}
             </Panel>
 
             <Panel header="Finalizare"
@@ -132,15 +134,31 @@ export default React.createClass({
                                onSubmit={this.props.refreshCurrent} />;
   },
 
+  renderAdditonalForm() {
+    return <div>
+        <RegisterAdditionalWrapper access_token={this.props.user.access_token}
+                                   onSubmit={this.props.refreshCurrent}
+                                   pendingProject={this.props.registration.pending_project} />
+        {this.renderSkipAdditionalContestant()}
+    </div>;
+  },
+
   renderWIPStep() {
     return <p>
+
       Încă nu e gata...
     </p>;
   },
 
   renderProjectForm() {
-    return <RegisterProject access_token={this.props.user.access_token}
-                            onSubmit={this.props.refreshCurrent} />;
+    return <div>
+      <p>Dacă nu vrei sa inscrii niciun proiect&nbsp;
+        <a href="#" data-step={6} onClick={this.onUpdateRegistrationStep}>
+        click aici</a>.
+      </p>
+      <RegisterProject access_token={this.props.user.access_token}
+                       onSubmit={this.props.refreshCurrent} />
+    </div>;
   },
 
   renderFinishForm() {
@@ -152,10 +170,21 @@ export default React.createClass({
   },
 
   renderRegisteredProjects() {
-    if (!this.props.registration.finished_projects.length) {
-      return <p>Nu ai niciun proiect înscris.</p>;
+    let registerAnother = null;
+    if (this.props.user.registration_step_number === 6) {
+      registerAnother = <p>Pentru a înscrie un alt proiect&nbsp;
+          <a href="#" data-step={2} onClick={this.onUpdateRegistrationStep}>
+          click aici</a>.</p>;
     }
+
+    if (!this.props.registration.finished_projects.length) {
+      return <div>
+        {registerAnother}
+      </div>;
+    }
+
     return <div>
+      {registerAnother}
       <p>Proiectele inscrise de tine până acum:</p>
       <ul>
         {this.props.registration.finished_projects.map((project) => {
@@ -167,14 +196,48 @@ export default React.createClass({
     </div>;
   },
 
+  renderSkipAdditionalContestant() {
+    return <div>
+      <p>Dacă nu dorești să mai înscrii un coechipier,&nbsp;
+      <a href="#" data-step='3' onClick={this.onUpdateRegistrationStep}>click aici
+      </a>.</p>
+    </div>;
+  },
+
   onHandlePanelSelect(nextActivePanelKey) {
     this.setState({
       activePanelKey: nextActivePanelKey
     });
   },
 
+  onUpdateRegistrationStep(event) {
+    event.preventDefault();
+    let step_number = parseInt(event.target.attributes["data-step"].value);
+
+    $.ajax({
+      method: "POST",
+      url: window.config.API_URL + "contestants/update_registration_step_number",
+      headers: {
+        Authorization: this.props.user.access_token
+      },
+      data: {step_number: step_number},
+      success: this.props.refreshCurrent,
+      error: this.showError
+    });
+  },
+
+  showError() {
+    // TODO @palcu: make this in a better way
+    window.alert("Nu a mers"); // eslint-disable-line
+  },
+
   _getPanelStyle(panelId) {
-    return panelId < this.props.user.registration_step_number ? "success"
-                                                              : "default";
+    if (panelId < this.props.user.registration_step_number) {
+      return "success";
+    }
+    if (panelId === this.props.user.registration_step_number) {
+      return "default";
+    }
+    return "warning";
   }
 });

@@ -6,12 +6,25 @@ import React from "react";
 
 
 export default {
+  getDefaultProps() {
+    return {
+      method: "POST"
+    };
+  },
+
   getInitialState() {
     return {
       hasErrored: false,
       waitingForServerResponse: false,
       errors: []
     };
+  },
+
+  componentWillReceiveProps() {
+    this.setState({
+      hasErrored: false,
+      errors: []
+    });
   },
 
   onRequestError(data) {
@@ -48,15 +61,22 @@ export default {
     let data = this.getFormData();
 
     $.ajax({
-      method: "POST",
+      method: this.props.method,
       url: window.config.API_URL + this.props.formEndpoint,
       headers: {
         Authorization: this.props.access_token
       },
       data: data,
-      success: this.props.onSubmit,
+      success: this.onRequestSuccess,
       error: this.onRequestError
     });
+  },
+
+  onRequestSuccess(data) {
+    this.setState({
+      waitingForServerResponse: false
+    });
+    this.props.onSubmit(data);
   },
 
   renderErrors() {

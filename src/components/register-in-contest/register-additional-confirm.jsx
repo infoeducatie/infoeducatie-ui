@@ -9,21 +9,21 @@ import FormMixin from "../../mixins/form"
 
 
 export default React.createClass({
-  displayName: "RegisterFinish",
+  displayName: "RegisterAdditionalConfirm",
   mixins: [FormMixin],
 
   render() {
     return <form onSubmit={this.onFormSubmit}>
-      <p>Trimite proiectul tău&nbsp;
-      <em>{this.props.pending_project_title}</em>.</p>
       <ButtonInput type="submit"
-                   value="Termină"
+                   value="Confirmă"
                    disabled={this.state.waitingForServerResponse} />
       {this.renderErrors()}
     </form>;
   },
 
   getFormData() {
-    return {};
+    return {
+      contestant_id: this.props.contestantId
+    };
   }
 });
