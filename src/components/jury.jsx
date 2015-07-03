@@ -85,7 +85,9 @@ export default React.createClass({
                     logout={this.props.logout} />
             <Row>
               <Col xs={12}>
-                <h1>Juriul InfoEduca&#355;ie</h1>
+                <h1>Juriul InfoEduca&#355;ie <br />
+                    Ediția {this.props.current.edition.year}
+                </h1>
               </Col>
             </Row>
             <Row>
