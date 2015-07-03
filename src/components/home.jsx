@@ -6,6 +6,7 @@ import {Link} from "react-router";
 import {Grid, Row, Col, Glyphicon} from "react-bootstrap";
 
 import Header from "./header";
+import News from "./news";
 
 import "./home.less";
 import Google from "../../assets/img/sponsors/google.png";
@@ -129,23 +130,12 @@ export default React.createClass({
   renderNews() {
     let news = _.clone(this.state.news);
     news = news.splice((this.state.currentNewsPage - 1) * this.state.newsPerPage, this.state.newsPerPage);
-    return news.map(this.renderNormalNews);
-  },
-
-  renderNormalNews(news) {
-    let read_more = null;
-    if (news.body) {
-      read_more = <a className="link link-secondary">mai mult</a>;
-    }
-
-    return <div>
-      <Row className="xsmall-spacing" />
-      <Row>
-        <p className="date">{news.date}</p>
-        <p className="title">{news.title}</p>
-        <p className="message">{news.small_description} {read_more}</p>
-      </Row>
-    </div>;
+    return news.map(function(news) {
+      return <News body={news.body}
+                   title={news.title}
+                   small_description={news.small_description}
+                   date={news.date} />
+    });
   },
 
   render() {
