@@ -154,7 +154,7 @@ export default React.createClass({
       </p>
       <RegisterProject access_token={this.props.user.access_token}
                        onSubmit={this.props.refreshCurrent} />
-    </div>
+    </div>;
   },
 
   renderFinishForm() {
@@ -176,7 +176,7 @@ export default React.createClass({
     if (!this.props.registration.finished_projects.length) {
       return <div>
         {registerAnother}
-      </div>
+      </div>;
     }
 
     return <div>
@@ -195,7 +195,7 @@ export default React.createClass({
       <p>Dacă nu dorești să mai înscrii un coechipier,&nbsp;
       <a href="#" data-step='3' onClick={this.onUpdateRegistrationStep}>click aici
       </a>.</p>
-    </div>
+    </div>;
   },
 
   onHandlePanelSelect(nextActivePanelKey) {
@@ -217,12 +217,12 @@ export default React.createClass({
       data: {step_number: step_number},
       success: this.props.refreshCurrent,
       error: this.showError
-    })
+    });
   },
 
   showError() {
     // TODO @palcu: make this in a better way
-    window.alert("Nu a mers");
+    window.alert("Nu a mers"); // eslint-disable-line
   },
 
   _getPanelStyle(panelId) {

@@ -42,7 +42,7 @@ export default React.createClass({
       {this.state.additionalContestant[0].school_name}</em>.</p>
       {/*TODO @palcu: after Robert gives me the endpoint, put it here*/}
       <RegisterAdditionalConfirm onSubmit={this.props.onSubmit} />
-    </div>
+    </div>;
   },
 
   onRegisterAdditionalSearchSubmit(data) {

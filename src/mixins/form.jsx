@@ -8,8 +8,8 @@ import React from "react";
 export default {
   getDefaultProps() {
     return {
-      method: 'POST'
-    }
+      method: "POST"
+    };
   },
 
   getInitialState() {

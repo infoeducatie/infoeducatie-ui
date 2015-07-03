@@ -28,7 +28,7 @@ export default React.createClass({
       <ButtonInput type="submit"
                    value="Caută"
                    disabled={this.state.waitingForServerResponse} />
-    </form>
+    </form>;
   },
 
   onInputEmailChange(event) {
