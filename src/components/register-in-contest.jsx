@@ -144,15 +144,9 @@ export default React.createClass({
   },
 
   renderScreenshotsForm() {
-    let extraAjaxParams = {
-      cache: false,
-      contentType: false,
-      processData: false
-    }
     let formEndpoint = `projects/${this.props.registration.pending_project.id}/screenshots`;
     return <RegisterScreenshots access_token={this.props.user.access_token}
                                 onSubmit={this.props.refreshCurrent}
-                                extraAjaxParams={extraAjaxParams}
                                 formEndpoint={formEndpoint}
                                 screenshotsCount={this.props.registration.pending_project.screenshots_count}
                                 onSkipStep={this.onUpdateRegistrationStep} />;
