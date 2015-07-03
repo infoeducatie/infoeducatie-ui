@@ -2,7 +2,7 @@
 
 import React from "react";
 import {Link} from "react-router";
-import {Grid, Row, Col} from "react-bootstrap";
+import {Grid, Row, Col, Glyphicon} from "react-bootstrap";
 
 import Header from "./header";
 
@@ -146,9 +146,24 @@ export default React.createClass({
                     </Col>
                     <Col md={5} mdOffset={1} className="right">
                       {this.state.news.map(this.renderNormalNews)}
+                      <Row className="xsmall-spacing" />
+                      <Row>
+                        <Col md={4} mdOffset={2}>
+                          <div className="pagination-icon">
+                            <Glyphicon glyph="chevron-left" />
+                            &nbsp;anterioare
+                          </div>
+                        </Col>
+                        <Col md={4}>
+                          <div className="pagination-icon">
+                            următoare &nbsp;
+                            <Glyphicon glyph="chevron-right" />
+                          </div>
+                        </Col>
+                      </Row>
                     </Col>
                 </Row>
-                <Row className="small-spacing" />
+                <Row className="xsmall-spacing" />
             </Grid>
         </div>
 
