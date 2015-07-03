@@ -31,6 +31,6 @@ export default React.createClass({
 
   render() {
     let url = window.config.API_URL + this.props.formEndpoint;
-    return <input id="fileupload" type="file" name="files[]" data-url={url} multiple />
+    return <input id="fileupload" type="file" name="screenshots[]" data-url={url} multiple />
   }
 });
