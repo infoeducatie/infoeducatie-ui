@@ -8,6 +8,7 @@ import Header from "./header";
 import "./register-in-contest.less";
 import RegisterContestant from "./register-in-contest/register-contestant"
 import RegisterProject from "./register-in-contest/register-project"
+import RegisterScreenshots from "./register-in-contest/register-screenshots"
 import RegisterFinish from "./register-in-contest/register-finish"
 import RegisterAdditionalWrapper from "./register-in-contest/register-additional-wrapper"
 
@@ -85,7 +86,7 @@ export default React.createClass({
             <Panel header="Adăugare Capturi de Ecran"
                    eventKey="3"
                    bsStyle={this._getPanelStyle(3)}>
-              {this.renderFormOrMessage(this.renderWIPStep, 3)}
+              {this.renderFormOrMessage(this.renderScreenshotsForm, 3)}
             </Panel>
 
             <Panel header="Adăugare Coechipier"
@@ -142,11 +143,17 @@ export default React.createClass({
     </div>;
   },
 
-  renderWIPStep() {
-    return <p>
-
-      Încă nu e gata...
-    </p>;
+  renderScreenshotsForm() {
+    let extraAjaxParams = {
+      cache: false,
+      contentType: false,
+      processData: false
+    }
+    let formEndpoint = `projects/${this.props.registration.pending_project.id}/screenshots`;
+    return <RegisterScreenshots access_token={this.props.user.access_token}
+                                onSubmit={this.props.refreshCurrent}
+                                extraAjaxParams={extraAjaxParams}
+                                formEndpoint={formEndpoint} />;
   },
 
   renderProjectForm() {
