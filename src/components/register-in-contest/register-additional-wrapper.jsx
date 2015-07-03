@@ -9,7 +9,7 @@ import RegisterAdditionalConfirm from "./register-additional-confirm";
 
 
 export default React.createClass({
-  displayName: "RegisterAdditional",
+  displayName: "RegisterAdditionalWrapper",
 
   getInitialState() {
     return {

@@ -152,7 +152,7 @@ export default React.createClass({
 
   renderProjectForm() {
     return <div>
-      <p>Daca nu vrei sa inscrii niciun proiect&nbsp;
+      <p>Dacă nu vrei sa inscrii niciun proiect&nbsp;
         <a href="#" data-step={6} onClick={this.onUpdateRegistrationStep}>
         click aici</a>.
       </p>
