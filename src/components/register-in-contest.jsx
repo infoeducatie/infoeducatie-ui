@@ -83,7 +83,7 @@ export default React.createClass({
               {this.renderFormOrMessage(this.renderProjectForm, 2)}
             </Panel>
 
-            <Panel header="Adăugare Capturi de Ecran"
+            <Panel header="Adăugare Capturi Ecran"
                    eventKey="3"
                    bsStyle={this._getPanelStyle(3)}>
               {this.renderFormOrMessage(this.renderScreenshotsForm, 3)}
@@ -153,7 +153,9 @@ export default React.createClass({
     return <RegisterScreenshots access_token={this.props.user.access_token}
                                 onSubmit={this.props.refreshCurrent}
                                 extraAjaxParams={extraAjaxParams}
-                                formEndpoint={formEndpoint} />;
+                                formEndpoint={formEndpoint}
+                                screenshotsCount={this.props.registration.pending_project.screenshots_count}
+                                onSkipStep={this.onUpdateRegistrationStep} />;
   },
 
   renderProjectForm() {
@@ -203,7 +205,7 @@ export default React.createClass({
   renderSkipAdditionalContestant() {
     return <div>
       <p>Dacă nu dorești să mai înscrii un coechipier,&nbsp;
-      <a href="#" data-step='3' onClick={this.onUpdateRegistrationStep}>click aici
+      <a href="#" data-step='5' onClick={this.onUpdateRegistrationStep}>click aici
       </a>.</p>
     </div>;
   },
