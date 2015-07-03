@@ -12,6 +12,37 @@ import RegisterFinish from "./register-in-contest/register-finish"
 export default React.createClass({
   displayName: "RegisterInContest",
 
+  getDefaultProps() {
+    return {
+      user: {
+        registration_step_number: 0,
+        access_token: ""
+      },
+      registration: {
+        renderFinishForm: {
+          id: 0
+        },
+        pending_project: {
+          id: 0,
+          title: ""
+        },
+        projects: []
+      }
+    };
+  },
+
+  getInitialState() {
+    return {
+      activePanelKey: String(this.props.user.registration_step_number)
+    };
+  },
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      activePanelKey: String(nextProps.user.registration_step_number)
+    });
+  },
+
   render() {
     return <div className="register-in-contest">
       <div className="blue-section-wrapper">
@@ -35,41 +66,36 @@ export default React.createClass({
         <Col sm={6} smOffset={3}>
           <Row className="small-spacing" />
           <PanelGroup onSelect={this.onHandlePanelSelect}
+                      activeKey={this.state.activePanelKey}
                       accordion>
 
             <Panel header="Înregistrare Participant"
                    eventKey="1"
-                   bsStyle={this.getPanelStyle(
-                                this.props.current.registration.has_contestant)}>
-              {this.renderContestantForm()}
+                   bsStyle={this._getPanelStyle(1)}>
+              {this.renderFormOrMessage(this.renderContestantForm, 1)}
             </Panel>
             <Panel header="Înregistrare Proiect"
                    eventKey="2"
-                   bsStyle={this.getPanelStyle(
-                                this.props.current.registration.has_pending_project ||
-                                this.props.current.registration.has_projects)}
-                   expanded>
-              {this.renderRegisterProjectForm()}
+                   bsStyle={this._getPanelStyle(2)}>
+              {this.renderFormOrMessage(this.renderProjectForm, 2)}
             </Panel>
 
             <Panel header="Capturi de Ecran"
                    eventKey="3"
-                   bsStyle="warning">
-              Încă nu e gata...
+                   bsStyle={this._getPanelStyle(3)}>
+              {this.renderFormOrMessage(this.renderWIPStep, 3)}
             </Panel>
 
             <Panel header="Înregistrare Coechipier"
                    eventKey="4"
-                   bsStyle="warning">
-              Încă nu e gata...
+                   bsStyle={this._getPanelStyle(4)}>
+              {this.renderFormOrMessage(this.renderWIPStep, 4)}
             </Panel>
 
             <Panel header="Finalizare"
                    eventKey="5"
-                   bsStyle={this.getPanelStyle(
-                       !this.props.current.registration.has_pending_project &&
-                       this.props.current.registration.has_projects)}>
-              {this.renderFinishForm()}
+                   bsStyle={this._getPanelStyle(5)}>
+              {this.renderFormOrMessage(this.renderFinishForm, 5)}
             </Panel>
             <Row className="small-spacing" />
             {this.renderRegisteredProjects()}
@@ -79,79 +105,66 @@ export default React.createClass({
     </div>;
   },
 
+  renderFormOrMessage(renderForm, formId) {
+    if (formId < this.props.user.registration_step_number) {
+      return this.renderSuccess();
+    } else if (formId == this.props.user.registration_step_number) {
+      return renderForm();
+    } else {
+      return this.renderUnavailableStep();
+    }
+  },
+
   renderSuccess() {
-    // TODO: @palcu make this pretty
     return <div className="success">
       Ai terminat acest pas cu succes.
     </div>;
   },
 
   renderUnavailableStep() {
-    return <div className="success">
+    return <div>
       Termină ceilalți pași înainte să îl completezi pe acesta.
     </div>;
   },
 
   renderContestantForm() {
-    if (this.props.current.registration.has_contestant) {
-      return this.renderSuccess();
-    }
-    else {
-      return <RegisterContestant current={this.props.current}
-                                 hasSubmited={this.submitProject} />;
-    }
+    return <RegisterContestant access_token={this.props.user.access_token}
+                               onSubmit={this.props.refreshCurrent} />;
   },
 
-  renderRegisterProjectForm() {
-    if (this.props.current.registration.has_pending_project ||
-        this.props.current.registration.has_projects) {
-      return this.renderSuccess();
-    }
-    else if (!this.props.current.registration.has_contestant) {
-      return this.renderUnavailableStep();
-    }
-    else {
-      return <RegisterProject current={this.props.current}
-                              hasSubmited={this.submitProject} />;
-    }
+  renderWIPStep() {
+    return <p>
+      Încă nu e gata...
+    </p>;
+  },
+
+  renderProjectForm() {
+    return <RegisterProject access_token={this.props.user.access_token}
+                            onSubmit={this.props.refreshCurrent} />;
   },
 
   renderFinishForm() {
-    let formEndpoint = "";
-    if (this.props.current.registration.has_contestant) {
-      formEndpoint = `projects/${this.props.current.registration.pending_project.id}/finish`;
-    }
-    if (this.props.current.registration.has_pending_project) {
-      return <RegisterFinish current={this.props.current}
-                             hasSubmited={this.submitFinish}
-                             formEndpoint={formEndpoint} />;
-    }
-    if (!this.props.current.registration.has_pending_project &&
-        this.props.current.registration.has_projects) {
-      return this.renderSuccess();
-    }
-    if (!this.props.current.registration.has_pending_project &&
-        !this.props.current.registration.has_projects) {
-      return this.renderUnavailableStep();
-    }
+    let formEndpoint = `projects/${this.props.registration.pending_project.id}/finish`;
+    return <RegisterFinish access_token={this.props.user.access_token}
+                           pending_project_title={this.props.registration.pending_project.title}
+                           onSubmit={this.props.refreshCurrent}
+                           formEndpoint={formEndpoint} />;
   },
 
   renderRegisteredProjects() {
-    if (!this.props.current.registration.has_contestant ||
-        !this.props.current.registration.projects.length) {
+    if (!this.props.registration.projects.length) {
       return <p>Nu ai niciun proiect înscris.</p>;
     }
-    return <div><p>Proiectele inscrise de tine până acum:</p><ul>
-      {this.props.current.registration.projects.map((project) => {
-        if (project.finished) {
-          return <li key={project.id}>{project.title}</li>;
-        }
-      })}
-    </ul></div>;
-  },
-
-  getPanelStyle(status) {
-    return status ? "success" : "default";
+    return <div>
+      <p>Proiectele inscrise de tine până acum:</p>
+      <ul>
+        {this.props.registration.projects.map((project) => {
+          if (project.finished) {
+            return <li key={project.id}>{project.title}</li>;
+          }
+        })}
+      </ul>
+    </div>;
   },
 
   onHandlePanelSelect(nextActivePanelKey) {
@@ -160,15 +173,8 @@ export default React.createClass({
     });
   },
 
-  submitParticipant() {
-    this.props.refreshCurrent();
-  },
-
-  submitProject() {
-    this.props.refreshCurrent();
-  },
-
-  submitFinish() {
-    this.props.refreshCurrent();
+  _getPanelStyle(panelId) {
+    return panelId < this.props.user.registration_step_number ? "success"
+                                                              : "default";
   }
 });

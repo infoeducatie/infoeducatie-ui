@@ -15,7 +15,7 @@ export default React.createClass({
   render() {
     return <form onSubmit={this.onFormSubmit}>
       <p>Trimite proiectul tău&nbsp;
-      <em>{this.props.current.registration.pending_project.title}</em>.</p>
+      <em>{this.props.pending_project_title}</em>.</p>
       <ButtonInput type="submit"
                    value="Termină"
                    disabled={this.state.waitingForServerResponse} />
