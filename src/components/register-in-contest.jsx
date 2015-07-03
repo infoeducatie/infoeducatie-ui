@@ -9,6 +9,7 @@ import "./register-in-contest.less";
 import RegisterContestant from "./register-in-contest/register-contestant"
 import RegisterProject from "./register-in-contest/register-project"
 import RegisterFinish from "./register-in-contest/register-finish"
+import RegisterAdditionalWrapper from "./register-in-contest/register-additional-wrapper"
 
 export default React.createClass({
   displayName: "RegisterInContest",
@@ -90,7 +91,7 @@ export default React.createClass({
             <Panel header="Înregistrare Coechipier"
                    eventKey="4"
                    bsStyle={this._getPanelStyle(4)}>
-              {this.renderFormOrMessage(this.renderWIPStep, 4)}
+              {this.renderFormOrMessage(this.renderAdditonalForm, 4)}
             </Panel>
 
             <Panel header="Finalizare"
@@ -131,6 +132,11 @@ export default React.createClass({
   renderContestantForm() {
     return <RegisterContestant access_token={this.props.user.access_token}
                                onSubmit={this.props.refreshCurrent} />;
+  },
+
+  renderAdditonalForm() {
+    return <RegisterAdditionalWrapper access_token={this.props.user.access_token}
+                                      onSubmit={this.props.refreshCurrent} />;
   },
 
   renderWIPStep() {
