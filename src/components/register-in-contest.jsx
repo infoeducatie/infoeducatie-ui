@@ -82,13 +82,13 @@ export default React.createClass({
               {this.renderFormOrMessage(this.renderProjectForm, 2)}
             </Panel>
 
-            <Panel header="Capturi de Ecran"
+            <Panel header="Adăugare Capturi de Ecran"
                    eventKey="3"
                    bsStyle={this._getPanelStyle(3)}>
               {this.renderFormOrMessage(this.renderWIPStep, 3)}
             </Panel>
 
-            <Panel header="Înregistrare Coechipier"
+            <Panel header="Adăugare Coechipier"
                    eventKey="4"
                    bsStyle={this._getPanelStyle(4)}>
               {this.renderFormOrMessage(this.renderAdditonalForm, 4)}
@@ -135,13 +135,16 @@ export default React.createClass({
   },
 
   renderAdditonalForm() {
-    return <RegisterAdditionalWrapper access_token={this.props.user.access_token}
-                                      onSubmit={this.props.refreshCurrent} />;
+    return <div>
+        <RegisterAdditionalWrapper access_token={this.props.user.access_token}
+                                   onSubmit={this.props.refreshCurrent} />
+        {this.renderSkipAdditionalContestant()}
+    </div>;
   },
 
   renderWIPStep() {
     return <p>
-      {this.renderSkipAdditionalContestant()}
+
       Încă nu e gata...
     </p>;
   },
