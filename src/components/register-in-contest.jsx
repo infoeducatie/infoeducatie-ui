@@ -162,6 +162,8 @@ export default React.createClass({
           return <li key={project.id}>{project.title}</li>;
         })}
       </ul>
+      <p>Proiectele vor trebui să fie aprobate ca să apară în secțiunea de
+      participanți</p>
     </div>;
   },
 
