@@ -14,7 +14,6 @@ import AlexPAvatar from "../../assets/img/jury/alex_palcuie.png";
 import AndreiAAvatar from "../../assets/img/jury/andrei_adoamnei.png";
 import SabinMarcuAvatar from "../../assets/img/jury/sabin_marcu.png";
 import RobertaTomegaAvatar from "../../assets/img/jury/roberta_tomega.png";
-import LuizaBubatuAvatar from "../../assets/img/jury/luiza_bubatu.png";
 import RazvanDeaconescuAvatar from "../../assets/img/jury/razvan_deaconescu.png";
 import JulianAvatar from "../../assets/img/jury/julian_atanasoae.png";
 import AndreiMAvatar from "../../assets/img/jury/andrei_muntean.png";
@@ -41,7 +40,7 @@ export default React.createClass({
         {"avatar": DefaultAvatar, "name": "Florentina Hora", "occupation": "Profesor @ Colegiul National 'Samuil Vulcan' Beius"},
         {"avatar": DefaultAvatar, "name": "Andreea Popescu", "occupation": "QA Engineer @ Zitec"},
         {"avatar": RobertaTomegaAvatar, "name": "Roberta Tomegea", "occupation": "studenta @ Universitatea Politehnica Timișoara"},
-        {"avatar": LuizaBubatuAvatar, "name": "Luiza Bubatu", "occupation": "studenta @ Universitatea Tehnică Cluj-Napoca"},
+        {"avatar": DefaultAvatar, "name": "Luiza Bubatu", "occupation": "studenta @ Universitatea Tehnică Cluj-Napoca"},
         {"avatar": DefaultAvatar, "name": "Carmen Lascoiu", "occupation": "studenta @ Universitatea Națională de Arte Teatrale 'I. L. Caragiale' București"}
     ];
     var robots = [
