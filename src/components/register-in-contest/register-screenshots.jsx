@@ -22,15 +22,24 @@ export default React.createClass({
         Authorization: this.props.access_token
       },
       add: (e, data) => {
+        this.setProgressBar(0);
         data.submit();
       },
       done: () => {
         this.props.onSubmit();
       },
+      progressall: (e, data) => {
+        let progress = parseInt(data.loaded / data.total * 100, 10);
+        this.setProgressBar(progress);
+      },
       error: () => {
         window.alert("eroare"); // eslint-disable-line
       }
     });
+  },
+
+  setProgressBar(value) {
+    $(this.refs.progressBar.getDOMNode()).css("width", value+"%");
   },
 
   render() {
@@ -52,6 +61,11 @@ export default React.createClass({
                name="screenshots[]"
                data-url={url} />
       </span>
+      <hr />
+      <div id="progress" className="progress">
+          <div className="progress-bar progress-bar-success"
+               ref="progressBar" />
+      </div>
     </div>;
   }
 });
