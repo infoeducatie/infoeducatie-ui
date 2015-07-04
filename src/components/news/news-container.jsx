@@ -15,7 +15,7 @@ export default React.createClass({
 
   getInitialState() {
     return {
-      currentNewsPage: 1,
+      currentPage: 1,
       newsPerPage: 2,
       canShowNext: false,
       canShowPrevious: false,
@@ -51,32 +51,32 @@ export default React.createClass({
   },
 
   canShowNextPage() {
-    return ((this.state.currentNewsPage + 1) * this.state.newsPerPage) <
+    return ((this.state.currentPage + 1) * this.state.newsPerPage) <
             this.state.news.length;
   },
 
   canShowPreviousPage() {
-    return this.state.currentNewsPage - 1 > 1;
+    return this.state.currentPage - 1 > 1;
   },
 
   showNextNewsPage() {
     this.setState({
-      currentNewsPage: this.state.currentNewsPage + 1,
+      currentPage: this.state.currentPage + 1,
       canShowNext: this.canShowNextPage(),
-      canShowPrevious: this.canShowPreviousPage()
+      canShowPrevious: true
     });
   },
 
   showPreviousNewsPage() {
     this.setState({
-      currentNewsPage: this.state.currentNewsPage - 1,
+      currentPage: this.state.currentPage - 1,
       canShowPrevious: this.canShowPreviousPage(),
-      canShowNext: this.canShowNextPage()
+      canShowNext: true
     });
   },
 
   renderNews() {
-    let firstArticle = (this.state.currentNewsPage - 1) * this.state.newsPerPage;
+    let firstArticle = (this.state.currentPage - 1) * this.state.newsPerPage;
     let news = _.clone(this.state.news).splice(firstArticle, this.state.newsPerPage);
 
     return news.map(function(article) {
