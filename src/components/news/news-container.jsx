@@ -99,7 +99,7 @@ export default React.createClass({
     return news.map(function(article) {
       return <Article body={article.body}
                       title={article.title}
-                      short_description={article.short_description}
+                      short={article.short}
                       created_at={article.created_at} />;
     });
   },
