@@ -37,9 +37,15 @@ export default React.createClass({
       return !article.pinned;
     });
 
+    let pinned = _.difference(data, news)
+    if (!pinned.length) {
+      pinned = news.slice(0, 1);
+      news = news.slice(1);
+    }
+
     this.setState({
       news: news,
-      pinned: _.difference(data, news)[0],
+      pinned: pinned[0],
       canShowNext: news.length > this.state.newsPerPage
     });
   },
@@ -115,7 +121,7 @@ export default React.createClass({
     return <Row className="pinned-news">
       <Article body={this.state.pinned.body}
                title={this.state.pinned.title}
-               short_description={this.state.pinned.short_description}
+               short={this.state.pinned.short}
                created_at={this.state.pinned.created_at} />
     </Row>;
   },

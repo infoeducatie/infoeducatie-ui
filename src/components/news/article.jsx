@@ -32,8 +32,8 @@ export default React.createClass({
     let date = new Date(this.props.created_at).toLocaleDateString();
 
     let read_more = null;
-    if (this.props.body) {
-      read_more = <span><br /><a className="read-more"
+    if (this.props.body !== "") {
+      read_more = <span>...<br /><a className="read-more"
                      onClick={this.openModal}>
                     Citește mai multe...
                   </a></span>;
@@ -44,7 +44,8 @@ export default React.createClass({
       <Row>
         <p className="date">{date}</p>
         <p className="title">{this.props.title}</p>
-        <p className="message">{this.props.short} {read_more}</p>
+        <p className="message">
+          {this.props.short} {read_more}</p>
       </Row>
     </div>;
   },
