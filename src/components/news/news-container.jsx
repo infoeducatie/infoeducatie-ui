@@ -97,6 +97,33 @@ export default React.createClass({
     });
   },
 
+  renderPreviousPage() {
+    let previousPageController = null;
+    if (this.state.canShowPrevious) {
+      previousPageController = <div className="pagination-icon"
+                                    onClick={this.showPreviousNewsPage}>
+                                 <Glyphicon glyph="chevron-left" />
+                                 &nbsp;anterioare
+                               </div>;
+    }
+
+    return <Col md={4} mdOffset={2}>{previousPageController}</Col>;
+  },
+
+  renderNextPage() {
+    let nextPageController = null;
+    if (this.state.canShowNext) {
+      nextPageController = <div className="pagination-icon"
+                                onClick={this.showNextNewsPage}>
+                             următoare &nbsp;
+                             <Glyphicon glyph="chevron-right" />
+                           </div>;
+    }
+
+    return <Col md={4}>{nextPageController}</Col>;
+  },
+
+
   render() {
     return <Grid className="news-section">
       <Row>
@@ -117,22 +144,8 @@ export default React.createClass({
             {this.renderNews()}
             <Row className="xsmall-spacing" />
             <Row>
-              <Col md={4} mdOffset={2}>
-                {this.state.canShowPrevious ?
-                  <div className="pagination-icon"
-                     onClick={this.showPreviousNewsPage}>
-                  <Glyphicon glyph="chevron-left" />
-                  &nbsp;anterioare
-                </div> : null}
-              </Col>
-              <Col md={4}>
-                {this.state.canShowNext ?
-                  <div className="pagination-icon"
-                     onClick={this.showNextNewsPage}>
-                  următoare &nbsp;
-                  <Glyphicon glyph="chevron-right" />
-                </div> : null}
-              </Col>
+              {this.renderPreviousPage()}
+              {this.renderNextPage()}
             </Row>
           </Col>
       </Row>
