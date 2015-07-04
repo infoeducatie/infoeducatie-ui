@@ -33,10 +33,10 @@ export default React.createClass({
 
     let read_more = null;
     if (this.props.body) {
-      read_more = <a className="link link-secondary"
+      read_more = <span><br /><a className="read-more"
                      onClick={this.openModal}>
-                    mai mult
-                  </a>;
+                    Citește mai multe...
+                  </a></span>;
     }
 
     return <div>
@@ -44,7 +44,7 @@ export default React.createClass({
       <Row>
         <p className="date">{date}</p>
         <p className="title">{this.props.title}</p>
-        <p className="message">{this.props.short_description} {read_more}</p>
+        <p className="message">{this.props.short_description}{read_more}</p>
       </Row>
     </div>;
   },
