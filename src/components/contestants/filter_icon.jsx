@@ -16,8 +16,7 @@ export default React.createClass({
   render() {
     let parentClasses = ctx({
       "round-icon": true,
-      "inactive": (this.props.currentCategory !== this.props.category &&
-                   this.props.currentCategory !== "all")
+      "inactive": (this.props.currentCategory !== this.props.category)
     });
     let childClasses = ctx("section-icon", this.props.category);
 
