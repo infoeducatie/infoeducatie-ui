@@ -16,8 +16,8 @@ export default React.createClass({
   displayName: "RegisterScreenshots",
 
   componentDidMount() {
-    $('#fileupload').fileupload({
-      dataType: 'json',
+    $(this.refs.fileupload.getDOMNode()).fileupload({
+      dataType: "json",
       headers: {
         Authorization: this.props.access_token
       },
@@ -46,9 +46,8 @@ export default React.createClass({
         : null
       }
       <span className="btn btn-success fileinput-button">
-        <Glyphicon glyph="upload" />
-        <span>&nbsp;Alege o imagine</span>
-        <input id="fileupload"
+        <span><Glyphicon glyph="upload" /> Alege o imagine</span>
+        <input ref="fileupload"
                type="file"
                name="screenshots[]"
                data-url={url} />
