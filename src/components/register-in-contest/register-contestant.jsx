@@ -22,7 +22,7 @@ export default React.createClass({
         address: "",
         city: "",
         county: "",
-        country: "",
+        country: "România",
         zip_code: "",
 
         sex: "1",
@@ -36,7 +36,7 @@ export default React.createClass({
         grade: "5",
         school_county: "",
         school_city: "",
-        school_country: "",
+        school_country: "România",
 
         mentoring_teacher_first_name: "",
         mentoring_teacher_last_name: "",
