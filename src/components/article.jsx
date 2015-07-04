@@ -29,6 +29,8 @@ export default React.createClass({
   },
 
   render() {
+    let date = new Date(this.props.created_at).toLocaleDateString();
+
     let read_more = null;
     if (this.props.body) {
       read_more = <a className="link link-secondary"
@@ -40,9 +42,9 @@ export default React.createClass({
     return <div>
       <Row className="xsmall-spacing" />
       <Row>
-        <p className="date">{this.props.date}</p>
+        <p className="date">{date}</p>
         <p className="title">{this.props.title}</p>
-        <p className="message">{this.props.small_description} {read_more}</p>
+        <p className="message">{this.props.short_description} {read_more}</p>
       </Row>
     </div>;
   },

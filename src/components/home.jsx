@@ -1,5 +1,6 @@
 "use strict";
 
+import $ from "jquery";
 import _ from "lodash";
 import React from "react";
 import {Link} from "react-router";
@@ -7,8 +8,6 @@ import {Grid, Row, Col, Glyphicon} from "react-bootstrap";
 
 import Header from "./header";
 import Article from "./article";
-
-import articleFixtures from "../fixtures/news";
 
 import "./home.less";
 import Google from "../../assets/img/sponsors/google.png";
@@ -28,44 +27,72 @@ export default React.createClass({
 
   getInitialState() {
     return {
+      hasError: false,
       currentNewsPage: 1,
       newsPerPage: 2,
-      canShowNext: true,
+      canShowNext: false,
       canShowPrevious: false,
-      news: articleFixtures
+      news: []
     };
+  },
+
+  componentDidMount() {
+    $.ajax({
+      method: "GET",
+      url: window.config.API_URL + "news.json",
+      success: this.onSuccess,
+      error: this.onError
+    });
+  },
+
+  onError() {
+    this.setState({
+      hasError: true
+    });
+  },
+
+  onSuccess(data) {
+    this.setState({
+      news: data
+    });
+  },
+
+  canShowNextPage() {
+    return ((this.state.currentNewsPage + 1) * this.state.newsPerPage) <
+            this.state.news.length;
+  },
+
+  canShowPreviousPage() {
+    return this.state.currentNewsPage - 1 > 1;
   },
 
   showNextNewsPage() {
     if (this.state.currentNewsPage * this.state.newsPerPage <
         this.state.news.length) {
-      let canShowNext = (this.state.currentNewsPage + 1) * this.state.newsPerPage <
-                        this.state.news.length;
       this.setState({
         currentNewsPage: this.state.currentNewsPage + 1,
-        canShowNext: canShowNext,
+        canShowNext: this.canShowNextpage(),
         canShowPrevious: true
       });
     } else {
       this.setState({
         canShowNext: false,
-        canShowPrevious: true
+        canShowPrevious: this.canShowPreviousPage()
       });
     }
   },
 
   showPreviousNewsPage() {
     if (this.state.currentNewsPage > 1) {
-      let canShowPrevious = this.state.currentNewsPage - 1 > 1;
       this.setState({
         currentNewsPage: this.state.currentNewsPage - 1,
-        canShowPrevious: canShowPrevious,
+        canShowPrevious: this.canShowPreviousPage(),
         canShowNext: true
       });
     } else {
       this.setState({
         canShowPrevious: false,
-        canShowNext: true
+        canShowNext: this.canShowNextPage()
       });
     }
   },
@@ -77,8 +104,8 @@ export default React.createClass({
     return news.map(function(article) {
       return <Article body={article.body}
                       title={article.title}
-                      small_description={article.small_description}
-                      date={article.date} />;
+                      short_description={article.short_description}
+                      created_at={article.created_at} />;
     });
   },
 
