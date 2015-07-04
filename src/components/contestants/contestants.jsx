@@ -92,9 +92,9 @@ export default React.createClass({
 
     if (this.state.currentCategory === project.category ||
         this.state.currentCategory === "all") {
-      row =  <tr key={project.id}
-                 className="contestant"
-                 onClick={this.openDiscourse.bind(this, project.discourse_url)}>
+      row = <tr key={project.id}
+                className="contestant"
+                onClick={this.openDiscourse.bind(this, project.discourse_url)}>
           <td className="county">{project.county}</td>
           <td className="title">{project.title}</td>
           <td className="authors">
