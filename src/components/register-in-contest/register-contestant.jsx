@@ -22,7 +22,7 @@ export default React.createClass({
         address: "",
         city: "",
         county: "",
-        country: "",
+        country: "România",
         zip_code: "",
 
         sex: "1",
