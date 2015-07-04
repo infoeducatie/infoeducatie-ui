@@ -11,19 +11,22 @@ import "./project_card.less";
 export default React.createClass({
   displayName: "ProjectCard",
 
+  openDiscourse(discourse_url) {
+    window.open(discourse_url, "_blank");
+  },
+
   render() {
     let projectCategoryIconClasses = ctx(
         "project-category-icon", "section-icon", this.props.project.category);
 
-    return <div className="project-card">
+    return <div className="project-card"
+                onClick={this.openDiscourse.bind(this, this.props.project.discourse_url)}>
       <div className="participant-container">
         <Row className="xsmall-spacing" />
         <Row className="project-title">
           <Col xs={12}>
             <h4>
-              <a href={this.props.project.discourse_url} target="_blank">
                 {this.props.project.title}
-              </a>
             </h4>
           </Col>
         </Row>
