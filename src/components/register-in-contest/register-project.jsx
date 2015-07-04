@@ -46,7 +46,7 @@ export default React.createClass({
                             onChange={this.onOpenSourceChange}>
           <option value="true">Da</option>
           <option value="false">Nu</option>
-        </Input>
+        </Input>;
     }
     return openSource;
   },
