@@ -60,7 +60,7 @@ export default React.createClass({
         valueLink={this.deepLinkState(["contestant", "address"])}
         required />
       <Input type="select"
-             label="Gen"
+             label="Gen *"
              valueLink={this.deepLinkState(["contestant", "sex"])}>
         <option value="1">Masculin</option>
         <option value="2">Feminin</option>
@@ -152,42 +152,42 @@ export default React.createClass({
         required />
       <Input
         type="date"
-        label="Data Nașterii *"
+        label="Data nașterii *"
         valueLink={this.deepLinkState(["contestant", "date_of_birth"])}
         required />
       <Input
         type="text"
         placeholder="Ion"
-        label="Prenumele Profesorului Îndrumător *"
+        label="Prenumele profesorului îndrumător *"
         valueLink={this.deepLinkState(["contestant", "mentoring_teacher_first_name"])}
         required />
       <Input
         type="text"
         placeholder="Popescu"
-        label="Numele Profesorului Îndrumător *"
+        label="Numele profesorului îndrumător *"
         valueLink={this.deepLinkState(["contestant", "mentoring_teacher_last_name"])}
         required />
       <Input
         type="text"
         placeholder="Maria"
-        label="Prenumele Profesorului Însoțitor *"
+        label="Prenumele profesorului însoțitor *"
         valueLink={this.deepLinkState(["contestant", "accompanying_teacher_first_name"])}
         required />
       <Input
         type="text"
         placeholder="Popescu"
-        label="Numele Profesorului Însoțitor *"
+        label="Numele profesorului însoțitor *"
         valueLink={this.deepLinkState(["contestant", "accompanying_teacher_last_name"])}
         required />
       <Input type="select"
-             label="Te-ai calificat la faza județeană?"
+             label="Te-ai calificat la faza județeană? *"
              value={this.state.officialParticipant}
              onChange={this.onOfficialParticipantChange}>
         <option value="true">Da</option>
         <option value="false">Nu</option>
       </Input>
       <Input type="select"
-             label="Vei fi prezent în tabără?"
+             label="Vei fi prezent în tabără? *"
              value={this.state.presentInCamp}
              onChange={this.onPresentInCampChange}>
         <option value="true">Da</option>
@@ -195,7 +195,7 @@ export default React.createClass({
       </Input>
       { this.state.presentInCamp === "true" && this.state.officialParticipant === "true" ?
           <Input type="select"
-                 label="Vei participa pe un loc gratuit?"
+                 label="Vei participa pe un loc gratuit? *"
                  value={this.state.payingCampAcommodation}
                  onChange={this.onPayingCampAcommodation}>
             <option value="false">Da, locul gratuit aferent proiectului.</option>
