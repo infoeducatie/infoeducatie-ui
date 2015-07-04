@@ -32,7 +32,7 @@ export default React.createClass({
       newsPerPage: 2,
       canShowNext: true,
       canShowPrevious: false,
-      news: articlesFixtures
+      news: articleFixtures
     };
   },
 
