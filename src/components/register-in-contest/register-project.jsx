@@ -43,7 +43,7 @@ export default React.createClass({
         openSource = <Input type="select"
                             label="Ești de acord ca proiectul să fie public (open-source) ? *"
                             value={this.state.project.open_source}
-                            onChange={this.onOpenSourceChange}>
+                            valueLink={this.deepLinkState(["project", "open_source"])>
           <option value="true">Da</option>
           <option value="false">Nu</option>
         </Input>;
@@ -58,11 +58,11 @@ export default React.createClass({
         wantsOpenSource = <Input type="url"
                                  placeholder="http://..."
                                  valueLink={this.deepLinkState(["project", "source_url"])}
-                                 label="Adresa surselor și a documentației *"
+                                 label="Link către surse și documentație"
                                  required />;
       } else {
         wantsOpenSource = <Input type="input"
-                                 placeholder="Exemple de biblioteci private..."
+                                 placeholder="Îmi este mult prea frică că îmi va fura un om rău codul"
                                  valueLink={this.deepLinkState(["project", "closed_source_reason"])}
                                  label="Care este motivul pentru care dorești ca proiectul tău să nu fie public (open-source) ? *"
                                  required />;
@@ -115,13 +115,6 @@ export default React.createClass({
                    disabled={this.state.waitingForServerResponse} />
       {this.renderErrors()}
     </form>;
-  },
-
-  onOpenSourceChange(event) {
-    let newProjectState = _.clone(this.state.project);
-    newProjectState.open_source = event.currentTarget.value;
-
-    this.setState({project: newProjectState});
   },
 
   getFormData() {
