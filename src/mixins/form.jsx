@@ -8,8 +8,7 @@ import React from "react";
 export default {
   getDefaultProps() {
     return {
-      method: "POST",
-      extraAjaxParams: {}
+      method: "POST"
     };
   },
 
@@ -59,7 +58,7 @@ export default {
       waitingForServerResponse: true
     });
 
-    $.ajax(_.merge(this.props.extraAjaxParams, {
+    $.ajax({
       method: this.props.method,
       url: window.config.API_URL + this.props.formEndpoint,
       headers: {
@@ -68,7 +67,7 @@ export default {
       data: this.getFormData(),
       success: this.onRequestSuccess,
       error: this.onRequestError
-    }));
+    });
   },
 
   onRequestSuccess(data) {
