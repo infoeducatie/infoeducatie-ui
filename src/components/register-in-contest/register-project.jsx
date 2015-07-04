@@ -28,10 +28,46 @@ export default React.createClass({
         technical_description: "",
         system_requirements: "",
         source_url: "",
-        homepage: ""
+        homepage: "",
+        open_source: "true",
+        closed_source_reason: ""
         /*eslint-enable */
       }
     };
+  },
+
+  renderOpenSource() {
+    let openSource = null;
+    if (this.state.project.category !== "multimedia") {
+        openSource = <Input type="select"
+                            label="Ești de acord ca proiectul să fie public (open-source) ? *"
+                            valueLink={this.deepLinkState(["project", "open_source"])}>
+          <option value="true">Da</option>
+          <option value="false">Nu</option>
+        </Input>;
+    }
+    return openSource;
+  },
+
+  renderWantsOpenSource() {
+    let wantsOpenSource = null;
+    if (this.state.project.category !== "multimedia") {
+      if (this.state.project.open_source === "true") {
+        wantsOpenSource = <Input type="url"
+                                 placeholder="http://..."
+                                 valueLink={this.deepLinkState(["project", "source_url"])}
+                                 label="Link către surse și documentație"
+                                 required />;
+      } else {
+        wantsOpenSource = <Input type="input"
+                                 placeholder="Îmi este mult prea frică că îmi va fura un om rău codul"
+                                 valueLink={this.deepLinkState(["project", "closed_source_reason"])}
+                                 label="Care este motivul pentru care dorești ca proiectul tău să nu fie public (open-source) ? *"
+                                 required />;
+      }
+    }
+
+    return wantsOpenSource;
   },
 
   render() {
@@ -64,11 +100,8 @@ export default React.createClass({
              label="Cerințe de sistem *"
              valueLink={this.deepLinkState(["project", "system_requirements"])}
              required />
-      <Input type="url"
-             placeholder="http://..."
-             valueLink={this.deepLinkState(["project", "source_url"])}
-             label="Adresa surselor și a documentației *"
-             required />
+      { this.renderOpenSource() }
+      { this.renderWantsOpenSource() }
       { this.state.project.category === "web" ?
         <Input type="url"
                placeholder="http://..."
