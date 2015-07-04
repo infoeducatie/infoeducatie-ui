@@ -20,7 +20,8 @@ export default React.createClass({
       newsPerPage: 2,
       canShowNext: false,
       canShowPrevious: false,
-      news: []
+      news: [],
+      pinned: {}
     };
   },
 
@@ -40,8 +41,13 @@ export default React.createClass({
   },
 
   onSuccess(data) {
+    let news = data.filter((article) => {
+      return !article.pinned;
+    });
+
     this.setState({
-      news: data
+      news: news,
+      pinned: _.difference(data, news)[0]
     });
   },
 
@@ -123,6 +129,14 @@ export default React.createClass({
     return <Col md={4}>{nextPageController}</Col>;
   },
 
+  renderPinnedArticle() {
+    return <Row className="pinned-news">
+      <Article body={this.state.pinned.body}
+               title={this.state.pinned.title}
+               short_description={this.state.pinned.short_description}
+               created_at={this.state.pinned.created_at} />
+    </Row>;
+  },
 
   render() {
     return <Grid className="news-section">
@@ -130,15 +144,7 @@ export default React.createClass({
           <Col md={5} className="left">
               <Row className="xsmall-spacing" />
               <h6 id="news">Știri</h6>
-              <Row className="xsmall-spacing" />
-
-              <Row className="pinned-news">
-                <p className="date">28 iunie 2015</p>
-                <p className="title">Anul acesta InfoEducație aaaa</p>
-
-                <p className="message">Vă invităm să ne oferiți feedback
-                pe <a href="http://community.infoeducatie.ro/t/noul-website-infoeducatie-2015/3646">forum</a>.</p>
-              </Row>
+              {this.renderPinnedArticle()}
           </Col>
           <Col md={5} mdOffset={1} className="right">
             {this.renderNews()}
