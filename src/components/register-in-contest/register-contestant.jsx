@@ -93,6 +93,8 @@ export default React.createClass({
         type="text"
         placeholder="1234567890123"
         label="CNP *"
+        pattern=".{14,14}"
+        title="CNP-ul trebuie să conțină doar 14 caractere numerice"
         valueLink={this.deepLinkState(["contestant", "cnp"])}
         required />
       <Input
