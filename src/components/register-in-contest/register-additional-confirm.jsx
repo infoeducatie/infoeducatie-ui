@@ -1,6 +1,5 @@
 "use strict";
 
-import DeepLinkedStateMixin from "react-deep-link-state";
 import React from "react";
 import _ from "lodash";
 import { ButtonInput } from "react-bootstrap";
