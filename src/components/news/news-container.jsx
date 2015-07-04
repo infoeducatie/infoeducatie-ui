@@ -142,12 +142,12 @@ export default React.createClass({
   render() {
     return <Grid className="news-section">
       <Row>
-          <Col md={5} className="left">
+          <Col xsOffset={1} xs={10} md={5} className="left">
               <Row className="xsmall-spacing" />
               <h6 id="news">Știri</h6>
               {this.renderPinnedArticle()}
           </Col>
-          <Col md={5} mdOffset={1} className="right">
+          <Col xsOffset={1} xs={10} md={5} mdOffset={1} className="right">
             {this.renderNews()}
             <Row className="xsmall-spacing" />
             <Row>
