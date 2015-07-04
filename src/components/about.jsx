@@ -56,14 +56,14 @@ export default React.createClass({
 
                 <div className="category blue">
                   <div className="round-icon">
-                    <span className="section-icon robots" />
+                    <span className="section-icon roboti" />
                   </div>
                   <div className="description">roboți</div>
                 </div>
 
                 <div className="category green">
                   <div className="round-icon">
-                    <span className="section-icon media" />
+                    <span className="section-icon multimedia" />
                   </div>
                   <div className="description">multimedia</div>
                 </div>
@@ -77,7 +77,7 @@ export default React.createClass({
 
                 <div className="category black">
                   <div className="round-icon">
-                    <span className="section-icon utility" />
+                    <span className="section-icon utilitar" />
                   </div>
                   <div className="description">utilitar</div>
                 </div>
