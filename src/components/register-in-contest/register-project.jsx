@@ -35,15 +35,20 @@ export default React.createClass({
   },
 
   render() {
+    let projectAddressLabel = "Adresa lucrării";
+    if (this.state.project.category === "web") {
+      projectAddressLabel += " *";
+    }
+
     return <form onSubmit={this.onFormSubmit}>
       <Input
         type="text"
         placeholder="Catalog Școlar"
-        label="Titlul Lucrării"
+        label="Titlul Lucrării *"
         valueLink={this.deepLinkState(["project", "title"])}
         required />
       <Input type="select"
-             label="Categorie"
+             label="Categorie *"
              valueLink={this.deepLinkState(["project", "category"])}
              required>
         <option value="educational">Software Educațional</option>
@@ -53,25 +58,25 @@ export default React.createClass({
         <option value="multimedia">Multimedia</option>
       </Input>
       <Input type="textarea"
-             label="Descriere"
+             label="Descriere *"
              valueLink={this.deepLinkState(["project", "description"])}
              required />
       <Input type="textarea"
-             label="Descriere Tehnică"
+             label="Descriere Tehnică *"
              valueLink={this.deepLinkState(["project", "technical_description"])}
              required />
       <Input type="textarea"
-             label="Cerințe de sistem"
+             label="Cerințe de sistem *"
              valueLink={this.deepLinkState(["project", "system_requirements"])}
              required />
       <Input type="url"
              placeholder="http://..."
              valueLink={this.deepLinkState(["project", "source_url"])}
-             label="Adresa surselor și a documentației"
+             label="Adresa surselor și a documentației *"
              required />
       <Input type="url"
              placeholder="http://..."
-             label="Adresa lucrării"
+             label={projectAddressLabel}
              valueLink={this.deepLinkState(["project", "homepage"])}
              required={this.state.project.category === "web"} />
       <ButtonInput type="submit"
