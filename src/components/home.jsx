@@ -6,7 +6,9 @@ import {Link} from "react-router";
 import {Grid, Row, Col, Glyphicon} from "react-bootstrap";
 
 import Header from "./header";
-import News from "./news";
+import Article from "./article";
+
+import articleFixtures from "../fixtures/news";
 
 import "./home.less";
 import Google from "../../assets/img/sponsors/google.png";
@@ -20,6 +22,7 @@ import TotalSoft from "../../assets/img/sponsors/totalsoft.gif";
 import Upir from "../../assets/img/sponsors/upir.png";
 import MEN from "../../assets/img/sponsors/edu.jpg";
 
+
 export default React.createClass({
   displayName: "Home",
 
@@ -29,71 +32,11 @@ export default React.createClass({
       newsPerPage: 2,
       canShowNext: true,
       canShowPrevious: false,
-      news: [
-        {
-          "title": "Anul acesta InfoEducație aaaa",
-          "small_description": `Lista cu prezentările online programate poate fi
-                                gasită pe pagina de calendar. Inregistrarile
-                                sunt disponibile pe YouTube.`,
-          "body": `Lista cu prezentările online programate poate fi gasită pe
-                   pagina de calendar. Inregistrarile sunt disponibile pe
-                   YouTube. La momentul respectiv părea o joacă, acum infoarena
-                   este o organizație cu o activitate foarte solidă și cu un
-                   impact mare în rândul elevilor pasionați de informatică.`,
-          "date": "28 iunie 2015"
-        },
-        {
-          "title": "Anul acesta InfoEducație aaaa",
-          "small_description": `Lista cu prezentările online programate poate fi
-                                gasită pe pagina de calendar. Inregistrarile
-                                sunt disponibile pe YouTube.`,
-          "body": null,
-          "date": "04 mai 2015"
-        },
-        {
-          "title": "Anul acesta InfoEducație aaaa",
-          "small_description": `Lista cu prezentările online programate poate fi
-                                gasită pe pagina de calendar. Inregistrarile
-                                sunt disponibile pe YouTube.`,
-          "body": `Lista cu prezentările online programate poate fi gasită pe
-                   pagina de calendar. Inregistrarile sunt disponibile pe
-                   YouTube. La momentul respectiv părea o joacă, acum infoarena
-                   este o organizație cu o activitate foarte solidă și cu un
-                   impact mare în rândul elevilor pasionați de informatică.`,
-          "date": "28 aprilie 2015"
-        },
-        {
-          "title": "Merge paginarea",
-          "small_description": `Deadline-ul de înscriere pentru InfoEducație
-                                Online a fost prelungit până marți, 21
-                                aprilie. Sursele trebuie trimise până joi, 23
-                                aprilie, via email către juriu (link github
-                                sau arhivă).`,
-          "body": `Lista cu prezentările online programate poate fi gasită pe
-                   pagina de calendar. Inregistrarile sunt disponibile pe
-                   YouTube. La momentul respectiv părea o joacă, acum infoarena
-                   este o organizație cu o activitate foarte solidă și cu un
-                   impact mare în rândul elevilor pasionați de informatică.`,
-          "date": "24 aprilie 2015"
-        },
-        {
-          "title": "Tot merge paginarea",
-          "small_description": `Lista cu prezentările online programate poate fi
-                                gasită pe pagina de calendar. Inregistrarile
-                                sunt disponibile pe YouTube.`,
-          "body": `Lista cu prezentările online programate poate fi gasită pe
-                   pagina de calendar. Inregistrarile sunt disponibile pe
-                   YouTube. La momentul respectiv părea o joacă, acum infoarena
-                   este o organizație cu o activitate foarte solidă și cu un
-                   impact mare în rândul elevilor pasionați de informatică.`,
-          "date": "28 februarie 2015"
-        }
-      ]
+      news: articlesFixtures
     };
   },
 
   showNextNewsPage() {
-
     if (this.state.currentNewsPage * this.state.newsPerPage <
         this.state.news.length) {
       let canShowNext = (this.state.currentNewsPage + 1) * this.state.newsPerPage <
@@ -128,14 +71,14 @@ export default React.createClass({
   },
 
   renderNews() {
-    let clone_news = _.clone(this.state.news);
-    let news = clone_news.splice((this.state.currentNewsPage - 1) * this.state.newsPerPage, this.state.newsPerPage);
+    let firstArticle = (this.state.currentNewsPage - 1) * this.state.newsPerPage;
+    let news = _.clone(this.state.news).splice(firstArticle, this.state.newsPerPage);
 
     return news.map(function(article) {
-      return <News body={article.body}
-                   title={article.title}
-                   small_description={article.small_description}
-                   date={article.date} />;
+      return <Article body={article.body}
+                      title={article.title}
+                      small_description={article.small_description}
+                      date={article.date} />;
     });
   },
 

@@ -31,7 +31,10 @@ export default React.createClass({
   render() {
     let read_more = null;
     if (this.props.body) {
-      read_more = <a className="link link-secondary" onClick={this.openModal}>mai mult</a>;
+      read_more = <a className="link link-secondary"
+                     onClick={this.openModal}>
+                    mai mult
+                  </a>;
     }
 
     return <div>
