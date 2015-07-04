@@ -21,7 +21,7 @@ export default React.createClass({
     return <form onSubmit={this.onFormSubmit}>
       <Input type="email"
              placeholder="coleg@infoeducatie.ro"
-             label="Adresa de email a coechipierului"
+             label="Adresa de email a coechipierului *"
              value={this.additionalEmail}
              onChange={this.onInputEmailChange}
              required />
