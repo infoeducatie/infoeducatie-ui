@@ -20,7 +20,7 @@ export default React.createClass({
       canShowNext: false,
       canShowPrevious: false,
       news: [],
-      pinned: {}
+      pinned: null
     };
   },
 
@@ -114,7 +114,7 @@ export default React.createClass({
   },
 
   renderPinnedArticle() {
-    if (this.state.pinned === {}) {
+    if (!this.state.pinned) {
       return null;
     }
 
