@@ -1,10 +1,13 @@
 "use strict";
 
+import $ from "jquery";
+import _ from "lodash";
 import React from "react";
 import {Link} from "react-router";
-import {Grid, Row, Col} from "react-bootstrap";
+import {Grid, Row, Col, Glyphicon} from "react-bootstrap";
 
 import Header from "./header";
+import NewsContainer from "./news/news-container";
 
 import "./home.less";
 import Google from "../../assets/img/sponsors/google.png";
@@ -86,35 +89,7 @@ export default React.createClass({
         </div>
 
         <div className="green-section-wrapper">
-            <Grid className="green-section">
-                <Row className="row">
-                    <Col md={5} className="left">
-                        <Row className="small-spacing" />
-                        <h6 id="news">Știri</h6>
-
-                        <Row className="small-spacing" />
-
-                        <p className="date">28 iunie 2015</p>
-                        <p className="title">Am lansat noul website
-                        InfoEducație.</p>
-
-                        <p className="message">Vă invităm să ne oferiți feedback
-                        pe <a href="http://community.infoeducatie.ro/t/noul-website-infoeducatie-2015/3646">forum</a>.</p>
-                    </Col>
-                    <Col md={5} mdOffset={1} className="right">
-                        <Row className="small-spacing" />
-                        <p className="date">28 iunie 2015</p>
-                        <p className="message">Înregistrările vor începe în
-                        câteva zile.</p>
-
-                        <Row className="big-spacing" />
-                        <p className="date">26 iunie 2015</p>
-                        <p className="message">Tabăra anul acesta va avea loc în
-                        perioada 2-8 august.</p>
-                    </Col>
-                </Row>
-                <Row className="small-spacing" />
-            </Grid>
+          <NewsContainer />
         </div>
 
         <div className="gray-section-wrapper">

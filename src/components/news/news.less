@@ -1,0 +1,41 @@
+@import "../../main";
+
+
+.news-section {
+
+  a {
+    color: @white;
+    cursor: pointer;
+    font-size: 0.8em;
+    font-style: italic;
+
+    &:hover {
+      color: @white;
+    }
+  }
+
+  .date {
+    color: @dark-green;
+    font-weight: normal;
+  }
+
+  .title {
+    font-size: 25px;
+    color: @dark-green;
+    font-weight: normal;
+  }
+
+  .pinned-news {
+    .title {
+      font-size: 35px;
+    }
+
+    .message {
+      font-size: @font-size-h4;
+    }
+  }
+
+  .pagination-icon {
+    cursor: pointer;
+  }
+}
