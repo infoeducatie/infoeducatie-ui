@@ -86,7 +86,7 @@ export default React.createClass({
       <Input
         type="text"
         placeholder="123456"
-        label="Cod Poștal *"
+        label="Cod poștal *"
         valueLink={this.deepLinkState(["contestant", "zip_code"])}
         required />
       <Input
@@ -110,7 +110,7 @@ export default React.createClass({
       <Input
         type="text"
         placeholder="0721234567"
-        label="Număr De Telefon *"
+        label="Număr de telefon *"
         valueLink={this.deepLinkState(["contestant", "phone_number"])}
         required />
       <Input
@@ -135,19 +135,19 @@ export default React.createClass({
       <Input
         type="text"
         placeholder="București"
-        label="Orașul Școlii *"
+        label="Orașul școlii *"
         valueLink={this.deepLinkState(["contestant", "school_city"])}
         required />
       <Input
         type="text"
         placeholder="București"
-        label="Județul Școlii *"
+        label="Județul școlii *"
         valueLink={this.deepLinkState(["contestant", "school_county"])}
         required />
       <Input
         type="text"
         placeholder="România"
-        label="Țara Școlii *"
+        label="Țara școlii *"
         valueLink={this.deepLinkState(["contestant", "school_country"])}
         required />
       <Input
