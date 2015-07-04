@@ -32,8 +32,7 @@ export default React.createClass({
         open_source: "true",
         closed_source_reason: ""
         /*eslint-enable */
-      },
-      wantsOpenSource: true
+      }
     };
   },
 
@@ -42,8 +41,7 @@ export default React.createClass({
     if (this.state.project.category !== "multimedia") {
         openSource = <Input type="select"
                             label="Ești de acord ca proiectul să fie public (open-source) ? *"
-                            value={this.state.project.open_source}
-                            valueLink={this.deepLinkState(["project", "open_source"])>
+                            valueLink={this.deepLinkState(["project", "open_source"])}>
           <option value="true">Da</option>
           <option value="false">Nu</option>
         </Input>;
