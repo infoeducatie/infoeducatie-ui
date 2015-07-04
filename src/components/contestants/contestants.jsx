@@ -222,6 +222,12 @@ export default React.createClass({
           <Col smOffset={2} sm={1} xs={2}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
+                        category="all" />
+            <p>Toate</p>
+          </Col>
+          <Col sm={1} xs={2}>
+            <FilterIcon currentCategory={this.state.currentCategory}
+                        toggleCategory={this.toggleCategory}
                         category="web" />
             <p>Web</p>
           </Col>
@@ -248,12 +254,6 @@ export default React.createClass({
                         toggleCategory={this.toggleCategory}
                         category="multimedia" />
             <p>Multimedia</p>
-          </Col>
-          <Col sm={1} xs={2}>
-            <FilterIcon currentCategory={this.state.currentCategory}
-                        toggleCategory={this.toggleCategory}
-                        category="all" />
-            <p>Resetează</p>
           </Col>
           <Col smOffset={2} sm={1}>
             <Glyphicon glyph="th-large"
