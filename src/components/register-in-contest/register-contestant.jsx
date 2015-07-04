@@ -68,7 +68,6 @@ export default React.createClass({
       <Input
         type="text"
         placeholder="Vrancea"
-        label="Județ"
         onChange={this.onCountyChange}
         label="Județ *"
         required />
