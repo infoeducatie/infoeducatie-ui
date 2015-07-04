@@ -47,7 +47,8 @@ export default React.createClass({
 
     this.setState({
       news: news,
-      pinned: _.difference(data, news)[0]
+      pinned: _.difference(data, news)[0],
+      canShowNext: news.length > this.state.newsPerPage
     });
   },
 
@@ -65,7 +66,7 @@ export default React.createClass({
         this.state.news.length) {
       this.setState({
         currentNewsPage: this.state.currentNewsPage + 1,
-        canShowNext: this.canShowNextpage(),
+        canShowNext: this.canShowNextPage(),
         canShowPrevious: true
       });
     } else {
