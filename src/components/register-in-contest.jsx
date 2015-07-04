@@ -2,12 +2,13 @@
 
 import $ from "jquery";
 import React from "react";
-import { Grid, Col, Row, PanelGroup, Panel } from "react-bootstrap";
+import { Grid, Col, Row, PanelGroup, Panel, ListGroup, ListGroupItem } from "react-bootstrap";
 
 import Header from "./header";
 import "./register-in-contest.less";
 import RegisterContestant from "./register-in-contest/register-contestant"
 import RegisterProject from "./register-in-contest/register-project"
+import RegisterScreenshots from "./register-in-contest/register-screenshots"
 import RegisterFinish from "./register-in-contest/register-finish"
 import RegisterAdditionalWrapper from "./register-in-contest/register-additional-wrapper"
 
@@ -35,7 +36,8 @@ export default React.createClass({
 
   getInitialState() {
     return {
-      activePanelKey: String(this.props.user.registration_step_number)
+      activePanelKey: String(this.props.user.registration_step_number),
+      hasErrored: false
     };
   },
 
@@ -79,19 +81,22 @@ export default React.createClass({
             <Panel header="Înregistrare Proiect"
                    eventKey="2"
                    bsStyle={this._getPanelStyle(2)}>
+              {this.renderError()}
               {this.renderFormOrMessage(this.renderProjectForm, 2)}
             </Panel>
 
-            <Panel header="Adăugare Capturi de Ecran"
+            <Panel header="Adăugare Capturi Ecran"
                    eventKey="3"
                    bsStyle={this._getPanelStyle(3)}>
-              {this.renderFormOrMessage(this.renderWIPStep, 3)}
+              {this.renderFormOrMessage(this.renderScreenshotsForm, 3)}
+              {this.renderError()}
             </Panel>
 
             <Panel header="Adăugare Coechipier"
                    eventKey="4"
                    bsStyle={this._getPanelStyle(4)}>
               {this.renderFormOrMessage(this.renderAdditonalForm, 4)}
+              {this.renderError()}
             </Panel>
 
             <Panel header="Finalizare"
@@ -101,6 +106,7 @@ export default React.createClass({
             </Panel>
             <Row className="small-spacing" />
             {this.renderRegisteredProjects()}
+            {this.props.user.registration_step_number === 6 ? this.renderError() : null}
           </PanelGroup>
         </Col>
       </Grid>
@@ -143,11 +149,13 @@ export default React.createClass({
     </div>;
   },
 
-  renderWIPStep() {
-    return <p>
-
-      Încă nu e gata...
-    </p>;
+  renderScreenshotsForm() {
+    let formEndpoint = `projects/${this.props.registration.pending_project.id}/screenshots`;
+    return <RegisterScreenshots access_token={this.props.user.access_token}
+                                onSubmit={this.props.refreshCurrent}
+                                formEndpoint={formEndpoint}
+                                screenshotsCount={this.props.registration.pending_project.screenshots_count}
+                                onSkipStep={this.onUpdateRegistrationStep} />;
   },
 
   renderProjectForm() {
@@ -199,9 +207,21 @@ export default React.createClass({
   renderSkipAdditionalContestant() {
     return <div>
       <p>Dacă nu dorești să mai înscrii un coechipier,&nbsp;
-      <a href="#" data-step='3' onClick={this.onUpdateRegistrationStep}>click aici
+      <a href="#" data-step='5' onClick={this.onUpdateRegistrationStep}>click aici
       </a>.</p>
     </div>;
+  },
+
+  renderError() {
+    if (!this.state.hasErrored) {
+      return "";
+    }
+
+    return <ListGroup>
+      <ListGroupItem bsStyle="danger">
+        A apărut o eroare la comunicarea cu serverul. Mai incercă o dată.
+      </ListGroupItem>
+    </ListGroup>;
   },
 
   onHandlePanelSelect(nextActivePanelKey) {
@@ -213,6 +233,10 @@ export default React.createClass({
   onUpdateRegistrationStep(event) {
     event.preventDefault();
     let step_number = parseInt(event.target.attributes["data-step"].value);
+
+    this.setState({
+      hasErrored: false
+    });
 
     $.ajax({
       method: "POST",
@@ -227,8 +251,9 @@ export default React.createClass({
   },
 
   showError() {
-    // TODO @palcu: make this in a better way
-    window.alert("Nu a mers"); // eslint-disable-line
+    this.setState({
+      hasErrored: true
+    });
   },
 
   _getPanelStyle(panelId) {
