@@ -28,7 +28,7 @@ export default React.createClass({
     $.ajax({
       method: "GET",
       url: window.config.API_URL + "news.json",
-      success: this.onSuccess,
+      success: this.onSuccess
     });
   },
 
@@ -37,7 +37,7 @@ export default React.createClass({
       return !article.pinned;
     });
 
-    let pinned = _.difference(data, news)
+    let pinned = _.difference(data, news);
     if (!pinned.length) {
       pinned = news.slice(0, 1);
       news = news.slice(1);
