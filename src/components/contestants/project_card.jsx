@@ -48,11 +48,6 @@ export default React.createClass({
               <Col xs={6}>
                 <p>{this.props.project.county}</p>
               </Col>
-              <Col xs={1} xsOffset={2}>
-                <span className="comments">
-                  {this.props.project.discourse_comments_count}
-                </span>
-              </Col>
             </Row>
             <Row className="xsmall-spacing" />
           </Col>
