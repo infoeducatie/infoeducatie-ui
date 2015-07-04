@@ -6,12 +6,22 @@ import { Row, Col, Grid } from "react-bootstrap";
 import Header from "./header";
 
 import "./about.less"
+import DefaultDocument from "../../assets/img/icons/doc.png";
 
 
 export default React.createClass({
   displayName: "GalaciucPage",
 
   render() {
+    var criteria = [
+      {"name": "Educațional", "link": "https://docs.google.com/document/d/10ygW8gpijQJE94CbMMNxhrt_ju3X-tMjPATf7WcjTW8/pub"},
+      {"name": "Multimedia", "link": "https://docs.google.com/document/d/12UY9ByKQt7CpBj11vwg1HPrsKOH-uTL9kFCEdxBgvAY/pub"},
+      {"name": "Mobile", "link": "https://docs.google.com/document/d/1jqwoAduZoHjnj01Q6eQE0DWNB-DeMQouLumkW753mUA/pub"},
+      {"name": "Roboți", "link": "https://docs.google.com/document/d/1n0yoqA3n9heBiYWgmeg-lfXYPvSMVMRhGZrHRYKhDVk/pub"},
+      {"name": "Utilitar", "link": "https://docs.google.com/document/d/19HTucZgQWY92nZ-NDoKRWlE63hipb_IkZVcMxHyOCdc/pub"},
+      {"name": "Web", "link": "https://docs.google.com/document/d/1ZgdZz_5JHJSZyxWnZWzP162NZ2H3CkBojyp5p6cKNDI/pub"}
+    ];
+
     return <div className="galaciuc">
       <div className="blue-section-wrapper">
         <Grid className="blue-section">
@@ -56,14 +66,14 @@ export default React.createClass({
 
                 <div className="category blue">
                   <div className="round-icon">
-                    <span className="section-icon robots" />
+                    <span className="section-icon roboti" />
                   </div>
                   <div className="description">roboți</div>
                 </div>
 
                 <div className="category green">
                   <div className="round-icon">
-                    <span className="section-icon media" />
+                    <span className="section-icon multimedia" />
                   </div>
                   <div className="description">multimedia</div>
                 </div>
@@ -77,7 +87,7 @@ export default React.createClass({
 
                 <div className="category black">
                   <div className="round-icon">
-                    <span className="section-icon utility" />
+                    <span className="section-icon utilitar" />
                   </div>
                   <div className="description">utilitar</div>
                 </div>
@@ -176,6 +186,27 @@ export default React.createClass({
           </Col>
         </Row>
       </Grid>
+      <div className="orange-section-wrapper">
+        <Grid className="orange-section">
+          <Row>
+            <Col className="block">
+              <Row className="jury-criteria-desc">
+                  <span className="pink-dash" />
+                    criterii de jurizare
+                  <span className="pink-dash" />
+              </Row>
+              <Row className="jury-criteria-documents">
+                {criteria.map(function(doc) {
+                  return <div className="jury-criteria">
+                    <div className="jury-criteria-txt">{doc.name}</div>
+                    <div className="jury-criteria-img"><a href={doc.link} target="_blank"><img src={DefaultDocument} alt={doc.link} /></a></div>
+                  </div>;
+                })}
+              </Row>
+            </Col>
+          </Row>
+        </Grid>
+      </div>
     </div>;
   }
 });
