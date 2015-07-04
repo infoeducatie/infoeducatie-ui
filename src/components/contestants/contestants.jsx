@@ -18,6 +18,8 @@ export default React.createClass({
   displayName: "Contestants",
 
   componentDidMount() {
+    this.props.refreshCurrent();
+
     $.ajax({
       method: "GET",
       url: window.config.API_URL + "projects.json",
