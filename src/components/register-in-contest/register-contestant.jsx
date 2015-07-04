@@ -53,12 +53,6 @@ export default React.createClass({
 
   render() {
     return <form onSubmit={this.onFormSubmit} className="RegisterContestant">
-      <Input
-        type="text"
-        placeholder="1 Infinite Loop"
-        label="Adresa"
-        valueLink={this.deepLinkState(["contestant", "address"])}
-        required />
       <Input type="select"
              label="Gen"
              valueLink={this.deepLinkState(["contestant", "sex"])}>
@@ -67,21 +61,27 @@ export default React.createClass({
       </Input>
       <Input
         type="text"
-        placeholder="Gălăciuc"
-        label="Oraș"
-        valueLink={this.deepLinkState(["contestant", "city"])}
-        required />
-      <Input
-        type="text"
-        placeholder="Vrancea"
-        label="Județ"
-        valueLink={this.deepLinkState(["contestant", "county"])}
+        placeholder="1 Infinite Loop"
+        label="Adresa"
+        valueLink={this.deepLinkState(["contestant", "address"])}
         required />
       <Input
         type="text"
         placeholder="România"
         label="Țara"
-        valueLink={this.deepLinkState(["contestant", "country"])}
+        onChange={this.onCountryChange}
+        required />
+      <Input
+        type="text"
+        placeholder="Vrancea"
+        label="Județ"
+        onChange={this.onCountyChange}
+        required />
+      <Input
+        type="text"
+        placeholder="Gălăciuc"
+        label="Oraș"
+        onChange={this.onCityChange}
         required />
       <Input
         type="text"
@@ -211,6 +211,30 @@ export default React.createClass({
                    disabled={this.state.waitingForServerResponse} />
       {this.renderErrors()}
     </form>;
+  },
+
+  onCityChange(event) {
+    let newContestantState = _.clone(this.state.contestant);
+    newContestantState.city = event.currentTarget.value;
+    newContestantState.school_city = event.currentTarget.value;
+
+    this.setState({contestant: newContestantState});
+  },
+
+  onCountyChange(event) {
+    let newContestantState = _.clone(this.state.contestant);
+    newContestantState.county = event.currentTarget.value;
+    newContestantState.school_county = event.currentTarget.value;
+
+    this.setState({contestant: newContestantState});
+  },
+
+  onCountryChange(event) {
+    let newContestantState = _.clone(this.state.contestant);
+    newContestantState.country = event.currentTarget.value;
+    newContestantState.school_country = event.currentTarget.value;
+
+    this.setState({contestant: newContestantState});
   },
 
   renderErrors() {
