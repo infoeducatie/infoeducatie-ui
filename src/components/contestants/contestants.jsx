@@ -95,16 +95,16 @@ export default React.createClass({
       row = <tr key={project.id}
                 className="contestant"
                 onClick={this.openDiscourse.bind(this, project.discourse_url)}>
-          <td className="county">{project.county}</td>
-          <td className="title">{project.title}</td>
-          <td className="authors">
-            <ul className="list-unstyled">
-              {project.contestants.map(function(contestant){
-                return <li className="author" key={contestant.id}>{contestant.name}</li>;
-              })}
-            </ul>
-          </td>
-          <td className="category">{project.category}</td>
+        <td className="county">{project.county}</td>
+        <td className="title">{project.title}</td>
+        <td className="authors">
+          <ul className="list-unstyled">
+            {project.contestants.map(function(contestant){
+              return <li className="author" key={contestant.id}>{contestant.name}</li>;
+            })}
+          </ul>
+        </td>
+        <td className="category">{project.category}</td>
       </tr>;
     }
 
