@@ -21,7 +21,6 @@ import TotalSoft from "../../assets/img/sponsors/totalsoft.gif";
 import Upir from "../../assets/img/sponsors/upir.png";
 import MEN from "../../assets/img/sponsors/edu.jpg";
 
-
 export default React.createClass({
   displayName: "Home",
 

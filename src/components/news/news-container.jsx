@@ -15,7 +15,6 @@ export default React.createClass({
 
   getInitialState() {
     return {
-      hasError: false,
       currentNewsPage: 1,
       newsPerPage: 2,
       canShowNext: false,
@@ -30,13 +29,6 @@ export default React.createClass({
       method: "GET",
       url: window.config.API_URL + "news.json",
       success: this.onSuccess,
-      error: this.onError
-    });
-  },
-
-  onError() {
-    this.setState({
-      hasError: true
     });
   },
 
@@ -62,34 +54,19 @@ export default React.createClass({
   },
 
   showNextNewsPage() {
-    if (this.state.currentNewsPage * this.state.newsPerPage <
-        this.state.news.length) {
-      this.setState({
-        currentNewsPage: this.state.currentNewsPage + 1,
-        canShowNext: this.canShowNextPage(),
-        canShowPrevious: true
-      });
-    } else {
-      this.setState({
-        canShowNext: false,
-        canShowPrevious: this.canShowPreviousPage()
-      });
-    }
+    this.setState({
+      currentNewsPage: this.state.currentNewsPage + 1,
+      canShowNext: this.canShowNextPage(),
+      canShowPrevious: this.canShowPreviousPage()
+    });
   },
 
   showPreviousNewsPage() {
-    if (this.state.currentNewsPage > 1) {
-      this.setState({
-        currentNewsPage: this.state.currentNewsPage - 1,
-        canShowPrevious: this.canShowPreviousPage(),
-        canShowNext: true
-      });
-    } else {
-      this.setState({
-        canShowPrevious: false,
-        canShowNext: this.canShowNextPage()
-      });
-    }
+    this.setState({
+      currentNewsPage: this.state.currentNewsPage - 1,
+      canShowPrevious: this.canShowPreviousPage(),
+      canShowNext: this.canShowNextPage()
+    });
   },
 
   renderNews() {
@@ -104,7 +81,7 @@ export default React.createClass({
     });
   },
 
-  renderPreviousPage() {
+  renderPreviousPageLink() {
     let previousPageController = null;
     if (this.state.canShowPrevious) {
       previousPageController = <div className="pagination-icon"
@@ -117,7 +94,7 @@ export default React.createClass({
     return <Col md={4} mdOffset={2}>{previousPageController}</Col>;
   },
 
-  renderNextPage() {
+  renderNextPageLink() {
     let nextPageController = null;
     if (this.state.canShowNext) {
       nextPageController = <div className="pagination-icon"
@@ -131,6 +108,10 @@ export default React.createClass({
   },
 
   renderPinnedArticle() {
+    if (this.state.pinned === {}) {
+      return null;
+    }
+
     return <Row className="pinned-news">
       <Article body={this.state.pinned.body}
                title={this.state.pinned.title}
@@ -151,8 +132,8 @@ export default React.createClass({
             {this.renderNews()}
             <Row className="xsmall-spacing" />
             <Row>
-              {this.renderPreviousPage()}
-              {this.renderNextPage()}
+              {this.renderPreviousPageLink()}
+              {this.renderNextPageLink()}
             </Row>
           </Col>
       </Row>
