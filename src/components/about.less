@@ -9,6 +9,57 @@
     .blue-section();
   }
 
+  .orange-section-wrapper{
+    background-color: @orange;
+  }
+
+  .orange-section{
+    min-height: 0px;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    .jury-criteria-documents {
+      min-height: 0px;
+      text-align: center;
+
+      .jury-criteria {
+        text-align: center;
+        margin: 0 20px 40px auto;
+        width: 150px;
+        letter-spacing: 2px;
+        color: @white;
+        display: inline-block;
+
+        .jury-criteria-txt {
+          margin-bottom: 5px;
+          text-transform: uppercase;
+        }
+        .jury-criteria-img {
+          filter: brightness(0);
+        }
+      }
+    }
+
+    .jury-criteria-desc {
+      width: 300px;
+      margin: 0 auto;
+      text-transform: uppercase;
+      min-height: 0px;
+      padding-top: 30px;
+      padding-bottom: 20px;
+      letter-spacing: 3px;
+
+      .pink-dash {
+        color: @pink;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+    }
+  }
+
+
+
   .white-section {
     li:before {
       content: "\2014";
