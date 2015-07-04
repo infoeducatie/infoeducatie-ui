@@ -35,11 +35,6 @@ export default React.createClass({
   },
 
   render() {
-    let projectAddressLabel = "Adresa lucrării";
-    if (this.state.project.category === "web") {
-      projectAddressLabel += " *";
-    }
-
     return <form onSubmit={this.onFormSubmit}>
       <Input
         type="text"
@@ -74,11 +69,12 @@ export default React.createClass({
              valueLink={this.deepLinkState(["project", "source_url"])}
              label="Adresa surselor și a documentației *"
              required />
-      <Input type="url"
-             placeholder="http://..."
-             label={projectAddressLabel}
-             valueLink={this.deepLinkState(["project", "homepage"])}
-             required={this.state.project.category === "web"} />
+      { this.state.project.category === "web" ?
+        <Input type="url"
+               placeholder="http://..."
+               label="Adresa lucrării *"
+               valueLink={this.deepLinkState(["project", "homepage"])}
+               required /> : null }
       <ButtonInput type="submit"
                    value="Pasul următor"
                    disabled={this.state.waitingForServerResponse} />
