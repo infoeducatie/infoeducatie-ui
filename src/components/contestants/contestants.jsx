@@ -77,6 +77,10 @@ export default React.createClass({
     });
   },
 
+  openDiscourse(discourse_url) {
+    window.open(discourse_url, "_blank");
+  },
+
   renderErrors() {
     if (this.state.hasError) {
       return <p>"Datele nu au putut fi luate de pe server."</p>;
@@ -88,19 +92,19 @@ export default React.createClass({
 
     if (this.state.currentCategory === project.category ||
         this.state.currentCategory === "all") {
-      row = <tr key={project.id}>
-        <td className="county">{project.county}</td>
-        <td className="title">
-          <a href={project.discourse_url} target="_blank">{project.title}</a>
-        </td>
-        <td className="authors">
-          <ul className="list-unstyled">
-            {project.contestants.map(function(contestant){
-              return <li className="author" key={contestant.id}>{contestant.name}</li>;
-            })}
-          </ul>
-        </td>
-        <td className="category">{project.category}</td>
+      row =  <tr key={project.id}
+                 className="contestant"
+                 onClick={this.openDiscourse.bind(this, project.discourse_url)}>
+          <td className="county">{project.county}</td>
+          <td className="title">{project.title}</td>
+          <td className="authors">
+            <ul className="list-unstyled">
+              {project.contestants.map(function(contestant){
+                return <li className="author" key={contestant.id}>{contestant.name}</li>;
+              })}
+            </ul>
+          </td>
+          <td className="category">{project.category}</td>
       </tr>;
     }
 
