@@ -44,7 +44,7 @@ export default React.createClass({
       <Row>
         <p className="date">{date}</p>
         <p className="title">{this.props.title}</p>
-        <p className="message">{this.props.short_description} {read_more}</p>
+        <p className="message">{this.props.short} {read_more}</p>
       </Row>
     </div>;
   },
@@ -59,9 +59,7 @@ export default React.createClass({
              bsStyle="primary"
              onRequestHide={this.closeModal}
              title={this.props.title}>
-        <div className="modal-body">
-          {this.props.body}
-        </div>
+        <div className="modal-body" dangerouslySetInnerHTML={{__html: this.props.body}} />
       </Modal>
     );
   }
