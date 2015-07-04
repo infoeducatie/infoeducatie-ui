@@ -56,11 +56,11 @@ export default React.createClass({
       <Input
         type="text"
         placeholder="1 Infinite Loop"
-        label="Adresa"
+        label="Adresa *"
         valueLink={this.deepLinkState(["contestant", "address"])}
         required />
       <Input type="select"
-             label="Gen"
+             label="Gen *"
              valueLink={this.deepLinkState(["contestant", "sex"])}>
         <option value="1">Masculin</option>
         <option value="2">Feminin</option>
@@ -68,59 +68,59 @@ export default React.createClass({
       <Input
         type="text"
         placeholder="Gălăciuc"
-        label="Oraș"
+        label="Oraș *"
         valueLink={this.deepLinkState(["contestant", "city"])}
         required />
       <Input
         type="text"
         placeholder="Vrancea"
-        label="Județ"
+        label="Județ *"
         valueLink={this.deepLinkState(["contestant", "county"])}
         required />
       <Input
         type="text"
         placeholder="România"
-        label="Țara"
+        label="Țara *"
         valueLink={this.deepLinkState(["contestant", "country"])}
         required />
       <Input
         type="text"
         placeholder="123456"
-        label="Cod Poștal"
+        label="Cod poștal *"
         valueLink={this.deepLinkState(["contestant", "zip_code"])}
         required />
       <Input
         type="text"
         placeholder="1234567890123"
-        label="CNP"
+        label="CNP *"
         valueLink={this.deepLinkState(["contestant", "cnp"])}
         required />
       <Input
         type="text"
         placeholder="AA"
-        label="Seria CI"
+        label="Seria CI *"
         valueLink={this.deepLinkState(["contestant", "id_card_type"])}
         required />
       <Input
         type="text"
         placeholder="123456"
-        label="Număr CI"
+        label="Număr CI *"
         valueLink={this.deepLinkState(["contestant", "id_card_number"])}
         required />
       <Input
         type="text"
         placeholder="0721234567"
-        label="Număr De Telefon"
+        label="Număr de telefon *"
         valueLink={this.deepLinkState(["contestant", "phone_number"])}
         required />
       <Input
         type="text"
         placeholder="Liceul Numărul 9"
-        label="Școala"
+        label="Școala *"
         valueLink={this.deepLinkState(["contestant", "school_name"])}
         required />
       <Input type="select"
-             label="Clasa"
+             label="Clasa *"
              valueLink={this.deepLinkState(["contestant", "grade"])}
              required>
         <option value="5">Clasa a V-a</option>
@@ -135,59 +135,59 @@ export default React.createClass({
       <Input
         type="text"
         placeholder="București"
-        label="Orașul Școlii"
+        label="Orașul școlii *"
         valueLink={this.deepLinkState(["contestant", "school_city"])}
         required />
       <Input
         type="text"
         placeholder="București"
-        label="Județul Școlii"
+        label="Județul școlii *"
         valueLink={this.deepLinkState(["contestant", "school_county"])}
         required />
       <Input
         type="text"
         placeholder="România"
-        label="Țara Școlii"
+        label="Țara școlii *"
         valueLink={this.deepLinkState(["contestant", "school_country"])}
         required />
       <Input
         type="date"
-        label="Data Nașterii"
+        label="Data nașterii *"
         valueLink={this.deepLinkState(["contestant", "date_of_birth"])}
         required />
       <Input
         type="text"
         placeholder="Ion"
-        label="Prenumele Profesorului Îndrumător"
+        label="Prenumele profesorului îndrumător *"
         valueLink={this.deepLinkState(["contestant", "mentoring_teacher_first_name"])}
         required />
       <Input
         type="text"
         placeholder="Popescu"
-        label="Numele Profesorului Îndrumător"
+        label="Numele profesorului îndrumător *"
         valueLink={this.deepLinkState(["contestant", "mentoring_teacher_last_name"])}
         required />
       <Input
         type="text"
         placeholder="Maria"
-        label="Prenumele Profesorului Însoțitor"
+        label="Prenumele profesorului însoțitor *"
         valueLink={this.deepLinkState(["contestant", "accompanying_teacher_first_name"])}
         required />
       <Input
         type="text"
         placeholder="Popescu"
-        label="Numele Profesorului Însoțitor"
+        label="Numele profesorului însoțitor *"
         valueLink={this.deepLinkState(["contestant", "accompanying_teacher_last_name"])}
         required />
       <Input type="select"
-             label="Te-ai calificat la faza județeană?"
+             label="Te-ai calificat la faza județeană? *"
              value={this.state.officialParticipant}
              onChange={this.onOfficialParticipantChange}>
         <option value="true">Da</option>
         <option value="false">Nu</option>
       </Input>
       <Input type="select"
-             label="Vei fi prezent în tabără?"
+             label="Vei fi prezent în tabără? *"
              value={this.state.presentInCamp}
              onChange={this.onPresentInCampChange}>
         <option value="true">Da</option>
@@ -195,7 +195,7 @@ export default React.createClass({
       </Input>
       { this.state.presentInCamp === "true" && this.state.officialParticipant === "true" ?
           <Input type="select"
-                 label="Vei participa pe un loc gratuit?"
+                 label="Vei participa pe un loc gratuit? *"
                  value={this.state.payingCampAcommodation}
                  onChange={this.onPayingCampAcommodation}>
             <option value="false">Da, locul gratuit aferent proiectului.</option>
