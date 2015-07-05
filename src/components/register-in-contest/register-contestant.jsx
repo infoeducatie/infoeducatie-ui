@@ -128,6 +128,8 @@ export default React.createClass({
       <Input
         type="text"
         placeholder="123456"
+        pattern="[0-9]{6,6}"
+        title="Codul poștal trebuie să conțină doar 6 caractere numerice"
         label="Cod poștal *"
         valueLink={this.deepLinkState(["contestant", "zip_code"])}
         required />
@@ -142,18 +144,25 @@ export default React.createClass({
       <Input
         type="text"
         placeholder="AA"
+        pattern="[a-zA-Z]{2,2}"
+        title="Seria CI trebuie să conțină doar 2 litere"
         label="Seria CI *"
+        className="uppercase"
         valueLink={this.deepLinkState(["contestant", "id_card_type"])}
         required />
       <Input
         type="text"
         placeholder="123456"
+        pattern="[0-9]{6,6}"
+        title="Numărul CI trebuie să conțină doar 6 caractere numerice"
         label="Număr CI *"
         valueLink={this.deepLinkState(["contestant", "id_card_number"])}
         required />
       <Input
         type="text"
         placeholder="0721234567"
+        pattern="[0-9]{10}"
+        title="Numărul de telefon trebuie să conțină doar 10 caractere numerice"
         label="Număr de telefon *"
         valueLink={this.deepLinkState(["contestant", "phone_number"])}
         required />
