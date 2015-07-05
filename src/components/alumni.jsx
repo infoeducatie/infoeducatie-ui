@@ -38,6 +38,9 @@ export default React.createClass({
   renderAlumnus(alumnus, index) {
     let colors = ["green", "orange", "black"];
     let className = ctx("alumnus-container", colors[index % colors.length]);
+    let editions = alumnus.editions.map(function(edition) {
+                                          return parseInt(edition.name);
+                   });
 
     return <Row key={index}>
       <Col mdOffset={2} md={8} smOffset={1} sm={10}>
@@ -60,8 +63,8 @@ export default React.createClass({
                   {alumnus.user.last_name}
                 </h5>
                 <p className="alumnus-editions">
-                  {alumnus.editions.map(function(edition) {
-                    return <span>{edition.name}</span>;
+                  {editions.sort().map(function(edition) {
+                    return <span>{edition}</span>;
                   })}
                 </p>
               </Col>
