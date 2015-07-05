@@ -73,15 +73,21 @@ export default React.createClass({
                 <Row className="statistics">
                     <Col md={2} mdOffset={3} xs={4}>
                         <p className="description">Participanți</p>
-                        <p className="value">250+</p>
+                        <p className="value">
+                          {this.props.current.stats.total_participants}
+                        </p>
                     </Col>
                     <Col md={2} xs={4}>
                         <p className="description">Proiecte</p>
-                        <p className="value">120+</p>
+                        <p className="value">
+                          {this.props.current.stats.total_projects}
+                        </p>
                     </Col>
                     <Col md={2} xs={4}>
                         <p className="description">Județe</p>
-                        <p className="value">35+</p>
+                        <p className="value">
+                          {this.props.current.stats.total_counties}
+                        </p>
                     </Col>
                 </Row>
                 <Row className="small-spacing" />
