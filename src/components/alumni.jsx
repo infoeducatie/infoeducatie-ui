@@ -59,6 +59,11 @@ export default React.createClass({
                   {alumnus.user.first_name} &nbsp;
                   {alumnus.user.last_name}
                 </h5>
+                <p className="alumnus-editions">
+                  {alumnus.editions.map(function(edition) {
+                    return <span>{edition.name}</span>
+                  })}
+                </p>
               </Col>
             </Row>
             <Row className="xsmall-spacing" />
