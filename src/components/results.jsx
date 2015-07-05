@@ -76,12 +76,11 @@ export default React.createClass({
           <Header isLoggedIn={this.props.isLoggedIn}
                   login={this.props.login}
                   logout={this.props.logout} />
-          <Row className="xxsmall-spacing" />
+          <Row className="xsmall-spacing" />
           <Row>
             <Col>
-              <h1>Rezultate InfoEducație <br />
-              Ediția 2014
-              </h1>
+              <h1>Rezultate InfoEducație</h1>
+              <h2>Ediția 2014</h2>
             </Col>
           </Row>
           <Row className="big-spacing" />

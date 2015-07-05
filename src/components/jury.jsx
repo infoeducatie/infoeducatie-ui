@@ -81,11 +81,11 @@ export default React.createClass({
             <Header isLoggedIn={this.props.isLoggedIn}
                     login={this.props.login}
                     logout={this.props.logout} />
+            <Row className="xsmall-spacing" />
             <Row>
               <Col xs={12}>
-                <h1>Juriul InfoEduca&#355;ie <br />
-                    Ediția {this.props.current.edition.year}
-                </h1>
+                <h1>Juriul InfoEduca&#355;ie </h1>
+                <h2>Ediția {this.props.current.edition.year}</h2>
               </Col>
             </Row>
           </Grid>
