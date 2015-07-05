@@ -8,12 +8,12 @@ import {Grid, Row, Col} from "react-bootstrap";
 
 import Header from "./header";
 
-import "./seminars.less";
+import "./talks.less";
 import DefaultAvatar from "../../assets/img/jury/default.png";
 
 
 export default React.createClass({
-  displayName: "Seminars",
+  displayName: "Talks",
 
   getInitialState() {
     return {
