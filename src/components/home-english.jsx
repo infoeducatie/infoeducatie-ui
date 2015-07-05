@@ -21,6 +21,7 @@ import TotalSoft from "../../assets/img/sponsors/totalsoft.gif";
 import Upir from "../../assets/img/sponsors/upir.png";
 import MEN from "../../assets/img/sponsors/edu.jpg";
 
+
 export default React.createClass({
   displayName: "Home",
 
@@ -39,22 +40,15 @@ export default React.createClass({
                 <Row>
                     <Col>
                         <h1>
-                            InfoEducație Edition&nbsp;
+                            InfoEducație &nbsp;
                             {this.props.current.edition.year}
                         </h1>
                         <h2>National Contest of Computer Science Projects</h2>
                     </Col>
                 </Row>
-                <Row>
-                    <Col>
-                        <h5 className="tagline">
-                            {this.props.current.edition.motto}
-                        </h5>
-                    </Col>
-                </Row>
                 <Row className="small-spacing" />
                 <Row>
-                    <Col md={4}>
+                    <Col md={4} mdOffset={4}>
                         <p className="right-button">
                             <Link to="about" className="link link-secondary">
                                 About contest
@@ -62,7 +56,7 @@ export default React.createClass({
                         </p>
                     </Col>
                 </Row>
-                <Row className="big-spacing" />
+                <Row className="small-spacing" />
                 <Row className="statistics">
                     <Col md={2} mdOffset={3} xs={4}>
                         <p className="description">Contestants</p>
@@ -87,10 +81,6 @@ export default React.createClass({
             </Grid>
         </div>
 
-        <div className="green-section-wrapper">
-          <NewsContainer />
-        </div>
-
         <div className="gray-section-wrapper">
             <Grid className="gray-section">
                 <Row className="small-spacing" />
@@ -99,7 +89,7 @@ export default React.createClass({
                         <h6>Alumnus</h6>
                         <Row className="small-spacing" />
                         <p className="quote">At that time it seems to be just
-                        a game, but now, infoarena is an mature organisation
+                        a game, but now, infoarena is an mature organization
                         with a strong impact between young people, pasionate
                         about computer science.
                         </p>

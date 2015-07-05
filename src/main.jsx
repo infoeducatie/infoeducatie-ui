@@ -24,6 +24,7 @@ import Contestants from "./components/contestants/contestants";
 import Talks from "./components/talks";
 
 import HomeEnglish from "./components/home-english";
+import AboutEnglish from "./components/about-english";
 
 
 let App = React.createClass({
@@ -32,6 +33,7 @@ let App = React.createClass({
 
   getDefaultProps() {
     return {
+      language: "ro",
       current: {
         edition: {
           motto: "Perseverează, mergi mai departe!",
@@ -128,6 +130,8 @@ let routes = (
     <Route handler={Kitchen} name="kitchen" />
     <Route handler={Contestants} name="contestants" />
     <Route handler={Talks} name="seminars" />
+    <Route handler={HomeEnglish} name="home-english" path="/en/home" />
+    <Route handler={AboutEnglish} name="about-english" path="/en/about" />
     <DefaultRoute handler={Home} />
   </Route>
 );
