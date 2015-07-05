@@ -88,11 +88,6 @@ export default React.createClass({
                 </h1>
               </Col>
             </Row>
-            <Row>
-              <Col xs={12}>
-                <h2>Membrii juriului pe categorii</h2>
-              </Col>
-            </Row>
           </Grid>
         </div>
 

@@ -182,11 +182,6 @@ export default React.createClass({
               <h1>Participanți InfoEducație Ediția 2015</h1>
             </Col>
           </Row>
-          <Row>
-            <Col>
-              <h2>Concurs Național de Informatică</h2>
-            </Col>
-          </Row>
           <Row className="big-spacing" />
         </Grid>
       </div>
