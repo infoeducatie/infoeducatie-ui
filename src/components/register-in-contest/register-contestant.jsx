@@ -21,7 +21,7 @@ export default React.createClass({
         /*eslint-disable */
         address: "",
         city: "",
-        county: "",
+        county: "Arad",
         country: "România",
         zip_code: "",
 
@@ -34,7 +34,7 @@ export default React.createClass({
         date_of_birth: "",
         school_name: "",
         grade: "5",
-        school_county: "",
+        school_county: "Arad",
         school_city: "",
         school_country: "România",
 
