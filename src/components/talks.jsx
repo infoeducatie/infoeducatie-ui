@@ -38,7 +38,7 @@ export default React.createClass({
   renderSeminar(talk, index) {
     let colors = ["green", "orange", "black"];
     let className = ctx("seminar-container", colors[index % colors.length]);
-    let authorImage = "http://www.gravatar.com/avatar/" + talk.user.email_md5 + "?s=150";
+    let authorImage = "http://www.gravatar.com/avatar/" + talk.user.email_md5 + "?s=150&d=mysteryman";
 
     return <Row key={index}>
       <Col mdOffset={2} md={8} smOffset={1} sm={10}>

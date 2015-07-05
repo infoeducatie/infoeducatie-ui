@@ -40,7 +40,7 @@ export default React.createClass({
     let editions = alumnus.editions.map(function(edition) {
                                           return parseInt(edition.name);
                    });
-    let alumnusImage = "http://www.gravatar.com/avatar/" + alumnus.user.email_md5 + "?s=150";
+    let alumnusImage = "http://www.gravatar.com/avatar/" + alumnus.user.email_md5 + "?s=150&d=mysteryman";
 
     return <Row key={index}>
       <Col mdOffset={2} md={8} smOffset={1} sm={10}>
