@@ -68,12 +68,11 @@ export default React.createClass({
     ];
 
     var criteria = [
-      {"name": "Educațional", "link": "https://docs.google.com/document/d/10ygW8gpijQJE94CbMMNxhrt_ju3X-tMjPATf7WcjTW8/pub"},
-      {"name": "Multimedia", "link": "https://docs.google.com/document/d/12UY9ByKQt7CpBj11vwg1HPrsKOH-uTL9kFCEdxBgvAY/pub"},
-      {"name": "Mobile", "link": "https://docs.google.com/document/d/1jqwoAduZoHjnj01Q6eQE0DWNB-DeMQouLumkW753mUA/pub"},
-      {"name": "Roboți", "link": "https://docs.google.com/document/d/1n0yoqA3n9heBiYWgmeg-lfXYPvSMVMRhGZrHRYKhDVk/pub"},
-      {"name": "Utilitar", "link": "https://docs.google.com/document/d/19HTucZgQWY92nZ-NDoKRWlE63hipb_IkZVcMxHyOCdc/pub"},
-      {"name": "Web", "link": "https://docs.google.com/document/d/1ZgdZz_5JHJSZyxWnZWzP162NZ2H3CkBojyp5p6cKNDI/pub"}
+      {"name": "Educațional", "link": "http://data.infoeducatie.ro/manual/educational.pdf"},
+      {"name": "Multimedia", "link": "http://data.infoeducatie.ro/manual/multimedia.pdf"},
+      {"name": "Roboți", "link": "http://data.infoeducatie.ro/manual/roboti.pdf"},
+      {"name": "Utilitar", "link": "http://data.infoeducatie.ro/manual/utilitar.pdf"},
+      {"name": "Web", "link": "http://data.infoeducatie.ro/manual/web.pdf"}
     ];
 
     return <div className="jury">
