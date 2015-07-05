@@ -222,7 +222,7 @@ export default React.createClass({
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="all" />
-            <p>Toate</p>
+            <p>Toți</p>
           </Col>
           <Col sm={1} xs={2}>
             <FilterIcon currentCategory={this.state.currentCategory}
