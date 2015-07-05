@@ -1,5 +1,6 @@
 "use strict";
 
+import $ from "jquery";
 import React from "react";
 
 import ctx from "classnames";
@@ -8,7 +9,7 @@ import {Grid, Row, Col} from "react-bootstrap";
 import Header from "./header";
 
 import "./seminars.less";
-import seminarFixtures from "../fixtures/seminars";
+import DefaultAvatar from "../../assets/img/jury/default.png";
 
 
 export default React.createClass({
@@ -16,14 +17,29 @@ export default React.createClass({
 
   getInitialState() {
     return {
-      seminars: seminarFixtures
+      talks: []
     };
   },
 
-  renderSeminar(seminar) {
-    let className = ctx("seminar-container", seminar.color);
+  componentDidMount() {
+    $.ajax({
+      method: "GET",
+      url: window.config.API_URL + "talks.json",
+      success: this.onSuccess
+    });
+  },
 
-    return <Row key={seminar.id}>
+  onSuccess(data) {
+    this.setState({
+      talks: data
+    });
+  },
+
+  renderSeminar(talk, index) {
+    let colors = ["green", "orange", "black"]
+    let className = ctx("seminar-container", colors[index % colors.length]);
+
+    return <Row key={index}>
       <Col mdOffset={2} md={8} smOffset={1} sm={10} xs={12}>
         <Row className="xsmall-spacing" />
         <Row>
@@ -33,15 +49,14 @@ export default React.createClass({
               <Col xs={3} xsOffset={1}>
                 <Row className="small-spacing" />
                 <div className="seminar-image">
-                  <img src={seminar.lector.avatar} />
+                  <img src={DefaultAvatar} />
                 </div>
               </Col>
               <Col xs={8} >
-                <h4 className="seminar-title">{seminar.title}</h4>
-                <p>{seminar.description}</p>
+                <h4 className="seminar-title">{talk.title}</h4>
+                <p>{talk.description}</p>
                 <Row className="xsmall-spacing" />
-                <h5 className="seminar-name">{seminar.lector.name}</h5>
-                <p className="seminar-position">{seminar.lector.position}</p>
+                <h5 className="seminar-name">{talk.author}</h5>
               </Col>
             </Row>
             <Row className="xsmall-spacing" />
@@ -73,7 +88,7 @@ export default React.createClass({
         </Grid>
       </div>
       <Grid>
-        {this.state.seminars.map(this.renderSeminar)}
+        {this.state.talks.map(this.renderSeminar)}
       </Grid>
    </div>;
   }
