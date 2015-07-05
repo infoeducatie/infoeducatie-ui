@@ -295,7 +295,7 @@ export default React.createClass({
       <ButtonInput type="submit"
                    value="Pasul următor"
                    disabled={this.state.waitingForServerResponse ||
-                             this.state.payingCampAcommodation} />
+                             this.state.payingCampAcommodation === "true"} />
       {this.renderErrors()}
     </form>;
   },
