@@ -68,10 +68,25 @@ let App = React.createClass({
                     refreshCurrent={this.getCurrent}
                     isLoggedIn={this.state.isLoggedIn}
                     language={this.state.language}
+                    changeLanguage={this.changeLanguage}
                     login={this.login}
                     logout={this.logout} />
       <Footer />
     </div>;
+  },
+
+  changeLanguage() {
+    if (this.state.language === "ro") {
+      this.setState({
+        language: "en"
+      });
+      this.transitionTo("/en/home");
+    } else {
+      this.setState({
+        language: "ro"
+      });
+      this.transitionTo("/");
+    }
   },
 
   login(user) {

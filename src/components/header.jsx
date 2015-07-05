@@ -25,27 +25,53 @@ export default React.createClass({
     </div>;
   },
 
-  renderRegisterLinks() {
+  renderNextLanguage() {
+    if (this.props.language === "en") {
+      return "ro";
+    } else {
+      return "en";
+    }
+  },
+
+  renderEnglishHeader() {
     return <Nav className="navbar-nav" eventKey={0} right ref="nav">
-      <NavItemLink to="/">Acas&#259;</NavItemLink>
-      <NavItemLink to="alumni">Alumni</NavItemLink>
-      <NavItemLink to="seminars">Seminarii</NavItemLink>
-      <NavItemLink to="contestants">Participanți</NavItemLink>
-      <NavItemLink to="jury">Juriu</NavItemLink>
-      <NavItem onClick={this.props.logout}>Delogare</NavItem>
-      <NavItemLink to="register-in-contest">Înscrie Proiect</NavItemLink>
+      <NavItemLink to="/">Home</NavItemLink>
+      <NavItemLink to="about-english">About</NavItemLink>
+      <NavItem onClick={this.props.changeLanguage}>{this.renderNextLanguage()}</NavItem>
     </Nav>;
   },
 
+  renderRegisterLinks() {
+    if (this.props.language === "ro") {
+      return <Nav className="navbar-nav" eventKey={0} right ref="nav">
+        <NavItemLink to="/">Acas&#259;</NavItemLink>
+        <NavItemLink to="alumni">Alumni</NavItemLink>
+        <NavItemLink to="seminars">Seminarii</NavItemLink>
+        <NavItemLink to="contestants">Participanți</NavItemLink>
+        <NavItemLink to="jury">Juriu</NavItemLink>
+        <NavItem onClick={this.props.logout}>Delogare</NavItem>
+        <NavItemLink to="register-in-contest">Înscrie Proiect</NavItemLink>
+        <NavItem onClick={this.props.changeLanguage}>{this.renderNextLanguage()}</NavItem>
+      </Nav>;
+    } else {
+      return this.renderEnglishHeader();
+    }
+  },
+
   renderUnregisterLinks() {
-    return <Nav className="navbar-nav" eventKey={0} right ref="nav">
-      <NavItemLink to="/">Acas&#259;</NavItemLink>
-      <NavItemLink to="alumni">Alumni</NavItemLink>
-      <NavItemLink to="seminars">Seminarii</NavItemLink>
-      <NavItemLink to="contestants">Participanți</NavItemLink>
-      <NavItemLink to="jury">Juriu</NavItemLink>
-      <NavItem><SignIn login={this.props.login} /></NavItem>
-      <NavItemLink to="register">Înregistrează-te</NavItemLink>
-    </Nav>;
+    if (this.props.language === "ro") {
+      return <Nav className="navbar-nav" eventKey={0} right ref="nav">
+        <NavItemLink to="/">Acas&#259;</NavItemLink>
+        <NavItemLink to="alumni">Alumni</NavItemLink>
+        <NavItemLink to="seminars">Seminarii</NavItemLink>
+        <NavItemLink to="contestants">Participanți</NavItemLink>
+        <NavItemLink to="jury">Juriu</NavItemLink>
+        <NavItem><SignIn login={this.props.login} /></NavItem>
+        <NavItemLink to="register">Înregistrează-te</NavItemLink>
+        <NavItem onClick={this.props.changeLanguage}>{this.renderNextLanguage()}</NavItem>
+      </Nav>;
+    } else {
+      return this.renderEnglishHeader();
+    }
   }
 });
