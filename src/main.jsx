@@ -33,7 +33,6 @@ let App = React.createClass({
 
   getDefaultProps() {
     return {
-      language: "ro",
       current: {
         edition: {
           motto: "Perseverează, mergi mai departe!",
@@ -52,7 +51,8 @@ let App = React.createClass({
     let accesToken = ReactCookie.load("accesToken");
     return {
       current: this.props.current,
-      isLoggedIn: accesToken ? true : false
+      isLoggedIn: accesToken ? true : false,
+      language: "ro",
     };
   },
 
@@ -67,6 +67,7 @@ let App = React.createClass({
                     registration={this.state.current.registration}
                     refreshCurrent={this.getCurrent}
                     isLoggedIn={this.state.isLoggedIn}
+                    language={this.state.language}
                     login={this.login}
                     logout={this.logout} />
       <Footer />

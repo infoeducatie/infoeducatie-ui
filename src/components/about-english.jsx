@@ -19,6 +19,7 @@ export default React.createClass({
           <Row>
             <Col xs={12}>
               <Header isLoggedIn={this.props.isLoggedIn}
+                      language={this.props.language}
                       login={this.props.login}
                       logout={this.props.logout} />
             </Col>
