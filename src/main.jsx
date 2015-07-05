@@ -25,6 +25,7 @@ import Talks from "./components/talks";
 
 import HomeEnglish from "./components/home-english";
 import AboutEnglish from "./components/about-english";
+import FooterEnglish from "./components/footer-english";
 
 
 let App = React.createClass({
@@ -71,7 +72,7 @@ let App = React.createClass({
                     changeLanguage={this.changeLanguage}
                     login={this.login}
                     logout={this.logout} />
-      <Footer />
+      {this.state.language === "ro" ? <Footer /> : <FooterEnglish />}
     </div>;
   },
 
