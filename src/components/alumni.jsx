@@ -1,5 +1,6 @@
 "use strict";
 
+import $ from "jquery";
 import React from "react";
 
 import ctx from "classnames";
