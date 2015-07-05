@@ -38,6 +38,7 @@ export default React.createClass({
   renderSeminar(talk, index) {
     let colors = ["green", "orange", "black"];
     let className = ctx("seminar-container", colors[index % colors.length]);
+    let authorImage = "http://www.gravatar.com/avatar/" + talk.user.email_md5 + "?s=150";
 
     return <Row key={index}>
       <Col mdOffset={2} md={8} smOffset={1} sm={10}>
@@ -47,9 +48,9 @@ export default React.createClass({
             <Row className="xsmall-spacing" />
             <Row>
               <Col xs={3} xsOffset={1}>
-                <Row className="small-spacing" />
+                <Row className="xsmall-spacing" />
                 <div className="seminar-image">
-                  <img src={DefaultAvatar} />
+                  <img src={authorImage} />
                 </div>
               </Col>
               <Col xs={8} >
