@@ -36,7 +36,7 @@ export default React.createClass({
   },
 
   renderSeminar(talk, index) {
-    let colors = ["green", "orange", "black"]
+    let colors = ["green", "orange", "black"];
     let className = ctx("seminar-container", colors[index % colors.length]);
 
     return <Row key={index}>
