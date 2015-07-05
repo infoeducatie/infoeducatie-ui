@@ -64,6 +64,7 @@ export default React.createClass({
         placeholder="România"
         label="Țara *"
         onChange={this.onCountryChange}
+        value={this.state.contestant.country}
         required />
       <Input type="select"
              onChange={this.onCountyChange}
