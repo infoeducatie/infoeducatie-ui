@@ -21,7 +21,7 @@ import Results from "./components/results";
 import Kitchen from "./components/kitchen";
 import Footer from "./components/footer";
 import Contestants from "./components/contestants/contestants";
-import Talks from "./components/seminars";
+import Talks from "./components/talks";
 
 
 let App = React.createClass({
