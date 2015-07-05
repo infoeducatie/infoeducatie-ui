@@ -53,13 +53,6 @@ export default React.createClass({
           </Row>
           <Row>
             <Col xs={12}>
-             <p className="privacy">
-                Protec&#355;ia datelor / Termene &amp; condi&#355;ii
-              </p>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={12}>
               <p className="copyright">
                 &copy; 2015 InfoEduca&#355;ie
               </p>
