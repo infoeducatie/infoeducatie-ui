@@ -61,7 +61,7 @@ export default React.createClass({
                 </h5>
                 <p className="alumnus-editions">
                   {alumnus.editions.map(function(edition) {
-                    return <span>{edition.name}</span>
+                    return <span>{edition.name}</span>;
                   })}
                 </p>
               </Col>
