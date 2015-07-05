@@ -40,7 +40,7 @@ export default React.createClass({
     let className = ctx("seminar-container", colors[index % colors.length]);
 
     return <Row key={index}>
-      <Col mdOffset={2} md={8} smOffset={1} sm={10} xs={12}>
+      <Col mdOffset={2} md={8} smOffset={1} sm={10}>
         <Row className="xsmall-spacing" />
         <Row>
           <Col className={className} xs={12}>

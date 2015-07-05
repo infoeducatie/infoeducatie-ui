@@ -41,10 +41,10 @@ export default React.createClass({
 
     return <Row key={index}>
       <Col mdOffset={2} md={8} smOffset={1} sm={10}>
-        <Row className="small-spacing" />
+        <Row className="xsmall-spacing" />
         <Row>
           <Col className={className} xs={12}>
-            <Row className="small-spacing" />
+            <Row className="xsmall-spacing" />
             <Row>
               <Col xs={3} xsOffset={1}>
                 <Row className="xsmall-spacing" />
@@ -52,13 +52,16 @@ export default React.createClass({
                   <img src={DefaultAvatar} />
                 </div>
               </Col>
-              <Col xs={7} xsOffset={1}>
+              <Col xs={8}>
                 <p>{alumnus.description}</p>
-                <Row className="small-spacing" />
-                <h5 className="alumnus-name">{alumnus.name}</h5>
+                <Row className="xsmall-spacing" />
+                <h5 className="alumnus-name">
+                  {alumnus.user.first_name} &nbsp;
+                  {alumnus.user.last_name}
+                </h5>
               </Col>
             </Row>
-            <Row className="small-spacing" />
+            <Row className="xsmall-spacing" />
           </Col>
         </Row>
       </Col>
