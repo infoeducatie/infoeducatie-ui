@@ -286,13 +286,16 @@ export default React.createClass({
             <option value="true">Nu, sunt al doilea participant de la proiect.</option>
           </Input> : null }
       { this.state.payingCampAcommodation === "true" ?
-        <p className="alert alert-warning">
-          La sosirea în tabără va trebui să achiți suma pentru cazare și masă.
+        <p className="alert alert-danger">
+          Pentru a participa la tabăra InfoEducație trebuie să te fi calificat prin intermediul etapei județene sau a celei online.
+          Fiecare județ poate trimite maxim 5 lucrări și maxim 5 elevi.
+          Dacă se trimit mai puțin de 5 lucrări, unele lucrări pot avea 2 elevi, în tabără.
         </p>
         : null }
       <ButtonInput type="submit"
                    value="Pasul următor"
-                   disabled={this.state.waitingForServerResponse} />
+                   disabled={this.state.waitingForServerResponse ||
+                             this.state.payingCampAcommodation} />
       {this.renderErrors()}
     </form>;
   },
