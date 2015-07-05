@@ -57,7 +57,11 @@ export default React.createClass({
                 <h4 className="seminar-title">{talk.title}</h4>
                 <p>{talk.description}</p>
                 <Row className="xsmall-spacing" />
-                <h5 className="seminar-name">{talk.author}</h5>
+                <h5 className="seminar-name">
+                  {talk.user.first_name} &nbsp;
+                  {talk.user.last_name}
+                </h5>
+                <h6>{talk.user.job}</h6>
               </Col>
             </Row>
             <Row className="xsmall-spacing" />
