@@ -34,7 +34,6 @@ export default React.createClass({
           <Row>
             <Col xs={12}>
               <h1>Despre Concursul InfoEducație</h1>
-              <h2>istoric și regulament</h2>
             </Col>
           </Row>
           <Row className="big-spacing" />

@@ -35,14 +35,10 @@ export default React.createClass({
           <Header isLoggedIn={this.props.isLoggedIn}
                   login={this.props.login}
                   logout={this.props.logout} />
+          <Row className="small-spacing" />
           <Row>
             <Col xs={12}>
               <h1>Înregistrare</h1>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={12}>
-              <h2>Trebuie să îți faci un cont nou</h2>
             </Col>
           </Row>
         </Grid>
