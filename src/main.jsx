@@ -23,6 +23,8 @@ import Footer from "./components/footer";
 import Contestants from "./components/contestants/contestants";
 import Talks from "./components/talks";
 
+import HomeEnglish from "./components/home-english";
+
 
 let App = React.createClass({
   displayName: "App",
