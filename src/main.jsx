@@ -21,7 +21,7 @@ import Results from "./components/results";
 import Kitchen from "./components/kitchen";
 import Footer from "./components/footer";
 import Contestants from "./components/contestants/contestants";
-import Seminars from "./components/seminars";
+import Talks from "./components/talks";
 
 
 let App = React.createClass({
@@ -125,7 +125,7 @@ let routes = (
     <Route handler={Results} name="results" />
     <Route handler={Kitchen} name="kitchen" />
     <Route handler={Contestants} name="contestants" />
-    <Route handler={Seminars} name="seminars" />
+    <Route handler={Talks} name="seminars" />
     <DefaultRoute handler={Home} />
   </Route>
 );
