@@ -255,15 +255,13 @@ export default React.createClass({
       <Input
         type="text"
         placeholder="Maria"
-        label="Prenumele profesorului însoțitor *"
-        valueLink={this.deepLinkState(["contestant", "accompanying_teacher_first_name"])}
-        required />
+        label="Prenumele profesorului însoțitor "
+        valueLink={this.deepLinkState(["contestant", "accompanying_teacher_first_name"])} />
       <Input
         type="text"
         placeholder="Popescu"
-        label="Numele profesorului însoțitor *"
-        valueLink={this.deepLinkState(["contestant", "accompanying_teacher_last_name"])}
-        required />
+        label="Numele profesorului însoțitor"
+        valueLink={this.deepLinkState(["contestant", "accompanying_teacher_last_name"])} />
       <Input type="select"
              label="Te-ai calificat la faza județeană? *"
              value={this.state.officialParticipant}
