@@ -42,7 +42,7 @@ export default React.createClass({
                             InfoEducație Ediția&nbsp;
                             {this.props.current.edition.year}
                         </h1>
-                        <h2>Concurs Național de Informatică</h2>
+                        <h2>Concurs Național de Proiecte</h2>
                     </Col>
                 </Row>
                 <Row>
