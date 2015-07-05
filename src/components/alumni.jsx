@@ -63,7 +63,7 @@ export default React.createClass({
                   {alumnus.user.last_name}
                 </h5>
                 <p className="alumnus-editions">
-                  {editions.sort().map(function(edition) {
+                  {editions.sort().reverse().map(function(edition) {
                     return <span>{edition}</span>;
                   })}
                 </p>
