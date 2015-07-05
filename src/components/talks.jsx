@@ -84,9 +84,8 @@ export default React.createClass({
           </Row>
           <Row>
             <Col xs={12}>
-              <h1>Seminarii InfoEducație <br />
-                  Ediția {this.props.current.edition.year}
-              </h1>
+              <h1>Seminarii InfoEducație</h1>
+              <h2>Ediția {this.props.current.edition.year}</h2>
             </Col>
           </Row>
           <Row className="big-spacing" />

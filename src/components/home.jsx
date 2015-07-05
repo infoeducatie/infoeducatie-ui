@@ -35,24 +35,24 @@ export default React.createClass({
                                 logout={this.props.logout} />
                     </Col>
                 </Row>
-                <Row className="big-spacing header-spacing" />
+                <Row className="xxsmall-spacing" />
                 <Row>
                     <Col>
                         <h1>
-                            InfoEducație Ediția&nbsp;
-                            {this.props.current.edition.year}
+                            InfoEducație
                         </h1>
-                        <h2>Concurs Național de Proiecte</h2>
+                        <h2>Concurs Național de Proiecte IT&C</h2>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
                         <h5 className="tagline">
-                            {this.props.current.edition.motto}
+                            Ediția&nbsp;
+                            {this.props.current.edition.year}
                         </h5>
                     </Col>
                 </Row>
-                <Row className="small-spacing" />
+                <Row className="xxsmall-spacing" />
                 <Row>
                     <Col md={4} mdOffset={2}>
                         <p className="left-button">
@@ -69,28 +69,6 @@ export default React.createClass({
                         </p>
                     </Col>
                 </Row>
-                <Row className="big-spacing" />
-                <Row className="statistics">
-                    <Col md={2} mdOffset={3} xs={4}>
-                        <p className="description">Participanți</p>
-                        <p className="value">
-                          {this.props.current.stats.total_participants}
-                        </p>
-                    </Col>
-                    <Col md={2} xs={4}>
-                        <p className="description">Proiecte</p>
-                        <p className="value">
-                          {this.props.current.stats.total_projects}
-                        </p>
-                    </Col>
-                    <Col md={2} xs={4}>
-                        <p className="description">Județe</p>
-                        <p className="value">
-                          {this.props.current.stats.total_counties}
-                        </p>
-                    </Col>
-                </Row>
-                <Row className="small-spacing" />
             </Grid>
         </div>
 
@@ -105,10 +83,12 @@ export default React.createClass({
                     <Col md={6} mdOffset={6}>
                         <h6>Alumnus</h6>
                         <Row className="small-spacing" />
-                        <p className="quote">La momentul respectiv părea o
-                        joacă, acum infoarena este o organizație cu o
-                        activitate foarte solidă și cu un impact mare în
-                        rândul elevilor pasionați de informatică.</p>
+                        <p className="quote">InfoEducatie mi-a oferit o
+                         motivatie sa invat tehnologii web si sa dezvolt
+                         proiectul meu de atunci. Am un sfat pentru
+                         participanti: Prezentarea este la fel de importanta
+                         ca lucrarea in sine! Repetati inainte sa veniti in
+                         fata comisiei.</p>
                         <Row className="small-spacing" />
                         <h2 className="alumnus-name">Cristian Strat</h2>
                         <h6 className="alumnus-position">

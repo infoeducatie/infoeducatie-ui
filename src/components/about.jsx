@@ -32,8 +32,9 @@ export default React.createClass({
             </Col>
           </Row>
           <Row>
+            <Row className="small-spacing" />
             <Col xs={12}>
-              <h1>Despre Concursul InfoEducație</h1>
+              <h1>Despre InfoEducație</h1>
             </Col>
           </Row>
           <Row className="big-spacing" />
