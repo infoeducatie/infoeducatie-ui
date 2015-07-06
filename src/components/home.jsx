@@ -41,7 +41,7 @@ export default React.createClass({
                         <h1>
                             InfoEducație
                         </h1>
-                        <h2>Concurs Național de Proiecte IT&C</h2>
+                        <h2>Concurs Național de Proiecte IT&amp;C</h2>
                     </Col>
                 </Row>
                 <Row>
