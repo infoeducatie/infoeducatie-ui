@@ -56,7 +56,7 @@ export default React.createClass({
         wantsOpenSource = <Input type="url"
                                  placeholder="http://..."
                                  valueLink={this.deepLinkState(["project", "source_url"])}
-                                 label="Link către surse și documentație"
+                                 label="Link către surse și documentație *"
                                  required />;
       } else {
         wantsOpenSource = <Input type="input"
