@@ -53,11 +53,18 @@ export default React.createClass({
     let wantsOpenSource = null;
     if (this.state.project.category !== "multimedia") {
       if (this.state.project.open_source === "true") {
-        wantsOpenSource = <Input type="url"
-                                 placeholder="http://..."
-                                 valueLink={this.deepLinkState(["project", "source_url"])}
-                                 label="Link către surse și documentație"
-                                 required />;
+        wantsOpenSource = ([
+            <Input type="url"
+                   placeholder="http://..."
+                   valueLink={this.deepLinkState(["project", "source_url"])}
+                   label="Link către surse și documentație"
+                   required />,
+            <p className="alert alert-warning">
+              Sursele proiectului trebuie să fie încărcate și accesibile pe
+              GitHub. În cazul în care întâmpini probleme poți găsi mai multe
+              detalii aici.
+            </p>
+        ]);
       } else {
         wantsOpenSource = <Input type="input"
                                  placeholder="Îmi este mult prea frică că îmi va fura un om rău codul"
