@@ -50,7 +50,17 @@ export default React.createClass({
   },
 
   renderWantsOpenSource() {
-    let wantsOpenSource = null;
+    let wantsOpenSource = wantsOpenSource = ([
+        <Input type="url"
+               placeholder="http://..."
+               valueLink={this.deepLinkState(["project", "source_url"])}
+               label="Link către surse și documentație"
+               required />,
+        <p className="alert alert-warning">
+          Proiectul trebuie să fie încărcat și accesibil pe Youtube.
+        </p>
+    ]);
+
     if (this.state.project.category !== "multimedia") {
       if (this.state.project.open_source === "true") {
         wantsOpenSource = ([
