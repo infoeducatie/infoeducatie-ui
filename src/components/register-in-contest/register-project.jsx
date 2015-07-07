@@ -50,16 +50,33 @@ export default React.createClass({
   },
 
   renderWantsOpenSource() {
-    let wantsOpenSource = null;
+    let wantsOpenSource = wantsOpenSource = ([
+        <Input type="url"
+               placeholder="http://..."
+               valueLink={this.deepLinkState(["project", "source_url"])}
+               label="Link către surse și documentație"
+               required />,
+        <p className="alert alert-warning">
+          Proiectul trebuie să fie încărcat și accesibil pe Youtube.
+        </p>
+    ]);
+
     if (this.state.project.category !== "multimedia") {
       if (this.state.project.open_source === "true") {
-        wantsOpenSource = <Input type="text"
-                                 placeholder="http://..."
-                                 pattern="((git|ssh|http(s)?)|(git@[\w\.]+))(:(//)?)([\w\.@\:/\-~]+)(\.git)(/)?"
-                                 title="Sursele proiectului trebuie să fie încărcate și accesibile pe GitHub"
-                                 valueLink={this.deepLinkState(["project", "source_url"])}
-                                 label="Link către surse și documentație *"
-                                 required />;
+        wantsOpenSource = ([
+            <Input type="url"
+                   placeholder="http://..."
+                   title="Sursele proiectului trebuie să fie încărcate și accesibile pe GitHub"
+                   pattern="((git|ssh|http(s)?)|(git@[\w\.]+))(:(//)?)([\w\.@\:/\-~]+)(\.git)(/)?"
+                   valueLink={this.deepLinkState(["project", "source_url"])}
+                   label="Link către surse și documentație"
+                   required />,
+            <p className="alert alert-warning">
+              Sursele proiectului trebuie să fie încărcate și accesibile pe
+              GitHub. În cazul în care întâmpini probleme poți găsi mai multe
+              detalii aici.
+            </p>
+        ]);
       } else {
         wantsOpenSource = <Input type="input"
                                  placeholder="Îmi este mult prea frică că îmi va fura un om rău codul"
