@@ -1,0 +1,33 @@
+@import "../main";
+
+
+.contact {
+  .blue-section-wrapper {
+    .blue-section-wrapper (@img_path: "../../assets/img/register.png");
+  }
+  .blue-section {
+    .blue-section();
+  }
+
+  .white-section {
+    li:before {
+      content: "\2014";
+      position: relative;
+      left: -5px;
+      font-size: 24px;
+      color: @pink;
+    }
+
+    li {
+      list-style-type: none;
+      font-size: @font-size-base;
+    }
+
+    p {
+      font-size: 20px;
+      margin-top: 20px;
+    }
+
+  }
+
+}

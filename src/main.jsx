@@ -13,6 +13,7 @@ import Photos from "./components/photos";
 import Alumni from "./components/alumni";
 import RegisterInContest from "./components/register-in-contest";
 import About from "./components/about";
+import Contact from "./components/contact";
 import Register from "./components/register";
 import Jury from "./components/jury";
 import Home from "./components/home";
@@ -119,6 +120,7 @@ let routes = (
     <Route handler={RegisterInContest} name="register-in-contest" />
     <Route handler={Alumni} name="alumni" />
     <Route handler={Photos} name="photos" />
+    <Route handler={Contact} name="contact" />
     <Route handler={About} name="about" />
     <Route handler={Register} name="register" />
     <Route handler={Calendar} name="calendar" />
