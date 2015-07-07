@@ -1,1 +1,1 @@
-web: node server.stage-prod.js
+web: node server.production.js

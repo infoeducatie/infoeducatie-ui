@@ -1,11 +1,17 @@
 #!/bin/bash
 
-if [ $# -ne 1 ]; then
-  echo "./build.sh [stage|prod]"
+if [ "$APP_ENV" == "" ]; then
+  APP_ENV="production"
+fi
+
+if [ "$APP_ENV" != "staging" ] && [ "$APP_ENV" != "production" ]; then
+  echo "Invalid app environment. Options: staging, production"
   exit 1
 fi
 
-ENV=$1
+if [ "$NODE_ENV" == "" ]; then
+  NODE_ENV="production"
+fi
 
 set -x
 
@@ -16,5 +22,5 @@ else
 fi
 
 mkdir -p build
-cat index.${ENV}.html | sed "s/GIT_HASH/$VER/g" >  build/index.html
-./node_modules/webpack/bin/webpack.js -p --config webpack.stage-prod.config.js
+cat index.${APP_ENV}.html | sed "s/GIT_HASH/$VER/g" >  build/index.html
+./node_modules/webpack/bin/webpack.js -p --config webpack.production.js
