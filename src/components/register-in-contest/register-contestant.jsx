@@ -287,7 +287,7 @@ export default React.createClass({
                  value={this.state.payingCampAcommodation}
                  onChange={this.onPayingCampAcommodation}>
             <option value="false">Da, locul gratuit aferent proiectului.</option>
-            <option value="true">Nu, sunt al doilea participant de la proiect.</option>
+            <option value="true">Nu, sunt al doilea concurent de la proiect.</option>
           </Input> : null }
       { this.state.payingCampAcommodation === "true" ?
         <p className="alert alert-danger">

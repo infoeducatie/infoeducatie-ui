@@ -22,7 +22,7 @@ export default React.createClass({
 
   render() {
     return <div>
-      <p>Ca să adaugi un participant ca și coechipier, acesta trebuie să își
+      <p>Ca să adaugi un concurent ca și coechipier, acesta trebuie să își
       facă un cont, să completeze primul formular iar apoi tu îl vei putea găsi
       după adresa sa de email.</p>
       <RegisterAdditionalSearch onSubmit={this.onRegisterAdditionalSearchSubmit}
@@ -34,7 +34,7 @@ export default React.createClass({
 
   renderSecondPart() {
     if (!this.state.additionalContestant.length) {
-      return <p>Nu a fost găsit niciun participant</p>;
+      return <p>Nu a fost găsit niciun concurent</p>;
     }
     let formEndpoint = `projects/${this.props.pendingProject.id}/collaborators`;
     return <div>
