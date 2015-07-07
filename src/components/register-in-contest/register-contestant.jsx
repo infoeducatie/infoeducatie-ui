@@ -176,10 +176,6 @@ export default React.createClass({
              label="Clasa *"
              valueLink={this.deepLinkState(["contestant", "grade"])}
              required>
-        <option value="5">Clasa a V-a</option>
-        <option value="6">Clasa a VI-a</option>
-        <option value="7">Clasa a VII-a</option>
-        <option value="8">Clasa a VIII-a</option>
         <option value="9">Clasa a IX-a</option>
         <option value="10">Clasa a X-a</option>
         <option value="11">Clasa a XI-a</option>
@@ -291,7 +287,7 @@ export default React.createClass({
                  value={this.state.payingCampAcommodation}
                  onChange={this.onPayingCampAcommodation}>
             <option value="false">Da, locul gratuit aferent proiectului.</option>
-            <option value="true">Nu, sunt al doilea participant de la proiect.</option>
+            <option value="true">Nu, sunt al doilea concurent de la proiect.</option>
           </Input> : null }
       { this.state.payingCampAcommodation === "true" ?
         <p className="alert alert-danger">

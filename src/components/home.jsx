@@ -20,6 +20,7 @@ import Apdetic from "../../assets/img/sponsors/apdetic.png";
 import TotalSoft from "../../assets/img/sponsors/totalsoft.gif";
 import Upir from "../../assets/img/sponsors/upir.png";
 import MEN from "../../assets/img/sponsors/edu.jpg";
+import CloudBase from "../../assets/img/sponsors/cloudbase.png";
 
 export default React.createClass({
   displayName: "Home",
@@ -41,7 +42,7 @@ export default React.createClass({
                         <h1>
                             InfoEducație
                         </h1>
-                        <h2>Concurs Național de Proiecte IT&C</h2>
+                        <h2>Concurs Național de Proiecte IT&amp;C</h2>
                     </Col>
                 </Row>
                 <Row>
@@ -143,6 +144,7 @@ export default React.createClass({
                         </p>
                     </Col>
                 </Row>
+
                 <Row className="small-spacing" />
                 <Row>
                     <Col xs={12}>
@@ -152,14 +154,29 @@ export default React.createClass({
                 <Row>
                     <Col xs={12}>
                         <p className="logos">
-                            <img src={EasyHost} />
                             <img src={Cisco} />
-                            <img src={Intuitext} /> <br />
+                            <img src={CloudBase} />
+                        </p>
+                    </Col>
+                </Row>
+
+                <Row className="small-spacing" />
+                <Row>
+                    <Col xs={12}>
+                        <h4>Sponsori Bronze</h4>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12}>
+                        <p className="logos">
+                            <img src={EasyHost} />
+                            <img src={Intuitext} />
                             <img src={Apdetic} />
                             <img src={TotalSoft} />
                         </p>
                     </Col>
                 </Row>
+
                 <Row className="small-spacing" />
                 <Row>
                     <Col xs={12}>
