@@ -15,7 +15,6 @@ else
   VER=`date +%s`
 fi
 
-rm -rf build
 mkdir -p build
 cat index.${ENV}.html | sed "s/GIT_HASH/$VER/g" >  build/index.html
 ./node_modules/webpack/bin/webpack.js -p --config webpack.stage-prod.config.js
