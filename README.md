@@ -1,14 +1,9 @@
 # infoeducatie-ui
+
 [![Build Status](https://travis-ci.org/infoeducatie/infoeducatie-ui.svg?branch=master)](https://travis-ci.org/infoeducatie/infoeducatie-ui) [![Dependency Status](https://gemnasium.com/infoeducatie/infoeducatie-ui.svg)](https://gemnasium.com/infoeducatie/infoeducatie-ui)
 
-React frontend for our [backend API](https://github.com/infoeducatie/infoeducatie-api). This will replace our [existing website](http://infoeducatie.ro/).
+React web frontend for our [backend API](https://github.com/infoeducatie/infoeducatie-api).
 
-## Setup
-
-```
-npm install
-npm start
-```
 
 ## Technologies used
 
@@ -19,6 +14,7 @@ npm start
 - LESS - pre-processor for CSS
 - Mochai, Chai - unit tests
 - dependencies are in [`package.json`](https://github.com/infoeducatie/infoeducatie-react/blob/master/package.json)
+
 
 ## Folder layout
 
@@ -35,6 +31,19 @@ npm start
 - `app.json` - Manifest file for Heroku that defines how your code should be built and bootstrapped into a live application
 - `build.sh` - Used by the npm build targets. Copies the right index file in the build folder and creates a bundle based on the environment provided as parameter
 - `autodeploy.sh` - Checks out and deploys the latest release
+- `server.*.js` - Script that spins up an Express server.
+- `webpack.*.js` - Configuration for Webpack.
+- `Gulpfile.js` - Project tasks. Currently we have linting.
+- `karma*.config.js` - Configuration for unit tests.
+
+
+## Setup
+
+```
+npm install
+npm start
+```
+
 
 ## Commands
 
@@ -43,6 +52,7 @@ npm start
 - `npm test` - run tests using PhantomJS
 - `npm run test-debug` - run tests using Google Chrome and enable js debugger
 
+
 ### Supported browsers
 
-We don't support versions lower than IE10 because we use [flexbox](http://caniuse.com/#feat=flexbox).
+We don't support versions lower than IE10 because we use [flexbox](http://caniuse.com/#feat=flexbox) in a small part of the homepage.
