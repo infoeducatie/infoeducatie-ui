@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This script should be periodicly run bya cron
+
 tag=`git tag | egrep "^v[0-9.]*$" | sort | tail -n 1`
 
 if [ -z $tag ]; then
