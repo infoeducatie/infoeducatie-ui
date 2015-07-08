@@ -7,7 +7,7 @@ import Header from "./header";
 import FilterIcon from "./contestants/filter_icon";
 import resultsFixture from "../fixtures/results";
 
-import "./results.less";
+import "../main.less";
 
 
 export default React.createClass({

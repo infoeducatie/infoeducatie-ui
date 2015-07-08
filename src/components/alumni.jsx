@@ -8,8 +8,7 @@ import {Grid, Row, Col} from "react-bootstrap";
 
 import Header from "./header";
 
-import "./alumni.less";
-
+import "../main.less";
 
 export default React.createClass({
   displayName: "Alumni",

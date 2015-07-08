@@ -7,7 +7,7 @@ import ctx from "classnames";
 import Header from "./header";
 import PhotoWrapper from "./photo-wrapper.jsx";
 
-import "./photos.less";
+import "../main.less";
 
 import Cover2014 from "../../assets/img/2014.jpg";
 import Cover2013 from "../../assets/img/2013.jpg";

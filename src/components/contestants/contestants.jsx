@@ -11,7 +11,7 @@ import Header from "../header";
 import ProjectCard from "./project_card";
 import FilterIcon from "./filter_icon";
 
-import "./contestants.less";
+import "../../main.less";
 
 
 export default React.createClass({

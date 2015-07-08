@@ -5,7 +5,7 @@ import React from "react";
 import { Row, Col, Grid } from "react-bootstrap";
 import Header from "./header";
 
-import "./contact.less"
+import "../main.less";
 
 
 export default React.createClass({

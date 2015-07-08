@@ -9,7 +9,7 @@ import {Grid, Row, Col, Glyphicon} from "react-bootstrap";
 import Header from "./header";
 import NewsContainer from "./news/news-container";
 
-import "./home.less";
+import "../main.less";
 import Google from "../../assets/img/sponsors/google.png";
 import Intel from "../../assets/img/sponsors/intel.png";
 import Orange from "../../assets/img/sponsors/orange.png";
