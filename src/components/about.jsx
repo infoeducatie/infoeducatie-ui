@@ -137,60 +137,17 @@ export default React.createClass({
                 </ul>
               </Col>
             </Row>
-            <Row className="big-spacing" />
             <Row>
-              <Col mdOffset={2} md={8} xs={10} xsOffset={1} className="box">
-                <div className="rules">
-                  <Row>
-                    <div className="description">
-                      <h4>
-                        <span className="pink-dash hidden-xs" />
-                        regulament concurs
-                        <span className="pink-dash hidden-xs" />
-                      </h4>
-                    </div>
-                  </Row>
-                  <Row>
-                    <Col md={1} mdOffset={4} xs={1} xsOffset={2}>
-                      <a href="http://data.infoeducatie.ro/manual/regulament.pdf" target="_blank"><span className="section-icon doc" /></a>
-                    </Col>
-                    <Col md={1} mdOffset={1} xs={1} xsOffset={2}>
-                      <a href="http://data.infoeducatie.ro/manual/proceduri-de-aplicare-regulament.pdf" target="_blank"><span className="section-icon doc" /></a>
-                    </Col>
-                  </Row>
-                </div>
+              <Col xs={12}>
+                <p>
+                    Regulamentul concursului poate fi accesat&nbsp;
+                    <a href="http://data.infoeducatie.ro/manual/regulament.pdf" target="_blank">aici</a>,
+                    iar criteriile de aplicare a regulamentului sunt disponibile&nbsp;
+                    <a href="http://data.infoeducatie.ro/manual/proceduri-de-aplicare-regulament.pdf" target="_blank">aici</a>.
+                </p>
               </Col>
             </Row>
             <Row className="small-spacing" />
-            <Row className="contact">
-              <h4>Contact</h4>
-              <ul>
-                <li>
-                  Organizatori: contact@infoeducatie.ro (Emil Onea)
-                </li>
-                <li>
-                  Website: ping@infoeducatie.ro
-                </li>
-              </ul>
-              <h4>Juriu</h4>
-              <ul>
-                <li>
-                  Software educațional: educational@infoeducatie.ro
-                </li>
-                <li>
-                  Multimedia: multimedia@infoeducatie.ro
-                </li>
-                <li>
-                  Software utilitar: utilitar@infoeducatie.ro
-                </li>
-                <li>
-                  Roboți: roboti@infoeducatie.ro
-                </li>
-                <li>
-                  Web: web@infoeducatie.ro
-                </li>
-              </ul>
-            </Row>
           </Col>
         </Row>
       </Grid>
