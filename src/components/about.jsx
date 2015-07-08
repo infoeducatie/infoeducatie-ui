@@ -141,8 +141,8 @@ export default React.createClass({
               <Col xs={12}>
                 <p>
                     Regulamentul concursului poate fi accesat&nbsp;
-                    <a href="http://data.infoeducatie.ro/manual/regulament.pdf" target="_blank">aici</a>,
-                    iar criteriile de aplicare a regulamentului sunt disponibile&nbsp;
+                    <a href="http://data.infoeducatie.ro/manual/regulament.pdf" target="_blank">aici</a>
+                    , iar criteriile de aplicare a regulamentului sunt disponibile&nbsp;
                     <a href="http://data.infoeducatie.ro/manual/proceduri-de-aplicare-regulament.pdf" target="_blank">aici</a>.
                 </p>
               </Col>
