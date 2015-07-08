@@ -73,7 +73,7 @@ export default React.createClass({
                       activeKey={this.state.activePanelKey}
                       accordion>
 
-            <Panel header="Înregistrare Participant"
+            <Panel header="Înregistrare Concurent"
                    eventKey="1"
                    bsStyle={this._getPanelStyle(1)}>
               {this.renderFormOrMessage(this.renderContestantForm, 1)}
