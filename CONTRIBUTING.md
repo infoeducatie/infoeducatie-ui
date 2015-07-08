@@ -7,10 +7,11 @@
 
 ## Coding style
 
-- We use the [Google Javascript Style Guide](http://google.github.io/styleguide/javascriptguide.xml)
+- we use the [Google Javascript Style Guide](http://google.github.io/styleguide/javascriptguide.xml)
 - run the linter with `gulp lint`
-- Indentation of 2 spaces in all the files.
-- Order of methods in a file:
+- indentation of 2 spaces in all the files.
+- strive to keep the line width under 80 characters
+- order of methods in a file:
   - React lifecycle with `render` at the end
   - `renderSomething` _sub-methods_
   - `onActionCallback` methods
@@ -18,8 +19,8 @@
 
 ## Github
 
-- Use milestones for structuring your work
-- Labels:
+- use milestones for structuring your work
+- labels:
   - `minor` - can be tackled by a newbie
   - `bug`
   - `important` - somebody thinks this has a higher priority
