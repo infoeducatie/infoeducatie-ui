@@ -6,7 +6,7 @@ import { Grid, Col, Row } from "react-bootstrap";
 import Header from "./header";
 import JuryDescription from "./jury-description";
 
-import "./jury.less";
+import "../main.less";
 
 import VladAvatar from "../../assets/img/jury/vlad_temian.png";
 import RobertAvatar from "../../assets/img/jury/robert_dolca.png";

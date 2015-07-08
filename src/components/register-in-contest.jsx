@@ -5,7 +5,7 @@ import React from "react";
 import { Grid, Col, Row, PanelGroup, Panel, ListGroup, ListGroupItem } from "react-bootstrap";
 
 import Header from "./header";
-import "./register-in-contest.less";
+import "../main.less";
 import RegisterContestant from "./register-in-contest/register-contestant"
 import RegisterProject from "./register-in-contest/register-project"
 import RegisterScreenshots from "./register-in-contest/register-screenshots"

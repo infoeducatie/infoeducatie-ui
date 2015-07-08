@@ -3,7 +3,7 @@ import React from "react";
 
 import ctx from "classnames";
 
-import "./filter_icon.less";
+import "../../main.less";
 
 
 export default React.createClass({

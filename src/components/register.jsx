@@ -8,7 +8,7 @@ import { Grid, Col, Row, Input, ButtonInput } from "react-bootstrap";
 import Header from "./header";
 import SuccessIcon from "../../assets/img/ellipse-tick.png"
 import Spinner from "../../assets/img/spinner.gif"
-import "./register.less";
+import "../main.less";
 
 
 export default React.createClass({

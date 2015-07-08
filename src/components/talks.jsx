@@ -8,7 +8,7 @@ import {Grid, Row, Col} from "react-bootstrap";
 
 import Header from "./header";
 
-import "./talks.less";
+import "../main.less";
 import DefaultAvatar from "../../assets/img/jury/default.png";
 
 

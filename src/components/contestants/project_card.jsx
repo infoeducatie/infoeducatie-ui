@@ -5,7 +5,7 @@ import React from "react";
 import ctx from "classnames";
 import { Grid, Row, Col } from "react-bootstrap";
 
-import "./project_card.less";
+import "../../main.less";
 
 
 export default React.createClass({

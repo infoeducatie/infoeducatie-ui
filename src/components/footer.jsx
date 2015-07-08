@@ -7,7 +7,7 @@ import { NavItemLink } from "react-router-bootstrap";
 
 let { Route, Link, RouteHandler } = Router; // eslint-disable-line
 
-import "./footer.less";
+import "../main.less";
 import Facebook from "../../assets/img/icons/fb.png";
 import Twitter from "../../assets/img/icons/twitter.png";
 import Google from "../../assets/img/icons/gplus.png";

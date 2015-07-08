@@ -7,7 +7,7 @@ import {Link} from "react-router";
 import {Grid, Row, Col, Glyphicon} from "react-bootstrap";
 
 import Article from "./article";
-import "./news.less"
+import "../../main.less";
 
 
 export default React.createClass({
