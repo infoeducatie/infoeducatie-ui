@@ -9,10 +9,6 @@ if [ "$APP_ENV" != "staging" ] && [ "$APP_ENV" != "production" ]; then
   exit 1
 fi
 
-if [ "$NODE_ENV" == "" ]; then
-  export NODE_ENV="production"
-fi
-
 set -x
 
 if [ -d ".git" ]; then
