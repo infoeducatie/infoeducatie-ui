@@ -27,7 +27,7 @@ npm start
   - `components` - React components and LESS files for each component
   - `lib` - Helper libraries
   - `mixins` - React mixins
-- `main.jsx` - Main entry point with the router
+  - `main.jsx` - Main entry point with the router
 - `index.production.html` - Index file w/ settings for production
 - `index.stagine.html` - Index file w/ settings for staging
 - `index.development.html` - Index file w/ settings for development
