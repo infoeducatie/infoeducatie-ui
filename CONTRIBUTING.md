@@ -24,7 +24,7 @@
   - `minor` - can be tackled by a newbie
   - `bug`
   - `important` - somebody thinks this has a higher priority
-  - `urgent` - somebody important thought this has a higher priority
+  - `urgent` - somebody important thinks this has a higher priority
   - `project` - a collection of tasks that should be done in separate issues
 
 ## Other
