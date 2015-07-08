@@ -1,7 +1,7 @@
 #!/bin/bash
-
 # This script should be periodicly run bya cron
 
+git fetch
 tag=`git tag | egrep "^v[0-9.]*$" | sort | tail -n 1`
 
 if [ -z $tag ]; then
@@ -10,7 +10,6 @@ if [ -z $tag ]; then
 fi
 
 if [ `git show-ref $tag | cut -d ' ' -f1` == `git rev-parse HEAD` ]; then
-  echo "Already the latest version"
   exit 0
 fi
 
