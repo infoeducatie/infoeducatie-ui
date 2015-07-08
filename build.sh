@@ -10,7 +10,7 @@ if [ "$APP_ENV" != "staging" ] && [ "$APP_ENV" != "production" ]; then
 fi
 
 if [ "$NODE_ENV" == "" ]; then
-  NODE_ENV="production"
+  export NODE_ENV="production"
 fi
 
 set -x
