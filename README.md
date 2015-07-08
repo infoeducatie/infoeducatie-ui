@@ -29,7 +29,7 @@ npm start
   - `mixins` - React mixins
   - `main.jsx` - Main entry point with the router
 - `index.production.html` - Index file w/ settings for production
-- `index.stagine.html` - Index file w/ settings for staging
+- `index.staging.html` - Index file w/ settings for staging
 - `index.development.html` - Index file w/ settings for development
 - `Procfile` - The command in this file is used by Heroku to run the server
 - `app.json` - Manifest file for Heroku that defines how your code should be built and bootstrapped into a live application
