@@ -67,7 +67,7 @@ export default React.createClass({
             <Input type="url"
                    placeholder="http://..."
                    title="Sursele proiectului trebuie să fie încărcate și accesibile pe GitHub"
-                   pattern="((git|ssh|http(s)?)|(git@[\w\.]+))(:(//)?)([\w\.@\:/\-~]+)(\.git)(/)?"
+                   pattern="((git|ssh|http(s)?)|(git@[\w\.]+))(:(//)?)([\w\.@\:/\-~]+)(\.git)?(/)?"
                    valueLink={this.deepLinkState(["project", "source_url"])}
                    label="Link către surse și documentație"
                    required />,
