@@ -81,11 +81,11 @@ export default React.createClass({
                         <h6>Alumnus</h6>
                         <Row className="small-spacing" />
                         <p className="quote">InfoEducatie mi-a oferit o
-                         motivatie sa invat tehnologii web si sa dezvolt
+                         motivație să învăț tehnologii web și să dezvolt
                          proiectul meu de atunci. Am un sfat pentru
-                         participanti: Prezentarea este la fel de importanta
-                         ca lucrarea in sine! Repetati inainte sa veniti in
-                         fata comisiei.</p>
+                         participanți: prezentarea este la fel de importantă
+                         ca lucrarea in sine! Repetați înainte sa veniți în
+                         fața comisiei.</p>
                         <Row className="small-spacing" />
                         <h2 className="alumnus-name">Cristian Strat</h2>
                         <h6 className="alumnus-position">
