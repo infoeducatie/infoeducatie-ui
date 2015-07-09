@@ -8,7 +8,6 @@ import Header from "./header";
 import "../main.less";
 import DefaultDocument from "../../assets/img/icons/doc.png";
 
-
 export default React.createClass({
   displayName: "GalaciucPage",
 
@@ -45,7 +44,7 @@ export default React.createClass({
           <Col mdOffset={1} md={10}>
             <Row className="small-spacing" />
             <p>
-              Organizat din 1993, este dedicat elevilor cu aptitudini,
+              Organizat din 1994, este dedicat elevilor cu aptitudini,
               înclinații și interes pentru crearea aplicațiilor
               informatice, atât de la profilul informatică cât
               și de la alte profile. Concursul se desfășoară în
