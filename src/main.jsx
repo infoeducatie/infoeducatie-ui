@@ -103,10 +103,6 @@ let App = React.createClass({
           current: data,
           isLoggedIn: data.is_logged_in
         });
-      },
-      error: () => {
-        // This means the user token has expired.
-        this.logout();
       }
     });
   }

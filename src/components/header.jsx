@@ -17,7 +17,7 @@ export default React.createClass({
     // TODO @palcu: refactor this when in React you will be able to return
     // multiple values
     return <div className="header">
-      <Row className="small-spacing" />
+      <Row className="xxsmall-spacing" />
       <Navbar toggleNavKey={0}>
         {this.props.isLoggedIn ? this.renderRegisterLinks()
                                : this.renderUnregisterLinks()}
@@ -45,7 +45,6 @@ export default React.createClass({
       <NavItemLink to="contestants">Participanți</NavItemLink>
       <NavItemLink to="jury">Juriu</NavItemLink>
       <NavItem><SignIn login={this.props.login} /></NavItem>
-      <NavItemLink to="register">Înregistrează-te</NavItemLink>
     </Nav>;
   }
 });

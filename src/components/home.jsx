@@ -29,31 +29,27 @@ export default React.createClass({
     return <div className="home">
         <div className="blue-section-wrapper">
             <Grid className="blue-section">
-                <Row>
-                    <Col>
                         <Header isLoggedIn={this.props.isLoggedIn}
                                 login={this.props.login}
                                 logout={this.props.logout} />
-                    </Col>
-                </Row>
-                <Row className="xxsmall-spacing" />
                 <Row>
                     <Col>
                         <h1>
                             InfoEducație
                         </h1>
-                        <h2>Concurs Național de Proiecte IT&amp;C</h2>
+
                     </Col>
                 </Row>
                 <Row>
                     <Col>
+                        <h2>Concurs Național de Proiecte IT&amp;C</h2>
                         <h5 className="tagline">
                             Ediția&nbsp;
                             {this.props.current.edition.year}
                         </h5>
                     </Col>
                 </Row>
-                <Row className="xxsmall-spacing" />
+                <Row className="small-spacing" />
                 <Row>
                     <Col md={4} mdOffset={2}>
                         <p className="left-button">
@@ -85,11 +81,11 @@ export default React.createClass({
                         <h6>Alumnus</h6>
                         <Row className="small-spacing" />
                         <p className="quote">InfoEducatie mi-a oferit o
-                         motivatie sa invat tehnologii web si sa dezvolt
+                         motivație să învăț tehnologii web și să dezvolt
                          proiectul meu de atunci. Am un sfat pentru
-                         participanti: Prezentarea este la fel de importanta
-                         ca lucrarea in sine! Repetati inainte sa veniti in
-                         fata comisiei.</p>
+                         participanți: prezentarea este la fel de importantă
+                         ca lucrarea in sine! Repetați înainte sa veniți în
+                         fața comisiei.</p>
                         <Row className="small-spacing" />
                         <h2 className="alumnus-name">Cristian Strat</h2>
                         <h6 className="alumnus-position">
