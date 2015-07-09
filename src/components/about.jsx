@@ -128,8 +128,7 @@ export default React.createClass({
                 </p>
                 <ul>
                   <li>
-                    minim trei lucrări (web, roboți sau IoT, multimedia,
-                    software educțional, software utilitar)
+                    minim trei lucrări
                   </li>
                   <li>
                     cerinte hardware și software rezonabile
