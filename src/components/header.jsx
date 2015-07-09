@@ -45,7 +45,6 @@ export default React.createClass({
       <NavItemLink to="contestants">Participanți</NavItemLink>
       <NavItemLink to="jury">Juriu</NavItemLink>
       <NavItem><SignIn login={this.props.login} /></NavItem>
-      <NavItemLink to="register">Înregistrează-te</NavItemLink>
     </Nav>;
   }
 });
