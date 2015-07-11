@@ -24,13 +24,11 @@ export default React.createClass({
     $.ajax({
       method: "GET",
       url: window.config.API_URL + "talks.json",
-      success: this.onSuccess
-    });
-  },
-
-  onSuccess(data) {
-    this.setState({
-      talks: data
+      success: (data) => {
+        this.setState({
+          talks: data
+        });
+      }
     });
   },
 
