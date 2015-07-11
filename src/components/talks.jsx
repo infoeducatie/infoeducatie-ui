@@ -93,8 +93,7 @@ export default React.createClass({
       <Grid>
         <Row>
           <Col>
-            <EditionSelector currentEditionId={this.props.edition.id}
-                             onCallback={this.onEditionChange} />
+            <EditionSelector onCallback={this.onEditionChange} />
           </Col>
         </Row>
         {this.state.talks.map(this.renderSeminar)}
@@ -103,6 +102,6 @@ export default React.createClass({
   },
 
   onEditionChange(editionId) {
-    // TODO @palcu: implement this
+    console.log(editionId)
   }
 });

@@ -8,25 +8,34 @@ import React from "react";
 export default class EditionSelector extends React.Component {
   static displayName = "EditionSelector";
   static propTypes = {
-    currentEditionId: React.PropTypes.number,
     onCallback: React.PropTypes.func.isRequired
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      editions: []
+      editions: [],
+      selectedEditionId: 0
     };
   }
 
   componentDidMount() {
     Ajax("editions.json", (data) => {
-      this.setState({ editions: data });
+      let currentEdition = _.find(data, (edition) => {
+        return edition.current === true;
+      });
+
+      this.setState({
+        editions: data,
+        selectedEditionId: currentEdition.id
+      });
     });
   }
 
   render = () => {
-    return <Input type="select" onChange={this.onEditionChange}>
+    return <Input type="select"
+                  onChange={this.onEditionChange}
+                  value={this.state.selectedEditionId}>
       {this.state.editions.map((edition) => {
         return <option key={edition.id}
                        value={edition.id}>
@@ -36,7 +45,7 @@ export default class EditionSelector extends React.Component {
     </Input>
   }
 
-  onEditionChange(event) {
+  onEditionChange = (event) => {
     let id = parseInt(event.target.value);
     this.setState({ selectedEditionId: id });
     this.props.onCallback(id);
