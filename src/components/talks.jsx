@@ -6,9 +6,9 @@ import {Grid, Row, Col} from "react-bootstrap";
 import React from "react";
 
 import "../main.less";
-import Ajax from "../lib/ajax"
+import ajax from "../lib/ajax"
 import DefaultAvatar from "../../assets/img/jury/default.png";
-import EditionSelector from  "./edition-selector";
+import EditionSelector from "./edition-selector";
 import Header from "./header";
 
 
@@ -27,7 +27,7 @@ export default React.createClass({
   },
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.edition.year != this.props.edition.year) {
+    if (nextProps.edition.year !== this.props.edition.year) {
       this.setState({ selectedEditionYear: nextProps.edition.year });
     }
   },
@@ -111,7 +111,7 @@ export default React.createClass({
       data.edition = editionId;
     }
 
-    Ajax("talks.json", (data) => {
+    ajax("talks.json", (data) => {
       this.setState({talks: data});
     }, data);
   }

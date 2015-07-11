@@ -1,6 +1,7 @@
 "use strict";
 
-import Ajax from "../lib/ajax"
+import _ from "lodash";
+import ajax from "../lib/ajax"
 import {Input} from "react-bootstrap";
 import React from "react";
 
@@ -20,8 +21,8 @@ export default class EditionSelector extends React.Component {
   }
 
   componentDidMount() {
-    Ajax("editions.json", (data) => {
-      let currentEdition = _.find(data, 'current');
+    ajax("editions.json", (data) => {
+      let currentEdition = _.find(data, "current");
 
       this.setState({
         editions: data,
@@ -45,7 +46,7 @@ export default class EditionSelector extends React.Component {
 
   onEditionChange = (event) => {
     let id = parseInt(event.target.value);
-    let edition = _.find(this.state.editions, 'id', id);
+    let edition = _.find(this.state.editions, "id", id);
 
     this.props.onCallback(edition);
     this.setState({ selectedEditionId: id });

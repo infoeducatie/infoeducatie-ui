@@ -1,4 +1,7 @@
+"use strict";
+
 import $ from "jquery";
+
 
 export default function(endpoint, success=()=>{}, data={}, accessToken=null,
                         error=()=>{}, method="GET") {
@@ -17,5 +20,5 @@ export default function(endpoint, success=()=>{}, data={}, accessToken=null,
     headers: headers,
     success: success,
     error: error
-  })
+  });
 }
