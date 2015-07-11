@@ -31,3 +31,29 @@
 
 - keep in README.md a living documentation of the directory and files structure
 - currently we don't have tests... but that will change in the future
+
+## Default Javascript File
+
+- `use strict`
+- use ES6 classes
+
+```js
+"use strict";
+
+import React from "react";
+
+
+export default class MyClass extends React.Component {
+  static displayName = "MyClass";
+
+  constructor(props) {
+    super(props);
+    this.state = {count: props.initialCount};
+  }
+
+  render() {
+    return <div className="my-class">
+    </div>;
+  }
+}
+```
