@@ -21,9 +21,7 @@ export default class EditionSelector extends React.Component {
 
   componentDidMount() {
     Ajax("editions.json", (data) => {
-      let currentEdition = _.find(data, (edition) => {
-        return edition.current === true;
-      });
+      let currentEdition = _.findKey(data, 'current');
 
       this.setState({
         editions: data,
