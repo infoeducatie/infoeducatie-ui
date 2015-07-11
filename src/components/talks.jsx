@@ -102,7 +102,7 @@ export default React.createClass({
   renderAuthorImage(author, index) {
     return <li className="author-image" key={index}>
       <img src={this.getGravatarImage(author.email_md5)} />
-    </li>
+    </li>;
   },
 
   renderAuthorText(author, index) {
