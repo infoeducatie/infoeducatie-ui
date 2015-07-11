@@ -60,6 +60,7 @@ let App = React.createClass({
   render() {
     return <div className="main">
       <RouteHandler current={this.state.current}
+                    edition={this.state.current.edition}
                     user={this.state.current.user}
                     registration={this.state.current.registration}
                     refreshCurrent={this.getCurrent}

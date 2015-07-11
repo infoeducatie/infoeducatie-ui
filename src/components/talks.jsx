@@ -1,15 +1,14 @@
 "use strict";
 
 import $ from "jquery";
-import React from "react";
-
 import ctx from "classnames";
 import {Grid, Row, Col} from "react-bootstrap";
-
-import Header from "./header";
+import React from "react";
 
 import "../main.less";
 import DefaultAvatar from "../../assets/img/jury/default.png";
+import EditionSelector from  "./edition-selector";
+import Header from "./header";
 
 
 export default React.createClass({
@@ -92,8 +91,18 @@ export default React.createClass({
         </Grid>
       </div>
       <Grid>
+        <Row>
+          <Col>
+            <EditionSelector currentEditionId={this.props.edition.id}
+                             onCallback={this.onEditionChange} />
+          </Col>
+        </Row>
         {this.state.talks.map(this.renderSeminar)}
       </Grid>
    </div>;
+  }.
+
+  onEditionChange(editionId) {
+    // TODO @palcu: implement this
   }
 });
