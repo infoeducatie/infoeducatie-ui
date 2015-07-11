@@ -124,7 +124,7 @@ let routes = (
     <Route handler={Results} name="results" />
     <Route handler={Kitchen} name="kitchen" />
     <Route handler={Contestants} name="contestants" />
-    <Route handler={Talks} name="seminars" />
+    <Route handler={Talks} name="talks" />
     <DefaultRoute handler={Home} />
   </Route>
 );

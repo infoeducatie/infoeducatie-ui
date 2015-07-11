@@ -63,7 +63,7 @@ export default React.createClass({
   },
 
   render() {
-    return <div className="seminars">
+    return <div className="talks">
       <div className="blue-section-wrapper">
         <Grid className="blue-section">
           <Row>
