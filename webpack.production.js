@@ -13,7 +13,8 @@ module.exports = {
 
   module: {
     loaders: [
-      { test: /\.jsx?$/, exclude: /node_modules/, loader: "babel-loader" },
+      { test: /\.jsx?$/, exclude: /node_modules/, loader: "babel-loader",
+        query: {optional: ["es7.classProperties"], stage: 0} },
       { test: /\.png$/, loader: "url-loader?limit=10000&minetype=image/png" },
       { test: /\.gif$/, loader: "url-loader?limit=10000&minetype=image/gif" },
       { test: /\.jpg$/, loader: "url-loader?limit=10000&minetype=image/jpg" },
