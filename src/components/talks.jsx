@@ -32,7 +32,7 @@ export default React.createClass({
     }
   },
 
-  renderSeminar(talk, index) {
+  renderTalk(talk, index) {
     let colors = ["green", "orange", "black"];
     let className = ctx("seminar-container", colors[index % colors.length]);
     let authorImage = "http://www.gravatar.com/avatar/" + talk.user.email_md5 + "?s=150&d=mysteryman";
@@ -95,7 +95,7 @@ export default React.createClass({
             <EditionSelector onCallback={this.onEditionChange} />
           </Col>
         </Row>
-        {this.state.talks.map(this.renderSeminar)}
+        {this.state.talks.map(this.renderTalk)}
       </Grid>
    </div>;
   },
