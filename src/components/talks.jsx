@@ -105,10 +105,10 @@ export default React.createClass({
     this.setState({ selectedEditionYear: edition.year });
   },
 
-  getTalks(id=undefined) {
+  getTalks(editionId=undefined) {
     let data = {};
-    if (id) {
-      data.id = id;
+    if (editionId) {
+      data.edition = editionId;
     }
 
     Ajax("talks.json", (data) => {
