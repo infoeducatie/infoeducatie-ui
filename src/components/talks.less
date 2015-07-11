@@ -9,25 +9,34 @@
     .blue-section();
   }
 
-  .seminar-container {
+  .talk-container {
     color: @white;
     text-align: justify;
 
-    .seminar-name {
-      color: @light-black;
-      text-transform: uppercase;
-      letter-spacing: @medium-letter-spacing / 2;
-      font-weight: bold;
+    .author-text {
+      margin: 50px 0 100px 0;
+
+      .author-name {
+        color: @light-black;
+        text-transform: uppercase;
+        letter-spacing: @medium-letter-spacing / 2;
+        font-weight: bold;
+      }
+
+      .author-job {
+        text-transform: uppercase;
+        color: @white;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
 
-    .seminar-position {
-      text-transform: uppercase;
-      color: @white;
-    }
-
-    .seminar-image {
+    .author-image {
       width: 150px;
       height: 150px;
+      margin: 10px 0;
 
       img {
         width: 100%;
@@ -48,11 +57,11 @@
     &.black {
       background-color: @light-black;
 
-      .seminar-name {
+      .author-name {
         color: @orange;
       }
 
-      .seminar-position {
+      .author-position {
         color: @light-grey;
       }
     }
