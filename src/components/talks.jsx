@@ -100,7 +100,7 @@ export default React.createClass({
         {this.state.talks.map(this.renderSeminar)}
       </Grid>
    </div>;
-  }
+  },
 
   onEditionChange(editionId) {
     // TODO @palcu: implement this
