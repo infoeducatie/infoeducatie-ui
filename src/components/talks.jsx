@@ -6,6 +6,7 @@ import {Grid, Row, Col} from "react-bootstrap";
 import React from "react";
 
 import "../main.less";
+import Ajax from "../lib/ajax"
 import DefaultAvatar from "../../assets/img/jury/default.png";
 import EditionSelector from  "./edition-selector";
 import Header from "./header";
@@ -21,15 +22,7 @@ export default React.createClass({
   },
 
   componentDidMount() {
-    $.ajax({
-      method: "GET",
-      url: window.config.API_URL + "talks.json",
-      success: (data) => {
-        this.setState({
-          talks: data
-        });
-      }
-    });
+    this.getTalks();
   },
 
   renderSeminar(talk, index) {
@@ -100,6 +93,17 @@ export default React.createClass({
   },
 
   onEditionChange(editionId) {
-    console.log(editionId)
+    this.getTalks(editionId);
+  },
+
+  getTalks(id=undefined) {
+    let data = {};
+    if (id) {
+      data.id = id;
+    }
+
+    Ajax("talks.json", (data) => {
+      this.setState({talks: data});
+    }, data);
   }
 });
