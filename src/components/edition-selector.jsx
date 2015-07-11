@@ -45,7 +45,9 @@ export default class EditionSelector extends React.Component {
 
   onEditionChange = (event) => {
     let id = parseInt(event.target.value);
+    let edition = _.find(this.state.editions, 'id', id);
+
+    this.props.onCallback(edition);
     this.setState({ selectedEditionId: id });
-    this.props.onCallback(id);
   }
 }
