@@ -26,6 +26,12 @@ export default React.createClass({
     this.getTalks();
   },
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.edition.year != this.props.edition.year) {
+      this.setState({ selectedEditionYear: nextProps.edition.year });
+    }
+  },
+
   renderSeminar(talk, index) {
     let colors = ["green", "orange", "black"];
     let className = ctx("seminar-container", colors[index % colors.length]);
@@ -83,8 +89,9 @@ export default React.createClass({
         </Grid>
       </div>
       <Grid>
+        <Row className="small-spacing" />
         <Row>
-          <Col>
+          <Col sm={4} smOffset={4}>
             <EditionSelector onCallback={this.onEditionChange} />
           </Col>
         </Row>
