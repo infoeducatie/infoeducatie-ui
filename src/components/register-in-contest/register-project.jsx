@@ -42,7 +42,7 @@ export default React.createClass({
     if (this.state.project.category !== "multimedia") {
         openSource = <Input type="select"
                             label="Ești de acord ca proiectul să fie public (open-source) ? *"
-                            valueLink={this.deepLinkState(["project", "open_source"])}>
+                            onChange={this.onOpenSourceChange}>
           <option value="true">Da</option>
           <option value="false">Nu</option>
         </Input>;
@@ -119,7 +119,7 @@ export default React.createClass({
         required />
       <Input type="select"
              label="Categorie *"
-             valueLink={this.deepLinkState(["project", "category"])}
+             onChange={this.onCategoryChange}
              required>
         <option value="educational">Software Educațional</option>
         <option value="utilitar">Software Utilitar</option>
@@ -163,5 +163,32 @@ export default React.createClass({
     });
 
     return data;
+  },
+
+  onCategoryChange(event) {
+    let projectState = _.clone(this.state.project);
+    projectState.category = event.currentTarget.value;
+
+    if (projectState.category !== "web") {
+      projectState.homepage = "";
+    }
+
+    if (projectState.category === "multimedia") {
+      projectState.open_source = "true";
+      projectState.closed_source_reason = "";
+      projectState.github_username = "";
+      projectState.source_url = "";
+    }
+
+    this.setState({project: projectState});
+  },
+
+  onOpenSourceChange(event) {
+    let projectState = _.clone(this.state.project);
+    projectState.open_source = event.currentTarget.value;
+    projectState.closed_source_reason = "";
+    projectState.github_username = "";
+    projectState.source_url = "";
+    this.setState({project: projectState});
   }
 });
