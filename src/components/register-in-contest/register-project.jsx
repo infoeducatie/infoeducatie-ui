@@ -50,24 +50,15 @@ export default React.createClass({
   },
 
   renderWantsOpenSource() {
-    let wantsOpenSource = wantsOpenSource = ([
-        <Input type="url"
-               placeholder="http://..."
-               valueLink={this.deepLinkState(["project", "source_url"])}
-               label="Link către surse și documentație"
-               required />,
-        <p className="alert alert-warning">
-          Proiectul trebuie să fie încărcat și accesibil pe Youtube.
-        </p>
-    ]);
+    let wantsOpenSource = "";
 
     if (this.state.project.category !== "multimedia") {
       if (this.state.project.open_source === "true") {
         wantsOpenSource = ([
             <Input type="url"
-                   placeholder="http://..."
+                   placeholder="https://github.com/infoeducatie/infoeducatie-ui"
                    title="Sursele proiectului trebuie să fie încărcate și accesibile pe GitHub"
-                   pattern="((git|ssh|http(s)?)|(git@[\w\.]+))(:(//)?)([\w\.@\:/\-~]+)(\.git)?(/)?"
+                   pattern="https?:\/\/github.com\/[^\/]+\/[^\/]+(\.git)?(\/)?"
                    valueLink={this.deepLinkState(["project", "source_url"])}
                    label="Link către surse și documentație"
                    required />,
@@ -84,6 +75,18 @@ export default React.createClass({
                                  label="Care este motivul pentru care dorești ca proiectul tău să nu fie public (open-source) ? *"
                                  required />;
       }
+    } else {
+      wantsOpenSource = wantsOpenSource = ([
+        <Input type="url"
+               placeholder="https://www.youtube.com/watch?v=Pa6gIc7spVc"
+               valueLink={this.deepLinkState(["project", "source_url"])}
+               label="Link către surse și documentație"
+               pattern="https?:\/\/(youtu\.be|(www\.)?youtube\.com)\/watch(\.php)?.{0,2}\?v=([a-zA-Z0-9\-_]+)"
+               required />,
+        <p className="alert alert-warning">
+          Proiectul trebuie să fie încărcat și accesibil pe Youtube.
+        </p>
+      ]);
     }
 
     return wantsOpenSource;
