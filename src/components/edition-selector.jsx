@@ -41,7 +41,7 @@ export default class EditionSelector extends React.Component {
       {this.state.editions.map((edition) => {
         return <option key={edition.id}
                        value={edition.id}>
-          Ediția {edition.year}
+          Ediția {edition.name}
         </option>;
       })}
     </Input>

@@ -18,7 +18,7 @@ export default React.createClass({
   getInitialState() {
     return {
       talks: [],
-      selectedEditionYear: this.props.edition.year
+      selectedEdition: this.props.edition.name
     };
   },
 
@@ -27,8 +27,8 @@ export default React.createClass({
   },
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.edition.year !== this.props.edition.year) {
-      this.setState({ selectedEditionYear: nextProps.edition.year });
+    if (nextProps.edition.name !== this.props.edition.name) {
+      this.setState({ selectedEdition: nextProps.edition.name });
     }
   },
 
@@ -46,7 +46,7 @@ export default React.createClass({
           <Row>
             <Col xs={12}>
               <h1>Seminarii InfoEducație</h1>
-              <h2>Ediția {this.state.selectedEditionYear}</h2>
+              <h2>Ediția {this.state.selectedEdition}</h2>
             </Col>
           </Row>
           <Row className="big-spacing" />
@@ -114,7 +114,7 @@ export default React.createClass({
 
   onEditionChange(edition) {
     this.getTalks(edition.id);
-    this.setState({ selectedEditionYear: edition.year });
+    this.setState({ selectedEdition: edition.name });
   },
 
   getTalks(editionId=undefined) {

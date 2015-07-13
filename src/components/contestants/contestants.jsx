@@ -180,7 +180,7 @@ export default React.createClass({
           <Row>
             <Col>
               <h1>Participanți InfoEducație</h1>
-              <h2>Ediția {this.props.current.edition.year}</h2>
+              <h2>Ediția {this.props.current.edition.name}</h2>
             </Col>
           </Row>
           <Row className="big-spacing" />

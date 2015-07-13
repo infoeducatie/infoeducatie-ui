@@ -85,7 +85,7 @@ export default React.createClass({
             <Row>
               <Col xs={12}>
                 <h1>Juriul InfoEduca&#355;ie </h1>
-                <h2>Ediția {this.props.current.edition.year}</h2>
+                <h2>Ediția {this.props.current.edition.name}</h2>
               </Col>
             </Row>
           </Grid>

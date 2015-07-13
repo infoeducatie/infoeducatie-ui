@@ -45,7 +45,7 @@ export default React.createClass({
                         <h2>Concurs Național de Proiecte IT&amp;C</h2>
                         <h5 className="tagline">
                             Ediția&nbsp;
-                            {this.props.current.edition.year}
+                            {this.props.current.edition.name}
                         </h5>
                     </Col>
                 </Row>
