@@ -134,9 +134,15 @@ export default React.createClass({
                 <Row>
                     <Col xs={12}>
                         <p className="logos">
-                            <img src={Google} />
-                            <img src={Intel} />
-                            <img src={Orange} />
+                            <a href="http://google.ro" target="_blank">
+                              <img src={Google} />
+                            </a>
+                            <a href="http://intel.ro" target="_blank">
+                              <img src={Intel} />
+                            </a>
+                            <a href="http://www.orange.ro/" target="_blank">
+                              <img src={Orange} />
+                            </a>
                         </p>
                     </Col>
                 </Row>
@@ -150,8 +156,12 @@ export default React.createClass({
                 <Row>
                     <Col xs={12}>
                         <p className="logos">
-                            <img src={Cisco} />
-                            <img src={CloudBase} />
+                            <a href="http://www.cisco.com/" target="_blank">
+                              <img src={Cisco} />
+                            </a>
+                            <a href="http://www.cloudbase.it/" target="_blank">
+                              <img src={CloudBase} />
+                            </a>
                         </p>
                     </Col>
                 </Row>
@@ -165,10 +175,18 @@ export default React.createClass({
                 <Row>
                     <Col xs={12}>
                         <p className="logos">
-                            <img src={EasyHost} />
-                            <img src={Intuitext} />
-                            <img src={Apdetic} />
-                            <img src={TotalSoft} />
+                            <a href="http://ro.easyhost.com/incubator" target="_blank">
+                              <img src={EasyHost} />
+                            </a>
+                            <a href="http://www.intuitext.ro/" target="_blank">
+                              <img src={Intuitext} />
+                            </a>
+                            <a href="http://asociatiait.ro/" target="_blank">
+                              <img src={Apdetic} />
+                            </a>
+                            <a href="http://www.totalsoft.ro/" target="_blank">
+                              <img src={TotalSoft} />
+                            </a>
                         </p>
                     </Col>
                 </Row>
@@ -182,8 +200,12 @@ export default React.createClass({
                 <Row>
                     <Col xs={12}>
                         <p className="logos">
-                            <img src={Upir} />
-                            <img src={MEN} />
+                            <a href="http://upir.ro/ro/" target="_blank">
+                              <img src={Upir} />
+                            </a>
+                            <a href="http://www.edu.ro/" target="_blank">
+                              <img src={MEN} />
+                            </a>
                         </p>
                     </Col>
                 </Row>
