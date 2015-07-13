@@ -6,6 +6,7 @@ import React from "react";
 import ReactCookie from "react-cookie";
 import Router from "react-router";
 let { Route, RouteHandler, DefaultRoute, Navigation } = Router; // eslint-disable-line
+import ga from "react-ga";
 import "babel-core/polyfill";
 import "./main.less";
 
