@@ -2,6 +2,7 @@
 
 import $ from "jquery";
 import _ from "lodash";
+import ajax from "../../lib/ajax"
 import React from "react";
 
 import { Grid, Col, Row, Glyphicon, Table } from "react-bootstrap";
@@ -20,31 +21,7 @@ export default React.createClass({
 
   componentDidMount() {
     this.props.refreshCurrent();
-
-    $.ajax({ method: "GET",
-      url: window.config.API_URL + "projects.json",
-      success: this.onSuccess,
-      error: this.onError
-    });
-  },
-
-  onError() {
-    this.setState({
-      showGrid: false,
-      showTable: false,
-      hasError: true
-    });
-  },
-
-  onSuccess(data) {
-    this.setState({
-      projects: data
-    });
-  },
-
-  onEditionChange(edition) {
-    //TODO: get new contestans
-    this.setState({ selectedEdition: edition.name });
+    this.getContestants();
   },
 
   getInitialState: function() {
@@ -292,5 +269,31 @@ export default React.createClass({
         {this.renderErrors()}
       </Grid>
     </div>;
-  }
+  },
+
+  getContestants(editionId=undefined) {
+    let data = {};
+    if (editionId) {
+      data.edition = editionId;
+    }
+
+    ajax({
+      endpoint: "projects.json",
+      data: data,
+      success: (data) => { console.log(data), this.setState({ projects: data }); },
+      error: () => {
+        this.setState({
+          showGrid: false,
+          showTable: false,
+          hasError: true
+        });
+      }
+    });
+
+  },
+
+  onEditionChange(edition) {
+    this.getContestants(edition.id);
+    this.setState({ selectedEdition: edition.name });
+  },
 });
