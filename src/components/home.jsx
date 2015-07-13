@@ -21,6 +21,7 @@ import TotalSoft from "../../assets/img/sponsors/totalsoft.gif";
 import Upir from "../../assets/img/sponsors/upir.png";
 import MEN from "../../assets/img/sponsors/edu.jpg";
 import CloudBase from "../../assets/img/sponsors/cloudbase.png";
+import iMedicare from "../../assets/img/sponsors/imedicare.png";
 
 export default React.createClass({
   displayName: "Home",
@@ -142,6 +143,9 @@ export default React.createClass({
                             </a>
                             <a href="http://www.orange.ro/" target="_blank">
                               <img src={Orange} />
+                            </a>
+                            <a href="https://imedicare.com/" target="_blank">
+                              <img src={iMedicare} />
                             </a>
                         </p>
                     </Col>
