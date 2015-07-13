@@ -93,7 +93,7 @@ export default React.createClass({
         ]);
       }
     } else {
-      wantsOpenSource = wantsOpenSource = ([
+      wantsOpenSource = ([
         <Input type="url"
                placeholder="https://www.youtube.com/watch?v=Pa6gIc7spVc"
                valueLink={this.deepLinkState(["project", "source_url"])}
