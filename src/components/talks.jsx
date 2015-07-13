@@ -123,9 +123,11 @@ export default React.createClass({
       data.edition = editionId;
     }
 
-    ajax("talks.json", (data) => {
-      this.setState({talks: data});
-    }, data);
+    ajax({
+      endpoint: "talks.json",
+      data: data,
+      success: (data) => { this.setState({talks: data}); }
+    });
   },
 
   getGravatarImage(email) {
