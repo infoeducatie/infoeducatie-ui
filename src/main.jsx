@@ -129,7 +129,16 @@ let routes = (
   </Route>
 );
 
-Router.run(routes, Router.HistoryLocation, (Root) => {
+if ("GA_TRACKING_ID" in window.config && window.config.GA_TRACKING_ID.length) {
+  ga.initialize(window.config.GA_TRACKING_ID);
+  window.config.useGA = true;
+}
+
+Router.run(routes, Router.HistoryLocation, (Root, state) => {
+  if (window.config.useGA) {
+    ga.pageview(state.pathname);
+  }
+
   React.render(<Root />, document.getElementById("app"));
 });
 
