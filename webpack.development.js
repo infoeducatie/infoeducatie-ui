@@ -13,7 +13,7 @@ var webpack = require("webpack");
 module.exports = {
 
   // Efficiently evaluate modules with source maps
-  devtool: "eval",
+  devtool: "source-map",
 
   // Set entry point to ./src/main and include necessary files for hot load
   entry:  [
@@ -39,7 +39,16 @@ module.exports = {
   // Transform source code using Babel and React Hot Loader
   module: {
     loaders: [
-      { test: /\.jsx?$/, exclude: /node_modules/, loaders: ["react-hot", "babel-loader"]},
+      { test: /\.jsx?$/, exclude: /node_modules/, loader: "react-hot" },
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+        query: {
+          optional: ["es7.classProperties"],
+          stage: 0
+        }
+      },
       { test: /\.png$/, loader: "url-loader?limit=10000&minetype=image/png" },
       { test: /\.jpg$/, loader: "url-loader?limit=10000&minetype=image/jpg" },
       { test: /\.gif$/, loader: "url-loader?limit=10000&minetype=image/gif" },

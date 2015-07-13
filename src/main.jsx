@@ -60,6 +60,7 @@ let App = React.createClass({
   render() {
     return <div className="main">
       <RouteHandler current={this.state.current}
+                    edition={this.state.current.edition}
                     user={this.state.current.user}
                     registration={this.state.current.registration}
                     refreshCurrent={this.getCurrent}
@@ -123,7 +124,7 @@ let routes = (
     <Route handler={Results} name="results" />
     <Route handler={Kitchen} name="kitchen" />
     <Route handler={Contestants} name="contestants" />
-    <Route handler={Talks} name="seminars" />
+    <Route handler={Talks} name="talks" />
     <DefaultRoute handler={Home} />
   </Route>
 );
