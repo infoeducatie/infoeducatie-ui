@@ -8,6 +8,7 @@ import { Grid, Col, Row, Glyphicon, Table } from "react-bootstrap";
 import ctx from "classnames";
 
 import Header from "../header";
+import EditionSelector from "../edition-selector";
 import ProjectCard from "./project_card";
 import FilterIcon from "./filter_icon";
 
@@ -20,8 +21,7 @@ export default React.createClass({
   componentDidMount() {
     this.props.refreshCurrent();
 
-    $.ajax({
-      method: "GET",
+    $.ajax({ method: "GET",
       url: window.config.API_URL + "projects.json",
       success: this.onSuccess,
       error: this.onError
@@ -42,15 +42,26 @@ export default React.createClass({
     });
   },
 
+  onEditionChange(edition) {
+    //TODO: get new contestans
+    this.setState({ selectedEdition: edition.name });
+  },
+
   getInitialState: function() {
     return {
       projects: [],
       hasError: false,
       showGrid: false,
       showTable: true,
-      currentCategory: "all"
+      currentCategory: "all",
+      selectedEdition: this.props.edition.name
    };
+  },
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.edition.name !== this.props.edition.name) {
+      this.setState({ selectedEdition: nextProps.edition.name });
+    }
   },
 
   showGrid() {
@@ -180,7 +191,7 @@ export default React.createClass({
           <Row>
             <Col>
               <h1>Participanți InfoEducație</h1>
-              <h2>Ediția {this.props.current.edition.name}</h2>
+              <h2>Ediția {this.state.selectedEdition}</h2>
             </Col>
           </Row>
           <Row className="big-spacing" />
@@ -217,7 +228,13 @@ export default React.createClass({
       </Grid>
 
       <Grid>
-        <Row className="big-spacing" />
+        <Row className="small-spacing" />
+        <Row>
+          <Col sm={4} smOffset={4}>
+            <EditionSelector onCallback={this.onEditionChange} />
+          </Col>
+        </Row>
+        <Row className="small-spacing" />
         <Row className="filter-buttons">
           <Col smOffset={2} sm={1} xs={2}>
             <FilterIcon currentCategory={this.state.currentCategory}
