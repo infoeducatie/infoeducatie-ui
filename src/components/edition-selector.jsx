@@ -21,13 +21,16 @@ export default class EditionSelector extends React.Component {
   }
 
   componentDidMount() {
-    ajax("editions.json", (data) => {
-      let currentEdition = _.find(data, "current");
+    ajax({
+      endpoint: "editions.json",
+      success: (data) => {
+        let currentEdition = _.find(data, "current");
 
-      this.setState({
-        editions: data,
-        selectedEditionId: currentEdition.id
-      });
+        this.setState({
+          editions: data,
+          selectedEditionId: currentEdition.id
+        });
+      }
     });
   }
 
