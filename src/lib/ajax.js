@@ -4,7 +4,7 @@ import _ from "lodash";
 import $ from "jquery";
 
 
-export default function(options, accessToken=undefined) {
+export default function(options, accessToken) {
   let headers = accessToken ? { Authorization: accessToken } : {};
 
   if (options.endpoint) {

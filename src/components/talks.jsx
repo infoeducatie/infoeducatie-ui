@@ -126,7 +126,7 @@ export default React.createClass({
     ajax({
       endpoint: "talks.json",
       data: data,
-      success: (data) => { this.setState({talks: data}); }
+      success: (data) => { this.setState({ talks: data }); }
     });
   },
 
