@@ -280,7 +280,7 @@ export default React.createClass({
     ajax({
       endpoint: "projects.json",
       data: data,
-      success: (data) => { console.log(data), this.setState({ projects: data }); },
+      success: (data) => { this.setState({ projects: data }); },
       error: () => {
         this.setState({
           showGrid: false,
@@ -295,5 +295,5 @@ export default React.createClass({
   onEditionChange(edition) {
     this.getContestants(edition.id);
     this.setState({ selectedEdition: edition.name });
-  },
+  }
 });
