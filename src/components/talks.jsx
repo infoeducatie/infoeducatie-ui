@@ -108,7 +108,7 @@ export default React.createClass({
   renderAuthorText(author, index) {
     return <li key={index} className="author-text">
       <h5 className="author-name">{author.name}</h5>
-      <h6 className="author-job">{author.job}</h6>
+      <p className="author-job">{author.job}</p>
     </li>;
   },
 
