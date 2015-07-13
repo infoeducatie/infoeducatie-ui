@@ -16,4 +16,5 @@ fi
 echo "Deploying tag ${tag}"
 
 git reset --hard $tag
+npm install
 npm run build
