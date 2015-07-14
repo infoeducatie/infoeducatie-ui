@@ -272,7 +272,7 @@ export default React.createClass({
   },
 
   getContestants(editionId) {
-    let data = editionId ? {edition : editionId} : {};
+    let data = editionId ? { edition: editionId } : {};
 
     ajax({
       endpoint: "projects.json",
