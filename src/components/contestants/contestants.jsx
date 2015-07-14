@@ -2,12 +2,14 @@
 
 import $ from "jquery";
 import _ from "lodash";
+import ajax from "../../lib/ajax"
 import React from "react";
 
 import { Grid, Col, Row, Glyphicon, Table } from "react-bootstrap";
 import ctx from "classnames";
 
 import Header from "../header";
+import EditionSelector from "../edition-selector";
 import ProjectCard from "./project_card";
 import FilterIcon from "./filter_icon";
 
@@ -19,27 +21,7 @@ export default React.createClass({
 
   componentDidMount() {
     this.props.refreshCurrent();
-
-    $.ajax({
-      method: "GET",
-      url: window.config.API_URL + "projects.json",
-      success: this.onSuccess,
-      error: this.onError
-    });
-  },
-
-  onError() {
-    this.setState({
-      showGrid: false,
-      showTable: false,
-      hasError: true
-    });
-  },
-
-  onSuccess(data) {
-    this.setState({
-      projects: data
-    });
+    this.getContestants();
   },
 
   getInitialState: function() {
@@ -48,9 +30,15 @@ export default React.createClass({
       hasError: false,
       showGrid: false,
       showTable: true,
-      currentCategory: "all"
+      currentCategory: "all",
+      selectedEdition: this.props.edition.name
    };
+  },
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.edition.name !== this.props.edition.name) {
+      this.setState({ selectedEdition: nextProps.edition.name });
+    }
   },
 
   showGrid() {
@@ -180,7 +168,7 @@ export default React.createClass({
           <Row>
             <Col>
               <h1>Participanți InfoEducație</h1>
-              <h2>Ediția {this.props.current.edition.name}</h2>
+              <h2>Ediția {this.state.selectedEdition}</h2>
             </Col>
           </Row>
           <Row className="big-spacing" />
@@ -217,7 +205,13 @@ export default React.createClass({
       </Grid>
 
       <Grid>
-        <Row className="big-spacing" />
+        <Row className="xsmall-spacing" />
+        <Row>
+          <Col sm={4} smOffset={4}>
+            <EditionSelector onCallback={this.onEditionChange} />
+          </Col>
+        </Row>
+        <Row className="xsmall-spacing" />
         <Row className="filter-buttons">
           <Col smOffset={2} sm={1} xs={2}>
             <FilterIcon currentCategory={this.state.currentCategory}
@@ -275,5 +269,28 @@ export default React.createClass({
         {this.renderErrors()}
       </Grid>
     </div>;
+  },
+
+  getContestants(editionId) {
+    let data = editionId ? { edition: editionId } : {};
+
+    ajax({
+      endpoint: "projects.json",
+      data: data,
+      success: (data) => { this.setState({ projects: data }); },
+      error: () => {
+        this.setState({
+          showGrid: false,
+          showTable: false,
+          hasError: true
+        });
+      }
+    });
+
+  },
+
+  onEditionChange(edition) {
+    this.getContestants(edition.id);
+    this.setState({ selectedEdition: edition.name });
   }
 });
