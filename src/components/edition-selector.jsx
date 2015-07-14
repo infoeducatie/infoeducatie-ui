@@ -7,17 +7,11 @@ import React from "react";
 
 
 export default class EditionSelector extends React.Component {
-  static displayName = "EditionSelector";
-  static propTypes = {
-    onCallback: React.PropTypes.func.isRequired
-  };
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      editions: [],
-      selectedEditionId: 0
-    };
+  static displayName = "EditionSelector"
+  static propTypes = { onCallback: React.PropTypes.func.isRequired }
+  state = {
+    editions: [],
+    selectedEditionId: 0
   }
 
   componentDidMount() {
