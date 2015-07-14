@@ -33,7 +33,7 @@ export default React.createClass({
         // TODO @palcu: add fallback with jQuery custom plugin
         date_of_birth: "",
         school_name: "",
-        grade: "5",
+        grade: "9",
         school_county: "Arad",
         school_city: "",
         school_country: "România",
