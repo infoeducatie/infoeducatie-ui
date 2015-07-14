@@ -31,13 +31,13 @@ export default React.createClass({
       showGrid: false,
       showTable: true,
       currentCategory: "all",
-      selectedEdition: this.props.edition.name
+      selectedEdition: this.props.edition
    };
   },
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.edition.name !== this.props.edition.name) {
-      this.setState({ selectedEdition: nextProps.edition.name });
+      this.setState({ selectedEdition: nextProps.edition });
     }
   },
 
@@ -172,7 +172,7 @@ export default React.createClass({
           <Row>
             <Col>
               <h1>Participanți InfoEducație</h1>
-              <h2>Ediția {this.state.selectedEdition}</h2>
+              <h2>Ediția {this.state.selectedEdition.name}</h2>
             </Col>
           </Row>
           <Row className="big-spacing" />
@@ -188,19 +188,19 @@ export default React.createClass({
               <Col xs={4}>
                   <p className="description">Participanți</p>
                   <p className="value">
-                    {this.props.current.stats.total_participants}
+                    {this.state.selectedEdition.contestants_count}
                   </p>
               </Col>
               <Col xs={4} className="border-left">
                   <p className="description">Proiecte</p>
                   <p className="value">
-                    {this.props.current.stats.total_projects}
+                    {this.state.selectedEdition.projects_count}
                   </p>
               </Col>
               <Col xs={4} className="border-left">
                   <p className="description">Județe</p>
                   <p className="value">
-                    {this.props.current.stats.total_counties}
+                    {this.state.selectedEdition.counties_count}
                   </p>
               </Col>
             </Row>
@@ -296,6 +296,6 @@ export default React.createClass({
 
   onEditionChange(edition) {
     this.getContestants(edition.id);
-    this.setState({ selectedEdition: edition.name });
+    this.setState({ selectedEdition: edition });
   }
 });
