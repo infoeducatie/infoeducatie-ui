@@ -205,13 +205,13 @@ export default React.createClass({
       </Grid>
 
       <Grid>
-        <Row className="small-spacing" />
+        <Row className="xsmall-spacing" />
         <Row>
           <Col sm={4} smOffset={4}>
             <EditionSelector onCallback={this.onEditionChange} />
           </Col>
         </Row>
-        <Row className="small-spacing" />
+        <Row className="xsmall-spacing" />
         <Row className="filter-buttons">
           <Col smOffset={2} sm={1} xs={2}>
             <FilterIcon currentCategory={this.state.currentCategory}
