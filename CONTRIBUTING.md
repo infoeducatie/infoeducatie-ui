@@ -44,12 +44,9 @@ import React from "react";
 
 
 export default class MyClass extends React.Component {
-  static displayName = "MyClass";
+  static displayName = "MyClass"
+  state = { count: props.initialCount }
 
-  constructor(props) {
-    super(props);
-    this.state = {count: props.initialCount};
-  }
 
   render() {
     return <div className="my-class">
