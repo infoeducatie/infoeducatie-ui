@@ -9,6 +9,7 @@ import React from "react";
 export default class EditionSelector extends React.Component {
   static displayName = "EditionSelector"
   static propTypes = { onCallback: React.PropTypes.func.isRequired }
+
   state = {
     editions: [],
     selectedEditionId: 0
@@ -32,13 +33,21 @@ export default class EditionSelector extends React.Component {
     return <Input type="select"
                   onChange={this.onEditionChange}
                   value={this.state.selectedEditionId}>
-      {this.state.editions.map((edition) => {
-        return <option key={edition.id}
-                       value={edition.id}>
-          Ediția {edition.name}
-        </option>;
-      })}
+      {this.state.editions.map(this.renderEdition)}
     </Input>
+  }
+
+  renderEdition = (edition) => {
+    let editionOption = null;
+
+    if (this.props.canRenderEdition(edition)) {
+      editionOption = <option key={edition.id}
+                        value={edition.id}>
+        Ediția {edition.name}
+      </option>;
+    }
+
+    return editionOption;
   }
 
   onEditionChange = (event) => {
