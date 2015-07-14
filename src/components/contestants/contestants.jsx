@@ -148,6 +148,10 @@ export default React.createClass({
     return grid;
   },
 
+  canRenderEdition(edition) {
+    return edition.projects_count > 0;
+  },
+
   render() {
     let gridClassName = ctx({
       "icon hidden-xs": true,
@@ -208,7 +212,8 @@ export default React.createClass({
         <Row className="xsmall-spacing" />
         <Row>
           <Col sm={4} smOffset={4}>
-            <EditionSelector onCallback={this.onEditionChange} />
+            <EditionSelector onCallback={this.onEditionChange}
+                             canRenderEdition={this.canRenderEdition} />
           </Col>
         </Row>
         <Row className="xsmall-spacing" />
