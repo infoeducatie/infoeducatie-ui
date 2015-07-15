@@ -86,9 +86,9 @@ let App = React.createClass({
       language: newLanguage
     });
 
-    if (newLanguage === "en" && path === "/") {
+    if (newLanguage === "en" && path !== "/en/home") {
       this.transitionTo("/en/home");
-    } else if (newLanguage === "ro" && path === "/en/home") {
+    } else if (newLanguage === "ro" && path !== "/") {
       this.transitionTo("/");
     }
   },

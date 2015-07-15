@@ -58,7 +58,7 @@ export default React.createClass({
                 <Row>
                     <Col md={3} mdOffset={5}>
                         <p className="right-button">
-                            <Link to="about" className="link link-secondary">
+                            <Link to="about-english" className="link link-secondary">
                                 About contest
                             </Link>
                         </p>
