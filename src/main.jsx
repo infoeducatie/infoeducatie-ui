@@ -25,10 +25,6 @@ import Footer from "./components/footer";
 import Contestants from "./components/contestants/contestants";
 import Talks from "./components/talks";
 
-import HomeEnglish from "./components/home-english";
-import AboutEnglish from "./components/about-english";
-import FooterEnglish from "./components/footer-english";
-
 
 let App = React.createClass({
   displayName: "App",
@@ -54,8 +50,7 @@ let App = React.createClass({
     let accesToken = ReactCookie.load("accesToken");
     return {
       current: this.props.current,
-      isLoggedIn: accesToken ? true : false,
-      language: "ro"
+      isLoggedIn: accesToken ? true : false
     };
   },
 
@@ -71,26 +66,10 @@ let App = React.createClass({
                     registration={this.state.current.registration}
                     refreshCurrent={this.getCurrent}
                     isLoggedIn={this.state.isLoggedIn}
-                    language={this.state.language}
-                    changeLanguage={this.changeLanguage}
                     login={this.login}
                     logout={this.logout} />
-      {this.state.language === "ro" ? <Footer /> : <FooterEnglish />}
+      <Footer />
     </div>;
-  },
-
-  changeLanguage(newLanguage) {
-    let path = this.context.router.getCurrentPathname();
-
-    this.setState({
-      language: newLanguage
-    });
-
-    if (newLanguage === "en" && path === "/") {
-      this.transitionTo("/en/home");
-    } else if (newLanguage === "ro" && path === "/en/home") {
-      this.transitionTo("/");
-    }
   },
 
   login(user) {
@@ -146,8 +125,6 @@ let routes = (
     <Route handler={Results} name="results" />
     <Route handler={Kitchen} name="kitchen" />
     <Route handler={Contestants} name="contestants" />
-    <Route handler={HomeEnglish} name="home-english" path="/en/home" />
-    <Route handler={AboutEnglish} name="about-english" path="/en/about" />
     <Route handler={Talks} name="talks" />
     <DefaultRoute handler={Home} />
   </Route>
