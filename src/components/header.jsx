@@ -9,6 +9,9 @@ let { Route, Link, RouteHandler } = Router; // eslint-disable-line
 import "../main.less";
 import SignIn from "./sign-in"
 
+import ROFlag from "../../assets/img/icons/RO.png";
+import ENFlag from "../../assets/img/icons/US.png";
+
 
 export default React.createClass({
   displayName: "Header",
@@ -35,9 +38,9 @@ export default React.createClass({
 
   renderNextLanguage() {
     if (this.props.language === "en") {
-      return "ro";
+      return <img src={ROFlag} />;
     } else {
-      return "en";
+      return <img src={ENFlag} />;
     }
   },
 
