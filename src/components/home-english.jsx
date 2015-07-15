@@ -25,6 +25,10 @@ import MEN from "../../assets/img/sponsors/edu.jpg";
 export default React.createClass({
   displayName: "Home",
 
+  componentDidMount() {
+    this.props.changeLanguage("en");
+  },
+
   render() {
     return <div className="home">
         <div className="blue-section-wrapper">

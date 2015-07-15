@@ -36,7 +36,7 @@ export default React.createClass({
       </Row>
       <Row className="small-spacing" />
       <Row className="call-to-action">
-        <Col sm={6} className="text-center">
+        <Col sm={6} smOffset={3} className="text-center">
           <Row>
             <Col xs={12}>
               <ul className="social-logos list-inline">
