@@ -2,16 +2,18 @@
 
 import $ from "jquery";
 import _ from "lodash";
+import ajax from "../../lib/ajax"
 import React from "react";
 
 import { Grid, Col, Row, Glyphicon, Table } from "react-bootstrap";
 import ctx from "classnames";
 
 import Header from "../header";
+import EditionSelector from "../edition-selector";
 import ProjectCard from "./project_card";
 import FilterIcon from "./filter_icon";
 
-import "./contestants.less";
+import "../../main.less";
 
 
 export default React.createClass({
@@ -19,27 +21,7 @@ export default React.createClass({
 
   componentDidMount() {
     this.props.refreshCurrent();
-
-    $.ajax({
-      method: "GET",
-      url: window.config.API_URL + "projects.json",
-      success: this.onSuccess,
-      error: this.onError
-    });
-  },
-
-  onError() {
-    this.setState({
-      showGrid: false,
-      showTable: false,
-      hasError: true
-    });
-  },
-
-  onSuccess(data) {
-    this.setState({
-      projects: data
-    });
+    this.getContestants();
   },
 
   getInitialState: function() {
@@ -48,9 +30,15 @@ export default React.createClass({
       hasError: false,
       showGrid: false,
       showTable: true,
-      currentCategory: "all"
+      currentCategory: "all",
+      selectedEdition: this.props.edition
    };
+  },
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.edition.name !== this.props.edition.name) {
+      this.setState({ selectedEdition: nextProps.edition });
+    }
   },
 
   showGrid() {
@@ -160,6 +148,10 @@ export default React.createClass({
     return grid;
   },
 
+  canRenderEdition(edition) {
+    return edition.projects_count > 0;
+  },
+
   render() {
     let gridClassName = ctx({
       "icon hidden-xs": true,
@@ -177,10 +169,11 @@ export default React.createClass({
                   language={this.props.language}
                   login={this.props.login}
                   logout={this.props.logout} />
-          <Row className="xxsmall-spacing" />
+          <Row className="xsmall-spacing" />
           <Row>
             <Col>
-              <h1>Participanți InfoEducație Ediția 2015</h1>
+              <h1>Participanți InfoEducație</h1>
+              <h2>Ediția {this.state.selectedEdition.name}</h2>
             </Col>
           </Row>
           <Row className="big-spacing" />
@@ -196,19 +189,19 @@ export default React.createClass({
               <Col xs={4}>
                   <p className="description">Participanți</p>
                   <p className="value">
-                    {this.props.current.stats.total_participants}
+                    {this.state.selectedEdition.contestants_count}
                   </p>
               </Col>
               <Col xs={4} className="border-left">
                   <p className="description">Proiecte</p>
                   <p className="value">
-                    {this.props.current.stats.total_projects}
+                    {this.state.selectedEdition.projects_count}
                   </p>
               </Col>
               <Col xs={4} className="border-left">
                   <p className="description">Județe</p>
                   <p className="value">
-                    {this.props.current.stats.total_counties}
+                    {this.state.selectedEdition.counties_count}
                   </p>
               </Col>
             </Row>
@@ -217,7 +210,14 @@ export default React.createClass({
       </Grid>
 
       <Grid>
-        <Row className="big-spacing" />
+        <Row className="xsmall-spacing" />
+        <Row>
+          <Col sm={4} smOffset={4}>
+            <EditionSelector onCallback={this.onEditionChange}
+                             canRenderEdition={this.canRenderEdition} />
+          </Col>
+        </Row>
+        <Row className="xsmall-spacing" />
         <Row className="filter-buttons">
           <Col smOffset={2} sm={1} xs={2}>
             <FilterIcon currentCategory={this.state.currentCategory}
@@ -275,5 +275,28 @@ export default React.createClass({
         {this.renderErrors()}
       </Grid>
     </div>;
+  },
+
+  getContestants(editionId) {
+    let data = editionId ? { edition: editionId } : {};
+
+    ajax({
+      endpoint: "projects.json",
+      data: data,
+      success: (data) => { this.setState({ projects: data }); },
+      error: () => {
+        this.setState({
+          showGrid: false,
+          showTable: false,
+          hasError: true
+        });
+      }
+    });
+
+  },
+
+  onEditionChange(edition) {
+    this.getContestants(edition.id);
+    this.setState({ selectedEdition: edition });
   }
 });

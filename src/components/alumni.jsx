@@ -8,9 +8,7 @@ import {Grid, Row, Col} from "react-bootstrap";
 
 import Header from "./header";
 
-import "./alumni.less";
-import DefaultAvatar from "../../assets/img/jury/default.png";
-
+import "../main.less";
 
 export default React.createClass({
   displayName: "Alumni",
@@ -41,6 +39,7 @@ export default React.createClass({
     let editions = alumnus.editions.map(function(edition) {
                                           return parseInt(edition.name);
                    });
+    let alumnusImage = "http://www.gravatar.com/avatar/" + alumnus.user.email_md5 + "?s=150&d=mysteryman";
 
     return <Row key={index}>
       <Col mdOffset={2} md={8} smOffset={1} sm={10}>
@@ -52,7 +51,7 @@ export default React.createClass({
               <Col xs={3} xsOffset={1}>
                 <Row className="xsmall-spacing" />
                 <div className="alumnus-image">
-                  <img src={DefaultAvatar} />
+                  <img src={alumnusImage} />
                 </div>
               </Col>
               <Col xs={8}>
@@ -62,8 +61,9 @@ export default React.createClass({
                   {alumnus.user.first_name} &nbsp;
                   {alumnus.user.last_name}
                 </h5>
+                <p className="alumnus-position">{alumnus.user.job}</p>
                 <p className="alumnus-editions">
-                  {editions.sort().map(function(edition) {
+                  {editions.sort().reverse().map(function(edition) {
                     return <span>{edition}</span>;
                   })}
                 </p>

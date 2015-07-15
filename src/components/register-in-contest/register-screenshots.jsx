@@ -1,8 +1,6 @@
 "use strict";
 
 import "blueimp-file-upload";
-import "../../../node_modules/blueimp-file-upload/css/jquery.fileupload.css";
-import "../../../node_modules/blueimp-file-upload/css/jquery.fileupload-ui.css";
 import $ from "jquery";
 import React from "react";
 import _ from "lodash";

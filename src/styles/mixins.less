@@ -1,4 +1,4 @@
-@import "../styles/variables";
+@import (reference) "../styles/variables";
 
 .gray-section-wrapper (@img_path){
   background: url(@img_path);
@@ -11,14 +11,7 @@
   min-height: @min-height;
 
   h1 {
-    font-size: @font-size-h1-big;
     color: @white;
-  }
-
-  @media screen and (max-width: @screen-sm) {
-    h1 {
-      font-size: @font-size-h1;
-    }
   }
 }
 
@@ -35,14 +28,7 @@
   color: @white;
 
   h1 {
-    font-size: @font-size-h1-big;
     color: @white;
-  }
-
-  @media screen and (max-width: @screen-sm) {
-    h1 {
-      font-size: @font-size-h1;
-    }
   }
 }
 

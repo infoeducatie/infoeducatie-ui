@@ -1,4 +1,4 @@
-@import "../main";
+@import (reference) "../main";
 
 
 .galaciuc {
@@ -71,38 +71,14 @@
 
     li {
       list-style-type: none;
-      font-size: @font-size-base;
+      font-size: 20px;
+      font-weight: @font-weight-light;
     }
 
     p {
       font-size: 20px;
       margin-top: 20px;
-    }
-
-    .box {
-      @box-height: 400px;
-      height: @box-height;
-      border: 3px solid @light-grey;
-
-      .rules {
-        text-align: center;
-        margin-top: @box-height / 4;
-        text-transform: uppercase;
-
-        .pink-dash {
-          margin-left: 20px;
-          margin-right: 20px;
-        }
-
-        .doc {
-          display: inline-block;
-          margin: @box-height / 8 auto auto;
-          background-size: 100%;
-          height: 85px;
-          width: 60px;
-        }
-
-      }
+      text-align: justify;
     }
 
     .category {

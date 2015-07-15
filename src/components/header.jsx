@@ -6,7 +6,7 @@ import { Navbar, Nav, NavItem, Row, Col } from "react-bootstrap";
 import { NavItemLink } from "react-router-bootstrap";
 let { Route, Link, RouteHandler } = Router; // eslint-disable-line
 
-import "./header.less";
+import "../main.less";
 import SignIn from "./sign-in"
 
 
@@ -17,7 +17,7 @@ export default React.createClass({
     // TODO @palcu: refactor this when in React you will be able to return
     // multiple values
     return <div className="header">
-      <Row className="small-spacing" />
+      <Row className="xxsmall-spacing" />
       <Navbar toggleNavKey={0}>
         {this.props.isLoggedIn ? this.renderRegisterLinks()
                                : this.renderUnregisterLinks()}

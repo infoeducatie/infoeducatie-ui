@@ -5,9 +5,8 @@ import React from "react";
 import { Row, Col, Grid } from "react-bootstrap";
 import Header from "./header";
 
-import "./about.less"
+import "../main.less";
 import DefaultDocument from "../../assets/img/icons/doc.png";
-
 
 export default React.createClass({
   displayName: "GalaciucPage",
@@ -34,8 +33,9 @@ export default React.createClass({
             </Col>
           </Row>
           <Row>
+            <Row className="small-spacing" />
             <Col xs={12}>
-              <h1>Despre Concursul InfoEducație</h1>
+              <h1>Despre InfoEducație</h1>
             </Col>
           </Row>
           <Row className="big-spacing" />
@@ -46,7 +46,7 @@ export default React.createClass({
           <Col mdOffset={1} md={10}>
             <Row className="small-spacing" />
             <p>
-              Organizat din 1993, este dedicat elevilor cu aptitudini,
+              Organizat din 1994, este dedicat elevilor cu aptitudini,
               înclinații și interes pentru crearea aplicațiilor
               informatice, atât de la profilul informatică cât
               și de la alte profile. Concursul se desfășoară în
@@ -129,8 +129,7 @@ export default React.createClass({
                 </p>
                 <ul>
                   <li>
-                    minim trei lucrări (web, roboți sau IoT, multimedia,
-                    software educțional, software utilitar)
+                    minim trei lucrări
                   </li>
                   <li>
                     cerinte hardware și software rezonabile
@@ -138,60 +137,17 @@ export default React.createClass({
                 </ul>
               </Col>
             </Row>
-            <Row className="big-spacing" />
             <Row>
-              <Col mdOffset={2} md={8} xs={10} xsOffset={1} className="box">
-                <div className="rules">
-                  <Row>
-                    <div className="description">
-                      <h4>
-                        <span className="pink-dash hidden-xs" />
-                        regulament concurs
-                        <span className="pink-dash hidden-xs" />
-                      </h4>
-                    </div>
-                  </Row>
-                  <Row>
-                    <Col md={1} mdOffset={4} xs={1} xsOffset={2}>
-                      <a href="http://data.infoeducatie.ro/manual/regulament.pdf" target="_blank"><span className="section-icon doc" /></a>
-                    </Col>
-                    <Col md={1} mdOffset={1} xs={1} xsOffset={2}>
-                      <a href="http://data.infoeducatie.ro/manual/proceduri-de-aplicare-regulament.pdf" target="_blank"><span className="section-icon doc" /></a>
-                    </Col>
-                  </Row>
-                </div>
+              <Col xs={12}>
+                <p>
+                    Regulamentul concursului poate fi accesat&nbsp;
+                    <a href="http://data.infoeducatie.ro/manual/regulament.pdf" target="_blank">aici</a>
+                    , iar criteriile de aplicare a regulamentului sunt disponibile&nbsp;
+                    <a href="http://data.infoeducatie.ro/manual/proceduri-de-aplicare-regulament.pdf" target="_blank">aici</a>.
+                </p>
               </Col>
             </Row>
             <Row className="small-spacing" />
-            <Row className="contact">
-              <h4>Contact</h4>
-              <ul>
-                <li>
-                  Organizatori: contact@infoeducatie.ro (Emil Onea)
-                </li>
-                <li>
-                  Website: ping@infoeducatie.ro
-                </li>
-              </ul>
-              <h4>Juriu</h4>
-              <ul>
-                <li>
-                  Software educațional: educational@infoeducatie.ro
-                </li>
-                <li>
-                  Multimedia: multimedia@infoeducatie.ro
-                </li>
-                <li>
-                  Software utilitar: utilitar@infoeducatie.ro
-                </li>
-                <li>
-                  Roboți: roboti@infoeducatie.ro
-                </li>
-                <li>
-                  Web: web@infoeducatie.ro
-                </li>
-              </ul>
-            </Row>
           </Col>
         </Row>
       </Grid>

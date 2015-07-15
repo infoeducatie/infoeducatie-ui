@@ -4,13 +4,15 @@ import React from "react";
 import { OverlayMixin, Modal } from "react-bootstrap";
 import $ from "jquery";
 import _ from "lodash";
+import Router from "react-router";
+let { Navigation } = Router;
 
 import SignInForm from "./sign-in-form";
 
 
 export default React.createClass({
   displayName: "SignIn",
-  mixins: [OverlayMixin],
+  mixins: [OverlayMixin, Navigation],
 
   getInitialState() {
     return {
@@ -80,8 +82,22 @@ export default React.createClass({
         <div className="modal-body">
           <SignInForm onSignIn={this.onSignIn}
                       hasErrored={this.state.hasErrored} />
+          {this.renderRegisterMessage()}
         </div>
       </Modal>
     );
+  },
+
+  renderRegisterMessage() {
+    return <p>
+      Dacă nu ai un cont,&nbsp;
+      <a href="#" onClick={this.onRegisterClick}>creează unul nou aici</a>.
+      </p>;
+  },
+
+  onRegisterClick(event) {
+    event.preventDefault();
+    this.closeModal();
+    this.transitionTo("register");
   }
 });

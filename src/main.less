@@ -4,45 +4,64 @@
 @import "styles/classes";
 @import "styles/mixins";
 
+@import "components/about";
+@import "components/alumni";
+@import "components/contact";
+@import "components/contestants/contestants";
+@import "components/contestants/filter_icon";
+@import "components/contestants/project_card";
+@import "components/footer";
+@import "components/header";
+@import "components/home";
+@import "components/jury";
+@import "components/news/news";
+@import "components/photos";
+@import "components/register-in-contest";
+@import "components/register";
+@import "components/results";
+@import "components/talks";
+@import "../node_modules/blueimp-file-upload/css/jquery.fileupload.css";
+@import "../node_modules/blueimp-file-upload/css/jquery.fileupload-ui.css";
+
 
 @font-face {
   font-family: 'Shadows Into Light';
-  src: url(../assets/fonts/shadows2.ttf) format('truetype');
+  src: url('../assets/fonts/shadows2.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Lato';
-  src: url('../assets/fonts/LatoLatin-Regular.eot');
-  src: url('../assets/fonts/LatoLatin-Regular.eot?#iefix') format('embedded-opentype'),
-       url('../assets/fonts/LatoLatin-Regular.woff') format('woff'),
-       url('../assets/fonts/LatoLatin-Regular.ttf') format('truetype');
-  font-style: normal;
+  src: url('../assets/fonts/lato-regular-webfont.eot');
+  src: url('../assets/fonts/lato-regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../assets/fonts/lato-regular-webfont.woff2') format('woff2'),
+       url('../assets/fonts/lato-regular-webfont.woff') format('woff'),
+       url('../assets/fonts/lato-regular-webfont.ttf') format('truetype');
   font-weight: normal;
-  text-rendering: optimizeLegibility;
+  font-style: normal;
 }
 
 @font-face {
   font-family: 'Lato';
-  src: url('../assets/fonts/LatoLatin-Bold.eot');
-  src: url('../assets/fonts/LatoLatin-Bold.eot?#iefix') format('embedded-opentype'),
-       url('../assets/fonts/LatoLatin-Bold.woff') format('woff'),
-       url('../assets/fonts/LatoLatin-Bold.ttf') format('truetype');
+  src: url('../assets/fonts/lato-light-webfont.eot');
+  src: url('../assets/fonts/lato-light-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../assets/fonts/lato-light-webfont.woff2') format('woff2'),
+       url('../assets/fonts/lato-light-webfont.woff') format('woff'),
+       url('../assets/fonts/lato-light-webfont.ttf') format('truetype');
+  font-weight: 300;
   font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('../assets/fonts/lato-bold-webfont.eot');
+  src: url('../assets/fonts/lato-bold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../assets/fonts/lato-bold-webfont.woff2') format('woff2'),
+       url('../assets/fonts/lato-bold-webfont.woff') format('woff'),
+       url('../assets/fonts/lato-bold-webfont.ttf') format('truetype');
   font-weight: bold;
-  text-rendering: optimizeLegibility;
-}
-
-@font-face {
-    font-family: 'Lato';
-    src: url('../assets/fonts/LatoLatinLight-Regular.eot');
-    src: url('../assets/fonts/LatoLatinLight-Regular.eot?#iefix') format('embedded-opentype'),
-         url('../assets/fonts/LatoLatinLight-Regular.woff') format('woff'),
-         url('../assets/fonts/LatoLatinLight-Regular.ttf') format('truetype');
-    font-style: normal;
-    font-weight: 300;
-    text-rendering: optimizeLegibility;
+  font-style: normal;
 }
 
 @navbar-default-bg: transparent;
@@ -55,8 +74,7 @@
 @font-family-sans-serif: 'Lato', sans-serif;
 @font-family-serif: 'Shadows Into Light', serif;
 @font-size-base: 16px;
-@font-size-h1-big: 108px;
-@font-size-h1: 80px;
+@font-size-h1: 108px;
 @font-size-h2: 34px;
 @font-size-h3: 40px;
 @font-size-h4: 24px;
@@ -100,4 +118,39 @@ html {
 }
 *, *:before, *:after {
   box-sizing: inherit;
+}
+
+// No horizontal scrolling bar
+// http://stackoverflow.com/questions/17005500/bootstrap-2-3-css-responsive-left-with-a-white-space-on-the-right
+html, body {
+  width: auto;
+  overflow-x: hidden;
+}
+
+
+@media screen and (max-width: @screen-xs) {
+  @scale-ratio: 5/6;
+  h1 {
+    font-size: (@font-size-h1 - 25) * @scale-ratio;
+  }
+
+  h2 {
+    font-size: @font-size-h2 * @scale-ratio;
+  }
+
+  h3 {
+    font-size: @font-size-h2 * @scale-ratio;
+  }
+
+  h4 {
+    font-size: @font-size-h2 * @scale-ratio;
+  }
+
+  h5 {
+    font-size: @font-size-h5 * @scale-ratio;
+  }
+
+  h6 {
+    font-size: @font-size-h5 * @scale-ratio;
+  }
 }

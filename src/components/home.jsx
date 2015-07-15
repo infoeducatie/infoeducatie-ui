@@ -9,7 +9,7 @@ import {Grid, Row, Col, Glyphicon} from "react-bootstrap";
 import Header from "./header";
 import NewsContainer from "./news/news-container";
 
-import "./home.less";
+import "../main.less";
 import Google from "../../assets/img/sponsors/google.png";
 import Intel from "../../assets/img/sponsors/intel.png";
 import Orange from "../../assets/img/sponsors/orange.png";
@@ -20,6 +20,8 @@ import Apdetic from "../../assets/img/sponsors/apdetic.png";
 import TotalSoft from "../../assets/img/sponsors/totalsoft.gif";
 import Upir from "../../assets/img/sponsors/upir.png";
 import MEN from "../../assets/img/sponsors/edu.jpg";
+import CloudBase from "../../assets/img/sponsors/cloudbase.png";
+import iMedicare from "../../assets/img/sponsors/imedicare.png";
 
 export default React.createClass({
   displayName: "Home",
@@ -28,29 +30,25 @@ export default React.createClass({
     return <div className="home">
         <div className="blue-section-wrapper">
             <Grid className="blue-section">
-                <Row>
-                    <Col>
                         <Header isLoggedIn={this.props.isLoggedIn}
                                 changeLanguage={this.props.changeLanguage}
                                 language={this.props.language}
                                 login={this.props.login}
                                 logout={this.props.logout} />
-                    </Col>
-                </Row>
-                <Row className="big-spacing header-spacing" />
                 <Row>
                     <Col>
                         <h1>
-                            InfoEducație Ediția&nbsp;
-                            {this.props.current.edition.year}
+                            InfoEducație
                         </h1>
-                        <h2>Concurs Național de Proiecte</h2>
+
                     </Col>
                 </Row>
                 <Row>
                     <Col>
+                        <h2>Concurs Național de Proiecte IT&amp;C</h2>
                         <h5 className="tagline">
-                            {this.props.current.edition.motto}
+                            Ediția&nbsp;
+                            {this.props.current.edition.name}
                         </h5>
                     </Col>
                 </Row>
@@ -71,28 +69,6 @@ export default React.createClass({
                         </p>
                     </Col>
                 </Row>
-                <Row className="big-spacing" />
-                <Row className="statistics">
-                    <Col md={2} mdOffset={3} xs={4}>
-                        <p className="description">Participanți</p>
-                        <p className="value">
-                          {this.props.current.stats.total_participants}
-                        </p>
-                    </Col>
-                    <Col md={2} xs={4}>
-                        <p className="description">Proiecte</p>
-                        <p className="value">
-                          {this.props.current.stats.total_projects}
-                        </p>
-                    </Col>
-                    <Col md={2} xs={4}>
-                        <p className="description">Județe</p>
-                        <p className="value">
-                          {this.props.current.stats.total_counties}
-                        </p>
-                    </Col>
-                </Row>
-                <Row className="small-spacing" />
             </Grid>
         </div>
 
@@ -107,10 +83,12 @@ export default React.createClass({
                     <Col md={6} mdOffset={6}>
                         <h6>Alumnus</h6>
                         <Row className="small-spacing" />
-                        <p className="quote">La momentul respectiv părea o
-                        joacă, acum infoarena este o organizație cu o
-                        activitate foarte solidă și cu un impact mare în
-                        rândul elevilor pasionați de informatică.</p>
+                        <p className="quote">InfoEducatie mi-a oferit o
+                         motivație să învăț tehnologii web și să dezvolt
+                         proiectul meu de atunci. Am un sfat pentru
+                         participanți: prezentarea este la fel de importantă
+                         ca lucrarea in sine! Repetați înainte sa veniți în
+                         fața comisiei.</p>
                         <Row className="small-spacing" />
                         <h2 className="alumnus-name">Cristian Strat</h2>
                         <h6 className="alumnus-position">
@@ -133,7 +111,7 @@ export default React.createClass({
                                 2 - 8 August 2015
                                 <span className="pink-dash"></span>
                             </h6>
-                            <h6 className="edition">Ediția 23</h6>
+                            <h6 className="edition">Ediția 22</h6>
                             <Row className="small-spacing" />
                             <p>
                                 <Link to="photos"
@@ -159,12 +137,22 @@ export default React.createClass({
                 <Row>
                     <Col xs={12}>
                         <p className="logos">
-                            <img src={Google} />
-                            <img src={Intel} />
-                            <img src={Orange} />
+                            <a href="http://google.ro" target="_blank">
+                              <img src={Google} />
+                            </a>
+                            <a href="http://intel.ro" target="_blank">
+                              <img src={Intel} />
+                            </a>
+                            <a href="http://www.orange.ro/" target="_blank">
+                              <img src={Orange} />
+                            </a>
+                            <a href="https://imedicare.com/" target="_blank">
+                              <img src={iMedicare} />
+                            </a>
                         </p>
                     </Col>
                 </Row>
+
                 <Row className="small-spacing" />
                 <Row>
                     <Col xs={12}>
@@ -174,14 +162,41 @@ export default React.createClass({
                 <Row>
                     <Col xs={12}>
                         <p className="logos">
-                            <img src={EasyHost} />
-                            <img src={Cisco} />
-                            <img src={Intuitext} /> <br />
-                            <img src={Apdetic} />
-                            <img src={TotalSoft} />
+                            <a href="http://www.cisco.com/" target="_blank">
+                              <img src={Cisco} />
+                            </a>
+                            <a href="http://www.cloudbase.it/" target="_blank">
+                              <img src={CloudBase} />
+                            </a>
                         </p>
                     </Col>
                 </Row>
+
+                <Row className="small-spacing" />
+                <Row>
+                    <Col xs={12}>
+                        <h4>Sponsori Bronze</h4>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12}>
+                        <p className="logos">
+                            <a href="http://ro.easyhost.com/incubator" target="_blank">
+                              <img src={EasyHost} />
+                            </a>
+                            <a href="http://www.intuitext.ro/" target="_blank">
+                              <img src={Intuitext} />
+                            </a>
+                            <a href="http://asociatiait.ro/" target="_blank">
+                              <img src={Apdetic} />
+                            </a>
+                            <a href="http://www.totalsoft.ro/" target="_blank">
+                              <img src={TotalSoft} />
+                            </a>
+                        </p>
+                    </Col>
+                </Row>
+
                 <Row className="small-spacing" />
                 <Row>
                     <Col xs={12}>
@@ -191,8 +206,12 @@ export default React.createClass({
                 <Row>
                     <Col xs={12}>
                         <p className="logos">
-                            <img src={Upir} />
-                            <img src={MEN} />
+                            <a href="http://upir.ro/ro/" target="_blank">
+                              <img src={Upir} />
+                            </a>
+                            <a href="http://www.edu.ro/" target="_blank">
+                              <img src={MEN} />
+                            </a>
                         </p>
                     </Col>
                 </Row>

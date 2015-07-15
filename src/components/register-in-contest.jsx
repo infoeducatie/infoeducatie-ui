@@ -5,7 +5,7 @@ import React from "react";
 import { Grid, Col, Row, PanelGroup, Panel, ListGroup, ListGroupItem } from "react-bootstrap";
 
 import Header from "./header";
-import "./register-in-contest.less";
+import "../main.less";
 import RegisterContestant from "./register-in-contest/register-contestant"
 import RegisterProject from "./register-in-contest/register-project"
 import RegisterScreenshots from "./register-in-contest/register-screenshots"
@@ -75,7 +75,7 @@ export default React.createClass({
                       activeKey={this.state.activePanelKey}
                       accordion>
 
-            <Panel header="Înregistrare Participant"
+            <Panel header="Înregistrare Concurent"
                    eventKey="1"
                    bsStyle={this._getPanelStyle(1)}>
               {this.renderFormOrMessage(this.renderContestantForm, 1)}

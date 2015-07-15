@@ -1,4 +1,4 @@
-@import "../main";
+@import (reference) "../main";
 
 
 .results {
@@ -48,10 +48,14 @@
           text-align: center;
         }
 
-        .author {
-          margin-top: 5px;
-          text-transform: uppercase;
-          color: @blue;
+       .list-unstyled {
+          margin-bottom: 0px;
+
+          .author {
+            margin-top: 5px;
+            text-transform: uppercase;
+            color: @blue;
+          }
         }
       }
     }

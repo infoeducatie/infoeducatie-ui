@@ -1,4 +1,4 @@
-@import "../../main";
+@import (reference) "../../main";
 
 
 .contestants {
@@ -83,6 +83,7 @@
         vertical-align: middle;
         display: table-cell;
         border-bottom: 1px solid @pink;
+        padding: 12px;
 
         &.county {
           text-transform: uppercase;
@@ -105,7 +106,9 @@
           text-align: center;
         }
 
-        &.authors {
+        .list-unstyled {
+          margin-bottom: 0px;
+
           .author {
             text-transform: uppercase;
             color: @blue;

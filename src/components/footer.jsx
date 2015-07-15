@@ -2,12 +2,12 @@
 
 import React from "react";
 import Router from "react-router";
-import { Navbar, Nav, NavItem, Row, Col, Thumbnail, Grid, NavItem } from "react-bootstrap";
+import { Navbar, Nav, NavItem, Row, Col, Thumbnail, Grid } from "react-bootstrap";
 import { NavItemLink } from "react-router-bootstrap";
 
 let { Route, Link, RouteHandler } = Router; // eslint-disable-line
 
-import "./footer.less";
+import "../main.less";
 import Facebook from "../../assets/img/icons/fb.png";
 import Twitter from "../../assets/img/icons/twitter.png";
 import Google from "../../assets/img/icons/gplus.png";
@@ -30,7 +30,7 @@ export default React.createClass({
               <NavItem target="_blank" href="http://blog.infoeducatie.ro">Blog</NavItem>
               <NavItemLink to="results">Rezultate</NavItemLink>
               <NavItemLink to="photos">Fotografii</NavItemLink>
-              <NavItemLink to="about">Contact</NavItemLink>
+              <NavItemLink to="contact">Contact</NavItemLink>
             </Nav>
           </Navbar>
         </Col>
@@ -49,13 +49,6 @@ export default React.createClass({
                 <li><a href="https://plus.google.com/+InfoeducatieRomania" target="_blank"><img alt="Google+" src={Google} /></a></li>
                 <li><a href="https://github.com/infoeducatie" target="_blank"><img alt="Github" src={Github} /></a></li>
               </ul>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={12}>
-             <p className="privacy">
-                Protec&#355;ia datelor / Termene &amp; condi&#355;ii
-              </p>
             </Col>
           </Row>
           <Row>

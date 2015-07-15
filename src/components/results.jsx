@@ -7,7 +7,7 @@ import Header from "./header";
 import FilterIcon from "./contestants/filter_icon";
 import resultsFixture from "../fixtures/results";
 
-import "./results.less";
+import "../main.less";
 
 
 export default React.createClass({
@@ -78,12 +78,11 @@ export default React.createClass({
                   changeLanguage={this.props.changeLanguage}
                   login={this.props.login}
                   logout={this.props.logout} />
-          <Row className="xxsmall-spacing" />
+          <Row className="xsmall-spacing" />
           <Row>
             <Col>
-              <h1>Rezultate InfoEducație <br />
-              Ediția 2014
-              </h1>
+              <h1>Rezultate InfoEducație</h1>
+              <h2>Ediția 2014</h2>
             </Col>
           </Row>
           <Row className="big-spacing" />

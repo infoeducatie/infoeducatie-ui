@@ -6,6 +6,7 @@ import React from "react";
 import ReactCookie from "react-cookie";
 import Router from "react-router";
 let { Route, RouteHandler, DefaultRoute, Navigation } = Router; // eslint-disable-line
+import ga from "react-ga";
 import "babel-core/polyfill";
 import "./main.less";
 
@@ -13,6 +14,7 @@ import Photos from "./components/photos";
 import Alumni from "./components/alumni";
 import RegisterInContest from "./components/register-in-contest";
 import About from "./components/about";
+import Contact from "./components/contact";
 import Register from "./components/register";
 import Jury from "./components/jury";
 import Home from "./components/home";
@@ -64,6 +66,7 @@ let App = React.createClass({
   render() {
     return <div className="main">
       <RouteHandler current={this.state.current}
+                    edition={this.state.current.edition}
                     user={this.state.current.user}
                     registration={this.state.current.registration}
                     refreshCurrent={this.getCurrent}
@@ -123,10 +126,6 @@ let App = React.createClass({
           current: data,
           isLoggedIn: data.is_logged_in
         });
-      },
-      error: () => {
-        // This means the user token has expired.
-        this.logout();
       }
     });
   }
@@ -140,20 +139,30 @@ let routes = (
     <Route handler={RegisterInContest} name="register-in-contest" />
     <Route handler={Alumni} name="alumni" />
     <Route handler={Photos} name="photos" />
+    <Route handler={Contact} name="contact" />
     <Route handler={About} name="about" />
     <Route handler={Register} name="register" />
     <Route handler={Calendar} name="calendar" />
     <Route handler={Results} name="results" />
     <Route handler={Kitchen} name="kitchen" />
     <Route handler={Contestants} name="contestants" />
-    <Route handler={Talks} name="seminars" />
     <Route handler={HomeEnglish} name="home-english" path="/en/home" />
     <Route handler={AboutEnglish} name="about-english" path="/en/about" />
+    <Route handler={Talks} name="talks" />
     <DefaultRoute handler={Home} />
   </Route>
 );
 
-Router.run(routes, Router.HistoryLocation, (Root) => {
+if ("GA_TRACKING_ID" in window.config && window.config.GA_TRACKING_ID.length) {
+  ga.initialize(window.config.GA_TRACKING_ID);
+  window.config.useGA = true;
+}
+
+Router.run(routes, Router.HistoryLocation, (Root, state) => {
+  if (window.config.useGA) {
+    ga.pageview(state.pathname);
+  }
+
   React.render(<Root />, document.getElementById("app"));
 });
 

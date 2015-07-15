@@ -6,7 +6,7 @@ import { Grid, Col, Row } from "react-bootstrap";
 import Header from "./header";
 import JuryDescription from "./jury-description";
 
-import "./jury.less";
+import "../main.less";
 
 import VladAvatar from "../../assets/img/jury/vlad_temian.png";
 import RobertAvatar from "../../assets/img/jury/robert_dolca.png";
@@ -83,11 +83,11 @@ export default React.createClass({
                     changeLanguage={this.props.changeLanguage}
                     login={this.props.login}
                     logout={this.props.logout} />
+            <Row className="xsmall-spacing" />
             <Row>
               <Col xs={12}>
-                <h1>Juriul InfoEduca&#355;ie <br />
-                    Ediția {this.props.current.edition.year}
-                </h1>
+                <h1>Juriul InfoEduca&#355;ie </h1>
+                <h2>Ediția {this.props.current.edition.name}</h2>
               </Col>
             </Row>
           </Grid>
