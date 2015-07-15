@@ -43,6 +43,8 @@ export default React.createClass({
           <Row>
             <Col xs={12}>
               <Header isLoggedIn={this.props.isLoggedIn}
+                      language={this.props.language}
+                      changeLanguage={this.props.changeLanguage}
                       login={this.props.login}
                       logout={this.props.logout} />
             </Col>
@@ -104,35 +106,6 @@ export default React.createClass({
     </Row>;
   },
 
-  render() {
-    return <div className="seminars">
-      <div className="blue-section-wrapper">
-        <Grid className="blue-section">
-          <Row>
-            <Col xs={12}>
-              <Header isLoggedIn={this.props.isLoggedIn}
-                      language={this.props.language}
-                      changeLanguage={this.props.changeLanguage}
-                      login={this.props.login}
-                      logout={this.props.logout} />
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={12}>
-              <h1>Seminarii InfoEducație <br />
-                  Ediția {this.props.current.edition.year}
-              </h1>
-            </Col>
-          </Row>
-          <Row className="big-spacing" />
-        </Grid>
-      </div>
-      <Grid>
-        {this.state.talks.map(this.renderSeminar)}
-      </Grid>
-   </div>;
-  },
-
   renderAuthorImage(author, index) {
     return <li className="author-image" key={index}>
       <img src={this.getGravatarImage(author.email_md5)} />
@@ -166,6 +139,5 @@ export default React.createClass({
 
   getGravatarImage(email) {
     return `http://www.gravatar.com/avatar/${email}?s=150&d=mysteryman`;
->>>>>>> master
   }
 });

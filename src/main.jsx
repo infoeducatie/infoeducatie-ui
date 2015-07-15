@@ -55,7 +55,7 @@ let App = React.createClass({
     return {
       current: this.props.current,
       isLoggedIn: accesToken ? true : false,
-      language: "ro",
+      language: "ro"
     };
   },
 
