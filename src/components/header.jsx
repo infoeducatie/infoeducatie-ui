@@ -46,7 +46,7 @@ export default React.createClass({
 
   renderEnglishHeader() {
     return <Nav className="navbar-nav" eventKey={0} right ref="nav">
-      <NavItemLink to="/">Home</NavItemLink>
+      <NavItemLink to="home-english">Home</NavItemLink>
       <NavItemLink to="about-english">About</NavItemLink>
       <NavItem onClick={this.changeLanguage}>{this.renderNextLanguage()}</NavItem>
     </Nav>;
@@ -78,7 +78,6 @@ export default React.createClass({
         <NavItemLink to="contestants">Participanți</NavItemLink>
         <NavItemLink to="jury">Juriu</NavItemLink>
         <NavItem><SignIn login={this.props.login} /></NavItem>
-        <NavItemLink to="register">Înregistrează-te</NavItemLink>
         <NavItem onClick={this.changeLanguage}>{this.renderNextLanguage()}</NavItem>
       </Nav>;
     } else {
