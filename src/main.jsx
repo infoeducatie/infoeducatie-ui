@@ -79,16 +79,16 @@ let App = React.createClass({
     </div>;
   },
 
-  changeLanguage() {
-    if (this.state.language === "ro") {
-      this.setState({
-        language: "en"
-      });
+  changeLanguage(newLanguage) {
+    let path = this.context.router.getCurrentPathname();
+
+    this.setState({
+      language: newLanguage
+    });
+
+    if (newLanguage === "en" && path === "/") {
       this.transitionTo("/en/home");
-    } else {
-      this.setState({
-        language: "ro"
-      });
+    } else if (newLanguage === "ro" && path === "/en/home") {
       this.transitionTo("/");
     }
   },

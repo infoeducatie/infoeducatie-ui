@@ -29,28 +29,30 @@ export default React.createClass({
     return <div className="home">
         <div className="blue-section-wrapper">
             <Grid className="blue-section">
+                <Header isLoggedIn={this.props.isLoggedIn}
+                        language={this.props.language}
+                        changeLanguage={this.props.changeLanguage}
+                        login={this.props.login}
+                        logout={this.props.logout} />
                 <Row>
-                    <Col>
-                        <Header isLoggedIn={this.props.isLoggedIn}
-                                language={this.props.language}
-                                changeLanguage={this.props.changeLanguage}
-                                login={this.props.login}
-                                logout={this.props.logout} />
-                    </Col>
-                </Row>
-                <Row className="big-spacing header-spacing" />
-                <Row>
-                    <Col>
+                    <Col xs={12}>
                         <h1>
-                            InfoEducație &nbsp;
-                            {this.props.current.edition.year}
+                            InfoEducație
                         </h1>
-                        <h2>National Contest of Computer Science Projects</h2>
                     </Col>
                 </Row>
-                <Row className="small-spacing" />
                 <Row>
-                    <Col md={4} mdOffset={4}>
+                    <Col xs={12}>
+                        <h2>National Contest of IT&amp;C projects</h2>
+                        <h5 className="tagline">
+                            Edition&nbsp;
+                            {this.props.current.edition.name}
+                        </h5>
+                    </Col>
+                </Row>
+                <Row className="xsmall-spacing" />
+                <Row>
+                    <Col md={3} mdOffset={5}>
                         <p className="right-button">
                             <Link to="about" className="link link-secondary">
                                 About contest
@@ -58,28 +60,6 @@ export default React.createClass({
                         </p>
                     </Col>
                 </Row>
-                <Row className="small-spacing" />
-                <Row className="statistics">
-                    <Col md={2} mdOffset={3} xs={4}>
-                        <p className="description">Contestants</p>
-                        <p className="value">
-                          {this.props.current.stats.total_participants}
-                        </p>
-                    </Col>
-                    <Col md={2} xs={4}>
-                        <p className="description">Projects</p>
-                        <p className="value">
-                          {this.props.current.stats.total_projects}
-                        </p>
-                    </Col>
-                    <Col md={2} xs={4}>
-                        <p className="description">Counties</p>
-                        <p className="value">
-                          {this.props.current.stats.total_counties}
-                        </p>
-                    </Col>
-                </Row>
-                <Row className="small-spacing" />
             </Grid>
         </div>
 
