@@ -23,7 +23,7 @@ export default React.createClass({
       project: {
         /*eslint-disable */
         title: "",
-        category: "web",
+        category: "educational",
         description: "",
         technical_description: "",
         system_requirements: "",
