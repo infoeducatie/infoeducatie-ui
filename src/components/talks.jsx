@@ -7,6 +7,7 @@ import React from "react";
 
 import "../main.less";
 import ajax from "../lib/ajax"
+import gravatar from "../lib/gravatar"
 import DefaultAvatar from "../../assets/img/jury/default.png";
 import EditionSelector from "./edition-selector";
 import Header from "./header";
@@ -108,7 +109,7 @@ export default React.createClass({
 
   renderAuthorImage(author, index) {
     return <li className="author-image" key={index}>
-      <img src={this.getGravatarImage(author.email_md5)} />
+      <img src={gravatar(author.email_md5)} />
     </li>;
   },
 
@@ -136,8 +137,4 @@ export default React.createClass({
       success: (data) => { this.setState({ talks: data }); }
     });
   },
-
-  getGravatarImage(email) {
-    return `http://www.gravatar.com/avatar/${email}?s=150&d=mysteryman`;
-  }
 });
