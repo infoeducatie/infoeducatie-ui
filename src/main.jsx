@@ -87,7 +87,7 @@ let App = React.createClass({
     });
 
     if (newLanguage === "en" && path !== "/en/home") {
-      this.transitionTo("/en/home");
+      this.transitionTo("/home");
     } else if (newLanguage === "ro" && path !== "/") {
       this.transitionTo("/");
     }
@@ -134,21 +134,21 @@ let App = React.createClass({
 
 let routes = (
   <Route path="/" handler={App}>
-    <Route handler={Home} name="home" />
-    <Route handler={Jury} name="jury" />
-    <Route handler={RegisterInContest} name="register-in-contest" />
+    <Route handler={Home} name="home" path="acasa"/>
+    <Route handler={Jury} name="jury" path="juriu" />
+    <Route handler={RegisterInContest} name="register-in-contest" path="inscriere" />
     <Route handler={Alumni} name="alumni" />
-    <Route handler={Photos} name="photos" />
+    <Route handler={Photos} name="photos" path="poze" />
     <Route handler={Contact} name="contact" />
-    <Route handler={About} name="about" />
-    <Route handler={Register} name="register" />
+    <Route handler={About} name="about" path="despre" />
+    <Route handler={Register} name="register" path="inregistrare" />
     <Route handler={Calendar} name="calendar" />
-    <Route handler={Results} name="results" />
+    <Route handler={Results} name="results" path="rezultate" />
     <Route handler={Kitchen} name="kitchen" />
-    <Route handler={Contestants} name="contestants" />
-    <Route handler={HomeEnglish} name="home-english" path="/en/home" />
-    <Route handler={AboutEnglish} name="about-english" path="/en/about" />
-    <Route handler={Talks} name="talks" />
+    <Route handler={Contestants} name="contestants" path="participanti" />
+    <Route handler={HomeEnglish} name="home-english" path="home" />
+    <Route handler={AboutEnglish} name="about-english" path="about" />
+    <Route handler={Talks} name="talks"path="seminarii" />
     <DefaultRoute handler={Home} />
   </Route>
 );
