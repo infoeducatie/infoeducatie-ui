@@ -28,7 +28,6 @@ export default React.createClass({
             <Nav className="navbar-nav" ref="nav">
               <NavItem target="_blank" href="http://community.infoeducatie.ro">Forum</NavItem>
               <NavItem target="_blank" href="http://blog.infoeducatie.ro">Blog</NavItem>
-              <NavItemLink to="photos-english">Photos</NavItemLink>
               <NavItemLink to="contact-english">Contact</NavItemLink>
             </Nav>
           </Navbar>

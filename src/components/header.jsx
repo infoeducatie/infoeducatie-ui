@@ -47,6 +47,7 @@ export default React.createClass({
   renderEnglishHeader() {
     return <Nav className="navbar-nav" eventKey={0} right ref="nav">
       <NavItemLink to="home-english">Home</NavItemLink>
+      <NavItemLink to="photos-english">Photos</NavItemLink>
       <NavItemLink to="about-english">About</NavItemLink>
       <NavItem onClick={this.changeLanguage}>{this.renderNextLanguage()}</NavItem>
     </Nav>;
