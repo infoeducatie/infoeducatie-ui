@@ -22,6 +22,8 @@ import Upir from "../../assets/img/sponsors/upir.png";
 import MEN from "../../assets/img/sponsors/edu.jpg";
 import CloudBase from "../../assets/img/sponsors/cloudbase.png";
 import iMedicare from "../../assets/img/sponsors/imedicare.png";
+import eSkills from "../../assets/img/sponsors/eskills.png";
+
 
 export default React.createClass({
   displayName: "Home",
@@ -192,6 +194,9 @@ export default React.createClass({
                             </a>
                             <a href="http://www.totalsoft.ro/" target="_blank">
                               <img src={TotalSoft} />
+                            </a>
+                            <a href="http://eskills4jobs.ec.europa.eu/" target="_blank">
+                              <img src={eSkills} />
                             </a>
                         </p>
                     </Col>
