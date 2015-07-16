@@ -284,7 +284,11 @@ export default React.createClass({
     ajax({
       endpoint: "projects.json",
       data: data,
-      success: (data) => { this.setState({ projects: data }); },
+      success: (data) => {
+        this.setState({
+          projects: _.sortByOrder(data, ["county", "id"])
+        });
+      },
       error: () => {
         this.setState({
           showGrid: false,
