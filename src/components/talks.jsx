@@ -136,5 +136,5 @@ export default React.createClass({
       data: data,
       success: (data) => { this.setState({ talks: data }); }
     });
-  },
+  }
 });
