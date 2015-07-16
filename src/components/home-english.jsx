@@ -33,7 +33,7 @@ export default React.createClass({
   },
 
   render() {
-    return <div className="home">
+    return <div className="home english">
         <div className="blue-section-wrapper">
             <Grid className="blue-section">
                 <Header isLoggedIn={this.props.isLoggedIn}
@@ -59,10 +59,10 @@ export default React.createClass({
                 </Row>
                 <Row className="xsmall-spacing" />
                 <Row>
-                    <Col md={3} mdOffset={5}>
+                    <Col xs={12}>
                         <p className="right-button">
                             <Link to="about-english" className="link link-secondary">
-                                About contest
+                                About the contest
                             </Link>
                         </p>
                     </Col>

@@ -28,6 +28,7 @@ import Talks from "./components/talks";
 import HomeEnglish from "./components/home-english";
 import AboutEnglish from "./components/about-english";
 import FooterEnglish from "./components/footer-english";
+import ContactEnglish from "./components/contact-english";
 
 
 let App = React.createClass({
@@ -139,7 +140,7 @@ let routes = (
     <Route handler={RegisterInContest} name="register-in-contest" path="inscriere" />
     <Route handler={Alumni} name="alumni" />
     <Route handler={Photos} name="photos" path="poze" />
-    <Route handler={Contact} name="contact" />
+    <Route handler={Contact} name="contact" path="contacte" />
     <Route handler={About} name="about" path="despre" />
     <Route handler={Register} name="register" path="inregistrare" />
     <Route handler={Calendar} name="calendar" />
@@ -148,6 +149,7 @@ let routes = (
     <Route handler={Contestants} name="contestants" path="participanti" />
     <Route handler={HomeEnglish} name="home-english" path="home" />
     <Route handler={AboutEnglish} name="about-english" path="about" />
+    <Route handler={ContactEnglish} name="contact-english" path="contact" />
     <Route handler={Talks} name="talks"path="seminarii" />
     <DefaultRoute handler={Home} />
   </Route>
