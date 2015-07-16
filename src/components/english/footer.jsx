@@ -7,13 +7,13 @@ import { NavItemLink } from "react-router-bootstrap";
 
 let { Route, Link, RouteHandler } = Router; // eslint-disable-line
 
-import "./footer.less";
-import Facebook from "../../assets/img/icons/fb.png";
-import Twitter from "../../assets/img/icons/twitter.png";
-import Google from "../../assets/img/icons/gplus.png";
-import Github from "../../assets/img/icons/github.png";
+import "../footer.less";
+import Facebook from "../../../assets/img/icons/fb.png";
+import Twitter from "../../../assets/img/icons/twitter.png";
+import Google from "../../../assets/img/icons/gplus.png";
+import Github from "../../../assets/img/icons/github.png";
 
-import NewsletterForm from "./newsletter-form";
+import NewsletterForm from "../newsletter-form";
 
 export default React.createClass({
   displayName: "FooterEnglish",
@@ -28,7 +28,6 @@ export default React.createClass({
             <Nav className="navbar-nav" ref="nav">
               <NavItem target="_blank" href="http://community.infoeducatie.ro">Forum</NavItem>
               <NavItem target="_blank" href="http://blog.infoeducatie.ro">Blog</NavItem>
-              <NavItemLink to="photos">Photos</NavItemLink>
               <NavItemLink to="contact-english">Contact</NavItemLink>
             </Nav>
           </Navbar>

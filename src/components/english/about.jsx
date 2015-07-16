@@ -3,10 +3,10 @@
 import React from "react";
 
 import { Row, Col, Grid } from "react-bootstrap";
-import Header from "./header";
+import Header from "../header";
 
-import "./about.less"
-import DefaultDocument from "../../assets/img/icons/doc.png";
+import "../about.less"
+import DefaultDocument from "../../../assets/img/icons/doc.png";
 
 
 export default React.createClass({

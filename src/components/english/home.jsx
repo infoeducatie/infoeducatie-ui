@@ -6,23 +6,23 @@ import React from "react";
 import {Link} from "react-router";
 import {Grid, Row, Col, Glyphicon} from "react-bootstrap";
 
-import Header from "./header";
-import NewsContainer from "./news/news-container";
+import Header from "../header";
+import NewsContainer from "../news/news-container";
 
-import "./home.less";
-import Google from "../../assets/img/sponsors/google.png";
-import Intel from "../../assets/img/sponsors/intel.png";
-import Orange from "../../assets/img/sponsors/orange.png";
-import EasyHost from "../../assets/img/sponsors/easyhost.png";
-import Cisco from "../../assets/img/sponsors/cisco.png";
-import Intuitext from "../../assets/img/sponsors/intuitext.gif";
-import Apdetic from "../../assets/img/sponsors/apdetic.png";
-import TotalSoft from "../../assets/img/sponsors/totalsoft.gif";
-import Upir from "../../assets/img/sponsors/upir.png";
-import MEN from "../../assets/img/sponsors/edu.jpg";
-import CloudBase from "../../assets/img/sponsors/cloudbase.png";
-import iMedicare from "../../assets/img/sponsors/imedicare.png";
-import eSkills from "../../assets/img/sponsors/eskills.png";
+import "../home.less";
+import Google from "../../../assets/img/sponsors/google.png";
+import Intel from "../../../assets/img/sponsors/intel.png";
+import Orange from "../../../assets/img/sponsors/orange.png";
+import EasyHost from "../../../assets/img/sponsors/easyhost.png";
+import Cisco from "../../../assets/img/sponsors/cisco.png";
+import Intuitext from "../../../assets/img/sponsors/intuitext.gif";
+import Apdetic from "../../../assets/img/sponsors/apdetic.png";
+import TotalSoft from "../../../assets/img/sponsors/totalsoft.gif";
+import Upir from "../../../assets/img/sponsors/upir.png";
+import MEN from "../../../assets/img/sponsors/edu.jpg";
+import CloudBase from "../../../assets/img/sponsors/cloudbase.png";
+import iMedicare from "../../../assets/img/sponsors/imedicare.png";
+import eSkills from "../../../assets/img/sponsors/eskills.png";
 
 
 export default React.createClass({
@@ -104,10 +104,10 @@ export default React.createClass({
                                 2 - 8 August 2015
                                 <span className="pink-dash"></span>
                             </h6>
-                            <h6 className="edition">23th Edition</h6>
+                            <h6 className="edition">22th Edition</h6>
                             <Row className="small-spacing" />
                             <p>
-                                <Link to="photos"
+                                <Link to="photos-english"
                                    className="link link-secondary">
                                     More pictures
                                 </Link>

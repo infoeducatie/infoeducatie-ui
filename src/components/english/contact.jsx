@@ -3,9 +3,9 @@
 import React from "react";
 
 import { Row, Col, Grid } from "react-bootstrap";
-import Header from "./header";
+import Header from "../header";
 
-import "../main.less";
+import "../../main.less";
 
 
 export default React.createClass({
@@ -56,7 +56,7 @@ export default React.createClass({
                   Multimedia: multimedia@infoeducatie.ro
                 </li>
                 <li>
-                  Utility Software: utilitar@infoeducatie.ro
+                  Software: utilitar@infoeducatie.ro
                 </li>
                 <li>
                   Robots: roboti@infoeducatie.ro
