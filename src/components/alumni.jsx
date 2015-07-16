@@ -6,9 +6,11 @@ import React from "react";
 import ctx from "classnames";
 import {Grid, Row, Col} from "react-bootstrap";
 
+import gravatar from "../lib/gravatar";
 import Header from "./header";
 
 import "../main.less";
+
 
 export default React.createClass({
   displayName: "Alumni",
@@ -39,7 +41,6 @@ export default React.createClass({
     let editions = alumnus.editions.map(function(edition) {
                                           return parseInt(edition.name);
                    });
-    let alumnusImage = "http://www.gravatar.com/avatar/" + alumnus.user.email_md5 + "?s=150&d=mysteryman";
 
     return <Row key={index}>
       <Col mdOffset={2} md={8} smOffset={1} sm={10}>
@@ -51,7 +52,7 @@ export default React.createClass({
               <Col xs={3} xsOffset={1}>
                 <Row className="xsmall-spacing" />
                 <div className="alumnus-image">
-                  <img src={alumnusImage} />
+                  <img src={gravatar(alumnus.user.email_md5)} />
                 </div>
               </Col>
               <Col xs={8}>
