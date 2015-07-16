@@ -109,51 +109,21 @@ export default React.createClass({
                   Unirea, local Tulnici community and Vidra Highschool.
                 </p>
                 <Row className="small-spacing" />
-                <h4>Condiții de participare</h4>
+                <h4>Terms of participation</h4>
                 <p>
-                    Fiecare județ doritor poate participa cu maximum
-                    <em>5 elevi</em> și un <em>profesor însoțitor</em>
-                    , în următoarele condiții:
+                    Each county can participate with maximum of
+                    <em>5 students</em> and one <em>assistant teacher</em>
+                    with respect of following rules:
                 </p>
                 <ul>
                   <li>
-                    minim trei lucrări (web, roboți sau IoT, multimedia,
-                    software educțional, software utilitar)
+                    minimum three projects
                   </li>
                   <li>
-                    cerinte hardware și software rezonabile
+                    reasonable hardware and software requirements
                   </li>
                 </ul>
               </Col>
-            </Row>
-            <Row className="contact">
-              <h4>Contact</h4>
-              <ul>
-                <li>
-                  Organizatori: contact@infoeducatie.ro (Emil Onea)
-                </li>
-                <li>
-                  Website: ping@infoeducatie.ro
-                </li>
-              </ul>
-              <h4>Juriu</h4>
-              <ul>
-                <li>
-                  Software educațional: educational@infoeducatie.ro
-                </li>
-                <li>
-                  Multimedia: multimedia@infoeducatie.ro
-                </li>
-                <li>
-                  Software utilitar: utilitar@infoeducatie.ro
-                </li>
-                <li>
-                  Roboți: roboti@infoeducatie.ro
-                </li>
-                <li>
-                  Web: web@infoeducatie.ro
-                </li>
-              </ul>
             </Row>
           </Col>
         </Row>
