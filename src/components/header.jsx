@@ -9,9 +9,6 @@ let { Route, Link, RouteHandler } = Router; // eslint-disable-line
 import "../main.less";
 import SignIn from "./sign-in"
 
-import ROFlag from "../../assets/img/icons/RO.png";
-import ENFlag from "../../assets/img/icons/US.png";
-
 
 export default React.createClass({
   displayName: "Header",
@@ -28,61 +25,26 @@ export default React.createClass({
     </div>;
   },
 
-  changeLanguage() {
-    if (this.props.language === "en") {
-      this.props.changeLanguage("ro");
-    } else {
-      this.props.changeLanguage("en");
-    }
-  },
-
-  renderNextLanguage() {
-    if (this.props.language === "en") {
-      return <img src={ROFlag} />;
-    } else {
-      return <img src={ENFlag} />;
-    }
-  },
-
-  renderEnglishHeader() {
+  renderRegisterLinks() {
     return <Nav className="navbar-nav" eventKey={0} right ref="nav">
-      <NavItemLink to="/">Home</NavItemLink>
-      <NavItemLink to="about-english">About</NavItemLink>
-      <NavItem onClick={this.changeLanguage}>{this.renderNextLanguage()}</NavItem>
+      <NavItemLink to="/">Acas&#259;</NavItemLink>
+      <NavItemLink to="alumni">Alumni</NavItemLink>
+      <NavItemLink to="talks">Seminarii</NavItemLink>
+      <NavItemLink to="contestants">Participanți</NavItemLink>
+      <NavItemLink to="jury">Juriu</NavItemLink>
+      <NavItem onClick={this.props.logout}>Delogare</NavItem>
+      <NavItemLink to="register-in-contest">Înscrie Proiect</NavItemLink>
     </Nav>;
   },
 
-  renderRegisterLinks() {
-    if (this.props.language === "ro") {
-      return <Nav className="navbar-nav" eventKey={0} right ref="nav">
-        <NavItemLink to="/">Acas&#259;</NavItemLink>
-        <NavItemLink to="alumni">Alumni</NavItemLink>
-        <NavItemLink to="talks">Seminarii</NavItemLink>
-        <NavItemLink to="contestants">Participanți</NavItemLink>
-        <NavItemLink to="jury">Juriu</NavItemLink>
-        <NavItem onClick={this.props.logout}>Delogare</NavItem>
-        <NavItemLink to="register-in-contest">Înscrie Proiect</NavItemLink>
-        <NavItem onClick={this.changeLanguage}>{this.renderNextLanguage()}</NavItem>
-      </Nav>;
-    } else {
-      return this.renderEnglishHeader();
-    }
-  },
-
   renderUnregisterLinks() {
-    if (this.props.language === "ro") {
-      return <Nav className="navbar-nav" eventKey={0} right ref="nav">
-        <NavItemLink to="/">Acas&#259;</NavItemLink>
-        <NavItemLink to="alumni">Alumni</NavItemLink>
-        <NavItemLink to="talks">Seminarii</NavItemLink>
-        <NavItemLink to="contestants">Participanți</NavItemLink>
-        <NavItemLink to="jury">Juriu</NavItemLink>
-        <NavItem><SignIn login={this.props.login} /></NavItem>
-        <NavItemLink to="register">Înregistrează-te</NavItemLink>
-        <NavItem onClick={this.changeLanguage}>{this.renderNextLanguage()}</NavItem>
-      </Nav>;
-    } else {
-      return this.renderEnglishHeader();
-    }
+    return <Nav className="navbar-nav" eventKey={0} right ref="nav">
+      <NavItemLink to="/">Acas&#259;</NavItemLink>
+      <NavItemLink to="alumni">Alumni</NavItemLink>
+      <NavItemLink to="talks">Seminarii</NavItemLink>
+      <NavItemLink to="contestants">Participanți</NavItemLink>
+      <NavItemLink to="jury">Juriu</NavItemLink>
+      <NavItem><SignIn login={this.props.login} /></NavItem>
+    </Nav>;
   }
 });
