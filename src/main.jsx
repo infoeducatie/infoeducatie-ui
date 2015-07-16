@@ -25,10 +25,11 @@ import Footer from "./components/footer";
 import Contestants from "./components/contestants/contestants";
 import Talks from "./components/talks";
 
-import HomeEnglish from "./components/home-english";
-import AboutEnglish from "./components/about-english";
-import FooterEnglish from "./components/footer-english";
-import ContactEnglish from "./components/contact-english";
+import HomeEnglish from "./components/english/home";
+import AboutEnglish from "./components/english/about";
+import FooterEnglish from "./components/english/footer";
+import ContactEnglish from "./components/english/contact";
+import PhotoEnglish from "./components/english/photos";
 
 
 let App = React.createClass({
@@ -150,6 +151,7 @@ let routes = (
     <Route handler={HomeEnglish} name="home-english" path="home" />
     <Route handler={AboutEnglish} name="about-english" path="about" />
     <Route handler={ContactEnglish} name="contact-english" path="contact" />
+    <Route handler={PhotoEnglish} name="photos-english" path="photos" />
     <Route handler={Talks} name="talks"path="seminarii" />
     <DefaultRoute handler={Home} />
   </Route>

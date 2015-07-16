@@ -16,7 +16,7 @@ export default React.createClass({
              className={this.props.year}
              onMouseOver={this.props.onHover}>
             <div className={className}></div>
-            <div className="more-details">Fotografii</div>
+            <div className="more-details">{this.props.text || "Fotografii"}</div>
           </a>
         </div>
         <div className="year">
