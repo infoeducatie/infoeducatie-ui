@@ -81,7 +81,7 @@ export default React.createClass({
                         motivation to learn web technologies and to develop my
                         projects. I have some advice for participants:
                         presentation is as important as the work itself!
-                        Repeat often before you come in front of the committee.
+                        Repeat often before you come in front of the committee.</p>
                         <Row className="small-spacing" />
                         <h2 className="alumnus-name">Cristian Strat</h2>
                         <h6 className="alumnus-position">
