@@ -23,6 +23,7 @@ import MEN from "../../../assets/img/sponsors/edu.jpg";
 import CloudBase from "../../../assets/img/sponsors/cloudbase.png";
 import iMedicare from "../../../assets/img/sponsors/imedicare.png";
 import eSkills from "../../../assets/img/sponsors/eskills.png";
+import gwc from "../../../assets/img/sponsors/girlswhocode.png";
 
 
 export default React.createClass({
@@ -188,6 +189,9 @@ export default React.createClass({
                             </a>
                             <a href="http://eskills4jobs.ec.europa.eu/" target="_blank">
                               <img src={eSkills} />
+                            </a>
+                            <a href="https://www.facebook.com/GirlsWhoCodeRO" target="_blank">
+                              <img src={gwc} />
                             </a>
                         </p>
                     </Col>
