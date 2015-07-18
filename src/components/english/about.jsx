@@ -97,20 +97,21 @@ export default React.createClass({
                   may move on to the next stage of the competition.
                 </p>
                 <p>
-                In the final stage, we organize an open contest, which will be
-                undertaken by teams of students and will take place over a
-                period of 24 hours. Each team must develop an application
-                which will be specific to the branch of the contest that they
-                entered. The work will combine elements both of design and of
-                programming.
+                  In the final stage, we organize an open contest, which will be
+                  undertaken by teams of students and will take place over a
+                  period of 24 hours. Each team must develop an application
+                  which will be specific to the branch of the contest that they
+                  entered. The work will combine elements both of design and of
+                  programming.
                 </p>
                 <p>
-                While at the camp, we will be setting up a number of workshops
-                and talks of various themes related to software engineering.
+                  While at the camp, we will be setting up a number of workshops
+                  and talks of various themes related to software engineering.
                 </p>
                 <p>
-                All IT resources will be provided by the Unirea Ntional
-                College, the Tulnici community and the Vidra high school.
+                  All IT resources will be provided by the Unirea Ntional
+                  College, the Tulnici community and the Vidra high school.
+                </p>
                 <Row className="small-spacing" />
                 <h4>Terms of participation</h4>
                 <p>
