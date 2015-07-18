@@ -6,8 +6,8 @@ import React from "react";
 import {Link} from "react-router";
 import {Grid, Row, Col, Glyphicon} from "react-bootstrap";
 
+import countify from "../../lib/countify";
 import Header from "../header";
-import NewsContainer from "../news/news-container";
 
 import "../home.less";
 import Google from "../../../assets/img/sponsors/google.png";
@@ -30,6 +30,7 @@ export default React.createClass({
   displayName: "Home",
 
   componentDidMount() {
+    this.props.refreshCurrent();
     this.props.changeLanguage("en");
   },
 
@@ -105,7 +106,9 @@ export default React.createClass({
                                 2 - 8 August 2015
                                 <span className="pink-dash"></span>
                             </h6>
-                            <h6 className="edition">22th Edition</h6>
+                            <h6 className="edition">
+                              {countify(this.props.current.edition.count)} Edition
+                            </h6>
                             <Row className="small-spacing" />
                             <p>
                                 <Link to="photos-english"
