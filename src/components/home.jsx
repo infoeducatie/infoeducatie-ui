@@ -114,7 +114,7 @@ export default React.createClass({
                                 2 - 8 August 2015
                                 <span className="pink-dash"></span>
                             </h6>
-                            <h6 className="edition">Ediția 22</h6>
+                            <h6 className="edition">Ediția {this.props.current.edition.count}</h6>
                             <Row className="small-spacing" />
                             <p>
                                 <Link to="photos"
