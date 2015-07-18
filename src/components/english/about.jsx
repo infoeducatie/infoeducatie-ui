@@ -39,11 +39,12 @@ export default React.createClass({
           <Col mdOffset={1} md={10}>
             <Row className="small-spacing" />
             <p>
-              Organized since 1993 , it is aimed at students with skills and
-              interests to create applications, such as computer profile and
-              other profiles . The competition is conducted in four stages: on
-              your school, local, county and national level. National stage
-              takes place in the camp Gălăciuc, Vrancea county.
+            Since 1993, InfoEducatie has been focused on students with the
+            skills and interest to develop their own applications, whether
+            their schoolwork specialized in Computer Science or not. The
+            competition is conducted in four stages: school, town, county and
+            national. The national level takes place at the Gălăciuc camp, in
+            the Vrancea county.
             </p>
             <Row className="small-spacing" />
             <Row>
@@ -89,38 +90,40 @@ export default React.createClass({
               <Col xs={12}>
                 <h4>How can I participate?</h4>
                 <p>
-                  Each stage will be presented works made by students
-                  regardless of their year of study (classes IX - XII).
-                  Participation in the later stages is determined by
-                  rankings previous stages.
+                  Every level of the competition involves the contestant
+                  presenting different projects that they have made themselves,
+                  regardless of their year of study (classes IX through XII).
+                  Depending of the ranking their project obtained, the student
+                  may move on to the next stage of the competition.
                 </p>
                 <p>
-                  In the final stage there is an open competition , the teams
-                  over 24 hours. The contest consists of a construction
-                  project on a specific subject . The work will combine
-                  elements of design, programming and design.
+                In the final stage, we organize an open contest, which will be
+                undertaken by teams of students and will take place over a
+                period of 24 hours. Each team must develop an application
+                which will be specific to the branch of the contest that they
+                entered. The work will combine elements both of design and of
+                programming.
                 </p>
                 <p>
-                  Throughout the camp will be organized
-                  workshops on topics of software engineering .
+                While at the camp, we will be setting up a number of workshops
+                and talks of various themes related to software engineering.
                 </p>
                 <p>
-                  All IT resources are provided by the National College
-                  Unirea, local Tulnici community and Vidra Highschool.
-                </p>
+                All IT resources will be provided by the Unirea Ntional
+                College, the Tulnici community and the Vidra high school.
                 <Row className="small-spacing" />
                 <h4>Terms of participation</h4>
                 <p>
                     Each county can participate with maximum of
                     <em>5 students</em> and one <em>assistant teacher</em>
-                    with respect of following rules:
+                    who will abide by the following rules:
                 </p>
                 <ul>
                   <li>
-                    minimum three projects
+                    Minimum 3 projects
                   </li>
                   <li>
-                    reasonable hardware and software requirements
+                    Reasonable hardware and software requirements
                   </li>
                 </ul>
               </Col>

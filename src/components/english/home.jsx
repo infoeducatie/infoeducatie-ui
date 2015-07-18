@@ -79,11 +79,12 @@ export default React.createClass({
                     <Col md={6} mdOffset={6}>
                         <h6>Alumnus</h6>
                         <Row className="small-spacing" />
-                        <p className="quote">InfoEducatie gave me the
-                        motivation to learn web technologies and to develop my
-                        projects. I have some advice for participants:
-                        presentation is as important as the work itself!
-                        Repeat often before you come in front of the committee.</p>
+                        <p className="quote">InfoEducatie is what gave me the
+                        drive to learn about web technologies and develop my
+                        own projects. One thing I would like to tell
+                        contestants: presentation is as important as the work
+                        itself! Make sure to rehearse before going in front of
+                        the committee. </p>
                         <Row className="small-spacing" />
                         <h2 className="alumnus-name">Cristian Strat</h2>
                         <h6 className="alumnus-position">
