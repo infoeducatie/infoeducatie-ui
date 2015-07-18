@@ -58,16 +58,35 @@ export default React.createClass({
                   logout={this.props.logout} />
           <Row>
             <Col xs={12}>
-              <h1>Înregistrează-te în concurs</h1>
+              <h1>Participă la InfoEducație</h1>
             </Col>
           </Row>
           <Row>
             <Col xs={12}>
-              <h2>Te rugăm să completezi acest formular cu grijă!</h2>
+              <h2>Te rugăm să completezi aceste formulare cu grijă!</h2>
             </Col>
           </Row>
         </Grid>
       </div>
+
+      <Grid className="forms-section">
+        <Row>
+          <Col md={6} mdOffset={3}
+               sm={8} smOffset={2}
+               xs={12}>
+            <Row className="forms-selection">
+              <Col xs={6}>
+                  <p className="description active">Concurenți</p>
+              </Col>
+              <Col xs={6} className="border-left">
+                  <p className="description">Profesori</p>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+
+      </Grid>
+
       <Grid>
         <Col sm={6} smOffset={3}>
           <Row className="small-spacing" />
