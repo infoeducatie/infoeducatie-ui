@@ -54,14 +54,14 @@ export default React.createClass({
   activeTeacherForm() {
     this.setState({
       activeTeacherForm: true,
-      activeContestantForm: false,
+      activeContestantForm: false
     });
   },
 
   activeContestantForm() {
     this.setState({
       activeTeacherForm: false,
-      activeContestantForm: true,
+      activeContestantForm: true
     });
   },
 

@@ -25,7 +25,7 @@ export default React.createClass({
         school_city: "",
         school_country: "România"
         /*eslint-enable */
-      },
+      }
     };
   },
 
