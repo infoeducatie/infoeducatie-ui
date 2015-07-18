@@ -2,6 +2,7 @@
 
 import $ from "jquery";
 import React from "react";
+import ctx from "classnames";
 import { Grid, Col, Row, PanelGroup, Panel, ListGroup, ListGroupItem } from "react-bootstrap";
 
 import Header from "./header";
@@ -36,6 +37,8 @@ export default React.createClass({
 
   getInitialState() {
     return {
+      activeContestantForm: true,
+      activeTeacherForm: false,
       activePanelKey: String(this.props.user.registration_step_number),
       hasErrored: false
     };
@@ -47,7 +50,30 @@ export default React.createClass({
     });
   },
 
+  activeTeacherForm() {
+    this.setState({
+      activeTeacherForm: true,
+      activeContestantForm: false,
+    });
+  },
+
+  activeContestantForm() {
+    this.setState({
+      activeTeacherForm: false,
+      activeContestantForm: true,
+    });
+  },
+
   render() {
+    let contestantsClass = ctx({
+      description: true,
+      active: this.state.activeContestantForm
+    });
+    let teachersClass = ctx({
+      description: true,
+      active: this.state.activeTeacherForm
+    });
+
     return <div className="register-in-contest">
       <div className="blue-section-wrapper">
         <Grid className="blue-section">
@@ -76,10 +102,16 @@ export default React.createClass({
                xs={12}>
             <Row className="forms-selection">
               <Col xs={6}>
-                  <p className="description active">Concurenți</p>
+                  <p className={contestantsClass}
+                     onClick={this.activeContestantForm}>
+                     Concurenți
+                  </p>
               </Col>
               <Col xs={6} className="border-left">
-                  <p className="description">Profesori</p>
+                  <p className={teachersClass}
+                     onClick={this.activeTeacherForm}>
+                     Profesori
+                  </p>
               </Col>
             </Row>
           </Col>
