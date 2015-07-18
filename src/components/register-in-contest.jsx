@@ -75,7 +75,7 @@ export default React.createClass({
         <Col sm={6} smOffset={3}>
           <Row className="small-spacing" />
           <p className="alert alert-warning">
-            Înscrieriile sunt în perioada {startDate} - {endDate}
+            Înscrieriile se desfășoară în perioada {startDate} - {endDate}.
           </p>
           {this.renderProjectPanel()}
         </Col>

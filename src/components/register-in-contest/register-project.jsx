@@ -64,8 +64,8 @@ export default React.createClass({
                    label="Link către surse și documentație"
                    required />,
             <p className="alert alert-warning">
-              Sursele proiectului trebuie să fie încărcate și accesibile pe
-              GitHub. În cazul în care întâmpini probleme poți găsi mai multe detalii&nbsp;
+              Sursele proiectului trebuie să fie încărcate pe acel repository.
+              În cazul în care întâmpini probleme poți găsi mai multe detalii&nbsp;
               <a target="_blank" href="http://blog.infoeducatie.ro/tutorial/2015/04/14/github-101.html">aici</a>.
             </p>
         ]);
