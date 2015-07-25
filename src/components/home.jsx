@@ -24,6 +24,7 @@ import CloudBase from "../../assets/img/sponsors/cloudbase.png";
 import iMedicare from "../../assets/img/sponsors/imedicare.png";
 import eSkills from "../../assets/img/sponsors/eskills.png";
 import gwc from "../../assets/img/sponsors/girlswhocode.png";
+import leonte from "../../assets/img/sponsors/leonte.png";
 
 
 export default React.createClass({
@@ -170,6 +171,9 @@ export default React.createClass({
                             </a>
                             <a href="http://www.cloudbase.it/" target="_blank">
                               <img src={CloudBase} />
+                            </a>
+                            <a href="http://leonte.ro/" target="_blank">
+                              <img src={leonte} />
                             </a>
                         </p>
                     </Col>
