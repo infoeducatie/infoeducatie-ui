@@ -81,7 +81,7 @@ export default React.createClass({
     return <Row key={index}>
       <Col mdOffset={2} md={8} smOffset={1} sm={10}>
         <Row className="xsmall-spacing" />
-        <Row onClick={this.openDiscourse.bind(this, talk.discourse_url)}>
+        <Row>
           <Col className={className} xs={12}>
             <Row className="xsmall-spacing" />
             <Row>
@@ -94,6 +94,12 @@ export default React.createClass({
               <Col xs={8} >
                 <h4 className="talk-title">{talk.title}</h4>
                 <p>{talk.description}</p>
+                <span>
+                  <a className="read-more"
+                    onClick={this.openDiscourse.bind(this, talk.discourse_url)}>
+                    Discută pe forum
+                  </a>
+                </span>
 
                 <Row className="xsmall-spacing" />
 
