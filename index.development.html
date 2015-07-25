@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>InfoEducatie</title>
+  <script>
+    window.config = {
+      API_URL: "//api.infoeducatie.ro/v1/"
+      MAILCHIMP_URL: "//upir.us8.list-manage.com/subscribe/post-json" +
+                     "?u=3f6ccc8a6a63be50b4bb9b1b1&id=3a8ffa6e4f&c=?",
+    };
+  </script>
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    var jsPath = window.location.protocol + '//' +
+                 window.location.hostname + ":9090/build/app.js"
+
+    var js = document.createElement("script");
+    js.type = "text/javascript";
+    js.src = jsPath;
+    document.body.appendChild(js);
+  </script>
+</body>
+</html>
