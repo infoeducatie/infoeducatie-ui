@@ -97,7 +97,7 @@ export default React.createClass({
             required />
           <Input
             type='checkbox'
-            label='Abonare newsletter'
+            label='Abonare newsletter (noutăți despre concurs, informații utile pentru participanți)'
             defaultChecked
             onChange={this.onNewsletterChange} />
           <ButtonInput type="submit"
