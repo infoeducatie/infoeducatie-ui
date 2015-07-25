@@ -35,6 +35,25 @@ export default React.createClass({
     this.props.changeLanguage("en");
   },
 
+  renderCampDate() {
+    let monthNames = ["January", "February", "March", "April", "May", "June",
+         "July", "August", "September", "October", "November", "December"
+    ];
+
+    if (this.props.edition.camp_start_date === undefined) {
+      return null;
+    }
+
+    let startDate = new Date(this.props.edition.camp_start_date);
+    let endDate = new Date(this.props.edition.camp_end_date);
+
+    let month = monthNames[endDate.getMonth()];
+    let year = 1900 + endDate.getYear();
+
+    return `${startDate.getDate()} - ${endDate.getDate()} ${month} ${year}`;
+  },
+
+
   render() {
     return <div className="home english">
         <div className="blue-section-wrapper">
@@ -105,7 +124,7 @@ export default React.createClass({
                             <h1>Gălăciuc Camp</h1>
                             <h6 className="data">
                                 <span className="pink-dash"></span>
-                                2 - 8 August 2015
+                                {this.renderCampDate()}
                                 <span className="pink-dash"></span>
                             </h6>
                             <h6 className="edition">
