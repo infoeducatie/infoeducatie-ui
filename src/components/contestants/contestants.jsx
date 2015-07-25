@@ -15,9 +15,11 @@ import FilterIcon from "./filter_icon";
 
 import "../../main.less";
 
+import DiscourseMixin from "../../mixins/discourse"
 
 export default React.createClass({
   displayName: "Contestants",
+  mixins: [DiscourseMixin],
 
   componentDidMount() {
     this.props.refreshCurrent();
@@ -63,10 +65,6 @@ export default React.createClass({
     this.setState({
       currentCategory: category
     });
-  },
-
-  openDiscourse(discourse_url) {
-    window.open(discourse_url, "_blank");
   },
 
   renderErrors() {

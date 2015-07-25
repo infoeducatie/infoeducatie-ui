@@ -12,9 +12,11 @@ import DefaultAvatar from "../../assets/img/jury/default.png";
 import EditionSelector from "./edition-selector";
 import Header from "./header";
 
+import DiscourseMixin from "../mixins/discourse"
 
 export default React.createClass({
   displayName: "Talks",
+  mixins: [DiscourseMixin],
 
   getInitialState() {
     return {
@@ -79,7 +81,7 @@ export default React.createClass({
     return <Row key={index}>
       <Col mdOffset={2} md={8} smOffset={1} sm={10}>
         <Row className="xsmall-spacing" />
-        <Row>
+        <Row onClick={this.openDiscourse.bind(this, talk.discourse_url)}>
           <Col className={className} xs={12}>
             <Row className="xsmall-spacing" />
             <Row>
