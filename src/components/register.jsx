@@ -85,6 +85,8 @@ export default React.createClass({
             placeholder="***************"
             label="Parola"
             onChange={this.onPasswordChange}
+            pattern=".{8,}"
+            title="Parola trebuie să conțină minim 8 caractere"
             required />
           <Input
             type="password"
@@ -163,6 +165,15 @@ export default React.createClass({
   onFormSubmit(event) {
     event.preventDefault();
     if (this.state.waitingForServerResponse) {
+      return false;
+    }
+
+    if (this.state.password !== this.state.passwordConfirmation) {
+      this.setState({
+        hasErrored: true,
+        errors: ["Parola și confirmarea de parolă nu sunt identice"]
+      });
+
       return false;
     }
 
