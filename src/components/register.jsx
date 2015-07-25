@@ -21,6 +21,7 @@ export default React.createClass({
       passwordConfirmation: "",
       firstName: "",
       lastName: "",
+      newsletter: true,
       errors: [],
       hasErrored: false,
       hasSubmited: false,
@@ -94,6 +95,11 @@ export default React.createClass({
             label="Confirmare parolă"
             onChange={this.onPasswordConfirmationChange}
             required />
+          <Input
+            type='checkbox'
+            label='Abonare newsletter'
+            defaultChecked
+            onChange={this.onNewsletterChange} />
           <ButtonInput type="submit"
                        value="Înregistrează-te"
                        disabled={this.state.waitingForServerResponse} />
@@ -162,6 +168,12 @@ export default React.createClass({
     });
   },
 
+  onNewsletterChange(event) {
+    this.setState({
+      newsletter: event.currentTarget.checked
+    });
+  },
+
   onFormSubmit(event) {
     event.preventDefault();
     if (this.state.waitingForServerResponse) {
@@ -187,6 +199,7 @@ export default React.createClass({
     data["user[last_name]"] = this.state.lastName;
     data["user[password]"] = this.state.password;
     data["user[password_confirmation]"] = this.state.passwordConfirmation;
+    data["user[newsletter]"] = this.state.newsletter;
 
     $.ajax({
       method: "POST",
