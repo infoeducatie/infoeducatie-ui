@@ -48,8 +48,8 @@ export default React.createClass({
   },
 
   render() {
-    let startDate = new Date(this.props.current.edition.registration_start_date).toLocaleDateString();
-    let endDate = new Date(this.props.current.edition.registration_end_date).toLocaleDateString();
+    let startDate = new Date(this.props.current.edition.registration_start_date).toLocaleString();
+    let endDate = new Date(this.props.current.edition.registration_end_date).toLocaleString();
 
     return <div className="register-in-contest">
       <div className="blue-section-wrapper">
@@ -75,7 +75,8 @@ export default React.createClass({
         <Col sm={6} smOffset={3}>
           <Row className="small-spacing" />
           <p className="alert alert-warning">
-            Înscrieriile se desfășoară în perioada {startDate} - {endDate}.
+            Înscrieriile se desfășoară în perioada <br />
+            {startDate} - {endDate}.
           </p>
           {this.renderProjectPanel()}
         </Col>
