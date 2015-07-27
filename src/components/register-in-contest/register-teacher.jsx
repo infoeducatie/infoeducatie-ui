@@ -19,6 +19,7 @@ export default React.createClass({
 
       teacher: {
         /*eslint-disable */
+        sex: "1",
         phone_number: "",
         school_name: "",
         school_county: "Arad",
@@ -31,6 +32,14 @@ export default React.createClass({
 
   render() {
     return <form onSubmit={this.onFormSubmit} className="RegisterTeacher">
+      <Input type="select"
+             label="Gen *"
+             valueLink={this.deepLinkState(["teacher", "sex"])}>
+        <option value="1">Masculin</option>
+        <option value="2">Feminin</option>
+        <option value="3">Nespecificat</option>
+      </Input>
+
       <Input
         type="text"
         placeholder="0721234567"
@@ -148,7 +157,7 @@ export default React.createClass({
 
     $.ajax({
       method: "POST",
-      url: window.config.API_URL + "teacher.json",
+      url: window.config.API_URL + "teachers.json",
       headers: {
         Authorization: this.props.access_token
       },

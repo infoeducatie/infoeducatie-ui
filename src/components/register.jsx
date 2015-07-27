@@ -21,6 +21,7 @@ export default React.createClass({
       passwordConfirmation: "",
       firstName: "",
       lastName: "",
+      newsletter: true,
       errors: [],
       hasErrored: false,
       hasSubmited: false,
@@ -85,6 +86,8 @@ export default React.createClass({
             placeholder="***************"
             label="Parola"
             onChange={this.onPasswordChange}
+            pattern=".{8,}"
+            title="Parola trebuie să conțină minim 8 caractere"
             required />
           <Input
             type="password"
@@ -92,6 +95,11 @@ export default React.createClass({
             label="Confirmare parolă"
             onChange={this.onPasswordConfirmationChange}
             required />
+          <Input
+            type='checkbox'
+            label='Abonare newsletter (noutăți despre concurs, informații utile pentru participanți)'
+            defaultChecked
+            onChange={this.onNewsletterChange} />
           <ButtonInput type="submit"
                        value="Înregistrează-te"
                        disabled={this.state.waitingForServerResponse} />
@@ -160,9 +168,24 @@ export default React.createClass({
     });
   },
 
+  onNewsletterChange(event) {
+    this.setState({
+      newsletter: event.currentTarget.checked
+    });
+  },
+
   onFormSubmit(event) {
     event.preventDefault();
     if (this.state.waitingForServerResponse) {
+      return false;
+    }
+
+    if (this.state.password !== this.state.passwordConfirmation) {
+      this.setState({
+        hasErrored: true,
+        errors: ["Parola și confirmarea de parolă nu sunt identice"]
+      });
+
       return false;
     }
 
@@ -176,6 +199,7 @@ export default React.createClass({
     data["user[last_name]"] = this.state.lastName;
     data["user[password]"] = this.state.password;
     data["user[password_confirmation]"] = this.state.passwordConfirmation;
+    data["user[newsletter]"] = this.state.newsletter;
 
     $.ajax({
       method: "POST",

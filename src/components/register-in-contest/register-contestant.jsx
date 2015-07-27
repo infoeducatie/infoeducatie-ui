@@ -41,8 +41,6 @@ export default React.createClass({
         mentoring_teacher_first_name: "",
         mentoring_teacher_last_name: "",
 
-        accompanying_teacher_first_name: "",
-        accompanying_teacher_last_name: ""
         /*eslint-enable */
       },
 
@@ -257,16 +255,6 @@ export default React.createClass({
         label="Numele profesorului îndrumător *"
         valueLink={this.deepLinkState(["contestant", "mentoring_teacher_last_name"])}
         required />
-      <Input
-        type="text"
-        placeholder="Maria"
-        label="Prenumele profesorului însoțitor "
-        valueLink={this.deepLinkState(["contestant", "accompanying_teacher_first_name"])} />
-      <Input
-        type="text"
-        placeholder="Popescu"
-        label="Numele profesorului însoțitor"
-        valueLink={this.deepLinkState(["contestant", "accompanying_teacher_last_name"])} />
       <Input type="select"
              label="Te-ai calificat la faza județeană? *"
              value={this.state.officialParticipant}

@@ -41,7 +41,8 @@ let App = React.createClass({
       current: {
         edition: {
           motto: "Perseverează, mergi mai departe!",
-          year: 2015
+          year: 2015,
+          count: 22
         },
         stats: {
           total_participants: 0,

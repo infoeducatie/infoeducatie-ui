@@ -15,9 +15,11 @@ import FilterIcon from "./filter_icon";
 
 import "../../main.less";
 
+import DiscourseMixin from "../../mixins/discourse"
 
 export default React.createClass({
   displayName: "Contestants",
+  mixins: [DiscourseMixin],
 
   componentDidMount() {
     this.props.refreshCurrent();
@@ -63,10 +65,6 @@ export default React.createClass({
     this.setState({
       currentCategory: category
     });
-  },
-
-  openDiscourse(discourse_url) {
-    window.open(discourse_url, "_blank");
   },
 
   renderErrors() {
@@ -284,11 +282,7 @@ export default React.createClass({
     ajax({
       endpoint: "projects.json",
       data: data,
-      success: (data) => {
-        this.setState({
-          projects: _.sortByOrder(data, ["county", "id"])
-        });
-      },
+      success: (data) => { this.setState({ projects: data }); },
       error: () => {
         this.setState({
           showGrid: false,

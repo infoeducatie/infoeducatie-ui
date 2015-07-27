@@ -6,8 +6,8 @@ import React from "react";
 import {Link} from "react-router";
 import {Grid, Row, Col, Glyphicon} from "react-bootstrap";
 
+import countify from "../../lib/countify";
 import Header from "../header";
-import NewsContainer from "../news/news-container";
 
 import "../home.less";
 import Google from "../../../assets/img/sponsors/google.png";
@@ -24,14 +24,35 @@ import CloudBase from "../../../assets/img/sponsors/cloudbase.png";
 import iMedicare from "../../../assets/img/sponsors/imedicare.png";
 import eSkills from "../../../assets/img/sponsors/eskills.png";
 import gwc from "../../../assets/img/sponsors/girlswhocode.png";
+import leonte from "../../../assets/img/sponsors/leonte.png";
 
 
 export default React.createClass({
   displayName: "Home",
 
   componentDidMount() {
+    this.props.refreshCurrent();
     this.props.changeLanguage("en");
   },
+
+  renderCampDate() {
+    let monthNames = ["January", "February", "March", "April", "May", "June",
+         "July", "August", "September", "October", "November", "December"
+    ];
+
+    if (this.props.edition.camp_start_date === undefined) {
+      return null;
+    }
+
+    let startDate = new Date(this.props.edition.camp_start_date);
+    let endDate = new Date(this.props.edition.camp_end_date);
+
+    let month = monthNames[endDate.getMonth()];
+    let year = 1900 + endDate.getYear();
+
+    return `${startDate.getDate()} - ${endDate.getDate()} ${month} ${year}`;
+  },
+
 
   render() {
     return <div className="home english">
@@ -78,11 +99,12 @@ export default React.createClass({
                     <Col md={6} mdOffset={6}>
                         <h6>Alumnus</h6>
                         <Row className="small-spacing" />
-                        <p className="quote">InfoEducatie gave me the
-                        motivation to learn web technologies and to develop my
-                        projects. I have some advice for participants:
-                        presentation is as important as the work itself!
-                        Repeat often before you come in front of the committee.</p>
+                        <p className="quote">InfoEducatie is what gave me the
+                        drive to learn about web technologies and develop my
+                        own projects. One thing I would like to tell
+                        contestants: presentation is as important as the work
+                        itself! Make sure to rehearse before going in front of
+                        the committee. </p>
                         <Row className="small-spacing" />
                         <h2 className="alumnus-name">Cristian Strat</h2>
                         <h6 className="alumnus-position">
@@ -102,10 +124,12 @@ export default React.createClass({
                             <h1>Gălăciuc Camp</h1>
                             <h6 className="data">
                                 <span className="pink-dash"></span>
-                                2 - 8 August 2015
+                                {this.renderCampDate()}
                                 <span className="pink-dash"></span>
                             </h6>
-                            <h6 className="edition">22th Edition</h6>
+                            <h6 className="edition">
+                              {countify(this.props.current.edition.count)} Edition
+                            </h6>
                             <Row className="small-spacing" />
                             <p>
                                 <Link to="photos-english"
@@ -161,6 +185,9 @@ export default React.createClass({
                             </a>
                             <a href="http://www.cloudbase.it/" target="_blank">
                               <img src={CloudBase} />
+                            </a>
+                            <a href="http://leonte.ro/" target="_blank">
+                              <img src={leonte} />
                             </a>
                         </p>
                     </Col>

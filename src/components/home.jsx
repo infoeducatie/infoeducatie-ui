@@ -24,10 +24,30 @@ import CloudBase from "../../assets/img/sponsors/cloudbase.png";
 import iMedicare from "../../assets/img/sponsors/imedicare.png";
 import eSkills from "../../assets/img/sponsors/eskills.png";
 import gwc from "../../assets/img/sponsors/girlswhocode.png";
+import leonte from "../../assets/img/sponsors/leonte.png";
 
 
 export default React.createClass({
   displayName: "Home",
+
+  renderCampDate() {
+    let monthNames = ["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai",
+       "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie",
+       "Decembrie"
+    ];
+
+    if (this.props.edition.camp_start_date === undefined) {
+      return null;
+    }
+
+    let startDate = new Date(this.props.edition.camp_start_date);
+    let endDate = new Date(this.props.edition.camp_end_date);
+
+    let month = monthNames[endDate.getMonth()];
+    let year = 1900 + endDate.getYear();
+
+    return `${startDate.getDate()} - ${endDate.getDate()} ${month} ${year}`;
+  },
 
   render() {
     return <div className="home">
@@ -111,10 +131,10 @@ export default React.createClass({
                             <h1>Tabăra Gălăciuc</h1>
                             <h6 className="data">
                                 <span className="pink-dash"></span>
-                                2 - 8 August 2015
+                                {this.renderCampDate()}
                                 <span className="pink-dash"></span>
                             </h6>
-                            <h6 className="edition">Ediția 22</h6>
+                            <h6 className="edition">Ediția {this.props.current.edition.count}</h6>
                             <Row className="small-spacing" />
                             <p>
                                 <Link to="photos"
@@ -170,6 +190,9 @@ export default React.createClass({
                             </a>
                             <a href="http://www.cloudbase.it/" target="_blank">
                               <img src={CloudBase} />
+                            </a>
+                            <a href="http://leonte.ro/" target="_blank">
+                              <img src={leonte} />
                             </a>
                         </p>
                     </Col>

@@ -80,10 +80,20 @@ export default React.createClass({
 
   renderContestant() {
     let contestantForm = null;
-    if (this.state.activeContestantForm) {
+
+    if (this.state.activeContestantForm &&
+        this.props.current.is_registration_open) {
+
+      let startDate = new Date(this.props.current.edition.registration_start_date).toLocaleString();
+      let endDate = new Date(this.props.current.edition.registration_end_date).toLocaleString();
+
       contestantForm = <PanelGroup onSelect={this.onHandlePanelSelect}
                       activeKey={this.state.activePanelKey}
                       accordion>
+          <p className="alert alert-warning">
+            Înscrieriile se desfășoară în perioada <br />
+            {startDate} - {endDate}.
+          </p>
 
           <Panel header="Înregistrare Concurent"
                  eventKey="1"
@@ -187,6 +197,54 @@ export default React.createClass({
         </Col>
       </Grid>
     </div>;
+  },
+
+  renderProjectPanel() {
+    let projectPanel = null;
+
+    if (this.props.current.is_registration_open) {
+      projectPanel = <PanelGroup onSelect={this.onHandlePanelSelect}
+                      activeKey={this.state.activePanelKey}
+                      accordion>
+
+        <Panel header="Înregistrare Concurent"
+               eventKey="1"
+               bsStyle={this._getPanelStyle(1)}>
+          {this.renderFormOrMessage(this.renderContestantForm, 1)}
+        </Panel>
+        <Panel header="Înregistrare Proiect"
+               eventKey="2"
+               bsStyle={this._getPanelStyle(2)}>
+          {this.renderError()}
+          {this.renderFormOrMessage(this.renderProjectForm, 2)}
+        </Panel>
+
+        <Panel header="Adăugare Capturi Ecran"
+               eventKey="3"
+               bsStyle={this._getPanelStyle(3)}>
+          {this.renderFormOrMessage(this.renderScreenshotsForm, 3)}
+          {this.renderError()}
+        </Panel>
+
+        <Panel header="Adăugare Coechipier"
+               eventKey="4"
+               bsStyle={this._getPanelStyle(4)}>
+          {this.renderFormOrMessage(this.renderAdditonalForm, 4)}
+          {this.renderError()}
+        </Panel>
+
+        <Panel header="Finalizare"
+               eventKey="5"
+               bsStyle={this._getPanelStyle(5)}>
+          {this.renderFormOrMessage(this.renderFinishForm, 5)}
+        </Panel>
+        <Row className="small-spacing" />
+        {this.renderRegisteredProjects()}
+        {this.props.user.registration_step_number === 6 ? this.renderError() : null}
+      </PanelGroup>;
+    }
+
+    return projectPanel;
   },
 
   renderFormOrMessage(renderForm, formId) {
