@@ -4,18 +4,17 @@ import $ from "jquery";
 import _ from "lodash";
 import ajax from "../../lib/ajax"
 import React from "react";
-
 import { Grid, Col, Row, Glyphicon, Table } from "react-bootstrap";
 import ctx from "classnames";
 
+import "../../main.less";
+import CloudCount from "../cloud-count"
+import DiscourseMixin from "../../mixins/discourse"
 import Header from "../header";
 import EditionSelector from "../edition-selector";
 import ProjectCard from "./project_card";
 import FilterIcon from "./filter_icon";
 
-import "../../main.less";
-
-import DiscourseMixin from "../../mixins/discourse"
 
 export default React.createClass({
   displayName: "Contestants",
@@ -91,7 +90,7 @@ export default React.createClass({
           </ul>
         </td>
         <td className="category">{project.category}</td>
-        <td className="comments">{project.comments_count}</td>
+        <td className="comments"><CloudCount count={project.comments_count} /></td>
       </tr>;
     }
 
