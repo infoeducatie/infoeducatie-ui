@@ -8,11 +8,12 @@ import React from "react";
 import "../main.less";
 import ajax from "../lib/ajax"
 import gravatar from "../lib/gravatar"
+import CloudCount from "./cloud-count"
 import DefaultAvatar from "../../assets/img/jury/default.png";
+import DiscourseMixin from "../mixins/discourse"
 import EditionSelector from "./edition-selector";
 import Header from "./header";
 
-import DiscourseMixin from "../mixins/discourse"
 
 export default React.createClass({
   displayName: "Talks",
@@ -99,6 +100,8 @@ export default React.createClass({
                     onClick={this.openDiscourse.bind(this, talk.discourse_url)}>
                     Discută pe forum
                   </a>
+                  &nbsp;
+                  <CloudCount count={talk.comments_count} />
                 </span>
 
                 <Row className="xsmall-spacing" />
