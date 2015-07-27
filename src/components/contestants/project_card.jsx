@@ -6,6 +6,7 @@ import ctx from "classnames";
 import { Grid, Row, Col } from "react-bootstrap";
 
 import "../../main.less";
+import CloudCount from "../cloud-count.jsx"
 
 
 export default React.createClass({
@@ -47,6 +48,11 @@ export default React.createClass({
               </Col>
               <Col xs={6}>
                 <p>{this.props.project.county}</p>
+              </Col>
+              <Col xs={1} xsOffset={2}>
+                <span className="comments">
+                  <CloudCount count={this.props.project.comments_count} />
+                </span>
               </Col>
             </Row>
             <Row className="xsmall-spacing" />

@@ -9,7 +9,7 @@
     "modules": true,
     "no-underscore-dangle": false,
     "global-strict": 0,
-    "react/display-name": 1,
+    "react/display-name": 0,
     "react/jsx-quotes": 1,
     "react/jsx-no-undef": 1,
     "react/jsx-sort-props": 0,
