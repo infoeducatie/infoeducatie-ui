@@ -62,7 +62,7 @@ export default React.createClass({
         <NavItemLink to="contestants">Participanți</NavItemLink>
         <NavItemLink to="jury">Juriu</NavItemLink>
         <NavItem onClick={this.props.logout}>Delogare</NavItem>
-        <NavItemLink to="register-in-contest">Înscrie Proiect</NavItemLink>
+        <NavItemLink to="register-in-contest">Înscriere</NavItemLink>
         <NavItem onClick={this.changeLanguage}>{this.renderNextLanguage()}</NavItem>
       </Nav>;
     } else {
