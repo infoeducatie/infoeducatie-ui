@@ -20,7 +20,7 @@ export default React.createClass({
   getDefaultProps() {
     return {
       current: {
-        is_teacher: false.
+        is_teacher: false,
         is_contestant: false
       },
       user: {
