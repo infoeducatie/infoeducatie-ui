@@ -19,6 +19,9 @@ export default React.createClass({
 
   getDefaultProps() {
     return {
+      current: {
+        is_teacher: false
+      },
       user: {
         registration_step_number: 0,
         access_token: ""
@@ -71,7 +74,8 @@ export default React.createClass({
     if (this.state.activeTeacherForm) {
       teacherForm = <div>
         <RegisterTeacher access_token={this.props.user.access_token}
-                         onSubmit={this.props.refreshCurrent} />
+                         onSubmit={this.props.refreshCurrent}
+                         is_teacher={this.props.current.is_teacher}/>
       </div>;
     }
 
