@@ -9,4 +9,46 @@
   .blue-section {
     .blue-section();
   }
+
+  .forms-section {
+    @section-height: 112px;
+    margin-top: -@section-height/2;
+
+    color: @white;
+    text-align: center;
+
+    .forms-selection {
+      background-color: @light-black;
+
+      .description {
+        font-weight: bold;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 2em;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+
+        &.active:after {
+          content: "";
+          border-bottom: 2px solid @yellow;
+          position: absolute;
+          width: 50%;
+          top: 90%;
+          left: 25%;
+        }
+      }
+
+      .border-left:after {
+        // http://stackoverflow.com/questions/3953293/how-to-control-border-height
+        content: "";
+        border-left: 2px solid @grey;
+        position: absolute;
+        height: 50%;
+        left: 0;
+        top: 25%;
+      }
+    }
+  }
+
 }

@@ -2,6 +2,7 @@
 
 import $ from "jquery";
 import React from "react";
+import ctx from "classnames";
 import { Grid, Col, Row, PanelGroup, Panel, ListGroup, ListGroupItem } from "react-bootstrap";
 
 import Header from "./header";
@@ -10,6 +11,7 @@ import RegisterContestant from "./register-in-contest/register-contestant"
 import RegisterProject from "./register-in-contest/register-project"
 import RegisterScreenshots from "./register-in-contest/register-screenshots"
 import RegisterFinish from "./register-in-contest/register-finish"
+import RegisterTeacher from "./register-in-contest/register-teacher"
 import RegisterAdditionalWrapper from "./register-in-contest/register-additional-wrapper"
 
 export default React.createClass({
@@ -17,6 +19,10 @@ export default React.createClass({
 
   getDefaultProps() {
     return {
+      current: {
+        is_teacher: false,
+        is_contestant: false
+      },
       user: {
         registration_step_number: 0,
         access_token: ""
@@ -36,6 +42,8 @@ export default React.createClass({
 
   getInitialState() {
     return {
+      activeContestantForm: true,
+      activeTeacherForm: false,
       activePanelKey: String(this.props.user.registration_step_number),
       hasErrored: false
     };
@@ -47,9 +55,105 @@ export default React.createClass({
     });
   },
 
+  activeTeacherForm() {
+    this.setState({
+      activeTeacherForm: true,
+      activeContestantForm: false
+    });
+  },
+
+  activeContestantForm() {
+    this.setState({
+      activeTeacherForm: false,
+      activeContestantForm: true
+    });
+  },
+
+  renderTeacher() {
+    let teacherForm = null;
+
+    if (this.state.activeTeacherForm) {
+      teacherForm = <div>
+        <RegisterTeacher access_token={this.props.user.access_token}
+                         onSubmit={this.props.refreshCurrent}
+                         is_teacher={this.props.current.is_teacher}
+                         is_contestant={this.props.current.is_contestant} />
+      </div>;
+    }
+
+    return teacherForm;
+  },
+
+  renderContestant() {
+    let contestantForm = null;
+
+    if (this.props.current.is_teacher) {
+      contestantForm = <p className="alert alert-warning">
+          Sunteți deja înregistrat.
+      </p>;
+
+    } else if (this.state.activeContestantForm &&
+               this.props.current.is_registration_open) {
+
+      let startDate = new Date(this.props.current.edition.registration_start_date).toLocaleString();
+      let endDate = new Date(this.props.current.edition.registration_end_date).toLocaleString();
+
+      contestantForm = <PanelGroup onSelect={this.onHandlePanelSelect}
+                      activeKey={this.state.activePanelKey}
+                      accordion>
+          <p className="alert alert-warning">
+            Înscrieriile se desfășoară în perioada <br />
+            {startDate} - {endDate}.
+          </p>
+
+          <Panel header="Înregistrare Concurent"
+                 eventKey="1"
+                 bsStyle={this._getPanelStyle(1)}>
+            {this.renderFormOrMessage(this.renderContestantForm, 1)}
+          </Panel>
+          <Panel header="Înregistrare Proiect"
+                 eventKey="2"
+                 bsStyle={this._getPanelStyle(2)}>
+            {this.renderError()}
+            {this.renderFormOrMessage(this.renderProjectForm, 2)}
+          </Panel>
+
+          <Panel header="Adăugare Capturi Ecran"
+                 eventKey="3"
+                 bsStyle={this._getPanelStyle(3)}>
+            {this.renderFormOrMessage(this.renderScreenshotsForm, 3)}
+            {this.renderError()}
+          </Panel>
+
+          <Panel header="Adăugare Coechipier"
+                 eventKey="4"
+                 bsStyle={this._getPanelStyle(4)}>
+            {this.renderFormOrMessage(this.renderAdditonalForm, 4)}
+            {this.renderError()}
+          </Panel>
+
+          <Panel header="Finalizare"
+                 eventKey="5"
+                 bsStyle={this._getPanelStyle(5)}>
+            {this.renderFormOrMessage(this.renderFinishForm, 5)}
+          </Panel>
+          <Row className="small-spacing" />
+          {this.renderRegisteredProjects()}
+          {this.props.user.registration_step_number === 6 ? this.renderError() : null}
+        </PanelGroup>;
+    }
+    return contestantForm;
+  },
+
   render() {
-    let startDate = new Date(this.props.current.edition.registration_start_date).toLocaleString();
-    let endDate = new Date(this.props.current.edition.registration_end_date).toLocaleString();
+    let contestantsClass = ctx({
+      description: true,
+      active: this.state.activeContestantForm
+    });
+    let teachersClass = ctx({
+      description: true,
+      active: this.state.activeTeacherForm
+    });
 
     return <div className="register-in-contest">
       <div className="blue-section-wrapper">
@@ -61,24 +165,46 @@ export default React.createClass({
                   logout={this.props.logout} />
           <Row>
             <Col xs={12}>
-              <h1>Înregistrează-te în concurs</h1>
+              <h1>Participă la InfoEducație</h1>
             </Col>
           </Row>
           <Row>
             <Col xs={12}>
-              <h2>Te rugăm să completezi acest formular cu grijă!</h2>
+              <h2>Te rugăm să completezi aceste formulare cu grijă!</h2>
             </Col>
           </Row>
         </Grid>
       </div>
+
+      <Grid className="forms-section">
+        <Row>
+          <Col md={6} mdOffset={3}
+               sm={8} smOffset={2}
+               xs={12}>
+            <Row className="forms-selection">
+              <Col xs={6}>
+                  <p className={contestantsClass}
+                     onClick={this.activeContestantForm}>
+                     Concurenți
+                  </p>
+              </Col>
+              <Col xs={6} className="border-left">
+                  <p className={teachersClass}
+                     onClick={this.activeTeacherForm}>
+                     Profesori
+                  </p>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+
+      </Grid>
+
       <Grid>
         <Col sm={6} smOffset={3}>
           <Row className="small-spacing" />
-          <p className="alert alert-warning">
-            Înscrieriile se desfășoară în perioada <br />
-            {startDate} - {endDate}.
-          </p>
-          {this.renderProjectPanel()}
+          {this.renderContestant()}
+          {this.renderTeacher()}
         </Col>
       </Grid>
     </div>;
