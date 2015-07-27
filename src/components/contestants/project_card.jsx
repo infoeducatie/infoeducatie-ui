@@ -50,7 +50,7 @@ export default React.createClass({
               </Col>
               <Col xs={1} xsOffset={2}>
                 <span className="comments">
-                  {this.props.project.discourse_comments_count}
+                  {this.props.project.comments_count}
                 </span>
               </Col>
             </Row>
