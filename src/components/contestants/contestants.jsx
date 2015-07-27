@@ -91,6 +91,7 @@ export default React.createClass({
           </ul>
         </td>
         <td className="category">{project.category}</td>
+        <td className="comments">{project.comments_count}</td>
       </tr>;
     }
 
@@ -110,6 +111,7 @@ export default React.createClass({
                 <th>titlul lucrării</th>
                 <th>concurent</th>
                 <th>categorie</th>
+                <th>comentarii</th>
               </tr>
             </thead>
             <tbody>
