@@ -20,7 +20,8 @@ export default React.createClass({
   getDefaultProps() {
     return {
       current: {
-        is_teacher: false
+        is_teacher: false.
+        is_contestant: false
       },
       user: {
         registration_step_number: 0,
@@ -88,7 +89,7 @@ export default React.createClass({
 
     if (this.props.current.is_teacher) {
       contestantForm = <p className="alert alert-warning">
-          Deja sunteți înregistrat.
+          Sunteți deja înregistrat.
       </p>;
 
     } else if (this.state.activeContestantForm &&
