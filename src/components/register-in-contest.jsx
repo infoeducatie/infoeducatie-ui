@@ -141,6 +141,12 @@ export default React.createClass({
           {this.renderRegisteredProjects()}
           {this.props.user.registration_step_number === 6 ? this.renderError() : null}
         </PanelGroup>;
+    } else if (!this.props.current.is_registration_open) {
+      contestantForm = (
+        <p className="alert alert-warning">
+          Înscrieriile s-au încheiat.
+        </p>
+      );
     }
     return contestantForm;
   },
