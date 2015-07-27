@@ -96,12 +96,12 @@ export default React.createClass({
                 <h4 className="talk-title">{talk.title}</h4>
                 <p>{talk.description}</p>
                 <span>
+                  <CloudCount count={talk.comments_count} />
+                  &nbsp;
                   <a className="read-more"
                     onClick={this.openDiscourse.bind(this, talk.discourse_url)}>
                     Discută pe forum
                   </a>
-                  &nbsp;
-                  <CloudCount count={talk.comments_count} />
                 </span>
 
                 <Row className="xsmall-spacing" />
