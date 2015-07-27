@@ -6,6 +6,7 @@ import ctx from "classnames";
 import { Grid, Row, Col } from "react-bootstrap";
 
 import "../../main.less";
+import CloudCount from "../cloud-count.jsx"
 
 
 export default React.createClass({
@@ -50,7 +51,7 @@ export default React.createClass({
               </Col>
               <Col xs={1} xsOffset={2}>
                 <span className="comments">
-                  {this.props.project.comments_count}
+                  <CloudCount count={this.props.project.comments_count} />
                 </span>
               </Col>
             </Row>

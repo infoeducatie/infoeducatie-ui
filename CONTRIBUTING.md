@@ -36,15 +36,19 @@
 
 - `use strict`
 - use ES6 classes
+- add a `my-class.less` file and import it from `main.less`
 
 ```js
 "use strict";
 
 import React from "react";
 
+import "../main.less";
+
 
 export default class MyClass extends React.Component {
   static displayName = "MyClass"
+  static propTypes = { initialCount: React.PropTypes.number }
   state = { count: props.initialCount }
 
 
