@@ -141,7 +141,9 @@ export default React.createClass({
           {this.renderRegisteredProjects()}
           {this.props.user.registration_step_number === 6 ? this.renderError() : null}
         </PanelGroup>;
-    } else if (!this.props.current.is_registration_open) {
+    } else if (this.state.activeContestantForm &&
+               !this.props.current.is_registration_open) {
+      // TODO @palcu: biggest shit ever with the above condition
       contestantForm = (
         <p className="alert alert-warning">
           Înscrieriile s-au încheiat.
