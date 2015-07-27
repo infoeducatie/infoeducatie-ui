@@ -31,6 +31,7 @@
 
 - keep in README.md a living documentation of the directory and files structure
 - currently we don't have tests... but that will change in the future
+- in `mixins` add code that uses `this` and in `lib` add pure functions
 
 ## Default Javascript File
 
