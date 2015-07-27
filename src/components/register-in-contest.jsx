@@ -75,7 +75,8 @@ export default React.createClass({
       teacherForm = <div>
         <RegisterTeacher access_token={this.props.user.access_token}
                          onSubmit={this.props.refreshCurrent}
-                         is_teacher={this.props.current.is_teacher}/>
+                         is_teacher={this.props.current.is_teacher}
+                         is_contestant={this.props.current.is_contestant} />
       </div>;
     }
 
@@ -85,8 +86,13 @@ export default React.createClass({
   renderContestant() {
     let contestantForm = null;
 
-    if (this.state.activeContestantForm &&
-        this.props.current.is_registration_open) {
+    if (this.props.current.is_teacher) {
+      contestantForm = <p className="alert alert-warning">
+          Deja sunteți înregistrat.
+      </p>;
+
+    } else if (this.state.activeContestantForm &&
+               this.props.current.is_registration_open) {
 
       let startDate = new Date(this.props.current.edition.registration_start_date).toLocaleString();
       let endDate = new Date(this.props.current.edition.registration_end_date).toLocaleString();

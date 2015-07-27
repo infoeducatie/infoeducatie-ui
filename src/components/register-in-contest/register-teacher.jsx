@@ -36,10 +36,14 @@ export default React.createClass({
 
   render() {
     let teacherForm = <p className="alert alert-warning">
-        Deja sunteți înregistrat ca profesor.
+        Sunteți deja înregistrat.
     </p>;
 
-    if (!this.props.is_teacher) {
+    if (this.props.is_contestant) {
+      teacherForm = <p className="alert alert-warning">
+          Sunteți deja înregistrat.
+      </p>;
+    } else if (!this.props.is_teacher) {
       teacherForm = <form onSubmit={this.onFormSubmit} className="RegisterTeacher">
         <Input type="select"
                label="Gen *"
