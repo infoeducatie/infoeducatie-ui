@@ -24,6 +24,7 @@ import Kitchen from "./components/kitchen";
 import Footer from "./components/footer";
 import Contestants from "./components/contestants/contestants";
 import Talks from "./components/talks";
+import Schedule from "./components/schedule";
 
 import HomeEnglish from "./components/english/home";
 import AboutEnglish from "./components/english/about";
@@ -154,6 +155,7 @@ let routes = (
     <Route handler={ContactEnglish} name="contact-english" path="contact" />
     <Route handler={PhotoEnglish} name="photos-english" path="photos" />
     <Route handler={Talks} name="talks"path="seminarii" />
+    <Route handler={Schedule} name="schedule"path="program" />
     <DefaultRoute handler={Home} />
   </Route>
 );
