@@ -27,7 +27,7 @@ export default React.createClass({
             <Row className="small-spacing" />
             <Col xs={12}>
               <h1>Program InfoEduca&#355;ie </h1>
-              <h2>Ediția {this.props.current.edition.name}</h2>
+              <h2>Ediția {this.props.edition.name}</h2>
             </Col>
           </Row>
           <Row className="big-spacing" />
@@ -36,7 +36,7 @@ export default React.createClass({
       <Grid className="white-section">
         <Row className="small-spacing" />
         <Row>
-          <Col md={8} mdOffset={2}>
+          <Col md={7} mdOffset={3}>
             <iframe src="https://docs.google.com/spreadsheets/d/1xUGzj0ar_6bluOhuz6poSG-34buiuMXi_PJb9LjDFuc/pubhtml?widget=true&amp;headers=false"></iframe>
           </Col>
         </Row>
