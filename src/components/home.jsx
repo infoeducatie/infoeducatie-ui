@@ -17,7 +17,6 @@ import EasyHost from "../../assets/img/sponsors/easyhost.png";
 import Cisco from "../../assets/img/sponsors/cisco.png";
 import Intuitext from "../../assets/img/sponsors/intuitext.gif";
 import Apdetic from "../../assets/img/sponsors/apdetic.png";
-import TotalSoft from "../../assets/img/sponsors/totalsoft.gif";
 import Upir from "../../assets/img/sponsors/upir.png";
 import MEN from "../../assets/img/sponsors/edu.jpg";
 import CloudBase from "../../assets/img/sponsors/cloudbase.png";
@@ -25,6 +24,7 @@ import iMedicare from "../../assets/img/sponsors/imedicare.png";
 import eSkills from "../../assets/img/sponsors/eskills.png";
 import gwc from "../../assets/img/sponsors/girlswhocode.png";
 import leonte from "../../assets/img/sponsors/leonte.png";
+import altex from "../../assets/img/sponsors/altex.gif";
 
 
 export default React.createClass({
@@ -194,6 +194,9 @@ export default React.createClass({
                             <a href="http://leonte.ro/" target="_blank">
                               <img src={leonte} />
                             </a>
+                            <a href="http://www.altex.ro/" target="_blank">
+                              <img src={altex} />
+                            </a>
                         </p>
                     </Col>
                 </Row>
@@ -215,9 +218,6 @@ export default React.createClass({
                             </a>
                             <a href="http://asociatiait.ro/" target="_blank">
                               <img src={Apdetic} />
-                            </a>
-                            <a href="http://www.totalsoft.ro/" target="_blank">
-                              <img src={TotalSoft} />
                             </a>
                             <a href="http://eskills4jobs.ec.europa.eu/" target="_blank">
                               <img src={eSkills} />
