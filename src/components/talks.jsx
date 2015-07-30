@@ -36,10 +36,6 @@ export default React.createClass({
     }
   },
 
-  canRenderEdition(edition) {
-    return edition.talks_count > 0;
-  },
-
   render() {
     return <div className="talks">
       <div className="blue-section-wrapper">
@@ -67,7 +63,7 @@ export default React.createClass({
         <Row>
           <Col sm={4} smOffset={4}>
             <EditionSelector onCallback={this.onEditionChange}
-                             canRenderEdition={this.canRenderEdition} />
+                             filter="has_contestants"/>
           </Col>
         </Row>
         {this.state.talks.map(this.renderTalk)}

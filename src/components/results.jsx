@@ -3,8 +3,9 @@
 import React from "react";
 import { Grid, Col, Row, Table } from "react-bootstrap";
 
-import Header from "./header";
+import EditionSelector from "./edition-selector"
 import FilterIcon from "./contestants/filter_icon";
+import Header from "./header";
 import resultsFixture from "../fixtures/results";
 
 import "../main.less";
@@ -90,6 +91,13 @@ export default React.createClass({
       </div>
 
       <Grid>
+        <Row className="small-spacing"  />
+        <Row>
+          <Col sm={4} smOffset={4}>
+            <EditionSelector onCallback={this.onEditionSelect}
+                             filter="has_results" />
+          </Col>
+        </Row>
         <Row className="small-spacing" />
         <Row className="filter-buttons">
           <Col smOffset={3} sm={1} xs={2} xsOffset={1}>
@@ -127,5 +135,9 @@ export default React.createClass({
       </Grid>
       {this.renderTable()}
     </div>;
+  },
+
+  onEditionSelect(edition) {
+    console.log(edition)
   }
 });
