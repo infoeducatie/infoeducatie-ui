@@ -1,13 +1,13 @@
 "use strict";
 
-import React from "react";
-import $ from "jquery";
+import React from "react"; import $ from "jquery";
 import _ from "lodash";
 import { Grid, Col, Row, Input, ButtonInput } from "react-bootstrap";
 
 import Header from "./header";
 import SuccessIcon from "../../assets/img/ellipse-tick.png"
 import Spinner from "../../assets/img/spinner.gif"
+import SignIn from "./sign-in"
 import "../main.less";
 
 
@@ -50,6 +50,10 @@ export default React.createClass({
         <Row className="small-spacing" />
         <Row>
           <Col md={6} mdOffset={3} sm={8} smOffset={2}>
+            <p>
+              Dacă ai deja un cont, te poți &nbsp;
+              <a href="#"><SignIn login={this.props.login} /></a>.
+            </p>
             {this.renderForm()}
             {this.renderSuccess()}
           </Col>
