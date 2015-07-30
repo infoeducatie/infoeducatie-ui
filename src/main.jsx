@@ -49,8 +49,13 @@ let App = React.createClass({
           total_participants: 0,
           total_projects: 0,
           total_counties: 0
+        },
+        last_edition_with_results: {
+          year: 2014,
+          id: 0,
+          name: 'Editia 2014'
         }
-      }
+      },
     };
   },
 
@@ -78,7 +83,8 @@ let App = React.createClass({
                     language={this.state.language}
                     changeLanguage={this.changeLanguage}
                     login={this.login}
-                    logout={this.logout} />
+                    logout={this.logout}
+                    lastEditionWithResults={this.state.current.last_edition_with_results} />
       {this.state.language === "ro" ? <Footer /> : <FooterEnglish />}
     </div>;
   },

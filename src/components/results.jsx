@@ -3,6 +3,7 @@
 import React from "react";
 import { Grid, Col, Row, Table } from "react-bootstrap";
 
+import ajax from "../lib/ajax"
 import EditionSelector from "./edition-selector"
 import FilterIcon from "./contestants/filter_icon";
 import Header from "./header";
@@ -17,8 +18,24 @@ export default React.createClass({
   getInitialState: function() {
     return {
       currentCategory: "web",
+      currentEdition: {
+        id: 0,
+        name: ""
+      },
       results: resultsFixture
     };
+  },
+
+  componentDidMount() {
+    this.showResults(this.state.currentEdition.id);
+  },
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.lastEditionWithResults.id !==
+        this.props.lastEditionWithResults.id) {
+
+      this.setState({currentEdition: nextProps.lastEditionWithResults});
+    }
   },
 
   toggleCategory(category) {
@@ -83,7 +100,7 @@ export default React.createClass({
           <Row>
             <Col>
               <h1>Rezultate InfoEducație</h1>
-              <h2>Ediția 2014</h2>
+              <h2>{this.state.currentEdition.name}</h2>
             </Col>
           </Row>
           <Row className="big-spacing" />
@@ -94,7 +111,7 @@ export default React.createClass({
         <Row className="small-spacing"  />
         <Row>
           <Col sm={4} smOffset={4}>
-            <EditionSelector onCallback={this.onEditionSelect}
+            <EditionSelector onCallback={this.onEditionChange}
                              filter="has_results" />
           </Col>
         </Row>
@@ -137,7 +154,13 @@ export default React.createClass({
     </div>;
   },
 
-  onEditionSelect(edition) {
+  onEditionChange(edition) {
+    this.setState({currentEdition: edition});
+    this.showResults(edition.id);
+  },
+
+  showResults(edition) {
     console.log(edition)
+    // TODO @palcu: ajax + setState
   }
 });
