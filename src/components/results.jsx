@@ -26,15 +26,12 @@ export default React.createClass({
     };
   },
 
-  componentDidMount() {
-    this.showResults(this.state.currentEdition.id);
-  },
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.lastEditionWithResults.id !==
         this.props.lastEditionWithResults.id) {
 
       this.setState({currentEdition: nextProps.lastEditionWithResults});
+      this.showResults(nextProps.lastEditionWithResults.id);
     }
   },
 
@@ -159,8 +156,8 @@ export default React.createClass({
     this.showResults(edition.id);
   },
 
-  showResults(edition) {
-    console.log(edition)
+  showResults(editionId) {
+    console.log(editionId)
     // TODO @palcu: ajax + setState
   }
 });
