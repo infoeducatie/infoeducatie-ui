@@ -29,11 +29,11 @@ export default class EditionSelector extends React.Component {
     ajax({
       endpoint: "editions.json?" + $.param(params),
       success: (data) => {
-        let currentEdition = _.find(data, "current");
+        let selectedEdition = _.last(data);
 
         this.setState({
           editions: data,
-          selectedEditionId: currentEdition.id
+          selectedEditionId: selectedEdition.id
         });
       }
     });
