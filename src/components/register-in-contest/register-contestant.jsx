@@ -37,10 +37,6 @@ export default React.createClass({
         school_county: "Alba",
         school_city: "",
         school_country: "România",
-
-        mentoring_teacher_first_name: "",
-        mentoring_teacher_last_name: "",
-
         /*eslint-enable */
       },
 
@@ -242,18 +238,6 @@ export default React.createClass({
         type="date"
         label="Data nașterii *"
         valueLink={this.deepLinkState(["contestant", "date_of_birth"])}
-        required />
-      <Input
-        type="text"
-        placeholder="Ion"
-        label="Prenumele profesorului îndrumător *"
-        valueLink={this.deepLinkState(["contestant", "mentoring_teacher_first_name"])}
-        required />
-      <Input
-        type="text"
-        placeholder="Popescu"
-        label="Numele profesorului îndrumător *"
-        valueLink={this.deepLinkState(["contestant", "mentoring_teacher_last_name"])}
         required />
       <Input type="select"
              label="Te-ai calificat la faza județeană? *"
