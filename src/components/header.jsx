@@ -7,7 +7,6 @@ import { NavItemLink } from "react-router-bootstrap";
 let { Route, Link, RouteHandler } = Router; // eslint-disable-line
 
 import "../main.less";
-import SignIn from "./sign-in"
 
 import ROFlag from "../../assets/img/icons/RO.png";
 import ENFlag from "../../assets/img/icons/US.png";
@@ -61,6 +60,7 @@ export default React.createClass({
         <NavItemLink to="talks">Seminarii</NavItemLink>
         <NavItemLink to="schedule">Program</NavItemLink>
         <NavItemLink to="contestants">Participanți</NavItemLink>
+        <NavItemLink to="jury">Juriu</NavItemLink>
         <NavItem onClick={this.props.logout}>Delogare</NavItem>
         <NavItemLink to="register-in-contest">Înscriere</NavItemLink>
         <NavItem onClick={this.changeLanguage}>{this.renderNextLanguage()}</NavItem>
@@ -78,7 +78,7 @@ export default React.createClass({
         <NavItemLink to="talks">Seminarii</NavItemLink>
         <NavItemLink to="schedule">Program</NavItemLink>
         <NavItemLink to="contestants">Participanți</NavItemLink>
-        <NavItem><SignIn login={this.props.login} /></NavItem>
+        <NavItemLink to="jury">Juriu</NavItemLink>
         <NavItem onClick={this.changeLanguage}>{this.renderNextLanguage()}</NavItem>
       </Nav>;
     } else {
