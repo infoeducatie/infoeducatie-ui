@@ -1,5 +1,6 @@
 "use strict";
 
+import _ from "lodash";
 import React from "react";
 import { Grid, Col, Row, Table } from "react-bootstrap";
 
@@ -7,7 +8,6 @@ import ajax from "../lib/ajax"
 import EditionSelector from "./edition-selector"
 import FilterIcon from "./contestants/filter_icon";
 import Header from "./header";
-import resultsFixture from "../fixtures/results";
 
 import "../main.less";
 
@@ -22,7 +22,7 @@ export default React.createClass({
         id: 0,
         name: ""
       },
-      results: resultsFixture
+      projects: []
     };
   },
 
@@ -35,6 +35,12 @@ export default React.createClass({
     }
   },
 
+  componentDidMount() {
+    if (this.state.currentEdition !== 0) {
+      this.showResults(this.props.lastEditionWithResults.id);
+    }
+  },
+
   toggleCategory(category) {
     this.setState({
       currentCategory: category
@@ -42,6 +48,11 @@ export default React.createClass({
   },
 
   renderTable() {
+    let projects = _.chain(this.state.projects)
+        .filter({ "category": this.state.currentCategory })
+        .sortBy("total_score")
+        .value();
+
     return <Grid className="results-section">
       <Row>
         <Col md={8} mdOffset={2}>
@@ -58,23 +69,31 @@ export default React.createClass({
               </tr>
             </thead>
             <tbody>
-              {this.state.results[this.state.currentCategory].map(function(result) {
-                return <tr key={result.project.id}>
-                  <td className="rank">{result.rank}</td>
-                  <td className="title">{result.project.name}</td>
+              {projects.map(function(project) {
+                return <tr key={project.id}>
+                  <td className="rank">{project.prize}</td>
+                  <td className="title">{project.title}</td>
                   <td>
                     <ul className="list-unstyled">
-                      {result.project.authors.map(function(author){
-                          return <li className="author" key={author.id}>
-                            {author.name}
+                      {project.contestants.map(function(contestant){
+                          return <li className="contestant" key={contestant.id}>
+                            {contestant.name}
                           </li>;
                         })}
                     </ul>
                   </td>
-                  <td className="hidden-xs">{result.project.school}</td>
-                  <td className="hidden-xs score">{result.project.score}</td>
-                  <td className="hidden-xs score">{result.project.open}</td>
-                  <td className="score">{result.project.total}</td>
+                  <td className="hidden-xs">
+                    <ul className="list-unstyled">
+                      {project.contestants.map(function(contestant){
+                          return <li className="school-name" key={contestant.id}>
+                            {contestant.school_name}
+                          </li>;
+                        })}
+                    </ul>
+                  </td>
+                  <td className="hidden-xs score">{project.score}</td>
+                  <td className="hidden-xs score">{project.extra_score}</td>
+                  <td className="score">{project.total_score}</td>
                 </tr>;
               })}
             </tbody>
@@ -157,6 +176,11 @@ export default React.createClass({
   },
 
   showResults(editionId) {
-    // TODO @palcu: ajax + setState
+    ajax({
+      endpoint: "projects.json?edition=" + editionId,
+      success: (data) => {
+        this.setState({ projects: data });
+      }
+    });
   }
 });
