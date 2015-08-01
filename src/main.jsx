@@ -53,9 +53,9 @@ let App = React.createClass({
         last_edition_with_results: {
           year: 2014,
           id: 0,
-          name: 'Editia 2014'
+          name: "Editia 2014"
         }
-      },
+      }
     };
   },
 

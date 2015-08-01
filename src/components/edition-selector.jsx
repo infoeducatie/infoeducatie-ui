@@ -23,7 +23,7 @@ export default class EditionSelector extends React.Component {
   componentDidMount() {
     let params = {};
     _.forEach(this.getFilterList(), (filter) => {
-      params[filter] = 'true'
+      params[filter] = "true";
     });
 
     ajax({
@@ -68,7 +68,7 @@ export default class EditionSelector extends React.Component {
     if (this.props.filter) {
       return [this.props.filter];
     } else {
-      return this.props.filters
+      return this.props.filters;
     }
   }
 }

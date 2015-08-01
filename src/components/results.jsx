@@ -105,7 +105,7 @@ export default React.createClass({
       </div>
 
       <Grid>
-        <Row className="small-spacing"  />
+        <Row className="small-spacing" />
         <Row>
           <Col sm={4} smOffset={4}>
             <EditionSelector onCallback={this.onEditionChange}
@@ -157,7 +157,6 @@ export default React.createClass({
   },
 
   showResults(editionId) {
-    console.log(editionId)
     // TODO @palcu: ajax + setState
   }
 });
