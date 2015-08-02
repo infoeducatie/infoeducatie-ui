@@ -7,8 +7,9 @@ import Header from "./header";
 import JuryDescription from "./jury-description";
 
 import "../main.less";
-
+import gravatar from "../lib/gravatar";
 import VladAvatar from "../../assets/img/jury/vlad_temian.png";
+import SabinBuragaAvatar from "../../assets/img/jury/sabin_buraga.jpg";
 import RobertAvatar from "../../assets/img/jury/robert_dolca.png";
 import AlexPAvatar from "../../assets/img/jury/alex_palcuie.png";
 import AndreiAAvatar from "../../assets/img/jury/andrei_adoamnei.png";
@@ -18,8 +19,11 @@ import RazvanDeaconescuAvatar from "../../assets/img/jury/razvan_deaconescu.png"
 import JulianAvatar from "../../assets/img/jury/julian_atanasoae.png";
 import AndreiMAvatar from "../../assets/img/jury/andrei_muntean.png";
 import AlexCiteaAvatar from "../../assets/img/jury/alex_citea.png";
+import LuizaBubatuAvatar from "../../assets/img/jury/luiza_bubatu.jpg";
+import CarmenLascoiuAvatar from "../../assets/img/jury/carmen_lascoiu.jpg";
 import AlexComanAvatar from "../../assets/img/jury/alex_coman.png";
-
+import EmilOneaAvatar from "../../assets/img/jury/emil_onea.jpg";
+import DanielPopaAvatar from "../../assets/img/jury/daniel_popa.jpg";
 import DefaultAvatar from "../../assets/img/jury/default.png";
 import DefaultDocument from "../../assets/img/icons/doc.png";
 
@@ -28,7 +32,7 @@ export default React.createClass({
   displayName: "Jury",
   render() {
     let presedinte = [
-      {"avatar": DefaultAvatar, "name": "Sabin Buraga", "occupation": "Conferențiar la Universitatea \"Alexandru Ioan Cuza\" din Iași"},
+      {"avatar": SabinBuragaAvatar, "name": "Sabin Buraga", "occupation": "Conferențiar la Universitatea \"Alexandru Ioan Cuza\" din Iași"},
     ];
 
     let presedinteExecutiv = [
@@ -40,14 +44,14 @@ export default React.createClass({
     ];
 
     let comisiaTehnica = [
-      {"avatar": DefaultAvatar, "name": "Emil Onea", "occupation": "Profesor @ Colegiul Naţional “Unirea“ Focşani"},
+      {"avatar": EmilOneaAvatar, "name": "Emil Onea", "occupation": "Profesor @ Colegiul Naţional “Unirea“ Focşani"},
       {"avatar": DefaultAvatar, "name": "Dan Roșioru", "occupation": "Profesor @ Colegiul Naţional “Unirea“ Focşani"},
       {"avatar": DefaultAvatar, "name": "Roxana Tâmplaru", "occupation": "Profesor @ Colegiul „Stefan Odobleja” Craiova"},
       {"avatar": DefaultAvatar, "name": "Cătălina Burlacu", "occupation": "Profesor @ Colegiul Dunărea Galaţi"},
     ];
 
     var educational = [
-        {"avatar": DefaultAvatar, "name": "Daniel Popa", "occupation": "profesor @ Colegiul National 'Aurel Vlaicu' Orastie"},
+        {"avatar": DanielPopaAvatar, "name": "Daniel Popa", "occupation": "profesor @ Colegiul National 'Aurel Vlaicu' Orastie"},
         {"avatar": RazvanDeaconescuAvatar, "name": "Răzvan Deaconescu", "occupation": "Sef lucrari @ Universitatea 'Politehnica' Bucuresti"},
         {"avatar": DefaultAvatar, "name": "Ovidiu Roșca", "occupation": "Profesor @ Liceul 'Dragos Voda' Sighetu Marmatiei"},
         {"avatar": DefaultAvatar, "name": "Emilian Bacila", "occupation": "student @ University of Cambridge"},
@@ -56,10 +60,9 @@ export default React.createClass({
     ];
     var media = [
         {"avatar": DefaultAvatar, "name": "Florentina Hora", "occupation": "Profesor @ Colegiul National 'Samuil Vulcan' Beius"},
-        {"avatar": DefaultAvatar, "name": "Andreea Popescu", "occupation": "QA Engineer @ Zitec"},
         {"avatar": RobertaTomegaAvatar, "name": "Roberta Tomegea", "occupation": "studenta @ Universitatea Politehnica Timișoara"},
-        {"avatar": DefaultAvatar, "name": "Luiza Bubatu", "occupation": "studenta @ Universitatea Tehnică Cluj-Napoca"},
-        {"avatar": DefaultAvatar, "name": "Carmen Lascoiu", "occupation": "studenta @ Universitatea Națională de Arte Teatrale 'I. L. Caragiale' București"}
+        {"avatar": LuizaBubatuAvatar, "name": "Luiza Bubatu", "occupation": "studenta @ Universitatea Tehnică Cluj-Napoca"},
+        {"avatar": CarmenLascoiuAvatar, "name": "Carmen Lascoiu", "occupation": "studenta @ Universitatea Națională de Arte Teatrale 'I. L. Caragiale' București"}
     ];
     var robots = [
         {"avatar": DefaultAvatar, "name": "Ovidiu Domsa", "occupation": "Profesor @ Universitatea '1 Decembrie' Alba Iulia"},
@@ -74,7 +77,7 @@ export default React.createClass({
         {"avatar": AlexCiteaAvatar, "name": "Alexandru Cîtea", "occupation": "Malware Analyst @ Bitdefender"},
         {"avatar": AlexComanAvatar, "name": "Alexandru Coman", "occupation": "Cloud Engineer  @ Cloudbase"},
         {"avatar": VladAvatar, "name": "Vlad Temian", "occupation": "Software Developer @ Presslabs"},
-        {"avatar": DefaultAvatar, "name": "Alexandru Buicescu", "occupation": "Inginer Software @ Indycoding"}
+        {"avatar": gravatar("d1fa1134342ae05234ff6432ad74661a"), "name": "Alexandru Buicescu", "occupation": "Inginer Software @ Indycoding"}
     ];
     var web = [
         {"avatar": DefaultAvatar, "name": "Narcisa Dima", "occupation": "Profesor @ Liceul 'Ion Barbu' Pitesti"},
@@ -112,7 +115,7 @@ export default React.createClass({
         </div>
 
         <Grid className="white-section">
-          <Row className="top-people">
+          <Row>
             <JuryDescription name="președinte executiv" members={presedinteExecutiv}/>
             <JuryDescription name="președinte" members={presedinte}/>
             <JuryDescription name="secretar" members={secretar}/>
