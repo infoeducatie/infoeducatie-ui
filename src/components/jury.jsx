@@ -29,22 +29,22 @@ export default React.createClass({
   render() {
     let presedinte = [
       {"avatar": DefaultAvatar, "name": "Sabin Buraga", "occupation": "Conferențiar la Universitatea \"Alexandru Ioan Cuza\" din Iași"},
-    ]
+    ];
 
     let presedinteExecutiv = [
       {"avatar": DefaultAvatar, "name": "Marilena Oprea", "occupation": "I.S.J. Vrancea"},
-    ]
+    ];
 
     let secretar = [
       {"avatar": DefaultAvatar, "name": "Fâsan Mihail", "occupation": "I.S.J. Vrancea"},
-    ]
+    ];
 
     let comisiaTehnica = [
       {"avatar": DefaultAvatar, "name": "Emil Onea", "occupation": "Profesor @ Colegiul Naţional “Unirea“ Focşani"},
       {"avatar": DefaultAvatar, "name": "Dan Roșioru", "occupation": "Profesor @ Colegiul Naţional “Unirea“ Focşani"},
       {"avatar": DefaultAvatar, "name": "Roxana Tâmplaru", "occupation": "Profesor @ Colegiul „Stefan Odobleja” Craiova"},
       {"avatar": DefaultAvatar, "name": "Cătălina Burlacu", "occupation": "Profesor @ Colegiul Dunărea Galaţi"},
-    ]
+    ];
 
     var educational = [
         {"avatar": DefaultAvatar, "name": "Daniel Popa", "occupation": "profesor @ Colegiul National 'Aurel Vlaicu' Orastie"},
@@ -112,16 +112,10 @@ export default React.createClass({
         </div>
 
         <Grid className="white-section">
-          <Row>
-            <Col md={4}>
-              <JuryDescription name="președinte executiv" members={presedinteExecutiv}/>
-            </Col>
-            <Col md={4}>
-              <JuryDescription name="președinte" members={presedinte}/>
-            </Col>
-            <Col md={4}>
-              <JuryDescription name="secretar" members={secretar}/>
-            </Col>
+          <Row className="top-people">
+            <JuryDescription name="președinte executiv" members={presedinteExecutiv}/>
+            <JuryDescription name="președinte" members={presedinte}/>
+            <JuryDescription name="secretar" members={secretar}/>
           </Row>
           <Row>
             <JuryDescription iconClass="section-icon educational" name="comisia software educațional" members={educational}/>

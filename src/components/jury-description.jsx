@@ -18,7 +18,7 @@ export default React.createClass({
       );
     }
 
-    return <div>
+    return <div className="jury-description-wrapper">
       {juryIcon}
       <div className="jury-description">
         <span className="orange-dash">&mdash;</span>
