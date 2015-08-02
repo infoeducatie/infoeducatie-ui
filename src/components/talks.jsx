@@ -100,6 +100,7 @@ export default React.createClass({
                     onClick={this.openDiscourse.bind(this, talk.discourse_url)}>
                     Discută pe forum
                   </a>
+                  &nbsp;
                   <CloudCount count={talk.comments_count} />
                 </span>
 
