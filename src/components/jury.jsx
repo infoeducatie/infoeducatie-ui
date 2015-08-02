@@ -111,16 +111,36 @@ export default React.createClass({
           </Grid>
         </div>
 
-        <Grid>
-          <JuryDescription name="președinte" members={presedinte}/>
-          <JuryDescription name="președinte executiv" members={presedinteExecutiv}/>
-          <JuryDescription name="secretar" members={secretar}/>
-          <JuryDescription iconClass="section-icon educational" name="comisia software educațional" members={educational}/>
-          <JuryDescription iconClass="section-icon utilitar" name="comisia software utilitar" members={utilitar}/>
-          <JuryDescription iconClass="section-icon web" name="comisia aplicații web" members={web}/>
-          <JuryDescription iconClass="section-icon roboti" name="comisia roboți" members={robots}/>
-          <JuryDescription iconClass="section-icon multimedia" name="comisia multimedia" members={media}/>
-          <JuryDescription name="comisia tehnică" members={comisiaTehnica}/>
+        <Grid className="white-section">
+          <Row>
+            <Col md={4}>
+              <JuryDescription name="președinte executiv" members={presedinteExecutiv}/>
+            </Col>
+            <Col md={4}>
+              <JuryDescription name="președinte" members={presedinte}/>
+            </Col>
+            <Col md={4}>
+              <JuryDescription name="secretar" members={secretar}/>
+            </Col>
+          </Row>
+          <Row>
+            <JuryDescription iconClass="section-icon educational" name="comisia software educațional" members={educational}/>
+          </Row>
+          <Row>
+            <JuryDescription iconClass="section-icon utilitar" name="comisia software utilitar" members={utilitar}/>
+          </Row>
+          <Row>
+            <JuryDescription iconClass="section-icon web" name="comisia aplicații web" members={web}/>
+          </Row>
+          <Row>
+            <JuryDescription iconClass="section-icon roboti" name="comisia roboți" members={robots}/>
+          </Row>
+          <Row>
+            <JuryDescription iconClass="section-icon multimedia" name="comisia multimedia" members={media}/>
+          </Row>
+          <Row>
+            <JuryDescription name="comisia tehnică" members={comisiaTehnica}/>
+          </Row>
         </Grid>
 
         <div className="orange-section-wrapper">

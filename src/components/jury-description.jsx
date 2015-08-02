@@ -18,7 +18,7 @@ export default React.createClass({
       );
     }
 
-    return <Row className="white-section" key={this.props.name}>
+    return <div>
       {juryIcon}
       <div className="jury-description">
         <span className="orange-dash">&mdash;</span>
@@ -34,6 +34,6 @@ export default React.createClass({
           </div>;
         })}
       </Col>
-    </Row>;
+    </div>;
   }
 });
