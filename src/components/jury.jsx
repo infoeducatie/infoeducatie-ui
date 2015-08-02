@@ -32,22 +32,22 @@ export default React.createClass({
   displayName: "Jury",
   render() {
     let presedinte = [
-      {"avatar": SabinBuragaAvatar, "name": "Sabin Buraga", "occupation": "Conferențiar la Universitatea \"Alexandru Ioan Cuza\" din Iași"},
+      {"avatar": SabinBuragaAvatar, "name": "Sabin Buraga", "occupation": "Conferențiar la Universitatea \"Alexandru Ioan Cuza\" din Iași"}
     ];
 
     let presedinteExecutiv = [
-      {"avatar": DefaultAvatar, "name": "Marilena Oprea", "occupation": "I.S.J. Vrancea"},
+      {"avatar": DefaultAvatar, "name": "Marilena Oprea", "occupation": "I.S.J. Vrancea"}
     ];
 
     let secretar = [
-      {"avatar": DefaultAvatar, "name": "Fâsan Mihail", "occupation": "I.S.J. Vrancea"},
+      {"avatar": DefaultAvatar, "name": "Fâsan Mihail", "occupation": "I.S.J. Vrancea"}
     ];
 
     let comisiaTehnica = [
       {"avatar": EmilOneaAvatar, "name": "Emil Onea", "occupation": "Profesor @ Colegiul Naţional “Unirea“ Focşani"},
       {"avatar": DefaultAvatar, "name": "Dan Roșioru", "occupation": "Profesor @ Colegiul Naţional “Unirea“ Focşani"},
       {"avatar": DefaultAvatar, "name": "Roxana Tâmplaru", "occupation": "Profesor @ Colegiul „Stefan Odobleja” Craiova"},
-      {"avatar": DefaultAvatar, "name": "Cătălina Burlacu", "occupation": "Profesor @ Colegiul Dunărea Galaţi"},
+      {"avatar": DefaultAvatar, "name": "Cătălina Burlacu", "occupation": "Profesor @ Colegiul Dunărea Galaţi"}
     ];
 
     var educational = [
