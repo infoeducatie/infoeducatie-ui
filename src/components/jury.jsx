@@ -27,6 +27,24 @@ import DefaultDocument from "../../assets/img/icons/doc.png";
 export default React.createClass({
   displayName: "Jury",
   render() {
+    let presedinte = [
+      {"avatar": DefaultAvatar, "name": "Sabin Buraga", "occupation": "Conferențiar la Universitatea \"Alexandru Ioan Cuza\" din Iași"},
+    ]
+
+    let presedinteExecutiv = [
+      {"avatar": DefaultAvatar, "name": "Marilena Oprea", "occupation": "I.S.J. Vrancea"},
+    ]
+
+    let secretar = [
+      {"avatar": DefaultAvatar, "name": "Fâsan Mihail", "occupation": "I.S.J. Vrancea"},
+    ]
+
+    let comisiaTehnica = [
+      {"avatar": DefaultAvatar, "name": "Emil Onea", "occupation": "Profesor @ Colegiul Naţional “Unirea“ Focşani"},
+      {"avatar": DefaultAvatar, "name": "Dan Roșioru", "occupation": "Profesor @ Colegiul Naţional “Unirea“ Focşani"},
+      {"avatar": DefaultAvatar, "name": "Roxana Tâmplaru", "occupation": "Profesor @ Colegiul „Stefan Odobleja” Craiova"},
+      {"avatar": DefaultAvatar, "name": "Cătălina Burlacu", "occupation": "Profesor @ Colegiul Dunărea Galaţi"},
+    ]
 
     var educational = [
         {"avatar": DefaultAvatar, "name": "Daniel Popa", "occupation": "profesor @ Colegiul National 'Aurel Vlaicu' Orastie"},
@@ -94,11 +112,15 @@ export default React.createClass({
         </div>
 
         <Grid>
-          <JuryDescription iconClass="section-icon educational" name="educațional" members={educational}/>
-          <JuryDescription iconClass="section-icon multimedia" name="multimedia" members={media}/>
-          <JuryDescription iconClass="section-icon roboti" name="roboți" members={robots}/>
-          <JuryDescription iconClass="section-icon utilitar" name="utilitar" members={utilitar}/>
-          <JuryDescription iconClass="section-icon web" name="web" members={web}/>
+          <JuryDescription name="președinte" members={presedinte}/>
+          <JuryDescription name="președinte executiv" members={presedinteExecutiv}/>
+          <JuryDescription name="secretar" members={secretar}/>
+          <JuryDescription iconClass="section-icon educational" name="comisia software educațional" members={educational}/>
+          <JuryDescription iconClass="section-icon utilitar" name="comisia software utilitar" members={utilitar}/>
+          <JuryDescription iconClass="section-icon web" name="comisia aplicații web" members={web}/>
+          <JuryDescription iconClass="section-icon roboti" name="comisia roboți" members={robots}/>
+          <JuryDescription iconClass="section-icon multimedia" name="comisia multimedia" members={media}/>
+          <JuryDescription name="comisia tehnică" members={comisiaTehnica}/>
         </Grid>
 
         <div className="orange-section-wrapper">
