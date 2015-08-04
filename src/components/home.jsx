@@ -25,6 +25,7 @@ import eSkills from "../../assets/img/sponsors/eskills.png";
 import gwc from "../../assets/img/sponsors/girlswhocode.png";
 import leonte from "../../assets/img/sponsors/leonte.png";
 import altex from "../../assets/img/sponsors/altex.gif";
+import GInfo from "../../assets/img/sponsors/ginfo.png";
 
 
 export default React.createClass({
@@ -243,6 +244,9 @@ export default React.createClass({
                             </a>
                             <a href="http://www.edu.ro/" target="_blank">
                               <img src={MEN} />
+                            </a>
+                            <a href="http://gazeta.info.ro/" target="_blank">
+                              <img src={GInfo} />
                             </a>
                         </p>
                     </Col>
