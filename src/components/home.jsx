@@ -26,6 +26,7 @@ import gwc from "../../assets/img/sponsors/girlswhocode.png";
 import leonte from "../../assets/img/sponsors/leonte.png";
 import altex from "../../assets/img/sponsors/altex.gif";
 import GInfo from "../../assets/img/sponsors/ginfo.png";
+import GreenGroup from "../../assets/img/sponsors/greengroup.png";
 
 
 export default React.createClass({
@@ -225,6 +226,9 @@ export default React.createClass({
                             </a>
                             <a href="https://www.facebook.com/GirlsWhoCodeRO" target="_blank">
                               <img src={gwc} />
+                            </a>
+                            <a href="http://www.green-group.ro/en/" target="_blank">
+                              <img src={GreenGroup} />
                             </a>
                         </p>
                     </Col>
