@@ -25,6 +25,8 @@ import eSkills from "../../assets/img/sponsors/eskills.png";
 import gwc from "../../assets/img/sponsors/girlswhocode.png";
 import leonte from "../../assets/img/sponsors/leonte.png";
 import altex from "../../assets/img/sponsors/altex.gif";
+import GInfo from "../../assets/img/sponsors/ginfo.png";
+import GreenGroup from "../../assets/img/sponsors/greengroup.png";
 
 
 export default React.createClass({
@@ -225,6 +227,9 @@ export default React.createClass({
                             <a href="https://www.facebook.com/GirlsWhoCodeRO" target="_blank">
                               <img src={gwc} />
                             </a>
+                            <a href="http://www.green-group.ro/en/" target="_blank">
+                              <img src={GreenGroup} />
+                            </a>
                         </p>
                     </Col>
                 </Row>
@@ -243,6 +248,9 @@ export default React.createClass({
                             </a>
                             <a href="http://www.edu.ro/" target="_blank">
                               <img src={MEN} />
+                            </a>
+                            <a href="http://gazeta.info.ro/" target="_blank">
+                              <img src={GInfo} />
                             </a>
                         </p>
                     </Col>
