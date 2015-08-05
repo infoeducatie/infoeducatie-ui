@@ -53,7 +53,7 @@ export default React.createClass({
     var educational = [
         {"avatar": DanielPopaAvatar, "name": "Daniel Popa", "occupation": "profesor @ Colegiul National 'Aurel Vlaicu' Orastie"},
         {"avatar": RazvanDeaconescuAvatar, "name": "Răzvan Deaconescu", "occupation": "Sef lucrari @ Universitatea 'Politehnica' Bucuresti"},
-        {"avatar": DefaultAvatar, "name": "Ovidiu Roșca", "occupation": "Profesor @ Liceul 'Dragos Voda' Sighetu Marmatiei"},
+        {"avatar": DefaultAvatar, "name": "Ovidiu Roșca", "occupation": "Profesor @ Colegiul National Dragos Voda"},
         {"avatar": DefaultAvatar, "name": "Emilian Bacila", "occupation": "student @ University of Cambridge"},
         {"avatar": AndreiMAvatar, "name": "Andrei Muntean", "occupation": "student @ University of Manchester"},
         {"avatar": JulianAvatar, "name": "Iulian Atănăsoae", "occupation": "student @ Facultatea de Matematică și Informatică din București"}
@@ -70,6 +70,7 @@ export default React.createClass({
         {"avatar": DefaultAvatar, "name": "Rodica Pintea", "occupation": "Profesor @ Liceul 'Grigore Moisil' Bucureşti"},
         {"avatar": DefaultAvatar, "name": "Ovidiu Tirian", "occupation": "Sef lucrari @ Universitatea Politehnică Timișoara - Inginerie Hunedoara"},
         {"avatar": DefaultAvatar, "name": "Mircea Bratan", "occupation": "Inginer Software @ Tremend Software Consulting"}
+        {"avatar": DefaultAvatar, "name": "Adriana Cherecheș", "occupation": "Profesor @ Liceul Teoretic Nicolae Balcescu"}
     ];
     var utilitar = [
         {"avatar": DefaultAvatar, "name": "Spătărel Dan", "occupation": "Profesor @ Colegiul National Tudor Vianu Bucuresti"},
