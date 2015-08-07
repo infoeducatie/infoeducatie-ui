@@ -55,7 +55,7 @@ export default React.createClass({
 
     // TODO @palcu: remove hack for absent contestants
     projects = projects.map((project) => {
-      if (project.prize.length > 3) {
+      if (project.prize && project.prize.length > 3) {
         project.prize = "";
       }
       return project;
