@@ -50,7 +50,7 @@ export default React.createClass({
   renderTable() {
     let projects = _.chain(this.state.projects)
         .filter({ "category": this.state.currentCategory })
-        .sortBy("total_score")
+        .sortByOrder("total_score", 'desc')
         .value();
 
     return <Grid className="results-section">
