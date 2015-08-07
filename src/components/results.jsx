@@ -175,7 +175,8 @@ export default React.createClass({
     this.showResults(edition.id);
   },
 
-  showResults(editionId) {
+  showResults() {
+    // TODO @palcu: this receives editionId and we should use it
     ajax({
       endpoint: "projects.json",
       success: (data) => {
