@@ -177,7 +177,7 @@ export default React.createClass({
 
   showResults(editionId) {
     ajax({
-      endpoint: "projects.json?edition=" + editionId,
+      endpoint: "projects.json",
       success: (data) => {
         this.setState({ projects: data });
       }
