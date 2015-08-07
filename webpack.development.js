@@ -13,7 +13,7 @@ var webpack = require("webpack");
 module.exports = {
 
   // Efficiently evaluate modules with source maps
-  devtool: "source-map",
+  devtool: "cheap-eval-source-map",
 
   // Set entry point to ./src/main and include necessary files for hot load
   entry:  [

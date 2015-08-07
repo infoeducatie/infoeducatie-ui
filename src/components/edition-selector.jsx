@@ -1,5 +1,6 @@
 "use strict";
 
+import $ from "jquery";
 import _ from "lodash";
 import ajax from "../lib/ajax"
 import {Input} from "react-bootstrap";
@@ -8,7 +9,11 @@ import React from "react";
 
 export default class EditionSelector extends React.Component {
   static displayName = "EditionSelector"
-  static propTypes = { onCallback: React.PropTypes.func.isRequired }
+  static propTypes = {
+    onCallback: React.PropTypes.func.isRequired,
+    filters: React.PropTypes.array,
+    filter: React.PropTypes.string
+  }
 
   state = {
     editions: [],
@@ -16,14 +21,19 @@ export default class EditionSelector extends React.Component {
   }
 
   componentDidMount() {
+    let params = {};
+    _.forEach(this.getFilterList(), (filter) => {
+      params[filter] = "true";
+    });
+
     ajax({
-      endpoint: "editions.json",
+      endpoint: "editions.json?" + $.param(params),
       success: (data) => {
-        let currentEdition = _.find(data, "current");
+        let selectedEdition = _.last(data);
 
         this.setState({
           editions: data,
-          selectedEditionId: currentEdition.id
+          selectedEditionId: selectedEdition.id
         });
       }
     });
@@ -38,16 +48,12 @@ export default class EditionSelector extends React.Component {
   }
 
   renderEdition = (edition) => {
-    let editionOption = null;
-
-    if (this.props.canRenderEdition(edition)) {
-      editionOption = <option key={edition.id}
+    return (
+      <option key={edition.id}
                         value={edition.id}>
         Ediția {edition.name}
-      </option>;
-    }
-
-    return editionOption;
+      </option>
+    );
   }
 
   onEditionChange = (event) => {
@@ -56,5 +62,13 @@ export default class EditionSelector extends React.Component {
 
     this.props.onCallback(edition);
     this.setState({ selectedEditionId: id });
+  }
+
+  getFilterList() {
+    if (this.props.filter) {
+      return [this.props.filter];
+    } else {
+      return this.props.filters;
+    }
   }
 }
