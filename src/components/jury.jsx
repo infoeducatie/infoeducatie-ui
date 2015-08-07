@@ -71,7 +71,8 @@ export default React.createClass({
         {"avatar": DefaultAvatar, "name": "Rodica Pintea", "occupation": "Profesor @ Liceul 'Grigore Moisil' Bucureşti"},
         {"avatar": DefaultAvatar, "name": "Ovidiu Tirian", "occupation": "Sef lucrari @ Universitatea Politehnică Timișoara - Inginerie Hunedoara"},
         {"avatar": DefaultAvatar, "name": "Mircea Bratan", "occupation": "Inginer Software @ Tremend Software Consulting"},
-        {"avatar": DefaultAvatar, "name": "Adriana Chereș", "occupation": "Profesor @ Liceul Teoretic Nicolae Balcescu Cluj-Napoca"}
+        {"avatar": DefaultAvatar, "name": "Adriana Chereș", "occupation": "Profesor @ Liceul Teoretic Nicolae Balcescu Cluj-Napoca"},
+        {"avatar": DefaultAvatar, "name": "Mihai Agape", "occupation": "Palatul Copiilor Drobeta Turnu Severin, Filiala Orșova"}
     ];
     var utilitar = [
         {"avatar": DefaultAvatar, "name": "Spătărel Dan", "occupation": "Profesor @ Colegiul National Tudor Vianu Bucuresti"},

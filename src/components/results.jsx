@@ -50,8 +50,12 @@ export default React.createClass({
   renderTable() {
     let projects = _.chain(this.state.projects)
         .filter({ "category": this.state.currentCategory })
-        .sortByOrder("total_score", "desc")
         .value();
+
+    // TODO @palcu: use lodash
+    p1 = projects
+    projects = projects.sort((project) => { return project.total_score });
+    p2 = projects
 
     // TODO @palcu: remove hack for absent contestants
     projects = projects.map((project) => {
