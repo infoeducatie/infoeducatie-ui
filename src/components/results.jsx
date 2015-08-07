@@ -54,10 +54,12 @@ export default React.createClass({
 
     // TODO @palcu: use lodash
     projects.sort((a, b) => {
-      if (a.total_score > b.total_score)
+      if (a.total_score > b.total_score) {
         return -1;
-      if (a.total_score < b.total_score)
+      }
+      if (a.total_score < b.total_score) {
         return 1;
+      }
       return 0;
     });
 
