@@ -53,6 +53,14 @@ export default React.createClass({
         .sortByOrder("total_score", "desc")
         .value();
 
+    // TODO @palcu: remove hack for absent contestants
+    projects = projects.map((project) => {
+      if (project.prize.length > 3) {
+        project.prize = "";
+      }
+      return project;
+    });
+
     return <Grid className="results-section">
       <Row>
         <Col md={8} mdOffset={2}>
