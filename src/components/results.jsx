@@ -53,9 +53,13 @@ export default React.createClass({
         .value();
 
     // TODO @palcu: use lodash
-    p1 = projects
-    projects = projects.sort((project) => { return project.total_score });
-    p2 = projects
+    projects.sort((a, b) => {
+      if (a.total_score > b.total_score)
+        return -1;
+      if (a.total_score < b.total_score)
+        return 1;
+      return 0;
+    });
 
     // TODO @palcu: remove hack for absent contestants
     projects = projects.map((project) => {
