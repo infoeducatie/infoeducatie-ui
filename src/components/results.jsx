@@ -75,7 +75,7 @@ export default React.createClass({
     projects = projects.map((project) => {
       project.contestants = project.contestants.map((contestant) => {
         return contestant.name;
-      })
+      });
       return project;
     });
 
@@ -100,24 +100,24 @@ export default React.createClass({
             <tbody>
               {projects.map(function(project) {
                 return <tr key={project.id}>
-                  {this.renderTableTd(project.prize, project.discourse_url, 'rank')}
+                  {this.renderTableTd(project.prize, project.discourse_url, "rank")}
                   {this.renderTableTd(project.title, project.discourse_url)}
                   {this.renderTableUl(project.contestants,
                                       project.discourse_url,
-                                      '',
-                                      'author')}
+                                      "",
+                                      "author")}
                   {this.renderTableUl(project.schools,
                                       project.discourse_url,
-                                      'hidden-sm hidden-xs',
-                                      'school-name')}
+                                      "hidden-sm hidden-xs",
+                                      "school-name")}
                   {this.renderTableUl(project.counties,
                                       project.discourse_url,
-                                      'hidden-sm hidden-xs',
-                                      'county')}
+                                      "hidden-sm hidden-xs",
+                                      "county")}
                   {this.renderTableUl(project.mentoring_teachers,
                                       project.discourse_url,
-                                      'hidden-sm hidden-xs',
-                                      'county')}
+                                      "hidden-sm hidden-xs",
+                                      "county")}
                   {this.renderTableTd(project.score,
                                       project.discourse_url,
                                       "hidden-sm hidden-xs score")}
