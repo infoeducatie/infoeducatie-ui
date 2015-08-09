@@ -10,14 +10,13 @@ import ajax from "../lib/ajax"
 import gravatar from "../lib/gravatar"
 import CloudCount from "./cloud-count"
 import DefaultAvatar from "../../assets/img/jury/default.png";
-import DiscourseMixin from "../mixins/discourse"
+import openDiscourse from "../lib/discourse"
 import EditionSelector from "./edition-selector";
 import Header from "./header";
 
 
 export default React.createClass({
   displayName: "Talks",
-  mixins: [DiscourseMixin],
 
   getInitialState() {
     return {
@@ -92,8 +91,7 @@ export default React.createClass({
                 <h4 className="talk-title">{talk.title}</h4>
                 <p>{talk.description}</p>
                 <span>
-                  <a className="read-more"
-                    onClick={this.openDiscourse.bind(this, talk.discourse_url)}>
+                  <a className="read-more" href={talk.discourse_url}>
                     Discută pe forum
                   </a>
                   &nbsp;

@@ -8,6 +8,7 @@ import ajax from "../lib/ajax"
 import EditionSelector from "./edition-selector"
 import FilterIcon from "./contestants/filter_icon";
 import Header from "./header";
+import openDiscourse from "../lib/discourse"
 
 import "../main.less";
 
@@ -99,7 +100,8 @@ export default React.createClass({
             </thead>
             <tbody>
               {projects.map(function(project) {
-                return <tr key={project.id}>
+                return <tr key={project.id}
+                           onClick={openDiscourse.bind(this, project.discourse_url)}>
                   {this.renderTableTd(project.prize, project.discourse_url, "rank")}
                   {this.renderTableTd(project.title, project.discourse_url)}
                   {this.renderTableUl(project.contestants,

@@ -9,7 +9,7 @@ import ctx from "classnames";
 
 import "../../main.less";
 import CloudCount from "../cloud-count"
-import DiscourseMixin from "../../mixins/discourse"
+import openDiscourse from "../../lib/discourse"
 import Header from "../header";
 import EditionSelector from "../edition-selector";
 import ProjectCard from "./project_card";
@@ -18,7 +18,6 @@ import FilterIcon from "./filter_icon";
 
 export default React.createClass({
   displayName: "Contestants",
-  mixins: [DiscourseMixin],
 
   componentDidMount() {
     this.props.refreshCurrent();
@@ -79,7 +78,7 @@ export default React.createClass({
         this.state.currentCategory === "all") {
       row = <tr key={project.id}
                 className="contestant"
-                onClick={this.openDiscourse.bind(this, project.discourse_url)}>
+                onClick={openDiscourse(project.discourse_url)}>
         <td className="county">
           <ul className="list-unstyled">
             {project.counties.map(function(county, index) {
