@@ -73,16 +73,18 @@ export default React.createClass({
 
     return <Grid className="results-section">
       <Row>
-        <Col md={8} mdOffset={2}>
+        <Col md={12}>
           <Table responsive>
             <thead>
               <tr>
                 <th>premiul</th>
                 <th className="left">numele lucrării</th>
                 <th className="left">concurent</th>
-                <th className="left hidden-xs">liceu</th>
-                <th className="hidden-xs">punctaj</th>
-                <th className="hidden-xs">open</th>
+                <th className="left hidden-sm hidden-xs">liceu</th>
+                <th className="left hidden-sm hidden-xs">județ</th>
+                <th className="left hidden-sm hidden-xs">profesor</th>
+                <th className="hidden-sm hidden-xs">punctaj</th>
+                <th className="hidden-sm hidden-xs">open</th>
                 <th>total</th>
               </tr>
             </thead>
@@ -94,23 +96,41 @@ export default React.createClass({
                   <td>
                     <ul className="list-unstyled">
                       {project.contestants.map(function(contestant){
-                          return <li className="contestant" key={contestant.id}>
-                            {contestant.name}
-                          </li>;
-                        })}
+                        return <li className="contestant" key={contestant.id}>
+                          {contestant.name}
+                        </li>;
+                      })}
                     </ul>
                   </td>
-                  <td className="hidden-xs">
+                  <td className="hidden-sm hidden-xs">
                     <ul className="list-unstyled">
-                      {project.contestants.map(function(contestant){
-                          return <li className="school-name" key={contestant.id}>
-                            {contestant.school_name}
+                      {project.schools.map(function(school){
+                        return <li className="school-name" key={school.id}>
+                          {school}
+                        </li>;
+                      })}
+                    </ul>
+                  </td>
+                  <td className="hidden-sm hidden-xs">
+                    <ul className="list-unstyled">
+                      {project.counties.map(function(county){
+                          return <li className="county" key={county}>
+                            {county}
                           </li>;
                         })}
                     </ul>
                   </td>
-                  <td className="hidden-xs score">{project.score}</td>
-                  <td className="hidden-xs score">{project.extra_score}</td>
+                  <td className="hidden-sm hidden-xs">
+                    <ul className="list-unstyled">
+                      {project.mentoring_teachers.map(function(teacher) {
+                        return <li className="teacher" key={teacher}>
+                          {teacher}
+                        </li>;
+                      })}
+                    </ul>
+                  </td>
+                  <td className="hidden-sm hidden-xs score">{project.score}</td>
+                  <td className="hidden-sm hidden-xs score">{project.extra_score}</td>
                   <td className="score">{project.total_score}</td>
                 </tr>;
               })}
