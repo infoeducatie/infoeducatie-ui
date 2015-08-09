@@ -125,7 +125,7 @@ export default React.createClass({
                   {this.renderTableTd(project.extra_score,
                                       project.discourse_url,
                                       "hidden-sm hidden-xs score")}
-                  {this.renderTableTd(project.score,
+                  {this.renderTableTd(project.total_score,
                                       project.discourse_url,
                                       "score")}
                 </tr>;
