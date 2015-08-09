@@ -7,7 +7,8 @@
   <title>InfoEducatie</title>
   <script>
     window.config = {
-      API_URL: "http://api.infoeducatie.ro/v1/",
+      API_URL: window.location.protocol + '//' +
+               window.location.hostname + ":3000/v1/",
       MAILCHIMP_URL: "//upir.us8.list-manage.com/subscribe/post-json" +
                      "?u=3f6ccc8a6a63be50b4bb9b1b1&id=3a8ffa6e4f&c=?",
     };

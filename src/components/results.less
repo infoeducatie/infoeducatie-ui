@@ -35,6 +35,7 @@
         vertical-align: middle;
         display: table-cell;
         border-bottom: 1px solid @pink;
+        max-width: 260px;
 
         &.rank {
           text-transform: uppercase;
@@ -56,7 +57,15 @@
             text-transform: uppercase;
             color: @blue;
           }
+
+          li:nth-child(even) {
+            padding-top: 10px;
+          }
         }
+      }
+
+      tr:nth-child(even) {
+        background-color: @light-grey;
       }
     }
   }
