@@ -80,7 +80,6 @@ export default React.createClass({
       return project;
     });
 
-    // We want entire rows to be clickable AND have a elements in them.
     return <Grid className="results-section">
       <Row>
         <Col md={12}>
