@@ -71,10 +71,19 @@ export default React.createClass({
       return project;
     });
 
+    // TODO @palcu: remove hack and get
+    projects = projects.map((project) => {
+      project.contestants = project.contestants.map((contestant) => {
+        return contestant.name;
+      });
+      return project;
+    });
+
+    // We want entire rows to be clickable AND have a elements in them.
     return <Grid className="results-section">
       <Row>
         <Col md={12}>
-          <Table responsive>
+          <Table responsive striped hover>
             <thead>
               <tr>
                 <th>premiul</th>
@@ -91,54 +100,66 @@ export default React.createClass({
             <tbody>
               {projects.map(function(project) {
                 return <tr key={project.id}>
-                  <td className="rank">{project.prize}</td>
-                  <td className="title">{project.title}</td>
-                  <td>
-                    <ul className="list-unstyled">
-                      {project.contestants.map(function(contestant){
-                        return <li className="contestant" key={contestant.id}>
-                          {contestant.name}
-                        </li>;
-                      })}
-                    </ul>
-                  </td>
-                  <td className="hidden-sm hidden-xs">
-                    <ul className="list-unstyled">
-                      {project.schools.map(function(school){
-                        return <li className="school-name" key={school.id}>
-                          {school}
-                        </li>;
-                      })}
-                    </ul>
-                  </td>
-                  <td className="hidden-sm hidden-xs">
-                    <ul className="list-unstyled">
-                      {project.counties.map(function(county){
-                          return <li className="county" key={county}>
-                            {county}
-                          </li>;
-                        })}
-                    </ul>
-                  </td>
-                  <td className="hidden-sm hidden-xs">
-                    <ul className="list-unstyled">
-                      {project.mentoring_teachers.map(function(teacher) {
-                        return <li className="teacher" key={teacher}>
-                          {teacher}
-                        </li>;
-                      })}
-                    </ul>
-                  </td>
-                  <td className="hidden-sm hidden-xs score">{project.score}</td>
-                  <td className="hidden-sm hidden-xs score">{project.extra_score}</td>
-                  <td className="score">{project.total_score}</td>
+                  {this.renderTableTd(project.prize, project.discourse_url, "rank")}
+                  {this.renderTableTd(project.title, project.discourse_url)}
+                  {this.renderTableUl(project.contestants,
+                                      project.discourse_url,
+                                      "",
+                                      "author")}
+                  {this.renderTableUl(project.schools,
+                                      project.discourse_url,
+                                      "hidden-sm hidden-xs",
+                                      "school-name")}
+                  {this.renderTableUl(project.counties,
+                                      project.discourse_url,
+                                      "hidden-sm hidden-xs",
+                                      "county")}
+                  {this.renderTableUl(project.mentoring_teachers,
+                                      project.discourse_url,
+                                      "hidden-sm hidden-xs",
+                                      "county")}
+                  {this.renderTableTd(project.score,
+                                      project.discourse_url,
+                                      "hidden-sm hidden-xs score")}
+                  {this.renderTableTd(project.extra_score,
+                                      project.discourse_url,
+                                      "hidden-sm hidden-xs score")}
+                  {this.renderTableTd(project.score,
+                                      project.discourse_url,
+                                      "score")}
                 </tr>;
-              })}
+              }.bind(this))}
             </tbody>
           </Table>
         </Col>
       </Row>
     </Grid>;
+  },
+
+  renderTableTd(content, url, tdClassName) {
+    return (
+      <td className={tdClassName}>
+        <a href={url}>
+          {content}
+        </a>
+      </td>
+    );
+  },
+
+  renderTableUl(items, url, tdClassName, liClassName) {
+    return (
+      <td className={tdClassName}>
+        <ul className="list-unstyled">
+          {items.map(function(item){
+            return <li key={item} className={liClassName}>
+              <a href={url}>
+                {item}
+              </a>
+            </li>;
+          })}
+        </ul>
+      </td>
+    );
   },
 
   render() {
