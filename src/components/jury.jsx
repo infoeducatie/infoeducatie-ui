@@ -32,63 +32,63 @@ export default React.createClass({
   displayName: "Jury",
   render() {
     let presedinte = [
-      {"avatar": SabinBuragaAvatar, "name": "Sabin Buraga", "occupation": "Conferențiar la Universitatea \"Alexandru Ioan Cuza\" din Iași"}
+     // {"avatar": SabinBuragaAvatar, "name": "Sabin Buraga", "occupation": "Conferențiar la Universitatea \"Alexandru Ioan Cuza\" din Iași"}
     ];
 
     let presedinteExecutiv = [
-      {"avatar": DefaultAvatar, "name": "Marilena Oprea", "occupation": "I.S.J. Vrancea"}
+    //  {"avatar": DefaultAvatar, "name": "Marilena Oprea", "occupation": "I.S.J. Vrancea"}
     ];
 
     let secretar = [
-      {"avatar": DefaultAvatar, "name": "Fâsan Mihail", "occupation": "I.S.J. Vrancea"}
+    //  {"avatar": DefaultAvatar, "name": "Fâsan Mihail", "occupation": "I.S.J. Vrancea"}
     ];
 
     let comisiaTehnica = [
-      {"avatar": EmilOneaAvatar, "name": "Emil Onea", "occupation": "Profesor @ Colegiul Naţional “Unirea“ Focşani"},
-      {"avatar": DefaultAvatar, "name": "Dan Roșioru", "occupation": "Profesor @ Colegiul Naţional “Unirea“ Focşani"},
-      {"avatar": DefaultAvatar, "name": "Roxana Tâmplaru", "occupation": "Profesor @ Colegiul „Stefan Odobleja” Craiova"},
-      {"avatar": DefaultAvatar, "name": "Cătălina Burlacu", "occupation": "Profesor @ Colegiul Dunărea Galaţi"}
+    //  {"avatar": EmilOneaAvatar, "name": "Emil Onea", "occupation": "Profesor @ Colegiul Naţional “Unirea“ Focşani"},
+    //  {"avatar": DefaultAvatar, "name": "Dan Roșioru", "occupation": "Profesor @ Colegiul Naţional “Unirea“ Focşani"},
+    //  {"avatar": DefaultAvatar, "name": "Roxana Tâmplaru", "occupation": "Profesor @ Colegiul „Stefan Odobleja” Craiova"},
+    //  {"avatar": DefaultAvatar, "name": "Cătălina Burlacu", "occupation": "Profesor @ Colegiul Dunărea Galaţi"}
     ];
 
     var educational = [
-        {"avatar": DanielPopaAvatar, "name": "Daniel Popa", "occupation": "profesor @ Colegiul National 'Aurel Vlaicu' Orastie"},
-        {"avatar": RazvanDeaconescuAvatar, "name": "Răzvan Deaconescu", "occupation": "Sef lucrari @ Universitatea 'Politehnica' Bucuresti"},
-        {"avatar": DefaultAvatar, "name": "Ovidiu Roșca", "occupation": "Profesor @ Colegiul National Dragos Voda"},
-        {"avatar": DefaultAvatar, "name": "Emilian Bacila", "occupation": "student @ University of Cambridge"},
-        {"avatar": AndreiMAvatar, "name": "Andrei Muntean", "occupation": "student @ University of Manchester"},
-        {"avatar": JulianAvatar, "name": "Iulian Atănăsoae", "occupation": "student @ Facultatea de Matematică și Informatică din București"}
+    //    {"avatar": DanielPopaAvatar, "name": "Daniel Popa", "occupation": "profesor @ Colegiul National 'Aurel Vlaicu' Orastie"},
+    //    {"avatar": RazvanDeaconescuAvatar, "name": "Răzvan Deaconescu", "occupation": "Sef lucrari @ Universitatea 'Politehnica' Bucuresti"},
+    //    {"avatar": DefaultAvatar, "name": "Ovidiu Roșca", "occupation": "Profesor @ Colegiul National Dragos Voda"},
+    //    {"avatar": DefaultAvatar, "name": "Emilian Bacila", "occupation": "student @ University of Cambridge"},
+    //    {"avatar": AndreiMAvatar, "name": "Andrei Muntean", "occupation": "student @ University of Manchester"},
+    //    {"avatar": JulianAvatar, "name": "Iulian Atănăsoae", "occupation": "student @ Facultatea de Matematică și Informatică din București"}
     ];
     var media = [
-        {"avatar": DefaultAvatar, "name": "Daniel Gherasim", "occupation": "Profesor Metodist @ CCD Vrancea"},
-        {"avatar": DefaultAvatar, "name": "Florentina Hora", "occupation": "Profesor @ Colegiul National 'Samuil Vulcan' Beius"},
-        {"avatar": RobertaTomegaAvatar, "name": "Roberta Tomegea", "occupation": "studenta @ Universitatea Politehnica Timișoara"},
-        {"avatar": LuizaBubatuAvatar, "name": "Luiza Bubatu", "occupation": "studenta @ Universitatea Tehnică Cluj-Napoca"},
-        {"avatar": CarmenLascoiuAvatar, "name": "Carmen Lascoiu", "occupation": "studenta @ Universitatea Națională de Arte Teatrale 'I. L. Caragiale' București"}
+    //    {"avatar": DefaultAvatar, "name": "Daniel Gherasim", "occupation": "Profesor Metodist @ CCD Vrancea"},
+    //    {"avatar": DefaultAvatar, "name": "Florentina Hora", "occupation": "Profesor @ Colegiul National 'Samuil Vulcan' Beius"},
+    //    {"avatar": RobertaTomegaAvatar, "name": "Roberta Tomegea", "occupation": "studenta @ Universitatea Politehnica Timișoara"},
+    //    {"avatar": LuizaBubatuAvatar, "name": "Luiza Bubatu", "occupation": "studenta @ Universitatea Tehnică Cluj-Napoca"},
+    //    {"avatar": CarmenLascoiuAvatar, "name": "Carmen Lascoiu", "occupation": "studenta @ Universitatea Națională de Arte Teatrale 'I. L. Caragiale' București"}
     ];
     var robots = [
-        {"avatar": DefaultAvatar, "name": "Ovidiu Domsa", "occupation": "Profesor @ Universitatea '1 Decembrie' Alba Iulia"},
-        {"avatar": DefaultAvatar, "name": "Maria Stan", "occupation": "Profesor @ Colegiul Tehnic 'Radu Negru' Galati"},
-        {"avatar": DefaultAvatar, "name": "Rodica Pintea", "occupation": "Profesor @ Liceul 'Grigore Moisil' Bucureşti"},
-        {"avatar": DefaultAvatar, "name": "Ovidiu Tirian", "occupation": "Sef lucrari @ Universitatea Politehnică Timișoara - Inginerie Hunedoara"},
-        {"avatar": DefaultAvatar, "name": "Mircea Bratan", "occupation": "Inginer Software @ Tremend Software Consulting"},
-        {"avatar": DefaultAvatar, "name": "Adriana Chereș", "occupation": "Profesor @ Liceul Teoretic Nicolae Balcescu Cluj-Napoca"},
-        {"avatar": DefaultAvatar, "name": "Mihai Agape", "occupation": "Palatul Copiilor Drobeta Turnu Severin, Filiala Orșova"}
+    //    {"avatar": DefaultAvatar, "name": "Ovidiu Domsa", "occupation": "Profesor @ Universitatea '1 Decembrie' Alba Iulia"},
+    //    {"avatar": DefaultAvatar, "name": "Maria Stan", "occupation": "Profesor @ Colegiul Tehnic 'Radu Negru' Galati"},
+    //    {"avatar": DefaultAvatar, "name": "Rodica Pintea", "occupation": "Profesor @ Liceul 'Grigore Moisil' Bucureşti"},
+    //    {"avatar": DefaultAvatar, "name": "Ovidiu Tirian", "occupation": "Sef lucrari @ Universitatea Politehnică Timișoara - Inginerie Hunedoara"},
+    //    {"avatar": DefaultAvatar, "name": "Mircea Bratan", "occupation": "Inginer Software @ Tremend Software Consulting"},
+    //    {"avatar": DefaultAvatar, "name": "Adriana Chereș", "occupation": "Profesor @ Liceul Teoretic Nicolae Balcescu Cluj-Napoca"},
+    //    {"avatar": DefaultAvatar, "name": "Mihai Agape", "occupation": "Palatul Copiilor Drobeta Turnu Severin, Filiala Orșova"}
     ];
     var utilitar = [
-        {"avatar": DefaultAvatar, "name": "Spătărel Dan", "occupation": "Profesor @ Colegiul National Tudor Vianu Bucuresti"},
-        {"avatar": DefaultAvatar, "name": "Claudia Buran", "occupation": "Profesor @ Colegiul National Samuil Vulcan Beius, jud. Bihor"},
-        {"avatar": AlexCiteaAvatar, "name": "Alexandru Cîtea", "occupation": "Malware Analyst @ Bitdefender"},
-        {"avatar": AlexComanAvatar, "name": "Alexandru Coman", "occupation": "Cloud Engineer  @ Cloudbase"},
-        {"avatar": VladAvatar, "name": "Vlad Temian", "occupation": "Software Developer @ Presslabs"},
-        {"avatar": gravatar("d1fa1134342ae05234ff6432ad74661a"), "name": "Alexandru Buicescu", "occupation": "Inginer Software @ Indycoding"}
+    //    {"avatar": DefaultAvatar, "name": "Spătărel Dan", "occupation": "Profesor @ Colegiul National Tudor Vianu Bucuresti"},
+    //    {"avatar": DefaultAvatar, "name": "Claudia Buran", "occupation": "Profesor @ Colegiul National Samuil Vulcan Beius, jud. Bihor"},
+    //    {"avatar": AlexCiteaAvatar, "name": "Alexandru Cîtea", "occupation": "Malware Analyst @ Bitdefender"},
+    //    {"avatar": AlexComanAvatar, "name": "Alexandru Coman", "occupation": "Cloud Engineer  @ Cloudbase"},
+    //    {"avatar": VladAvatar, "name": "Vlad Temian", "occupation": "Software Developer @ Presslabs"},
+    //    {"avatar": gravatar("d1fa1134342ae05234ff6432ad74661a"), "name": "Alexandru Buicescu", "occupation": "Inginer Software @ Indycoding"}
     ];
     var web = [
-        {"avatar": DefaultAvatar, "name": "Narcisa Dima", "occupation": "Profesor @ Liceul 'Ion Barbu' Pitesti"},
-        {"avatar": DefaultAvatar, "name": "Istrate Nicolae", "occupation": "Profesor @ Colegiul National 'Ienachita Vacarescu' din Targoviste"},
-        {"avatar": AndreiAAvatar, "name": "Andrei Adoamnei", "occupation": "Head of Development @ Conversion Network LLC"},
-        {"avatar": "https://s.gravatar.com/avatar/71070bfa9bd63bd3ef6fd52e787ef165?s=100", "name": "Robert Dolca", "occupation": "Inginer Software @ Intel"},
-        {"avatar": AlexPAvatar, "name": "Alex Palcuie", "occupation": "Referent @ Cancelaria Prim-Ministrului"},
-        {"avatar": SabinMarcuAvatar, "name": "Sabin Marcu", "occupation": "student @ University of Southampton"}
+    //    {"avatar": DefaultAvatar, "name": "Narcisa Dima", "occupation": "Profesor @ Liceul 'Ion Barbu' Pitesti"},
+    //    {"avatar": DefaultAvatar, "name": "Istrate Nicolae", "occupation": "Profesor @ Colegiul National 'Ienachita Vacarescu' din Targoviste"},
+    //    {"avatar": AndreiAAvatar, "name": "Andrei Adoamnei", "occupation": "Head of Development @ Conversion Network LLC"},
+    //    {"avatar": "https://s.gravatar.com/avatar/71070bfa9bd63bd3ef6fd52e787ef165?s=100", "name": "Robert Dolca", "occupation": "Inginer Software @ Intel"},
+    //    {"avatar": AlexPAvatar, "name": "Alex Palcuie", "occupation": "Referent @ Cancelaria Prim-Ministrului"},
+    //    {"avatar": SabinMarcuAvatar, "name": "Sabin Marcu", "occupation": "student @ University of Southampton"}
     ];
 
     var criteria = [
