@@ -84,10 +84,8 @@ export default React.createClass({
                    pattern="([^\/]+)"
                    required />,
             <p className="alert alert-warning">
-              Când se va aproba proiectul vei primi prin email adresa de la un
-              repository privat de GitHub unde vei avea acces tu împreună cu juriul.
-              Sursele proiectului trebuie să fie încărcate pe acolo.
-              În cazul în care întâmpini probleme poți găsi mai multe detalii&nbsp;
+              Dacă nu dorești să încarci sursele pe GitHub poți să trimiți un link cu ele pe adresa contact@infoeducatie.ro
+              În cazul în care întâmpini probleme cu încărcatul surselor pe GitHub poți găsi mai multe detalii&nbsp;
               <a target="_blank" href="http://blog.infoeducatie.ro/tutorial/2015/04/14/github-101.html">aici</a>.
             </p>
         ]);
