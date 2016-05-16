@@ -44,7 +44,7 @@ export default React.createClass({
             <Row className="xsmall-spacing" />
             <Row>
               <Col xs={1}>
-                <span className='map-marker' />
+                <span className="map-marker" />
               </Col>
               <Col xs={6}>
                 <p>{this.props.project.county}</p>

@@ -3,9 +3,9 @@
 import "blueimp-file-upload";
 import $ from "jquery";
 import React from "react";
+import ReactDOM from "react-dom";
 import _ from "lodash";
-import DeepLinkedStateMixin from "react-deep-link-state";
-import { ButtonInput, Input, Glyphicon } from "react-bootstrap";
+import { FormControl, FormGroup, Glyphicon } from "react-bootstrap";
 
 import FormMixin from "../../mixins/form"
 
@@ -14,7 +14,7 @@ export default React.createClass({
   displayName: "RegisterScreenshots",
 
   componentDidMount() {
-    $(this.refs.fileupload.getDOMNode()).fileupload({
+    $(ReactDOM.findDOMNode(this.refs.fileupload)).fileupload({
       dataType: "json",
       headers: {
         Authorization: this.props.access_token
@@ -37,7 +37,7 @@ export default React.createClass({
   },
 
   setProgressBar(value) {
-    $(this.refs.progressBar.getDOMNode()).css("width", value+"%");
+    $(ReactDOM.findDOMNode(this.refs.progressBar)).css("width", value+"%");
   },
 
   render() {
@@ -54,7 +54,7 @@ export default React.createClass({
       }
       <span className="btn btn-success fileinput-button">
         <span><Glyphicon glyph="upload" /> Alege o imagine</span>
-        <input ref="fileupload"
+        <FormControl ref="fileupload"
                type="file"
                name="screenshots[]"
                data-url={url} />

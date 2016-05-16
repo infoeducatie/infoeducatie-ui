@@ -1,11 +1,8 @@
 "use strict";
 
 import React from "react";
-import Router from "react-router";
 import { Navbar, Nav, NavItem, Row, Col } from "react-bootstrap";
-import { NavItemLink } from "react-router-bootstrap";
-let { Route, Link, RouteHandler } = Router; // eslint-disable-line
-
+import { LinkContainer } from "react-router-bootstrap";
 import "../main.less";
 
 import ROFlag from "../../assets/img/icons/RO.png";
@@ -45,24 +42,32 @@ export default React.createClass({
 
   renderEnglishHeader() {
     return <Nav className="navbar-nav" eventKey={0} right ref="nav">
-      <NavItemLink to="home-english">Home</NavItemLink>
-      <NavItemLink to="photos-english">Photos</NavItemLink>
-      <NavItemLink to="about-english">About</NavItemLink>
+      <LinkContainer to="/home"><NavItem>Home</NavItem></LinkContainer>
+      <LinkContainer to="/photos"><NavItem>Photos</NavItem></LinkContainer>
+      <LinkContainer to="/about"><NavItem>About</NavItem></LinkContainer>
       <NavItem onClick={this.changeLanguage}>{this.renderNextLanguage()}</NavItem>
     </Nav>;
+  },
+
+  renderResultsContestants() {
+    if (this.props.current.edition.id == this.props.current.last_edition_with_results.id) {
+      return <LinkContainer to="/rezultate"><NavItem>Rezultate</NavItem></LinkContainer>;
+    } else {
+      return <LinkContainer to="/participanti"><NavItem>Participanți</NavItem></LinkContainer>;
+    }
   },
 
   renderRegisterLinks() {
     if (this.props.language === "ro") {
       return <Nav className="navbar-nav" eventKey={0} right ref="nav">
-        <NavItemLink to="/">Acas&#259;</NavItemLink>
-        <NavItemLink to="alumni">Alumni</NavItemLink>
-        <NavItemLink to="talks">Seminarii</NavItemLink>
-        <NavItemLink to="schedule">Program</NavItemLink>
-        <NavItemLink to="results">Rezultate</NavItemLink>
-        <NavItemLink to="jury">Juriu</NavItemLink>
+        <LinkContainer to="/acasa"><NavItem>Acas&#259;</NavItem></LinkContainer>
+        <LinkContainer to="/alumni"><NavItem>Alumni</NavItem></LinkContainer>
+        <LinkContainer to="/seminarii"><NavItem>Seminarii</NavItem></LinkContainer>
+        <LinkContainer to="/program"><NavItem>Program</NavItem></LinkContainer>
+        { this.renderResultsContestants() }
+        <LinkContainer to="/juriu"><NavItem>Juriu</NavItem></LinkContainer>
         <NavItem onClick={this.props.logout}>Delogare</NavItem>
-        <NavItemLink to="register-in-contest">Înscriere</NavItemLink>
+        <LinkContainer to="/inscriere"><NavItem>Înscriere</NavItem></LinkContainer>
         <NavItem onClick={this.changeLanguage}>{this.renderNextLanguage()}</NavItem>
       </Nav>;
     } else {
@@ -73,12 +78,12 @@ export default React.createClass({
   renderUnregisterLinks() {
     if (this.props.language === "ro") {
       return <Nav className="navbar-nav" eventKey={0} right ref="nav">
-        <NavItemLink to="/">Acas&#259;</NavItemLink>
-        <NavItemLink to="alumni">Alumni</NavItemLink>
-        <NavItemLink to="talks">Seminarii</NavItemLink>
-        <NavItemLink to="schedule">Program</NavItemLink>
-        <NavItemLink to="results">Rezultate</NavItemLink>
-        <NavItemLink to="jury">Juriu</NavItemLink>
+        <LinkContainer to="/acasa"><NavItem>Acas&#259;</NavItem></LinkContainer>
+        <LinkContainer to="/alumni"><NavItem>Alumni</NavItem></LinkContainer>
+        <LinkContainer to="/seminarii"><NavItem>Seminarii</NavItem></LinkContainer>
+        <LinkContainer to="/program"><NavItem>Program</NavItem></LinkContainer>
+        { this.renderResultsContestants() }
+        <LinkContainer to="/juriu"><NavItem>Juriu</NavItem></LinkContainer>
         <NavItem onClick={this.changeLanguage}>{this.renderNextLanguage()}</NavItem>
       </Nav>;
     } else {

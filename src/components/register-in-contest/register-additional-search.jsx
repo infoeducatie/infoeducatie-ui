@@ -2,7 +2,7 @@
 
 import React from "react";
 import _ from "lodash";
-import { Input, ButtonInput } from "react-bootstrap";
+import { FormControl, FormGroup, ControlLabel, Button } from "react-bootstrap";
 
 import FormMixin from "../../mixins/form"
 
@@ -19,15 +19,21 @@ export default React.createClass({
 
   render() {
     return <form onSubmit={this.onFormSubmit}>
-      <Input type="email"
-             placeholder="coleg@infoeducatie.ro"
-             label="Adresa de email a coechipierului *"
-             value={this.additionalEmail}
-             onChange={this.onInputEmailChange}
-             required />
-      <ButtonInput type="submit"
-                   value="Caută"
-                   disabled={this.state.waitingForServerResponse} />
+      <FormGroup>
+        <ControlLabel>Adresa de email a coechipierului *</ControlLabel>
+        <FormControl type="email"
+               placeholder="coleg@infoeducatie.ro"
+               value={this.additionalEmail}
+               onChange={this.onInputEmailChange}
+               required />
+        <FormControl.Feedback />
+      </FormGroup>
+      <FormGroup>
+        <Button type="submit"
+                disabled={this.state.waitingForServerResponse}>
+          Caută
+        </Button>
+      </FormGroup>
     </form>;
   },
 

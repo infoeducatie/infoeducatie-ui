@@ -2,7 +2,7 @@
 
 import React from "react";
 import _ from "lodash";
-import { Input, ButtonInput } from "react-bootstrap";
+import { FormControl } from "react-bootstrap";
 
 import RegisterAdditionalSearch from "./register-additional-search";
 import RegisterAdditionalConfirm from "./register-additional-confirm";

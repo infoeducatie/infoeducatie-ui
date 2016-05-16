@@ -1,11 +1,9 @@
 "use strict";
 
 import React from "react";
-import Router from "react-router";
 import { Navbar, Nav, NavItem, Row, Col, Thumbnail, Grid } from "react-bootstrap";
-import { NavItemLink } from "react-router-bootstrap";
-
-let { Route, Link, RouteHandler } = Router; // eslint-disable-line
+import { LinkContainer } from "react-router-bootstrap";
+import { Link } from 'react-router';
 
 import "../main.less";
 import Facebook from "../../assets/img/icons/fb.png";
@@ -18,6 +16,14 @@ import NewsletterForm from "./newsletter-form";
 export default React.createClass({
   displayName: "Footer",
 
+  renderResultsContestants() {
+    if (this.props.current.edition.id != this.props.current.last_edition_with_results.id) {
+      return <LinkContainer to="/rezultate"><NavItem>Rezultate</NavItem></LinkContainer>;
+    } else {
+      return <LinkContainer to="/participanti"><NavItem>Participanți</NavItem></LinkContainer>;
+    }
+  },
+
   render() {
     return <Grid className="footer">
       <Row className="small-spacing" />
@@ -28,9 +34,9 @@ export default React.createClass({
             <Nav className="navbar-nav" ref="nav">
               <NavItem target="_blank" href="http://community.infoeducatie.ro">Forum</NavItem>
               <NavItem target="_blank" href="http://blog.infoeducatie.ro">Blog</NavItem>
-              <NavItemLink to="contestants">Participanți</NavItemLink>
-              <NavItemLink to="photos">Fotografii</NavItemLink>
-              <NavItemLink to="contact">Contact</NavItemLink>
+              { this.renderResultsContestants() }
+              <LinkContainer to="/poze"><NavItem>Fotografii</NavItem></LinkContainer>
+              <LinkContainer to="/contacte"><NavItem>Contact</NavItem></LinkContainer>
             </Nav>
           </Navbar>
         </Col>

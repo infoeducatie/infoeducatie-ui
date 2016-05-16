@@ -78,7 +78,7 @@ export default React.createClass({
         this.state.currentCategory === "all") {
       row = <tr key={project.id}
                 className="contestant"
-                onClick={openDiscourse(project.discourse_url)}>
+                onClick={openDiscourse.bind(this, project.discourse_url)}>
         <td className="county">
           <ul className="list-unstyled">
             {project.counties.map(function(county, index) {
@@ -166,9 +166,9 @@ export default React.createClass({
       <div className="blue-section-wrapper">
         <Grid className="blue-section">
           <Header isLoggedIn={this.props.isLoggedIn}
+                  current={this.props.current}
                   language={this.props.language}
                   changeLanguage={this.props.changeLanguage}
-                  login={this.props.login}
                   logout={this.props.logout} />
           <Row className="xsmall-spacing" />
           <Row>

@@ -49,9 +49,9 @@ export default React.createClass({
                 <Row>
                     <Col md={12}>
                         <Header isLoggedIn={this.props.isLoggedIn}
+                                current={this.props.current}
                                 changeLanguage={this.props.changeLanguage}
                                 language={this.props.language}
-                                login={this.props.login}
                                 logout={this.props.logout} />
                     </Col>
                 </Row>
@@ -71,7 +71,8 @@ export default React.createClass({
                     <Col md={10} mdOffset={1}>
                         <Row>{this.state.albums.map(function(album) {
                             let hovered = (album.year === this.state.hoveredYear);
-                            return <PhotoWrapper year={album.year}
+                            return <PhotoWrapper key={album.link}
+                                                 year={album.year}
                                                  link={album.link}
                                                  onHover={this.onCoverHover}
                                                  hovered={hovered} />;

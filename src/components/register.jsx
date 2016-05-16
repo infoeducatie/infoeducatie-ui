@@ -2,7 +2,7 @@
 
 import React from "react"; import $ from "jquery";
 import _ from "lodash";
-import { Grid, Col, Row, Input, ButtonInput } from "react-bootstrap";
+import { Grid, Col, Row, FormControl, FormGroup, ControlLabel, Button, Checkbox } from "react-bootstrap";
 
 import Header from "./header";
 import SuccessIcon from "../../assets/img/ellipse-tick.png"
@@ -34,9 +34,9 @@ export default React.createClass({
       <div className="blue-section-wrapper">
         <Grid className="blue-section">
           <Header isLoggedIn={this.props.isLoggedIn}
+                  current={this.props.current}
                   language={this.props.language}
                   changeLanguage={this.props.changeLanguage}
-                  login={this.props.login}
                   logout={this.props.logout} />
           <Row className="small-spacing" />
           <Row>
@@ -52,7 +52,7 @@ export default React.createClass({
           <Col md={6} mdOffset={3} sm={8} smOffset={2}>
             <p>
               Dacă ai deja un cont, te poți &nbsp;
-              <a href="#"><SignIn login={this.props.login} /></a>.
+              <SignIn />.
             </p>
             {this.renderForm()}
             {this.renderSuccess()}
@@ -67,46 +67,65 @@ export default React.createClass({
       return <div>
         {this.renderErrors()}
         <form onSubmit={this.onFormSubmit}>
-          <Input
-            type="text"
-            placeholder="Tuxi"
-            label="Prenume"
-            onChange={this.onFirstNameChange}
-            required />
-          <Input
-            type="text"
-            placeholder="Pinguinescu"
-            label="Nume"
-            onChange={this.onLastNameChange}
-            required />
-          <Input
-            type="email"
-            placeholder="tuxi@pinguinescu.ro"
-            label="Adresa de email"
-            onChange={this.onEmailChange}
-            required />
-          <Input
-            type="password"
-            placeholder="***************"
-            label="Parola"
-            onChange={this.onPasswordChange}
-            pattern=".{8,}"
-            title="Parola trebuie să conțină minim 8 caractere"
-            required />
-          <Input
-            type="password"
-            placeholder="***************"
-            label="Confirmare parolă"
-            onChange={this.onPasswordConfirmationChange}
-            required />
-          <Input
-            type='checkbox'
-            label='Abonare newsletter (noutăți despre concurs, informații utile pentru participanți)'
-            defaultChecked
-            onChange={this.onNewsletterChange} />
-          <ButtonInput type="submit"
-                       value="Înregistrează-te"
-                       disabled={this.state.waitingForServerResponse} />
+          <FormGroup>
+            <ControlLabel>Prenume</ControlLabel>
+            <FormControl
+              type="text"
+              placeholder="Tuxi"
+              onChange={this.onFirstNameChange}
+              required />
+            <FormControl.Feedback />
+          </FormGroup>
+          <FormGroup>
+            <ControlLabel>Nume</ControlLabel>
+            <FormControl
+              type="text"
+              placeholder="Pinguinescu"
+              onChange={this.onLastNameChange}
+              required />
+            <FormControl.Feedback />
+          </FormGroup>
+          <FormGroup>
+            <ControlLabel>Adresa de email</ControlLabel>
+            <FormControl
+              type="email"
+              placeholder="tuxi@pinguinescu.ro"
+              onChange={this.onEmailChange}
+              required />
+            <FormControl.Feedback />
+          </FormGroup>
+          <FormGroup>
+            <ControlLabel>Parola</ControlLabel>
+            <FormControl
+              type="password"
+              placeholder="***************"
+              onChange={this.onPasswordChange}
+              pattern=".{8,}"
+              title="Parola trebuie să conțină minim 8 caractere"
+              required />
+            <FormControl.Feedback />
+          </FormGroup>
+          <FormGroup>
+            <ControlLabel>Confirmare parolă</ControlLabel>
+            <FormControl
+              type="password"
+              placeholder="***************"
+              onChange={this.onPasswordConfirmationChange}
+              required />
+            <FormControl.Feedback />
+          </FormGroup>
+          <FormGroup>
+            <Checkbox
+              defaultChecked
+              onChange={this.onNewsletterChange}>
+              Abonare newsletter (noutăți despre concurs, informații utile pentru participanți)
+            </Checkbox>
+            <FormControl.Feedback />
+          </FormGroup>
+          <FormGroup>
+            <Button type="submit" disabled={this.state.waitingForServerResponse}>Înregistrează-te</Button>
+            <FormControl.Feedback />
+          </FormGroup>
           {this.state.waitingForServerResponse ? <img src={Spinner} /> : null}
         </form>
       </div>;

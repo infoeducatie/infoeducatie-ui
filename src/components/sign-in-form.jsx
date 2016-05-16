@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { ButtonInput, Input, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Button, FormControl, ControlLabel, FormGroup, ListGroup, ListGroupItem } from "react-bootstrap";
 
 export default React.createClass({
   displayName: "SignInForm",
@@ -34,13 +34,22 @@ export default React.createClass({
   render() {
     return <div>
       <form onSubmit={this.onSubmit}>
-        <Input type="email"
-               label="Adresa de email"
-               onChange={this.onEmailChange} />
-        <Input type="password"
-               label="Parola"
-               onChange={this.onPasswordChange} />
-        <ButtonInput type="submit" bsStyle="primary">Loghează-te</ButtonInput>
+        <FormGroup>
+          <ControlLabel>Adresa de email</ControlLabel>
+          <FormControl type="email"
+                 onChange={this.onEmailChange} />
+          <FormControl.Feedback />
+        </FormGroup>
+        <FormGroup>
+          <ControlLabel>Parola</ControlLabel>
+          <FormControl type="password"
+                 onChange={this.onPasswordChange} />
+               <FormControl.Feedback />
+        </FormGroup>
+        <FormGroup>
+          <Button type="submit" bsStyle="primary">Loghează-te</Button>
+          <FormControl.Feedback />
+        </FormGroup>
       </form>
       { this.state.hasErrored ? this.renderError() : null }
     </div>;

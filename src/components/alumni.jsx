@@ -39,7 +39,7 @@ export default React.createClass({
     let colors = ["green", "orange", "black"];
     let className = ctx("alumnus-container", colors[index % colors.length]);
     let editions = alumnus.editions.map(function(edition) {
-                                          return parseInt(edition.name);
+                      return parseInt(edition.name);
                    });
 
     return <Row key={index}>
@@ -65,7 +65,7 @@ export default React.createClass({
                 <p className="alumnus-position">{alumnus.user.job}</p>
                 <p className="alumnus-editions">
                   {editions.sort().reverse().map(function(edition) {
-                    return <span>{edition}</span>;
+                    return <span key={edition}>{edition}</span>;
                   })}
                 </p>
               </Col>
@@ -84,9 +84,9 @@ export default React.createClass({
           <Row>
             <Col xs={12}>
               <Header isLoggedIn={this.props.isLoggedIn}
+                      current={this.props.current}
                       language={this.props.language}
                       changeLanguage={this.props.changeLanguage}
-                      login={this.props.login}
                       logout={this.props.logout} />
             </Col>
           </Row>

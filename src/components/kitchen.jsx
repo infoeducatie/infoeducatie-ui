@@ -1,6 +1,6 @@
 "use strict";
 
-import { Input, ButtonInput } from "react-bootstrap";
+import { FormControl, Button } from "react-bootstrap";
 import React from "react";
 
 export default React.createClass({
@@ -19,17 +19,17 @@ export default React.createClass({
       <p><a href="#" className="link link-secondary">Link Secondary</a></p>
       <p><a href="#" className="link link-ternary">Link Ternary</a></p>
       <form>
-        <Input
+        <FormControl
           type="text"
           placeholder="Catalog Școlar"
           label="Titlul Lucrării"/>
-        <Input type="select"
+        <FormControl componentClass="select"
                label="Gen">
           <option value="0">Masculin</option>
           <option value="1">Feminin</option>
           <option value="2">N/A</option>
-        </Input>
-        <ButtonInput type="submit" />
+        </FormControl>
+        <Button type="submit">Submit</Button>
       </form>
     </div>;
   }

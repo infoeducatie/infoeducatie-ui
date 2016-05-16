@@ -1,14 +1,13 @@
 "use strict";
 
 import React from "react";
-import { Row, OverlayMixin, Modal } from "react-bootstrap";
+import { Row, Modal } from "react-bootstrap";
 import $ from "jquery";
 import _ from "lodash";
 
 
 export default React.createClass({
   displayName: "News",
-  mixins: [OverlayMixin],
 
   getInitialState() {
     return {
@@ -26,6 +25,19 @@ export default React.createClass({
     this.setState({
       isModalOpen: false
     });
+  },
+
+  renderOverlay() {
+    return (
+      <Modal show={this.state.isModalOpen} onHide={this.closeModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>{this.props.title}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div dangerouslySetInnerHTML={{__html: this.props.body}} />
+        </Modal.Body>
+      </Modal>
+    );
   },
 
   render() {
@@ -47,21 +59,7 @@ export default React.createClass({
         <p className="message">
           {this.props.short} {read_more}</p>
       </Row>
+      { this.renderOverlay() }
     </div>;
-  },
-
-  renderOverlay() {
-    if (!this.state.isModalOpen) {
-      return null;
-    }
-
-    return (
-      <Modal animation={true}
-             bsStyle="primary"
-             onRequestHide={this.closeModal}
-             title={this.props.title}>
-        <div className="modal-body" dangerouslySetInnerHTML={{__html: this.props.body}} />
-      </Modal>
-    );
   }
 });

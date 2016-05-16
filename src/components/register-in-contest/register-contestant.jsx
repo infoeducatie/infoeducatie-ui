@@ -3,13 +3,10 @@
 import $ from "jquery";
 import _ from "lodash";
 import React from "react";
-import { Input, ButtonInput } from "react-bootstrap";
-import DeepLinkedStateMixin from "react-deep-link-state";
-
+import { FormControl, ControlLabel, FormGroup, Button } from "react-bootstrap";
 
 export default React.createClass({
   displayName: "RegisterContestant",
-  mixins: [DeepLinkedStateMixin],
 
   getInitialState() {
     return {
@@ -49,234 +46,303 @@ export default React.createClass({
     };
   },
 
+  onChange(field, event) {
+    let contestant = _.clone(this.state.contestant);
+    contestant[field] = event.target.value;
+    this.setState({ contestant: contestant });
+  },
+
   render() {
     return <form onSubmit={this.onFormSubmit} className="RegisterContestant">
-      <Input type="select"
-             label="Gen *"
-             valueLink={this.deepLinkState(["contestant", "sex"])}>
-        <option value="1">Masculin</option>
-        <option value="2">Feminin</option>
-      </Input>
-      <Input
-        type="text"
-        placeholder="România"
-        label="Țara *"
-        onChange={this.onCountryChange}
-        value={this.state.contestant.country}
-        required />
-      <Input type="select"
-             onChange={this.onCountyChange}
-             label="Județ *"
-             required>
-        <option value="Alba">Alba</option>
-        <option value="Arad">Arad</option>
-        <option value="Argeș">Argeș</option>
-        <option value="Bacău">Bacău</option>
-        <option value="Bihor">Bihor</option>
-        <option value="Bistrița Năsăud">Bistrița Năsăud</option>
-        <option value="Botoșani">Botoșani</option>
-        <option value="Brașov">Brașov</option>
-        <option value="Brăila">Brăila</option>
-        <option value="București">București</option>
-        <option value="Buzău">Buzău</option>
-        <option value="Caraș Severin">Caraș Severin</option>
-        <option value="Călărași">Călărași</option>
-        <option value="Cluj">Cluj</option>
-        <option value="Constanța">Constanța</option>
-        <option value="Covasna">Covasna</option>
-        <option value="Dâmbovița">Dâmbovița</option>
-        <option value="Dolj">Dolj</option>
-        <option value="Galați">Galați</option>
-        <option value="Giurgiu">Giurgiu</option>
-        <option value="Gorj">Gorj</option>
-        <option value="Harghita">Harghita</option>
-        <option value="Hunedoara">Hunedoara</option>
-        <option value="Ialomița">Ialomița</option>
-        <option value="Iași">Iași</option>
-        <option value="Ilfov">Ilfov</option>
-        <option value="Maramureș">Maramureș</option>
-        <option value="Mehedinți">Mehedinți</option>
-        <option value="Mureș">Mureș</option>
-        <option value="Neamț">Neamț</option>
-        <option value="Olt">Olt</option>
-        <option value="Prahova">Prahova</option>
-        <option value="Satu Mare">Satu Mare</option>
-        <option value="Sălaj">Sălaj</option>
-        <option value="Sibiu">Sibiu</option>
-        <option value="Suceava">Suceava</option>
-        <option value="Teleorman">Teleorman</option>
-        <option value="Timiș">Timiș</option>
-        <option value="Tulcea">Tulcea</option>
-        <option value="Vaslui">Vaslui</option>
-        <option value="Vâlcea">Vâlcea</option>
-        <option value="Vrancea">Vrancea</option>
-      </Input>
-      <Input
-        type="text"
-        placeholder="Gălăciuc"
-        label="Oraș *"
-        onChange={this.onCityChange}
-        required />
-      <Input
-        type="text"
-        placeholder="1 Infinite Loop"
-        label="Adresa *"
-        valueLink={this.deepLinkState(["contestant", "address"])}
-        required />
-      <Input
-        type="text"
-        placeholder="123456"
-        pattern="[0-9]{6,6}"
-        title="Codul poștal trebuie să conțină doar 6 caractere numerice"
-        label="Cod poștal *"
-        valueLink={this.deepLinkState(["contestant", "zip_code"])}
-        required />
-      <Input
-        type="text"
-        placeholder="1234567890123"
-        label="CNP *"
-        pattern="[0-9]{13,13}"
-        title="CNP-ul trebuie să conțină doar 13 caractere numerice"
-        valueLink={this.deepLinkState(["contestant", "cnp"])}
-        required />
-      <Input
-        type="text"
-        placeholder="AA"
-        pattern="[a-zA-Z]{2,2}"
-        title="Seria CI trebuie să conțină doar 2 litere"
-        label="Seria CI *"
-        className="uppercase"
-        valueLink={this.deepLinkState(["contestant", "id_card_type"])}
-        required />
-      <Input
-        type="text"
-        placeholder="123456"
-        pattern="[0-9]{6,6}"
-        title="Numărul CI trebuie să conțină doar 6 caractere numerice"
-        label="Număr CI *"
-        valueLink={this.deepLinkState(["contestant", "id_card_number"])}
-        required />
-      <Input
-        type="text"
-        placeholder="0721234567"
-        pattern="[0-9]{10}"
-        title="Numărul de telefon trebuie să conțină doar 10 caractere numerice"
-        label="Număr de telefon *"
-        valueLink={this.deepLinkState(["contestant", "phone_number"])}
-        required />
-      <Input
-        type="text"
-        placeholder="Liceul Numărul 9"
-        label="Școala *"
-        valueLink={this.deepLinkState(["contestant", "school_name"])}
-        required />
-      <Input type="select"
-             label="Clasa *"
-             valueLink={this.deepLinkState(["contestant", "grade"])}
-             required>
-        <option value="9">Clasa a IX-a</option>
-        <option value="10">Clasa a X-a</option>
-        <option value="11">Clasa a XI-a</option>
-        <option value="12">Clasa a XII-a</option>
-      </Input>
-      <Input
-        type="text"
-        placeholder="București"
-        label="Orașul școlii *"
-        valueLink={this.deepLinkState(["contestant", "school_city"])}
-        required />
-      <Input type="select"
-             label="Județul școlii *"
-             valueLink={this.deepLinkState(["contestant", "school_county"])}
-             required >
-        <option value="Alba">Alba</option>
-        <option value="Arad">Arad</option>
-        <option value="Argeș">Argeș</option>
-        <option value="Bacău">Bacău</option>
-        <option value="Bihor">Bihor</option>
-        <option value="Bistrița Năsăud">Bistrița Năsăud</option>
-        <option value="Botoșani">Botoșani</option>
-        <option value="Brașov">Brașov</option>
-        <option value="Brăila">Brăila</option>
-        <option value="București">București</option>
-        <option value="Buzău">Buzău</option>
-        <option value="Caraș Severin">Caraș Severin</option>
-        <option value="Călărași">Călărași</option>
-        <option value="Cluj">Cluj</option>
-        <option value="Constanța">Constanța</option>
-        <option value="Covasna">Covasna</option>
-        <option value="Dâmbovița">Dâmbovița</option>
-        <option value="Dolj">Dolj</option>
-        <option value="Galați">Galați</option>
-        <option value="Giurgiu">Giurgiu</option>
-        <option value="Gorj">Gorj</option>
-        <option value="Harghita">Harghita</option>
-        <option value="Hunedoara">Hunedoara</option>
-        <option value="Ialomița">Ialomița</option>
-        <option value="Iași">Iași</option>
-        <option value="Ilfov">Ilfov</option>
-        <option value="Maramureș">Maramureș</option>
-        <option value="Mehedinți">Mehedinți</option>
-        <option value="Mureș">Mureș</option>
-        <option value="Neamț">Neamț</option>
-        <option value="Olt">Olt</option>
-        <option value="Prahova">Prahova</option>
-        <option value="Satu Mare">Satu Mare</option>
-        <option value="Sălaj">Sălaj</option>
-        <option value="Sibiu">Sibiu</option>
-        <option value="Suceava">Suceava</option>
-        <option value="Teleorman">Teleorman</option>
-        <option value="Timiș">Timiș</option>
-        <option value="Tulcea">Tulcea</option>
-        <option value="Vaslui">Vaslui</option>
-        <option value="Vâlcea">Vâlcea</option>
-        <option value="Vrancea">Vrancea</option>
-      </Input>
-      <Input
-        type="text"
-        placeholder="România"
-        label="Țara școlii *"
-        valueLink={this.deepLinkState(["contestant", "school_country"])}
-        required />
-      <Input
-        type="date"
-        label="Data nașterii *"
-        valueLink={this.deepLinkState(["contestant", "date_of_birth"])}
-        required />
-      <Input
-        type="text"
-        placeholder="Ion"
-        label="Prenumele profesorului îndrumător *"
-        valueLink={this.deepLinkState(["contestant", "mentoring_teacher_first_name"])}
-        required />
-      <Input
-        type="text"
-        placeholder="Popescu"
-        label="Numele profesorului îndrumător *"
-        valueLink={this.deepLinkState(["contestant", "mentoring_teacher_last_name"])}
-        required />
-      <Input type="select"
-             label="Te-ai calificat la faza județeană? *"
-             value={this.state.officialParticipant}
-             onChange={this.onOfficialParticipantChange}>
-        <option value="true">Da</option>
-        <option value="false">Nu</option>
-      </Input>
-      <Input type="select"
-             label="Vei fi prezent în tabără? *"
-             value={this.state.presentInCamp}
-             onChange={this.onPresentInCampChange}>
-        <option value="true">Da</option>
-        <option value="false">Nu</option>
-      </Input>
+      <FormGroup>
+        <ControlLabel>Gen *</ControlLabel>
+        <FormControl componentClass="select"
+               onChange={this.onChange.bind(this, "sex")}>
+          <option value="1">Masculin</option>
+          <option value="2">Feminin</option>
+        </FormControl>
+        <FormControl.Feedback />
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>Țara *</ControlLabel>
+        <FormControl
+          type="text"
+          placeholder="România"
+          onChange={this.onCountryChange}
+          value={this.state.contestant.country}
+          required />
+        <FormControl.Feedback />
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>Județ *</ControlLabel>
+        <FormControl componentClass="select"
+               onChange={this.onCountyChange}
+               required>
+          <option value="Alba">Alba</option>
+          <option value="Arad">Arad</option>
+          <option value="Argeș">Argeș</option>
+          <option value="Bacău">Bacău</option>
+          <option value="Bihor">Bihor</option>
+          <option value="Bistrița Năsăud">Bistrița Năsăud</option>
+          <option value="Botoșani">Botoșani</option>
+          <option value="Brașov">Brașov</option>
+          <option value="Brăila">Brăila</option>
+          <option value="București">București</option>
+          <option value="Buzău">Buzău</option>
+          <option value="Caraș Severin">Caraș Severin</option>
+          <option value="Călărași">Călărași</option>
+          <option value="Cluj">Cluj</option>
+          <option value="Constanța">Constanța</option>
+          <option value="Covasna">Covasna</option>
+          <option value="Dâmbovița">Dâmbovița</option>
+          <option value="Dolj">Dolj</option>
+          <option value="Galați">Galați</option>
+          <option value="Giurgiu">Giurgiu</option>
+          <option value="Gorj">Gorj</option>
+          <option value="Harghita">Harghita</option>
+          <option value="Hunedoara">Hunedoara</option>
+          <option value="Ialomița">Ialomița</option>
+          <option value="Iași">Iași</option>
+          <option value="Ilfov">Ilfov</option>
+          <option value="Maramureș">Maramureș</option>
+          <option value="Mehedinți">Mehedinți</option>
+          <option value="Mureș">Mureș</option>
+          <option value="Neamț">Neamț</option>
+          <option value="Olt">Olt</option>
+          <option value="Prahova">Prahova</option>
+          <option value="Satu Mare">Satu Mare</option>
+          <option value="Sălaj">Sălaj</option>
+          <option value="Sibiu">Sibiu</option>
+          <option value="Suceava">Suceava</option>
+          <option value="Teleorman">Teleorman</option>
+          <option value="Timiș">Timiș</option>
+          <option value="Tulcea">Tulcea</option>
+          <option value="Vaslui">Vaslui</option>
+          <option value="Vâlcea">Vâlcea</option>
+          <option value="Vrancea">Vrancea</option>
+        </FormControl>
+        <FormControl.Feedback />
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>Oraș *</ControlLabel>
+        <FormControl
+          type="text"
+          placeholder="Gălăciuc"
+          onChange={this.onCityChange}
+          required />
+        <FormControl.Feedback />
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>Adresa *</ControlLabel>
+        <FormControl
+          type="text"
+          placeholder="1 Infinite Loop"
+          onChange={this.onChange.bind(this, "address")}
+          required />
+        <FormControl.Feedback />
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>Cod poștal *</ControlLabel>
+        <FormControl
+          type="text"
+          placeholder="123456"
+          pattern="[0-9]{6,6}"
+          title="Codul poștal trebuie să conțină doar 6 caractere numerice"
+          onChange={this.onChange.bind(this, "zip_code")}
+          required />
+        <FormControl.Feedback />
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>CNP *</ControlLabel>
+        <FormControl
+          type="text"
+          placeholder="1234567890123"
+          pattern="[0-9]{13,13}"
+          title="CNP-ul trebuie să conțină doar 13 caractere numerice"
+          onChange={this.onChange.bind(this, "cnp")}
+          required />
+        <FormControl.Feedback />
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>Seria CI *</ControlLabel>
+        <FormControl
+          type="text"
+          placeholder="AA"
+          pattern="[a-zA-Z]{2,2}"
+          title="Seria CI trebuie să conțină doar 2 litere"
+          className="uppercase"
+          onChange={this.onChange.bind(this, "id_card_type")}
+          required />
+        <FormControl.Feedback />
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>Număr CI *</ControlLabel>
+        <FormControl
+          type="text"
+          placeholder="123456"
+          pattern="[0-9]{6,6}"
+          title="Numărul CI trebuie să conțină doar 6 caractere numerice"
+          onChange={this.onChange.bind(this, "id_card_number")}
+          required />
+        <FormControl.Feedback />
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>Număr de telefon *</ControlLabel>
+        <FormControl
+          type="text"
+          placeholder="0721234567"
+          pattern="[0-9]{10}"
+          title="Numărul de telefon trebuie să conțină doar 10 caractere numerice"
+          onChange={this.onChange.bind(this, "phone_number")}
+          required />
+        <FormControl.Feedback />
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>Școala *</ControlLabel>
+        <FormControl
+          type="text"
+          placeholder="Liceul Numărul 9"
+          onChange={this.onChange.bind(this, "school_name")}
+          required />
+        <FormControl.Feedback />
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>Clasa *</ControlLabel>
+        <FormControl componentClass="select"
+               onChange={this.onChange.bind(this, "grade")}
+               required>
+          <option value="9">Clasa a IX-a</option>
+          <option value="10">Clasa a X-a</option>
+          <option value="11">Clasa a XI-a</option>
+          <option value="12">Clasa a XII-a</option>
+        </FormControl>
+        <FormControl.Feedback />
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>Orașul școlii *</ControlLabel>
+        <FormControl
+          type="text"
+          placeholder="București"
+          onChange={this.onChange.bind(this, "school_city")}
+          required />
+        <FormControl.Feedback />
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>Județul școlii *</ControlLabel>
+        <FormControl componentClass="select"
+               onChange={this.onChange.bind(this, "school_county")}
+               required >
+          <option value="Alba">Alba</option>
+          <option value="Arad">Arad</option>
+          <option value="Argeș">Argeș</option>
+          <option value="Bacău">Bacău</option>
+          <option value="Bihor">Bihor</option>
+          <option value="Bistrița Năsăud">Bistrița Năsăud</option>
+          <option value="Botoșani">Botoșani</option>
+          <option value="Brașov">Brașov</option>
+          <option value="Brăila">Brăila</option>
+          <option value="București">București</option>
+          <option value="Buzău">Buzău</option>
+          <option value="Caraș Severin">Caraș Severin</option>
+          <option value="Călărași">Călărași</option>
+          <option value="Cluj">Cluj</option>
+          <option value="Constanța">Constanța</option>
+          <option value="Covasna">Covasna</option>
+          <option value="Dâmbovița">Dâmbovița</option>
+          <option value="Dolj">Dolj</option>
+          <option value="Galați">Galați</option>
+          <option value="Giurgiu">Giurgiu</option>
+          <option value="Gorj">Gorj</option>
+          <option value="Harghita">Harghita</option>
+          <option value="Hunedoara">Hunedoara</option>
+          <option value="Ialomița">Ialomița</option>
+          <option value="Iași">Iași</option>
+          <option value="Ilfov">Ilfov</option>
+          <option value="Maramureș">Maramureș</option>
+          <option value="Mehedinți">Mehedinți</option>
+          <option value="Mureș">Mureș</option>
+          <option value="Neamț">Neamț</option>
+          <option value="Olt">Olt</option>
+          <option value="Prahova">Prahova</option>
+          <option value="Satu Mare">Satu Mare</option>
+          <option value="Sălaj">Sălaj</option>
+          <option value="Sibiu">Sibiu</option>
+          <option value="Suceava">Suceava</option>
+          <option value="Teleorman">Teleorman</option>
+          <option value="Timiș">Timiș</option>
+          <option value="Tulcea">Tulcea</option>
+          <option value="Vaslui">Vaslui</option>
+          <option value="Vâlcea">Vâlcea</option>
+          <option value="Vrancea">Vrancea</option>
+        </FormControl>
+        <FormControl.Feedback />
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>Țara școlii *</ControlLabel>
+        <FormControl
+          type="text"
+          placeholder="România"
+          onChange={this.onChange.bind(this, "school_country")}
+          required />
+        <FormControl.Feedback />
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>Data nașterii *</ControlLabel>
+        <FormControl
+          type="date"
+          onChange={this.onChange.bind(this, "date_of_birth")}
+          required />
+        <FormControl.Feedback />
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>Prenumele profesorului îndrumător *</ControlLabel>
+        <FormControl
+          type="text"
+          placeholder="Ion"
+          onChange={this.onChange.bind(this, "mentoring_teacher_first_name")}
+          required />
+        <FormControl.Feedback />
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>Numele profesorului îndrumător *</ControlLabel>
+        <FormControl
+          type="text"
+          placeholder="Popescu"
+          onChange={this.onChange.bind(this, "mentoring_teacher_last_name")}
+          required />
+        <FormControl.Feedback />
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>Te-ai calificat la faza județeană? *</ControlLabel>
+        <FormControl componentClass="select"
+               value={this.state.officialParticipant}
+               onChange={this.onOfficialParticipantChange}>
+          <option value="true">Da</option>
+          <option value="false">Nu</option>
+        </FormControl>
+        <FormControl.Feedback />
+      </FormGroup>
+      <FormGroup>
+        <ControlLabel>Vei fi prezent în tabără? *</ControlLabel>
+        <FormControl componentClass="select"
+               value={this.state.presentInCamp}
+               onChange={this.onPresentInCampChange}>
+          <option value="true">Da</option>
+          <option value="false">Nu</option>
+        </FormControl>
+        <FormControl.Feedback />
+      </FormGroup>
       { this.state.presentInCamp === "true" && this.state.officialParticipant === "true" ?
-          <Input type="select"
-                 label="Vei participa pe un loc gratuit? *"
-                 value={this.state.payingCampAcommodation}
-                 onChange={this.onPayingCampAcommodation}>
-            <option value="false">Da, locul gratuit aferent proiectului.</option>
-            <option value="true">Nu, sunt al doilea concurent de la proiect.</option>
-          </Input> : null }
+          <FormGroup>
+            <ControlLabel>Vei participa pe un loc gratuit? *</ControlLabel>
+            <FormControl componentClass="select"
+                   value={this.state.payingCampAcommodation}
+                   onChange={this.onPayingCampAcommodation}>
+              <option value="false">Da, locul gratuit aferent proiectului.</option>
+              <option value="true">Nu, sunt al doilea concurent de la proiect.</option>
+            </FormControl>
+            <FormControl.Feedback />
+          </FormGroup> : null }
       { this.state.payingCampAcommodation === "true" ?
         <p className="alert alert-danger">
           Pentru a participa la tabăra InfoEducație trebuie să te fi calificat prin intermediul etapei județene sau a celei online.
@@ -284,10 +350,13 @@ export default React.createClass({
           Dacă se trimit mai puțin de 5 lucrări, unele lucrări pot avea 2 elevi, în tabără.
         </p>
         : null }
-      <ButtonInput type="submit"
-                   value="Pasul următor"
-                   disabled={this.state.waitingForServerResponse ||
-                             this.state.payingCampAcommodation === "true"} />
+      <FormGroup>
+        <Button type="submit"
+                disabled={this.state.waitingForServerResponse ||
+                          this.state.payingCampAcommodation === "true"}>
+          Pasul următor
+        </Button>
+      </FormGroup>
       {this.renderErrors()}
     </form>;
   },

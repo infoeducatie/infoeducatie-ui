@@ -3,7 +3,7 @@
 import $ from "jquery";
 import _ from "lodash";
 import React from "react";
-import {Link} from "react-router";
+import { Link } from 'react-router';
 import {Grid, Row, Col, Glyphicon} from "react-bootstrap";
 
 import Header from "./header";
@@ -56,9 +56,9 @@ export default React.createClass({
         <div className="blue-section-wrapper">
             <Grid className="blue-section">
                         <Header isLoggedIn={this.props.isLoggedIn}
+                                current={this.props.current}
                                 changeLanguage={this.props.changeLanguage}
                                 language={this.props.language}
-                                login={this.props.login}
                                 logout={this.props.logout} />
                 <Row>
                     <Col>
@@ -81,14 +81,14 @@ export default React.createClass({
                 <Row>
                     <Col md={4} mdOffset={2}>
                         <p className="left-button">
-                            <Link to={'register'} className="link link-primary">
+                            <Link to="/inregistrare" className="link link-primary">
                                 Înregistrează-te
                             </Link>
                         </p>
                     </Col>
                     <Col md={4}>
                         <p className="right-button">
-                            <Link to="about" className="link link-secondary">
+                            <Link to="/despre" className="link link-secondary">
                                 Despre concurs
                             </Link>
                         </p>

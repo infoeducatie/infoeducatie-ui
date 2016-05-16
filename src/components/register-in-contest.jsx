@@ -167,9 +167,9 @@ export default React.createClass({
       <div className="blue-section-wrapper">
         <Grid className="blue-section">
           <Header isLoggedIn={this.props.isLoggedIn}
+                  current={this.props.current}
                   language={this.props.language}
                   changeLanguage={this.props.changeLanguage}
-                  login={this.props.login}
                   logout={this.props.logout} />
           <Row>
             <Col xs={12}>
@@ -360,7 +360,7 @@ export default React.createClass({
   renderSkipAdditionalContestant() {
     return <div>
       <p>Dacă nu dorești să mai înscrii un coechipier,&nbsp;
-      <a href="#" data-step='5' onClick={this.onUpdateRegistrationStep}>click aici
+      <a href="#" data-step="5" onClick={this.onUpdateRegistrationStep}>click aici
       </a>.</p>
     </div>;
   },

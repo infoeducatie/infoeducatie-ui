@@ -2,7 +2,7 @@
 
 import React from "react";
 import _ from "lodash";
-import { ButtonInput } from "react-bootstrap";
+import { Button, FormGroup } from "react-bootstrap";
 
 import FormMixin from "../../mixins/form"
 
@@ -13,9 +13,12 @@ export default React.createClass({
 
   render() {
     return <form onSubmit={this.onFormSubmit}>
-      <ButtonInput type="submit"
-                   value="Confirmă"
-                   disabled={this.state.waitingForServerResponse} />
+      <FormGroup>
+        <Button type="submit"
+                disabled={this.state.waitingForServerResponse}>
+          Confirmă
+        </Button>
+      </FormGroup>
       {this.renderErrors()}
     </form>;
   },

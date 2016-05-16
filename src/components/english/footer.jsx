@@ -1,11 +1,9 @@
 "use strict";
 
 import React from "react";
-import Router from "react-router";
 import { Navbar, Nav, NavItem, Row, Col, Thumbnail, Grid } from "react-bootstrap";
-import { NavItemLink } from "react-router-bootstrap";
-
-let { Route, Link, RouteHandler } = Router; // eslint-disable-line
+import { LinkContainer } from "react-router-bootstrap";
+import { Route, Link, RouteHandler } from 'react-router';
 
 import "../footer.less";
 import Facebook from "../../../assets/img/icons/fb.png";
@@ -28,7 +26,7 @@ export default React.createClass({
             <Nav className="navbar-nav" ref="nav">
               <NavItem target="_blank" href="http://community.infoeducatie.ro">Forum</NavItem>
               <NavItem target="_blank" href="http://blog.infoeducatie.ro">Blog</NavItem>
-              <NavItemLink to="contact-english">Contact</NavItemLink>
+              <LinkContainer to="/contact"><NavItem>Contact</NavItem></LinkContainer>
             </Nav>
           </Navbar>
         </Col>

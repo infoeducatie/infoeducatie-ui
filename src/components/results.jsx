@@ -168,9 +168,9 @@ export default React.createClass({
       <div className="blue-section-wrapper">
         <Grid className="blue-section">
           <Header isLoggedIn={this.props.isLoggedIn}
+                  current={this.props.current}
                   language={this.props.language}
                   changeLanguage={this.props.changeLanguage}
-                  login={this.props.login}
                   logout={this.props.logout} />
           <Row className="xsmall-spacing" />
           <Row>
@@ -235,10 +235,12 @@ export default React.createClass({
     this.showResults(edition.id);
   },
 
-  showResults() {
-    // TODO @palcu: this receives editionId and we should use it
+  showResults(editionId) {
+    let data = editionId ? { edition: editionId } : {};
+
     ajax({
       endpoint: "projects.json",
+      data: data,
       success: (data) => {
         this.setState({ projects: data });
       }

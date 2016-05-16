@@ -1,0 +1,16 @@
+.gitignore
+.dockerignore
+.travis.yml
+.eslintrc.json
+Procfile
+Dockerfile
+build/
+node_modules/
+test/
+webpack.development.js
+server.development.js
+index.staging.html
+index.development.html
+autodeply.sh
+karma-debug.config.js
+karma.config.js

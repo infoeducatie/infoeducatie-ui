@@ -26,9 +26,9 @@ export default React.createClass({
           <Row>
             <Col xs={12}>
               <Header isLoggedIn={this.props.isLoggedIn}
+                      current={this.props.current}
                       language={this.props.language}
                       changeLanguage={this.props.changeLanguage}
-                      login={this.props.login}
                       logout={this.props.logout} />
             </Col>
           </Row>
@@ -162,7 +162,7 @@ export default React.createClass({
               </Row>
               <Row className="jury-criteria-documents">
                 {criteria.map(function(doc) {
-                  return <div className="jury-criteria">
+                  return <div key={doc.link} className="jury-criteria">
                     <div className="jury-criteria-txt">{doc.name}</div>
                     <div className="jury-criteria-img"><a href={doc.link} target="_blank"><img src={DefaultDocument} alt={doc.link} /></a></div>
                   </div>;

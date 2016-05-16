@@ -3,13 +3,13 @@
 import $ from "jquery";
 import Raven from "raven-js"
 import React from "react";
+import ReactDOM from "react-dom"
 import ReactCookie from "react-cookie";
-import Router from "react-router";
-let { Route, RouteHandler, DefaultRoute, Navigation } = Router; // eslint-disable-line
+import { Router, Route, DefaultRoute, Navigation, browserHistory, IndexRoute } from 'react-router';
 import ga from "react-ga";
-import "babel-core/polyfill";
 import "./main.less";
 
+import SignInModal from "./components/sign-in-modal";
 import Photos from "./components/photos";
 import Alumni from "./components/alumni";
 import RegisterInContest from "./components/register-in-contest";
@@ -43,6 +43,7 @@ let App = React.createClass({
         edition: {
           motto: "Perseverează, mergi mai departe!",
           year: 2015,
+          id: 1,
           count: 22
         },
         stats: {
@@ -74,39 +75,39 @@ let App = React.createClass({
 
   render() {
     return <div className="main">
-      <RouteHandler current={this.state.current}
-                    edition={this.state.current.edition}
-                    user={this.state.current.user}
-                    registration={this.state.current.registration}
-                    refreshCurrent={this.getCurrent}
-                    isLoggedIn={this.state.isLoggedIn}
-                    language={this.state.language}
-                    changeLanguage={this.changeLanguage}
-                    login={this.login}
-                    logout={this.logout}
-                    lastEditionWithResults={this.state.current.last_edition_with_results} />
-      {this.state.language === "ro" ? <Footer /> : <FooterEnglish />}
+      {React.cloneElement(this.props.children, {
+        current: this.state.current,
+        edition: this.state.current.edition,
+        user: this.state.current.user,
+        registration: this.state.current.registration,
+        refreshCurrent: this.getCurrent,
+        isLoggedIn: this.state.isLoggedIn,
+        language: this.state.language,
+        changeLanguage: this.changeLanguage,
+        logout: this.logout,
+        lastEditionWithResults: this.state.current.last_edition_with_results
+      })}
+      {this.state.language === "ro" ? <Footer current={this.state.current} /> : <FooterEnglish />}
+      <SignInModal login={this.login} />
     </div>;
   },
 
   changeLanguage(newLanguage) {
-    let path = this.context.router.getCurrentPathname();
-
     this.setState({
       language: newLanguage
     });
 
-    if (newLanguage === "en" && path !== "/en/home") {
-      this.transitionTo("/home");
-    } else if (newLanguage === "ro" && path !== "/") {
-      this.transitionTo("/");
+    if (newLanguage === "en") {
+      browserHistory.push('/home')
+    } else if (newLanguage === "ro") {
+      browserHistory.push('/')
     }
   },
 
   login(user) {
     ReactCookie.save("accesToken", user.access_token);
     this.getCurrent();
-    this.transitionTo("register-in-contest");
+    browserHistory.push("/inscriere");
   },
 
   logout() {
@@ -115,7 +116,7 @@ let App = React.createClass({
       isLoggedIn: false
     });
     this.getCurrent();
-    this.transitionTo("/");
+    browserHistory.push("/");
   },
 
   getCurrent() {
@@ -143,27 +144,29 @@ let App = React.createClass({
 
 
 let routes = (
-  <Route path="/" handler={App}>
-    <Route handler={Home} name="home" path="acasa"/>
-    <Route handler={Jury} name="jury" path="juriu" />
-    <Route handler={RegisterInContest} name="register-in-contest" path="inscriere" />
-    <Route handler={Alumni} name="alumni" />
-    <Route handler={Photos} name="photos" path="poze" />
-    <Route handler={Contact} name="contact" path="contacte" />
-    <Route handler={About} name="about" path="despre" />
-    <Route handler={Register} name="register" path="inregistrare" />
-    <Route handler={Calendar} name="calendar" />
-    <Route handler={Results} name="results" path="rezultate" />
-    <Route handler={Kitchen} name="kitchen" />
-    <Route handler={Contestants} name="contestants" path="participanti" />
-    <Route handler={HomeEnglish} name="home-english" path="home" />
-    <Route handler={AboutEnglish} name="about-english" path="about" />
-    <Route handler={ContactEnglish} name="contact-english" path="contact" />
-    <Route handler={PhotoEnglish} name="photos-english" path="photos" />
-    <Route handler={Talks} name="talks"path="seminarii" />
-    <Route handler={Schedule} name="schedule"path="program" />
-    <DefaultRoute handler={Home} />
-  </Route>
+  <Router  history={browserHistory} onUpdate={logPageView}>
+    <Route component={App} path="/">
+       <IndexRoute component={Home} />
+       <Route component={Home} path="acasa"/>
+       <Route component={Jury} path="juriu" />
+       <Route component={RegisterInContest} path="inscriere" />
+       <Route component={Alumni} path="alumni" />
+       <Route component={Photos} path="poze" />
+       <Route component={Contact} path="contacte" />
+       <Route component={About} path="despre" />
+       <Route component={Register} path="inregistrare" />
+       <Route component={Calendar} path="calendar" />
+       <Route component={Results} path="rezultate" />
+       <Route component={Kitchen} path="kitchen" />
+       <Route component={Contestants} path="participanti" />
+       <Route component={HomeEnglish} path="home" />
+       <Route component={AboutEnglish} path="about" />
+       <Route component={ContactEnglish} path="contact" />
+       <Route component={PhotoEnglish} path="photos" />
+       <Route component={Talks} path="seminarii" />
+       <Route component={Schedule} path="program" />
+    </Route>
+  </Router>
 );
 
 if ("GA_TRACKING_ID" in window.config && window.config.GA_TRACKING_ID.length) {
@@ -171,13 +174,13 @@ if ("GA_TRACKING_ID" in window.config && window.config.GA_TRACKING_ID.length) {
   window.config.useGA = true;
 }
 
-Router.run(routes, Router.HistoryLocation, (Root, state) => {
+function logPageView() {
   if (window.config.useGA) {
-    ga.pageview(state.pathname);
+    ga.pageview(window.location.pathname);
   }
+}
 
-  React.render(<Root />, document.getElementById("app"));
-});
+ReactDOM.render(routes, document.getElementById("app"))
 
 if ("SENTRY_DSN" in window.config && window.config.SENTRY_DSN.length) {
   Raven.config(window.config.SENTRY_DSN, {

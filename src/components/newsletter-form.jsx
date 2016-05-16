@@ -2,7 +2,7 @@
 
 import $ from "jquery";
 import React from "react";
-import { Row, Col, Input, ButtonInput, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Row, Col, FormControl, FormGroup, Button, ListGroup, ListGroupItem } from "react-bootstrap";
 
 export default React.createClass({
   displayName: "NewsletterForm",
@@ -60,8 +60,10 @@ export default React.createClass({
         <form onSubmit={this.onSubmit}>
           <Row>
             <Col xs={12}>
-              <Input required
+              <FormGroup>
+                <FormControl
                      hasFeedback
+                     required
                      ref="newsletterInput"
                      type="text"
                      className="newsletter"
@@ -69,14 +71,14 @@ export default React.createClass({
                      placeholder="Abonează-te la newsletter"
                      bsStyle={this.validationState()}
                      onChange={this.onEmailChange} />
+                <FormControl.Feedback />
+              </FormGroup>
             </Col>
           </Row>
           { this.state.hasErrored ? this.renderError() : null }
           <Row>
             <Col xs={12}>
-              <ButtonInput type="submit"
-                           value="Abonează-te"
-                           className="link link-ternary" />
+              <Button type="submit" className="link link-ternary">Abonează-te</Button>
             </Col>
           </Row>
           <Row className="small-spacing" />

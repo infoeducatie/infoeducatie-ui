@@ -59,9 +59,9 @@ export default React.createClass({
         <div className="blue-section-wrapper">
             <Grid className="blue-section">
                 <Header isLoggedIn={this.props.isLoggedIn}
+                        current={this.props.current}
                         language={this.props.language}
                         changeLanguage={this.props.changeLanguage}
-                        login={this.props.login}
                         logout={this.props.logout} />
                 <Row>
                     <Col xs={12}>

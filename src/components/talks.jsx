@@ -10,7 +10,6 @@ import ajax from "../lib/ajax"
 import gravatar from "../lib/gravatar"
 import CloudCount from "./cloud-count"
 import DefaultAvatar from "../../assets/img/jury/default.png";
-import openDiscourse from "../lib/discourse"
 import EditionSelector from "./edition-selector";
 import Header from "./header";
 
@@ -42,9 +41,9 @@ export default React.createClass({
           <Row>
             <Col xs={12}>
               <Header isLoggedIn={this.props.isLoggedIn}
+                      current={this.props.current}
                       language={this.props.language}
                       changeLanguage={this.props.changeLanguage}
-                      login={this.props.login}
                       logout={this.props.logout} />
             </Col>
           </Row>
