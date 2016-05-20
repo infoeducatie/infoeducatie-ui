@@ -69,10 +69,16 @@ export default React.createClass({
   },
 
   renderRegisterMessage() {
-    return <p>
-      Dacă nu ai un cont,&nbsp;
-      <a href="#" onClick={this.onRegisterClick}>creează unul nou aici</a>.
-    </p>;
+    return <div>
+      <p>
+        Dacă nu ai un cont,&nbsp;
+        <a href="#" onClick={this.onRegisterClick}>creează unul nou aici</a>.
+      </p>
+      <p>
+       Dacă ai uitat parola
+       <a href="http://api.infoeducatie.ro/users/password/new" traget="_blank">click aici</a>
+      </p>
+    </div>;
   },
 
   onRegisterClick(event) {
