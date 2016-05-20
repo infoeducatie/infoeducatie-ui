@@ -4,9 +4,9 @@
   "description": "Frontend for infoeducatie.ro",
   "main": "src/main.jsx",
   "scripts": {
-    "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --inline --history-api-fallback --open",
-    "build": "./node_modules/webpack/bin/webpack.js -p",
-    "test": "./node_modules/eslint/bin/eslint.js 'src/**/*.jsx'",
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --inline --history-api-fallback --open",
+    "build": "node ./node_modules/webpack/bin/webpack.js -p",
+    "test": "node ./node_modules/eslint/bin/eslint.js 'src/**/*.jsx'",
     "clean": "rm -rf build"
   },
   "cacheDirectories": [

@@ -75,7 +75,7 @@ export default React.createClass({
         <a href="#" onClick={this.onRegisterClick}>creează unul nou aici</a>.
       </p>
       <p>
-       Dacă ai uitat parola
+       Dacă ai uitat parola&nbsp;
        <a href="http://api.infoeducatie.ro/users/password/new" traget="_blank">click aici</a>
       </p>
     </div>;
