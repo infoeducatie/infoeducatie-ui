@@ -27,7 +27,7 @@ import leonte from "../../assets/img/sponsors/leonte.png";
 import altex from "../../assets/img/sponsors/altex.gif";
 import GInfo from "../../assets/img/sponsors/ginfo.png";
 import GreenGroup from "../../assets/img/sponsors/greengroup.png";
-
+import MTS from "../../assets/img/sponsors/mts.jpg";
 
 export default React.createClass({
   displayName: "Home",
@@ -153,8 +153,31 @@ export default React.createClass({
 
         <div className="sponsors-section-wrapper">
             <Grid className="sponsors-section">
+
+            <Row className="small-spacing" />
+            <Row>
+                <Col xs={12}>
+                    <h4>Parteneri Educaționali și finanțatori</h4>
+                </Col>
+            </Row>
+            <Row>
+                <Col xs={12}>
+                    <p className="logos">
+                        <a href="http://upir.ro/ro/" target="_blank">
+                          <img src={Upir} />
+                        </a>
+                        <a href="http://www.edu.ro/" target="_blank">
+                          <img src={MEN} />
+                        </a>
+                        <a href="http://mts.ro/" target="_blank">
+                          <img src={MTS} />
+                        </a>
+                    </p>
+                </Col>
+            </Row>
+
                 <Row className="small-spacing" />
-                <Row>
+               <Row>
                     <Col xs={12}>
                         <h4>Sponsori Gold</h4>
                     </Col>
@@ -234,27 +257,7 @@ export default React.createClass({
                     </Col>
                 </Row>
 
-                <Row className="small-spacing" />
-                <Row>
-                    <Col xs={12}>
-                        <h4>Parteneri Educaționali</h4>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col xs={12}>
-                        <p className="logos">
-                            <a href="http://upir.ro/ro/" target="_blank">
-                              <img src={Upir} />
-                            </a>
-                            <a href="http://www.edu.ro/" target="_blank">
-                              <img src={MEN} />
-                            </a>
-                            <a href="http://gazeta.info.ro/" target="_blank">
-                              <img src={GInfo} />
-                            </a>
-                        </p>
-                    </Col>
-                </Row>
+
             </Grid>
         </div>
     </div>;
