@@ -160,6 +160,7 @@ export default React.createClass({
                     <h4>Parteneri Educaționali și finanțatori</h4>
                 </Col>
             </Row>
+
             <Row>
                 <Col xs={12}>
                     <p className="logos">
