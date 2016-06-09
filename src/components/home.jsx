@@ -163,15 +163,16 @@ export default React.createClass({
             <Row>
                 <Col xs={12}>
                     <p className="logos">
+                        <a href="http://mts.ro/" target="_blank">
+                          <img src={MTS} />
+                        </a>
                         <a href="http://upir.ro/ro/" target="_blank">
                           <img src={Upir} />
                         </a>
                         <a href="http://www.edu.ro/" target="_blank">
                           <img src={MEN} />
                         </a>
-                        <a href="http://mts.ro/" target="_blank">
-                          <img src={MTS} />
-                        </a>
+
                     </p>
                 </Col>
             </Row>
