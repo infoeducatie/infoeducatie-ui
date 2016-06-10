@@ -25,7 +25,7 @@ import eSkills from "../../../assets/img/sponsors/eskills.png";
 import gwc from "../../../assets/img/sponsors/girlswhocode.png";
 import leonte from "../../../assets/img/sponsors/leonte.png";
 import altex from "../../../assets/img/sponsors/altex.gif";
-
+import MTS from "../../../assets/img/sponsors/mts.jpg";
 
 export default React.createClass({
   displayName: "Home",
@@ -146,6 +146,32 @@ export default React.createClass({
 
         <div className="sponsors-section-wrapper">
             <Grid className="sponsors-section">
+
+            <Row className="small-spacing" />
+                        <Row>
+                            <Col xs={12}>
+                                <h4>EDUCATIONAL PARTNERS</h4>
+                            </Col>
+                        </Row>
+
+                        <Row>
+                            <Col xs={12}>
+                                <p className="logos">
+                                    <a href="http://mts.ro/" target="_blank">
+                                      <img src={MTS} />
+                                    </a>
+                                    <a href="http://upir.ro/ro/" target="_blank">
+                                      <img src={Upir} />
+                                    </a>
+                                    <a href="http://www.edu.ro/" target="_blank">
+                                      <img src={MEN} />
+                                    </a>
+
+                                </p>
+                            </Col>
+                        </Row>
+
+
                 <Row className="small-spacing" />
                 <Row>
                     <Col xs={12}>
@@ -224,24 +250,8 @@ export default React.createClass({
                     </Col>
                 </Row>
 
-                <Row className="small-spacing" />
-                <Row>
-                    <Col xs={12}>
-                        <h4>Educational Partners</h4>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col xs={12}>
-                        <p className="logos">
-                            <a href="http://upir.ro/ro/" target="_blank">
-                              <img src={Upir} />
-                            </a>
-                            <a href="http://www.edu.ro/" target="_blank">
-                              <img src={MEN} />
-                            </a>
-                        </p>
-                    </Col>
-                </Row>
+
+
             </Grid>
         </div>
     </div>;
