@@ -102,7 +102,7 @@ export default React.createClass({
                       activeKey={this.state.activePanelKey}
                       accordion>
           <p className="alert alert-warning">
-            Înscrieriile se desfășoară în perioada <br />
+            Înscrierile se desfășoară în perioada <br />
             {startDate} - {endDate}.
           </p>
 
