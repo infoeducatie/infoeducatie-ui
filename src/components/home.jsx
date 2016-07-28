@@ -187,18 +187,20 @@ export default React.createClass({
                 <Row>
                     <Col xs={12}>
                         <p className="logos">
-                            <a href="http://google.ro" target="_blank">
-                              <img src={Google} />
+                            <a href="http://www.orange.ro/" target="_blank">
+                              <img src={Orange} />
+                            </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="http://www.cisco.com/" target="_blank">
+                              <img src={Cisco} />
                             </a>
                             <a href="http://intel.ro" target="_blank">
                               <img src={Intel} />
                             </a>
-                            <a href="http://www.orange.ro/" target="_blank">
-                              <img src={Orange} />
+
+                            <a href="http://google.ro" target="_blank">
+                              <img src={Google} />
                             </a>
-                            <a href="https://imedicare.com/" target="_blank">
-                              <img src={iMedicare} />
-                            </a>
+
                         </p>
                     </Col>
                 </Row>
@@ -212,9 +214,6 @@ export default React.createClass({
                 <Row>
                     <Col xs={12}>
                         <p className="logos">
-                            <a href="http://www.cisco.com/" target="_blank">
-                              <img src={Cisco} />
-                            </a>
                             <a href="http://www.cloudbase.it/" target="_blank">
                               <img src={CloudBase} />
                             </a>
