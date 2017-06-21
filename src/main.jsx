@@ -42,7 +42,7 @@ let App = React.createClass({
       current: {
         edition: {
           motto: "Perseverează, mergi mai departe!",
-          year: 2015,
+          year: 2017,
           id: 1,
           count: 22
         },
@@ -54,7 +54,7 @@ let App = React.createClass({
         last_edition_with_results: {
           year: 2014,
           id: 0,
-          name: "Editia 2014"
+          name: "Editia 2017 Online"
         }
       }
     };

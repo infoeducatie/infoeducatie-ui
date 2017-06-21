@@ -28,6 +28,8 @@ import altex from "../../assets/img/sponsors/altex.gif";
 import GInfo from "../../assets/img/sponsors/ginfo.png";
 import GreenGroup from "../../assets/img/sponsors/greengroup.png";
 import MTS from "../../assets/img/sponsors/mts.jpg";
+import VivaCredit from "../../assets/img/sponsors/vivacredit.png"
+
 
 export default React.createClass({
   displayName: "Home",
@@ -193,8 +195,8 @@ export default React.createClass({
                             <a href="http://www.cisco.com/" target="_blank">
                               <img src={Cisco} />
                             </a>
-                            <a href="http://intel.ro" target="_blank">
-                              <img src={Intel} />
+                            <a href="https://vivacredit.ro/" target="_blank">
+                              <img src={VivaCredit} />
                             </a>
 
                             <a href="http://google.ro" target="_blank">
@@ -220,9 +222,7 @@ export default React.createClass({
                             <a href="http://leonte.ro/" target="_blank">
                               <img src={leonte} />
                             </a>
-                            <a href="http://www.altex.ro/" target="_blank">
-                              <img src={altex} />
-                            </a>
+
                         </p>
                     </Col>
                 </Row>
@@ -248,12 +248,8 @@ export default React.createClass({
                             <a href="http://eskills4jobs.ec.europa.eu/" target="_blank">
                               <img src={eSkills} />
                             </a>
-                            <a href="https://www.facebook.com/GirlsWhoCodeRO" target="_blank">
-                              <img src={gwc} />
-                            </a>
-                            <a href="http://www.green-group.ro/en/" target="_blank">
-                              <img src={GreenGroup} />
-                            </a>
+
+                            
                         </p>
                     </Col>
                 </Row>
