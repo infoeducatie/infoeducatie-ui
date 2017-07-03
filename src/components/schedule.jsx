@@ -37,7 +37,7 @@ export default React.createClass({
         <Row className="small-spacing" />
         <Row>
           <Col md={7} mdOffset={3}>
-            <iframe src="https://docs.google.com/spreadsheets/d/18fssydErkygbaKDd2iUuO_BfxGRROCG6TXejzLrEWW4/pubhtml"></iframe>
+            <iframe src="https://docs.google.com/document/d/10KezlflObDSrssz5T3SFHRil3rX0uiSIYtJlNaNpYfU/pub"></iframe>
           </Col>
         </Row>
       </Grid>
