@@ -29,6 +29,7 @@ import GInfo from "../../assets/img/sponsors/ginfo.png";
 import GreenGroup from "../../assets/img/sponsors/greengroup.png";
 import MTS from "../../assets/img/sponsors/mts.jpg";
 import VivaCredit from "../../assets/img/sponsors/vivacredit.png"
+import OracleAcademy from "../../assets/img/sponsors/academy_wht.gif"
 
 
 export default React.createClass({
@@ -216,6 +217,9 @@ export default React.createClass({
                 <Row>
                     <Col xs={12}>
                         <p className="logos">
+                            <a href="https://academy.oracle.com" target="_blank">
+                              <img src={OracleAcademy} />
+                            </a>
                             <a href="http://www.cloudbase.it/" target="_blank">
                               <img src={CloudBase} />
                             </a>
@@ -249,7 +253,7 @@ export default React.createClass({
                               <img src={eSkills} />
                             </a>
 
-                            
+
                         </p>
                     </Col>
                 </Row>
