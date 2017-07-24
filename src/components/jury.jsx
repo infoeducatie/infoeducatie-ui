@@ -18,8 +18,8 @@ import StefanMunteanu from "../../assets/img/jury/Stefan_Munteanu.png";
 import AndreiCasuneanu from "../../assets/img/jury/Andrei_Casuneanu.jpg";
 import DariusCostolos from "../../assets/img/jury/Darius_Costolos.jpg";
 import AndreiTurcu from "../../assets/img/jury/Andrei_Turcu.jpg";
-//import DianaMarin from "../../assets/img/jury/Diana_Marin.jpg";
-//import MugurelEnache from "../../assets/img/jury/Mugurel_Enache.jpg";
+import DianaMarin from "../../assets/img/jury/Diana_Marin.jpg";
+import MugurelEnache from "../../assets/img/jury/Mugurel_Enache.jpg";
 
 import AlexandruAvatar from "../../assets/img/jury/alexandru_cristian.jpg";
 import CezarAvatar from "../../assets/img/jury/cezar_andrici.jpg";
@@ -52,7 +52,7 @@ export default React.createClass({
     ];
 
     let presedinteExecutiv = [
-      {"avatar": DefaultAvatar, "name": "Cornelia Neacșu", "occupation": "inspector ISJ Vrancea"}
+      {"avatar": MarilenaAvatar, "name": "Marilena Oprea", "occupation": "Colegiul National Unirea"}
       //{"avatar": MarilenaAvatar, "name": "Marilena Oprea", "occupation": "I.S.J. Vrancea"}
     ];
     let presedinteOnorific = [
