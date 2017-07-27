@@ -20,7 +20,7 @@ import DariusCostolos from "../../assets/img/jury/Darius_Costolos.jpg";
 import AndreiTurcu from "../../assets/img/jury/Andrei_Turcu.jpg";
 import DianaMarin from "../../assets/img/jury/Diana_Marin.jpg";
 import MugurelEnache from "../../assets/img/jury/Mugurel_Enache.jpg";
-
+import bogdan_bocse from "../../assets/img/jury/bogdan_bocse.jpg";
 import AlexandruAvatar from "../../assets/img/jury/alexandru_cristian.jpg";
 import CezarAvatar from "../../assets/img/jury/cezar_andrici.jpg";
 import CasianAvatar from "../../assets/img/jury/casian_lacatusu.jpg";
@@ -78,8 +78,8 @@ export default React.createClass({
         {"avatar": RodicaPinteaAvatar, "name": "Rodica Pintea", "occupation": "Profesor @ Liceul 'Grigore Moisil' Bucureşti"},
         //{"avatar": DanSpatarelAvatar, "name": "Dan Spătărel", "occupation": "Profesor @ Colegiul Național Tudor Vianu, Bucuresti"},
         {"avatar": PetruAvatar, "name": "Petru Dimitriu", "occupation": "Student la Universitatea Tehnică Gheroghe Asachi din Iași, Facultatea de Automatică și Calculatoare"},
-//        {"avatar": MugurelEnache, "name": "Mugurel Enache", "occupation": "Student la Universitatea Alexandru Ioan Cuza din Iasi"},
-//        {"avatar": DianaMarin, "name": "Diana Marin", "occupation": "Profesor @ Colegiul National Gh Ghica Alexandria "},
+        {"avatar": MugurelEnache, "name": "Mugurel Enache", "occupation": "Student la University of Leeds"},
+        {"avatar": DianaMarin, "name": "Diana Marin", "occupation": "Student la University of Leeds"},
         {"avatar": DefaultAvatar, "name": "Miana Arișanu", "occupation": "Profesor @ Colegiul National Mircea cel Batran Rm. Valcea "},
         {"avatar": DefaultAvatar, "name": "Raul Maier", "occupation": "Student la Facultatea de Matematica si Informatica UBB Cluj "}
 
@@ -111,6 +111,7 @@ export default React.createClass({
         {"avatar": DefaultAvatar, "name": "Penu Ionela", "occupation": "Profesor @ Scoala Gimnazială Miron Costin Galați"},
         //{"avatar": DanielPopaAvatar, "name": "Daniel Popa", "occupation": "profesor @ Colegiul National 'Aurel Vlaicu' Orastie"},
         {"avatar": DefaultAvatar, "name": "Bibicu Dorin", "occupation": "Profesor @ Liceul Teoretic Dunărea Galaţi"},
+        {"avatar": bogdan_bocse, "name": "Bogdan Bocse", "occupation": "Cloud Solutions Architect, Co-founder at VisageCloud & ScentSee"},
         {"avatar": DefaultAvatar, "name": "Alexandru Ionașcu", "occupation": "Student la Universitatea din București, Facultatea de Matematică și Informatică"},
         //{"avatar": StefanAvatar, "name": "Ștefan Stolniceanu", "occupation": "Software Development Engineer Intern and All Around Community Enthusiast"},
         {"avatar": StefanMunteanu, "name": "Stefan Munteanu", "occupation": "Student la UAIC Iasi"},
