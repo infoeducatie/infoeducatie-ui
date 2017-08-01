@@ -42,13 +42,14 @@ import ValerAvatar from "../../assets/img/jury/valer_szabo.jpg";
 import VladAvatar from "../../assets/img/jury/vlad_durnea.jpg";
 import DefaultAvatar from "../../assets/img/jury/default.png";
 import DefaultDocument from "../../assets/img/icons/doc.png";
+import RughinisAvatar from "../../assets/img/jury/razvanrughinis.jpg";
 
 
 export default React.createClass({
   displayName: "Jury",
   render() {
     let presedinte = [
-    {"avatar": DefaultAvatar, "name": "dr. Răzvan Rughiniș", "occupation": "Profesor @ Universitatea Politehnică din București"},
+    {"avatar": RughinisAvatar, "name": "dr. Răzvan Rughiniș", "occupation": "Profesor @ Universitatea Politehnică din București"},
     ];
 
     let presedinteExecutiv = [
