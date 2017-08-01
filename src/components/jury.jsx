@@ -90,7 +90,7 @@ export default React.createClass({
         //{"avatar": DefaultAvatar, "name": "Roxana Tâmplaru", "occupation": "Profesor @ Colegiul „Stefan Odobleja” Craiova"},
         {"avatar": ErvinAvatar, "name": "Ervin Szabo", "occupation": "Student la Facultatea de Teatru si Televiziune, Universitatea Babeș-Bolyai"},
         {"avatar": ValerAvatar, "name": "Valer Szabo", "occupation": "Student la Facultatea de Teatru si Televiziune, Universitatea Babeș-Bolyai"},
-        {"avatar": VladAvatar, "name": "Vlad Durnea", "occupation": "Student la Kopenhagen School of Design and Technology"},
+        {"avatar": VladAvatar, "name": "Vlad Mihai", "occupation": "Student la Kopenhagen School of Design and Technology"},
         {"avatar": AndreiTurcu, "name": "Andrei Turcu", "occupation": " Student la ASE Cibernetica Bucuresti"},
         {"avatar": DefaultAvatar, "name": "Liliana Nesu", "occupation": "Profesor @ Colegiul National Unirea din Focsani"},
         {"avatar": DefaultAvatar, "name": "Monica Pop", "occupation": "Studentă la Facultatea de Teatru si Televiziune, Universitatea Babeș-Bolyai"},
