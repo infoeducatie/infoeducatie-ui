@@ -126,11 +126,11 @@ export default React.createClass({
         {"avatar": DefaultAvatar, "name": "Narcisa Dima", "occupation": "Profesor @ Liceul Teoretic Ion Barbu, Pitesti"},
       //  {"avatar": CasianAvatar, "name": "Casian Lăcătușu", "occupation": "Student la Universitatea Politehnică din București, Facultatea de Automatică și Calculato"},
       //  {"avatar": AlexandruAvatar, "name": "Alexandru Cristian", "occupation": "Student la Drexel University, College of Computing and Informatics"},
-        {"avatar": CatalinAvatar, "name": "Cătălin Stoian", "occupation": "Student la Facultatea de Informatica, Universitatea „Alexandru Ioan Cuza” "},
+        {"avatar": CatalinAvatar, "name": "Cătălin Stoian", "occupation": "Proba on-line - Student la Facultatea de Informatica, Universitatea „Alexandru Ioan Cuza” "},
         {"avatar": RobertColca, "name": "Robert Colca ", "occupation": "Student la Politehnica Timisoara"},
-        {"avatar": CezarAvatar, "name": "Cezar Andrici ", "occupation": "Student la Facultatea de Informatica, Universitatea „Alexandru Ioan Cuza” "},
-        {"avatar": StefanAvatar, "name": "Stefan Stolniceanu ", "occupation": "Student la Facultatea de Informatica, Universitatea „Alexandru Ioan Cuza”  "},
-        {"avatar": AndreiHodorog, "name": "Andrei Hodorog", "occupation": "Student la University of Cardiff"},
+        {"avatar": CezarAvatar, "name": "Cezar Andrici ", "occupation": "Proba on-line - Student la Facultatea de Informatica, Universitatea „Alexandru Ioan Cuza” "},
+        {"avatar": StefanAvatar, "name": "Stefan Stolniceanu ", "occupation": "Proba on-line - Student la Facultatea de Informatica, Universitatea „Alexandru Ioan Cuza”  "},
+        {"avatar": AndreiHodorog, "name": "Andrei Hodorog", "occupation": "Proba on-line - Student la University of Cardiff"},
 
     ];
 
