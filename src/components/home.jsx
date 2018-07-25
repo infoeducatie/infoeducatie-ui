@@ -20,16 +20,21 @@ import Apdetic from "../../assets/img/sponsors/apdetic.png";
 import Upir from "../../assets/img/sponsors/upir.png";
 import MEN from "../../assets/img/sponsors/edu.jpg";
 import CloudBase from "../../assets/img/sponsors/cloudbase.png";
-import iMedicare from "../../assets/img/sponsors/imedicare.png";
-import eSkills from "../../assets/img/sponsors/eskills.png";
-import gwc from "../../assets/img/sponsors/girlswhocode.png";
+//import iMedicare from "../../assets/img/sponsors/imedicare.png";
+//import eSkills from "../../assets/img/sponsors/eskills.png";
+//import gwc from "../../assets/img/sponsors/girlswhocode.png";
 import leonte from "../../assets/img/sponsors/leonte.png";
 import altex from "../../assets/img/sponsors/altex.gif";
-import GInfo from "../../assets/img/sponsors/ginfo.png";
-import GreenGroup from "../../assets/img/sponsors/greengroup.png";
+//import GInfo from "../../assets/img/sponsors/ginfo.png";
+//import GreenGroup from "../../assets/img/sponsors/greengroup.png";
 import MTS from "../../assets/img/sponsors/mts.jpg";
 import VivaCredit from "../../assets/img/sponsors/vivacredit.png"
 import OracleAcademy from "../../assets/img/sponsors/academy_wht.gif"
+import Bitdefender from "../../assets/img/sponsors/bitdefender.jpg"
+import Microsoft from "../../assets/img/sponsors/microsoft.jpg"
+import Xpress from "../../assets/img/sponsors/xpress.jpg"
+import Certsign from "../../assets/img/sponsors/certsign.jpg"
+
 
 
 export default React.createClass({
@@ -203,6 +208,12 @@ export default React.createClass({
                             <a href="http://google.ro" target="_blank">
                               <img src={Google} />
                             </a>
+                            <a href="http://microsoft.ro" target="_blank">
+                              <img src={Microsoft} />
+                            </a>
+                            <a href="http://bitdefender.com" target="_blank">
+                              <img src={Bitdefender} />
+                            </a>
 
                         </p>
                     </Col>
@@ -220,13 +231,15 @@ export default React.createClass({
                             <a href="https://academy.oracle.com" target="_blank">
                               <img src={OracleAcademy} />
                             </a>
-                            <a href="http://www.cloudbase.it/" target="_blank">
-                              <img src={CloudBase} />
+                            <a href="https://www.xpreflect.co.uk/" target="_blank">
+                              <img src={Xpress} />
                             </a>
                             <a href="http://leonte.ro/" target="_blank">
                               <img src={leonte} />
                             </a>
-
+                            <a href="http://www.certsign.ro/certsign/" target="_blank">
+                              <img src={Certsign} />
+                            </a>
                         </p>
                     </Col>
                 </Row>
@@ -249,9 +262,7 @@ export default React.createClass({
                             <a href="http://asociatiait.ro/" target="_blank">
                               <img src={Apdetic} />
                             </a>
-                            <a href="http://eskills4jobs.ec.europa.eu/" target="_blank">
-                              <img src={eSkills} />
-                            </a>
+
 
 
                         </p>
