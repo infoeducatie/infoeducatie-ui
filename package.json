@@ -46,7 +46,7 @@
     "react-hot-loader": "^1.2.3",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.5",
-    "webpack": "^1.9.11",
+    "webpack": "2.7.0",
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
