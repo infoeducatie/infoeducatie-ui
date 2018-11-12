@@ -56,7 +56,7 @@ npm start
 
 There are two docker images built from the source. A production one and a staging one. They are published on [Docker Hub](https://hub.docker.com/r/infoeducatie/infoeducatie-ui/).
 
-When new code is pushed to any of the two branches the corresponding images is built.
+When new code is pushed to any of the two branches the corresponding images are built.
 
 ### Supported browsers
 
