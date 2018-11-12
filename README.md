@@ -1,6 +1,6 @@
 # infoeducatie-ui
 
-[![Build Status](https://travis-ci.org/infoeducatie/infoeducatie-ui.svg?branch=master)](https://travis-ci.org/infoeducatie/infoeducatie-ui) [![Dependency Status](https://gemnasium.com/infoeducatie/infoeducatie-ui.svg)](https://gemnasium.com/infoeducatie/infoeducatie-ui)
+[![Build Status](https://travis-ci.org/infoeducatie/infoeducatie-ui.svg?branch=master)](https://travis-ci.org/infoeducatie/infoeducatie-ui)
 
 React web frontend for our [backend API](https://github.com/infoeducatie/infoeducatie-api).
 
@@ -52,6 +52,11 @@ npm start
 - `npm test` - run tests using PhantomJS
 - `npm run test-debug` - run tests using Google Chrome and enable js debugger
 
+### Docker
+
+There are two docker images built from the source. A production one and a staging one. They are published on [Docker Hub](https://hub.docker.com/r/infoeducatie/infoeducatie-ui/).
+
+When new code is pushed to any of the two branches the corresponding images is built.
 
 ### Supported browsers
 
