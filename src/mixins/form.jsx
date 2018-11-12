@@ -1,31 +1,29 @@
-"use strict";
+// @flow
 
 import _ from "lodash"
 import $ from "jquery";
 import React from "react";
 
 
-export default {
+export default class FormMixin {
   getDefaultProps() {
     return {
       method: "POST"
     };
-  },
+  }
 
-  getInitialState() {
-    return {
-      hasErrored: false,
-      waitingForServerResponse: false,
-      errors: []
-    };
-  },
+  state = {
+    hasErrored: false,
+    waitingForServerResponse: false,
+    errors: []
+  }
 
   componentWillReceiveProps() {
     this.setState({
       hasErrored: false,
       errors: []
     });
-  },
+  }
 
   onRequestError(data) {
     this.setState({
@@ -46,7 +44,7 @@ export default {
         errors: errors
       });
     }
-  },
+  }
 
   onFormSubmit(event) {
     event.preventDefault();
@@ -68,14 +66,14 @@ export default {
       success: this.onRequestSuccess,
       error: this.onRequestError
     });
-  },
+  }
 
   onRequestSuccess(data) {
     this.setState({
       waitingForServerResponse: false
     });
     this.props.onSubmit(data);
-  },
+  }
 
   renderErrors() {
     if (this.state.hasErrored) {
@@ -95,4 +93,4 @@ export default {
       </ul>;
     }
   }
-};
+}

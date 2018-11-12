@@ -1,10 +1,8 @@
-"use strict";
+// @flow
 
-import $ from "jquery";
-import _ from "lodash";
 import React from "react";
 import {Link} from "react-router";
-import {Grid, Row, Col, Glyphicon} from "react-bootstrap";
+import {Grid, Row, Col} from "react-bootstrap";
 
 import countify from "../../lib/countify";
 import Header from "../header";
@@ -27,13 +25,12 @@ import leonte from "../../../assets/img/sponsors/leonte.png";
 import altex from "../../../assets/img/sponsors/altex.gif";
 import MTS from "../../../assets/img/sponsors/mts.jpg";
 
-export default React.createClass({
-  displayName: "Home",
 
+export default class Home extends React.Component {
   componentDidMount() {
     this.props.refreshCurrent();
     this.props.changeLanguage("en");
-  },
+  }
 
   renderCampDate() {
     let monthNames = ["January", "February", "March", "April", "May", "June",
@@ -51,7 +48,7 @@ export default React.createClass({
     let year = 1900 + endDate.getYear();
 
     return `${startDate.getDate()} - ${endDate.getDate()} ${month} ${year}`;
-  },
+  }
 
 
   render() {
@@ -256,4 +253,4 @@ export default React.createClass({
         </div>
     </div>;
   }
-});
+}

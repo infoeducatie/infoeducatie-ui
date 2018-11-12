@@ -1,5 +1,5 @@
-@import "~bootstrap/less/bootstrap";
-@import "~bootstrap/less/variables";
+@import "bootstrap/dist/css/bootstrap.min.css";
+
 @import "styles/variables";
 @import "styles/classes";
 @import "styles/mixins";
@@ -126,7 +126,8 @@ html, body {
 }
 
 
-@media screen and (max-width: @screen-xs) {
+//@media screen and (max-width: @screen-xs) {
+@media screen {
   @scale-ratio: 5/6;
   h1 {
     font-size: (@font-size-h1 - 25) * @scale-ratio;

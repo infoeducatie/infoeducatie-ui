@@ -1,35 +1,32 @@
-"use strict";
+// @flow
+import React from "react"
+import {Function} from "flow"
 
-import React from "react";
+import { Button, FormControl, ControlLabel, FormGroup, ListGroup, ListGroupItem } from "reactstrap"
 
-import { Button, FormControl, ControlLabel, FormGroup, ListGroup, ListGroupItem } from "react-bootstrap";
+type Props = {
+  onSignIn: Function
+}
 
-export default React.createClass({
-  displayName: "SignInForm",
-
-  propTypes: {
-    onSignIn: React.PropTypes.func.isRequired
-  },
+export default class SignInForm extends React.Component<Props> {
 
   getDefaultProps() {
     return {
       hasErrored: false
-    };
-  },
+    }
+  }
 
-  getInitialState() {
-    return {
-      email: "",
-      password: "",
-      hasErrored: this.props.hasErrored
-    };
-  },
+  steate = {
+    email: "",
+    password: "",
+    hasErrored: this.props.hasErrored
+  }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       hasErrored: nextProps.hasErrored
     });
-  },
+  }
 
   render() {
     return <div>
@@ -53,27 +50,27 @@ export default React.createClass({
       </form>
       { this.state.hasErrored ? this.renderError() : null }
     </div>;
-  },
+  }
 
   renderError() {
     return <ListGroup>
       <ListGroupItem bsStyle="danger">Autentificarea nu a reușit!</ListGroupItem>
     </ListGroup>;
-  },
+  }
 
   onEmailChange(event) {
     this.setState({
       hasErrored: false,
       email: event.currentTarget.value
     });
-  },
+  }
 
   onPasswordChange(event) {
     this.setState({
       hasErrored: false,
       password: event.currentTarget.value
     });
-  },
+  }
 
   onSubmit(event) {
     event.preventDefault();
@@ -82,4 +79,4 @@ export default React.createClass({
       password: this.state.password
     });
   }
-});
+}

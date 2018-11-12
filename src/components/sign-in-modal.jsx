@@ -1,4 +1,4 @@
-"use strict";
+// @flow
 
 import React from "react";
 import { Modal } from "react-bootstrap";
@@ -8,21 +8,17 @@ import { browserHistory } from 'react-router';
 import SignInForm from "./sign-in-form";
 
 
-export default React.createClass({
-  displayName: "SignInModal",
-
-  getInitialState() {
-    return {
-      hasErrored: false
-    };
-  },
+export default class SignInModal extends React.Component {
+  state = {
+    hasErrored: false
+  }
 
   closeModal() {
     browserHistory.push({
       pathname: window.location.pathname,
       query: { }
     });
-  },
+  }
 
   onSignIn(formData) {
     let data = { };
@@ -36,22 +32,22 @@ export default React.createClass({
       error: this.onSignInError,
       data: data
     });
-  },
+  }
 
   onSignInSuccess(data) {
     this.closeModal();
     this.props.login(data);
-  },
+  }
 
   onSignInError() {
     this.setState({
       hasErrored: true
     });
-  },
+  }
 
   showModal() {
     return (location.search.indexOf("login=true") == 1)
-  },
+  }
 
   render() {
     return (
@@ -66,7 +62,7 @@ export default React.createClass({
         </Modal.Body>
       </Modal>
     );
-  },
+  }
 
   renderRegisterMessage() {
     return <div>
@@ -79,11 +75,11 @@ export default React.createClass({
        <a href="http://api.infoeducatie.ro/users/password/new" traget="_blank">click aici</a>
       </p>
     </div>;
-  },
+  }
 
   onRegisterClick(event) {
     event.preventDefault();
     this.closeModal();
     browserHistory.push("/inregistrare");
   }
-});
+}

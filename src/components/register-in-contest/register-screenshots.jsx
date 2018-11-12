@@ -1,4 +1,4 @@
-"use strict";
+// @flow
 
 import React from "react";
 import ReactDOM from "react-dom";
@@ -8,9 +8,7 @@ import { FormControl, FormGroup, Glyphicon } from "react-bootstrap";
 import FormMixin from "../../mixins/form"
 
 
-export default React.createClass({
-  displayName: "RegisterScreenshots",
-
+export default class RegisterScreenshots extends React.Component {
   render() {
     let url = window.config.API_URL + this.props.formEndpoint;
     return <div>
@@ -37,4 +35,4 @@ export default React.createClass({
       </div>
     </div>;
   }
-});
+}

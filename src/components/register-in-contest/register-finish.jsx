@@ -1,15 +1,12 @@
-"use strict";
+// @flow
 
 import React from "react";
-import _ from "lodash";
 import { Button, FormGroup } from "react-bootstrap";
 
 import FormMixin from "../../mixins/form"
 
 
-export default React.createClass({
-  displayName: "RegisterFinish",
-  mixins: [FormMixin],
+export default class RegisterFinish extends FormMixin {
 
   render() {
     return <form onSubmit={this.onFormSubmit}>
@@ -23,9 +20,9 @@ export default React.createClass({
       </FormGroup>
       {this.renderErrors()}
     </form>;
-  },
+  }
 
   getFormData() {
     return {};
   }
-});
+}

@@ -1,4 +1,5 @@
-"use strict";
+// @flow
+
 import React from "react";
 
 import ctx from "classnames";
@@ -6,12 +7,10 @@ import ctx from "classnames";
 import "../../main.less";
 
 
-export default React.createClass({
-  displayName: "FilterIcon",
-
+export default class FilterIcon extends React.Component {
   toggleCategory() {
     this.props.toggleCategory(this.props.category);
-  },
+  }
 
   render() {
     let parentClasses = ctx({
@@ -25,4 +24,4 @@ export default React.createClass({
     </div>;
   }
 
-});
+}

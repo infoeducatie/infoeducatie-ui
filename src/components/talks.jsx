@@ -1,6 +1,5 @@
 "use strict";
 
-import $ from "jquery";
 import ctx from "classnames";
 import {Grid, Row, Col} from "react-bootstrap";
 import React from "react";
@@ -9,30 +8,25 @@ import "../main.less";
 import ajax from "../lib/ajax"
 import gravatar from "../lib/gravatar"
 import CloudCount from "./cloud-count"
-import DefaultAvatar from "../../assets/img/jury/default.png";
 import EditionSelector from "./edition-selector";
 import Header from "./header";
 
 
-export default React.createClass({
-  displayName: "Talks",
-
-  getInitialState() {
-    return {
-      talks: [],
-      selectedEdition: this.props.edition.name
-    };
-  },
+export default class Talks extends React.Component {
+  state = {
+    talks: [],
+    selectedEdition: this.props.edition.name
+  }
 
   componentDidMount() {
     this.getTalks();
-  },
+  }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.edition.name !== this.props.edition.name) {
       this.setState({ selectedEdition: nextProps.edition.name });
     }
-  },
+  }
 
   render() {
     return <div className="talks">
@@ -67,7 +61,7 @@ export default React.createClass({
         {this.state.talks.map(this.renderTalk)}
       </Grid>
    </div>;
-  },
+  }
 
   renderTalk(talk, index) {
     let colors = ["green", "orange", "black"];
@@ -109,25 +103,25 @@ export default React.createClass({
         </Row>
       </Col>
     </Row>;
-  },
+  }
 
   renderAuthorImage(author, index) {
     return <li className="author-image" key={index}>
       <img src={gravatar(author.email_md5)} />
     </li>;
-  },
+  }
 
   renderAuthorText(author, index) {
     return <li key={index} className="author-text">
       <h5 className="author-name">{author.name}</h5>
       <p className="author-job">{author.job}</p>
     </li>;
-  },
+  }
 
   onEditionChange(edition) {
     this.getTalks(edition.id);
     this.setState({ selectedEdition: edition.name });
-  },
+  }
 
   getTalks(editionId=undefined) {
     let data = {};
@@ -141,4 +135,4 @@ export default React.createClass({
       success: (data) => { this.setState({ talks: data }); }
     });
   }
-});
+}

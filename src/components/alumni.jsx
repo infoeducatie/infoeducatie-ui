@@ -1,4 +1,4 @@
-"use strict";
+// @flow
 
 import $ from "jquery";
 import React from "react";
@@ -12,14 +12,10 @@ import Header from "./header";
 import "../main.less";
 
 
-export default React.createClass({
-  displayName: "Alumni",
-
-  getInitialState() {
-    return {
-      alumni: []
-    };
-  },
+export default class Alumni extends React.Component {
+  state = {
+    alumni: []
+  }
 
   componentDidMount() {
     $.ajax({
@@ -27,13 +23,13 @@ export default React.createClass({
       url: window.config.API_URL + "alumni.json",
       success: this.onSuccess
     });
-  },
+  }
 
   onSuccess(data) {
     this.setState({
       alumni: data
     });
-  },
+  }
 
   renderAlumnus(alumnus, index) {
     let colors = ["green", "orange", "black"];
@@ -75,7 +71,7 @@ export default React.createClass({
         </Row>
       </Col>
     </Row>;
-  },
+  }
 
   render() {
     return <div className="alumni">
@@ -104,4 +100,4 @@ export default React.createClass({
       </Grid>
    </div>;
   }
-});
+}

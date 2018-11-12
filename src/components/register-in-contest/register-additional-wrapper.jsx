@@ -1,24 +1,18 @@
-"use strict";
+// @flow
 
 import React from "react";
-import _ from "lodash";
-import { FormControl } from "react-bootstrap";
 
 import RegisterAdditionalSearch from "./register-additional-search";
 import RegisterAdditionalConfirm from "./register-additional-confirm";
 
 
-export default React.createClass({
-  displayName: "RegisterAdditionalWrapper",
-
-  getInitialState() {
-    return {
-      additionalEmail: "",
-      waitingForServerResponseAdditionalForm: false,
-      hasPerformedSearch: false,
-      additionalContestant: []
-    };
-  },
+export default class RegisterAdditionalWrapper extends React.Component {
+  state = {
+    additionalEmail: "",
+    waitingForServerResponseAdditionalForm: false,
+    hasPerformedSearch: false,
+    additionalContestant: []
+  }
 
   render() {
     return <div>
@@ -30,7 +24,7 @@ export default React.createClass({
                                 formEndpoint="contestants.json" />
       {this.state.hasPerformedSearch ? this.renderSecondPart() : null}
     </div>;
-  },
+  }
 
   renderSecondPart() {
     if (!this.state.additionalContestant.length) {
@@ -47,7 +41,7 @@ export default React.createClass({
                                  access_token={this.props.access_token}
                                  contestantId={this.state.additionalContestant[0].id} />
     </div>;
-  },
+  }
 
   onRegisterAdditionalSearchSubmit(data) {
     this.setState({
@@ -55,4 +49,4 @@ export default React.createClass({
       additionalContestant: data
     });
   }
-});
+}

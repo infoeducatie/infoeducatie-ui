@@ -1,56 +1,52 @@
-"use strict";
+// @flow
 
 import $ from "jquery";
 import _ from "lodash";
 import React from "react";
 import { FormControl, ControlLabel, FormGroup, Button } from "react-bootstrap";
 
-export default React.createClass({
-  displayName: "RegisterContestant",
+export default class RegisterContestant extends React.Component {
+  state = {
+    hasErrored: false,
+    waitingForServerResponse: false,
+    errors: [],
 
-  getInitialState() {
-    return {
-      hasErrored: false,
-      waitingForServerResponse: false,
-      errors: [],
+    contestant: {
+      /*eslint-disable */
+      address: "",
+      city: "",
+      county: "Alba",
+      country: "România",
+      zip_code: "",
 
-      contestant: {
-        /*eslint-disable */
-        address: "",
-        city: "",
-        county: "Alba",
-        country: "România",
-        zip_code: "",
+      sex: "1",
+      cnp: "",
+      id_card_type: "",
+      id_card_number: "",
+      phone_number: "",
+      // TODO @palcu: add fallback with jQuery custom plugin
+      date_of_birth: "",
+      school_name: "",
+      grade: "9",
+      school_county: "Alba",
+      school_city: "",
+      school_country: "România",
 
-        sex: "1",
-        cnp: "",
-        id_card_type: "",
-        id_card_number: "",
-        phone_number: "",
-        // TODO @palcu: add fallback with jQuery custom plugin
-        date_of_birth: "",
-        school_name: "",
-        grade: "9",
-        school_county: "Alba",
-        school_city: "",
-        school_country: "România",
+      mentoring_teacher_first_name: "",
+      mentoring_teacher_last_name: "",
 
-        mentoring_teacher_first_name: "",
-        mentoring_teacher_last_name: "",
+      /*eslint-enable */
+    },
 
-        /*eslint-enable */
-      },
-
-      officialParticipant: "false",
-      presentInCamp: "false"
-    };
-  },
+    officialParticipant: "false",
+    presentInCamp: "false"
+  }
 
   onChange(field, event) {
     let contestant = _.clone(this.state.contestant);
     contestant[field] = event.target.value;
     this.setState({ contestant: contestant });
-  },
+  }
 
   render() {
     return <form onSubmit={this.onFormSubmit} className="RegisterContestant">
@@ -359,7 +355,7 @@ export default React.createClass({
       </FormGroup>
       {this.renderErrors()}
     </form>;
-  },
+  }
 
   onCityChange(event) {
     let newContestantState = _.clone(this.state.contestant);
@@ -367,7 +363,7 @@ export default React.createClass({
     newContestantState.school_city = event.currentTarget.value;
 
     this.setState({contestant: newContestantState});
-  },
+  }
 
   onCountyChange(event) {
     let newContestantState = _.clone(this.state.contestant);
@@ -375,7 +371,7 @@ export default React.createClass({
     newContestantState.school_county = event.currentTarget.value;
 
     this.setState({contestant: newContestantState});
-  },
+  }
 
   onCountryChange(event) {
     let newContestantState = _.clone(this.state.contestant);
@@ -383,7 +379,7 @@ export default React.createClass({
     newContestantState.school_country = event.currentTarget.value;
 
     this.setState({contestant: newContestantState});
-  },
+  }
 
   renderErrors() {
     if (this.state.hasErrored) {
@@ -402,7 +398,7 @@ export default React.createClass({
         })}
       </ul>;
     }
-  },
+  }
 
   onOfficialParticipantChange(event) {
     if (this.state.presentInCamp === "true") {
@@ -413,7 +409,7 @@ export default React.createClass({
     this.setState({
       officialParticipant: event.currentTarget.value
     });
-  },
+  }
 
   onPresentInCampChange(event) {
     /// XXX: here be dragons flying
@@ -430,13 +426,13 @@ export default React.createClass({
     this.setState({
       presentInCamp: event.currentTarget.value
     });
-  },
+  }
 
   onPayingCampAcommodation(event) {
     this.setState({
       payingCampAcommodation: event.currentTarget.value
     });
-  },
+  }
 
   onFormSubmit(event) {
     event.preventDefault();
@@ -467,7 +463,7 @@ export default React.createClass({
       success: this.props.onSubmit,
       error: this.onRequestError
     });
-  },
+  }
 
   onRequestError(data) {
     this.setState({
@@ -489,4 +485,4 @@ export default React.createClass({
       });
     }
   }
-});
+}

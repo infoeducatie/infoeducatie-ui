@@ -20,12 +20,12 @@ module.exports = {
   mode: app_environment === 'production' ? 'production': 'development',
 
   entry: './src/main',
-
   devServer: {
     contentBase: path.join(__dirname, 'build'),
     compress: true,
     port: 9000
   },
+  devtool: app_environment === 'production' ? 'source-map' : 'eval',
 
   output: {
     path: __dirname + '/build/',
@@ -38,8 +38,8 @@ module.exports = {
       { test: /\.png$/, loader: 'url-loader?limit=10000&minetype=image/png' },
       { test: /\.gif$/, loader: 'url-loader?limit=10000&minetype=image/gif' },
       { test: /\.jpg$/, loader: 'url-loader?limit=10000&minetype=image/jpg' },
+      { test: /\.css$/, loader: 'style-loader!css-loader'},
       { test: /\.less$/, loader: 'style-loader!css-loader!postcss-loader!less-loader' },
-      { test: /\.css$/, loader: 'style-loader!css-loader!postcss-loader' },
       { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url-loader?limit=50000&minetype=application/font-woff' },
       { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader?limit=50000' },
     ]
@@ -55,6 +55,7 @@ module.exports = {
       'process.env': {
         NODE_ENV: JSON.stringify(node_environment)
       }
-    })
+    }),
+    new webpack.SourceMapDevToolPlugin({})
   ]
 }

@@ -1,5 +1,5 @@
 module.exports = {
-  parser: 'postcss-less',
+  parser: false,
   plugins: {
     'postcss-import': {},
     'postcss-preset-env': {},

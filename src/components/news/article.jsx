@@ -1,31 +1,25 @@
-"use strict";
+// @flow
 
 import React from "react";
 import { Row, Modal } from "react-bootstrap";
-import $ from "jquery";
-import _ from "lodash";
 
 
-export default React.createClass({
-  displayName: "News",
-
-  getInitialState() {
-    return {
-      isModalOpen: false
-    };
-  },
+export default class News extends React.Component {
+  state = {
+    isModalOpen: false
+  }
 
   openModal() {
     this.setState({
       isModalOpen: true
     });
-  },
+  }
 
   closeModal() {
     this.setState({
       isModalOpen: false
     });
-  },
+  }
 
   renderOverlay() {
     return (
@@ -38,7 +32,7 @@ export default React.createClass({
         </Modal.Body>
       </Modal>
     );
-  },
+  }
 
   render() {
     let date = new Date(this.props.created_at).toLocaleDateString();
@@ -62,4 +56,4 @@ export default React.createClass({
       { this.renderOverlay() }
     </div>;
   }
-});
+}

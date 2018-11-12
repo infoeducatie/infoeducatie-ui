@@ -13,19 +13,15 @@ import openDiscourse from "../lib/discourse"
 import "../main.less";
 
 
-export default React.createClass({
-  displayName: "Results",
-
-  getInitialState: function() {
-    return {
-      currentCategory: "web",
-      currentEdition: {
-        id: 0,
-        name: ""
-      },
-      projects: []
-    };
-  },
+export default class Results extends React.Component {
+  state = {
+    currentCategory: "web",
+    currentEdition: {
+      id: 0,
+      name: ""
+    },
+    projects: []
+  }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.lastEditionWithResults.id !==
@@ -34,19 +30,19 @@ export default React.createClass({
       this.setState({currentEdition: nextProps.lastEditionWithResults});
       this.showResults(nextProps.lastEditionWithResults.id);
     }
-  },
+  }
 
   componentDidMount() {
     if (this.state.currentEdition !== 0) {
       this.showResults(this.props.lastEditionWithResults.id);
     }
-  },
+  }
 
   toggleCategory(category) {
     this.setState({
       currentCategory: category
     });
-  },
+  }
 
   renderTable() {
     let projects = _.chain(this.state.projects)
@@ -135,7 +131,7 @@ export default React.createClass({
         </Col>
       </Row>
     </Grid>;
-  },
+  }
 
   renderTableTd(content, url, tdClassName) {
     return (
@@ -145,7 +141,7 @@ export default React.createClass({
         </a>
       </td>
     );
-  },
+  }
 
   renderTableUl(items, url, tdClassName, liClassName) {
     return (
@@ -161,7 +157,7 @@ export default React.createClass({
         </ul>
       </td>
     );
-  },
+  }
 
   render() {
     return <div className="results">
@@ -228,12 +224,12 @@ export default React.createClass({
       </Grid>
       {this.renderTable()}
     </div>;
-  },
+  }
 
   onEditionChange(edition) {
     this.setState({currentEdition: edition});
     this.showResults(edition.id);
-  },
+  }
 
   showResults(editionId) {
     let data = editionId ? { edition: editionId } : {};
@@ -246,4 +242,4 @@ export default React.createClass({
       }
     });
   }
-});
+}

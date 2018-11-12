@@ -2,10 +2,6 @@
 
 
 .jury {
-  .row {
-    .row;
-  }
-
   .blue-section-wrapper {
     .blue-section-wrapper (@img_path: "../../assets/img/jury.png");
   }
@@ -19,13 +15,13 @@
   }
 
   .orange-section{
-    min-height: 0px;
+    min-height: 0;
 
     margin-top: 20px;
     margin-bottom: 20px;
 
     .jury-criteria-documents {
-      min-height: 0px;
+      min-height: 0;
       text-align: center;
 
       .jury-criteria {
@@ -50,7 +46,7 @@
       width: 300px;
       margin: 0 auto;
       text-transform: uppercase;
-      min-height: 0px;
+      min-height: 0;
       padding-top: 30px;
       padding-bottom: 20px;
       letter-spacing: 3px;
@@ -64,7 +60,7 @@
   }
 
   .white-section {
-    min-height: 0px;
+    min-height: 0;
     margin-top: 40px;
     margin-bottom: 40px;
     text-align: center;
@@ -84,9 +80,9 @@
 
     .jury-description {
       margin: 0 auto;
+      margin-top: 10px;
       text-align: center;
       text-transform: uppercase;
-      margin-top: 10px;
 
       .orange-dash {
         color: @orange;
@@ -96,7 +92,7 @@
     }
 
     .jury-members {
-      min-height: 0px;
+      min-height: 0;
       text-transform: uppercase;
       text-align: center;
       margin-top: 40px;
@@ -108,7 +104,7 @@
         width: 250px;
         margin: 20px;
         text-align: center;
-        box-shadow: 0px 2px 0px @light-grey;
+        box-shadow: 0 2px 0 @light-grey;
         border: 1px solid @light-grey;
         padding: 15px;
 
@@ -117,7 +113,6 @@
           img{
             -webkit-filter: grayscale(1);
             filter: grayscale(1);
-            filter: gray;
             width: 100px;
             height: 100px;
             border-radius: 50px;

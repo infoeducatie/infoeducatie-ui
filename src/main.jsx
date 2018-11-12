@@ -1,11 +1,11 @@
-"use strict";
+// @flow
 
 import $ from "jquery";
 import Raven from "raven-js"
 import React from "react";
 import ReactDOM from "react-dom"
-import ReactCookie from "react-cookie";
-import { Router, Route, DefaultRoute, Navigation, browserHistory, IndexRoute } from 'react-router';
+import Cookies from 'js-cookie';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import ga from "react-ga";
 import "./main.less";
 
@@ -33,64 +33,64 @@ import ContactEnglish from "./components/english/contact";
 import PhotoEnglish from "./components/english/photos";
 
 
-let App = React.createClass({
-  displayName: "App",
-  mixins: [Navigation],
-
-  getDefaultProps() {
-    return {
-      current: {
-        edition: {
-          motto: "Perseverează, mergi mai departe!",
-          year: 2017,
-          id: 1,
-          count: 22
-        },
-        stats: {
-          total_participants: 0,
-          total_projects: 0,
-          total_counties: 0
-        },
-        last_edition_with_results: {
-          year: 2014,
-          id: 0,
-          name: "Editia 2017 Online"
-        }
+class App extends React.Component {
+  static defaultProps = {
+    current: {
+      edition: {
+        motto: "Perseverează, mergi mai departe!",
+        year: 2017,
+        id: 1,
+        count: 22
+      },
+      stats: {
+        total_participants: 0,
+        total_projects: 0,
+        total_counties: 0
+      },
+      last_edition_with_results: {
+        year: 2014,
+        id: 0,
+        name: "Editia 2017 Online"
       }
-    };
-  },
+    }
+  }
 
-  getInitialState() {
-    let accesToken = ReactCookie.load("accesToken");
-    return {
-      current: this.props.current,
-      isLoggedIn: accesToken ? true : false,
-      language: "ro"
-    };
-  },
+  state = {
+    current: this.props.current,
+    isLoggedIn: !!Cookies.get("accesToken"),
+    language: "ro"
+  }
 
   componentDidMount() {
     this.getCurrent();
-  },
+  }
 
   render() {
-    return <div className="main">
-      {React.cloneElement(this.props.children, {
-        current: this.state.current,
-        edition: this.state.current.edition,
-        user: this.state.current.user,
-        registration: this.state.current.registration,
-        refreshCurrent: this.getCurrent,
-        isLoggedIn: this.state.isLoggedIn,
-        language: this.state.language,
-        changeLanguage: this.changeLanguage,
-        logout: this.logout,
-        lastEditionWithResults: this.state.current.last_edition_with_results
-      })}
-      {this.state.language === "ro" ? <Footer current={this.state.current} /> : <FooterEnglish />}
-      <SignInModal login={this.login} />
-    </div>;
-  },
+    return <Router>
+        <div className="main">
+          <Route component={() => <Home {...this.props} />} path="/" />
+          <Route component={() => <Jury {...this.props} /> } path="juriu" />
+          <Route component={() => <RegisterInContest {...this.props} />} path="inscriere" />
+          <Route component={() => <Alumni {...this.props} />} path="alumni" />
+          <Route component={() => <Photos {...this.props} />} path="poze" />
+          <Route component={() => <Contact {...this.props} />} path="contacte" />
+          <Route component={() => <About {...this.props} />} path="despre" />
+          <Route component={() => <Register {...this.props} />} path="inregistrare" />
+          <Route component={() => <Calendar {...this.props} />} path="calendar" />
+          <Route component={() => <Results {...this.props} />} path="rezultate" />
+          <Route component={() => <Kitchen {...this.props} />} path="kitchen" />
+          <Route component={() => <Contestants {...this.props} />} path="participanti" />
+          <Route component={() => <HomeEnglish {...this.props} />} path="home" />
+          <Route component={() => <AboutEnglish {...this.props} />} path="about" />
+          <Route component={() => <ContactEnglish {...this.props} />} path="contact" />
+          <Route component={() => <PhotoEnglish {...this.props} />} path="photos" />
+          <Route component={() => <Talks {...this.props} />} path="seminarii" />
+          <Route component={() => <Schedule {...this.props} />} path="program" />
+          {this.state.language === "ro" ? <Footer current={this.state.current} /> : <FooterEnglish />}
+          <SignInModal login={this.login} />
+        </div>
+      </Router>
+  }
 
   changeLanguage(newLanguage) {
     this.setState({
@@ -102,25 +102,25 @@ let App = React.createClass({
     } else if (newLanguage === "ro") {
       browserHistory.push('/')
     }
-  },
+  }
 
   login(user) {
-    ReactCookie.save("accesToken", user.access_token);
+    Cookies.set("accesToken", user.access_token);
     this.getCurrent();
     browserHistory.push("/inscriere");
-  },
+  }
 
   logout() {
-    ReactCookie.remove("accesToken");
+    Cookies.remove("accesToken");
     this.setState({
       isLoggedIn: false
     });
     this.getCurrent();
     browserHistory.push("/");
-  },
+  }
 
   getCurrent() {
-    let accesToken = ReactCookie.load("accesToken");
+    let accesToken = Cookies.get("accesToken");
     let headers = {};
 
     if (accesToken) {
@@ -140,34 +140,7 @@ let App = React.createClass({
       }
     });
   }
-});
-
-
-let routes = (
-  <Router  history={browserHistory} onUpdate={logPageView}>
-    <Route component={App} path="/">
-       <IndexRoute component={Home} />
-       <Route component={Home} path="acasa"/>
-       <Route component={Jury} path="juriu" />
-       <Route component={RegisterInContest} path="inscriere" />
-       <Route component={Alumni} path="alumni" />
-       <Route component={Photos} path="poze" />
-       <Route component={Contact} path="contacte" />
-       <Route component={About} path="despre" />
-       <Route component={Register} path="inregistrare" />
-       <Route component={Calendar} path="calendar" />
-       <Route component={Results} path="rezultate" />
-       <Route component={Kitchen} path="kitchen" />
-       <Route component={Contestants} path="participanti" />
-       <Route component={HomeEnglish} path="home" />
-       <Route component={AboutEnglish} path="about" />
-       <Route component={ContactEnglish} path="contact" />
-       <Route component={PhotoEnglish} path="photos" />
-       <Route component={Talks} path="seminarii" />
-       <Route component={Schedule} path="program" />
-    </Route>
-  </Router>
-);
+}
 
 if ("GA_TRACKING_ID" in window.config && window.config.GA_TRACKING_ID.length) {
   ga.initialize(window.config.GA_TRACKING_ID);
@@ -180,7 +153,7 @@ function logPageView() {
   }
 }
 
-ReactDOM.render(routes, document.getElementById("app"))
+ReactDOM.render(<App />, document.getElementById("app"))
 
 if ("SENTRY_DSN" in window.config && window.config.SENTRY_DSN.length) {
   Raven.config(window.config.SENTRY_DSN, {

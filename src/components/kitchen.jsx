@@ -1,11 +1,9 @@
-"use strict";
+// @flow
 
 import { FormControl, Button } from "react-bootstrap";
 import React from "react";
 
-export default React.createClass({
-  displayName: "KitchenPage",
-
+export default class KitchenPage extends React.Component {
   render() {
     return <div>
       <h1>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
@@ -33,4 +31,4 @@ export default React.createClass({
       </form>
     </div>;
   }
-});
+}

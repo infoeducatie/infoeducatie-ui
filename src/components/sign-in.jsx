@@ -3,17 +3,15 @@
 import React from "react";
 import { browserHistory } from 'react-router';
 
-export default React.createClass({
-  displayName: "SignIn",
-
+export default class SignIn extends React.Component {
   openModal() {
     browserHistory.push({
       pathname: window.location.pathname,
       query: { login: true }
     });
-  },
+  }
 
   render() {
     return <a onClick={this.openModal}>autentifica aici</a>;
   }
-});
+}

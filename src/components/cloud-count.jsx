@@ -1,14 +1,14 @@
-"use strict";
+// @flow
 
 import React from "react";
 
 import "../main.less";
 
-export default class CloudCount extends React.Component {
-  static displayName = "CloudCount"
-  static propTypes = { count: React.PropTypes.number }
+type Props = {
+  count: number
+}
 
-
+export default class CloudCount extends React.Component<Props> {
   render() {
     return <div className="cloud-count">
       {this.props.count}

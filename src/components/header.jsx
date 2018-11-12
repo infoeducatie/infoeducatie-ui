@@ -1,7 +1,7 @@
-"use strict";
+// @flow
 
 import React from "react";
-import { Navbar, Nav, NavItem, Row, Col } from "react-bootstrap";
+import { Navbar, Nav, NavItem, Row } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import "../main.less";
 
@@ -9,9 +9,7 @@ import ROFlag from "../../assets/img/icons/RO.png";
 import ENFlag from "../../assets/img/icons/US.png";
 
 
-export default React.createClass({
-  displayName: "Header",
-
+export default class Header extends React.Component {
   render() {
     // TODO @palcu: refactor this when in React you will be able to return
     // multiple values
@@ -22,7 +20,7 @@ export default React.createClass({
                                : this.renderUnregisterLinks()}
       </Navbar>
     </div>;
-  },
+  }
 
   changeLanguage() {
     if (this.props.language === "en") {
@@ -30,7 +28,7 @@ export default React.createClass({
     } else {
       this.props.changeLanguage("en");
     }
-  },
+  }
 
   renderNextLanguage() {
     if (this.props.language === "en") {
@@ -38,7 +36,7 @@ export default React.createClass({
     } else {
       return <img src={ENFlag} />;
     }
-  },
+  }
 
   renderEnglishHeader() {
     return <Nav className="navbar-nav" eventKey={0} right ref="nav">
@@ -47,7 +45,7 @@ export default React.createClass({
       <LinkContainer to="/about"><NavItem>About</NavItem></LinkContainer>
       <NavItem onClick={this.changeLanguage}>{this.renderNextLanguage()}</NavItem>
     </Nav>;
-  },
+  }
 
   renderResultsContestants() {
     if (this.props.current.edition.id == this.props.current.last_edition_with_results.id) {
@@ -55,7 +53,7 @@ export default React.createClass({
     } else {
       return <LinkContainer to="/participanti"><NavItem>Participanți</NavItem></LinkContainer>;
     }
-  },
+  }
 
   renderRegisterLinks() {
     if (this.props.language === "ro") {
@@ -73,7 +71,7 @@ export default React.createClass({
     } else {
       return this.renderEnglishHeader();
     }
-  },
+  }
 
   renderUnregisterLinks() {
     if (this.props.language === "ro") {
@@ -90,4 +88,4 @@ export default React.createClass({
       return this.renderEnglishHeader();
     }
   }
-});
+}

@@ -1,20 +1,18 @@
-"use strict";
+// @flow
 
 import React from "react";
 
 import ctx from "classnames";
-import { Grid, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 
 import "../../main.less";
 import CloudCount from "../cloud-count.jsx"
 
 
-export default React.createClass({
-  displayName: "ProjectCard",
-
+export default class ProjectCard extends React.Component {
   openDiscourse(discourse_url) {
     window.open(discourse_url, "_blank");
-  },
+  }
 
   render() {
     let projectCategoryIconClasses = ctx(
@@ -78,4 +76,4 @@ export default React.createClass({
       <Row className="xsmall-spacing" />
     </div>;
   }
-});
+}

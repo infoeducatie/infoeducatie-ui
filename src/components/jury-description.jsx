@@ -1,12 +1,11 @@
-"use strict";
+// @flow
 
 import ctx from "classnames";
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import {Col } from "react-bootstrap";
 
 
-export default React.createClass({
-  displayName: "JuryDescription",
+export default class JuryDescription extends React.Component {
   render() {
     let juryIcon = null;
     if (this.props.iconClass) {
@@ -36,4 +35,4 @@ export default React.createClass({
       </Col>
     </div>;
   }
-});
+}

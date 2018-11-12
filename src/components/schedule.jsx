@@ -1,4 +1,4 @@
-"use strict";
+// @flow
 
 import React from "react";
 
@@ -7,8 +7,7 @@ import Header from "./header";
 
 import "./schedule.less";
 
-export default React.createClass({
-  displayName: "SchedulePage",
+export default class SchedulePage extends React.Component {
 
   render() {
     return <div className="schedule">
@@ -43,4 +42,4 @@ export default React.createClass({
       </Grid>
     </div>;
   }
-});
+}

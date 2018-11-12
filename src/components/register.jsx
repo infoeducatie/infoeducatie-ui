@@ -1,4 +1,4 @@
-"use strict";
+// @flow
 
 import React from "react"; import $ from "jquery";
 import _ from "lodash";
@@ -11,23 +11,19 @@ import SignIn from "./sign-in"
 import "../main.less";
 
 
-export default React.createClass({
-  displayName: "Register",
-
-  getInitialState() {
-    return {
-      email: "",
-      password: "",
-      passwordConfirmation: "",
-      firstName: "",
-      lastName: "",
-      newsletter: true,
-      errors: [],
-      hasErrored: false,
-      hasSubmited: false,
-      waitingForServerResponse: false
-    };
-  },
+export default class Register extends React.Component {
+  state = {
+    email: "",
+    password: "",
+    passwordConfirmation: "",
+    firstName: "",
+    lastName: "",
+    newsletter: true,
+    errors: [],
+    hasErrored: false,
+    hasSubmited: false,
+    waitingForServerResponse: false
+  }
 
   render() {
     return <div className="register">
@@ -60,7 +56,7 @@ export default React.createClass({
         </Row>
       </Grid>
     </div>;
-  },
+  }
 
   renderForm() {
     if (!this.state.hasSubmited) {
@@ -130,7 +126,7 @@ export default React.createClass({
         </form>
       </div>;
     }
-  },
+  }
 
   renderErrors() {
     if (this.state.hasErrored) {
@@ -149,7 +145,7 @@ export default React.createClass({
         })}
       </ul>;
     }
-  },
+  }
 
   renderSuccess() {
     if (this.state.hasSubmited) {
@@ -159,43 +155,43 @@ export default React.createClass({
         confirmare.</p>
       </div>;
     }
-  },
+  }
 
   onEmailChange(event) {
     this.setState({
       email: event.currentTarget.value
     });
-  },
+  }
 
   onFirstNameChange(event) {
     this.setState({
       firstName: event.currentTarget.value
     });
-  },
+  }
 
   onLastNameChange(event) {
     this.setState({
       lastName: event.currentTarget.value
     });
-  },
+  }
 
   onPasswordChange(event) {
     this.setState({
       password: event.currentTarget.value
     });
-  },
+  }
 
   onPasswordConfirmationChange(event) {
     this.setState({
       passwordConfirmation: event.currentTarget.value
     });
-  },
+  }
 
   onNewsletterChange(event) {
     this.setState({
       newsletter: event.currentTarget.checked
     });
-  },
+  }
 
   onFormSubmit(event) {
     event.preventDefault();
@@ -231,13 +227,13 @@ export default React.createClass({
       success: this.onSignUpSuccess,
       error: this.onSignUpError
     });
-  },
+  }
 
   onSignUpSuccess() {
     this.setState({
       hasSubmited: true
     });
-  },
+  }
 
   onSignUpError(data) {
     this.setState({
@@ -259,4 +255,4 @@ export default React.createClass({
       });
     }
   }
-});
+}

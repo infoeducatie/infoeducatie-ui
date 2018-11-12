@@ -1,4 +1,4 @@
-"use strict";
+// @flow
 
 import React from "react";
 
@@ -6,12 +6,9 @@ import { Row, Col, Grid } from "react-bootstrap";
 import Header from "../header";
 
 import "../about.less"
-import DefaultDocument from "../../../assets/img/icons/doc.png";
 
 
-export default React.createClass({
-  displayName: "GalaciucPage",
-
+export default class GalaciucPage extends React.Component {
   render() {
     return <div className="galaciuc">
       <div className="blue-section-wrapper">
@@ -134,4 +131,4 @@ export default React.createClass({
       </Grid>
     </div>;
   }
-});
+}

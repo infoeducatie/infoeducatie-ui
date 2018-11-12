@@ -1,6 +1,5 @@
 "use strict";
 
-import $ from "jquery";
 import _ from "lodash";
 import React from "react";
 import { FormControl, ControlLabel, FormGroup, Button } from "react-bootstrap";
@@ -8,36 +7,31 @@ import { FormControl, ControlLabel, FormGroup, Button } from "react-bootstrap";
 import FormMixin from "../../mixins/form"
 
 
-export default React.createClass({
-  displayName: "RegisterTeacher",
-  mixins: [FormMixin],
-
+export default class RegisterTeacher extends FormMixin {
   getDefaultProps() {
     return {
       formEndpoint: "teachers.json"
     };
-  },
+  }
 
-  getInitialState() {
-    return {
-      teacher: {
-        /*eslint-disable */
-        sex: "1",
-        phone_number: "",
-        school_name: "",
-        school_county: "Arad",
-        school_city: "",
-        school_country: "România"
-        /*eslint-enable */
-      }
-    };
-  },
+  state = {
+    teacher: {
+      /*eslint-disable */
+      sex: "1",
+      phone_number: "",
+      school_name: "",
+      school_county: "Arad",
+      school_city: "",
+      school_country: "România"
+      /*eslint-enable */
+    }
+  }
 
   onChange(field, event) {
     let teacher = _.clone(this.state.teacher);
     teacher[field] = event.target.value;
     this.setState({ teacher: teacher });
-  },
+  }
 
   render() {
     let teacherForm = <p className="alert alert-warning">
@@ -159,7 +153,7 @@ export default React.createClass({
       </form>;
     }
     return teacherForm;
-  },
+  }
 
   getFormData() {
     let data = {};
@@ -172,4 +166,4 @@ export default React.createClass({
     return data;
   }
 
-});
+}

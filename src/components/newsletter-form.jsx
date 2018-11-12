@@ -1,25 +1,21 @@
-"use strict";
+// @flow
 
 import $ from "jquery";
 import React from "react";
 import { Row, Col, FormControl, FormGroup, Button, ListGroup, ListGroupItem } from "react-bootstrap";
 
-export default React.createClass({
-  displayName: "NewsletterForm",
-
-  getInitialState() {
-    return {
-      hasSubmitted: false,
-      hasErrored: false,
-      newsletterEmail: ""
-    };
-  },
+export default class NewsletterForm extends React.Component {
+  state = {
+    hasSubmitted: false,
+    hasErrored: false,
+    newsletterEmail: ""
+  }
 
   onEmailChange(event) {
     this.setState({
       newsletterEmail: event.currentTarget.value
     });
-  },
+  }
 
   onSubmit(event) {
     event.preventDefault();
@@ -39,7 +35,7 @@ export default React.createClass({
       data: data,
       complete: this.subscribeResponse
     });
-  },
+  }
 
   renderError() {
     return <Row>
@@ -52,7 +48,7 @@ export default React.createClass({
         </ListGroup>
       </Col>
     </Row>;
-  },
+  }
 
   renderForm() {
     return <Row>
@@ -62,7 +58,6 @@ export default React.createClass({
             <Col xs={12}>
               <FormGroup>
                 <FormControl
-                     hasFeedback
                      required
                      ref="newsletterInput"
                      type="text"
@@ -85,7 +80,7 @@ export default React.createClass({
         </form>
       </Col>
     </Row>;
-  },
+  }
 
   renderSucces() {
     return <Col xs={8} xsOffset={2}>
@@ -98,11 +93,11 @@ export default React.createClass({
       </Row>
       <Row className="small-spacing" />
     </Col>;
-  },
+  }
 
   render() {
     return this.state.hasSubmitted ? this.renderSucces() : this.renderForm();
-  },
+  }
 
   isEmailValid(email) {
       let re = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]{2,})+$/;
@@ -110,7 +105,7 @@ export default React.createClass({
         return true;
       }
       return false;
-  },
+  }
 
   validationState() {
     if (!this.state.newsletterEmail.length) {
@@ -120,7 +115,7 @@ export default React.createClass({
       return "success";
     }
     return "error";
-  },
+  }
 
   subscribeResponse(response) {
     let data = response.responseJSON;
@@ -134,4 +129,4 @@ export default React.createClass({
       });
     }
   }
-});
+}

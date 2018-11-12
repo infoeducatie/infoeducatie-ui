@@ -1,4 +1,4 @@
-"use strict";
+// @flow
 
 import $ from "jquery";
 import React from "react";
@@ -14,9 +14,7 @@ import RegisterFinish from "./register-in-contest/register-finish"
 import RegisterTeacher from "./register-in-contest/register-teacher"
 import RegisterAdditionalWrapper from "./register-in-contest/register-additional-wrapper"
 
-export default React.createClass({
-  displayName: "RegisterInContest",
-
+export default class RegisterInContest extends React.Component {
   getDefaultProps() {
     return {
       current: {
@@ -38,36 +36,34 @@ export default React.createClass({
         finished_projects: []
       }
     };
-  },
+  }
 
-  getInitialState() {
-    return {
-      activeContestantForm: true,
-      activeTeacherForm: false,
-      activePanelKey: String(this.props.user.registration_step_number),
-      hasErrored: false
-    };
-  },
+  state = {
+    activeContestantForm: true,
+    activeTeacherForm: false,
+    activePanelKey: String(this.props.user.registration_step_number),
+    hasErrored: false
+  }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       activePanelKey: String(nextProps.user.registration_step_number)
     });
-  },
+  }
 
   activeTeacherForm() {
     this.setState({
       activeTeacherForm: true,
       activeContestantForm: false
     });
-  },
+  }
 
   activeContestantForm() {
     this.setState({
       activeTeacherForm: false,
       activeContestantForm: true
     });
-  },
+  }
 
   renderTeacher() {
     let teacherForm = null;
@@ -82,7 +78,7 @@ export default React.createClass({
     }
 
     return teacherForm;
-  },
+  }
 
   renderContestant() {
     let contestantForm = null;
@@ -151,7 +147,7 @@ export default React.createClass({
       );
     }
     return contestantForm;
-  },
+  }
 
   render() {
     let contestantsClass = ctx({
@@ -216,7 +212,7 @@ export default React.createClass({
         </Col>
       </Grid>
     </div>;
-  },
+  }
 
   renderProjectPanel() {
     let projectPanel = null;
@@ -264,7 +260,7 @@ export default React.createClass({
     }
 
     return projectPanel;
-  },
+  }
 
   renderFormOrMessage(renderForm, formId) {
     if (formId < this.props.user.registration_step_number) {
@@ -274,24 +270,24 @@ export default React.createClass({
       return renderForm();
     }
     return this.renderUnavailableStep();
-  },
+  }
 
   renderSuccessStep() {
     return <div className="success">
       Ai terminat acest pas cu succes.
     </div>;
-  },
+  }
 
   renderUnavailableStep() {
     return <div>
       Termină ceilalți pași înainte să îl completezi pe acesta.
     </div>;
-  },
+  }
 
   renderContestantForm() {
     return <RegisterContestant access_token={this.props.user.access_token}
                                onSubmit={this.props.refreshCurrent} />;
-  },
+  }
 
   renderAdditonalForm() {
     return <div>
@@ -300,7 +296,7 @@ export default React.createClass({
                                    pendingProject={this.props.registration.pending_project} />
         {this.renderSkipAdditionalContestant()}
     </div>;
-  },
+  }
 
   renderScreenshotsForm() {
     let formEndpoint = `projects/${this.props.registration.pending_project.id}/screenshots`;
@@ -309,7 +305,7 @@ export default React.createClass({
                                 formEndpoint={formEndpoint}
                                 screenshotsCount={this.props.registration.pending_project.screenshots_count}
                                 onSkipStep={this.onUpdateRegistrationStep} />;
-  },
+  }
 
   renderProjectForm() {
     return <div>
@@ -320,7 +316,7 @@ export default React.createClass({
       <RegisterProject access_token={this.props.user.access_token}
                        onSubmit={this.props.refreshCurrent} />
     </div>;
-  },
+  }
 
   renderFinishForm() {
     let formEndpoint = `projects/${this.props.registration.pending_project.id}/finish`;
@@ -328,7 +324,7 @@ export default React.createClass({
                            pending_project_title={this.props.registration.pending_project.title}
                            onSubmit={this.props.refreshCurrent}
                            formEndpoint={formEndpoint} />;
-  },
+  }
 
   renderRegisteredProjects() {
     let registerAnother = null;
@@ -355,7 +351,7 @@ export default React.createClass({
       <p>Proiectele vor trebui să fie aprobate ca să apară în secțiunea de
       participanți</p>
     </div>;
-  },
+  }
 
   renderSkipAdditionalContestant() {
     return <div>
@@ -363,7 +359,7 @@ export default React.createClass({
       <a href="#" data-step="5" onClick={this.onUpdateRegistrationStep}>click aici
       </a>.</p>
     </div>;
-  },
+  }
 
   renderError() {
     if (!this.state.hasErrored) {
@@ -375,13 +371,13 @@ export default React.createClass({
         A apărut o eroare la comunicarea cu serverul. Mai incercă o dată.
       </ListGroupItem>
     </ListGroup>;
-  },
+  }
 
   onHandlePanelSelect(nextActivePanelKey) {
     this.setState({
       activePanelKey: nextActivePanelKey
     });
-  },
+  }
 
   onUpdateRegistrationStep(event) {
     event.preventDefault();
@@ -401,13 +397,13 @@ export default React.createClass({
       success: this.props.refreshCurrent,
       error: this.showError
     });
-  },
+  }
 
   showError() {
     this.setState({
       hasErrored: true
     });
-  },
+  }
 
   _getPanelStyle(panelId) {
     if (panelId < this.props.user.registration_step_number) {
@@ -418,4 +414,4 @@ export default React.createClass({
     }
     return "warning";
   }
-});
+}

@@ -1,7 +1,5 @@
-"use strict";
+// @flow
 
-import $ from "jquery";
-import _ from "lodash";
 import ajax from "../../lib/ajax"
 import React from "react";
 import { Grid, Col, Row, Glyphicon, Table } from "react-bootstrap";
@@ -16,44 +14,40 @@ import ProjectCard from "./project_card";
 import FilterIcon from "./filter_icon";
 
 
-export default React.createClass({
-  displayName: "Contestants",
-
+export default class Contestants extends React.Component {
   componentDidMount() {
     this.props.refreshCurrent();
     this.getContestants();
-  },
+  }
 
-  getInitialState: function() {
-    return {
-      projects: [],
-      hasError: false,
-      showGrid: false,
-      showTable: true,
-      currentCategory: "all",
-      selectedEdition: this.props.edition
-   };
-  },
+  state = {
+    projects: [],
+    hasError: false,
+    showGrid: false,
+    showTable: true,
+    currentCategory: "all",
+    selectedEdition: this.props.edition
+  }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.edition.name !== this.props.edition.name) {
       this.setState({ selectedEdition: nextProps.edition });
     }
-  },
+  }
 
   showGrid() {
     this.setState({
       showTable: false,
       showGrid: true
     });
-  },
+  }
 
   showTable() {
     this.setState({
       showTable: true,
       showGrid: false
     });
-  },
+  }
 
   toggleCategory(category) {
     if (this.state.currentCategory === category) {
@@ -63,13 +57,13 @@ export default React.createClass({
     this.setState({
       currentCategory: category
     });
-  },
+  }
 
   renderErrors() {
     if (this.state.hasError) {
       return <p>"Datele nu au putut fi luate de pe server."</p>;
     }
-  },
+  }
 
   renderProjectRow(project){
     let row = null;
@@ -100,7 +94,7 @@ export default React.createClass({
     }
 
     return row;
-  },
+  }
 
   renderTable() {
     let table = null;
@@ -126,7 +120,7 @@ export default React.createClass({
       </Row>;
     }
     return table;
-  },
+  }
 
   renderProjectCard(project) {
     let card = null;
@@ -138,7 +132,7 @@ export default React.createClass({
     }
 
     return card;
-  },
+  }
 
   renderGrid() {
     let grid = null;
@@ -150,7 +144,7 @@ export default React.createClass({
     }
 
     return grid;
-  },
+  }
 
   render() {
     let gridClassName = ctx({
@@ -276,7 +270,7 @@ export default React.createClass({
         {this.renderErrors()}
       </Grid>
     </div>;
-  },
+  }
 
   getContestants(editionId) {
     let data = editionId ? { edition: editionId } : {};
@@ -294,10 +288,10 @@ export default React.createClass({
       }
     });
 
-  },
+  }
 
   onEditionChange(edition) {
     this.getContestants(edition.id);
     this.setState({ selectedEdition: edition });
   }
-});
+}

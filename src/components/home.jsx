@@ -1,17 +1,14 @@
-"use strict";
+// @flow
 
-import $ from "jquery";
-import _ from "lodash";
 import React from "react";
-import { Link } from 'react-router';
-import {Grid, Row, Col, Glyphicon} from "react-bootstrap";
+import { Link } from 'react-router-dom';
+import {Grid, Row, Col} from "react-bootstrap";
 
 import Header from "./header";
 import NewsContainer from "./news/news-container";
 
 import "../main.less";
 import Google from "../../assets/img/sponsors/google.png";
-import Intel from "../../assets/img/sponsors/intel.png";
 import Orange from "../../assets/img/sponsors/orange.png";
 import EasyHost from "../../assets/img/sponsors/easyhost.png";
 import Cisco from "../../assets/img/sponsors/cisco.png";
@@ -19,14 +16,7 @@ import Intuitext from "../../assets/img/sponsors/intuitext.gif";
 import Apdetic from "../../assets/img/sponsors/apdetic.png";
 import Upir from "../../assets/img/sponsors/upir.png";
 import MEN from "../../assets/img/sponsors/edu.jpg";
-import CloudBase from "../../assets/img/sponsors/cloudbase.png";
-//import iMedicare from "../../assets/img/sponsors/imedicare.png";
-//import eSkills from "../../assets/img/sponsors/eskills.png";
-//import gwc from "../../assets/img/sponsors/girlswhocode.png";
 import leonte from "../../assets/img/sponsors/leonte.png";
-import altex from "../../assets/img/sponsors/altex.gif";
-//import GInfo from "../../assets/img/sponsors/ginfo.png";
-//import GreenGroup from "../../assets/img/sponsors/greengroup.png";
 import MTS from "../../assets/img/sponsors/mts.jpg";
 import VivaCredit from "../../assets/img/sponsors/vivacredit.png"
 import OracleAcademy from "../../assets/img/sponsors/academy_wht.gif"
@@ -37,27 +27,25 @@ import Certsign from "../../assets/img/sponsors/certsign.jpg"
 
 
 
-export default React.createClass({
-  displayName: "Home",
-
+export default class Home extends React.Component {
   renderCampDate() {
     let monthNames = ["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai",
        "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie",
        "Decembrie"
     ];
 
-    if (this.props.edition.camp_start_date === undefined) {
+    if (this.props.current.edition.camp_start_date === undefined) {
       return null;
     }
 
-    let startDate = new Date(this.props.edition.camp_start_date);
-    let endDate = new Date(this.props.edition.camp_end_date);
+    let startDate = new Date(this.props.current.edition.camp_start_date);
+    let endDate = new Date(this.props.current.edition.camp_end_date);
 
     let month = monthNames[endDate.getMonth()];
     let year = 1900 + endDate.getYear();
 
     return `${startDate.getDate()} - ${endDate.getDate()} ${month} ${year}`;
-  },
+  }
 
   render() {
     return <div className="home">
@@ -262,16 +250,11 @@ export default React.createClass({
                             <a href="http://asociatiait.ro/" target="_blank">
                               <img src={Apdetic} />
                             </a>
-
-
-
                         </p>
                     </Col>
                 </Row>
-
-
             </Grid>
         </div>
     </div>;
   }
-});
+}

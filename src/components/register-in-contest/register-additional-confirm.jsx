@@ -1,16 +1,12 @@
-"use strict";
+// @flow
 
 import React from "react";
-import _ from "lodash";
 import { Button, FormGroup } from "react-bootstrap";
 
 import FormMixin from "../../mixins/form"
 
 
-export default React.createClass({
-  displayName: "RegisterAdditionalConfirm",
-  mixins: [FormMixin],
-
+export default class RegisterAdditionalConfirm extends FormMixin {
   render() {
     return <form onSubmit={this.onFormSubmit}>
       <FormGroup>
@@ -21,11 +17,11 @@ export default React.createClass({
       </FormGroup>
       {this.renderErrors()}
     </form>;
-  },
+  }
 
   getFormData() {
     return {
       contestant_id: this.props.contestantId
     };
   }
-});
+}

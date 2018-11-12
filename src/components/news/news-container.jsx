@@ -1,4 +1,4 @@
-"use strict";
+// @flow
 
 import $ from "jquery";
 import _ from "lodash";
@@ -10,19 +10,15 @@ import Article from "./article";
 import "../../main.less";
 
 
-export default React.createClass({
-  displayName: "NewsContainer",
-
-  getInitialState() {
-    return {
-      currentPage: 1,
-      newsPerPage: 2,
-      canShowNext: false,
-      canShowPrevious: false,
-      news: [],
-      pinned: null
-    };
-  },
+export default class NewsContainer extends React.Component {
+  state = {
+    currentPage: 1,
+    newsPerPage: 2,
+    canShowNext: false,
+    canShowPrevious: false,
+    news: [],
+    pinned: null
+  }
 
   componentDidMount() {
     $.ajax({
@@ -30,7 +26,7 @@ export default React.createClass({
       url: window.config.API_URL + "news.json",
       success: this.onSuccess
     });
-  },
+  }
 
   onSuccess(data) {
     let news = data.filter((article) => {
@@ -48,16 +44,16 @@ export default React.createClass({
       pinned: pinned[0],
       canShowNext: news.length > this.state.newsPerPage
     });
-  },
+  }
 
   canShowNextPage() {
     return ((this.state.currentPage + 1) * this.state.newsPerPage) <
             this.state.news.length;
-  },
+  }
 
   canShowPreviousPage() {
     return this.state.currentPage - 1 > 1;
-  },
+  }
 
   showNextNewsPage() {
     this.setState({
@@ -65,7 +61,7 @@ export default React.createClass({
       canShowNext: this.canShowNextPage(),
       canShowPrevious: true
     });
-  },
+  }
 
   showPreviousNewsPage() {
     this.setState({
@@ -73,7 +69,7 @@ export default React.createClass({
       canShowPrevious: this.canShowPreviousPage(),
       canShowNext: true
     });
-  },
+  }
 
   renderNews() {
     let firstArticle = (this.state.currentPage - 1) * this.state.newsPerPage;
@@ -85,7 +81,7 @@ export default React.createClass({
                       short={article.short}
                       created_at={article.created_at} />;
     });
-  },
+  }
 
   renderPreviousPageLink() {
     let previousPageController = null;
@@ -98,7 +94,7 @@ export default React.createClass({
     }
 
     return <Col md={4} mdOffset={2}>{previousPageController}</Col>;
-  },
+  }
 
   renderNextPageLink() {
     let nextPageController = null;
@@ -111,7 +107,7 @@ export default React.createClass({
     }
 
     return <Col md={4}>{nextPageController}</Col>;
-  },
+  }
 
   renderPinnedArticle() {
     if (!this.state.pinned) {
@@ -124,7 +120,7 @@ export default React.createClass({
                short={this.state.pinned.short}
                created_at={this.state.pinned.created_at} />
     </Row>;
-  },
+  }
 
   render() {
     return <Grid className="news-section">
@@ -146,4 +142,4 @@ export default React.createClass({
       <Row className="xsmall-spacing" />
     </Grid>;
   }
-});
+}

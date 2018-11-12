@@ -1,21 +1,15 @@
-"use strict";
+// @flow
 
 import React from "react";
-import _ from "lodash";
 import { FormControl, FormGroup, ControlLabel, Button } from "react-bootstrap";
 
 import FormMixin from "../../mixins/form"
 
 
-export default React.createClass({
-  displayName: "RegisterAdditional",
-  mixins: [FormMixin],
-
-  getInitialState() {
-    return {
-      additionalEmail: ""
-    };
-  },
+export default class RegisterAdditional extends FormMixin {
+  state = {
+    additionalEmail: ""
+  }
 
   render() {
     return <form onSubmit={this.onFormSubmit}>
@@ -35,18 +29,18 @@ export default React.createClass({
         </Button>
       </FormGroup>
     </form>;
-  },
+  }
 
   onInputEmailChange(event) {
     let email = event.target.value;
     this.setState({
       additionalEmail: email
     });
-  },
+  }
 
   getFormData() {
     return {
       email: this.state.additionalEmail
     };
   }
-});
+}

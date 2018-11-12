@@ -1,4 +1,4 @@
-"use strict";
+// @flow
 
 import React from "react";
 
@@ -8,9 +8,7 @@ import Header from "./header";
 import "../main.less";
 
 
-export default React.createClass({
-  displayName: "ContactPage",
-
+export default class ContactPage extends React.Component {
   render() {
     return <div className="contact">
       <div className="blue-section-wrapper">
@@ -71,4 +69,4 @@ export default React.createClass({
       </Grid>
     </div>;
   }
-});
+}

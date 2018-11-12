@@ -1,4 +1,4 @@
-"use strict";
+// @flow
 
 import $ from "jquery";
 import _ from "lodash";
@@ -6,15 +6,13 @@ import ajax from "../lib/ajax"
 import {FormControl} from "react-bootstrap";
 import React from "react";
 
+type Props = {
+  onCallback: Function,
+  filters: Array,
+  filter: string
+}
 
-export default class EditionSelector extends React.Component {
-  static displayName = "EditionSelector"
-  static propTypes = {
-    onCallback: React.PropTypes.func.isRequired,
-    filters: React.PropTypes.array,
-    filter: React.PropTypes.string
-  }
-
+export default class EditionSelector extends React.Component<Props> {
   state = {
     editions: [],
     selectedEditionId: 0

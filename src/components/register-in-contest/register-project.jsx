@@ -1,4 +1,4 @@
-"use strict";
+// @flow
 
 import React from "react";
 import _ from "lodash";
@@ -7,40 +7,35 @@ import { FormControl, ControlLabel, FormGroup, Button } from "react-bootstrap";
 import FormMixin from "../../mixins/form"
 
 
-export default React.createClass({
-  displayName: "RegisterProject",
-  mixins: [FormMixin],
-
+export default class RegisterProject extends FormMixin {
   getDefaultProps() {
     return {
       formEndpoint: "projects.json"
     };
-  },
+  }
 
-  getInitialState() {
-    return {
-      project: {
-        /*eslint-disable */
-        title: "",
-        category: "educational",
-        description: "",
-        technical_description: "",
-        system_requirements: "",
-        source_url: "",
-        homepage: "",
-        open_source: "true",
-        closed_source_reason: "",
-        github_username: ""
-        /*eslint-enable */
-      }
-    };
-  },
+  state = {
+    project: {
+      /*eslint-disable */
+      title: "",
+      category: "educational",
+      description: "",
+      technical_description: "",
+      system_requirements: "",
+      source_url: "",
+      homepage: "",
+      open_source: "true",
+      closed_source_reason: "",
+      github_username: ""
+      /*eslint-enable */
+    }
+  }
 
   onChange(field, event) {
     let project = _.clone(this.state.project);
     project[field] = event.target.value;
     this.setState({ project: project });
-  },
+  }
 
   renderOpenSource() {
     let openSource = null;
@@ -56,7 +51,7 @@ export default React.createClass({
         </FormGroup>;
     }
     return openSource;
-  },
+  }
 
   renderWantsOpenSource() {
     let wantsOpenSource = "";
@@ -131,7 +126,7 @@ export default React.createClass({
     }
 
     return wantsOpenSource;
-  },
+  }
 
   render() {
     return <form onSubmit={this.onFormSubmit}>
@@ -197,7 +192,7 @@ export default React.createClass({
       </FormGroup>
       {this.renderErrors()}
     </form>;
-  },
+  }
 
   getFormData() {
     let data = {};
@@ -208,7 +203,7 @@ export default React.createClass({
     });
 
     return data;
-  },
+  }
 
   onCategoryChange(event) {
     let projectState = _.clone(this.state.project);
@@ -226,7 +221,7 @@ export default React.createClass({
     }
 
     this.setState({project: projectState});
-  },
+  }
 
   onOpenSourceChange(event) {
     let projectState = _.clone(this.state.project);
@@ -236,4 +231,4 @@ export default React.createClass({
     projectState.source_url = "";
     this.setState({project: projectState});
   }
-});
+}

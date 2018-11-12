@@ -1,7 +1,7 @@
-"use strict";
+// @flow
 
 import React from "react";
-import { Navbar, Nav, NavItem, Row, Col, Thumbnail, Grid } from "react-bootstrap";
+import { Navbar, Nav, NavItem, Row, Col, Grid } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { Link } from 'react-router';
 
@@ -13,16 +13,15 @@ import Github from "../../assets/img/icons/github.png";
 
 import NewsletterForm from "./newsletter-form";
 
-export default React.createClass({
-  displayName: "Footer",
-
+export default class Footer extends React.Component {
   renderResultsContestants() {
-    if (this.props.current.edition.id != this.props.current.last_edition_with_results.id) {
+    console.log(this.props)
+    if (this.props.current.edition.id !== this.props.current.last_edition_with_results.id) {
       return <LinkContainer to="/rezultate"><NavItem>Rezultate</NavItem></LinkContainer>;
     } else {
       return <LinkContainer to="/participanti"><NavItem>Participanți</NavItem></LinkContainer>;
     }
-  },
+  }
 
   render() {
     return <Grid className="footer">
@@ -68,4 +67,4 @@ export default React.createClass({
       </Row>
     </Grid>;
   }
-});
+}

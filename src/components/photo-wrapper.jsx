@@ -1,15 +1,13 @@
-"use strict";
+// @flow
 
 import React from "react";
 import ctx from "classnames";
 
 
-export default React.createClass({
-  displayName: "PhotoWrapper",
-
+export default class PhotoWrapper extends React.Component {
   render() {
-    var className = ctx("cover", "year-" + this.props.year,
-                        {hover: this.props.hovered});
+    const className = ctx("cover", "year-" + this.props.year,
+                          {hover: this.props.hovered});
     return <div className="photo-cover-wrapper">
         <div className="photo-cover">
           <a href={this.props.link} target="_blank"
@@ -26,4 +24,4 @@ export default React.createClass({
         </div>
     </div>;
   }
-});
+}

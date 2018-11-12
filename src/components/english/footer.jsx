@@ -1,9 +1,9 @@
-"use strict";
+// @flow
 
 import React from "react";
-import { Navbar, Nav, NavItem, Row, Col, Thumbnail, Grid } from "react-bootstrap";
+import { Navbar, Nav, NavItem, Row, Col, Grid } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { Route, Link, RouteHandler } from 'react-router';
+import { Link, RouteHandler } from 'react-router';
 
 import "../footer.less";
 import Facebook from "../../../assets/img/icons/fb.png";
@@ -11,11 +11,8 @@ import Twitter from "../../../assets/img/icons/twitter.png";
 import Google from "../../../assets/img/icons/gplus.png";
 import Github from "../../../assets/img/icons/github.png";
 
-import NewsletterForm from "../newsletter-form";
 
-export default React.createClass({
-  displayName: "FooterEnglish",
-
+export default class FooterEnglish extends React.Component {
   render() {
     return <Grid className="footer">
       <Row className="small-spacing" />
@@ -55,4 +52,4 @@ export default React.createClass({
       </Row>
     </Grid>;
   }
-});
+}

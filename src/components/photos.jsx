@@ -1,4 +1,4 @@
-"use strict";
+// @flow
 
 import React from "react";
 import {Grid, Row, Col} from "react-bootstrap";
@@ -22,25 +22,24 @@ import Cover2005 from "../../assets/img/2005.jpg";
 import Cover2004 from "../../assets/img/2004.jpg";
 
 
-export default React.createClass({
-  displayName: "Photos",
-  getInitialState() {
-    return {
-        hoveredYear: 0,
-        albums: [
-            {"year": 2014, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6126213014251955681"},
-            {"year": 2013, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6126511874123551857"},
-            {"year": 2012, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6126529418024686801"},
-            {"year": 2011, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6126950217304487537"},
-            {"year": 2010, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127300307304376961"},
-            {"year": 2009, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127325200239501089"},
-            {"year": 2008, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127559291932668561"},
-            {"year": 2007, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127715315645838257"},
-            {"year": 2006, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127337195835590657"},
-            {"year": 2005, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127307525772879729"},
-            {"year": 2004, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127315862395135249"}
-        ]};
-  },
+export default class Photos extends React.Component {
+
+  state = {
+    hoveredYear: 0,
+    albums: [
+        {"year": 2014, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6126213014251955681"},
+        {"year": 2013, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6126511874123551857"},
+        {"year": 2012, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6126529418024686801"},
+        {"year": 2011, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6126950217304487537"},
+        {"year": 2010, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127300307304376961"},
+        {"year": 2009, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127325200239501089"},
+        {"year": 2008, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127559291932668561"},
+        {"year": 2007, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127715315645838257"},
+        {"year": 2006, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127337195835590657"},
+        {"year": 2005, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127307525772879729"},
+        {"year": 2004, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127315862395135249"}
+    ]
+  }
 
   render() {
     return <div className="photos">
@@ -83,11 +82,11 @@ export default React.createClass({
             </Grid>
         </div>
     </div>;
-  },
+  }
 
   onCoverHover(event) {
     this.setState({
         hoveredYear: parseInt(event.currentTarget.className)
     });
   }
-});
+}
