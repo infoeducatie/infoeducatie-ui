@@ -34,7 +34,7 @@ import Bitdefender from "../../assets/img/sponsors/bitdefender.jpg"
 import Microsoft from "../../assets/img/sponsors/microsoft.jpg"
 import Xpress from "../../assets/img/sponsors/xpress.jpg"
 import Certsign from "../../assets/img/sponsors/certsign.jpg"
-
+import CJVrancea from "../../assets/img/sponsors/logoCJVrancea.jpg"
 
 
 export default React.createClass({
@@ -172,8 +172,8 @@ export default React.createClass({
             <Row>
                 <Col xs={12}>
                     <p className="logos">
-                        <a href="http://mts.ro/" target="_blank">
-                          <img src={MTS} />
+                        <a href="https://cjvrancea.ro/" target="_blank">
+                          <img src={CJVrancea} />
                         </a>
                         <a href="http://upir.ro/ro/" target="_blank">
                           <img src={Upir} />
@@ -208,9 +208,7 @@ export default React.createClass({
                             <a href="http://google.ro" target="_blank">
                               <img src={Google} />
                             </a>
-                            <a href="http://microsoft.ro" target="_blank">
-                              <img src={Microsoft} />
-                            </a>
+                            
                             <a href="http://bitdefender.com" target="_blank">
                               <img src={Bitdefender} />
                             </a>
