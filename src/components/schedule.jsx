@@ -36,8 +36,8 @@ export default React.createClass({
       <Grid className="white-section">
         <Row className="small-spacing" />
         <Row>
-          <Col md={7} mdOffset={3}>
-             <iframe src="https://docs.google.com/document/d/e/2PACX-1vQz-NVhgvureOLg6ozvzYfboeAfNGkFY0cxFJkTDperOPEZK9hWzwwPNWWWM4yCmQWWrzQy1Ez1HQdN/pub"></iframe>
+          <Col md={9} mdOffset={3}>
+             <iframe src="https://docs.google.com/document/d/e/2PACX-1vQ2MHJtUWxr8oOfogWwPRcojmD_0qIVh52MqO3oGAeTb54i0r8mIoIZJThJpqeoojF1cJdB2iSOdKJr/pub?embedded=true"></iframe>
           </Col>
         </Row>
       </Grid>
