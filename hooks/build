@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+APP_ENV="production"
+if [ "$DOCKER_TAG" = "staging" ]; then
+    APP_ENV="staging"
+elif [ "$DOCKER_TAG" = "development" ]; then
+    APP_ENV="development"
+fi
+
+docker build --build-arg APP_ENV=${APP_ENV} -t "${IMAGE_NAME}" .

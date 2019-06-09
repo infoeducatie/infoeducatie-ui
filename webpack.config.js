@@ -29,15 +29,15 @@ module.exports = {
       { test: /\.png$/, loader: "url-loader?limit=10000&minetype=image/png" },
       { test: /\.gif$/, loader: "url-loader?limit=10000&minetype=image/gif" },
       { test: /\.jpg$/, loader: "url-loader?limit=10000&minetype=image/jpg" },
-      { test: /\.less$/, loader: "style!css!postcss-loader!less" },
-      { test: /\.css$/, loader: "style!css!postcss-loader" },
+      { test: /\.less$/, loader: "style-loader!css-loader!postcss-loader!less-loader" },
+      { test: /\.css$/, loader: "style-loader!css-loader!postcss-loader" },
       { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=50000&minetype=application/font-woff" },
       { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader?limit=50000" },
     ]
   },
 
   resolve: {
-    extensions: ["", ".js", ".jsx"]
+    extensions: [".js", ".jsx"]
   },
 
   plugins: [
