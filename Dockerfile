@@ -15,8 +15,8 @@ WORKDIR /data
 ADD package.json /data
 RUN npm install
 
-ARG APP_ENV=production
-ARG NODE_ENV=production
+ENV APP_ENV production
+ENV NODE_ENV production
 
 ADD . /data
 RUN npm run build
