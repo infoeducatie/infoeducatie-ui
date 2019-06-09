@@ -1,5 +1,4 @@
-﻿"use strict";
-
+"use strict";
 
 import $ from "jquery";
 import _ from "lodash";
