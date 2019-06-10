@@ -1,5 +1,5 @@
-FROM node:4.4
-RUN printf "deb http://archive.debian.org/debian/ jessie main\ndeb-src http://archive.debian.org/debian/ jessie main\ndeb http://security.debian.org jessie/updates main\ndeb-src http://security.debian.org jessie/updates main" > /etc/apt/sources.list
+FROM node:8-stretch
+
 RUN apt-get update -y && \
     apt-get install --no-install-recommends -y nginx && \
     apt-get clean && \
