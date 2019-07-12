@@ -9,18 +9,13 @@ import JuryDescription from "./jury-description";
 import "../main.less";
 import gravatar from "../lib/gravatar";
 import AlexandruIonascu from "../../assets/img/jury/Alexandru_Ionascu.jpg";
-import RuxandraCotop from "../../assets/img/jury/Ruxandra_Cotop.jpg";
-import AndreiHodorog from "../../assets/img/jury/Andrei_Hodorog.jpg";
 import RobertColca from "../../assets/img/jury/Robert_Colca.jpg";
 import StefanDinescu from "../../assets/img/jury/Stefan_Dinescu.jpg";
 import MichaelTrett from "../../assets/img/jury/Michael_Trett.jpg";
 import StefanMunteanu from "../../assets/img/jury/Stefan_Munteanu.png";
 import AndreiCasuneanu from "../../assets/img/jury/Andrei_Casuneanu.jpg";
 import DariusCostolos from "../../assets/img/jury/Darius_Costolos.jpg";
-import AndreiTurcu from "../../assets/img/jury/Andrei_Turcu.jpg";
-import DianaMarin from "../../assets/img/jury/Diana_Marin.jpg";
-import MugurelEnache from "../../assets/img/jury/Mugurel_Enache.jpg";
-import bogdan_bocse from "../../assets/img/jury/bogdan_bocse.jpg";
+//import bogdan_bocse from "../../assets/img/jury/bogdan_bocse.jpg";
 import AlexandruAvatar from "../../assets/img/jury/alexandru_cristian.jpg";
 import CezarAvatar from "../../assets/img/jury/cezar_andrici.jpg";
 import CasianAvatar from "../../assets/img/jury/casian_lacatusu.jpg";
@@ -35,103 +30,98 @@ import MihaiAgapeAvatar from "../../assets/img/jury/mihai_agape.jpg";
 import MarilenaAvatar from "../../assets/img/jury/marilena_oprea.jpg";
 import PetruAvatar from "../../assets/img/jury/petru_dimitriu.jpg";
 import RazvanDeaconescuAvatar from "../../assets/img/jury/razvan_deaconescu.jpg";
-import RodicaPinteaAvatar from "../../assets/img/jury/rodica_pintea.jpg";
+//import RodicaPinteaAvatar from "../../assets/img/jury/rodica_pintea.jpg";
 import StefanAvatar from "../../assets/img/jury/stefan_stolniceanu.jpg";
-import StelianNiculescuAvatar from "../../assets/img/jury/stelian_niculescu.jpg";
+//import StelianNiculescuAvatar from "../../assets/img/jury/stelian_niculescu.jpg";
 import ValerAvatar from "../../assets/img/jury/valer_szabo.jpg";
 import VladAvatar from "../../assets/img/jury/vlad_durnea.jpg";
 import DefaultAvatar from "../../assets/img/jury/default.png";
 import DefaultDocument from "../../assets/img/icons/doc.png";
-import RughinisAvatar from "../../assets/img/jury/razvanrughinis.jpg";
+//import RughinisAvatar from "../../assets/img/jury/razvanrughinis.jpg";
 
 
 export default React.createClass({
   displayName: "Jury",
   render() {
     let presedinte = [
-    {"avatar": RughinisAvatar, "name": "dr. Răzvan Rughiniș", "occupation": "Profesor @ Universitatea Politehnică din București"},
+    {"avatar": DomsaAvatar, "name": "dr. Ovidiu  Domșa", "occupation": "Profesor @Universitatea \"1 Decembrie\" Alba Iulia"},
     ];
 
     let presedinteExecutiv = [
       {"avatar": DefaultAvatar, "name": "Cornelia Neacșu", "occupation": "Colegiul National Unirea"}
       //{"avatar": MarilenaAvatar, "name": "Marilena Oprea", "occupation": "I.S.J. Vrancea"}
     ];
-    let presedinteOnorific = [
+  //  let presedinteOnorific = [
 
-      {"avatar": StelianNiculescuAvatar, "name": "Stelian Niculescu", "occupation": ""}
-    ];
+  //    {"avatar": StelianNiculescuAvatar, "name": "Stelian Niculescu", "occupation": ""}
+//    ];
 
     let secretar = [
-      {"avatar": FasanAvatar, "name": "Fâsan Mihail", "occupation": "I.S.J. Vrancea"}
+      {"avatar": DefaultAvatar, "name": "Cristina Ionescu", "occupation": "Școala Nr.5 Focșani"}
       //  {"avatar": DanielPopaAvatar, "name": "Daniel Popa", "occupation": "profesor @ Colegiul National 'Aurel Vlaicu' Orastie"}
     ];
 
     let comisiaTehnica = [
       {"avatar": EmilOneaAvatar, "name": "Emil Onea", "occupation": "Profesor @ Colegiul Naţional “Unirea“ Focşani"},
       {"avatar": DefaultAvatar, "name": "Dan Roșioru", "occupation": "Profesor @ Colegiul Naţional “Unirea“ Focşani"},
-      {"avatar": DefaultAvatar, "name": "Daniel Gherasim", "occupation": "Profesor la CCD Vrancea"},
-      {"avatar": DefaultAvatar, "name": "Cristina Ionescu", "occupation": "Profesor @ Școala Nr.5 Focșani"}
+      //{"avatar": DefaultAvatar, "name": "Daniel Gherasim", "occupation": "Profesor la CCD Vrancea"},
+      //{"avatar": DefaultAvatar, "name": "Cristina Ionescu", "occupation": "Profesor @ Școala Nr.5 Focșani"}
 
     ];
 
     var educational = [
-        {"avatar": DomsaAvatar, "name": "Domșa Ovidiu", "occupation": "Lector la Universitatea 1 Decembrie Alba Iulia"},
-        {"avatar": DianaMarin, "name": "Diana Marin", "occupation": "Student la University of Leeds"},
-        {"avatar": MugurelEnache, "name": "Mugurel Enache", "occupation": "Student la University of Leeds"},
+        {"avatar": DanielPopaAvatar, "name": "Daniel Popa", "occupation": "profesor @ Liceul Teoretic 'Aurel Vlaicu' Orastie"},
+        //{"avatar": DomsaAvatar, "name": "Domșa Ovidiu", "occupation": "Lector la Universitatea 1 Decembrie Alba Iulia"},
         {"avatar": PetruAvatar, "name": "Petru Dimitriu", "occupation": "Student la Universitatea Tehnică Gheroghe Asachi din Iași, Facultatea de Automatică și Calculatoare"},
-        {"avatar": DefaultAvatar, "name": "Miana Arișanu", "occupation": "Profesor @ Colegiul National Mircea cel Batran Rm. Valcea "},
-        {"avatar": DefaultAvatar, "name": "Narcisa Dima", "occupation": "Profesor @ Liceul Teoretic Ion Barbu, Pitesti"},
-        {"avatar": DefaultAvatar, "name": "Emanuel Covaci", "occupation": ""},
+        {"avatar": DefaultAvatar, "name": "Arișanu Ana-Maria", "occupation": "Profesor @ Colegiul National Mircea cel Batran Rm. Valcea "},
         {"avatar": DefaultAvatar, "name": "Roxana Tâmplaru", "occupation": "Profesor @ Colegiul „Stefan Odobleja” Craiova"},
-        {"avatar": DefaultAvatar, "name": "Vlad Georgie", "occupation": "ISJ Suceava"},
-        {"avatar": DefaultAvatar, "name": "Raul Maier", "occupation": "Software developer at AbiCybernetics"}
+        {"avatar": DefaultAvatar, "name": "Narcisa Dima", "occupation": "Profesor @ Liceul Teoretic Ion Barbu, Pitesti"},
+        {"avatar": DefaultAvatar, "name": "Nechita Ionuț", "occupation": "Facultatea de Calculatoare, Automatică și Inginerie Electrică Galați"},
 
     ];
     var media = [
         {"avatar": DefaultAvatar, "name": "Cătălina Burlacu", "occupation": "Profesor @ Colegiul Dunărea Galaţi"},
-        {"avatar": AndreiTurcu, "name": "Andrei Turcu", "occupation": " Student la ASE Cibernetica Bucuresti"},
         {"avatar": DefaultAvatar, "name": "Liliana Nesu", "occupation": "Profesor @ Colegiul National Unirea din Focsani"},
         {"avatar": DefaultAvatar, "name": "Nechita Ionuț", "occupation": "Student la Facultatea de Calculatoare, Automatica si Inginerie Electrica Galati"},
-        {"avatar": DefaultAvatar, "name": "Catalin Daniel Anghel", "occupation": ""},
-        {"avatar": DefaultAvatar, "name": "Volintieru Cristina Iona", "occupation": "Univ. Politehnica Timisoara"},
-        {"avatar": DefaultAvatar, "name": "Antonia Haller", "occupation": "Profesor @ CN Mircea cel Batran, Rm. Vâlcea"},
-        {"avatar": DefaultAvatar, "name": "Alexandru Bogdan Vulpescu", "occupation": ""},
-        {"avatar": DefaultAvatar, "name": "Coralia Mihaela Bodea", "occupation": ""},
+        {"avatar": DefaultAvatar, "name": "Catalin Daniel Anghel", "occupation": "Universitatea Spiru Haret București"},
+        {"avatar": DefaultAvatar, "name": "Antonia Haller", "occupation": "Profesor @ CN Mircea cel Batran, Rm. Valcea"},
+        {"avatar": DefaultAvatar, "name": "Alexandru Vulpescu", "occupation": "Universitatea Spiru Haret București"},
+        {"avatar": DefaultAvatar, "name": "Coralia Bodea", "occupation": "Universitatea Politehnica Timisoara"},
         {"avatar": DefaultAvatar, "name": "Coșniță Elena", "occupation": "Profesor @ Liceul Teoretic Miron Costin Pascani"}
 
     ];
     var robots = [
-        {"avatar": MihaiAgapeAvatar, "name": "Mihai Agape", "occupation": "Profesor @ Palatul Copiilor Drobeta Turnu Severin, Filiala Orșova"},
-        {"avatar": DanielPopaAvatar, "name": "Daniel Popa", "occupation": "profesor @ Colegiul National 'Aurel Vlaicu' Orastie"},
+        //{"avatar": MihaiAgapeAvatar, "name": "Mihai Agape", "occupation": "Profesor @ Palatul Copiilor Drobeta Turnu Severin, Filiala Orșova"},
+        {"avatar": DefaultAvatar, "name": "Laviniu Bejenaru", "occupation": "Profesor @ Colegiul National 'Traian' din Drobeta Turnu Severin"},
         {"avatar": DefaultAvatar, "name": "Marian Stoica", "occupation": "Student la FMI Bucuresti"},
-        {"avatar": RuxandraCotop, "name": "Ruxandra Cotop", "occupation": "Studenta la UBB Cluj"},
         {"avatar": DefaultAvatar, "name": "Stan Maria", "occupation": "Profesor @ Colegiul Tehnic Radu Negru Galaţi"},
-        {"avatar": DefaultAvatar, "name": "Rareș Iova", "occupation": ""},
         {"avatar": DefaultAvatar, "name": "Preda Robert", "occupation": "Universitatea Politehnică Timișoara"},
         {"avatar": DefaultAvatar, "name": "Carmen Bardita", "occupation": "Profesor @ Liceul Teoretic Stefan Procopiu Vaslui"},
-        {"avatar": DefaultAvatar, "name": "Laviniu Bejenaru", "occupation": "Profesor @ Colegiul National 'Traian' din Drobeta Turnu Severin"}
+        {"avatar": DefaultAvatar, "name": "Ciobanu Laurențiu", "occupation": "Universitatea Transilvania Brasov"},
+        {"avatar": DefaultAvatar, "name": "Dimitrie Filip", "occupation": "Colegiul Național \"Nicu Gane\" Fălticeni"},
+        {"avatar": DefaultAvatar, "name": "Marius Crainic", "occupation": "Colegiul ”Mihai Viteazul” Ineu"},
+
     ];
     var utilitar = [
-        {"avatar": RazvanDeaconescuAvatar, "name": "Răzvan Deaconescu", "occupation": "Șef lucrări @ Universitatea Politehnică din București"},
+        {"avatar": DefaultAvatar, "name": "Cristina Anton", "occupation": "CCD Brăila"},
+        //{"avatar": RazvanDeaconescuAvatar, "name": "Răzvan Deaconescu", "occupation": "Șef lucrări @ Universitatea Politehnică din București"},
         {"avatar": DefaultAvatar, "name": "Bibicu Dorin", "occupation": "Profesor @ Liceul Teoretic Dunărea Galaţi"},
         {"avatar": DefaultAvatar, "name": "Valentin Mocanu", "occupation": "Student la Universitatea Politehnica din Bucuresti"},
         {"avatar": DefaultAvatar, "name": "Penu Ionela", "occupation": "Profesor @ Scoala Gimnazială Miron Costin Galați"},
-        {"avatar": DefaultAvatar, "name": "Cristina Anton", "occupation": "CCD Brăila"},
-        {"avatar": DefaultAvatar, "name": "Alexie Dariciuc", "occupation": ""},
-        {"avatar": StefanMunteanu, "name": "Stefan Munteanu", "occupation": "Student la UAIC Iasi"},
-        {"avatar": DefaultAvatar, "name": "Salajan Romana", "occupation": ""},
+        {"avatar": DefaultAvatar, "name": "Salajan Romana", "occupation": "Liceul National de Informatica Arad"},
+        {"avatar": DefaultAvatar, "name": "Edvin Mako", "occupation": "Slovak University of Technology, Vanilla Apps"},
+        {"avatar": DefaultAvatar, "name": "Luca Sas", "occupation": "Student la University Of Leeds"},
+        {"avatar": DefaultAvatar, "name": "Denis Troncotă", "occupation": "Universitatea Politehnica Timișoara, Transylvania High Tech"},
 
     ];
     var web = [
         {"avatar": DefaultAvatar, "name": "Chereș Adriana", "occupation": "Profesor @ Liceul Teoretic Nicolae Bălcescu Cluj Napoca"},
         {"avatar": DefaultAvatar, "name": "Carmocanu Gheorghe", "occupation": "Profesor @ Liceul Teoretic Nicolae Iorga Botoşani"},
-        {"avatar": AndreiHodorog, "name": "Andrei Hodorog", "occupation": "Proba on-line - Student la University of Cardiff"},
-        {"avatar": CatalinAvatar, "name": "Cătălin Stoian", "occupation": "Student la Facultatea de Informatica, Universitatea „Alexandru Ioan Cuza” "},
-        {"avatar": RobertColca, "name": "Robert Colca ", "occupation": "Student la Politehnica Timisoara"},
-        {"avatar": CezarAvatar, "name": "Cezar Andrici ", "occupation": "Student la Facultatea de Informatica, Universitatea „Alexandru Ioan Cuza” "},
+        {"avatar": RobertColca, "name": "Robert Mihai Colca ", "occupation": "Student la Universitatea de Vest din Timișoara, Amazon"},
+        {"avatar": DefaultAvatar, "name": "Cristian Dumitrov", "occupation": "Facultatea de Matematică și Informatică București"},
         {"avatar": StefanAvatar, "name": "Stefan Stolniceanu ", "occupation": "Student la Facultatea de Informatica, Universitatea „Alexandru Ioan Cuza”  "},
-
-
+        {"avatar": DefaultAvatar, "name": "Laurențiu Ciobanu", "occupation": "Student la Universitatea Transilvania din Brasov, FintechOS"},
+        {"avatar": DefaultAvatar, "name": "Ștefănucă Alin", "occupation": "Profesor @ Liceul \"Dimitrie Cantemir\" Darabani"},
     ];
 
     var criteria = [
@@ -167,7 +157,7 @@ export default React.createClass({
           <Row>
             <JuryDescription name="președinte" members={presedinte}/>
             <JuryDescription name="președinte executiv" members={presedinteExecutiv}/>
-            <JuryDescription name="președinte onorific" members={presedinteOnorific}/>
+
             <JuryDescription name="secretar" members={secretar}/>
           </Row>
           <Row>
