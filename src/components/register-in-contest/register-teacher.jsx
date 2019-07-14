@@ -136,6 +136,7 @@ export default React.createClass({
             <option value="Vaslui">Vaslui</option>
             <option value="Vâlcea">Vâlcea</option>
             <option value="Vrancea">Vrancea</option>
+            <option value="Alt județ">Alt județ(altă țară)</option>
           </FormControl>
           <FormControl.Feedback />
         </FormGroup>
