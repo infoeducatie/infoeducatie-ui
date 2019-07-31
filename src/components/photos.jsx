@@ -9,6 +9,8 @@ import PhotoWrapper from "./photo-wrapper.jsx";
 
 import "../main.less";
 
+import Cover2016 from "../../assets/img/2016.jpg";
+import Cover2015 from "../../assets/img/2015.jpg";
 import Cover2014 from "../../assets/img/2014.jpg";
 import Cover2013 from "../../assets/img/2013.jpg";
 import Cover2012 from "../../assets/img/2012.jpg";
@@ -28,13 +30,17 @@ export default React.createClass({
     return {
         hoveredYear: 0,
         albums: [
-            {"year": 2014, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6126213014251955681"},
-            {"year": 2013, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6126511874123551857"},
-            {"year": 2012, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6126529418024686801"},
-            {"year": 2011, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6126950217304487537"},
-            {"year": 2010, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127300307304376961"},
+            {"year": 2018, "link": "https://photos.google.com/share/AF1QipP99v0CmRfkClWlyQweO_Tqmzyme6_aFVQFImVaY-atPTR0C2GTu9o3IFoRudIO5g?key=eE4yaGZiZkRLSy00RFpBQ3J4ZEhPZnFhUjQxNVF3"},
+            {"year": 2017, "link": "https://photos.google.com/share/AF1QipO_5iITpX8h7IN9RBqw-73bWglfMnQjVN6vSSj2jZv8i9FEbGkbmL43qOYd3gwUjQ?key=ZGVJVlkyTmxzeGhyemt5NUZOdGZiOUlpSzh4SlJB"},
+            {"year": 2016, "link": "https://photos.google.com/share/AF1QipNR1NnntBtXS5vuK1g9ZajZZnWwAgmWVYrTKIW_Pfy3Lk7vnUWpai7w_-D7XUMcSg?key=WTFPVnltWW8tMHRHd0poZVZxYWJ1SFZrVlRmcE93"},
+            {"year": 2015, "link": "https://photos.google.com/share/AF1QipM0WQyv0H4hGG4ez_NnfTCcmTduxSQ8PSI1_0IsS2umMIRrpSI8XtPuMYG_2bIvmA?key=TTNHaVY3VHotbmNqVE42TmhzVWhJSVBWMHNfVjJR"},
+            {"year": 2014, "link": "https://photos.google.com/share/AF1QipPhy1QnT48Cfp18B9Czft1D463wAtbcnnKdLyNcavIwjLuViTA1mJ_nwWP3qofQoA?key=WEF1RG8yQmhISVRGZ3lDazZPNmphM3IxakhJS3pB"},
+            {"year": 2013, "link": "https://photos.google.com/share/AF1QipMoCFsIAokt6vAMbvPKDBBbL-cqNfmzCzE8Iq0FTKC53r8hO2o_--iEkPWqTMAUDg?key=R1E1bzcwNENPZWlYM0JvSDUtLXYycUtnTHVUa29n"},
+            {"year": 2012, "link": "https://photos.google.com/share/AF1QipP7mmRfStuGeZZVnrUVY4LA1XyifBSm_mtM77rzbfingWYDGLv78JUKd2RpL0S3UQ?key=Q2V3bDBhQXVFbkZHMlpiTTZINW93ODZlTzAwVVl3"},
+            {"year": 2011, "link": "https://photos.google.com/share/AF1QipOQVpZ3rwYETMRwjjOPbh2knAPLmKfvkPNByhVDlfjrCpsCU-S-_hmBeBcdmABpbA?key=dGNhX0hCbTUzaUNMcWZmZzNhc2xCeEdNZWYxRWNR"},
+            {"year": 2010, "link": "https://photos.google.com/share/AF1QipMZxn0DYILoIYptkGOqOVOssvgTgJDxW5vxCUtuccbP3EZXmyU30U5jKlUXA93ORA?key=ZjlhT1FJb0VUVFF1RTJ5QlVsZkdudk1va3hCNEp3"},
             {"year": 2009, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127325200239501089"},
-            {"year": 2008, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127559291932668561"},
+            {"year": 2008, "link": "https://photos.google.com/share/AF1QipPi7X0Ca1NnqOLJ1rkPYIbOJTHPQ6_tcCHATwvBKRRIpggus_O0e4umD_VjprPMJA?key=NGtwY2Y4MjJsck9DZGdKR1NOejA4Z0xHRjRmWDlR"},
             {"year": 2007, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127715315645838257"},
             {"year": 2006, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127337195835590657"},
             {"year": 2005, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127307525772879729"},
