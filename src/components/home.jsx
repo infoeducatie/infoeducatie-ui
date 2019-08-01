@@ -209,7 +209,7 @@ export default React.createClass({
                             <a href="http://google.ro" target="_blank">
                               <img src={Google} />
                             </a>
-                            
+
                             <a href="http://bitdefender.com" target="_blank">
                               <img src={Bitdefender} />
                             </a>
@@ -236,8 +236,8 @@ export default React.createClass({
                             <a href="http://leonte.ro/" target="_blank">
                               <img src={leonte} />
                             </a>
-                            <a href="http://www.certsign.ro/certsign/" target="_blank">
-                              <img src={Certsign} />
+                            <a href="http://www.microsoft.ro" target="_blank">
+                              <img src={Microsoft} />
                             </a>
                         </p>
                     </Col>
