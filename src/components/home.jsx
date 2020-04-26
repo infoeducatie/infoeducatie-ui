@@ -79,7 +79,7 @@ export default React.createClass({
                 </Row>
                 <Row>
                     <Col>
-                        <h2>Concurs Național de Proiecte IT&amp;C</h2>
+                        <h2>Olimpiada de inovare și creație digitală</h2>
                         <h5 className="tagline">
                             Ediția&nbsp;
                             {this.props.current.edition.name}
