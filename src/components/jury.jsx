@@ -33,8 +33,8 @@ import RazvanDeaconescuAvatar from "../../assets/img/jury/razvan_deaconescu.jpg"
 //import RodicaPinteaAvatar from "../../assets/img/jury/rodica_pintea.jpg";
 import StefanAvatar from "../../assets/img/jury/stefan_stolniceanu.jpg";
 //import StelianNiculescuAvatar from "../../assets/img/jury/stelian_niculescu.jpg";
-import ValerAvatar from "../../assets/img/jury/valer_szabo.jpg";
-import VladAvatar from "../../assets/img/jury/vlad_durnea.jpg";
+//import ValerAvatar from "../../assets/img/jury/valer_szabo.jpg";
+//import VladAvatar from "../../assets/img/jury/vlad_durnea.jpg";
 import DefaultAvatar from "../../assets/img/jury/default.png";
 import DefaultDocument from "../../assets/img/icons/doc.png";
 import RughinisAvatar from "../../assets/img/jury/razvanrughinis.jpg";
@@ -122,7 +122,8 @@ export default React.createClass({
     ];
     var web = [
         {"avatar": DefaultAvatar, "name": "Chereș Adriana", "occupation": "Profesor @ Liceul Teoretic Nicolae Bălcescu Cluj Napoca"},
-      //  {"avatar": DefaultAvatar, "name": "Carmocanu Gheorghe", "occupation": "Profesor @ Liceul Teoretic Nicolae Iorga Botoşani"},
+        {"avatar": DefaultAvatar, "name": "Carmocanu Gheorghe", "occupation": "Profesor @ Liceul Teoretic Nicolae Iorga Botoşani"},
+        {"avatar": DefaultAvatar, "name": "Ștefănucă alin", "occupation": "Profesor @ Liceul Dimitrie Cantemir Darabani"},
         {"avatar": RobertColca, "name": "Robert Mihai Colca ", "occupation": "Software Development Engineer"},
         {"avatar": DefaultAvatar, "name": "Cristian Dumitrov", "occupation": "Full Stack Developer @ Ubisoft"},
         {"avatar": StefanAvatar, "name": "Stefan Stolniceanu ", "occupation": "Software Development Engineer"},
