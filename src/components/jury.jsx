@@ -103,7 +103,7 @@ export default React.createClass({
         {"avatar": DefaultAvatar, "name": "Preda Robert", "occupation": "ML Researcher @ Everseen"},
         //{"avatar": DefaultAvatar, "name": "Carmen Bardita", "occupation": "Profesor @ Liceul Teoretic Stefan Procopiu Vaslui"},
         //{"avatar": DefaultAvatar, "name": "Ciobanu Laurențiu", "occupation": "Universitatea Transilvania Brasov"},
-        //{"avatar": DefaultAvatar, "name": "Dimitrie Filip", "occupation": "Colegiul Național \"Nicu Gane\" Fălticeni"},
+        {"avatar": DefaultAvatar, "name": "Dimitrie Filip", "occupation": "Profesor @ Colegiul Național \"Nicu Gane\" Fălticeni"},
         //{"avatar": DefaultAvatar, "name": "Marius Crainic", "occupation": "Colegiul ”Mihai Viteazul” Ineu"},
 
     ];
