@@ -11,30 +11,31 @@ import Header from "./header";
 import NewsContainer from "./news/news-container";
 
 import "../main.less";
-import Google from "../../assets/img/sponsors/google.png";
-import Intel from "../../assets/img/sponsors/intel.png";
-import Orange from "../../assets/img/sponsors/orange.png";
+import PrimariaFocsani from "../../assets/img/sponsors/logoPrimariaFocsani.jpg";
+//import Google from "../../assets/img/sponsors/google.png";
+//import Intel from "../../assets/img/sponsors/intel.png";
+//import Orange from "../../assets/img/sponsors/orange.png";
 import EasyHost from "../../assets/img/sponsors/easyhost.png";
-import Cisco from "../../assets/img/sponsors/cisco.png";
+//import Cisco from "../../assets/img/sponsors/cisco.png";
 import Intuitext from "../../assets/img/sponsors/intuitext.gif";
-import Apdetic from "../../assets/img/sponsors/apdetic.png";
+//import Apdetic from "../../assets/img/sponsors/apdetic.png";
 import Upir from "../../assets/img/sponsors/upir.png";
 import MEN from "../../assets/img/sponsors/edu.jpg";
-import CloudBase from "../../assets/img/sponsors/cloudbase.png";
+//import CloudBase from "../../assets/img/sponsors/cloudbase.png";
 //import iMedicare from "../../assets/img/sponsors/imedicare.png";
 //import eSkills from "../../assets/img/sponsors/eskills.png";
 //import gwc from "../../assets/img/sponsors/girlswhocode.png";
 import leonte from "../../assets/img/sponsors/leonte.png";
-import altex from "../../assets/img/sponsors/altex.gif";
+//import altex from "../../assets/img/sponsors/altex.gif";
 //import GInfo from "../../assets/img/sponsors/ginfo.png";
 //import GreenGroup from "../../assets/img/sponsors/greengroup.png";
 import MTS from "../../assets/img/sponsors/mts.jpg";
 import VivaCredit from "../../assets/img/sponsors/vivacredit.png"
-import OracleAcademy from "../../assets/img/sponsors/academy_wht.gif"
+//import OracleAcademy from "../../assets/img/sponsors/academy_wht.gif"
 import Bitdefender from "../../assets/img/sponsors/bitdefender.jpg"
 import Microsoft from "../../assets/img/sponsors/microsoft.jpg"
-import Xpress from "../../assets/img/sponsors/xpress.jpg"
-import Certsign from "../../assets/img/sponsors/certsign.jpg"
+//import Xpress from "../../assets/img/sponsors/xpress.jpg"
+//import Certsign from "../../assets/img/sponsors/certsign.jpg"
 import CJVrancea from "../../assets/img/sponsors/logoCJVrancea.jpg"
 
 
@@ -196,24 +197,20 @@ export default React.createClass({
                 <Row>
                     <Col xs={12}>
                         <p className="logos">
-                            <a href="http://www.orange.ro/" target="_blank">
-                              <img src={Orange} />
-                            </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="http://www.cisco.com/" target="_blank">
-                              <img src={Cisco} />
-                            </a>
+                            <a href="http://www.focsani.info/" target="_blank">
+                              <img src={PrimariaFocsani} />
+                            </a>&nbsp;
+
                             <a href="https://vivacredit.ro/" target="_blank">
                               <img src={VivaCredit} />
-                            </a>
-
-                            <a href="http://google.ro" target="_blank">
-                              <img src={Google} />
                             </a>
 
                             <a href="http://bitdefender.com" target="_blank">
                               <img src={Bitdefender} />
                             </a>
-
+                            <a href="http://www.intuitext.ro/" target="_blank">
+                              <img src={Intuitext} />
+                            </a>
                         </p>
                     </Col>
                 </Row>
@@ -227,18 +224,11 @@ export default React.createClass({
                 <Row>
                     <Col xs={12}>
                         <p className="logos">
-                            <a href="https://academy.oracle.com" target="_blank">
-                              <img src={OracleAcademy} />
-                            </a>
-                            <a href="https://www.xpreflect.co.uk/" target="_blank">
-                              <img src={Xpress} />
-                            </a>
+
                             <a href="http://leonte.ro/" target="_blank">
                               <img src={leonte} />
                             </a>
-                            <a href="http://www.microsoft.ro" target="_blank">
-                              <img src={Microsoft} />
-                            </a>
+
                         </p>
                     </Col>
                 </Row>
@@ -255,13 +245,6 @@ export default React.createClass({
                             <a href="http://ro.easyhost.com/incubator" target="_blank">
                               <img src={EasyHost} />
                             </a>
-                            <a href="http://www.intuitext.ro/" target="_blank">
-                              <img src={Intuitext} />
-                            </a>
-                            <a href="http://asociatiait.ro/" target="_blank">
-                              <img src={Apdetic} />
-                            </a>
-
 
 
                         </p>
