@@ -21,6 +21,7 @@ import Intuitext from "../../assets/img/sponsors/intuitext.gif";
 //import Apdetic from "../../assets/img/sponsors/apdetic.png";
 import Upir from "../../assets/img/sponsors/upir.png";
 import MEN from "../../assets/img/sponsors/edu.jpg";
+import domeniilePanciu from "../../assets/img/sponsors/domeniilePanciu.jpg";
 //import CloudBase from "../../assets/img/sponsors/cloudbase.png";
 //import iMedicare from "../../assets/img/sponsors/imedicare.png";
 //import eSkills from "../../assets/img/sponsors/eskills.png";
@@ -37,7 +38,7 @@ import Microsoft from "../../assets/img/sponsors/microsoft.jpg"
 //import Xpress from "../../assets/img/sponsors/xpress.jpg"
 //import Certsign from "../../assets/img/sponsors/certsign.jpg"
 import CJVrancea from "../../assets/img/sponsors/logoCJVrancea.jpg"
-
+import InfoBits from "../../assets/img/sponsors/link_infobits_academy.jpg"
 
 export default React.createClass({
   displayName: "Home",
@@ -229,6 +230,9 @@ export default React.createClass({
                               <img src={leonte} />
                             </a>
 
+                            <a href="https://www.domeniilepanciu.ro/" target="_blank">
+                              <img src={domeniilePanciu} />
+                            </a>
                         </p>
                     </Col>
                 </Row>
@@ -245,7 +249,9 @@ export default React.createClass({
                             <a href="http://ro.easyhost.com/incubator" target="_blank">
                               <img src={EasyHost} />
                             </a>
-
+                            <a href="https://ebooks.infobits.ro" target="_blank">
+                              <img src={InfoBits} />
+                            </a>
 
                         </p>
                     </Col>

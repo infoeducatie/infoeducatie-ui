@@ -8,7 +8,8 @@ import Header from "./header";
 import PhotoWrapper from "./photo-wrapper.jsx";
 
 import "../main.less";
-
+import Cover2018 from "../../assets/img/2018.jpg";
+import Cover2017 from "../../assets/img/2017.jpg";
 import Cover2016 from "../../assets/img/2016.jpg";
 import Cover2015 from "../../assets/img/2015.jpg";
 import Cover2014 from "../../assets/img/2014.jpg";

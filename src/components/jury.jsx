@@ -14,7 +14,7 @@ import RobertColca from "../../assets/img/jury/Robert_Colca.jpg";
 //import StefanMunteanu from "../../assets/img/jury/Stefan_Munteanu.png";
 //import AndreiCasuneanu from "../../assets/img/jury/Andrei_Casuneanu.jpg";
 //import DariusCostolos from "../../assets/img/jury/Darius_Costolos.jpg";
-//import bogdan_bocse from "../../assets/img/jury/bogdan_bocse.jpg";
+import bogdan_bocse from "../../assets/img/jury/bogdan_bocse.jpg";
 import AlexandruAvatar from "../../assets/img/jury/alexandru_cristian.jpg";
 import CezarAvatar from "../../assets/img/jury/cezar_andrici.jpg";
 //import CasianAvatar from "../../assets/img/jury/casian_lacatusu.jpg";
@@ -74,7 +74,7 @@ export default React.createClass({
         //
         {"avatar": DanielPopaAvatar, "name": "Daniel Popa", "occupation": "profesor @ Liceul Teoretic 'Aurel Vlaicu' Orastie"},
         {"avatar": PetruAvatar, "name": "Petru Dimitriu", "occupation": "Asistent la Universitatea Tehnică 'Gh. Asachi' din Iași"},
-        {"avatar": DefaultAvatar, "name": "Ciaușu Nicoleta", "occupation": "Studentă @ FMI - Universitatea din București"},
+        {"avatar": DefaultAvatar, "name": "Ciaușu Nicoleta", "occupation": "FMI - Universitatea din București"},
         {"avatar": DefaultAvatar, "name": "Ebru Resul", "occupation": "security engineer @ Keysight Technologies"},
         {"avatar": DefaultAvatar, "name": "Bodis Klara", "occupation": "Profesor @ Liceul Teologic Reformat 'Wesselenyi' Zalău"},
         {"avatar": DefaultAvatar, "name": "Andreescu Cristina", "occupation": "Profesor @ Liceul Tehnologic 'Nikola Tesla' București"},
@@ -89,7 +89,7 @@ export default React.createClass({
         {"avatar": DefaultAvatar, "name": "Daniel Gherasim", "occupation": "inspector gen. adj. @ ISJ Vrancea"},
         {"avatar": DefaultAvatar, "name": "Anghel Cătălin Daniel", "occupation": "inginer @ Amber Studio Romania"},
         {"avatar": DefaultAvatar, "name": "Cristina Ionescu", "occupation": "profesor @ Școala Gimnazială 'Anghel Saligny' Focșani"},
-        {"avatar": DefaultAvatar, "name": "Negru Alexandru", "occupation": "student @ Universitatea Babeș-Bolyai"},
+        {"avatar": DefaultAvatar, "name": "Negru Alexandru", "occupation": "Universitatea Babeș-Bolyai"},
       //  {"avatar": DefaultAvatar, "name": "Antonia Haller", "occupation": "Profesor @ CN Mircea cel Batran, Rm. Valcea"},
 
     ];
@@ -104,13 +104,15 @@ export default React.createClass({
         {"avatar": RazvanDeaconescuAvatar, "name": "Răzvan Deaconescu", "occupation": "Șef lucrări @ Universitatea Politehnică din București"},
         {"avatar": DefaultAvatar, "name": "Denis Troncotă", "occupation": "inginer @ Devplant SRL"},
         {"avatar": DefaultAvatar, "name": "Luca Sas", "occupation": "Core Systems Engineer @ Creative Assembly"},
-        {"avatar": DefaultAvatar, "name": "Vasilache Cristian", "occupation": "student @ Universitatea Politehnica București"},
-        {"avatar": DefaultAvatar, "name": "Alexandru Iulian Magan", "occupation": "Student @ University of Leeds"},
+        {"avatar": DefaultAvatar, "name": "Vasilache Cristian", "occupation": "Universitatea Politehnica București"},
+        {"avatar": DefaultAvatar, "name": "Alexandru Magan", "occupation": " University of Leeds"},
+        {"avatar": DefaultAvatar, "name": "Vlad Luță", "occupation": " Universitatea Politehnica București"},
+        {"avatar": bogdan_bocse, "name": "Bogdan Bocșe", "occupation": " managing co-founder @ knosis.ai"},
 
     ];
     var web = [
         {"avatar": DefaultAvatar, "name": "Chereș Adriana", "occupation": "Profesor @ Liceul Teoretic Nicolae Bălcescu Cluj Napoca"},
-        {"avatar": DefaultAvatar, "name": "Dinu Ștefan Rusu", "occupation": "student @ Universitatea Politehnica București"},
+        {"avatar": DefaultAvatar, "name": "Dinu Ștefan Rusu", "occupation": "Universitatea Politehnica București"},
 
         {"avatar": DefaultAvatar, "name": "Alexandru Botici", "occupation": "Software Development Engineer"},
         {"avatar": DefaultAvatar, "name": "Cosmin Ciolacu", "occupation": "Back-End Web Developer @ DEV51"},
@@ -118,8 +120,8 @@ export default React.createClass({
         {"avatar": DefaultAvatar, "name": "Muntean Rareș Mircea", "occupation": "Profesor @ Liceul Teoretic 'Emil Racoviță' Baia-Mare"},
         {"avatar": RobertColca, "name": "Colca Robert Mihai", "occupation": "Software Development Engineer"},
         {"avatar": DefaultAvatar, "name": "Carmocanu Gheorghe", "occupation": "Profesor @ Liceul Teoretic Nicolae Iorga Botoşani"},
-        {"avatar": DefaultAvatar, "name": "Vrînceanu Radu Tudor", "occupation": "Student @ FMI - Universitatea din București"},
-        {"avatar": DefaultAvatar, "name": "Voinea Mihai Alexandru", "occupation": "Student @ FMI - Universitatea din București"},
+        {"avatar": DefaultAvatar, "name": "Vrînceanu Radu Tudor", "occupation": "FMI - Universitatea din București"},
+        {"avatar": DefaultAvatar, "name": "Voinea Mihai Alexandru", "occupation": "FMI - Universitatea din București"},
     ];
 
     var criteria = [
