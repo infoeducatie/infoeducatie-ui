@@ -1,9 +1,8 @@
-FROM node:8-stretch
+FROM node:8-buster
 
 RUN apt-get update -y && \
     apt-get install --no-install-recommends -y nginx && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    apt-get clean
 
 EXPOSE 80
 
