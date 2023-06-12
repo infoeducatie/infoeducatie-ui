@@ -1,8 +1,0 @@
-sudo: false
-language: node_js
-cache:
-  directories:
-    - node_modules
-notifications:
-  slack:
-    secure: pf0TPJVjw3PosTaEWRRea8Yzlby5UnfQD8mp51o/0rQDRR9oGpWNjF6ou3kCI978mBGswmkb55FYkMNCZfPnuBGooMwMmXzBkLhu6MAmszyO3CXbNmFqdnTlMATJguJOmm/3++wbt2C4dvRf9kIhwwmJMtX3qZ1BBc7iMx0mfUs=

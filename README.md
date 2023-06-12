@@ -1,6 +1,6 @@
 # infoeducatie-ui
 
-[![Build Status](https://travis-ci.org/infoeducatie/infoeducatie-ui.svg?branch=master)](https://travis-ci.org/infoeducatie/infoeducatie-ui)
+[![Run tests](https://github.com/infoeducatie/infoeducatie-ui/actions/workflows/test.yaml/badge.svg)](https://github.com/infoeducatie/infoeducatie-ui/actions/workflows/test.yaml)
 
 React web frontend for our [backend API](https://github.com/infoeducatie/infoeducatie-api).
 
