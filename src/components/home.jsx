@@ -14,10 +14,15 @@ import "../main.less";
 import PrimariaFocsani from "../../assets/img/sponsors/logoPrimariaFocsani.jpg";
 //import Google from "../../assets/img/sponsors/google.png";
 //import Intel from "../../assets/img/sponsors/intel.png";
-//import Orange from "../../assets/img/sponsors/orange.png";
+import Orange from "../../assets/img/sponsors/orange.png";
 import EasyHost from "../../assets/img/sponsors/easyhost.png";
-//import Cisco from "../../assets/img/sponsors/cisco.png";
+import Cisco from "../../assets/img/sponsors/cisco.png";
 import Intuitext from "../../assets/img/sponsors/intuitext.gif";
+import Tazz from "../../assets/img/sponsors/tazz.png";
+import Vef from "../../assets/img/sponsors/vef.png";
+import Moripan from "../../assets/img/sponsors/moripan.png";
+import Romans from "../../assets/img/sponsors/romans.png";
+import Girboiu from "../../assets/img/sponsors/girboiu.png";
 //import Apdetic from "../../assets/img/sponsors/apdetic.png";
 import Upir from "../../assets/img/sponsors/upir.png";
 import MEN from "../../assets/img/sponsors/edu.jpg";
@@ -175,16 +180,15 @@ export default React.createClass({
             <Row>
                 <Col xs={12}>
                     <p className="logos">
-                        <a href="https://cjvrancea.ro/" target="_blank">
-                          <img src={CJVrancea} />
+                        <a href="http://www.edu.ro/" target="_blank">
+                          <img src={MEN} />
                         </a>
                         <a href="http://upir.ro/ro/" target="_blank">
                           <img src={Upir} />
                         </a>
-                        <a href="http://www.edu.ro/" target="_blank">
-                          <img src={MEN} />
+                        <a href="https://cjvrancea.ro/" target="_blank">
+                          <img src={CJVrancea} />
                         </a>
-
                     </p>
                 </Col>
             </Row>
@@ -198,20 +202,29 @@ export default React.createClass({
                 <Row>
                     <Col xs={12}>
                         <p className="logos">
+                          <a href="https://vivacredit.ro/" target="_blank">
+                            <img src={VivaCredit} />
+                          </a>
+                          <a href="https://bitdefender.com" target="_blank">
+                            <img src={Bitdefender} />
+                          </a>
+                          <a href="https://tazz.ro" target="_blank">
+                            <img src={Tazz} />
+                          </a>
+                          <a href="https://orange.ro" target="_blank">
+                            <img src={Orange} />
+                          </a>
+                          <a href="http://www.intuitext.ro/" target="_blank">
+                            <img src={Intuitext} />
+                          </a>
                             <a href="http://www.focsani.info/" target="_blank">
                               <img src={PrimariaFocsani} />
                             </a>&nbsp;
 
-                            <a href="https://vivacredit.ro/" target="_blank">
-                              <img src={VivaCredit} />
-                            </a>
 
-                            <a href="http://bitdefender.com" target="_blank">
-                              <img src={Bitdefender} />
-                            </a>
-                            <a href="http://www.intuitext.ro/" target="_blank">
-                              <img src={Intuitext} />
-                            </a>
+
+
+
                         </p>
                     </Col>
                 </Row>
@@ -225,13 +238,20 @@ export default React.createClass({
                 <Row>
                     <Col xs={12}>
                         <p className="logos">
-
-                            <a href="http://leonte.ro/" target="_blank">
-                              <img src={leonte} />
+                            <a href="https://cramagirboiu.ro" target="_blank">
+                              <img src={Girboiu} />
                             </a>
-
                             <a href="https://www.domeniilepanciu.ro/" target="_blank">
                               <img src={domeniilePanciu} />
+                            </a>
+                            <a href="https://leonte.ro/" target="_blank">
+                              <img src={leonte} />
+                            </a>
+                            <a href="https://vef.com.ro/" target="_blank">
+                              <img src={Vef} />
+                            </a>
+                            <a href="https://cisco.com/" target="_blank">
+                              <img src={Cisco} />
                             </a>
                         </p>
                     </Col>
@@ -248,6 +268,12 @@ export default React.createClass({
                         <p className="logos">
                             <a href="http://ro.easyhost.com/incubator" target="_blank">
                               <img src={EasyHost} />
+                            </a>
+                            <a href="https://moripanjaristea.com/" target="_blank">
+                              <img src={Moripan} />
+                            </a>
+                            <a href="https://romans.ro/" target="_blank">
+                              <img src={Romans} />
                             </a>
                             <a href="https://ebooks.infobits.ro" target="_blank">
                               <img src={InfoBits} />

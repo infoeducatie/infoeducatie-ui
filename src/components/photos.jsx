@@ -8,6 +8,8 @@ import Header from "./header";
 import PhotoWrapper from "./photo-wrapper.jsx";
 
 import "../main.less";
+import Cover2022 from "../../assets/img/2022.jpg";
+import Cover2019 from "../../assets/img/2019.jpg";
 import Cover2018 from "../../assets/img/2018.jpg";
 import Cover2017 from "../../assets/img/2017.jpg";
 import Cover2016 from "../../assets/img/2016.jpg";
@@ -31,6 +33,8 @@ export default React.createClass({
     return {
         hoveredYear: 0,
         albums: [
+            {"year": 2022, "link": "https://photos.app.goo.gl/zmRNv7SUxph37wbo9"},
+            {"year": 2019, "link": "https://photos.app.goo.gl/NLxQgokxJtn5odG68"},
             {"year": 2018, "link": "https://photos.google.com/share/AF1QipP99v0CmRfkClWlyQweO_Tqmzyme6_aFVQFImVaY-atPTR0C2GTu9o3IFoRudIO5g?key=eE4yaGZiZkRLSy00RFpBQ3J4ZEhPZnFhUjQxNVF3"},
             {"year": 2017, "link": "https://photos.google.com/share/AF1QipO_5iITpX8h7IN9RBqw-73bWglfMnQjVN6vSSj2jZv8i9FEbGkbmL43qOYd3gwUjQ?key=ZGVJVlkyTmxzeGhyemt5NUZOdGZiOUlpSzh4SlJB"},
             {"year": 2016, "link": "https://photos.google.com/share/AF1QipNR1NnntBtXS5vuK1g9ZajZZnWwAgmWVYrTKIW_Pfy3Lk7vnUWpai7w_-D7XUMcSg?key=WTFPVnltWW8tMHRHd0poZVZxYWJ1SFZrVlRmcE93"},
