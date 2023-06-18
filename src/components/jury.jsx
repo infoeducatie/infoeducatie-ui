@@ -82,7 +82,7 @@ export default React.createClass({
     var media = [
         {"avatar": DefaultAvatar, "name": "Burlacu Cătălina", "occupation": "Profesor @ Colegiul Dunărea Galaţi"},
         {"avatar": DefaultAvatar, "name": "Negru Alexandru", "occupation": "Universitatea Babeș-Bolyai"},
-        {"avatar": DefaultAvatar, "name": "Roxana Tâmplaru", "occupation": "Profesor @ Colegiul Național 'Frații Buzești'"},
+        {"avatar": DefaultAvatar, "name": "Roxana Tîmplaru", "occupation": "Profesor @ Colegiul Național 'Ștefan Odobleja'"},
         {"avatar": DefaultAvatar, "name": "Anghel Cătălin Daniel", "occupation": "inginer @ Amber Studio Romania"},
         {"avatar": DefaultAvatar, "name": "Vulpescu Alexandru", "occupation": "inginer @ Amber Studio Romania"},
         {"avatar": DefaultAvatar, "name": "Cristina Ionescu", "occupation": "profesor @ Școala Gimnazială 'Anghel Saligny' Focșani"},
