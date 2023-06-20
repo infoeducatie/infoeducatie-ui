@@ -14,7 +14,7 @@ import DumitrascuAlina from "../../assets/img/jury/dumitrascualina.png";
 import AntoniaHaller from "../../assets/img/jury/antoniahaller.jpg";
 import Carmocanu from "../../assets/img/jury/carmocanu.jpg";
 import Centa from "../../assets/img/jury/centa.png";
-//import CatalinAvatar from "../../assets/img/jury/catalin_stoian.jpg";
+import Arisanu from "../../assets/img/jury/arisanu.png";
 import DanielPopaAvatar from "../../assets/img/jury/daniel_popa.jpg";
 import DanSpatarelAvatar from "../../assets/img/jury/dan_spatarel.jpg";
 import DomsaAvatar from "../../assets/img/jury/domsa_ovidiu.jpg";
@@ -76,7 +76,7 @@ export default React.createClass({
         {"avatar": AntoniaHaller, "name": "Antonia Haller", "occupation": "Profesor @ Colegiul National 'Mircea cel Batran' Rm. Valcea "},
         {"avatar": DefaultAvatar, "name": "Bogdan Patrut", "occupation": "Profesor @ Unuiversitatea Alexandru Ioan Cuza Iasi"},
         {"avatar": DefaultAvatar, "name": "Enescu Catalina", "occupation": "Profesor @ Liceul Teoretic Ion Cantacuzino"},
-        {"avatar": DefaultAvatar, "name": "Arișanu Ana-Maria", "occupation": "Profesor @ Colegiul National 'Mircea cel Batran' Rm. Valcea "},
+        {"avatar": Arisanu, "name": "Arișanu Ana-Maria", "occupation": "Profesor @ Colegiul National 'Mircea cel Batran' Rm. Valcea "},
 
     ];
     var media = [

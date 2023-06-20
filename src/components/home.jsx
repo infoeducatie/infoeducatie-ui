@@ -214,6 +214,9 @@ export default React.createClass({
                           <a href="https://orange.ro" target="_blank">
                             <img src={Orange} />
                           </a>
+                          <a href="https://cisco.com/" target="_blank">
+                            <img src={Cisco} />
+                          </a>
                           <a href="http://www.intuitext.ro/" target="_blank">
                             <img src={Intuitext} />
                           </a>
@@ -250,9 +253,7 @@ export default React.createClass({
                             <a href="https://vef.com.ro/" target="_blank">
                               <img src={Vef} />
                             </a>
-                            <a href="https://cisco.com/" target="_blank">
-                              <img src={Cisco} />
-                            </a>
+
                         </p>
                     </Col>
                 </Row>
