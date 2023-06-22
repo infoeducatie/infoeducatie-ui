@@ -33,7 +33,6 @@ import DefaultAvatar from "../../assets/img/jury/default.png";
 import DefaultDocument from "../../assets/img/icons/doc.png";
 import RughinisAvatar from "../../assets/img/jury/razvanrughinis.jpg";
 
-
 export default React.createClass({
   displayName: "Jury",
   render() {
