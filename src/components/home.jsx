@@ -45,6 +45,7 @@ import Microsoft from "../../assets/img/sponsors/microsoft.jpg"
 import CJVrancea from "../../assets/img/sponsors/logoCJVrancea.jpg"
 import InfoBits from "../../assets/img/sponsors/link_infobits_academy.jpg"
 
+
 export default React.createClass({
   displayName: "Home",
 
