@@ -46,13 +46,7 @@ export default React.createClass({
           <Col mdOffset={1} md={10}>
             <Row className="small-spacing" />
             <p>
-              Organizat din 1994, este dedicat elevilor cu aptitudini,
-              înclinații și interes pentru crearea aplicațiilor
-              informatice, atât de la profilul informatică cât
-              și de la alte profile. Concursul se desfășoară în
-              patru etape: pe unitatea școlară, locală, județeană
-              și națională. Etapa națională se desfășoară în
-              tabăra Galaciuc, județul Vrancea.
+              Organizat din 1994, este dedicat elevilor cu aptitudini, înclinații și interes pentru crearea aplicațiilor informatice, multidisciplinare. Concursul se desfășoară în patru etape: pe unitatea școlară, locală, județeană și națională. Etapa națională se desfășoară în Focșani, județul Vrancea.
             </p>
             <Row className="small-spacing" />
             <Row>
@@ -116,10 +110,7 @@ export default React.createClass({
                     a taberei se vor organiza și sesiuni de comunicare
                     pe teme de inginerie software.
                 </p>
-                <p>
-                    Toate mijloacele IT sunt oferite de Colegiul
-                    Național Unirea, comunitatea Tulnici și Liceul Vidra.
-                </p>
+
                 <Row className="small-spacing" />
                 <h4>Condiții de participare</h4>
                 <p>

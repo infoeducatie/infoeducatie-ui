@@ -25,7 +25,7 @@ import Cover2007 from "../../assets/img/2007.jpg";
 import Cover2006 from "../../assets/img/2006.jpg";
 import Cover2005 from "../../assets/img/2005.jpg";
 import Cover2004 from "../../assets/img/2004.jpg";
-
+ 
 
 export default React.createClass({
   displayName: "Photos",

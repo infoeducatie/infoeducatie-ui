@@ -147,7 +147,7 @@ export default React.createClass({
                 <Row>
                     <Col md={4} mdOffset={2} className="text middle-align">
                         <div className="wrapper-for-flexbox">
-                            <h1>Tabăra Gălăciuc</h1>
+                            <h1>Focșani</h1>
                             <h6 className="data">
                                 <span className="pink-dash"></span>
                                 {this.renderCampDate()}
@@ -245,15 +245,11 @@ export default React.createClass({
                             <a href="https://cramagirboiu.ro" target="_blank">
                               <img src={Girboiu} />
                             </a>
-                            <a href="https://www.domeniilepanciu.ro/" target="_blank">
-                              <img src={domeniilePanciu} />
-                            </a>
+
                             <a href="https://leonte.ro/" target="_blank">
                               <img src={leonte} />
                             </a>
-                            <a href="https://vef.com.ro/" target="_blank">
-                              <img src={Vef} />
-                            </a>
+
 
                         </p>
                     </Col>
@@ -271,12 +267,7 @@ export default React.createClass({
                             <a href="http://ro.easyhost.com/incubator" target="_blank">
                               <img src={EasyHost} />
                             </a>
-                            <a href="https://moripanjaristea.com/" target="_blank">
-                              <img src={Moripan} />
-                            </a>
-                            <a href="https://romans.ro/" target="_blank">
-                              <img src={Romans} />
-                            </a>
+
                             <a href="https://ebooks.infobits.ro" target="_blank">
                               <img src={InfoBits} />
                             </a>
