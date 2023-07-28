@@ -100,7 +100,7 @@ export default React.createClass({
     ];
     var utilitar = [
         {"avatar": RazvanDeaconescuAvatar, "name": "Răzvan Deaconescu", "occupation": "Șef lucrări @ Universitatea Politehnică din București"},
-        {"avatar": DefaultAvatar, "name": "Denis Troncotă", "occupation": "inginer @ Transylvania High Tech"},
+        {"avatar": DefaultAvatar, "name": "Denis Troncotă", "occupation": "Software Development Engineer"},
         {"avatar": DefaultAvatar, "name": "Luca Sas", "occupation": "Core Systems Engineer @ Creative Assembly"},
         {"avatar": DefaultAvatar, "name": "Vasilache Cristian", "occupation": "Universitatea Politehnica București"},
         {"avatar": DefaultAvatar, "name": "Cosmin Ciolacu", "occupation": " inginer @ Hodlezz"},
