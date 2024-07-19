@@ -97,7 +97,7 @@ export default React.createClass({
 		{"avatar": LaviniuBejenaru, "name": "Laviniu Bejenaru", "occupation": "Profesor @ Colegiul National 'Traian' din Drobeta Turnu Severin"},
         {"avatar": Carmocanu, "name": "Gheorghe Carmocanu", "occupation": "profesor @ Liceul Teoretic 'Mihai Eminescu' Cluj-Napoca"},
 		{"avatar": DefaultAvatar, "name": "Marian Stoica", "occupation": "inginer @ S.C. Protoforge Electronic Devices SRL Timișoara"},
-        {"avatar": DefaultAvatar, "name": "Cristian Munteanu", "occupation": "inginer @ Infobest Romania SRL București"},
+        {"avatar": DefaultAvatar, "name": "Cristian Munteanu", "occupation": "Inginer Software @ Haufe Group"},
         {"avatar": DefaultAvatar, "name": "Radu Vrînceanu", "occupation": "student @ Facultatea de Matematică și Informatică București"},
         {"avatar": DefaultAvatar, "name": "Marian Crăciun", "occupation": "inginer @ IV FUTURE"},
         
@@ -106,7 +106,7 @@ export default React.createClass({
         {"avatar": RazvanDeaconescuAvatar, "name": "Răzvan Deaconescu", "occupation": "Șef lucrări @ Universitatea Politehnică din București"},
         {"avatar": DefaultAvatar, "name": "Cristina Anton", "occupation": " profesor @ CCD Brăila"}, 
 		{"avatar": DefaultAvatar, "name": "Simion Strugar", "occupation": " profesor @ Colegiul National „George Cosbuc” Nasaud"},		
-	    {"avatar": DefaultAvatar, "name": "Denis Troncotă", "occupation": "inginer @ Transylvania High Tech"},
+	    {"avatar": DefaultAvatar, "name": "Denis Troncotă", "occupation": "Software Engineer Freelancer"},
         {"avatar": DefaultAvatar, "name": "Luca Sas", "occupation": "Core Systems Engineer @ Creative Assembly"},
         {"avatar": DefaultAvatar, "name": "Cristian Vasilache", "occupation": "Universitatea Politehnica București"},
         {"avatar": DefaultAvatar, "name": "Vlad Luță", "occupation": " student @ Politehnica București"},
