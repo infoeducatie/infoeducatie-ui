@@ -190,6 +190,9 @@ export default React.createClass({
                         <a href="https://cjvrancea.ro/" target="_blank">
                           <img src={CJVrancea} />
                         </a>
+						 <a href="http://www.focsani.info/" target="_blank">
+                              <img src={PrimariaFocsani} />
+                         </a>&nbsp;
                     </p>
                 </Col>
             </Row>
@@ -209,9 +212,6 @@ export default React.createClass({
                           <a href="https://bitdefender.com" target="_blank">
                             <img src={Bitdefender} />
                           </a>
-                          <a href="https://tazz.ro" target="_blank">
-                            <img src={Tazz} />
-                          </a>
                           <a href="https://orange.ro" target="_blank">
                             <img src={Orange} />
                           </a>
@@ -221,9 +221,7 @@ export default React.createClass({
                           <a href="http://www.intuitext.ro/" target="_blank">
                             <img src={Intuitext} />
                           </a>
-                            <a href="http://www.focsani.info/" target="_blank">
-                              <img src={PrimariaFocsani} />
-                            </a>&nbsp;
+                           
 
 
 
@@ -242,29 +240,11 @@ export default React.createClass({
                 <Row>
                     <Col xs={12}>
                         <p className="logos">
-                            <a href="https://cramagirboiu.ro" target="_blank">
-                              <img src={Girboiu} />
-                            </a>
-
+                          
                             <a href="https://leonte.ro/" target="_blank">
                               <img src={leonte} />
                             </a>
-
-
-                        </p>
-                    </Col>
-                </Row>
-
-                <Row className="small-spacing" />
-                <Row>
-                    <Col xs={12}>
-                        <h4>Sponsori Bronze</h4>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col xs={12}>
-                        <p className="logos">
-                            <a href="http://ro.easyhost.com/incubator" target="_blank">
+							<a href="http://ro.easyhost.com/incubator" target="_blank">
                               <img src={EasyHost} />
                             </a>
 
@@ -275,6 +255,8 @@ export default React.createClass({
                         </p>
                     </Col>
                 </Row>
+
+               
 
 
             </Grid>

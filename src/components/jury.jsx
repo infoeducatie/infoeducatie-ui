@@ -41,7 +41,7 @@ export default React.createClass({
     ];
 
     let presedinteExecutiv = [
-	{"avatar": DefaultAvatar, "name": "   Daniel Gherasim                  ", "occupation": "inspector gen. adj. @ ISJ Vrancea"}
+	{"avatar": DefaultAvatar, "name": "   Daniel Gherasim                  ", "occupation": "inspector discipline informatice @ ISJ Vrancea"}
 
     ];
 //    let presedinteOnorific = [
@@ -70,9 +70,9 @@ export default React.createClass({
         //
         {"avatar": DanielPopaAvatar, "name": "Daniel Popa", "occupation": "profesor @ Liceul Teoretic 'Aurel Vlaicu' Orastie"},
         {"avatar": PetruAvatar, "name": "Petru Dimitriu", "occupation": "Asistent la Universitatea Tehnică 'Gh. Asachi' din Iași"},
-		{"avatar": Arisanu, "name": "Arișanu Ana-Maria", "occupation": "Profesor @ Colegiul National 'Mircea cel Batran' Rm. Valcea "},
+		{"avatar": Arisanu, "name": "Ana-Maria Arișanu ", "occupation": "Profesor @ Colegiul National 'Mircea cel Batran' Rm. Valcea "},
 		{"avatar": DefaultAvatar, "name": "Bogdan Patrut", "occupation": "profesor @ Unuiversitatea Alexandru Ioan Cuza Iași"},
-        {"avatar": DefaultAvatar, "name": "Matei Adriel Rafael", "occupation": "student @ University of Groningen"},
+        {"avatar": DefaultAvatar, "name": "Adriel Rafael Matei", "occupation": "student @ University of Groningen"},
         {"avatar": DefaultAvatar, "name": "Ebru Resul", "occupation": "security engineer @ Keysight Technologies"},
         {"avatar": DefaultAvatar, "name": "Gabriela Grigoraș", "occupation": "profesor @ Școala profesională nr.41 Iași"},
         {"avatar": DefaultAvatar, "name": "Victor Iulian Sandu", "occupation": "student @ ASE București"},
@@ -82,13 +82,13 @@ export default React.createClass({
     var media = [
 		{"avatar": AntoniaHaller, "name": "Antonia Haller", "occupation": "Profesor @ Colegiul National 'Mircea cel Batran' Rm. Valcea "},
         {"avatar": DefaultAvatar, "name": "Burlacu Cătălina", "occupation": "Profesor @ Colegiul Dunărea Galaţi"},
-        {"avatar": DefaultAvatar, "name": "Negru Alexandru", "occupation": "Universitatea Babeș-Bolyai"},
+        {"avatar": DefaultAvatar, "name": "Alexandru Negru", "occupation": "Universitatea Babeș-Bolyai"},
         {"avatar": DefaultAvatar, "name": "Roxana Tîmplaru", "occupation": "Profesor @ Colegiul Național 'Ștefan Odobleja'"},
         {"avatar": DefaultAvatar, "name": "Alin Maidan", "occupation": "profesor @ Colegiul Național 'Miron Costin' Galați"},
         {"avatar": FlaviaOprea, "name": "Flavia Oprea", "occupation": "PhD lector @ Politehnica București"},
         {"avatar": DefaultAvatar, "name": "Cristina Ionescu", "occupation": "profesor @ Școala Gimnazială 'Anghel Saligny' Focșani"},
-        {"avatar": DefaultAvatar, "name": "Munteanu Ana", "occupation": "UNATC"},
-        {"avatar": DefaultAvatar, "name": "Penu Ionela Mihaela", "occupation": "profesor @ Școala Miron Costin Galati"}
+        {"avatar": DefaultAvatar, "name": "Ana Munteanu", "occupation": "UNATC"},
+        {"avatar": DefaultAvatar, "name": "Ionela Mihaela Penu", "occupation": "profesor @ Școala Miron Costin Galati"}
 
 
     ];
@@ -108,7 +108,7 @@ export default React.createClass({
 		{"avatar": DefaultAvatar, "name": "Simion Strugar", "occupation": " profesor @ Colegiul National „George Cosbuc” Nasaud"},		
 	    {"avatar": DefaultAvatar, "name": "Denis Troncotă", "occupation": "inginer @ Transylvania High Tech"},
         {"avatar": DefaultAvatar, "name": "Luca Sas", "occupation": "Core Systems Engineer @ Creative Assembly"},
-        {"avatar": DefaultAvatar, "name": "Vasilache Cristian", "occupation": "Universitatea Politehnica București"},
+        {"avatar": DefaultAvatar, "name": "Cristian Vasilache", "occupation": "Universitatea Politehnica București"},
         {"avatar": DefaultAvatar, "name": "Vlad Luță", "occupation": " student @ Politehnica București"},
         {"avatar": DefaultAvatar, "name": "Ciprian Ionescu", "occupation": " Delft University of Technology"},
         {"avatar": DefaultAvatar, "name": "George Dragomir", "occupation": " Vrije Universiteit Amsterdam"},
@@ -118,11 +118,11 @@ export default React.createClass({
     ];
     var web = [
         {"avatar": AdrianaCheres, "name": "Adriana Chereș", "occupation": "Profesor @ Liceul Teoretic Nicolae Bălcescu Cluj Napoca"},
-        {"avatar": RobertColca, "name": "Robert Mihai Colca ", "occupation": "Software Development Engineer"},
+        {"avatar": RobertColca, "name": "Robert Mihai Colca", "occupation": "Software Development Engineer"},
         {"avatar": DefaultAvatar, "name": "Dorin Bibicu", "occupation": "Profesor @ Liceul Teoretic 'Dunarea' Galati"},
         {"avatar": DefaultAvatar, "name": "Rareș Mircea Muntean", "occupation": "profesor @ Liceul Teoretic 'Emil Racoviță' Baia Mare"},
         {"avatar": DefaultAvatar, "name": "Alexandru Botici", "occupation": "profesor @ Universitatea de Vest Timișoara"},
-        {"avatar": DefaultAvatar, "name": "Dan Andrei Novac", "occupation": "inginer @ SC eMag IT Research SRL Iași"},
+        {"avatar": DefaultAvatar, "name": "Dan Andrei Novac", "occupation": "inginer @ SC eMag IT Research SRL București"},
         {"avatar": DefaultAvatar, "name": "Cosmin Ciolacu", "occupation": "inginer @ S.C. Webfactory SRL București"},
         {"avatar": DefaultAvatar, "name": "Vlad Tudor", "occupation": "profesor @ Liceul Teoretic Național București"},
 

@@ -8,6 +8,7 @@ import Header from "./header";
 import PhotoWrapper from "./photo-wrapper.jsx";
 
 import "../main.less";
+import Cover2023 from "../../assets/img/2023.jpg";
 import Cover2022 from "../../assets/img/2022.jpg";
 import Cover2019 from "../../assets/img/2019.jpg";
 import Cover2018 from "../../assets/img/2018.jpg";
@@ -33,6 +34,7 @@ export default React.createClass({
     return {
         hoveredYear: 0,
         albums: [
+			{"year": 2023, "link": "https://photos.app.goo.gl/YQykPWLecHXudJrz8"},
             {"year": 2022, "link": "https://photos.app.goo.gl/zmRNv7SUxph37wbo9"},
             {"year": 2019, "link": "https://photos.app.goo.gl/NLxQgokxJtn5odG68"},
             {"year": 2018, "link": "https://photos.google.com/share/AF1QipP99v0CmRfkClWlyQweO_Tqmzyme6_aFVQFImVaY-atPTR0C2GTu9o3IFoRudIO5g?key=eE4yaGZiZkRLSy00RFpBQ3J4ZEhPZnFhUjQxNVF3"},
