@@ -97,7 +97,7 @@ export default React.createClass({
 		{"avatar": LaviniuBejenaru, "name": "Laviniu Bejenaru", "occupation": "Profesor @ Colegiul National 'Traian' din Drobeta Turnu Severin"},
         {"avatar": Carmocanu, "name": "Gheorghe Carmocanu", "occupation": "profesor @ Liceul Teoretic 'Mihai Eminescu' Cluj-Napoca"},
 		{"avatar": DefaultAvatar, "name": "Marian Stoica", "occupation": "inginer @ S.C. Protoforge Electronic Devices SRL Timișoara"},
-        {"avatar": DefaultAvatar, "name": "Cristian Munteanu", "occupation": "Inginer Software @ Haufe Group"},
+        {"avatar": DefaultAvatar, "name": "Cristian Munteanu", "occupation": "Inginer Software @ Haufe Group Romania"},
         {"avatar": DefaultAvatar, "name": "Radu Vrînceanu", "occupation": "student @ Facultatea de Matematică și Informatică București"},
         {"avatar": DefaultAvatar, "name": "Marian Crăciun", "occupation": "inginer @ IV FUTURE"},
         
