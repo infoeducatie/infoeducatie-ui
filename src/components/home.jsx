@@ -44,8 +44,8 @@ import Microsoft from "../../assets/img/sponsors/microsoft.jpg"
 //import Certsign from "../../assets/img/sponsors/certsign.jpg"
 import CJVrancea from "../../assets/img/sponsors/logoCJVrancea.jpg"
 import InfoBits from "../../assets/img/sponsors/link_infobits_academy.jpg"
-
-
+import sindicatVrancea  from "../../assets/img/sponsors/SindicatVrancea.jpg"
+import cyberedu  from "../../assets/img/sponsors/cyberedu.png"
 export default React.createClass({
   displayName: "Home",
 
@@ -250,6 +250,12 @@ export default React.createClass({
 
                             <a href="https://ebooks.infobits.ro" target="_blank">
                               <img src={InfoBits} />
+                            </a>
+                            <a href="https://slivrancea.blogspot.com/" target="_blank">
+                              <img src={sindicatVrancea} />
+                            </a>
+                            <a href="https://www.cyber-edu.co/" target="_blank">
+                              <img src={cyberedu} />
                             </a>
 
                         </p>
