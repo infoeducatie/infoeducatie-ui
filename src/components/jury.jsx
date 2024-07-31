@@ -70,20 +70,20 @@ export default React.createClass({
         //
         {"avatar": DanielPopaAvatar, "name": "Daniel Popa", "occupation": "profesor @ Liceul Teoretic 'Aurel Vlaicu' Orastie"},
         {"avatar": PetruAvatar, "name": "Petru Dimitriu", "occupation": "Asistent la Universitatea Tehnică 'Gh. Asachi' din Iași"},
-		{"avatar": Arisanu, "name": "Ana-Maria Arișanu ", "occupation": "Profesor @ Colegiul National 'Mircea cel Batran' Rm. Valcea "},
-		{"avatar": DefaultAvatar, "name": "Bogdan Patrut", "occupation": "profesor @ Unuiversitatea Alexandru Ioan Cuza Iași"},
+	{"avatar": Arisanu, "name": "Ana-Maria Arișanu ", "occupation": "Profesor @ Colegiul National 'Mircea cel Batran' Rm. Valcea "},
+	{"avatar": DefaultAvatar, "name": "Bogdan Patrut", "occupation": "profesor @ Unuiversitatea Alexandru Ioan Cuza Iași"},
+	{"avatar": AntoniaHaller, "name": "Antonia Haller", "occupation": "Profesor @ Colegiul National 'Mircea cel Batran' Rm. Valcea "},
         {"avatar": DefaultAvatar, "name": "Adriel Rafael Matei", "occupation": "student @ University of Groningen"},
         {"avatar": DefaultAvatar, "name": "Ebru Resul", "occupation": "security engineer @ Keysight Technologies"},
-        {"avatar": DefaultAvatar, "name": "Gabriela Grigoraș", "occupation": "profesor @ Școala profesională nr.41 Iași"},
         {"avatar": DefaultAvatar, "name": "Victor Iulian Sandu", "occupation": "student @ ASE București"},
         
 
     ];
     var media = [
-		{"avatar": AntoniaHaller, "name": "Antonia Haller", "occupation": "Profesor @ Colegiul National 'Mircea cel Batran' Rm. Valcea "},
+	{"avatar": DefaultAvatar, "name": "Roxana Tîmplaru", "occupation": "Profesor @ Colegiul 'Ștefan Odobleja'"},	
         {"avatar": DefaultAvatar, "name": "Burlacu Cătălina", "occupation": "Profesor @ Colegiul Dunărea Galaţi"},
         {"avatar": DefaultAvatar, "name": "Alexandru Negru", "occupation": "Universitatea Babeș-Bolyai"},
-        {"avatar": DefaultAvatar, "name": "Roxana Tîmplaru", "occupation": "Profesor @ Colegiul Național 'Ștefan Odobleja'"},
+        
         {"avatar": DefaultAvatar, "name": "Alin Maidan", "occupation": "profesor @ Colegiul Național 'Miron Costin' Galați"},
         {"avatar": FlaviaOprea, "name": "Flavia Oprea", "occupation": "PhD lector @ Politehnica București"},
         {"avatar": DefaultAvatar, "name": "Cristina Ionescu", "occupation": "profesor @ Școala Gimnazială 'Anghel Saligny' Focșani"},
