@@ -49,7 +49,7 @@ export default React.createClass({
 //    ];
 
     let vicepresedinte = [
-    {"avatar": DefaultAvatar, "name": "Prof. Gabriela Marchitan", "occupation": "Inspector şcolar general @  ISJ Vrancea"},
+    {"avatar": DefaultAvatar, "name": "prof. dr. Livia - Silvia MARCU", "occupation": "Inspector şcolar general @  ISJ Vrancea"},
     ];
 
     let secretar = [
