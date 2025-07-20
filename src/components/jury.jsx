@@ -54,7 +54,7 @@ export default React.createClass({
 
     let secretar = [
       {"avatar": DefaultAvatar, "name": "Cristina Ionescu", "occupation": "profesor @ Școala Gimnazială 'Anghel Saligny' Focșani"}
-      
+     
     ];
 
     let comisiaTehnica = [
