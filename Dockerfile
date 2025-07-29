@@ -1,4 +1,4 @@
-FROM node:8-buster
+FROM node:16-bullseye
 
 RUN apt-get update -y && \
     apt-get install --no-install-recommends -y nginx && \
