@@ -11,9 +11,12 @@ import Header from "./header";
 import NewsContainer from "./news/news-container";
 
 import "../main.less";
-import PrimariaFocsani from "../../assets/img/sponsors/logoPrimariaFocsani.jpg";
+//import PrimariaFocsani from "../../assets/img/sponsors/logoPrimariaFocsani.jpg";
 //import Google from "../../assets/img/sponsors/google.png";
 //import Intel from "../../assets/img/sponsors/intel.png";
+import Micromet from "../../assets/img/sponsors/micromet.jpg";
+import Electric from "../../assets/img/sponsors/electric.png";
+
 import Orange from "../../assets/img/sponsors/orange.png";
 import EasyHost from "../../assets/img/sponsors/easyhost.png";
 import Cisco from "../../assets/img/sponsors/cisco.png";
@@ -190,9 +193,7 @@ export default React.createClass({
                         <a href="https://cjvrancea.ro/" target="_blank">
                           <img src={CJVrancea} />
                         </a>
-						 <a href="http://www.focsani.info/" target="_blank">
-                              <img src={PrimariaFocsani} />
-                         </a>&nbsp;
+						 &nbsp;
                     </p>
                 </Col>
             </Row>
@@ -256,6 +257,12 @@ export default React.createClass({
                             </a>
                             <a href="https://www.cyber-edu.co/" target="_blank">
                               <img src={cyberedu} />
+                            </a>
+                            <a href="https://www.micromet.ro/" target="_blank">
+                              <img src={Micromet} />
+                            </a>
+                            <a href="https://www.electricsrl.ro/" target="_blank">
+                              <img src={Electric} />
                             </a>
 
                         </p>
