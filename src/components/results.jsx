@@ -28,17 +28,23 @@ export default React.createClass({
   },
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.lastEditionWithResults.id !==
-        this.props.lastEditionWithResults.id) {
+    let nextEdition = nextProps.lastEditionWithResults;
+    let currentEdition = this.props.lastEditionWithResults;
 
-      this.setState({currentEdition: nextProps.lastEditionWithResults});
-      this.showResults(nextProps.lastEditionWithResults.id);
+    if (nextEdition &&
+        (!currentEdition || nextEdition.id !== currentEdition.id)) {
+
+      this.setState({currentEdition: nextEdition});
+      this.showResults(nextEdition.id);
     }
   },
 
   componentDidMount() {
-    if (this.state.currentEdition !== 0) {
-      this.showResults(this.props.lastEditionWithResults.id);
+    let edition = this.props.lastEditionWithResults;
+
+    if (edition && edition.id) {
+      this.setState({currentEdition: edition});
+      this.showResults(edition.id);
     }
   },
 

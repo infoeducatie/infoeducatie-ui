@@ -37,7 +37,7 @@ export default class EditionSelector extends React.Component {
 
     this.setState({
       editions: data,
-      selectedEditionId: selectedEdition.id
+      selectedEditionId: selectedEdition ? selectedEdition.id : 0
     });
   }
 

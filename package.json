@@ -50,7 +50,6 @@
     "webpack-dev-server": "^2.0.0"
   },
   "dependencies": {
-    "blueimp-file-upload": "github:infoeducatie/jQuery-File-Upload",
     "bootstrap": "^3.3.4",
     "classnames": "^2.1.2",
     "jquery": "^3.0.0",

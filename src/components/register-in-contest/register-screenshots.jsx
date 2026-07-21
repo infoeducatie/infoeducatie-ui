@@ -1,47 +1,64 @@
 "use strict";
 
-import "blueimp-file-upload";
-import $ from "jquery";
 import React from "react";
-import ReactDOM from "react-dom";
-import _ from "lodash";
-import { FormControl, FormGroup, Glyphicon } from "react-bootstrap";
-
-import FormMixin from "../../mixins/form"
-
+import { FormControl, Glyphicon } from "react-bootstrap";
 
 export default React.createClass({
   displayName: "RegisterScreenshots",
 
-  componentDidMount() {
-    $(ReactDOM.findDOMNode(this.refs.fileupload)).fileupload({
-      dataType: "json",
-      headers: {
-        Authorization: this.props.access_token
-      },
-      add: (e, data) => {
-        this.setProgressBar(0);
-        data.submit();
-      },
-      done: () => {
-        this.props.onSubmit();
-      },
-      progressall: (e, data) => {
-        let progress = parseInt(data.loaded / data.total * 100, 10);
-        this.setProgressBar(progress);
-      },
-      error: () => {
-        window.alert("eroare"); // eslint-disable-line
-      }
-    });
+  getInitialState() {
+    return {
+      hasErrored: false,
+      progress: 0,
+      uploading: false
+    };
   },
 
-  setProgressBar(value) {
-    $(ReactDOM.findDOMNode(this.refs.progressBar)).css("width", value+"%");
+  onFileChange(event) {
+    let input = event.currentTarget;
+    let file = input.files[0];
+
+    if (!file || this.state.uploading) {
+      return;
+    }
+
+    let request = new XMLHttpRequest();
+    let data = new FormData();
+    data.append("screenshots[]", file);
+
+    request.open("POST", window.config.API_URL + this.props.formEndpoint);
+    request.setRequestHeader("Authorization", this.props.access_token);
+    request.upload.onprogress = (progressEvent) => {
+      if (progressEvent.lengthComputable) {
+        this.setState({
+          progress: parseInt(progressEvent.loaded / progressEvent.total * 100, 10)
+        });
+      }
+    };
+    request.onload = () => {
+      input.value = "";
+
+      if (request.status >= 200 && request.status < 300) {
+        this.setState({uploading: false, progress: 100});
+        this.props.onSubmit();
+      } else {
+        this.setUploadError();
+      }
+    };
+    request.onerror = () => {
+      input.value = "";
+      this.setUploadError();
+    };
+
+    this.setState({hasErrored: false, progress: 0, uploading: true});
+    request.send(data);
+  },
+
+  setUploadError() {
+    this.setState({hasErrored: true, progress: 0, uploading: false});
   },
 
   render() {
-    let url = window.config.API_URL + this.props.formEndpoint;
     return <div>
       <p>Trebuie minim <em>1</em> și maxim <em>3</em> capturi de ecran.</p>
       <p>Până acum ai încărcat <em>{this.props.screenshotsCount}</em>.</p>
@@ -57,12 +74,19 @@ export default React.createClass({
         <FormControl ref="fileupload"
                type="file"
                name="screenshots[]"
-               data-url={url} />
+               accept="image/jpeg,image/png,image/webp"
+               disabled={this.state.uploading}
+               onChange={this.onFileChange} />
       </span>
+      {this.state.hasErrored ?
+        <p className="alert alert-danger">
+          Imaginea nu a putut fi incarcata. Incearca din nou.
+        </p>
+        : null}
       <hr />
       <div id="progress" className="progress">
           <div className="progress-bar progress-bar-success"
-               ref="progressBar" />
+               style={{width: this.state.progress + "%"}} />
       </div>
     </div>;
   }

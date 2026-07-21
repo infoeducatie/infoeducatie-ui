@@ -50,7 +50,10 @@ export default React.createClass({
   },
 
   renderResultsContestants() {
-    if (this.props.current.edition.id == this.props.current.last_edition_with_results.id) {
+    let lastEditionWithResults = this.props.current.last_edition_with_results;
+
+    if (lastEditionWithResults &&
+        this.props.current.edition.id == lastEditionWithResults.id) {
       return <LinkContainer to="/rezultate"><NavItem>Rezultate</NavItem></LinkContainer>;
     } else {
       return <LinkContainer to="/participanti"><NavItem>Participanți</NavItem></LinkContainer>;
