@@ -3,7 +3,7 @@
 
 .alumni {
   .gray-section-wrapper {
-    .gray-section-wrapper (@img_path: "/assets/img/alumni.png");
+    .gray-section-wrapper (@img_path: "/assets/img/alumni.webp");
     background-position: center;
     background-size: initial;
     background-repeat: no-repeat;
@@ -14,11 +14,12 @@
   }
 
   .alumnus-container {
-    color: @white;
-    text-align: justify;
+    color: @black;
+    text-align: left;
 
     .alumnus-name {
       color: @light-black;
+      font-size: @font-size-h5;
       text-transform: uppercase;
       letter-spacing: @medium-letter-spacing / 2;
       font-weight: bold;
@@ -30,7 +31,7 @@
 
     .alumnus-editions {
       text-transform: uppercase;
-      color: @white;
+      color: @black;
 
       span {
         margin-right: 10px;
@@ -42,6 +43,7 @@
       width: 150px;
       height: 150px;
       border-radius: 100%;
+      margin: 0 auto;
 
       img {
         border-radius: 100%;
@@ -61,6 +63,7 @@
 
     &.black {
       background-color: @light-black;
+      color: @white;
 
       .alumnus-name {
         color: @orange;
@@ -69,7 +72,22 @@
       .alumnus-position {
         color: @light-grey;
       }
+
+      .alumnus-editions {
+        color: @white;
+      }
     }
 
+  }
+
+  @media screen and (max-width: (@screen-md - 1px)) {
+    .alumnus-container {
+      padding-left: 20px;
+      padding-right: 20px;
+
+      .alumnus-copy {
+        padding-top: 20px;
+      }
+    }
   }
 }

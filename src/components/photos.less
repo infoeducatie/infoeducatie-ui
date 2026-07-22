@@ -3,7 +3,7 @@
 
 .photos {
   .gray-section-wrapper {
-    .gray-section-wrapper (@img_path: "/assets/img/photos.png");
+    .gray-section-wrapper (@img_path: "/assets/img/photos.webp");
   }
   .gray-section {
     .gray-section();
@@ -38,7 +38,21 @@
         height: 100%;
 
         a {
+          display: block;
+          min-height: 176px;
           text-decoration: none;
+
+          &:focus-visible {
+            border-radius: 4px;
+          }
+
+          &:focus-visible .cover {
+            filter: blur(2px);
+          }
+
+          &:focus-visible .more-details {
+            display: block;
+          }
         }
 
         .more-details {

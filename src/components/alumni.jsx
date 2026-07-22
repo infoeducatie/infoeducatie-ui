@@ -50,19 +50,25 @@ export default createLegacyComponent({
           <Col className={className} xs={12}>
             <Row className="xsmall-spacing" />
             <Row>
-              <Col xs={3} xsOffset={1}>
+              <Col className="alumnus-portrait" md={3}>
                 <Row className="xsmall-spacing" />
                 <div className="alumnus-image">
-                  <img src={gravatar(alumnus.user.email_md5)} />
+                  <img
+                    alt=""
+                    height="150"
+                    loading="lazy"
+                    src={gravatar(alumnus.user.email_md5)}
+                    width="150"
+                  />
                 </div>
               </Col>
-              <Col xs={8}>
+              <Col className="alumnus-copy" md={9}>
                 <p>{alumnus.description}</p>
                 <Row className="xsmall-spacing" />
-                <h5 className="alumnus-name">
+                <h2 className="alumnus-name">
                   {alumnus.user.first_name} &nbsp;
                   {alumnus.user.last_name}
-                </h5>
+                </h2>
                 <p className="alumnus-position">{alumnus.user.job}</p>
                 <p className="alumnus-editions">
                   {editions.sort().reverse().map(function(edition) {

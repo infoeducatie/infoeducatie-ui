@@ -90,7 +90,7 @@ export default createLegacyComponent({
             <Row className="small-spacing" />
             <Row>
               <Col xs={12}>
-                <h4>Participare la concurs</h4>
+                <h2 className="content-heading">Participare la concurs</h2>
                 <p>
                     La fiecare etapă vor fi prezentate lucrări
                     realizate de către elevi, indiferent de anul de
@@ -112,7 +112,7 @@ export default createLegacyComponent({
                 </p>
 
                 <Row className="small-spacing" />
-                <h4>Condiții de participare</h4>
+                <h2 className="content-heading">Condiții de participare</h2>
                 <p>
                     Fiecare județ doritor poate participa cu maximum
                     <em>5 elevi</em> și un <em>profesor însoțitor</em>
@@ -146,16 +146,25 @@ export default createLegacyComponent({
         <Grid className="orange-section">
           <Row>
             <Col className="block">
-              <Row className="jury-criteria-desc">
+              <div className="jury-criteria-desc">
                   <span className="pink-dash" />
                     criterii de jurizare
                   <span className="pink-dash" />
-              </Row>
+              </div>
               <Row className="jury-criteria-documents">
                 {criteria.map(function(doc) {
                   return <div key={doc.link} className="jury-criteria">
                     <div className="jury-criteria-txt">{doc.name}</div>
-                    <div className="jury-criteria-img"><a href={doc.link} target="_blank" rel="noreferrer"><img src={DefaultDocument} alt={doc.link} /></a></div>
+                    <div className="jury-criteria-img">
+                      <a
+                        aria-label={`Deschide criteriile pentru ${doc.name}`}
+                        href={doc.link}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <img alt="" height="35" src={DefaultDocument} width="50" />
+                      </a>
+                    </div>
                   </div>;
                 })}
               </Row>

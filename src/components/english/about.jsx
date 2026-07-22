@@ -86,7 +86,7 @@ export default createLegacyComponent({
             <Row className="small-spacing" />
             <Row>
               <Col xs={12}>
-                <h4>How can I participate?</h4>
+                <h2 className="content-heading">How can I participate?</h2>
                 <p>
                   Every level of the competition involves the contestant
                   presenting different projects that they have made themselves,
@@ -111,7 +111,7 @@ export default createLegacyComponent({
                   College, the Tulnici community and the Vidra high school.
                 </p>
                 <Row className="small-spacing" />
-                <h4>Terms of participation</h4>
+                <h2 className="content-heading">Terms of participation</h2>
                 <p>
                     Each county can participate with maximum of
                     <em>5 students</em> and one <em>assistant teacher</em>

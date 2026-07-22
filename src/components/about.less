@@ -3,7 +3,7 @@
 
 .galaciuc {
   .blue-section-wrapper {
-    .blue-section-wrapper (@img_path: "/assets/img/galaciuc.png");
+    .blue-section-wrapper (@img_path: "/assets/img/galaciuc.webp");
   }
   .blue-section {
     .blue-section();
@@ -27,8 +27,8 @@
         text-align: center;
         margin: 0 20px 40px auto;
         width: 150px;
-        letter-spacing: 2px;
-        color: @white;
+        letter-spacing: 0;
+        color: @black;
         display: inline-block;
 
         .jury-criteria-txt {
@@ -37,6 +37,14 @@
         }
         .jury-criteria-img {
           filter: brightness(0);
+
+          a {
+            align-items: center;
+            display: inline-flex;
+            justify-content: center;
+            min-height: 44px;
+            min-width: 44px;
+          }
         }
       }
     }
@@ -48,7 +56,7 @@
       min-height: 0px;
       padding-top: 30px;
       padding-bottom: 20px;
-      letter-spacing: 3px;
+      letter-spacing: 0;
 
       .pink-dash {
         color: @pink;
@@ -78,7 +86,7 @@
     p {
       font-size: 20px;
       margin-top: 20px;
-      text-align: justify;
+      text-align: left;
     }
 
     .category {
@@ -89,6 +97,11 @@
 
       &.yellow {
         background-color: @yellow;
+
+        .description {
+          color: @dark-green;
+          font-weight: bold;
+        }
       }
 
       &.green {
@@ -105,6 +118,23 @@
 
       &.black {
         background-color: @light-black;
+      }
+
+      &.yellow,
+      &.green {
+        .description {
+          color: @black;
+          font-weight: bold;
+        }
+      }
+
+      &.blue,
+      &.pink {
+        .description {
+          color: @white;
+          font-size: 18.667px;
+          font-weight: bold;
+        }
       }
 
       .round-icon {

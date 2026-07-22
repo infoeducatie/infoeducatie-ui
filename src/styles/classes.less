@@ -26,12 +26,14 @@
 .cta-link {
   .section-title();
   align-items: center;
-  border: 2px solid transparent;
-  border-radius: 6px;
+  border: 3px solid transparent;
+  border-radius: 30px;
   display: inline-flex;
+  font-size: 18.667px;
+  font-weight: bold;
   justify-content: center;
-  min-height: 48px;
-  padding: 12px 22px;
+  min-height: 60px;
+  padding: 16px 20px;
   text-decoration: none;
   transition: background-color 160ms ease, border-color 160ms ease,
               color 160ms ease;
@@ -41,13 +43,14 @@
     color: @white;
 
     &:hover {
-      background-color: #8E0054;
-      color: @white;
+      background-color: @white;
+      border-color: @pink;
+      color: @black;
     }
   }
 
   &.cta-light {
-    background-color: rgba(36, 40, 43, 0.28);
+    background-color: transparent;
     border-color: @white;
     color: @white;
 
@@ -59,11 +62,11 @@
 
   &.cta-dark {
     background-color: transparent;
-    border-color: @black;
-    color: @black;
+    border-color: @dark-green;
+    color: @dark-green;
 
     &:hover {
-      background-color: @black;
+      background-color: @dark-green;
       color: @white;
     }
   }

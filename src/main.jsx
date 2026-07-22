@@ -38,7 +38,6 @@ import request from "./lib/request";
 
 const About = lazy(() => import("./components/about"));
 const Alumni = lazy(() => import("./components/alumni"));
-const Calendar = lazy(() => import("./components/calendar"));
 const Contact = lazy(() => import("./components/contact"));
 const Contestants = lazy(() => import("./components/contestants/contestants"));
 const AboutEnglish = lazy(() => import("./components/english/about"));
@@ -46,7 +45,6 @@ const ContactEnglish = lazy(() => import("./components/english/contact"));
 const HomeEnglish = lazy(() => import("./components/english/home"));
 const PhotoEnglish = lazy(() => import("./components/english/photos"));
 const Jury = lazy(() => import("./components/jury"));
-const Kitchen = lazy(() => import("./components/kitchen"));
 const Photos = lazy(() => import("./components/photos"));
 const Register = lazy(() => import("./components/register"));
 const RegisterInContest = lazy(
@@ -86,6 +84,15 @@ function App() {
   useEffect(() => {
     document.documentElement.lang = language;
   }, [language]);
+
+  useEffect(() => {
+    const canonicalUrl = new URL(location.pathname, window.location.origin).href;
+    const canonical = document.querySelector('link[rel="canonical"]');
+    const openGraphUrl = document.querySelector('meta[property="og:url"]');
+
+    if (canonical) canonical.href = canonicalUrl;
+    if (openGraphUrl) openGraphUrl.content = canonicalUrl;
+  }, [location.pathname]);
 
   const getCurrent = useCallback(() => {
     const accessToken = getAccessToken();
@@ -189,9 +196,7 @@ const routeComponents = [
   { path: "contacte", component: Contact },
   { path: "despre", component: About },
   { path: "inregistrare", component: Register },
-  { path: "calendar", component: Calendar },
   { path: "rezultate", component: Results },
-  { path: "kitchen", component: Kitchen },
   { path: "participanti", component: Contestants },
   { path: "home", component: HomeEnglish },
   { path: "about", component: AboutEnglish },
@@ -225,6 +230,8 @@ root.render(
               element={<RouteContent component={component} />}
             />
           ))}
+          <Route path="calendar" element={<Navigate replace to="/program" />} />
+          <Route path="kitchen" element={<Navigate replace to="/" />} />
           <Route path="*" element={<Navigate replace to="/" />} />
         </Route>
       </Routes>

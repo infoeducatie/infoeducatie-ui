@@ -1,85 +1,60 @@
 # InfoEducatie UI/UX Audit
 
-Audit date: 2026-07-22
+Initial audit: 2026-07-22
+
+Remediation verification: 2026-07-22
 
 ## Scope
 
-The audit covered the deployed `https://infoeducatie.ro` experience at 1280x720 and 390x844, with focused checks on the homepage, account registration, participants, results, seminars, schedule, photos, about, and contact routes. It combined visual review, keyboard/DOM inspection, axe-core accessibility scans, console/network inspection, and a mobile Lighthouse run.
+The audit covers the public `infoeducatie.ro` experience and the local React 19/Vite release candidate. Checks include the homepage, registration, participants, results, seminars, schedule, photos, about, contact, Romanian and English routes, desktop/mobile visual review, keyboard and DOM inspection, axe-core, Lighthouse, console/network inspection, and responsive overflow testing.
 
-The deployed site is still serving the legacy bundle. The local React 19/Vite build already fixes the missing `lang` attribute, mobile navigation collapse, modern autocomplete values, and legacy Sentry/analytics integrations. Findings below distinguish remaining code work from deployment work.
+Production currently serves the previously released React 19 image (`c782fee`). The visual remediation described below is complete locally but has not been committed or pushed yet.
 
-## Baseline
+## Verified Release Candidate
 
-- Mobile Lighthouse: Performance 54, Accessibility 65, Best Practices 92, SEO 73.
-- Mobile FCP: 5.5 s; LCP: 9.4 s; TBT: 310 ms; transfer size: about 1.9 MiB.
-- Homepage axe scan: 14 contrast failures, 16 images without alternatives, 16 unnamed links, invalid heading order, no main landmark, and no document language in the deployed bundle.
-- The deployed results page throws while rendering project arrays and leaves the results table unavailable.
-- The deployed mobile navigation is permanently expanded and delays the primary page task.
-- The participant listing contains 131 rows without search, sorting, pagination, or a mobile-first presentation.
-- Registration places the form below a large decorative header, does not clearly communicate all requirements, and preselects newsletter consent.
+- Restored the established InfoEducatie palette: pink `#FF0090`, green `#57B83D`, blue `#0084B0`, yellow `#FFC000`, and the original cyan hero overlay.
+- Restored the earlier Lato/Shadows typography, container widths, compact white navigation, rounded calls to action, section rhythm, and bright news band lost during the Bootstrap 5 migration.
+- Added a compact, labeled mobile menu while preserving the original desktop menu appearance.
+- Mapped legacy Bootstrap 3 grid props to the correct Bootstrap 5 breakpoints so page structure behaves as before.
+- Converted participant and result tables to labeled cards on narrow screens and fixed multi-author record overlap.
+- Made selectors, filters, sponsor rows, alumni, seminars, jury, photos, registration, and footer layouts responsive down to 320 px.
+- Added accessible landmarks, headings, names, alternative text, focus targets, form labels, and contrast-safe text while retaining the original brand colors.
+- Removed unfinished Calendar/Kitchen pages from navigation and redirected their old URLs to useful destinations.
+- Added canonical/social metadata, `robots.txt`, and `sitemap.xml`.
+- Converted the largest page backgrounds to WebP and added intrinsic dimensions, lazy loading, and responsive image candidates.
+- Added a tested-image release gate and a production image updater with health check, failed-image quarantine, and rollback.
 
-## First Improvement Batch Completed Locally
+## Verification Results
 
-- The homepage, English homepage, registration, participants, and results routes now return zero axe-core violations at the audited breakpoints.
-- All 19 public routes return HTTP 200 in the 390x844 local smoke run, render one `main` landmark and one H1, use the expected route language, and avoid document-level horizontal overflow.
-- Results tolerate missing API arrays and render successfully against the live read-only API instead of crashing.
-- Participants now support title, contestant, county, and category filtering with a visible result count and empty state.
-- Task pages use shorter headers, readable three-column mobile filters, labeled selectors, focusable table regions, and semantic links/buttons.
-- Registration and sign-in fields have associated labels and autocomplete metadata; newsletter consent is no longer preselected.
-- Route splitting reduced the main JavaScript chunk from 636.75 kB (219.16 kB gzip) to 450.99 kB (162.99 kB gzip).
-- `npm test`, the production build, and `npm audit` pass; the dependency audit reports zero vulnerabilities.
-- The local smoke preview is available at `http://127.0.0.1:4173`. Production remains on the legacy bundle until `REL-001` is completed.
+- Responsive matrix: 17 routes at 320x568, 390x844, 667x375, 768x1024, 1440x900, and 1920x1080; 102 checks with no horizontal overflow or empty route render.
+- Accessibility: zero axe-core violations on all 17 first-party routes at the mobile breakpoint. The cross-origin Google Docs schedule iframe is excluded because its internal markup is not controlled by InfoEducatie.
+- Lighthouse mobile: Performance 81, Accessibility 100, Best Practices 100, SEO 100.
+- Lighthouse metrics: FCP 2.1 s, LCP 4.7 s, TBT 50 ms, CLS 0.017, transfer about 733 KiB.
+- Improvement from the deployed audit: performance 60 to 81, CLS 0.271 to 0.017, and transfer about 871 KiB to 733 KiB for the comparable local build.
+- Build smoke, lint, production build, dependency audit, and whitespace checks pass.
 
-Known external limitation: the Google Docs schedule iframe emits a `DOCS_timing is not defined` console error from Google's document code. The InfoEducatie application routes and bundle remain error-free during the smoke run.
+## Remaining P1 Work
 
-## P0: Functional And Inclusive Access
+- Reduce the 519.9 kB main JavaScript chunk and remove roughly 46 KiB of unused legacy CSS; Lighthouse still estimates about 94 KiB of unused JavaScript.
+- Bring mobile LCP below 2.5 s by profiling initial JavaScript, critical CSS, and the remaining above-the-fold asset chain.
+- Add consistent loading, empty, error, and retry states to every API-driven page.
+- Complete registration feedback: password visibility, live requirements, matching confirmation, submit progress, and focused error summary.
+- Add a clear registration-open/closed state with deadline and next action.
+- Replace or isolate the Google Docs schedule iframe and retain a resilient external fallback.
+- Add a dedicated not-found page instead of redirecting every unknown URL.
 
-- Deploy the tested React 19/Vite image so production receives the already completed mobile navigation, language, autocomplete, Sentry, and request-layer fixes.
-- Make results rendering tolerant of partial or changing API records and remove render-time data mutation.
-- Add a skip link, main landmark, footer landmark, and uniquely named navigation landmarks.
-- Give every form control, edition selector, category filter, view toggle, and scrollable data region an accessible name and keyboard path.
-- Replace click-only rows and text links without `href` with semantic links or buttons.
-- Add useful alternative text to sponsor logos and meaningful images; mark decorative images appropriately.
-- Correct WCAG AA contrast failures on calls to action, news, footer text, and yellow/green sections.
+## Remaining P2 Work
 
-## P1: Core Workflow UX
+- Add participant sorting and shareable URL-backed filters.
+- Add route-specific titles and descriptions; canonical and Open Graph URLs are already route-aware.
+- Finish Romanian/English content parity and review all copy, dates, and diacritics.
+- Verify Forum, Blog, sponsor, and social destinations on a scheduled basis.
+- Add privacy information beside account and newsletter consent controls.
+- Add Lighthouse budgets and automated axe/Playwright coverage to CI.
 
-- Reduce decorative header height on task-focused pages so forms, filters, schedules, and lists appear earlier.
-- Add participant search, visible result counts, empty states, and clear filter state.
-- Replace the wide mobile participant/results tables with compact cards or a deliberate table/card mode.
-- Add visible form requirements, inline validation, password visibility controls, matching-password feedback, submit progress, and error focus management.
-- Make newsletter consent opt-in rather than preselected and link to an appropriate privacy notice.
-- Add loading, empty, error, and retry states to all API-driven pages.
-- Make news pagination and “read more” controls semantic buttons and return focus after modal close.
-- Refresh the footer: current copyright year, HTTPS destinations, remove Google+, verify Forum/Blog availability, and improve newsletter hierarchy.
-- Replace ambiguous icon-only controls with labeled tooltips and consistent selected/pressed states.
+## Release Criteria
 
-## P1: Performance
-
-- Split route bundles with `React.lazy` and `Suspense` so visitors do not download every page on first load.
-- Convert large JPEG/PNG assets to responsive AVIF/WebP variants and define intrinsic dimensions.
-- Lazy-load below-the-fold sponsor and gallery images.
-- Split shared CSS by route or remove unused legacy styles after component migration.
-- Preload only the hero asset and critical fonts used in the first viewport.
-- Add a Lighthouse CI budget for LCP, accessibility, JavaScript size, and total transfer size.
-
-## P2: Information Architecture And Polish
-
-- Add route-specific document titles, descriptions, canonical URLs, and social sharing metadata.
-- Rework heading levels so each page has one H1 and sections proceed in order.
-- Add a persistent authenticated entry point and make registration status/deadline explicit.
-- Improve participants and results with sorting, shareable filters, county/category facets, and preserved state when returning from a project.
-- Review Romanian and English content parity and select language from the route on direct visits.
-- Establish reusable tokens for color, spacing, typography, focus rings, controls, tables, and responsive page headers.
-- Add a real 404 page instead of silently redirecting unknown URLs to the homepage.
-- Add automated axe checks and Playwright smoke coverage for the key public flows.
-
-## Success Criteria
-
-- No critical or serious axe violations on the audited public routes.
-- Mobile Lighthouse accessibility at least 95 and performance at least 80.
-- Mobile LCP below 2.5 s on a representative mid-tier profile.
-- Every primary workflow is keyboard usable with a visible focus indicator.
-- Account registration and project registration expose clear requirements, progress, success, and recovery states.
-- Participants and results are usable at 320 px without requiring two-dimensional table navigation.
-- Production serves the same tested commit and asset generation as CI.
+- Commit and push the release candidate only after `npm test`, dependency audit, axe, responsive matrix, and Lighthouse checks pass.
+- Confirm the GitHub workflow publishes only the tested image.
+- Confirm the production updater deploys the expected image and its health check succeeds.
+- Re-run the homepage, registration, participants, results, and mobile navigation smoke flows against production.

@@ -32,9 +32,9 @@ export default createLegacyComponent({
           <Row>
             <Col xs={12}>
               <ul className="social-logos list-inline">
-                <li><a href="https://www.facebook.com/infoeducatie" target="_blank" rel="noreferrer"><img alt="Facebook" src={Facebook} /></a></li>
-                <li><a href="https://twitter.com/infoeducatie" target="_blank" rel="noreferrer"><img alt="InfoEducatie on X" src={Twitter} /></a></li>
-                <li><a href="https://github.com/infoeducatie" target="_blank" rel="noreferrer"><img alt="InfoEducatie on GitHub" src={Github} /></a></li>
+                <li><a href="https://www.facebook.com/infoeducatie" target="_blank" rel="noreferrer"><img alt="Facebook" height="58" src={Facebook} width="58" /></a></li>
+                <li><a href="https://twitter.com/infoeducatie" target="_blank" rel="noreferrer"><img alt="InfoEducatie on X" height="58" src={Twitter} width="58" /></a></li>
+                <li><a href="https://github.com/infoeducatie" target="_blank" rel="noreferrer"><img alt="InfoEducatie on GitHub" height="58" src={Github} width="59" /></a></li>
               </ul>
             </Col>
           </Row>

@@ -57,7 +57,8 @@ export default createLegacyComponent({
       <Grid>
         <Row className="small-spacing" />
         <Row>
-          <Col sm={4} smOffset={4}>
+          <Col xs={12}>
+            <div className="edition-filter">
             <label className="control-label" htmlFor="talks-edition">
               Ediția afișată
             </label>
@@ -65,6 +66,7 @@ export default createLegacyComponent({
                              id="talks-edition"
                              ariaLabel="Ediția afișată"
                              filter="has_contestants"/>
+            </div>
           </Col>
         </Row>
         {this.state.talks.map(this.renderTalk)}
@@ -83,14 +85,14 @@ export default createLegacyComponent({
           <Col className={className} xs={12}>
             <Row className="xsmall-spacing" />
             <Row>
-              <Col xs={3} xsOffset={1}>
+              <Col className="talk-authors" md={3}>
                 <Row className="xsmall-spacing" />
                 <ul className="list-inline">
                   {talk.users.map(this.renderAuthorImage)}
                 </ul>
               </Col>
-              <Col xs={8} >
-                <h4 className="talk-title">{talk.title}</h4>
+              <Col className="talk-copy" md={9}>
+                <h3 className="talk-title">{talk.title}</h3>
                 <p>{talk.description}</p>
                 <span>
                   <a className="read-more" href={talk.discourse_url}>
@@ -122,7 +124,7 @@ export default createLegacyComponent({
 
   renderAuthorText(author, index) {
     return <li key={index} className="author-text">
-      <h5 className="author-name">{author.name}</h5>
+      <h4 className="author-name">{author.name}</h4>
       <p className="author-job">{author.job}</p>
     </li>;
   },

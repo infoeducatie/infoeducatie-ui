@@ -2,10 +2,16 @@
 
 
 .filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   text-align: center;
 
   > [class*="col-"] {
+    flex: 0 0 120px;
+    margin-left: 0;
     min-width: 0;
+    width: 120px;
     margin-bottom: 16px;
   }
 
@@ -81,12 +87,8 @@
   }
 
   @media (max-width: 767px) {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-
     > [class*="col-"] {
-      float: none;
+      flex: 0 0 33.333333%;
       margin-left: 0;
       width: 33.333333%;
     }

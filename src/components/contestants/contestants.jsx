@@ -108,25 +108,25 @@ export default createLegacyComponent({
 
   renderProjectRow(project){
     return <tr key={project.id} className="contestant">
-        <td className="county">
+        <td className="county" data-label="Județ">
           <ul className="list-unstyled">
             {asArray(project.counties).map(function(county, index) {
               return <li key={index}>{county}</li>;
             })}
           </ul>
         </td>
-        <td className="title">
+        <td className="title" data-label="Titlul lucrării">
           <a href={project.discourse_url}>{project.title}</a>
         </td>
-        <td className="authors">
+        <td className="authors" data-label="Concurent">
           <ul className="list-unstyled">
             {asArray(project.contestants).map(function(contestant){
               return <li className="author" key={contestant.id}>{contestant.name}</li>;
             })}
           </ul>
         </td>
-        <td className="category">{project.category}</td>
-        <td className="comments"><CloudCount count={project.comments_count} /></td>
+        <td className="category" data-label="Categorie">{project.category}</td>
+        <td className="comments" data-label="Comentarii"><CloudCount count={project.comments_count} /></td>
       </tr>;
   },
 
@@ -255,7 +255,8 @@ export default createLegacyComponent({
       <Grid>
         <Row className="xsmall-spacing" />
         <Row>
-          <Col sm={4} smOffset={4}>
+          <Col xs={12}>
+            <div className="edition-filter">
             <label className="control-label" htmlFor="participant-edition">
               Ediția afișată
             </label>
@@ -263,6 +264,7 @@ export default createLegacyComponent({
                              id="participant-edition"
                              ariaLabel="Ediția afișată"
                              filter="has_projects" />
+            </div>
           </Col>
         </Row>
         <Row className="xsmall-spacing" />

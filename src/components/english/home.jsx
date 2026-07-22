@@ -23,6 +23,9 @@ import gwc from "../../../assets/img/sponsors/girlswhocode.png";
 import leonte from "../../../assets/img/sponsors/leonte.png";
 import altex from "../../../assets/img/sponsors/altex.gif";
 import MTS from "../../../assets/img/sponsors/mts.jpg";
+import PajisteSmall from "../../../assets/img/pajiste-720.webp";
+import PajisteMedium from "../../../assets/img/pajiste-960.webp";
+import Pajiste from "../../../assets/img/pajiste.webp";
 
 export default createLegacyComponent({
   displayName: "Home",
@@ -77,7 +80,7 @@ export default createLegacyComponent({
                     </Col>
                 </Row>
                 <Row className="xsmall-spacing" />
-                <Row>
+                <Row className="hero-actions">
                     <Col xs={12}>
                         <p className="right-button">
                             <Link to="/about" className="cta-link cta-light">
@@ -136,7 +139,18 @@ export default createLegacyComponent({
                             </p>
                         </div>
                     </Col>
-                    <Col md={6} className="grass" />
+                    <Col md={6} className="grass">
+                      <img
+                        alt="InfoEducatie camp in Focsani"
+                        decoding="async"
+                        height="998"
+                        loading="lazy"
+                        src={Pajiste}
+                        srcSet={`${PajisteSmall} 720w, ${PajisteMedium} 960w, ${Pajiste} 1440w`}
+                        sizes="(min-width: 992px) 50vw, 100vw"
+                        width="1440"
+                      />
+                    </Col>
                 </Row>
             </div>
         </div>
@@ -155,13 +169,13 @@ export default createLegacyComponent({
                             <Col xs={12}>
                                 <p className="logos">
                                     <a href="http://mts.ro/" target="_blank" rel="noreferrer">
-                                      <img alt="Romanian Ministry of Youth and Sports" decoding="async" loading="lazy" src={MTS} />
+                                      <img alt="Romanian Ministry of Youth and Sports" decoding="async" height="75" loading="lazy" src={MTS} width="292" />
                                     </a>
                                     <a href="https://upir.ro/" target="_blank" rel="noreferrer">
-                                      <img alt="Romanian Union of Computer Science Teachers" decoding="async" loading="lazy" src={Upir} />
+                                      <img alt="Romanian Union of Computer Science Teachers" decoding="async" height="70" loading="lazy" src={Upir} width="180" />
                                     </a>
                                     <a href="https://www.edu.ro/" target="_blank" rel="noreferrer">
-                                      <img alt="Romanian Ministry of Education" decoding="async" loading="lazy" src={MEN} />
+                                      <img alt="Romanian Ministry of Education" decoding="async" height="78" loading="lazy" src={MEN} width="156" />
                                     </a>
 
                                 </p>
@@ -179,16 +193,16 @@ export default createLegacyComponent({
                     <Col xs={12}>
                         <p className="logos">
                             <a href="http://google.ro" target="_blank" rel="noreferrer">
-                              <img alt="Google" decoding="async" loading="lazy" src={Google} />
+                              <img alt="Google" decoding="async" height="100" loading="lazy" src={Google} width="298" />
                             </a>
                             <a href="http://intel.ro" target="_blank" rel="noreferrer">
-                              <img alt="Intel" decoding="async" loading="lazy" src={Intel} />
+                              <img alt="Intel" decoding="async" height="100" loading="lazy" src={Intel} width="109" />
                             </a>
                             <a href="http://www.orange.ro/" target="_blank" rel="noreferrer">
-                              <img alt="Orange" decoding="async" loading="lazy" src={Orange} />
+                              <img alt="Orange" decoding="async" height="100" loading="lazy" src={Orange} width="100" />
                             </a>
                             <a href="https://imedicare.com/" target="_blank" rel="noreferrer">
-                              <img alt="iMedicare" decoding="async" loading="lazy" src={iMedicare} />
+                              <img alt="iMedicare" decoding="async" height="140" loading="lazy" src={iMedicare} width="140" />
                             </a>
                         </p>
                     </Col>
@@ -204,16 +218,16 @@ export default createLegacyComponent({
                     <Col xs={12}>
                         <p className="logos">
                             <a href="http://www.cisco.com/" target="_blank" rel="noreferrer">
-                              <img alt="Cisco" decoding="async" loading="lazy" src={Cisco} />
+                              <img alt="Cisco" decoding="async" height="100" loading="lazy" src={Cisco} width="183" />
                             </a>
                             <a href="http://www.cloudbase.it/" target="_blank" rel="noreferrer">
-                              <img alt="Cloudbase Solutions" decoding="async" loading="lazy" src={CloudBase} />
+                              <img alt="Cloudbase Solutions" decoding="async" height="77" loading="lazy" src={CloudBase} width="260" />
                             </a>
                             <a href="http://leonte.ro/" target="_blank" rel="noreferrer">
-                              <img alt="Leonte" decoding="async" loading="lazy" src={leonte} />
+                              <img alt="Leonte" decoding="async" height="93" loading="lazy" src={leonte} width="120" />
                             </a>
                             <a href="http://www.altex.ro/" target="_blank" rel="noreferrer">
-                              <img alt="Altex" decoding="async" loading="lazy" src={altex} />
+                              <img alt="Altex" decoding="async" height="60" loading="lazy" src={altex} width="188" />
                             </a>
                         </p>
                     </Col>
@@ -229,19 +243,19 @@ export default createLegacyComponent({
                     <Col xs={12}>
                         <p className="logos">
                             <a href="http://ro.easyhost.com/incubator" target="_blank" rel="noreferrer">
-                              <img alt="Easyhost" decoding="async" loading="lazy" src={EasyHost} />
+                              <img alt="Easyhost" decoding="async" height="100" loading="lazy" src={EasyHost} width="150" />
                             </a>
                             <a href="http://www.intuitext.ro/" target="_blank" rel="noreferrer">
-                              <img alt="Intuitext" decoding="async" loading="lazy" src={Intuitext} />
+                              <img alt="Intuitext" decoding="async" height="100" loading="lazy" src={Intuitext} width="326" />
                             </a>
                             <a href="http://asociatiait.ro/" target="_blank" rel="noreferrer">
-                              <img alt="APDETIC" decoding="async" loading="lazy" src={Apdetic} />
+                              <img alt="APDETIC" decoding="async" height="100" loading="lazy" src={Apdetic} width="150" />
                             </a>
                             <a href="http://eskills4jobs.ec.europa.eu/" target="_blank" rel="noreferrer">
-                              <img alt="eSkills for Jobs" decoding="async" loading="lazy" src={eSkills} />
+                              <img alt="eSkills for Jobs" decoding="async" height="78" loading="lazy" src={eSkills} width="120" />
                             </a>
                             <a href="https://www.facebook.com/GirlsWhoCodeRO" target="_blank" rel="noreferrer">
-                              <img alt="Girls Who Code Romania" decoding="async" loading="lazy" src={gwc} />
+                              <img alt="Girls Who Code Romania" decoding="async" height="87" loading="lazy" src={gwc} width="90" />
                             </a>
                         </p>
                     </Col>

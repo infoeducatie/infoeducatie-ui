@@ -62,6 +62,7 @@
 
   .green-section-wrapper {
     background-color: @green;
+    min-height: 350px;
   }
 
   .gray-section-wrapper {
@@ -88,6 +89,10 @@
     .section-heading {
       text-transform: uppercase;
     }
+
+    .section-heading {
+      font-size: @font-size-h6;
+    }
   }
 
   .yellow-section-wrapper {
@@ -110,16 +115,22 @@
       }
 
       .edition {
-        color: #8E0054;
+        color: @dark-green;
         font-weight: bold;
       }
     }
 
     .grass {
-      background-image: url(/assets/img/pajiste.jpg);
       background-color: @yellow;
-      background-size: cover;
       min-height: 500px;
+      overflow: hidden;
+      padding: 0;
+
+      img {
+        height: 500px;
+        object-fit: cover;
+        width: 100%;
+      }
     }
   }
 
@@ -147,9 +158,18 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+
+      a {
+        align-items: center;
+        display: inline-flex;
+        justify-content: center;
+        max-width: 100%;
+      }
     }
 
     img {
+      height: auto;
+      max-width: 100%;
       padding: 20px 20px;
       vertical-align: middle;
     }
@@ -157,7 +177,53 @@
 }
 
 @media screen and (max-width: @screen-xs) {
+  .home .blue-section .tagline {
+    min-height: 69px;
+  }
+
+  .home .green-section-wrapper {
+    min-height: 420px;
+  }
+
   .home .yellow-section-wrapper .text .location-title {
     font-size: 58px;
+  }
+
+  .home .sponsors-section .logos a {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .home .blue-section .tagline {
+    min-height: 103px;
+  }
+
+  .home .green-section-wrapper {
+    min-height: 470px;
+  }
+}
+
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  .home .blue-section {
+    .hero-actions {
+      flex-wrap: nowrap;
+      justify-content: center;
+
+      > [class*="col-"] {
+        width: auto;
+      }
+    }
+
+    .cta-link {
+      min-height: 48px;
+      padding: 10px 18px;
+    }
+
+    .left-button,
+    .right-button {
+      margin-bottom: 0;
+      text-align: center;
+    }
   }
 }

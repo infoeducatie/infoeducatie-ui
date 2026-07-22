@@ -3,28 +3,29 @@
 
 .talks {
   .blue-section-wrapper {
-    .blue-section-wrapper (@img_path: "/assets/img/galaciuc.png");
+    .blue-section-wrapper (@img_path: "/assets/img/galaciuc.webp");
   }
   .blue-section {
     .blue-section(420px);
   }
 
   .talk-container {
-    color: @white;
-    text-align: justify;
+    color: @black;
+    text-align: left;
 
     .talk-title {
+      font-size: @font-size-h4;
       text-align: left;
     }
 
     .read-more {
-      color: @white;
+      color: @black;
       cursor: pointer;
       font-size: 0.8em;
       font-style: italic;
 
       &:hover {
-        color: @white;
+        color: @black;
       }
     }
 
@@ -40,7 +41,7 @@
       }
 
       .author-job {
-        color: @white;
+        color: @black;
         text-align: left;
         font-size: @font-size-h6;
       }
@@ -75,15 +76,37 @@
 
     &.black {
       background-color: @light-black;
+      color: @white;
 
       .author-name {
         color: @orange;
       }
 
-      .author-position {
+      .author-job {
         color: @light-grey;
+      }
+
+      .read-more,
+      .read-more:hover {
+        color: @white;
       }
     }
 
+  }
+
+  @media screen and (max-width: (@screen-md - 1px)) {
+    .talk-container {
+      padding-left: 20px;
+      padding-right: 20px;
+
+      .author-image {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .talk-copy {
+        padding-top: 20px;
+      }
+    }
   }
 }

@@ -60,9 +60,9 @@ export function Col({
   return (
     <BootstrapCol
       xs={breakpoint(xs, xsOffset)}
-      sm={breakpoint(sm, smOffset)}
-      md={breakpoint(md, mdOffset)}
-      lg={breakpoint(lg, lgOffset)}
+      md={breakpoint(sm, smOffset)}
+      lg={breakpoint(md, mdOffset)}
+      xl={breakpoint(lg, lgOffset)}
       {...props}
     />
   );
@@ -78,12 +78,12 @@ export function Navbar({
   return (
     <BootstrapNavbar
       className={`navbar-default ${className}`.trim()}
-      expand="lg"
+      expand="md"
       {...navbarProps}
     >
       <BootstrapNavbar.Toggle
         aria-controls="infoeducatie-navigation"
-        aria-label={toggleLabel}
+        label={toggleLabel}
       />
       <BootstrapNavbar.Collapse id="infoeducatie-navigation">
         {children}

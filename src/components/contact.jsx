@@ -38,7 +38,7 @@ export default createLegacyComponent({
           <Col mdOffset={1} md={10}>
             <Row className="small-spacing" />
             <Row className="contact">
-              <h4>Contact</h4>
+              <h2 className="content-heading">Contact</h2>
               <ul>
                 <li>
                   Organizatori: contact@infoeducatie.ro (Emil Onea)
@@ -47,7 +47,7 @@ export default createLegacyComponent({
                   Website: ping@infoeducatie.ro
                 </li>
               </ul>
-              <h4>Juriu</h4>
+              <h2 className="content-heading">Juriu</h2>
               <ul>
                 <li>
                   Software educațional: educational@infoeducatie.ro

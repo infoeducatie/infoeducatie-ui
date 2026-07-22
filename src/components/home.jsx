@@ -14,6 +14,9 @@ import "../main.less";
 //import Intel from "../../assets/img/sponsors/intel.png";
 import Micromet from "../../assets/img/sponsors/micromet.jpg";
 import Electric from "../../assets/img/sponsors/electric.png";
+import PajisteSmall from "../../assets/img/pajiste-720.webp";
+import PajisteMedium from "../../assets/img/pajiste-960.webp";
+import Pajiste from "../../assets/img/pajiste.webp";
 
 import Orange from "../../assets/img/sponsors/orange.png";
 import EasyHost from "../../assets/img/sponsors/easyhost.png";
@@ -88,7 +91,7 @@ export default createLegacyComponent({
                     </Col>
                 </Row>
                 <Row className="small-spacing" />
-                <Row>
+                <Row className="hero-actions">
                     <Col md={4} mdOffset={2}>
                         <p className="left-button">
                             <Link to="/inregistrare" className="cta-link cta-primary">
@@ -156,7 +159,18 @@ export default createLegacyComponent({
                             </p>
                         </div>
                     </Col>
-                    <Col md={6} className="grass" />
+                    <Col md={6} className="grass">
+                      <img
+                        alt="Tabăra InfoEducație din Focșani"
+                        decoding="async"
+                        height="998"
+                        loading="lazy"
+                        src={Pajiste}
+                        srcSet={`${PajisteSmall} 720w, ${PajisteMedium} 960w, ${Pajiste} 1440w`}
+                        sizes="(min-width: 992px) 50vw, 100vw"
+                        width="1440"
+                      />
+                    </Col>
                 </Row>
             </div>
         </div>
@@ -175,13 +189,13 @@ export default createLegacyComponent({
                 <Col xs={12}>
                     <div className="logos">
                         <a href="https://www.edu.ro/" target="_blank" rel="noreferrer">
-                          <img alt="Ministerul Educației" decoding="async" loading="lazy" src={MEN} />
+                          <img alt="Ministerul Educației" decoding="async" height="78" loading="lazy" src={MEN} width="156" />
                         </a>
                         <a href="https://upir.ro/" target="_blank" rel="noreferrer">
-                          <img alt="Uniunea Profesorilor de Informatică din România" decoding="async" loading="lazy" src={Upir} />
+                          <img alt="Uniunea Profesorilor de Informatică din România" decoding="async" height="70" loading="lazy" src={Upir} width="180" />
                         </a>
                         <a href="https://cjvrancea.ro/" target="_blank" rel="noreferrer">
-                          <img alt="Consiliul Județean Vrancea" decoding="async" loading="lazy" src={CJVrancea} />
+                          <img alt="Consiliul Județean Vrancea" decoding="async" height="100" loading="lazy" src={CJVrancea} width="205" />
                         </a>
                     </div>
                 </Col>
@@ -197,19 +211,19 @@ export default createLegacyComponent({
                     <Col xs={12}>
                         <div className="logos">
                           <a href="https://vivacredit.ro/" target="_blank" rel="noreferrer">
-                            <img alt="Viva Credit" decoding="async" loading="lazy" src={VivaCredit} />
+                            <img alt="Viva Credit" decoding="async" height="100" loading="lazy" src={VivaCredit} width="217" />
                           </a>
                           <a href="https://bitdefender.com" target="_blank" rel="noreferrer">
-                            <img alt="Bitdefender" decoding="async" loading="lazy" src={Bitdefender} />
+                            <img alt="Bitdefender" decoding="async" height="100" loading="lazy" src={Bitdefender} width="185" />
                           </a>
                           <a href="https://orange.ro" target="_blank" rel="noreferrer">
-                            <img alt="Orange" decoding="async" loading="lazy" src={Orange} />
+                            <img alt="Orange" decoding="async" height="100" loading="lazy" src={Orange} width="100" />
                           </a>
                           <a href="https://cisco.com/" target="_blank" rel="noreferrer">
-                            <img alt="Cisco" decoding="async" loading="lazy" src={Cisco} />
+                            <img alt="Cisco" decoding="async" height="100" loading="lazy" src={Cisco} width="183" />
                           </a>
                           <a href="https://www.intuitext.ro/" target="_blank" rel="noreferrer">
-                            <img alt="Intuitext" decoding="async" loading="lazy" src={Intuitext} />
+                            <img alt="Intuitext" decoding="async" height="100" loading="lazy" src={Intuitext} width="326" />
                           </a>
                         </div>
                     </Col>
@@ -226,26 +240,26 @@ export default createLegacyComponent({
                         <div className="logos">
                           
                             <a href="https://leonte.ro/" target="_blank" rel="noreferrer">
-                              <img alt="Leonte" decoding="async" loading="lazy" src={leonte} />
+                              <img alt="Leonte" decoding="async" height="93" loading="lazy" src={leonte} width="120" />
                             </a>
 							<a href="https://ro.easyhost.com/" target="_blank" rel="noreferrer">
-                              <img alt="Easyhost" decoding="async" loading="lazy" src={EasyHost} />
+                              <img alt="Easyhost" decoding="async" height="100" loading="lazy" src={EasyHost} width="150" />
                             </a>
 
                             <a href="https://ebooks.infobits.ro" target="_blank" rel="noreferrer">
-                              <img alt="InfoBits Academy" decoding="async" loading="lazy" src={InfoBits} />
+                              <img alt="InfoBits Academy" decoding="async" height="100" loading="lazy" src={InfoBits} width="222" />
                             </a>
                             <a href="https://slivrancea.blogspot.com/" target="_blank" rel="noreferrer">
-                              <img alt="Sindicatul Liber din Învățământ Vrancea" decoding="async" loading="lazy" src={sindicatVrancea} />
+                              <img alt="Sindicatul Liber din Învățământ Vrancea" decoding="async" height="100" loading="lazy" src={sindicatVrancea} width="117" />
                             </a>
                             <a href="https://www.cyber-edu.co/" target="_blank" rel="noreferrer">
-                              <img alt="CyberEDU" decoding="async" loading="lazy" src={cyberedu} />
+                              <img alt="CyberEDU" decoding="async" height="100" loading="lazy" src={cyberedu} width="100" />
                             </a>
                             <a href="https://www.micromet.ro/" target="_blank" rel="noreferrer">
-                              <img alt="Micromet" decoding="async" loading="lazy" src={Micromet} />
+                              <img alt="Micromet" decoding="async" height="100" loading="lazy" src={Micromet} width="533" />
                             </a>
                             <a href="https://www.electricsrl.ro/" target="_blank" rel="noreferrer">
-                              <img alt="Electric SRL" decoding="async" loading="lazy" src={Electric} />
+                              <img alt="Electric SRL" decoding="async" height="100" loading="lazy" src={Electric} width="290" />
                             </a>
 
                         </div>

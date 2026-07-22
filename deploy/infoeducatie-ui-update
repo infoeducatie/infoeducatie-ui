@@ -1,0 +1,65 @@
+#!/bin/sh
+
+set -eu
+
+compose_dir="${INFOEDUCATIE_COMPOSE_DIR:-/docker/infoeducatie}"
+service="${INFOEDUCATIE_UI_SERVICE:-web}"
+container="${INFOEDUCATIE_UI_CONTAINER:-infoeducatie_web}"
+image="${INFOEDUCATIE_UI_IMAGE:-ghcr.io/infoeducatie/infoeducatie-ui:master}"
+state_dir="${INFOEDUCATIE_UI_STATE_DIR:-/var/lib/infoeducatie-ui-update}"
+failed_image_file="$state_dir/failed-image"
+lock_file="/run/lock/infoeducatie-ui-update.lock"
+
+mkdir -p "$state_dir"
+exec 9>"$lock_file"
+flock -n 9 || exit 0
+
+cd "$compose_dir"
+
+current_image="$(docker inspect --format '{{.Image}}' "$container" 2>/dev/null || true)"
+docker compose pull "$service"
+target_image="$(docker image inspect --format '{{.Id}}' "$image")"
+
+if [ "$current_image" = "$target_image" ]; then
+  rm -f "$failed_image_file"
+  exit 0
+fi
+
+if [ -f "$failed_image_file" ] && [ "$(cat "$failed_image_file")" = "$target_image" ]; then
+  echo "Skipping previously failed frontend image $target_image" >&2
+  exit 1
+fi
+
+rollback_image="infoeducatie-ui:rollback-${current_image#sha256:}"
+if [ -n "$current_image" ]; then
+  docker tag "$current_image" "$rollback_image"
+fi
+
+docker compose up -d --no-deps "$service"
+
+attempt=0
+while [ "$attempt" -lt 12 ]; do
+  running_image="$(docker inspect --format '{{.Image}}' "$container" 2>/dev/null || true)"
+  if [ "$running_image" = "$target_image" ] && \
+     docker exec "$container" wget -qO- http://127.0.0.1/ | grep -q 'id="app"'; then
+    rm -f "$failed_image_file"
+    if [ -n "$current_image" ]; then
+      docker image rm "$rollback_image" >/dev/null 2>&1 || true
+    fi
+    echo "Frontend updated to $target_image"
+    exit 0
+  fi
+
+  attempt=$((attempt + 1))
+  sleep 5
+done
+
+echo "$target_image" > "$failed_image_file"
+echo "Frontend health check failed for $target_image; restoring $current_image" >&2
+
+if [ -n "$current_image" ]; then
+  docker tag "$rollback_image" "$image"
+  docker compose up -d --no-deps --force-recreate "$service"
+fi
+
+exit 1

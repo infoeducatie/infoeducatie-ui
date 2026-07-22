@@ -38,9 +38,9 @@ export default createLegacyComponent({
 
   renderNextLanguage() {
     if (this.props.language === "en") {
-      return <img alt="Română" height="16" src={ROFlag} width="22" />;
+      return <img alt="Română" height="24" src={ROFlag} width="24" />;
     } else {
-      return <img alt="English" height="16" src={ENFlag} width="22" />;
+      return <img alt="English" height="24" src={ENFlag} width="24" />;
     }
   },
 

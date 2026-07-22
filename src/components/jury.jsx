@@ -189,16 +189,25 @@ export default createLegacyComponent({
           <Grid className="orange-section">
             <Row>
               <Col className="block">
-                <Row className="jury-criteria-desc">
+                <div className="jury-criteria-desc">
                     <span className="pink-dash" />
                       criterii de jurizare
                     <span className="pink-dash" />
-                </Row>
+                </div>
                 <Row className="jury-criteria-documents">
                   {criteria.map(function(doc) {
                     return <div key={doc.link} className="jury-criteria">
                       <div className="jury-criteria-txt">{doc.name}</div>
-                      <div className="jury-criteria-img"><a href={doc.link} target="_blank" rel="noreferrer"><img src={DefaultDocument} alt={doc.link} /></a></div>
+                      <div className="jury-criteria-img">
+                        <a
+                          aria-label={`Deschide criteriile pentru ${doc.name}`}
+                          href={doc.link}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <img alt="" height="35" src={DefaultDocument} width="50" />
+                        </a>
+                      </div>
                     </div>;
                   })}
                 </Row>

@@ -135,33 +135,40 @@ export default createLegacyComponent({
               <tbody>
                 {projects.map(function(project) {
                   return <tr key={project.id}>
-                    {this.renderTableTd(project.prize, project.discourse_url, "rank")}
-                    {this.renderTableTd(project.title, project.discourse_url)}
+                    {this.renderTableTd(project.prize, project.discourse_url, "rank", "Premiul")}
+                    {this.renderTableTd(project.title, project.discourse_url, "", "Numele lucrării")}
                     {this.renderTableUl(project.contestants,
                                         project.discourse_url,
                                         "",
-                                        "author")}
+                                        "author",
+                                        "Concurent")}
                     {this.renderTableUl(project.schools,
                                         project.discourse_url,
                                         "hidden-sm hidden-xs",
-                                        "school-name")}
+                                        "school-name",
+                                        "Liceu")}
                     {this.renderTableUl(project.counties,
                                         project.discourse_url,
                                         "hidden-sm hidden-xs",
-                                        "county")}
+                                        "county",
+                                        "Județ")}
                     {this.renderTableUl(project.mentoring_teachers,
                                         project.discourse_url,
                                         "hidden-sm hidden-xs",
-                                        "county")}
+                                        "county",
+                                        "Profesor")}
                     {this.renderTableTd(project.score,
                                         project.discourse_url,
-                                        "hidden-sm hidden-xs score")}
+                                        "hidden-sm hidden-xs score",
+                                        "Punctaj")}
                     {this.renderTableTd(project.extra_score,
                                         project.discourse_url,
-                                        "hidden-sm hidden-xs score")}
+                                        "hidden-sm hidden-xs score",
+                                        "Open")}
                     {this.renderTableTd(project.total_score,
                                         project.discourse_url,
-                                        "score")}
+                                        "score",
+                                        "Total")}
                   </tr>;
                 }.bind(this))}
               </tbody>
@@ -177,19 +184,19 @@ export default createLegacyComponent({
     </Grid>;
   },
 
-  renderTableTd(content, url, tdClassName) {
+  renderTableTd(content, url, tdClassName, label) {
     let hasContent = content !== null && content !== undefined && content !== "";
 
     return (
-      <td className={tdClassName}>
+      <td className={tdClassName} data-label={label}>
         {url && hasContent ? <a href={url}>{content}</a> : content}
       </td>
     );
   },
 
-  renderTableUl(items, url, tdClassName, liClassName) {
+  renderTableUl(items, url, tdClassName, liClassName, label) {
     return (
-      <td className={tdClassName}>
+      <td className={tdClassName} data-label={label}>
         <ul className="list-unstyled">
           {asArray(items).map(function(item, index){
             return <li key={`${item}-${index}`} className={liClassName}>
@@ -224,7 +231,8 @@ export default createLegacyComponent({
       <Grid>
         <Row className="small-spacing" />
         <Row>
-          <Col sm={4} smOffset={4}>
+          <Col xs={12}>
+            <div className="edition-filter">
             <label className="control-label" htmlFor="results-edition">
               Ediția afișată
             </label>
@@ -232,6 +240,7 @@ export default createLegacyComponent({
                              id="results-edition"
                              ariaLabel="Ediția afișată"
                              filter="has_results" />
+            </div>
           </Col>
         </Row>
         <Row className="small-spacing" />

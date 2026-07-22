@@ -4,53 +4,92 @@
 .header {
   .section-title();
 
-  .navbar-nav {
-    float: right;
+  .navbar {
+    --bs-navbar-active-color: @white;
+    --bs-navbar-color: @white;
+    --bs-navbar-hover-color: @white;
+    margin-bottom: 20px;
+    min-height: 50px;
+    padding: 0;
+  }
 
-    li.active:before {
-      top: 75%;
+  .navbar-nav {
+    align-items: center;
+    margin-left: auto;
+
+    li {
+      position: relative;
+    }
+
+    .nav-link.active:after {
       border-radius: 150px;
       content: "";
       position: absolute;
       width: 40%;
       height: 1px;
-      bottom: 0;
+      bottom: 6px;
       left: 30%;
       border-bottom: 3px solid @yellow;
     }
 
-    a {
+    .nav-link {
       align-items: center;
+      color: @white;
       display: flex;
-      min-height: 44px;
-    }
-  }
+      justify-content: center;
+      line-height: 20px;
+      min-height: 50px;
+      padding: 15px;
 
-  @media screen and (max-width: 1000px) {
-    .navbar-brand {
-      display: none;
+      &:focus,
+      &:hover,
+      &:visited {
+        color: @white;
+      }
     }
-    .navbar-nav {
-      float: none;
-    }
-  }
-
-  .navbar-brand {
-    float: left;
   }
 
   .navbar-collapse {
-    overflow: hidden;
+    justify-content: flex-end;
   }
 
   .navbar-toggler {
+    border: 2px solid @white;
+    border-radius: 4px;
+    margin-left: auto;
     min-height: 44px;
     min-width: 44px;
+    padding: 8px;
   }
 
-  a:hover {
+  .navbar-toggler-icon {
+    filter: brightness(0) invert(1);
+  }
+
+  @media screen and (max-width: (@screen-sm - 1px)) {
+    .navbar-collapse {
+      flex-basis: 100%;
+    }
+
+    .navbar-nav {
+      align-items: stretch;
+      margin: 8px 0 0;
+      width: 100%;
+
+      .nav-link {
+        min-height: 44px;
+        padding: 10px 15px;
+      }
+
+      .nav-link.active:after {
+        bottom: 3px;
+        left: 40%;
+        width: 20%;
+      }
+    }
+  }
+
+  .nav-link:hover {
     text-decoration: underline;
   }
-
-
 }

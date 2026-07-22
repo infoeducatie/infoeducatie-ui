@@ -13,7 +13,9 @@ export default createLegacyComponent({
     return <div className="photo-cover-wrapper">
         <div className="photo-cover">
           <a href={this.props.link} target="_blank"
+             aria-label={`${this.props.text || "Fotografii"} InfoEducație ${this.props.year}`}
              className={this.props.year}
+             onFocus={this.props.onHover}
              onMouseOver={this.props.onHover} rel="noreferrer">
             <div className={className}></div>
             <div className="more-details">{this.props.text || "Fotografii"}</div>

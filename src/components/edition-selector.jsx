@@ -46,18 +46,31 @@ export default class EditionSelector extends React.Component {
   }
 
   render = () => {
-    return <FormControl componentClass="select"
+    let selectedEdition = _.find(this.state.editions, {
+      id: this.state.selectedEditionId,
+    });
+    let selectedLabel = selectedEdition ? `Ediția ${selectedEdition.name}` : "";
+
+    return <>
+      <FormControl componentClass="select"
                   id={this.props.id}
                   aria-label={this.props.ariaLabel}
                   aria-busy={!this.state.editions.length}
                   disabled={!this.state.editions.length}
                   onChange={this.onEditionChange}
+                  title={selectedLabel}
                   value={this.state.selectedEditionId}>
       {!this.state.editions.length ? (
         <option value="0">Se încarcă edițiile...</option>
       ) : null}
       {this.state.editions.map(this.renderEdition)}
-    </FormControl>
+      </FormControl>
+      {selectedLabel ? (
+        <p aria-live="polite" className="selected-edition-name">
+          {selectedLabel}
+        </p>
+      ) : null}
+    </>
   }
 
   renderEdition = (edition) => {
