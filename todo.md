@@ -8,15 +8,20 @@ Remediation verification: 2026-07-22
 
 The audit covers the public `infoeducatie.ro` experience and the local React 19/Vite release candidate. Checks include the homepage, registration, participants, results, seminars, schedule, photos, about, contact, Romanian and English routes, desktop/mobile visual review, keyboard and DOM inspection, axe-core, Lighthouse, console/network inspection, and responsive overflow testing.
 
-Production currently serves the previously released React 19 image (`c782fee`). The visual remediation described below is complete locally but has not been committed or pushed yet.
+Production currently serves the released React 19 baseline at commit `45691c3`. The cross-route remediation described below is complete locally but has not been committed or pushed yet.
 
 ## Verified Release Candidate
 
 - Restored the established InfoEducatie palette: pink `#FF0090`, green `#57B83D`, blue `#0084B0`, yellow `#FFC000`, and the original cyan hero overlay.
 - Restored the earlier Lato/Shadows typography, container widths, compact white navigation, rounded calls to action, section rhythm, and bright news band lost during the Bootstrap 5 migration.
 - Added a compact, labeled mobile menu while preserving the original desktop menu appearance.
+- Reduced oversized inner-page heroes without changing the established homepage composition, bringing useful content into the first viewport.
 - Mapped legacy Bootstrap 3 grid props to the correct Bootstrap 5 breakpoints so page structure behaves as before.
 - Converted participant and result tables to labeled cards on narrow screens and fixed multi-author record overlap.
+- Rebuilt the jury as grouped, responsive leadership and commission directories with complete member text and secure criteria links.
+- Repaired zero-height photo covers and replaced pointer-only hover state with stable, keyboard- and touch-friendly album links.
+- Reworked alumni and seminar entries into readable responsive layouts with loading and error states.
+- Made contact addresses actionable, improved the schedule embed and fallback, and upgraded registration role selection, closed-state guidance, and password visibility.
 - Made selectors, filters, sponsor rows, alumni, seminars, jury, photos, registration, and footer layouts responsive down to 320 px.
 - Added accessible landmarks, headings, names, alternative text, focus targets, form labels, and contrast-safe text while retaining the original brand colors.
 - Removed unfinished Calendar/Kitchen pages from navigation and redirected their old URLs to useful destinations.
@@ -38,9 +43,8 @@ Production currently serves the previously released React 19 image (`c782fee`). 
 - Reduce the 519.9 kB main JavaScript chunk and remove roughly 46 KiB of unused legacy CSS; Lighthouse still estimates about 94 KiB of unused JavaScript.
 - Bring mobile LCP below 2.5 s by profiling initial JavaScript, critical CSS, and the remaining above-the-fold asset chain.
 - Add consistent loading, empty, error, and retry states to every API-driven page.
-- Complete registration feedback: password visibility, live requirements, matching confirmation, submit progress, and focused error summary.
-- Add a clear registration-open/closed state with deadline and next action.
-- Replace or isolate the Google Docs schedule iframe and retain a resilient external fallback.
+- Complete registration feedback with live password requirements, inline confirmation matching, and a focused error summary.
+- Replace or isolate the Google Docs schedule iframe; the resilient external fallback is now present.
 - Add a dedicated not-found page instead of redirecting every unknown URL.
 
 ## Remaining P2 Work

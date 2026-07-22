@@ -36,36 +36,32 @@ export default createLegacyComponent({
       <Grid className="white-section">
         <Row>
           <Col mdOffset={1} md={10}>
-            <Row className="small-spacing" />
-            <Row className="contact">
-              <h2 className="content-heading">Contact</h2>
-              <ul>
-                <li>
-                  Organizers: contact@infoeducatie.ro (Emil Onea)
-                </li>
-                <li>
-                  Website: ping@infoeducatie.ro
-                </li>
-              </ul>
-              <h2 className="content-heading">Jury</h2>
-              <ul>
-                <li>
-                  Educational Software: educational@infoeducatie.ro
-                </li>
-                <li>
-                  Multimedia: multimedia@infoeducatie.ro
-                </li>
-                <li>
-                  Software: utilitar@infoeducatie.ro
-                </li>
-                <li>
-                  Robots: roboti@infoeducatie.ro
-                </li>
-                <li>
-                  Web: web@infoeducatie.ro
-                </li>
-              </ul>
-            </Row>
+            <div className="contact-details">
+              <section className="contact-group" aria-labelledby="contact-general">
+                <h2 id="contact-general" className="content-heading">InfoEducație team</h2>
+                <ul className="contact-list">
+                  <li>
+                    <span>Organization</span>
+                    <a href="mailto:contact@infoeducatie.ro">contact@infoeducatie.ro</a>
+                    <small>Emil Onea</small>
+                  </li>
+                  <li>
+                    <span>Website</span>
+                    <a href="mailto:ping@infoeducatie.ro">ping@infoeducatie.ro</a>
+                  </li>
+                </ul>
+              </section>
+              <section className="contact-group" aria-labelledby="contact-jury">
+                <h2 id="contact-jury" className="content-heading">Jury</h2>
+                <ul className="contact-list">
+                  <li><span>Educational software</span><a href="mailto:educational@infoeducatie.ro">educational@infoeducatie.ro</a></li>
+                  <li><span>Multimedia</span><a href="mailto:multimedia@infoeducatie.ro">multimedia@infoeducatie.ro</a></li>
+                  <li><span>Software</span><a href="mailto:utilitar@infoeducatie.ro">utilitar@infoeducatie.ro</a></li>
+                  <li><span>Robots</span><a href="mailto:roboti@infoeducatie.ro">roboti@infoeducatie.ro</a></li>
+                  <li><span>Web</span><a href="mailto:web@infoeducatie.ro">web@infoeducatie.ro</a></li>
+                </ul>
+              </section>
+            </div>
           </Col>
         </Row>
       </Grid>

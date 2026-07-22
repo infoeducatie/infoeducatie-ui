@@ -2,12 +2,17 @@
 
 import ctx from "classnames";
 import createLegacyComponent from "@lib/create-legacy-component";
-import { Col } from "@ui/bootstrap";
 
 
 export default createLegacyComponent({
   displayName: "JuryDescription",
   render() {
+    let headingId = `jury-${String(this.props.name || "sectiune")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-zA-Z0-9]+/g, "-")
+      .replace(/^-|-$/g, "")
+      .toLowerCase()}`;
     let juryIcon = null;
     if (this.props.iconClass) {
       let juryIconClass = ctx("section-icon", this.props.iconClass);
@@ -18,27 +23,28 @@ export default createLegacyComponent({
       );
     }
 
-    return <div className="jury-description-wrapper">
+    return <section className="jury-description-wrapper" aria-labelledby={headingId}>
       {juryIcon}
-      <div className="jury-description">
+      <h2 className="jury-description" id={headingId}>
         <span aria-hidden="true" className="orange-dash">&mdash;</span>
           {this.props.name}
         <span aria-hidden="true" className="orange-dash">&mdash;</span>
-      </div>
-      <Col className="jury-members">
+      </h2>
+      <div className="jury-members">
         {this.props.members.map(function(member) {
           let memberName = String(member.name || "").replace(/\s+/g, " ").trim();
           let occupation = String(member.occupation || "").replace(/\s+/g, " ").trim();
 
-          return <div className="jury-member" key={member.name}>
+          return <article className="jury-member" key={`${member.role || "member"}-${memberName}`}>
             <div className="jury-avatar">
               <img alt="" height="100" loading="lazy" src={member.avatar} width="100" />
             </div>
-            <div className="jury-name">{memberName}</div>
-            <div className="jury-occupation">{occupation}</div>
-          </div>;
+            {member.role ? <p className="jury-role">{member.role}</p> : null}
+            <h3 className="jury-name">{memberName}</h3>
+            <p className="jury-occupation">{occupation}</p>
+          </article>;
         })}
-      </Col>
-    </div>;
+      </div>
+    </section>;
   }
 });

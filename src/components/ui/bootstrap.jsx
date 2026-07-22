@@ -78,7 +78,7 @@ export function Navbar({
   return (
     <BootstrapNavbar
       className={`navbar-default ${className}`.trim()}
-      expand="md"
+      expand="lg"
       {...navbarProps}
     >
       <BootstrapNavbar.Toggle

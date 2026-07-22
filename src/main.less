@@ -265,6 +265,44 @@ textarea,
   text-transform: none;
 }
 
+// Public content and task pages use a compact header. The homepage keeps its
+// original, immersive first viewport.
+#main-content > :not(.home) {
+  > .blue-section-wrapper,
+  > .gray-section-wrapper {
+    background-position: center;
+
+    > .blue-section,
+    > .gray-section {
+      min-height: 320px;
+      padding-bottom: 32px;
+
+      h1 {
+        font-size: 72px;
+        line-height: 1.05;
+        margin-top: 28px;
+      }
+
+      h2 {
+        font-size: 24px;
+        line-height: 1.25;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 980px;
+      }
+
+      .big-spacing {
+        height: 24px;
+      }
+    }
+  }
+
+  > .white-section,
+  > .white-section-wrapper > .white-section {
+    padding-bottom: 64px;
+  }
+}
+
 .btn-secondary {
   --bs-btn-bg: @white;
   --bs-btn-border-color: #CCC;
@@ -395,6 +433,53 @@ textarea,
 
   h6 {
     font-size: @font-size-h5 * @scale-ratio;
+  }
+}
+
+@media screen and (max-width: (@screen-sm - 1px)) {
+  #main-content > :not(.home) {
+    > .blue-section-wrapper,
+    > .gray-section-wrapper {
+      > .blue-section,
+      > .gray-section {
+        min-height: 300px;
+        padding-bottom: 28px;
+
+        h1 {
+          font-size: 50px;
+          line-height: 1.05;
+          margin-top: 24px;
+        }
+
+        h2 {
+          font-size: 20px;
+          line-height: 1.25;
+        }
+      }
+    }
+
+    > .white-section,
+    > .white-section-wrapper > .white-section {
+      padding-bottom: 48px;
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  #main-content > :not(.home) {
+    > .blue-section-wrapper,
+    > .gray-section-wrapper {
+      > .blue-section,
+      > .gray-section {
+        h1 {
+          font-size: 44px;
+        }
+
+        h2 {
+          font-size: 18px;
+        }
+      }
+    }
   }
 }
 

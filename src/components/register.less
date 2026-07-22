@@ -10,6 +10,17 @@
     .blue-section(360px);
   }
 
+  .registration-form-section {
+    padding-bottom: 64px;
+    padding-top: 40px;
+  }
+
+  .register-sign-in {
+    border-bottom: 1px solid @light-grey;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+  }
+
   form {
     .form-group {
       margin-bottom: 18px;
@@ -20,12 +31,49 @@
       margin: 6px 0 0;
     }
 
+    .form-control {
+      min-height: 46px;
+    }
+
+    .password-field {
+      position: relative;
+
+      .form-control {
+        padding-right: 50px;
+      }
+    }
+
+    .password-toggle {
+      align-items: center;
+      background: transparent;
+      border: 0;
+      color: @grey;
+      display: inline-flex;
+      height: 42px;
+      justify-content: center;
+      position: absolute;
+      right: 2px;
+      top: 2px;
+      width: 44px;
+
+      &:hover {
+        color: @black;
+      }
+
+      &:focus-visible {
+        outline: 3px solid @pink;
+        outline-offset: 1px;
+      }
+    }
+
     .btn-primary {
       background-color: @pink;
       border-color: @pink;
       color: #000;
       font-weight: bold;
       min-height: 48px;
+      padding-left: 24px;
+      padding-right: 24px;
 
       &:hover {
         background-color: @white;
@@ -37,5 +85,16 @@
 
   .register-success {
     text-align: center;
+  }
+
+  @media screen and (max-width: (@screen-sm - 1px)) {
+    .registration-form-section {
+      padding-bottom: 48px;
+      padding-top: 30px;
+    }
+
+    form .btn-primary {
+      width: 100%;
+    }
   }
 }

@@ -14,8 +14,22 @@
   }
 
   .alumnus-container {
+    align-items: center;
+    border-radius: 4px;
+    display: grid;
+    gap: 32px;
+    grid-template-columns: 160px minmax(0, 1fr);
+    margin-bottom: 24px;
+    overflow: hidden;
+    padding: 28px 32px;
     color: @black;
     text-align: left;
+
+    .alumnus-description {
+      font-size: 18px;
+      line-height: 1.55;
+      margin-bottom: 22px;
+    }
 
     .alumnus-name {
       color: @light-black;
@@ -23,10 +37,12 @@
       text-transform: uppercase;
       letter-spacing: @medium-letter-spacing / 2;
       font-weight: bold;
+      margin: 0 0 5px;
     }
 
     .alumnus-position {
       font-size: @font-size-h6;
+      margin-bottom: 12px;
     }
 
     .alumnus-editions {
@@ -80,13 +96,39 @@
 
   }
 
+  .alumnus-row:first-of-type {
+    margin-top: 40px;
+  }
+
+  .page-status {
+    margin: 40px auto;
+    max-width: 760px;
+    text-align: center;
+  }
+
   @media screen and (max-width: (@screen-md - 1px)) {
     .alumnus-container {
-      padding-left: 20px;
-      padding-right: 20px;
+      gap: 24px;
+      grid-template-columns: 140px minmax(0, 1fr);
+      padding: 24px;
+    }
+  }
+
+  @media screen and (max-width: (@screen-sm - 1px)) {
+    .alumnus-row:first-of-type {
+      margin-top: 28px;
+    }
+
+    .alumnus-container {
+      grid-template-columns: 1fr;
+      padding: 24px 20px;
 
       .alumnus-copy {
-        padding-top: 20px;
+        min-width: 0;
+      }
+
+      .alumnus-description {
+        font-size: 16px;
       }
     }
   }

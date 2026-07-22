@@ -4,6 +4,7 @@ import request from "@lib/request";
 
 import createLegacyComponent from "@lib/create-legacy-component";
 import ctx from "classnames";
+import { Link } from "react-router-dom";
 import { Grid, Col, Row, PanelGroup, Panel, ListGroup, ListGroupItem } from "@ui/bootstrap";
 
 import Header from "./header";
@@ -144,11 +145,12 @@ export default createLegacyComponent({
         </PanelGroup>;
     } else if (this.state.activeContestantForm &&
                !this.props.current.is_registration_open) {
-      // TODO @palcu: biggest shit ever with the above condition
       contestantForm = (
-        <p className="alert alert-warning">
-          Înscrieriile s-au încheiat.
-        </p>
+        <div className="registration-closed" role="status">
+          <h2>Înscrierile s-au încheiat</h2>
+          <p>Proiectele aprobate pentru ediția curentă sunt disponibile în lista participanților.</p>
+          <Link className="registration-closed-link" to="/participanti">Vezi participanții</Link>
+        </div>
       );
     }
     return contestantForm;
@@ -156,11 +158,11 @@ export default createLegacyComponent({
 
   render() {
     let contestantsClass = ctx({
-      description: true,
+      "registration-tab": true,
       active: this.state.activeContestantForm
     });
     let teachersClass = ctx({
-      description: true,
+      "registration-tab": true,
       active: this.state.activeTeacherForm
     });
 
@@ -179,7 +181,7 @@ export default createLegacyComponent({
           </Row>
           <Row>
             <Col xs={12}>
-              <h2>Te rugăm să completezi aceste formulare cu grijă!</h2>
+              <h2>Alege rolul și completează pașii de înscriere</h2>
             </Col>
           </Row>
         </Grid>
@@ -190,31 +192,36 @@ export default createLegacyComponent({
           <Col md={6} mdOffset={3}
                sm={8} smOffset={2}
                xs={12}>
-            <Row className="forms-selection">
-              <Col xs={6}>
-                  <p className={contestantsClass}
-                     onClick={this.activeContestantForm}>
-                     Concurenți
-                  </p>
-              </Col>
-              <Col xs={6} className="border-left">
-                  <p className={teachersClass}
-                     onClick={this.activeTeacherForm}>
-                     Profesori
-                  </p>
-              </Col>
-            </Row>
+            <div className="forms-selection" role="group" aria-label="Tipul înscrierii">
+              <button className={contestantsClass}
+                      type="button"
+                      aria-controls="registration-panel"
+                      aria-pressed={this.state.activeContestantForm}
+                      onClick={this.activeContestantForm}>
+                Concurenți
+              </button>
+              <button className={teachersClass}
+                      type="button"
+                      aria-controls="registration-panel"
+                      aria-pressed={this.state.activeTeacherForm}
+                      onClick={this.activeTeacherForm}>
+                Profesori
+              </button>
+            </div>
           </Col>
         </Row>
 
       </Grid>
 
-      <Grid>
-        <Col sm={6} smOffset={3}>
-          <Row className="small-spacing" />
-          {this.renderContestant()}
-          {this.renderTeacher()}
-        </Col>
+      <Grid className="registration-content">
+        <Row>
+          <Col md={8} mdOffset={2} sm={10} smOffset={1} xs={12}>
+            <div id="registration-panel">
+              {this.renderContestant()}
+              {this.renderTeacher()}
+            </div>
+          </Col>
+        </Row>
       </Grid>
     </div>;
   },

@@ -11,43 +11,108 @@
   }
 
   .forms-section {
-    @section-height: 112px;
-    margin-top: -@section-height/2;
-
+    margin-top: -34px;
+    position: relative;
     color: @white;
     text-align: center;
+    z-index: 2;
 
     .forms-selection {
       background-color: @light-black;
+      border-radius: 4px;
+      box-shadow: 0 5px 18px fade(@black, 18%);
+      display: grid;
+      gap: 4px;
+      grid-template-columns: 1fr 1fr;
+      padding: 4px;
 
-      .description {
-        font-weight: bold;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        font-size: 2em;
-        width: 100%;
-        height: 100%;
+      .registration-tab {
+        background: transparent;
+        border: 0;
+        border-radius: 3px;
+        color: @white;
         cursor: pointer;
+        font-size: 20px;
+        font-weight: bold;
+        min-height: 60px;
+        padding: 12px 16px;
+        position: relative;
+        transition: background-color 140ms ease, color 140ms ease;
 
-        &.active:after {
-          content: "";
-          border-bottom: 2px solid @yellow;
-          position: absolute;
-          width: 50%;
-          top: 90%;
-          left: 25%;
+        &:hover {
+          background: fade(@white, 8%);
+        }
+
+        &:focus-visible {
+          outline: 3px solid @yellow;
+          outline-offset: 2px;
+        }
+
+        &.active {
+          background: fade(@white, 12%);
+          box-shadow: inset 0 -3px @yellow;
+          color: @white;
         }
       }
+    }
+  }
 
-      .border-left:after {
-        // http://stackoverflow.com/questions/3953293/how-to-control-border-height
-        content: "";
-        border-left: 2px solid @grey;
-        position: absolute;
-        height: 50%;
-        left: 0;
-        top: 25%;
+  .registration-content {
+    min-height: 260px;
+    padding-bottom: 64px;
+    padding-top: 36px;
+
+    form {
+      .form-group {
+        margin-bottom: 18px;
       }
+
+      .form-control,
+      .form-select {
+        min-height: 46px;
+      }
+
+      button[type="submit"] {
+        background: @pink;
+        border-color: @pink;
+        color: #000;
+        font-weight: bold;
+        min-height: 46px;
+        padding-left: 24px;
+        padding-right: 24px;
+
+        &:hover,
+        &:focus {
+          background: @white;
+          border-color: @pink;
+          color: @black;
+        }
+      }
+    }
+  }
+
+  .registration-closed {
+    border-left: 4px solid @yellow;
+    padding: 8px 0 8px 20px;
+
+    h2 {
+      color: @light-black;
+      font-size: 26px;
+      margin: 0 0 8px;
+      text-align: left;
+      text-transform: none;
+    }
+
+    p {
+      color: @grey;
+      margin-bottom: 14px;
+    }
+
+    .registration-closed-link {
+      display: inline-flex;
+      font-weight: bold;
+      min-height: 44px;
+      padding: 10px 0;
     }
   }
 
@@ -65,6 +130,26 @@
       right: 0;
       top: 0;
       width: 100%;
+    }
+  }
+
+  @media screen and (max-width: (@screen-sm - 1px)) {
+    .forms-section {
+      margin-top: -30px;
+
+      .forms-selection .registration-tab {
+        font-size: 17px;
+        min-height: 52px;
+        padding: 10px 8px;
+      }
+    }
+
+    .registration-content {
+      padding-top: 28px;
+
+      form button[type="submit"] {
+        width: 100%;
+      }
     }
   }
 

@@ -49,7 +49,7 @@ export default createLegacyComponent({
       </p>;
     } else if (!this.props.is_teacher) {
       teacherForm = <form onSubmit={this.onFormSubmit} className="RegisterTeacher">
-        <FormGroup>
+        <FormGroup controlId="teacher-sex">
           <ControlLabel>Gen *</ControlLabel>
           <FormControl componentClass="select"
                  onChange={this.onChange.bind(this, "sex")}>
@@ -59,7 +59,7 @@ export default createLegacyComponent({
           </FormControl>
           <FormControl.Feedback />
         </FormGroup>
-        <FormGroup>
+        <FormGroup controlId="teacher-phone-number">
           <ControlLabel>Număr de telefon *</ControlLabel>
           <FormControl
             type="text"
@@ -70,7 +70,7 @@ export default createLegacyComponent({
             required />
           <FormControl.Feedback />
         </FormGroup>
-        <FormGroup>
+        <FormGroup controlId="teacher-school-name">
           <ControlLabel>Școala *</ControlLabel>
           <FormControl
             type="text"
@@ -79,7 +79,7 @@ export default createLegacyComponent({
             required />
           <FormControl.Feedback />
         </FormGroup>
-        <FormGroup>
+        <FormGroup controlId="teacher-school-city">
           <ControlLabel>Orașul școlii *</ControlLabel>
           <FormControl
             type="text"
@@ -88,7 +88,7 @@ export default createLegacyComponent({
             required />
           <FormControl.Feedback />
         </FormGroup>
-        <FormGroup>
+        <FormGroup controlId="teacher-school-county">
           <ControlLabel>Județul școlii *</ControlLabel>
           <FormControl componentClass="select"
                  onChange={this.onChange.bind(this, "school_county")}
@@ -139,7 +139,7 @@ export default createLegacyComponent({
           </FormControl>
           <FormControl.Feedback />
         </FormGroup>
-        <FormGroup>
+        <FormGroup controlId="teacher-school-country">
           <ControlLabel>Țara școlii *</ControlLabel>
           <FormControl
             type="text"

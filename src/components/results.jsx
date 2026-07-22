@@ -221,7 +221,7 @@ export default createLegacyComponent({
           <Row>
             <Col>
               <h1>Rezultate InfoEducație</h1>
-              <h2>{this.state.currentEdition.name}</h2>
+              {this.state.currentEdition.name ? <h2>{this.state.currentEdition.name}</h2> : null}
             </Col>
           </Row>
           <Row className="big-spacing" />

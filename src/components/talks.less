@@ -10,19 +10,37 @@
   }
 
   .talk-container {
+    align-items: start;
+    border-radius: 4px;
+    display: grid;
+    gap: 28px;
+    grid-template-columns: 170px minmax(0, 1fr);
+    margin-bottom: 24px;
+    overflow: hidden;
+    padding: 28px 32px;
     color: @black;
     text-align: left;
 
     .talk-title {
       font-size: @font-size-h4;
+      margin: 0 0 12px;
       text-align: left;
+    }
+
+    .talk-description {
+      font-size: 18px;
+      line-height: 1.55;
     }
 
     .read-more {
       color: @black;
       cursor: pointer;
-      font-size: 0.8em;
-      font-style: italic;
+      align-items: center;
+      display: inline-flex;
+      font-size: 16px;
+      font-weight: bold;
+      gap: 6px;
+      min-height: 44px;
 
       &:hover {
         color: @black;
@@ -31,7 +49,7 @@
 
 
     .author-text {
-      margin: 0 0 100px 0;
+      margin: 0 0 16px;
 
       .author-name {
         color: @light-black;
@@ -52,9 +70,9 @@
     }
 
     .author-image {
-      width: 150px;
-      height: 150px;
-      margin: 10px 0;
+      height: 112px;
+      margin: 0;
+      width: 112px;
 
       img {
         width: 100%;
@@ -92,20 +110,50 @@
       }
     }
 
+    .talk-authors .list-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .author-list {
+      margin: 18px 0 0;
+    }
+
+  }
+
+  .talk-row:first-of-type {
+    margin-top: 24px;
+  }
+
+  .page-status {
+    margin: 32px auto;
+    max-width: 760px;
+    text-align: center;
   }
 
   @media screen and (max-width: (@screen-md - 1px)) {
     .talk-container {
-      padding-left: 20px;
-      padding-right: 20px;
+      grid-template-columns: 140px minmax(0, 1fr);
+      padding: 24px;
 
       .author-image {
-        margin-left: auto;
-        margin-right: auto;
+        height: 104px;
+        width: 104px;
       }
+    }
+  }
 
-      .talk-copy {
-        padding-top: 20px;
+  @media screen and (max-width: (@screen-sm - 1px)) {
+    .talk-container {
+      grid-template-columns: 1fr;
+      padding: 24px 20px;
+
+      .talk-description {
+        font-size: 16px;
       }
     }
   }

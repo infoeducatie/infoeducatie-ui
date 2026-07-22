@@ -14,7 +14,6 @@ export default createLegacyComponent({
   displayName: "Photos",
   getInitialState() {
     return {
-        hoveredYear: 0,
         albums: [
             {"year": 2014, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6126213014251955681"},
             {"year": 2013, "link": "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6126511874123551857"},
@@ -57,26 +56,17 @@ export default createLegacyComponent({
                 <Row className="small-spacing" />
                 <Row>
                     <Col md={10} mdOffset={1}>
-                        <Row>{this.state.albums.map(function(album) {
-                            let hovered = (album.year === this.state.hoveredYear);
+                        <div className="photo-albums">{this.state.albums.map(function(album) {
                             return <PhotoWrapper key={album.link}
                                                  year={album.year}
                                                  link={album.link}
-                                                 text="Photos"
-                                                 onHover={this.onCoverHover}
-                                                 hovered={hovered} />;
-                        }.bind(this))}
-                        </Row>
+                                                 text="Photos" />;
+                        })}
+                        </div>
                     </Col>
                 </Row>
             </Grid>
         </div>
     </div>;
-  },
-
-  onCoverHover(event) {
-    this.setState({
-        hoveredYear: parseInt(event.currentTarget.className)
-    });
   }
 });

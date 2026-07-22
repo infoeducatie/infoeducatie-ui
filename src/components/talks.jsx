@@ -18,7 +18,9 @@ export default createLegacyComponent({
   getInitialState() {
     return {
       talks: [],
-      selectedEdition: this.props.edition.name
+      selectedEdition: this.props.edition.name,
+      hasErrored: false,
+      isLoading: true
     };
   },
 
@@ -69,6 +71,8 @@ export default createLegacyComponent({
             </div>
           </Col>
         </Row>
+        {this.state.isLoading ? <p className="page-status" role="status">Se încarcă seminariile...</p> : null}
+        {this.state.hasErrored ? <p className="page-status alert alert-warning" role="alert">Seminariile nu pot fi încărcate momentan.</p> : null}
         {this.state.talks.map(this.renderTalk)}
       </Grid>
    </div>;
@@ -78,40 +82,25 @@ export default createLegacyComponent({
     let colors = ["green", "orange", "black"];
     let className = ctx("talk-container", colors[index % colors.length]);
 
-    return <Row key={index}>
-      <Col mdOffset={2} md={8} smOffset={1} sm={10}>
-        <Row className="xsmall-spacing" />
-        <Row>
-          <Col className={className} xs={12}>
-            <Row className="xsmall-spacing" />
-            <Row>
-              <Col className="talk-authors" md={3}>
-                <Row className="xsmall-spacing" />
-                <ul className="list-inline">
-                  {talk.users.map(this.renderAuthorImage)}
-                </ul>
-              </Col>
-              <Col className="talk-copy" md={9}>
-                <h3 className="talk-title">{talk.title}</h3>
-                <p>{talk.description}</p>
-                <span>
-                  <a className="read-more" href={talk.discourse_url}>
-                    Discută pe forum
-                  </a>
-                  &nbsp;
-                  <CloudCount count={talk.comments_count} />
-                </span>
-
-                <Row className="xsmall-spacing" />
-
-                <ul className="list-unstyled">
-                  {talk.users.map(this.renderAuthorText)}
-                </ul>
-              </Col>
-            </Row>
-            <Row className="xsmall-spacing" />
-          </Col>
-        </Row>
+    return <Row className="talk-row" key={index}>
+      <Col mdOffset={1} md={10} smOffset={1} sm={10}>
+        <article className={className}>
+          <div className="talk-authors">
+            <ul className="list-inline">
+              {talk.users.map(this.renderAuthorImage)}
+            </ul>
+          </div>
+          <div className="talk-copy">
+            <h3 className="talk-title">{talk.title}</h3>
+            <p className="talk-description">{talk.description}</p>
+            <a className="read-more" href={talk.discourse_url}>
+              Discută pe forum <CloudCount count={talk.comments_count} />
+            </a>
+            <ul className="list-unstyled author-list">
+              {talk.users.map(this.renderAuthorText)}
+            </ul>
+          </div>
+        </article>
       </Col>
     </Row>;
   },
@@ -135,6 +124,7 @@ export default createLegacyComponent({
   },
 
   getTalks(editionId=undefined) {
+    this.setState({ hasErrored: false, isLoading: true });
     let data = {};
     if (editionId) {
       data.edition = editionId;
@@ -143,7 +133,8 @@ export default createLegacyComponent({
     ajax({
       endpoint: "talks.json",
       data: data,
-      success: (data) => { this.setState({ talks: data }); }
+      success: (data) => { this.setState({ talks: data, isLoading: false }); },
+      error: () => { this.setState({ hasErrored: true, isLoading: false }); }
     });
   }
 });

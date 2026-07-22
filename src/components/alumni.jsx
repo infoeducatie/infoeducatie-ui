@@ -18,7 +18,9 @@ export default createLegacyComponent({
 
   getInitialState() {
     return {
-      alumni: []
+      alumni: [],
+      hasErrored: false,
+      isLoading: true
     };
   },
 
@@ -26,14 +28,20 @@ export default createLegacyComponent({
     request({
       method: "GET",
       url: window.config.API_URL + "alumni.json",
-      success: this.onSuccess
+      success: this.onSuccess,
+      error: this.onError
     });
   },
 
   onSuccess(data) {
     this.setState({
-      alumni: data
+      alumni: data,
+      isLoading: false
     });
+  },
+
+  onError() {
+    this.setState({ hasErrored: true, isLoading: false });
   },
 
   renderAlumnus(alumnus, index) {
@@ -43,43 +51,31 @@ export default createLegacyComponent({
                       return parseInt(edition.name);
                    });
 
-    return <Row key={index}>
-      <Col mdOffset={2} md={8} smOffset={1} sm={10}>
-        <Row className="xsmall-spacing" />
-        <Row>
-          <Col className={className} xs={12}>
-            <Row className="xsmall-spacing" />
-            <Row>
-              <Col className="alumnus-portrait" md={3}>
-                <Row className="xsmall-spacing" />
-                <div className="alumnus-image">
-                  <img
-                    alt=""
-                    height="150"
-                    loading="lazy"
-                    src={gravatar(alumnus.user.email_md5)}
-                    width="150"
-                  />
-                </div>
-              </Col>
-              <Col className="alumnus-copy" md={9}>
-                <p>{alumnus.description}</p>
-                <Row className="xsmall-spacing" />
-                <h2 className="alumnus-name">
-                  {alumnus.user.first_name} &nbsp;
-                  {alumnus.user.last_name}
-                </h2>
-                <p className="alumnus-position">{alumnus.user.job}</p>
-                <p className="alumnus-editions">
-                  {editions.sort().reverse().map(function(edition) {
-                    return <span key={edition}>{edition}</span>;
-                  })}
-                </p>
-              </Col>
-            </Row>
-            <Row className="xsmall-spacing" />
-          </Col>
-        </Row>
+    return <Row className="alumnus-row" key={index}>
+      <Col mdOffset={1} md={10} smOffset={1} sm={10}>
+        <article className={className}>
+          <div className="alumnus-image">
+            <img
+              alt=""
+              height="150"
+              loading="lazy"
+              src={gravatar(alumnus.user.email_md5)}
+              width="150"
+            />
+          </div>
+          <div className="alumnus-copy">
+            <p className="alumnus-description">{alumnus.description}</p>
+            <h2 className="alumnus-name">
+              {alumnus.user.first_name} {alumnus.user.last_name}
+            </h2>
+            <p className="alumnus-position">{alumnus.user.job}</p>
+            <p className="alumnus-editions" aria-label="Ediții participante">
+              {editions.sort().reverse().map(function(edition) {
+                return <span key={edition}>{edition}</span>;
+              })}
+            </p>
+          </div>
+        </article>
       </Col>
     </Row>;
   },
@@ -107,6 +103,8 @@ export default createLegacyComponent({
         </Grid>
       </div>
       <Grid>
+        {this.state.isLoading ? <p className="page-status" role="status">Se încarcă alumni...</p> : null}
+        {this.state.hasErrored ? <p className="page-status alert alert-warning" role="alert">Lista alumni nu poate fi încărcată momentan.</p> : null}
         {this.state.alumni.map(this.renderAlumnus)}
       </Grid>
    </div>;

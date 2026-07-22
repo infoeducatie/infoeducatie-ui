@@ -18,10 +18,13 @@ Status: `[x]` complete, `[-]` in progress, `[ ]` queued.
 - [x] VIS-001 Restore the original pink, green, blue, yellow, cyan overlay, and contrast-safe foregrounds.
 - [x] VIS-002 Restore the original typography, container widths, section rhythm, and rounded calls to action.
 - [x] VIS-003 Restore compact white desktop navigation and add a usable collapsed mobile menu.
+- [x] VIS-004 Compact inner-page heroes while preserving the original homepage composition and palette.
+- [x] VIS-005 Rebuild jury, albums, contact, schedule, alumni, and seminar layouts around their primary user tasks.
 - [x] RWD-001 Map legacy Bootstrap 3 grid props to the correct Bootstrap 5 breakpoints.
 - [x] RWD-002 Reflow selectors, filters, sponsors, alumni, seminars, jury, photos, and forms on narrow screens.
 - [x] DATA-004 Render participant and result records as labeled mobile cards.
 - [x] RWD-003 Remove the final 320 px jury/about overflow caused by grid styling on inline decoration.
+- [x] RWD-004 Verify all 17 routes at phone, landscape, tablet, desktop, and wide breakpoints after the cross-route refresh.
 
 ## Accessibility And Semantics
 
@@ -30,6 +33,7 @@ Status: `[x]` complete, `[-]` in progress, `[ ]` queued.
 - [x] A11Y-003 Add meaningful image alternatives and mark decorative images appropriately.
 - [x] A11Y-004 Correct heading order across Romanian and English routes.
 - [x] A11Y-005 Meet automated contrast checks while preserving the original brand palette.
+- [x] A11Y-006 Replace pointer-only gallery and registration interactions with keyboard-operable controls.
 - [x] FORM-001 Associate labels and help text with registration, sign-in, and newsletter fields; make newsletter consent opt-in.
 
 ## Data And Navigation
@@ -38,16 +42,16 @@ Status: `[x]` complete, `[-]` in progress, `[ ]` queued.
 - [x] DATA-002 Add participant search, visible result count, category filtering, and empty state.
 - [x] NAV-003 Redirect unfinished Calendar and Kitchen URLs to supported destinations.
 - [ ] DATA-003 Add participant sorting and shareable URL filters.
-- [ ] DATA-005 Add consistent loading, empty, error, and retry components to every API view.
+- [-] DATA-005 Add consistent loading, empty, error, and retry components to every API view; alumni, seminars, participants, and results now cover the main states.
 - [ ] NEWS-001 Restore focus after closing an article and announce pagination status.
 - [ ] NAV-001 Preserve focus and scroll behavior after client-side route changes.
 - [ ] NAV-002 Add a dedicated not-found route.
-- [ ] EMBED-001 Replace or isolate the Google Docs schedule embed and provide a resilient fallback link.
+- [-] EMBED-001 Replace or isolate the Google Docs schedule embed; the resilient external fallback link is complete.
 
 ## Registration Follow-Up
 
-- [ ] FORM-002 Add password visibility, live requirement feedback, confirmation matching, progress text, and error focus.
-- [ ] FORM-003 Add a registration-open/closed banner with deadline and next action.
+- [-] FORM-002 Password visibility, minimum requirements, confirmation matching, and progress text are complete; add live matching and error focus.
+- [x] FORM-003 Add a clear registration-open/closed state and next action.
 
 ## Performance And Assets
 
@@ -60,7 +64,7 @@ Status: `[x]` complete, `[-]` in progress, `[ ]` queued.
 ## Content And Trust
 
 - [-] SEO-001 Add metadata, canonical/social URLs, `robots.txt`, and sitemap; route-specific titles/descriptions remain.
-- [ ] COPY-001 Review all Romanian labels, diacritics, dates, and action wording.
+- [-] COPY-001 Correct visible registration/gallery copy; complete the full Romanian content review.
 - [-] I18N-001 Derive language from direct URLs; full Romanian/English content parity remains.
 - [ ] TRUST-001 Verify Forum, Blog, sponsor, and social destinations and remove dead links.
 - [ ] TRUST-002 Add privacy information beside newsletter and account consent controls.
@@ -72,3 +76,4 @@ Status: `[x]` complete, `[-]` in progress, `[ ]` queued.
 - [x] QA-003 Run axe on all 17 first-party routes with zero violations.
 - [x] QA-004 Confirm participant filters, result rendering, and mobile card presentation against the live read-only API.
 - [x] QA-005 Reach Lighthouse 81/100/100/100 with CLS 0.017 and about 733 KiB transferred.
+- [x] QA-006 Capture and review all 16 distinct route views at 390 px, 820 px, and 1440 px, including the opened mobile navigation.

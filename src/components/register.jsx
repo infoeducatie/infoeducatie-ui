@@ -4,6 +4,7 @@ import request from "@lib/request";
 
 import createLegacyComponent from "@lib/create-legacy-component";
 import _ from "lodash";
+import { Eye, EyeOff } from "lucide-react";
 import { Grid, Col, Row, FormControl, FormGroup, ControlLabel, Button, Checkbox } from "@ui/bootstrap";
 
 import Header from "./header";
@@ -24,6 +25,7 @@ export default createLegacyComponent({
       firstName: "",
       lastName: "",
       newsletter: false,
+      showPasswords: false,
       errors: [],
       hasErrored: false,
       hasSubmited: false,
@@ -48,12 +50,11 @@ export default createLegacyComponent({
           </Row>
         </Grid>
       </div>
-      <Grid>
-        <Row className="small-spacing" />
+      <Grid className="registration-form-section">
         <Row>
           <Col md={6} mdOffset={3} sm={8} smOffset={2}>
-            <p>
-              Dacă ai deja un cont, te poți &nbsp;
+            <p className="register-sign-in">
+              Ai deja un cont? Te poți&nbsp;
               <SignIn />.
             </p>
             {this.renderForm()}
@@ -66,6 +67,10 @@ export default createLegacyComponent({
 
   renderForm() {
     if (!this.state.hasSubmited) {
+      const PasswordIcon = this.state.showPasswords ? EyeOff : Eye;
+      const passwordType = this.state.showPasswords ? "text" : "password";
+      const toggleLabel = this.state.showPasswords ? "Ascunde parolele" : "Arată parolele";
+
       return <div>
         {this.renderErrors()}
         <form onSubmit={this.onFormSubmit}>
@@ -107,17 +112,24 @@ export default createLegacyComponent({
           </FormGroup>
           <FormGroup controlId="register-password">
             <ControlLabel htmlFor="register-password">Parola</ControlLabel>
-            <FormControl
-              id="register-password"
-              aria-describedby="register-password-help"
-              type="password"
-              name="password"
-              autoComplete="new-password"
-              placeholder="***************"
-              onChange={this.onPasswordChange}
-              pattern=".{8,}"
-              title="Parola trebuie să conțină minim 8 caractere"
-              required />
+            <div className="password-field">
+              <FormControl
+                id="register-password"
+                aria-describedby="register-password-help"
+                type={passwordType}
+                name="password"
+                autoComplete="new-password"
+                placeholder="Minimum 8 caractere"
+                onChange={this.onPasswordChange}
+                pattern=".{8,}"
+                title="Parola trebuie să conțină minim 8 caractere"
+                required />
+              <button className="password-toggle" type="button"
+                      aria-label={toggleLabel} aria-pressed={this.state.showPasswords}
+                      title={toggleLabel} onClick={this.onTogglePasswordVisibility}>
+                <PasswordIcon aria-hidden="true" size={20} />
+              </button>
+            </div>
             <p className="form-text" id="register-password-help">
               Folosește minimum 8 caractere.
             </p>
@@ -125,14 +137,21 @@ export default createLegacyComponent({
           </FormGroup>
           <FormGroup controlId="register-password-confirmation">
             <ControlLabel htmlFor="register-password-confirmation">Confirmare parolă</ControlLabel>
-            <FormControl
-              id="register-password-confirmation"
-              type="password"
-              name="password-confirmation"
-              autoComplete="new-password"
-              placeholder="***************"
-              onChange={this.onPasswordConfirmationChange}
-              required />
+            <div className="password-field">
+              <FormControl
+                id="register-password-confirmation"
+                type={passwordType}
+                name="password-confirmation"
+                autoComplete="new-password"
+                placeholder="Repetă parola"
+                onChange={this.onPasswordConfirmationChange}
+                required />
+              <button className="password-toggle" type="button"
+                      aria-label={toggleLabel} aria-pressed={this.state.showPasswords}
+                      title={toggleLabel} onClick={this.onTogglePasswordVisibility}>
+                <PasswordIcon aria-hidden="true" size={20} />
+              </button>
+            </div>
             <FormControl.Feedback />
           </FormGroup>
           <FormGroup controlId="register-newsletter">
@@ -225,6 +244,10 @@ export default createLegacyComponent({
     this.setState({
       newsletter: event.currentTarget.checked
     });
+  },
+
+  onTogglePasswordVisibility() {
+    this.setState({ showPasswords: !this.state.showPasswords });
   },
 
   onFormSubmit(event) {

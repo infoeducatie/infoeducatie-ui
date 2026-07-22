@@ -126,11 +126,18 @@ export default createLegacyComponent({
     ];
 
     var criteria = [
-      {"name": "Educațional", "link": "http://data.infoeducatie.ro/manual/educational.pdf"},
-      {"name": "Multimedia", "link": "http://data.infoeducatie.ro/manual/multimedia.pdf"},
-      {"name": "Roboți", "link": "http://data.infoeducatie.ro/manual/roboti.pdf"},
-      {"name": "Utilitar", "link": "http://data.infoeducatie.ro/manual/utilitar.pdf"},
-      {"name": "Web", "link": "http://data.infoeducatie.ro/manual/web.pdf"}
+      {"name": "Educațional", "link": "https://data.infoeducatie.ro/manual/educational.pdf"},
+      {"name": "Multimedia", "link": "https://data.infoeducatie.ro/manual/multimedia.pdf"},
+      {"name": "Roboți", "link": "https://data.infoeducatie.ro/manual/roboti.pdf"},
+      {"name": "Utilitar", "link": "https://data.infoeducatie.ro/manual/utilitar.pdf"},
+      {"name": "Web", "link": "https://data.infoeducatie.ro/manual/web.pdf"}
+    ];
+
+    let leadership = [
+      {...presedinte[0], role: "Președinte"},
+      {...presedinteExecutiv[0], role: "Președinte executiv"},
+      {...vicepresedinte[0], role: "Vicepreședinte"},
+      {...vicepresedinteExecutiv[0], role: "Vicepreședinte executiv"},
     ];
 
     return <div className="jury">
@@ -156,11 +163,7 @@ export default createLegacyComponent({
 
         <Grid className="white-section">
           <Row>
-            <JuryDescription name="președinte" members={presedinte}/>
-            <JuryDescription name="Presedinte Executiv" members={presedinteExecutiv}/>
-        
-            <JuryDescription name="vicepreședinte" members={vicepresedinte}/>
-			<JuryDescription name="vicepreședinte executiv" members={vicepresedinteExecutiv}/>
+            <JuryDescription name="Conducerea juriului" members={leadership}/>
           </Row>
           <Row>
             <JuryDescription iconClass="section-icon educational" name="comisia software educațional" members={educational}/>
@@ -189,28 +192,26 @@ export default createLegacyComponent({
           <Grid className="orange-section">
             <Row>
               <Col className="block">
-                <div className="jury-criteria-desc">
+                <h2 className="jury-criteria-desc">
                     <span className="pink-dash" />
                       criterii de jurizare
                     <span className="pink-dash" />
-                </div>
-                <Row className="jury-criteria-documents">
+                </h2>
+                <div className="jury-criteria-documents">
                   {criteria.map(function(doc) {
-                    return <div key={doc.link} className="jury-criteria">
-                      <div className="jury-criteria-txt">{doc.name}</div>
-                      <div className="jury-criteria-img">
-                        <a
-                          aria-label={`Deschide criteriile pentru ${doc.name}`}
-                          href={doc.link}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          <img alt="" height="35" src={DefaultDocument} width="50" />
-                        </a>
-                      </div>
-                    </div>;
+                    return <a
+                      aria-label={`Deschide criteriile pentru ${doc.name}`}
+                      className="jury-criteria"
+                      href={doc.link}
+                      key={doc.link}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <span className="jury-criteria-txt">{doc.name}</span>
+                      <img alt="" height="35" src={DefaultDocument} width="50" />
+                    </a>;
                   })}
-                </Row>
+                </div>
               </Col>
             </Row>
           </Grid>

@@ -1,24 +1,18 @@
 "use strict";
 
 import createLegacyComponent from "@lib/create-legacy-component";
-import ctx from "classnames";
-
-
 export default createLegacyComponent({
   displayName: "PhotoWrapper",
 
   render() {
-    var className = ctx("cover", "year-" + this.props.year,
-                        {hover: this.props.hovered});
+    const className = `cover year-${this.props.year}`;
     return <div className="photo-cover-wrapper">
         <div className="photo-cover">
           <a href={this.props.link} target="_blank"
              aria-label={`${this.props.text || "Fotografii"} InfoEducație ${this.props.year}`}
-             className={this.props.year}
-             onFocus={this.props.onHover}
-             onMouseOver={this.props.onHover} rel="noreferrer">
+             className="photo-album-link" rel="noreferrer">
             <div className={className}></div>
-            <div className="more-details">{this.props.text || "Fotografii"}</div>
+            <span className="more-details">{this.props.text || "Fotografii"}</span>
           </a>
         </div>
         <div className="year">

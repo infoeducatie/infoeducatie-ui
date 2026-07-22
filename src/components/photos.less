@@ -11,82 +11,93 @@
 
   .white-section {
     color: @light-black;
+    padding-bottom: 64px;
+
+    .photo-albums {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 36px 24px;
+      padding-top: 24px;
+    }
 
     .photo-cover-wrapper {
-      @wrapper-height: 220px;
-      @wrapper-width: 220px;
-      display: inline-block;
-      margin: 40px auto auto;
-      width: @wrapper-width;
-      height: @wrapper-height;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 260px;
 
       .year {
-        margin: -30px auto auto;
+        align-items: center;
+        display: flex;
+        font-size: 18px;
+        font-weight: 600;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 12px;
         text-align: center;
 
         .pink-dash {
-          font-size: 20px;
-          margin-left: 10px;
-          margin-right: 10px;
+          background: @pink;
+          display: inline-block;
+          height: 2px;
+          width: 20px;
         }
-
       }
 
       .photo-cover {
-        display: inline-block;
         width: 100%;
-        height: 100%;
 
-        a {
+        .photo-album-link {
+          aspect-ratio: 4 / 3;
+          background: @light-black;
+          border-radius: 4px;
+          box-shadow: 0 3px 12px fade(@black, 15%);
           display: block;
-          min-height: 176px;
+          overflow: hidden;
+          position: relative;
           text-decoration: none;
 
           &:focus-visible {
-            border-radius: 4px;
+            outline: 3px solid @pink;
+            outline-offset: 3px;
           }
 
+          &:hover .cover,
           &:focus-visible .cover {
-            filter: blur(2px);
+            filter: brightness(55%);
+            transform: scale(1.04);
           }
 
+          &:hover .more-details,
           &:focus-visible .more-details {
-            display: block;
+            opacity: 1;
           }
         }
 
         .more-details {
-          padding: 5px;
-          font-size: 20px;
-          width: @wrapper-width / 2;
-          text-align: center;
-          color: @white;
           border: 2px solid @white;
-          border-radius: 50px;
-          display: none;
-          position: relative;
-          margin-left: @wrapper-width / 4;
-          margin-top: -@wrapper-height / 2;
-
-          &:hover {
-            display: block;
-          }
+          border-radius: 4px;
+          color: @white;
+          font-size: 16px;
+          font-weight: 600;
+          left: 50%;
+          opacity: 0;
+          padding: 8px 16px;
+          position: absolute;
+          text-align: center;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          transition: opacity 160ms ease;
         }
 
         .cover {
-          display: inline-block;
-          width: 100%;
-          height: 80%;
+          background-position: center;
+          background-repeat: no-repeat;
           background-size: cover;
-
-          &.hover {
-            cursor: pointer;
-            filter: blur(2px);
-
-            +.more-details {
-              display: block;
-            }
-          }
+          height: 100%;
+          inset: 0;
+          position: absolute;
+          transition: filter 160ms ease, transform 160ms ease;
+          width: 100%;
 		  &.year-2023 {
                         background-image: url(/assets/img/2023.jpg);
                       }
@@ -148,6 +159,41 @@
           &.year-2004 {
             background-image: url(/assets/img/2004.jpg);
           }
+        }
+      }
+    }
+  }
+
+  @media (hover: none) {
+    .white-section .photo-cover .more-details {
+      background: fade(@black, 65%);
+      border: 0;
+      border-radius: 0;
+      bottom: 0;
+      left: 0;
+      opacity: 1;
+      padding: 9px 12px;
+      top: auto;
+      transform: none;
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: (@screen-sm - 1px)) {
+    .white-section {
+      padding-bottom: 44px;
+
+      .photo-albums {
+        gap: 28px 16px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding-top: 16px;
+      }
+
+      .photo-cover-wrapper .year {
+        font-size: 16px;
+
+        .pink-dash {
+          width: 14px;
         }
       }
     }
