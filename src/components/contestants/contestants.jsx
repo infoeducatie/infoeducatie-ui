@@ -7,11 +7,21 @@ import ctx from "classnames";
 
 import "../../main.less";
 import CloudCount from "../cloud-count"
-import openDiscourse from "../../lib/discourse"
 import Header from "../header";
 import EditionSelector from "../edition-selector";
 import ProjectCard from "./project_card";
 import FilterIcon from "./filter_icon";
+
+function asArray(value) {
+  return Array.isArray(value) ? value : [];
+}
+
+function normalizeSearchValue(value) {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLocaleLowerCase("ro");
+}
 
 
 export default createLegacyComponent({
@@ -29,6 +39,7 @@ export default createLegacyComponent({
       showGrid: false,
       showTable: true,
       currentCategory: "all",
+      searchTerm: "",
       selectedEdition: this.props.edition
    };
   },
@@ -63,6 +74,32 @@ export default createLegacyComponent({
     });
   },
 
+  onSearchChange(event) {
+    this.setState({ searchTerm: event.currentTarget.value });
+  },
+
+  getVisibleProjects() {
+    let query = normalizeSearchValue(this.state.searchTerm.trim());
+
+    return this.state.projects.filter((project) => {
+      let matchesCategory = this.state.currentCategory === "all" ||
+        project.category === this.state.currentCategory;
+
+      if (!matchesCategory || !query) {
+        return matchesCategory;
+      }
+
+      let searchableValues = [
+        project.title,
+        project.category,
+        ...asArray(project.counties),
+        ...asArray(project.contestants).map((contestant) => contestant && contestant.name),
+      ];
+
+      return normalizeSearchValue(searchableValues.join(" ")).includes(query);
+    });
+  },
+
   renderErrors() {
     if (this.state.hasError) {
       return <p>Datele nu au putut fi luate de pe server.</p>;
@@ -70,24 +107,20 @@ export default createLegacyComponent({
   },
 
   renderProjectRow(project){
-    let row = null;
-
-    if (this.state.currentCategory === project.category ||
-        this.state.currentCategory === "all") {
-      row = <tr key={project.id}
-                className="contestant"
-                onClick={openDiscourse.bind(this, project.discourse_url)}>
+    return <tr key={project.id} className="contestant">
         <td className="county">
           <ul className="list-unstyled">
-            {project.counties.map(function(county, index) {
+            {asArray(project.counties).map(function(county, index) {
               return <li key={index}>{county}</li>;
             })}
           </ul>
         </td>
-        <td className="title">{project.title}</td>
+        <td className="title">
+          <a href={project.discourse_url}>{project.title}</a>
+        </td>
         <td className="authors">
           <ul className="list-unstyled">
-            {project.contestants.map(function(contestant){
+            {asArray(project.contestants).map(function(contestant){
               return <li className="author" key={contestant.id}>{contestant.name}</li>;
             })}
           </ul>
@@ -95,70 +128,81 @@ export default createLegacyComponent({
         <td className="category">{project.category}</td>
         <td className="comments"><CloudCount count={project.comments_count} /></td>
       </tr>;
-    }
-
-    return row;
   },
 
   renderTable() {
-    let table = null;
+    let projects = this.getVisibleProjects();
 
     if (this.state.showTable) {
-      table = <Row>
+      return <Row>
         <Col md={8} mdOffset={2}>
-          <Table responsive>
-            <thead>
-              <tr>
-                <th>județ</th>
-                <th>titlul lucrării</th>
-                <th>concurent</th>
-                <th>categorie</th>
-                <th>comentarii</th>
-              </tr>
-            </thead>
-            <tbody>
-               {this.state.projects.map(this.renderProjectRow)}
-            </tbody>
-          </Table>
+          <h2 className="visually-hidden" id="participant-projects-heading">
+            Lista proiectelor
+          </h2>
+          <div
+            aria-labelledby="participant-projects-heading"
+            className="data-region table-responsive"
+            role="region"
+            tabIndex="0"
+          >
+            <Table>
+              <thead>
+                <tr>
+                  <th>județ</th>
+                  <th>titlul lucrării</th>
+                  <th>concurent</th>
+                  <th>categorie</th>
+                  <th>comentarii</th>
+                </tr>
+              </thead>
+              <tbody>
+                 {projects.map(this.renderProjectRow)}
+              </tbody>
+            </Table>
+          </div>
+          {!projects.length ? (
+            <p className="empty-state" role="status">
+              Nu am găsit proiecte pentru filtrele selectate.
+            </p>
+          ) : null}
         </Col>
       </Row>;
     }
-    return table;
+
+    return null;
   },
 
   renderProjectCard(project) {
-    let card = null;
-
-    if (project.category === this.state.currentCategory ||
-        this.state.currentCategory === "all") {
-
-      card = <ProjectCard project={project} key={project.id} />;
-    }
-
-    return card;
+    return <ProjectCard project={project} key={project.id} />;
   },
 
   renderGrid() {
-    let grid = null;
+    let projects = this.getVisibleProjects();
 
     if (this.state.showGrid) {
-      grid = <Grid className="projects-grid">
-               {this.state.projects.map(this.renderProjectCard)}
+      return <Grid className="projects-grid">
+               {projects.map(this.renderProjectCard)}
+               {!projects.length ? (
+                 <p className="empty-state" role="status">
+                   Nu am găsit proiecte pentru filtrele selectate.
+                 </p>
+               ) : null}
              </Grid>;
     }
 
-    return grid;
+    return null;
   },
 
   render() {
     let gridClassName = ctx({
-      "icon hidden-xs": true,
+      "view-toggle hidden-xs": true,
       "inactive": !this.state.showGrid
     });
     let tableClassName = ctx({
-      "icon hidden-xs": true,
+      "view-toggle hidden-xs": true,
       "inactive": !this.state.showTable
     });
+    let visibleProjectCount = this.getVisibleProjects().length;
 
     return <div className="contestants">
       <div className="blue-section-wrapper">
@@ -212,8 +256,34 @@ export default createLegacyComponent({
         <Row className="xsmall-spacing" />
         <Row>
           <Col sm={4} smOffset={4}>
+            <label className="control-label" htmlFor="participant-edition">
+              Ediția afișată
+            </label>
             <EditionSelector onCallback={this.onEditionChange}
+                             id="participant-edition"
+                             ariaLabel="Ediția afișată"
                              filter="has_projects" />
+          </Col>
+        </Row>
+        <Row className="xsmall-spacing" />
+        <Row className="participant-search">
+          <Col md={8} mdOffset={2}>
+            <label className="control-label" htmlFor="participant-search">
+              Caută proiecte
+            </label>
+            <input
+              className="form-control"
+              id="participant-search"
+              onChange={this.onSearchChange}
+              placeholder="Titlu, participant sau județ"
+              type="search"
+              value={this.state.searchTerm}
+            />
+            <p aria-live="polite" className="results-count">
+              {visibleProjectCount} {visibleProjectCount === 1
+                ? "proiect afișat"
+                : "proiecte afișate"}
+            </p>
           </Col>
         </Row>
         <Row className="xsmall-spacing" />
@@ -255,14 +325,28 @@ export default createLegacyComponent({
             <p>Multimedia</p>
           </Col>
           <Col smOffset={2} sm={1} className="hidden-xs">
-            <Glyphicon glyph="th-large"
-                       className={gridClassName}
-                       onClick={this.showGrid} />
+            <button
+              aria-label="Afișează proiectele sub formă de carduri"
+              aria-pressed={this.state.showGrid}
+              className={gridClassName}
+              onClick={this.showGrid}
+              title="Vizualizare carduri"
+              type="button"
+            >
+              <Glyphicon glyph="th-large" />
+            </button>
           </Col>
           <Col sm={1} className="hidden-xs">
-            <Glyphicon glyph="align-justify"
-                       className={tableClassName}
-                       onClick={this.showTable} />
+            <button
+              aria-label="Afișează proiectele sub formă de tabel"
+              aria-pressed={this.state.showTable}
+              className={tableClassName}
+              onClick={this.showTable}
+              title="Vizualizare tabel"
+              type="button"
+            >
+              <Glyphicon glyph="align-justify" />
+            </button>
           </Col>
         </Row>
       </Grid>
@@ -282,7 +366,9 @@ export default createLegacyComponent({
     ajax({
       endpoint: "projects.json",
       data: data,
-      success: (data) => { this.setState({ projects: data }); },
+      success: (data) => {
+        this.setState({ projects: Array.isArray(data) ? data : [], hasError: false });
+      },
       error: () => {
         this.setState({
           showGrid: false,

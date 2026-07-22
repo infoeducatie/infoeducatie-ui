@@ -23,7 +23,7 @@ export default createLegacyComponent({
       passwordConfirmation: "",
       firstName: "",
       lastName: "",
-      newsletter: true,
+      newsletter: false,
       errors: [],
       hasErrored: false,
       hasSubmited: false,
@@ -69,9 +69,10 @@ export default createLegacyComponent({
       return <div>
         {this.renderErrors()}
         <form onSubmit={this.onFormSubmit}>
-          <FormGroup>
-            <ControlLabel>Prenume</ControlLabel>
+          <FormGroup controlId="register-first-name">
+            <ControlLabel htmlFor="register-first-name">Prenume</ControlLabel>
             <FormControl
+              id="register-first-name"
               type="text"
               name="given-name"
               autoComplete="given-name"
@@ -80,9 +81,10 @@ export default createLegacyComponent({
               required />
             <FormControl.Feedback />
           </FormGroup>
-          <FormGroup>
-            <ControlLabel>Nume</ControlLabel>
+          <FormGroup controlId="register-last-name">
+            <ControlLabel htmlFor="register-last-name">Nume</ControlLabel>
             <FormControl
+              id="register-last-name"
               type="text"
               name="family-name"
               autoComplete="family-name"
@@ -91,9 +93,10 @@ export default createLegacyComponent({
               required />
             <FormControl.Feedback />
           </FormGroup>
-          <FormGroup>
-            <ControlLabel>Adresa de email</ControlLabel>
+          <FormGroup controlId="register-email">
+            <ControlLabel htmlFor="register-email">Adresa de email</ControlLabel>
             <FormControl
+              id="register-email"
               type="email"
               name="email"
               autoComplete="email"
@@ -102,9 +105,11 @@ export default createLegacyComponent({
               required />
             <FormControl.Feedback />
           </FormGroup>
-          <FormGroup>
-            <ControlLabel>Parola</ControlLabel>
+          <FormGroup controlId="register-password">
+            <ControlLabel htmlFor="register-password">Parola</ControlLabel>
             <FormControl
+              id="register-password"
+              aria-describedby="register-password-help"
               type="password"
               name="password"
               autoComplete="new-password"
@@ -113,11 +118,15 @@ export default createLegacyComponent({
               pattern=".{8,}"
               title="Parola trebuie să conțină minim 8 caractere"
               required />
+            <p className="form-text" id="register-password-help">
+              Folosește minimum 8 caractere.
+            </p>
             <FormControl.Feedback />
           </FormGroup>
-          <FormGroup>
-            <ControlLabel>Confirmare parolă</ControlLabel>
+          <FormGroup controlId="register-password-confirmation">
+            <ControlLabel htmlFor="register-password-confirmation">Confirmare parolă</ControlLabel>
             <FormControl
+              id="register-password-confirmation"
               type="password"
               name="password-confirmation"
               autoComplete="new-password"
@@ -126,19 +135,28 @@ export default createLegacyComponent({
               required />
             <FormControl.Feedback />
           </FormGroup>
-          <FormGroup>
+          <FormGroup controlId="register-newsletter">
             <Checkbox
-              defaultChecked
+              id="register-newsletter"
+              checked={this.state.newsletter}
               onChange={this.onNewsletterChange}>
               Abonare newsletter (noutăți despre concurs, informații utile pentru participanți)
             </Checkbox>
             <FormControl.Feedback />
           </FormGroup>
           <FormGroup>
-            <Button type="submit" disabled={this.state.waitingForServerResponse}>Înregistrează-te</Button>
+            <Button
+              type="submit"
+              bsStyle="primary"
+              disabled={this.state.waitingForServerResponse}
+            >
+              {this.state.waitingForServerResponse ? "Se trimite..." : "Înregistrează-te"}
+            </Button>
             <FormControl.Feedback />
           </FormGroup>
-          {this.state.waitingForServerResponse ? <img src={Spinner} /> : null}
+          {this.state.waitingForServerResponse ? (
+            <img alt="" aria-hidden="true" src={Spinner} />
+          ) : null}
         </form>
       </div>;
     }
@@ -152,7 +170,7 @@ export default createLegacyComponent({
         errors.push("Formularul nu a putut fi trimis.");
       }
 
-      return <ul className="errors list-group">
+      return <ul className="errors list-group" role="alert">
         {errors.map((error) => {
           return <li className="list-group-item list-group-item-danger"
                      key={error}>
@@ -165,8 +183,8 @@ export default createLegacyComponent({
 
   renderSuccess() {
     if (this.state.hasSubmited) {
-      return <div className="register-success">
-        <p><img src={SuccessIcon} /></p>
+      return <div className="register-success" role="status">
+        <p><img alt="" aria-hidden="true" src={SuccessIcon} /></p>
         <p>Verifică căsuța ta de poștă electronică pentru un mesaj de
         confirmare.</p>
       </div>;

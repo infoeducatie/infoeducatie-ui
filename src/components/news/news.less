@@ -3,6 +3,12 @@
 
 .news-section {
 
+  .section-heading {
+    color: @white;
+    font-size: @font-size-h6;
+    text-align: left;
+  }
+
   a {
     color: @white;
     cursor: pointer;
@@ -15,13 +21,13 @@
   }
 
   .date {
-    color: @dark-green;
+    color: @white;
     font-weight: normal;
   }
 
   .title {
     font-size: 25px;
-    color: @dark-green;
+    color: @white;
     font-weight: normal;
   }
 
@@ -36,6 +42,22 @@
   }
 
   .pagination-icon {
+    background: transparent;
+    border: 0;
+    color: @white;
     cursor: pointer;
+    min-height: 44px;
+    padding: 8px;
+  }
+
+  .read-more {
+    background: transparent;
+    border: 0;
+    color: @white;
+    cursor: pointer;
+    font-size: 0.8em;
+    font-style: italic;
+    padding: 6px 0;
+    text-decoration: underline;
   }
 }

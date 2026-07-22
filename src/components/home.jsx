@@ -49,7 +49,7 @@ export default createLegacyComponent({
     ];
 
     if (this.props.edition.camp_start_date === undefined) {
-      return null;
+      return "Perioada va fi anunțată";
     }
 
     let startDate = new Date(this.props.edition.camp_start_date);
@@ -81,24 +81,24 @@ export default createLegacyComponent({
                 <Row>
                     <Col>
                         <h2>Olimpiada de inovare și creație digitală</h2>
-                        <h5 className="tagline">
+                        <p className="tagline">
                             Ediția&nbsp;
                             {this.props.current.edition.name}
-                        </h5>
+                        </p>
                     </Col>
                 </Row>
                 <Row className="small-spacing" />
                 <Row>
                     <Col md={4} mdOffset={2}>
                         <p className="left-button">
-                            <Link to="/inregistrare" className="link link-primary">
+                            <Link to="/inregistrare" className="cta-link cta-primary">
                                 Înregistrează-te
                             </Link>
                         </p>
                     </Col>
                     <Col md={4}>
                         <p className="right-button">
-                            <Link to="/despre" className="link link-secondary">
+                            <Link to="/despre" className="cta-link cta-light">
                                 Despre concurs
                             </Link>
                         </p>
@@ -116,7 +116,7 @@ export default createLegacyComponent({
                 <Row className="small-spacing" />
                 <Row>
                     <Col md={6} mdOffset={6}>
-                        <h6>Alumnus</h6>
+                        <h2 className="section-heading">Alumnus</h2>
                         <Row className="small-spacing" />
                         <p className="quote">InfoEducatie mi-a oferit o
                          motivație să învăț tehnologii web și să dezvolt
@@ -125,10 +125,10 @@ export default createLegacyComponent({
                          ca lucrarea in sine! Repetați înainte sa veniți în
                          fața comisiei.</p>
                         <Row className="small-spacing" />
-                        <h2 className="alumnus-name">Cristian Strat</h2>
-                        <h6 className="alumnus-position">
+                        <h3 className="alumnus-name">Cristian Strat</h3>
+                        <p className="alumnus-position">
                             Ex Growth Manager @ Twitter
-                        </h6>
+                        </p>
                     </Col>
                 </Row>
                 <Row className="small-spacing" />
@@ -140,17 +140,17 @@ export default createLegacyComponent({
                 <Row>
                     <Col md={4} mdOffset={2} className="text middle-align">
                         <div className="wrapper-for-flexbox">
-                            <h1>Focșani</h1>
-                            <h6 className="data">
+                            <h2 className="location-title">Focșani</h2>
+                            <p className="data">
                                 <span className="pink-dash"></span>
                                 {this.renderCampDate()}
                                 <span className="pink-dash"></span>
-                            </h6>
-                            <h6 className="edition">Ediția {this.props.current.edition.count}</h6>
+                            </p>
+                            <p className="edition">Ediția {this.props.current.edition.count}</p>
                             <Row className="small-spacing" />
                             <p>
-                                <Link to="photos"
-                                   className="link link-secondary">
+                                <Link to="/poze"
+                                   className="cta-link cta-dark">
                                     Mai multe poze
                                 </Link>
                             </p>
@@ -167,95 +167,88 @@ export default createLegacyComponent({
             <Row className="small-spacing" />
             <Row>
                 <Col xs={12}>
-                    <h4>Parteneri Educaționali și finanțatori</h4>
+                    <h2>Parteneri educaționali și finanțatori</h2>
                 </Col>
             </Row>
 
             <Row>
                 <Col xs={12}>
-                    <p className="logos">
-                        <a href="http://www.edu.ro/" target="_blank" rel="noreferrer">
-                          <img src={MEN} />
+                    <div className="logos">
+                        <a href="https://www.edu.ro/" target="_blank" rel="noreferrer">
+                          <img alt="Ministerul Educației" decoding="async" loading="lazy" src={MEN} />
                         </a>
-                        <a href="http://upir.ro/ro/" target="_blank" rel="noreferrer">
-                          <img src={Upir} />
+                        <a href="https://upir.ro/" target="_blank" rel="noreferrer">
+                          <img alt="Uniunea Profesorilor de Informatică din România" decoding="async" loading="lazy" src={Upir} />
                         </a>
                         <a href="https://cjvrancea.ro/" target="_blank" rel="noreferrer">
-                          <img src={CJVrancea} />
+                          <img alt="Consiliul Județean Vrancea" decoding="async" loading="lazy" src={CJVrancea} />
                         </a>
-						 &nbsp;
-                    </p>
+                    </div>
                 </Col>
             </Row>
 
                 <Row className="small-spacing" />
                <Row>
                     <Col xs={12}>
-                        <h4>Sponsori Gold</h4>
+                        <h3>Sponsori Gold</h3>
                     </Col>
                 </Row>
                 <Row>
                     <Col xs={12}>
-                        <p className="logos">
+                        <div className="logos">
                           <a href="https://vivacredit.ro/" target="_blank" rel="noreferrer">
-                            <img src={VivaCredit} />
+                            <img alt="Viva Credit" decoding="async" loading="lazy" src={VivaCredit} />
                           </a>
                           <a href="https://bitdefender.com" target="_blank" rel="noreferrer">
-                            <img src={Bitdefender} />
+                            <img alt="Bitdefender" decoding="async" loading="lazy" src={Bitdefender} />
                           </a>
                           <a href="https://orange.ro" target="_blank" rel="noreferrer">
-                            <img src={Orange} />
+                            <img alt="Orange" decoding="async" loading="lazy" src={Orange} />
                           </a>
                           <a href="https://cisco.com/" target="_blank" rel="noreferrer">
-                            <img src={Cisco} />
+                            <img alt="Cisco" decoding="async" loading="lazy" src={Cisco} />
                           </a>
-                          <a href="http://www.intuitext.ro/" target="_blank" rel="noreferrer">
-                            <img src={Intuitext} />
+                          <a href="https://www.intuitext.ro/" target="_blank" rel="noreferrer">
+                            <img alt="Intuitext" decoding="async" loading="lazy" src={Intuitext} />
                           </a>
-                           
-
-
-
-
-
-                        </p>
+                        </div>
                     </Col>
                 </Row>
 
                 <Row className="small-spacing" />
                 <Row>
                     <Col xs={12}>
-                        <h4>Sponsori Silver</h4>
+                        <h3>Sponsori Silver</h3>
                     </Col>
                 </Row>
                 <Row>
                     <Col xs={12}>
-                        <p className="logos">
+                        <div className="logos">
                           
                             <a href="https://leonte.ro/" target="_blank" rel="noreferrer">
-                              <img src={leonte} />
+                              <img alt="Leonte" decoding="async" loading="lazy" src={leonte} />
                             </a>
-							<a href="http://ro.easyhost.com/incubator" target="_blank" rel="noreferrer">
-                              <img src={EasyHost} />
+							<a href="https://ro.easyhost.com/" target="_blank" rel="noreferrer">
+                              <img alt="Easyhost" decoding="async" loading="lazy" src={EasyHost} />
                             </a>
 
                             <a href="https://ebooks.infobits.ro" target="_blank" rel="noreferrer">
-                              <img src={InfoBits} />
+                              <img alt="InfoBits Academy" decoding="async" loading="lazy" src={InfoBits} />
                             </a>
                             <a href="https://slivrancea.blogspot.com/" target="_blank" rel="noreferrer">
-                              <img src={sindicatVrancea} />
+                              <img alt="Sindicatul Liber din Învățământ Vrancea" decoding="async" loading="lazy" src={sindicatVrancea} />
                             </a>
                             <a href="https://www.cyber-edu.co/" target="_blank" rel="noreferrer">
-                              <img src={cyberedu} />
+                              <img alt="CyberEDU" decoding="async" loading="lazy" src={cyberedu} />
                             </a>
                             <a href="https://www.micromet.ro/" target="_blank" rel="noreferrer">
-                              <img src={Micromet} />
+                              <img alt="Micromet" decoding="async" loading="lazy" src={Micromet} />
                             </a>
                             <a href="https://www.electricsrl.ro/" target="_blank" rel="noreferrer">
-                              <img src={Electric} />
+                              <img alt="Electric SRL" decoding="async" loading="lazy" src={Electric} />
                             </a>
 
-                        </p>
+                        </div>
                     </Col>
                 </Row>
 

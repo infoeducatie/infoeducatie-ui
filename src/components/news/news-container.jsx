@@ -91,11 +91,12 @@ export default createLegacyComponent({
   renderPreviousPageLink() {
     let previousPageController = null;
     if (this.state.canShowPrevious) {
-      previousPageController = <div className="pagination-icon"
+      previousPageController = <button className="pagination-icon"
+                                    type="button"
                                     onClick={this.showPreviousNewsPage}>
                                  <Glyphicon glyph="chevron-left" />
                                  &nbsp;anterioare
-                               </div>;
+                               </button>;
     }
 
     return <Col md={4} mdOffset={2}>{previousPageController}</Col>;
@@ -104,11 +105,12 @@ export default createLegacyComponent({
   renderNextPageLink() {
     let nextPageController = null;
     if (this.state.canShowNext) {
-      nextPageController = <div className="pagination-icon"
+      nextPageController = <button className="pagination-icon"
+                                type="button"
                                 onClick={this.showNextNewsPage}>
                              următoare &nbsp;
                              <Glyphicon glyph="chevron-right" />
-                           </div>;
+                           </button>;
     }
 
     return <Col md={4}>{nextPageController}</Col>;
@@ -132,7 +134,7 @@ export default createLegacyComponent({
       <Row>
           <Col xsOffset={1} xs={10} md={5} className="left">
               <Row className="xsmall-spacing" />
-              <h6 id="news">Știri</h6>
+              <h2 className="section-heading" id="news">Știri</h2>
               {this.renderPinnedArticle()}
           </Col>
           <Col xsOffset={1} xs={10} md={5} mdOffset={1} className="right">

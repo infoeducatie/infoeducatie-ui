@@ -43,10 +43,11 @@ export default createLegacyComponent({
 
     let read_more = null;
     if (this.props.body !== "") {
-      read_more = <span>...<br /><a className="read-more"
+      read_more = <span>...<br /><button className="read-more"
+                     type="button"
                      onClick={this.openModal}>
                     Citește mai multe...
-                  </a></span>;
+                  </button></span>;
     }
 
     return <div>

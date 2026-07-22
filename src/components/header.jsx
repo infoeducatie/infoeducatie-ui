@@ -17,7 +17,11 @@ export default createLegacyComponent({
     // multiple values
     return <div className="header">
       <Row className="xxsmall-spacing" />
-      <Navbar toggleNavKey={0}>
+      <Navbar
+        aria-label={this.props.language === "en" ? "Main navigation" : "Navigație principală"}
+        toggleLabel={this.props.language === "en" ? "Open main menu" : "Deschide meniul principal"}
+        toggleNavKey={0}
+      >
         {this.props.isLoggedIn ? this.renderRegisterLinks()
                                : this.renderUnregisterLinks()}
       </Navbar>
@@ -34,9 +38,9 @@ export default createLegacyComponent({
 
   renderNextLanguage() {
     if (this.props.language === "en") {
-      return <img src={ROFlag} />;
+      return <img alt="Română" height="16" src={ROFlag} width="22" />;
     } else {
-      return <img src={ENFlag} />;
+      return <img alt="English" height="16" src={ENFlag} width="22" />;
     }
   },
 
@@ -45,7 +49,13 @@ export default createLegacyComponent({
       <LinkContainer to="/home"><NavItem>Home</NavItem></LinkContainer>
       <LinkContainer to="/photos"><NavItem>Photos</NavItem></LinkContainer>
       <LinkContainer to="/about"><NavItem>About</NavItem></LinkContainer>
-      <NavItem onClick={this.changeLanguage}>{this.renderNextLanguage()}</NavItem>
+      <NavItem
+        aria-label="Schimbă limba în română"
+        onClick={this.changeLanguage}
+        title="Română"
+      >
+        {this.renderNextLanguage()}
+      </NavItem>
     </Nav>;
   },
 
@@ -71,7 +81,13 @@ export default createLegacyComponent({
         <LinkContainer to="/juriu"><NavItem>Juriu</NavItem></LinkContainer>
         <NavItem onClick={this.props.logout}>Delogare</NavItem>
         <LinkContainer to="/inscriere"><NavItem>Înscriere</NavItem></LinkContainer>
-        <NavItem onClick={this.changeLanguage}>{this.renderNextLanguage()}</NavItem>
+        <NavItem
+          aria-label="Switch language to English"
+          onClick={this.changeLanguage}
+          title="English"
+        >
+          {this.renderNextLanguage()}
+        </NavItem>
       </Nav>;
     } else {
       return this.renderEnglishHeader();
@@ -87,7 +103,13 @@ export default createLegacyComponent({
         <LinkContainer to="/program"><NavItem>Program</NavItem></LinkContainer>
         { this.renderResultsContestants() }
         <LinkContainer to="/juriu"><NavItem>Juriu</NavItem></LinkContainer>
-        <NavItem onClick={this.changeLanguage}>{this.renderNextLanguage()}</NavItem>
+        <NavItem
+          aria-label="Switch language to English"
+          onClick={this.changeLanguage}
+          title="English"
+        >
+          {this.renderNextLanguage()}
+        </NavItem>
       </Nav>;
     } else {
       return this.renderEnglishHeader();

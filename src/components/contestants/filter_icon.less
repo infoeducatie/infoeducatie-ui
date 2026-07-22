@@ -24,11 +24,16 @@
   }
 
   .round-icon {
+    align-items: center;
+    background: transparent;
     margin: 0 auto;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    padding: 0;
     height: 50px;
     width: 50px;
-    border: 3px solid;
+    border: 3px solid @black;
     border-radius: 100%;
 
     &.inactive {
@@ -45,16 +50,50 @@
 
       &.web {
         background-size: 25px 25px;
-        margin-top: 10px;
-        margin-left: 10px;
+        margin: 0;
       }
 
       &.all {
         background-size: 28px 28px;
         height: 30px;
-        margin-top: 8px;
-        margin-left: 8px;
+        margin: 0;
       }
+    }
+  }
+
+  .view-toggle {
+    align-items: center;
+    background: transparent;
+    border: 2px solid transparent;
+    color: @light-black;
+    display: inline-flex;
+    height: 50px;
+    justify-content: center;
+    width: 50px;
+
+    &.inactive {
+      color: #767B7D;
+    }
+
+    &[aria-pressed="true"] {
+      border-color: @light-black;
+    }
+  }
+
+  @media (max-width: 767px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    > [class*="col-"] {
+      float: none;
+      margin-left: 0;
+      width: 33.333333%;
+    }
+
+    p {
+      overflow-wrap: normal;
+      word-break: normal;
     }
   }
 }

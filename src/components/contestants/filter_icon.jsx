@@ -5,6 +5,15 @@ import ctx from "classnames";
 
 import "../../main.less";
 
+const categoryLabels = {
+  all: "Toate categoriile",
+  educational: "Educațional",
+  multimedia: "Multimedia",
+  roboti: "Roboți",
+  utilitar: "Utilitar",
+  web: "Web",
+};
+
 
 export default createLegacyComponent({
   displayName: "FilterIcon",
@@ -20,9 +29,18 @@ export default createLegacyComponent({
     });
     let childClasses = ctx("section-icon", this.props.category);
 
-    return <div onClick={this.toggleCategory} className={parentClasses}>
-      <span className={childClasses} />
-    </div>;
+    let label = this.props.label || categoryLabels[this.props.category] || this.props.category;
+
+    return <button
+      aria-label={`Filtrează: ${label}`}
+      aria-pressed={this.props.currentCategory === this.props.category}
+      className={parentClasses}
+      onClick={this.toggleCategory}
+      title={label}
+      type="button"
+    >
+      <span aria-hidden="true" className={childClasses} />
+    </button>;
   }
 
 });

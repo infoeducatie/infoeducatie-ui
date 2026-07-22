@@ -58,7 +58,12 @@ export default createLegacyComponent({
         <Row className="small-spacing" />
         <Row>
           <Col sm={4} smOffset={4}>
+            <label className="control-label" htmlFor="talks-edition">
+              Ediția afișată
+            </label>
             <EditionSelector onCallback={this.onEditionChange}
+                             id="talks-edition"
+                             ariaLabel="Ediția afișată"
                              filter="has_contestants"/>
           </Col>
         </Row>
@@ -111,7 +116,7 @@ export default createLegacyComponent({
 
   renderAuthorImage(author, index) {
     return <li className="author-image" key={index}>
-      <img src={gravatar(author.email_md5)} />
+      <img alt={`Fotografie ${author.name}`} loading="lazy" src={gravatar(author.email_md5)} />
     </li>;
   },
 

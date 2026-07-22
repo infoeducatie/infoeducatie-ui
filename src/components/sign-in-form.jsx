@@ -35,18 +35,20 @@ export default createLegacyComponent({
   render() {
     return <div>
       <form onSubmit={this.onSubmit}>
-        <FormGroup>
-          <ControlLabel>Adresa de email</ControlLabel>
+        <FormGroup controlId="sign-in-email">
+          <ControlLabel htmlFor="sign-in-email">Adresa de email</ControlLabel>
           <FormControl type="email"
+                 id="sign-in-email"
                  name="email"
                  autoComplete="email"
                  required
                  onChange={this.onEmailChange} />
           <FormControl.Feedback />
         </FormGroup>
-        <FormGroup>
-          <ControlLabel>Parola</ControlLabel>
+        <FormGroup controlId="sign-in-password">
+          <ControlLabel htmlFor="sign-in-password">Parola</ControlLabel>
           <FormControl type="password"
+                 id="sign-in-password"
                  name="password"
                  autoComplete="current-password"
                  required

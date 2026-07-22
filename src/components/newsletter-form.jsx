@@ -61,8 +61,13 @@ export default createLegacyComponent({
         <form onSubmit={this.onSubmit}>
           <Row>
             <Col xs={12}>
-              <FormGroup>
+              <FormGroup controlId="newsletter-email">
+                <label className="visually-hidden" htmlFor="newsletter-email">
+                  Adresa de email pentru newsletter
+                </label>
                 <FormControl
+                     id="newsletter-email"
+                     aria-describedby="newsletter-description"
                      hasFeedback
                      required
                      type="email"
@@ -80,7 +85,10 @@ export default createLegacyComponent({
           { this.state.hasErrored ? this.renderError() : null }
           <Row>
             <Col xs={12}>
-              <Button type="submit" className="link link-ternary">Abonează-te</Button>
+              <p className="visually-hidden" id="newsletter-description">
+                Primești noutăți despre concurs și informații pentru participanți.
+              </p>
+              <Button type="submit" className="newsletter-submit">Abonează-te</Button>
             </Col>
           </Row>
           <Row className="small-spacing" />

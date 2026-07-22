@@ -12,6 +12,8 @@ import React from "react";
 export default class EditionSelector extends React.Component {
   static displayName = "EditionSelector"
   static propTypes = {
+    ariaLabel: PropTypes.string,
+    id: PropTypes.string,
     onCallback: PropTypes.func.isRequired,
     filters: PropTypes.array,
     filter: PropTypes.string
@@ -45,8 +47,15 @@ export default class EditionSelector extends React.Component {
 
   render = () => {
     return <FormControl componentClass="select"
+                  id={this.props.id}
+                  aria-label={this.props.ariaLabel}
+                  aria-busy={!this.state.editions.length}
+                  disabled={!this.state.editions.length}
                   onChange={this.onEditionChange}
                   value={this.state.selectedEditionId}>
+      {!this.state.editions.length ? (
+        <option value="0">Se încarcă edițiile...</option>
+      ) : null}
       {this.state.editions.map(this.renderEdition)}
     </FormControl>
   }

@@ -7,7 +7,7 @@
   }
 
   .blue-section {
-    .blue-section();
+    .blue-section(420px);
   }
 
   .stats-section {
@@ -53,6 +53,20 @@
     column-gap: @grid-gutter-width;
   }
 
+  .participant-search {
+    .results-count {
+      color: @grey;
+      margin: 8px 0 0;
+    }
+  }
+
+  .empty-state {
+    background: @light-grey;
+    border-left: 4px solid @blue;
+    margin: 16px 0;
+    padding: 16px;
+  }
+
   .projects {
     table {
       @cell-height: 40px;
@@ -74,7 +88,7 @@
 
       tr {
         &.contestant {
-          cursor: pointer;
+          cursor: default;
         }
       }
 
@@ -96,8 +110,8 @@
 
         &.title {
           a {
-            text-decoration: none;
-            color: @black;
+            color: @blue;
+            font-weight: bold;
           }
         }
 

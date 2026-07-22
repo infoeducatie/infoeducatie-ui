@@ -68,7 +68,12 @@ export function Col({
   );
 }
 
-export function Navbar({ children, className = "", ...props }) {
+export function Navbar({
+  children,
+  className = "",
+  toggleLabel = "Toggle navigation",
+  ...props
+}) {
   const { toggleNavKey: _toggleNavKey, ...navbarProps } = props;
   return (
     <BootstrapNavbar
@@ -76,7 +81,10 @@ export function Navbar({ children, className = "", ...props }) {
       expand="lg"
       {...navbarProps}
     >
-      <BootstrapNavbar.Toggle aria-controls="infoeducatie-navigation" />
+      <BootstrapNavbar.Toggle
+        aria-controls="infoeducatie-navigation"
+        aria-label={toggleLabel}
+      />
       <BootstrapNavbar.Collapse id="infoeducatie-navigation">
         {children}
       </BootstrapNavbar.Collapse>

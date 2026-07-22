@@ -70,9 +70,9 @@
 @navbar-default-bg: transparent;
 @text-color: @dark-green;
 
-@big-letter-spacing: 5px;
-@medium-letter-spacing: 3px;
-@small-letter-spacing: 1px;
+@big-letter-spacing: 0;
+@medium-letter-spacing: 0;
+@small-letter-spacing: 0;
 
 @font-family-sans-serif: 'Lato', sans-serif;
 @font-family-serif: 'Shadows Into Light', serif;
@@ -128,6 +128,55 @@ html {
 html, body {
   width: auto;
   overflow-x: hidden;
+}
+
+body {
+  background-color: @white;
+}
+
+a,
+button,
+input,
+select,
+textarea,
+[tabindex] {
+  &:focus-visible {
+    outline: 3px solid @orange;
+    outline-offset: 3px;
+  }
+}
+
+.skip-link {
+  background: @black;
+  color: @white;
+  left: 12px;
+  padding: 10px 14px;
+  position: fixed;
+  top: 12px;
+  transform: translateY(-160%);
+  transition: transform 120ms ease;
+  z-index: 1100;
+
+  &:focus {
+    color: @white;
+    transform: translateY(0);
+  }
+}
+
+.route-loading {
+  min-height: 50vh;
+}
+
+.control-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.data-region {
+  &:focus-visible {
+    outline-offset: 2px;
+  }
 }
 
 // Bootstrap 5 removed the old responsive visibility helpers used by these views.

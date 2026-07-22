@@ -1,7 +1,14 @@
 "use strict";
 
 import * as Sentry from "@sentry/react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  lazy,
+  Suspense,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { createRoot } from "react-dom/client";
 import {
   BrowserRouter,
@@ -9,33 +16,17 @@ import {
   Outlet,
   Route,
   Routes,
+  useLocation,
   useOutletContext,
 } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./main.less";
 
-import About from "./components/about";
-import Alumni from "./components/alumni";
-import Calendar from "./components/calendar";
-import Contact from "./components/contact";
-import Contestants from "./components/contestants/contestants";
-import AboutEnglish from "./components/english/about";
-import ContactEnglish from "./components/english/contact";
 import FooterEnglish from "./components/english/footer";
-import HomeEnglish from "./components/english/home";
-import PhotoEnglish from "./components/english/photos";
 import Footer from "./components/footer";
 import Home from "./components/home";
-import Jury from "./components/jury";
-import Kitchen from "./components/kitchen";
-import Photos from "./components/photos";
-import Register from "./components/register";
-import RegisterInContest from "./components/register-in-contest";
-import Results from "./components/results";
-import Schedule from "./components/schedule";
 import SignInModal from "./components/sign-in-modal";
-import Talks from "./components/talks";
 import {
   getAccessToken,
   removeAccessToken,
@@ -44,6 +35,28 @@ import {
 import { initializeAnalytics } from "./lib/analytics";
 import { navigate, NavigationBridge } from "./lib/navigation";
 import request from "./lib/request";
+
+const About = lazy(() => import("./components/about"));
+const Alumni = lazy(() => import("./components/alumni"));
+const Calendar = lazy(() => import("./components/calendar"));
+const Contact = lazy(() => import("./components/contact"));
+const Contestants = lazy(() => import("./components/contestants/contestants"));
+const AboutEnglish = lazy(() => import("./components/english/about"));
+const ContactEnglish = lazy(() => import("./components/english/contact"));
+const HomeEnglish = lazy(() => import("./components/english/home"));
+const PhotoEnglish = lazy(() => import("./components/english/photos"));
+const Jury = lazy(() => import("./components/jury"));
+const Kitchen = lazy(() => import("./components/kitchen"));
+const Photos = lazy(() => import("./components/photos"));
+const Register = lazy(() => import("./components/register"));
+const RegisterInContest = lazy(
+  () => import("./components/register-in-contest"),
+);
+const Results = lazy(() => import("./components/results"));
+const Schedule = lazy(() => import("./components/schedule"));
+const Talks = lazy(() => import("./components/talks"));
+
+const englishRoutes = new Set(["/home", "/about", "/contact", "/photos"]);
 
 const defaultCurrent = {
   edition: {
@@ -65,9 +78,14 @@ const defaultCurrent = {
 };
 
 function App() {
+  const location = useLocation();
   const [current, setCurrent] = useState(defaultCurrent);
   const [isLoggedIn, setIsLoggedIn] = useState(Boolean(getAccessToken()));
-  const [language, setLanguage] = useState("ro");
+  const language = englishRoutes.has(location.pathname) ? "en" : "ro";
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
 
   const getCurrent = useCallback(() => {
     const accessToken = getAccessToken();
@@ -95,7 +113,6 @@ function App() {
   }, [getCurrent]);
 
   const changeLanguage = useCallback((newLanguage) => {
-    setLanguage(newLanguage);
     navigate(newLanguage === "en" ? "/home" : "/");
   }, []);
 
@@ -133,8 +150,15 @@ function App() {
 
   return (
     <div className="main">
-      <Outlet context={routeContext} />
-      {language === "ro" ? <Footer current={current} /> : <FooterEnglish />}
+      <a className="skip-link" href="#main-content">
+        Sari la conținut
+      </a>
+      <main id="main-content" tabIndex="-1">
+        <Outlet context={routeContext} />
+      </main>
+      <footer aria-label={language === "ro" ? "Subsol" : "Footer"}>
+        {language === "ro" ? <Footer current={current} /> : <FooterEnglish />}
+      </footer>
       <SignInModal login={login} />
     </div>
   );
@@ -142,7 +166,17 @@ function App() {
 
 function RouteContent({ component: Component }) {
   const appProps = useOutletContext();
-  return <Component {...appProps} />;
+  return (
+    <Suspense
+      fallback={
+        <div className="route-loading" role="status" aria-live="polite">
+          <span className="visually-hidden">Se încarcă pagina...</span>
+        </div>
+      }
+    >
+      <Component {...appProps} />
+    </Suspense>
+  );
 }
 
 const routeComponents = [

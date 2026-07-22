@@ -73,7 +73,7 @@ const SignInModal = createLegacyComponent({
     return <div>
       <p>
         Dacă nu ai un cont,&nbsp;
-        <a href="#" onClick={this.onRegisterClick}>creează unul nou aici</a>.
+        <a href="/inregistrare" onClick={this.onRegisterClick}>creează unul nou aici</a>.
       </p>
       <p>
        Dacă ai uitat parola&nbsp;

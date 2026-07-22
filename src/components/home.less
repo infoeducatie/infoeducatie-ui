@@ -19,13 +19,18 @@
     .blue-section();
 
     @media screen and (max-width: @screen-md) {
-      .link {
+      .cta-link {
         margin: @vertical-small-spacing/4 0;
       }
 
       .header-spacing {
         height: 0;
       }
+    }
+
+    .tagline {
+      font-size: @font-size-h5;
+      margin-bottom: 0;
     }
 
     @media screen and (min-width: @screen-md) {
@@ -78,6 +83,11 @@
       color: @yellow;
       font-weight: normal;
     }
+
+    .alumnus-position,
+    .section-heading {
+      text-transform: uppercase;
+    }
   }
 
   .yellow-section-wrapper {
@@ -92,8 +102,15 @@
         font-weight: normal;
       }
 
+      .location-title {
+        color: @dark-green;
+        font-family: @font-family-serif;
+        font-size: 72px;
+        text-transform: none;
+      }
+
       .edition {
-        color: @pink;
+        color: #8E0054;
         font-weight: bold;
       }
     }
@@ -111,9 +128,36 @@
     text-transform: uppercase;
     color: @dark-green;
 
+    h2,
+    h3 {
+      color: @dark-green;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: @font-size-h4;
+    }
+
+    h3 {
+      font-size: @font-size-h5;
+    }
+
+    .logos {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
     img {
       padding: 20px 20px;
       vertical-align: middle;
     }
+  }
+}
+
+@media screen and (max-width: @screen-xs) {
+  .home .yellow-section-wrapper .text .location-title {
+    font-size: 58px;
   }
 }

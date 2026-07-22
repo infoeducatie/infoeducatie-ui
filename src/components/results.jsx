@@ -8,9 +8,33 @@ import ajax from "../lib/ajax"
 import EditionSelector from "./edition-selector"
 import FilterIcon from "./contestants/filter_icon";
 import Header from "./header";
-import openDiscourse from "../lib/discourse"
 
 import "../main.less";
+
+function asArray(value) {
+  return Array.isArray(value) ? value : [];
+}
+
+function itemName(item) {
+  if (typeof item === "string") {
+    return item;
+  }
+
+  return item && (item.name || item.title);
+}
+
+function normalizeProject(project) {
+  return {
+    ...project,
+    prize: project.prize && project.prize.length <= 3 ? project.prize : "",
+    contestants: asArray(project.contestants).map(itemName).filter(Boolean),
+    schools: asArray(project.schools).map(itemName).filter(Boolean),
+    counties: asArray(project.counties).map(itemName).filter(Boolean),
+    mentoring_teachers: asArray(project.mentoring_teachers)
+      .map(itemName)
+      .filter(Boolean),
+  };
+}
 
 
 export default createLegacyComponent({
@@ -23,7 +47,9 @@ export default createLegacyComponent({
         id: 0,
         name: ""
       },
-      projects: []
+      projects: [],
+      isLoading: false,
+      hasError: false
     };
   },
 
@@ -70,85 +96,93 @@ export default createLegacyComponent({
       return 0;
     });
 
-    // TODO @palcu: remove hack for absent contestants
-    projects = projects.map((project) => {
-      if (project.prize && project.prize.length > 3) {
-        project.prize = "";
-      }
-      return project;
-    });
+    if (this.state.isLoading) {
+      return <p className="results-status" role="status">Se încarcă rezultatele...</p>;
+    }
 
-    // TODO @palcu: remove hack and get
-    projects = projects.map((project) => {
-      project.contestants = project.contestants.map((contestant) => {
-        return contestant.name;
-      });
-      return project;
-    });
+    if (this.state.hasError) {
+      return <p className="results-status error" role="alert">
+        Rezultatele nu au putut fi încărcate. Reîncearcă în câteva momente.
+      </p>;
+    }
 
     return <Grid className="results-section">
       <Row>
         <Col md={12}>
-          <Table responsive striped hover>
-            <thead>
-              <tr>
-                <th>premiul</th>
-                <th className="left">numele lucrării</th>
-                <th className="left">concurent</th>
-                <th className="left hidden-sm hidden-xs">liceu</th>
-                <th className="left hidden-sm hidden-xs">județ</th>
-                <th className="left hidden-sm hidden-xs">profesor</th>
-                <th className="hidden-sm hidden-xs">punctaj</th>
-                <th className="hidden-sm hidden-xs">open</th>
-                <th>total</th>
-              </tr>
-            </thead>
-            <tbody>
-              {projects.map(function(project) {
-                return <tr key={project.id}
-                           onClick={openDiscourse.bind(this, project.discourse_url)}>
-                  {this.renderTableTd(project.prize, project.discourse_url, "rank")}
-                  {this.renderTableTd(project.title, project.discourse_url)}
-                  {this.renderTableUl(project.contestants,
-                                      project.discourse_url,
-                                      "",
-                                      "author")}
-                  {this.renderTableUl(project.schools,
-                                      project.discourse_url,
-                                      "hidden-sm hidden-xs",
-                                      "school-name")}
-                  {this.renderTableUl(project.counties,
-                                      project.discourse_url,
-                                      "hidden-sm hidden-xs",
-                                      "county")}
-                  {this.renderTableUl(project.mentoring_teachers,
-                                      project.discourse_url,
-                                      "hidden-sm hidden-xs",
-                                      "county")}
-                  {this.renderTableTd(project.score,
-                                      project.discourse_url,
-                                      "hidden-sm hidden-xs score")}
-                  {this.renderTableTd(project.extra_score,
-                                      project.discourse_url,
-                                      "hidden-sm hidden-xs score")}
-                  {this.renderTableTd(project.total_score,
-                                      project.discourse_url,
-                                      "score")}
-                </tr>;
-              }.bind(this))}
-            </tbody>
-          </Table>
+          <h2 className="visually-hidden" id="results-table-heading">
+            Clasamentul proiectelor
+          </h2>
+          <div
+            aria-labelledby="results-table-heading"
+            className="data-region table-responsive"
+            role="region"
+            tabIndex="0"
+          >
+            <Table striped hover>
+              <thead>
+                <tr>
+                  <th>premiul</th>
+                  <th className="left">numele lucrării</th>
+                  <th className="left">concurent</th>
+                  <th className="left hidden-sm hidden-xs">liceu</th>
+                  <th className="left hidden-sm hidden-xs">județ</th>
+                  <th className="left hidden-sm hidden-xs">profesor</th>
+                  <th className="hidden-sm hidden-xs">punctaj</th>
+                  <th className="hidden-sm hidden-xs">open</th>
+                  <th>total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {projects.map(function(project) {
+                  return <tr key={project.id}>
+                    {this.renderTableTd(project.prize, project.discourse_url, "rank")}
+                    {this.renderTableTd(project.title, project.discourse_url)}
+                    {this.renderTableUl(project.contestants,
+                                        project.discourse_url,
+                                        "",
+                                        "author")}
+                    {this.renderTableUl(project.schools,
+                                        project.discourse_url,
+                                        "hidden-sm hidden-xs",
+                                        "school-name")}
+                    {this.renderTableUl(project.counties,
+                                        project.discourse_url,
+                                        "hidden-sm hidden-xs",
+                                        "county")}
+                    {this.renderTableUl(project.mentoring_teachers,
+                                        project.discourse_url,
+                                        "hidden-sm hidden-xs",
+                                        "county")}
+                    {this.renderTableTd(project.score,
+                                        project.discourse_url,
+                                        "hidden-sm hidden-xs score")}
+                    {this.renderTableTd(project.extra_score,
+                                        project.discourse_url,
+                                        "hidden-sm hidden-xs score")}
+                    {this.renderTableTd(project.total_score,
+                                        project.discourse_url,
+                                        "score")}
+                  </tr>;
+                }.bind(this))}
+              </tbody>
+            </Table>
+          </div>
+          {!projects.length ? (
+            <p className="results-status" role="status">
+              Nu există rezultate pentru categoria selectată.
+            </p>
+          ) : null}
         </Col>
       </Row>
     </Grid>;
   },
 
   renderTableTd(content, url, tdClassName) {
+    let hasContent = content !== null && content !== undefined && content !== "";
+
     return (
       <td className={tdClassName}>
-        <a href={url}>
-          {content}
-        </a>
+        {url && hasContent ? <a href={url}>{content}</a> : content}
       </td>
     );
   },
@@ -157,11 +191,9 @@ export default createLegacyComponent({
     return (
       <td className={tdClassName}>
         <ul className="list-unstyled">
-          {items.map(function(item){
-            return <li key={item} className={liClassName}>
-              <a href={url}>
-                {item}
-              </a>
+          {asArray(items).map(function(item, index){
+            return <li key={`${item}-${index}`} className={liClassName}>
+              {url ? <a href={url}>{item}</a> : item}
             </li>;
           })}
         </ul>
@@ -193,7 +225,12 @@ export default createLegacyComponent({
         <Row className="small-spacing" />
         <Row>
           <Col sm={4} smOffset={4}>
+            <label className="control-label" htmlFor="results-edition">
+              Ediția afișată
+            </label>
             <EditionSelector onCallback={this.onEditionChange}
+                             id="results-edition"
+                             ariaLabel="Ediția afișată"
                              filter="has_results" />
           </Col>
         </Row>
@@ -244,12 +281,18 @@ export default createLegacyComponent({
   showResults(editionId) {
     let data = editionId ? { edition: editionId } : {};
 
+    this.setState({ isLoading: true, hasError: false });
+
     ajax({
       endpoint: "projects.json",
       data: data,
       success: (data) => {
-        this.setState({ projects: data });
-      }
+        let projects = Array.isArray(data) ? data.map(normalizeProject) : [];
+        this.setState({ projects: projects, isLoading: false, hasError: false });
+      },
+      error: () => {
+        this.setState({ projects: [], isLoading: false, hasError: true });
+      },
     });
   }
 });

@@ -38,7 +38,7 @@ export default createLegacyComponent({
     ];
 
     if (this.props.edition.camp_start_date === undefined) {
-      return null;
+      return "Dates to be announced";
     }
 
     let startDate = new Date(this.props.edition.camp_start_date);
@@ -70,17 +70,17 @@ export default createLegacyComponent({
                 <Row>
                     <Col xs={12}>
                         <h2>National Contest of IT&amp;C projects</h2>
-                        <h5 className="tagline">
+                        <p className="tagline">
                             Edition&nbsp;
                             {this.props.current.edition.name}
-                        </h5>
+                        </p>
                     </Col>
                 </Row>
                 <Row className="xsmall-spacing" />
                 <Row>
                     <Col xs={12}>
                         <p className="right-button">
-                            <Link to="about-english" className="link link-secondary">
+                            <Link to="/about" className="cta-link cta-light">
                                 About the contest
                             </Link>
                         </p>
@@ -94,7 +94,7 @@ export default createLegacyComponent({
                 <Row className="small-spacing" />
                 <Row>
                     <Col md={6} mdOffset={6}>
-                        <h6>Alumnus</h6>
+                        <h2 className="section-heading">Alumnus</h2>
                         <Row className="small-spacing" />
                         <p className="quote">InfoEducatie is what gave me the
                         drive to learn about web technologies and develop my
@@ -103,10 +103,10 @@ export default createLegacyComponent({
                         itself! Make sure to rehearse before going in front of
                         the committee. </p>
                         <Row className="small-spacing" />
-                        <h2 className="alumnus-name">Cristian Strat</h2>
-                        <h6 className="alumnus-position">
+                        <h3 className="alumnus-name">Cristian Strat</h3>
+                        <p className="alumnus-position">
                             Ex Growth Manager @ Twitter
-                        </h6>
+                        </p>
                     </Col>
                 </Row>
                 <Row className="small-spacing" />
@@ -118,19 +118,19 @@ export default createLegacyComponent({
                 <Row>
                     <Col md={4} mdOffset={2} className="text middle-align">
                         <div className="wrapper-for-flexbox">
-                            <h1>Gălăciuc Camp</h1>
-                            <h6 className="data">
+                            <h2 className="location-title">Gălăciuc Camp</h2>
+                            <p className="data">
                                 <span className="pink-dash"></span>
                                 {this.renderCampDate()}
                                 <span className="pink-dash"></span>
-                            </h6>
-                            <h6 className="edition">
+                            </p>
+                            <p className="edition">
                               {countify(this.props.current.edition.count)} Edition
-                            </h6>
+                            </p>
                             <Row className="small-spacing" />
                             <p>
-                                <Link to="photos-english"
-                                   className="link link-secondary">
+                                <Link to="/photos"
+                                   className="cta-link cta-dark">
                                     More pictures
                                 </Link>
                             </p>
@@ -147,7 +147,7 @@ export default createLegacyComponent({
             <Row className="small-spacing" />
                         <Row>
                             <Col xs={12}>
-                                <h4>EDUCATIONAL PARTNERS</h4>
+                                <h2>Educational partners and supporters</h2>
                             </Col>
                         </Row>
 
@@ -155,13 +155,13 @@ export default createLegacyComponent({
                             <Col xs={12}>
                                 <p className="logos">
                                     <a href="http://mts.ro/" target="_blank" rel="noreferrer">
-                                      <img src={MTS} />
+                                      <img alt="Romanian Ministry of Youth and Sports" decoding="async" loading="lazy" src={MTS} />
                                     </a>
-                                    <a href="http://upir.ro/ro/" target="_blank" rel="noreferrer">
-                                      <img src={Upir} />
+                                    <a href="https://upir.ro/" target="_blank" rel="noreferrer">
+                                      <img alt="Romanian Union of Computer Science Teachers" decoding="async" loading="lazy" src={Upir} />
                                     </a>
-                                    <a href="http://www.edu.ro/" target="_blank" rel="noreferrer">
-                                      <img src={MEN} />
+                                    <a href="https://www.edu.ro/" target="_blank" rel="noreferrer">
+                                      <img alt="Romanian Ministry of Education" decoding="async" loading="lazy" src={MEN} />
                                     </a>
 
                                 </p>
@@ -172,23 +172,23 @@ export default createLegacyComponent({
                 <Row className="small-spacing" />
                 <Row>
                     <Col xs={12}>
-                        <h4>Gold Sponsors</h4>
+                        <h3>Gold Sponsors</h3>
                     </Col>
                 </Row>
                 <Row>
                     <Col xs={12}>
                         <p className="logos">
                             <a href="http://google.ro" target="_blank" rel="noreferrer">
-                              <img src={Google} />
+                              <img alt="Google" decoding="async" loading="lazy" src={Google} />
                             </a>
                             <a href="http://intel.ro" target="_blank" rel="noreferrer">
-                              <img src={Intel} />
+                              <img alt="Intel" decoding="async" loading="lazy" src={Intel} />
                             </a>
                             <a href="http://www.orange.ro/" target="_blank" rel="noreferrer">
-                              <img src={Orange} />
+                              <img alt="Orange" decoding="async" loading="lazy" src={Orange} />
                             </a>
                             <a href="https://imedicare.com/" target="_blank" rel="noreferrer">
-                              <img src={iMedicare} />
+                              <img alt="iMedicare" decoding="async" loading="lazy" src={iMedicare} />
                             </a>
                         </p>
                     </Col>
@@ -197,23 +197,23 @@ export default createLegacyComponent({
                 <Row className="small-spacing" />
                 <Row>
                     <Col xs={12}>
-                        <h4>Silver Sponsors</h4>
+                        <h3>Silver Sponsors</h3>
                     </Col>
                 </Row>
                 <Row>
                     <Col xs={12}>
                         <p className="logos">
                             <a href="http://www.cisco.com/" target="_blank" rel="noreferrer">
-                              <img src={Cisco} />
+                              <img alt="Cisco" decoding="async" loading="lazy" src={Cisco} />
                             </a>
                             <a href="http://www.cloudbase.it/" target="_blank" rel="noreferrer">
-                              <img src={CloudBase} />
+                              <img alt="Cloudbase Solutions" decoding="async" loading="lazy" src={CloudBase} />
                             </a>
                             <a href="http://leonte.ro/" target="_blank" rel="noreferrer">
-                              <img src={leonte} />
+                              <img alt="Leonte" decoding="async" loading="lazy" src={leonte} />
                             </a>
                             <a href="http://www.altex.ro/" target="_blank" rel="noreferrer">
-                              <img src={altex} />
+                              <img alt="Altex" decoding="async" loading="lazy" src={altex} />
                             </a>
                         </p>
                     </Col>
@@ -222,26 +222,26 @@ export default createLegacyComponent({
                 <Row className="small-spacing" />
                 <Row>
                     <Col xs={12}>
-                        <h4>Bronze Sponsors</h4>
+                        <h3>Bronze Sponsors</h3>
                     </Col>
                 </Row>
                 <Row>
                     <Col xs={12}>
                         <p className="logos">
                             <a href="http://ro.easyhost.com/incubator" target="_blank" rel="noreferrer">
-                              <img src={EasyHost} />
+                              <img alt="Easyhost" decoding="async" loading="lazy" src={EasyHost} />
                             </a>
                             <a href="http://www.intuitext.ro/" target="_blank" rel="noreferrer">
-                              <img src={Intuitext} />
+                              <img alt="Intuitext" decoding="async" loading="lazy" src={Intuitext} />
                             </a>
                             <a href="http://asociatiait.ro/" target="_blank" rel="noreferrer">
-                              <img src={Apdetic} />
+                              <img alt="APDETIC" decoding="async" loading="lazy" src={Apdetic} />
                             </a>
                             <a href="http://eskills4jobs.ec.europa.eu/" target="_blank" rel="noreferrer">
-                              <img src={eSkills} />
+                              <img alt="eSkills for Jobs" decoding="async" loading="lazy" src={eSkills} />
                             </a>
                             <a href="https://www.facebook.com/GirlsWhoCodeRO" target="_blank" rel="noreferrer">
-                              <img src={gwc} />
+                              <img alt="Girls Who Code Romania" decoding="async" loading="lazy" src={gwc} />
                             </a>
                         </p>
                     </Col>
