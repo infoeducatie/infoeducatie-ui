@@ -1,39 +1,32 @@
 "use strict";
 
-import React from "react";
-import { Grid, Col, Row } from "react-bootstrap";
+import createLegacyComponent from "@lib/create-legacy-component";
+import { Grid, Col, Row } from "@ui/bootstrap";
 
 import Header from "./header";
 import JuryDescription from "./jury-description";
 
 import "../main.less";
-import gravatar from "../lib/gravatar";
 import RobertColca from "../../assets/img/jury/Robert_Colca.jpg";
 //import FlaviaOprea from "../../assets/img/jury/flavia_oprea.jpg";
 //import bogdan_bocse from "../../assets/img/jury/bogdan_bocse.jpg";
 import AntoniaHaller from "../../assets/img/jury/antoniahaller.jpg";
 import Carmocanu from "../../assets/img/jury/carmocanu.jpg";
-import Centa from "../../assets/img/jury/centa.png";
 import Arisanu from "../../assets/img/jury/arisanu.png";
 import DanielPopaAvatar from "../../assets/img/jury/daniel_popa.jpg";
-import DanSpatarelAvatar from "../../assets/img/jury/dan_spatarel.jpg";
 import DomsaAvatar from "../../assets/img/jury/domsa_ovidiu.jpg";
 import EmilOneaAvatar from "../../assets/img/jury/emil_onea.jpg";
 import LaviniuBejenaru from "../../assets/img/jury/laviniubejenaru.png";
 //import FasanAvatar from "../../assets/img/jury/fasan_mihail.jpg";
 //import MihaiAgapeAvatar from "../../assets/img/jury/mihai_agape.jpg";
-import MarilenaAvatar from "../../assets/img/jury/marilena_oprea.jpg";
-import PetruAvatar from "../../assets/img/jury/petru_dimitriu.jpg";
 import RazvanDeaconescuAvatar from "../../assets/img/jury/razvan_deaconescu.jpg";
 //import RodicaPinteaAvatar from "../../assets/img/jury/rodica_pintea.jpg";
-import StefanAvatar from "../../assets/img/jury/stefan_stolniceanu.jpg";
 //import StelianNiculescuAvatar from "../../assets/img/jury/stelian_niculescu.jpg";
 import AdrianaCheres from "../../assets/img/jury/adrianacheres.jpg";
 import DefaultAvatar from "../../assets/img/jury/default.png";
 import DefaultDocument from "../../assets/img/icons/doc.png";
-import RughinisAvatar from "../../assets/img/jury/razvanrughinis.jpg";
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "Jury",
   render() {
     let presedinte = [
@@ -205,7 +198,7 @@ export default React.createClass({
                   {criteria.map(function(doc) {
                     return <div key={doc.link} className="jury-criteria">
                       <div className="jury-criteria-txt">{doc.name}</div>
-                      <div className="jury-criteria-img"><a href={doc.link} target="_blank"><img src={DefaultDocument} alt={doc.link} /></a></div>
+                      <div className="jury-criteria-img"><a href={doc.link} target="_blank" rel="noreferrer"><img src={DefaultDocument} alt={doc.link} /></a></div>
                     </div>;
                   })}
                 </Row>

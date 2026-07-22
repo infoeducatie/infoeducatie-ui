@@ -1,8 +1,8 @@
 "use strict";
 
 import _ from "lodash";
-import React from "react";
-import { Grid, Col, Row, Table } from "react-bootstrap";
+import createLegacyComponent from "@lib/create-legacy-component";
+import { Grid, Col, Row, Table } from "@ui/bootstrap";
 
 import ajax from "../lib/ajax"
 import EditionSelector from "./edition-selector"
@@ -13,7 +13,7 @@ import openDiscourse from "../lib/discourse"
 import "../main.less";
 
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "Results",
 
   getInitialState: function() {

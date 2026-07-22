@@ -1,13 +1,12 @@
 "use strict";
 
-import React from "react";
-import _ from "lodash";
-import { Button, FormGroup } from "react-bootstrap";
+import createLegacyComponent from "@lib/create-legacy-component";
+import { Button, FormGroup } from "@ui/bootstrap";
 
 import FormMixin from "../../mixins/form"
 
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "RegisterAdditionalConfirm",
   mixins: [FormMixin],
 

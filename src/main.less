@@ -1,8 +1,11 @@
-@import "~bootstrap/less/bootstrap";
-@import "~bootstrap/less/variables";
 @import "styles/variables";
 @import "styles/classes";
 @import "styles/mixins";
+
+@screen-xs: 480px;
+@screen-sm: 768px;
+@screen-md: 992px;
+@grid-gutter-width: 30px;
 
 @import "components/about";
 @import "components/alumni";
@@ -20,45 +23,46 @@
 @import "components/register-in-contest";
 @import "components/register";
 @import "components/results";
+@import "components/schedule";
 @import "components/talks";
 
 
 @font-face {
   font-family: 'Shadows Into Light';
-  src: url('../assets/fonts/shadows2.ttf') format('truetype');
+  src: url('/assets/fonts/shadows2.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Lato';
-  src: url('../assets/fonts/lato-regular-webfont.eot');
-  src: url('../assets/fonts/lato-regular-webfont.eot?#iefix') format('embedded-opentype'),
-       url('../assets/fonts/lato-regular-webfont.woff2') format('woff2'),
-       url('../assets/fonts/lato-regular-webfont.woff') format('woff'),
-       url('../assets/fonts/lato-regular-webfont.ttf') format('truetype');
+  src: url('/assets/fonts/lato-regular-webfont.eot');
+  src: url('/assets/fonts/lato-regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('/assets/fonts/lato-regular-webfont.woff2') format('woff2'),
+       url('/assets/fonts/lato-regular-webfont.woff') format('woff'),
+       url('/assets/fonts/lato-regular-webfont.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Lato';
-  src: url('../assets/fonts/lato-light-webfont.eot');
-  src: url('../assets/fonts/lato-light-webfont.eot?#iefix') format('embedded-opentype'),
-       url('../assets/fonts/lato-light-webfont.woff2') format('woff2'),
-       url('../assets/fonts/lato-light-webfont.woff') format('woff'),
-       url('../assets/fonts/lato-light-webfont.ttf') format('truetype');
+  src: url('/assets/fonts/lato-light-webfont.eot');
+  src: url('/assets/fonts/lato-light-webfont.eot?#iefix') format('embedded-opentype'),
+       url('/assets/fonts/lato-light-webfont.woff2') format('woff2'),
+       url('/assets/fonts/lato-light-webfont.woff') format('woff'),
+       url('/assets/fonts/lato-light-webfont.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Lato';
-  src: url('../assets/fonts/lato-bold-webfont.eot');
-  src: url('../assets/fonts/lato-bold-webfont.eot?#iefix') format('embedded-opentype'),
-       url('../assets/fonts/lato-bold-webfont.woff2') format('woff2'),
-       url('../assets/fonts/lato-bold-webfont.woff') format('woff'),
-       url('../assets/fonts/lato-bold-webfont.ttf') format('truetype');
+  src: url('/assets/fonts/lato-bold-webfont.eot');
+  src: url('/assets/fonts/lato-bold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('/assets/fonts/lato-bold-webfont.woff2') format('woff2'),
+       url('/assets/fonts/lato-bold-webfont.woff') format('woff'),
+       url('/assets/fonts/lato-bold-webfont.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
@@ -124,6 +128,19 @@ html {
 html, body {
   width: auto;
   overflow-x: hidden;
+}
+
+// Bootstrap 5 removed the old responsive visibility helpers used by these views.
+@media screen and (max-width: (@screen-sm - 1px)) {
+  .hidden-xs {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: @screen-sm) and (max-width: (@screen-md - 1px)) {
+  .hidden-sm {
+    display: none !important;
+  }
 }
 
 

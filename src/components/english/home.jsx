@@ -1,15 +1,12 @@
 "use strict";
 
-import $ from "jquery";
-import _ from "lodash";
-import React from "react";
-import {Link} from "react-router";
-import {Grid, Row, Col, Glyphicon} from "react-bootstrap";
+import createLegacyComponent from "@lib/create-legacy-component";
+import {Link} from "react-router-dom";
+import {Grid, Row, Col} from "@ui/bootstrap";
 
 import countify from "../../lib/countify";
 import Header from "../header";
 
-import "../home.less";
 import Google from "../../../assets/img/sponsors/google.png";
 import Intel from "../../../assets/img/sponsors/intel.png";
 import Orange from "../../../assets/img/sponsors/orange.png";
@@ -27,7 +24,7 @@ import leonte from "../../../assets/img/sponsors/leonte.png";
 import altex from "../../../assets/img/sponsors/altex.gif";
 import MTS from "../../../assets/img/sponsors/mts.jpg";
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "Home",
 
   componentDidMount() {
@@ -157,13 +154,13 @@ export default React.createClass({
                         <Row>
                             <Col xs={12}>
                                 <p className="logos">
-                                    <a href="http://mts.ro/" target="_blank">
+                                    <a href="http://mts.ro/" target="_blank" rel="noreferrer">
                                       <img src={MTS} />
                                     </a>
-                                    <a href="http://upir.ro/ro/" target="_blank">
+                                    <a href="http://upir.ro/ro/" target="_blank" rel="noreferrer">
                                       <img src={Upir} />
                                     </a>
-                                    <a href="http://www.edu.ro/" target="_blank">
+                                    <a href="http://www.edu.ro/" target="_blank" rel="noreferrer">
                                       <img src={MEN} />
                                     </a>
 
@@ -181,16 +178,16 @@ export default React.createClass({
                 <Row>
                     <Col xs={12}>
                         <p className="logos">
-                            <a href="http://google.ro" target="_blank">
+                            <a href="http://google.ro" target="_blank" rel="noreferrer">
                               <img src={Google} />
                             </a>
-                            <a href="http://intel.ro" target="_blank">
+                            <a href="http://intel.ro" target="_blank" rel="noreferrer">
                               <img src={Intel} />
                             </a>
-                            <a href="http://www.orange.ro/" target="_blank">
+                            <a href="http://www.orange.ro/" target="_blank" rel="noreferrer">
                               <img src={Orange} />
                             </a>
-                            <a href="https://imedicare.com/" target="_blank">
+                            <a href="https://imedicare.com/" target="_blank" rel="noreferrer">
                               <img src={iMedicare} />
                             </a>
                         </p>
@@ -206,16 +203,16 @@ export default React.createClass({
                 <Row>
                     <Col xs={12}>
                         <p className="logos">
-                            <a href="http://www.cisco.com/" target="_blank">
+                            <a href="http://www.cisco.com/" target="_blank" rel="noreferrer">
                               <img src={Cisco} />
                             </a>
-                            <a href="http://www.cloudbase.it/" target="_blank">
+                            <a href="http://www.cloudbase.it/" target="_blank" rel="noreferrer">
                               <img src={CloudBase} />
                             </a>
-                            <a href="http://leonte.ro/" target="_blank">
+                            <a href="http://leonte.ro/" target="_blank" rel="noreferrer">
                               <img src={leonte} />
                             </a>
-                            <a href="http://www.altex.ro/" target="_blank">
+                            <a href="http://www.altex.ro/" target="_blank" rel="noreferrer">
                               <img src={altex} />
                             </a>
                         </p>
@@ -231,19 +228,19 @@ export default React.createClass({
                 <Row>
                     <Col xs={12}>
                         <p className="logos">
-                            <a href="http://ro.easyhost.com/incubator" target="_blank">
+                            <a href="http://ro.easyhost.com/incubator" target="_blank" rel="noreferrer">
                               <img src={EasyHost} />
                             </a>
-                            <a href="http://www.intuitext.ro/" target="_blank">
+                            <a href="http://www.intuitext.ro/" target="_blank" rel="noreferrer">
                               <img src={Intuitext} />
                             </a>
-                            <a href="http://asociatiait.ro/" target="_blank">
+                            <a href="http://asociatiait.ro/" target="_blank" rel="noreferrer">
                               <img src={Apdetic} />
                             </a>
-                            <a href="http://eskills4jobs.ec.europa.eu/" target="_blank">
+                            <a href="http://eskills4jobs.ec.europa.eu/" target="_blank" rel="noreferrer">
                               <img src={eSkills} />
                             </a>
-                            <a href="https://www.facebook.com/GirlsWhoCodeRO" target="_blank">
+                            <a href="https://www.facebook.com/GirlsWhoCodeRO" target="_blank" rel="noreferrer">
                               <img src={gwc} />
                             </a>
                         </p>

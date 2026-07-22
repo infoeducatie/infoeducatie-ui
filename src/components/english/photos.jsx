@@ -1,28 +1,16 @@
 "use strict";
 
-import React from "react";
-import {Grid, Row, Col} from "react-bootstrap";
-import ctx from "classnames";
+import createLegacyComponent from "@lib/create-legacy-component";
+import {Grid, Row, Col} from "@ui/bootstrap";
 
 import Header from "../header";
 import PhotoWrapper from "../photo-wrapper.jsx";
 
 import "../../main.less";
 
-import Cover2014 from "../../../assets/img/2014.jpg";
-import Cover2013 from "../../../assets/img/2013.jpg";
-import Cover2012 from "../../../assets/img/2012.jpg";
-import Cover2011 from "../../../assets/img/2011.jpg";
-import Cover2010 from "../../../assets/img/2010.jpg";
-import Cover2009 from "../../../assets/img/2009.jpg";
-import Cover2008 from "../../../assets/img/2008.jpg";
-import Cover2007 from "../../../assets/img/2007.jpg";
-import Cover2006 from "../../../assets/img/2006.jpg";
-import Cover2005 from "../../../assets/img/2005.jpg";
-import Cover2004 from "../../../assets/img/2004.jpg";
 
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "Photos",
   getInitialState() {
     return {

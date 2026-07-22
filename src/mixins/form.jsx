@@ -1,8 +1,8 @@
 "use strict";
 
+import request from "@lib/request";
+
 import _ from "lodash"
-import $ from "jquery";
-import React from "react";
 
 
 export default {
@@ -58,7 +58,7 @@ export default {
       waitingForServerResponse: true
     });
 
-    $.ajax({
+    request({
       method: this.props.method,
       url: window.config.API_URL + this.props.formEndpoint,
       headers: {

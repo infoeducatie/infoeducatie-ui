@@ -1,11 +1,12 @@
 "use strict";
 
-import $ from "jquery";
-import _ from "lodash";
-import React from "react";
-import { FormControl, ControlLabel, FormGroup, Button } from "react-bootstrap";
+import request from "@lib/request";
 
-export default React.createClass({
+import _ from "lodash";
+import createLegacyComponent from "@lib/create-legacy-component";
+import { FormControl, ControlLabel, FormGroup, Button } from "@ui/bootstrap";
+
+export default createLegacyComponent({
   displayName: "RegisterContestant",
 
   getInitialState() {
@@ -15,7 +16,7 @@ export default React.createClass({
       errors: [],
 
       contestant: {
-        /*eslint-disable */
+
         address: "",
         city: "",
         county: "Alba",
@@ -38,7 +39,6 @@ export default React.createClass({
         mentoring_teacher_first_name: "",
         mentoring_teacher_last_name: "",
 
-        /*eslint-enable */
       },
 
       officialParticipant: "false",
@@ -459,7 +459,7 @@ export default React.createClass({
     data["contestant[present_in_camp]"] = this.state.presentInCamp;
     data["contestant[paying_camp_accommodation]"] = false;
 
-    $.ajax({
+    request({
       method: "POST",
       url: window.config.API_URL + "contestants.json",
       headers: {

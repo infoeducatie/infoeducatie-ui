@@ -1,19 +1,16 @@
-"use strict";
+import request from "./request";
 
-import _ from "lodash";
-import $ from "jquery";
+export default function ajax(options, accessToken) {
+  const { endpoint, headers: optionHeaders = {}, ...requestOptions } = options;
+  const headers = {
+    ...(accessToken ? { Authorization: accessToken } : {}),
+    ...optionHeaders,
+  };
 
-
-export default function(options, accessToken) {
-  let headers = accessToken ? { Authorization: accessToken } : {};
-
-  if (options.endpoint) {
-    options.url = window.config.API_URL + options.endpoint;
-    delete options.endpoint;
-  }
-
-  $.ajax(_.defaults(options, {
+  return request({
     method: "GET",
-    headers: headers
-  }));
+    ...requestOptions,
+    url: endpoint ? `${window.config.API_URL}${endpoint}` : requestOptions.url,
+    headers,
+  });
 }

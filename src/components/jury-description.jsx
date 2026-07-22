@@ -1,11 +1,11 @@
 "use strict";
 
 import ctx from "classnames";
-import React from "react";
-import { Row, Col } from "react-bootstrap";
+import createLegacyComponent from "@lib/create-legacy-component";
+import { Col } from "@ui/bootstrap";
 
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "JuryDescription",
   render() {
     let juryIcon = null;

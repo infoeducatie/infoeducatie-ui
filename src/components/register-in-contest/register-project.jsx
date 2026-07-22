@@ -1,13 +1,13 @@
 "use strict";
 
-import React from "react";
+import createLegacyComponent from "@lib/create-legacy-component";
 import _ from "lodash";
-import { FormControl, ControlLabel, FormGroup, Button } from "react-bootstrap";
+import { FormControl, ControlLabel, FormGroup, Button } from "@ui/bootstrap";
 
 import FormMixin from "../../mixins/form"
 
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "RegisterProject",
   mixins: [FormMixin],
 
@@ -20,7 +20,7 @@ export default React.createClass({
   getInitialState() {
     return {
       project: {
-        /*eslint-disable */
+
         title: "",
         category: "educational",
         description: "",
@@ -31,7 +31,7 @@ export default React.createClass({
         open_source: "true",
         closed_source_reason: "",
         github_username: ""
-        /*eslint-enable */
+
       }
     };
   },
@@ -59,7 +59,7 @@ export default React.createClass({
   },
 
   renderWantsOpenSource() {
-    let wantsOpenSource = "";
+    let wantsOpenSource;
 
     if (this.state.project.category !== "multimedia") {
       if (this.state.project.open_source === "true") {
@@ -78,7 +78,7 @@ export default React.createClass({
             <p className="alert alert-warning">
               Sursele proiectului trebuie să fie încărcate pe acel repository.
               În cazul în care întâmpini probleme poți găsi mai multe detalii&nbsp;
-              <a target="_blank" href="http://blog.infoeducatie.ro/tutorial/2015/04/14/github-101.html">aici</a>.
+              <a target="_blank" href="http://blog.infoeducatie.ro/tutorial/2015/04/14/github-101.html" rel="noreferrer">aici</a>.
             </p>
           </div>
         ]);
@@ -106,7 +106,7 @@ export default React.createClass({
             <p className="alert alert-warning">
               Dacă nu dorești să încarci sursele pe GitHub poți să trimiți un link cu ele pe adresa contact@infoeducatie.ro
               În cazul în care întâmpini probleme cu încărcatul surselor pe GitHub poți găsi mai multe detalii&nbsp;
-              <a target="_blank" href="http://blog.infoeducatie.ro/tutorial/2015/04/14/github-101.html">aici</a>.
+              <a target="_blank" href="http://blog.infoeducatie.ro/tutorial/2015/04/14/github-101.html" rel="noreferrer">aici</a>.
             </p>
           </div>
         ]);

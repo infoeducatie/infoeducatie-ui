@@ -1,12 +1,12 @@
 "use strict";
-import React from "react";
+import createLegacyComponent from "@lib/create-legacy-component";
 
 import ctx from "classnames";
 
 import "../../main.less";
 
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "FilterIcon",
 
   toggleCategory() {

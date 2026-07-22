@@ -1,14 +1,15 @@
 "use strict";
 
-import React from "react";
+import createLegacyComponent from "@lib/create-legacy-component";
+import PropTypes from "prop-types";
 
-import { Button, FormControl, ControlLabel, FormGroup, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Button, FormControl, ControlLabel, FormGroup, ListGroup, ListGroupItem } from "@ui/bootstrap";
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "SignInForm",
 
   propTypes: {
-    onSignIn: React.PropTypes.func.isRequired
+    onSignIn: PropTypes.func.isRequired
   },
 
   getDefaultProps() {
@@ -37,12 +38,18 @@ export default React.createClass({
         <FormGroup>
           <ControlLabel>Adresa de email</ControlLabel>
           <FormControl type="email"
+                 name="email"
+                 autoComplete="email"
+                 required
                  onChange={this.onEmailChange} />
           <FormControl.Feedback />
         </FormGroup>
         <FormGroup>
           <ControlLabel>Parola</ControlLabel>
           <FormControl type="password"
+                 name="password"
+                 autoComplete="current-password"
+                 required
                  onChange={this.onPasswordChange} />
                <FormControl.Feedback />
         </FormGroup>

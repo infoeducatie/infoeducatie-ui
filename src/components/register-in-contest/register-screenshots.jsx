@@ -1,9 +1,9 @@
 "use strict";
 
-import React from "react";
-import { FormControl, Glyphicon } from "react-bootstrap";
+import createLegacyComponent from "@lib/create-legacy-component";
+import { FormControl, Glyphicon } from "@ui/bootstrap";
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "RegisterScreenshots",
 
   getInitialState() {
@@ -71,7 +71,7 @@ export default React.createClass({
       }
       <span className="btn btn-success fileinput-button">
         <span><Glyphicon glyph="upload" /> Alege o imagine</span>
-        <FormControl ref="fileupload"
+        <FormControl
                type="file"
                name="screenshots[]"
                accept="image/jpeg,image/png,image/webp"

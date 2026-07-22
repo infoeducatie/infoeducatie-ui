@@ -1,15 +1,15 @@
 "use strict";
 
-import React from "react";
+import createLegacyComponent from "@lib/create-legacy-component";
 
 import ctx from "classnames";
-import { Grid, Row, Col } from "react-bootstrap";
+import { Row, Col } from "@ui/bootstrap";
 
 import "../../main.less";
 import CloudCount from "../cloud-count.jsx"
 
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "ProjectCard",
 
   openDiscourse(discourse_url) {

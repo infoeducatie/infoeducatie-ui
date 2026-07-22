@@ -1,14 +1,14 @@
 "use strict";
 
-import React from "react";
+import createLegacyComponent from "@lib/create-legacy-component";
 
-import { Row, Col, Grid } from "react-bootstrap";
+import { Row, Col, Grid } from "@ui/bootstrap";
 import Header from "./header";
 
 import "../main.less";
 import DefaultDocument from "../../assets/img/icons/doc.png";
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "GalaciucPage",
 
   render() {
@@ -132,9 +132,9 @@ export default React.createClass({
               <Col xs={12}>
                 <p>
                     Regulamentul concursului poate fi accesat&nbsp;
-                    <a href="http://data.infoeducatie.ro/manual/regulament.pdf" target="_blank">aici</a>
+                    <a href="http://data.infoeducatie.ro/manual/regulament.pdf" target="_blank" rel="noreferrer">aici</a>
                     , iar criteriile de aplicare a regulamentului sunt disponibile&nbsp;
-                    <a href="http://data.infoeducatie.ro/manual/proceduri-de-aplicare-regulament.pdf" target="_blank">aici</a>.
+                    <a href="http://data.infoeducatie.ro/manual/proceduri-de-aplicare-regulament.pdf" target="_blank" rel="noreferrer">aici</a>.
                 </p>
               </Col>
             </Row>
@@ -155,7 +155,7 @@ export default React.createClass({
                 {criteria.map(function(doc) {
                   return <div key={doc.link} className="jury-criteria">
                     <div className="jury-criteria-txt">{doc.name}</div>
-                    <div className="jury-criteria-img"><a href={doc.link} target="_blank"><img src={DefaultDocument} alt={doc.link} /></a></div>
+                    <div className="jury-criteria-img"><a href={doc.link} target="_blank" rel="noreferrer"><img src={DefaultDocument} alt={doc.link} /></a></div>
                   </div>;
                 })}
               </Row>

@@ -3,16 +3,19 @@
 
 .schedule {
   .blue-section-wrapper {
-    .blue-section-wrapper (@img_path: "../../assets/img/register.png");
+    .blue-section-wrapper (@img_path: "/assets/img/register.png");
   }
   .blue-section {
     .blue-section();
   }
 
   .white-section {
-    iframe {
-      width: 85%;
-      height: 725px;
+    .schedule-document {
+      display: block;
+      width: 100%;
+      min-height: 725px;
+      height: 80vh;
+      border: 0;
     }
   }
 

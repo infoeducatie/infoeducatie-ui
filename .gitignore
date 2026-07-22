@@ -1,5 +1,5 @@
 # Build
-build/*
+build/
 
 # Logs
 logs
@@ -13,6 +13,11 @@ build/Release
 
 # Dependency directory
 node_modules
+
+# Vite and local test artifacts
+.vite/
+.playwright-cli/
+output/
 
 # Users Environment Variables
 .lock-wscript

@@ -1,11 +1,9 @@
-﻿"use strict";
+"use strict";
 
 
-import $ from "jquery";
-import _ from "lodash";
-import React from "react";
-import { Link } from 'react-router';
-import {Grid, Row, Col, Glyphicon} from "react-bootstrap";
+import createLegacyComponent from "@lib/create-legacy-component";
+import { Link } from 'react-router-dom';
+import {Grid, Row, Col} from "@ui/bootstrap";
 
 import Header from "./header";
 import NewsContainer from "./news/news-container";
@@ -21,15 +19,9 @@ import Orange from "../../assets/img/sponsors/orange.png";
 import EasyHost from "../../assets/img/sponsors/easyhost.png";
 import Cisco from "../../assets/img/sponsors/cisco.png";
 import Intuitext from "../../assets/img/sponsors/intuitext.gif";
-import Tazz from "../../assets/img/sponsors/tazz.png";
-import Vef from "../../assets/img/sponsors/vef.png";
-import Moripan from "../../assets/img/sponsors/moripan.png";
-import Romans from "../../assets/img/sponsors/romans.png";
-import Girboiu from "../../assets/img/sponsors/girboiu.png";
 //import Apdetic from "../../assets/img/sponsors/apdetic.png";
 import Upir from "../../assets/img/sponsors/upir.png";
 import MEN from "../../assets/img/sponsors/edu.jpg";
-import domeniilePanciu from "../../assets/img/sponsors/domeniilePanciu.jpg";
 //import CloudBase from "../../assets/img/sponsors/cloudbase.png";
 //import iMedicare from "../../assets/img/sponsors/imedicare.png";
 //import eSkills from "../../assets/img/sponsors/eskills.png";
@@ -38,18 +30,16 @@ import leonte from "../../assets/img/sponsors/leonte.png";
 //import altex from "../../assets/img/sponsors/altex.gif";
 //import GInfo from "../../assets/img/sponsors/ginfo.png";
 //import GreenGroup from "../../assets/img/sponsors/greengroup.png";
-import MTS from "../../assets/img/sponsors/mts.jpg";
 import VivaCredit from "../../assets/img/sponsors/vivacredit.png"
 //import OracleAcademy from "../../assets/img/sponsors/academy_wht.gif"
 import Bitdefender from "../../assets/img/sponsors/bitdefender.jpg"
-import Microsoft from "../../assets/img/sponsors/microsoft.jpg"
 //import Xpress from "../../assets/img/sponsors/xpress.jpg"
 //import Certsign from "../../assets/img/sponsors/certsign.jpg"
 import CJVrancea from "../../assets/img/sponsors/logoCJVrancea.jpg"
 import InfoBits from "../../assets/img/sponsors/link_infobits_academy.jpg"
 import sindicatVrancea  from "../../assets/img/sponsors/SindicatVrancea.jpg"
 import cyberedu  from "../../assets/img/sponsors/cyberedu.png"
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "Home",
 
   renderCampDate() {
@@ -184,13 +174,13 @@ export default React.createClass({
             <Row>
                 <Col xs={12}>
                     <p className="logos">
-                        <a href="http://www.edu.ro/" target="_blank">
+                        <a href="http://www.edu.ro/" target="_blank" rel="noreferrer">
                           <img src={MEN} />
                         </a>
-                        <a href="http://upir.ro/ro/" target="_blank">
+                        <a href="http://upir.ro/ro/" target="_blank" rel="noreferrer">
                           <img src={Upir} />
                         </a>
-                        <a href="https://cjvrancea.ro/" target="_blank">
+                        <a href="https://cjvrancea.ro/" target="_blank" rel="noreferrer">
                           <img src={CJVrancea} />
                         </a>
 						 &nbsp;
@@ -207,19 +197,19 @@ export default React.createClass({
                 <Row>
                     <Col xs={12}>
                         <p className="logos">
-                          <a href="https://vivacredit.ro/" target="_blank">
+                          <a href="https://vivacredit.ro/" target="_blank" rel="noreferrer">
                             <img src={VivaCredit} />
                           </a>
-                          <a href="https://bitdefender.com" target="_blank">
+                          <a href="https://bitdefender.com" target="_blank" rel="noreferrer">
                             <img src={Bitdefender} />
                           </a>
-                          <a href="https://orange.ro" target="_blank">
+                          <a href="https://orange.ro" target="_blank" rel="noreferrer">
                             <img src={Orange} />
                           </a>
-                          <a href="https://cisco.com/" target="_blank">
+                          <a href="https://cisco.com/" target="_blank" rel="noreferrer">
                             <img src={Cisco} />
                           </a>
-                          <a href="http://www.intuitext.ro/" target="_blank">
+                          <a href="http://www.intuitext.ro/" target="_blank" rel="noreferrer">
                             <img src={Intuitext} />
                           </a>
                            
@@ -242,26 +232,26 @@ export default React.createClass({
                     <Col xs={12}>
                         <p className="logos">
                           
-                            <a href="https://leonte.ro/" target="_blank">
+                            <a href="https://leonte.ro/" target="_blank" rel="noreferrer">
                               <img src={leonte} />
                             </a>
-							<a href="http://ro.easyhost.com/incubator" target="_blank">
+							<a href="http://ro.easyhost.com/incubator" target="_blank" rel="noreferrer">
                               <img src={EasyHost} />
                             </a>
 
-                            <a href="https://ebooks.infobits.ro" target="_blank">
+                            <a href="https://ebooks.infobits.ro" target="_blank" rel="noreferrer">
                               <img src={InfoBits} />
                             </a>
-                            <a href="https://slivrancea.blogspot.com/" target="_blank">
+                            <a href="https://slivrancea.blogspot.com/" target="_blank" rel="noreferrer">
                               <img src={sindicatVrancea} />
                             </a>
-                            <a href="https://www.cyber-edu.co/" target="_blank">
+                            <a href="https://www.cyber-edu.co/" target="_blank" rel="noreferrer">
                               <img src={cyberedu} />
                             </a>
-                            <a href="https://www.micromet.ro/" target="_blank">
+                            <a href="https://www.micromet.ro/" target="_blank" rel="noreferrer">
                               <img src={Micromet} />
                             </a>
-                            <a href="https://www.electricsrl.ro/" target="_blank">
+                            <a href="https://www.electricsrl.ro/" target="_blank" rel="noreferrer">
                               <img src={Electric} />
                             </a>
 

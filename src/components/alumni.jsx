@@ -1,10 +1,11 @@
 "use strict";
 
-import $ from "jquery";
-import React from "react";
+import request from "@lib/request";
+
+import createLegacyComponent from "@lib/create-legacy-component";
 
 import ctx from "classnames";
-import {Grid, Row, Col} from "react-bootstrap";
+import {Grid, Row, Col} from "@ui/bootstrap";
 
 import gravatar from "../lib/gravatar";
 import Header from "./header";
@@ -12,7 +13,7 @@ import Header from "./header";
 import "../main.less";
 
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "Alumni",
 
   getInitialState() {
@@ -22,7 +23,7 @@ export default React.createClass({
   },
 
   componentDidMount() {
-    $.ajax({
+    request({
       method: "GET",
       url: window.config.API_URL + "alumni.json",
       success: this.onSuccess

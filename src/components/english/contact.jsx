@@ -1,14 +1,14 @@
 "use strict";
 
-import React from "react";
+import createLegacyComponent from "@lib/create-legacy-component";
 
-import { Row, Col, Grid } from "react-bootstrap";
+import { Row, Col, Grid } from "@ui/bootstrap";
 import Header from "../header";
 
 import "../../main.less";
 
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "ContactPage",
 
   render() {

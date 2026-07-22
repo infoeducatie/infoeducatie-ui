@@ -1,10 +1,11 @@
 "use strict";
 
-import $ from "jquery";
-import React from "react";
-import { Row, Col, FormControl, FormGroup, Button, ListGroup, ListGroupItem } from "react-bootstrap";
+import request from "@lib/request";
 
-export default React.createClass({
+import createLegacyComponent from "@lib/create-legacy-component";
+import { Row, Col, FormControl, FormGroup, Button, ListGroup, ListGroupItem } from "@ui/bootstrap";
+
+export default createLegacyComponent({
   displayName: "NewsletterForm",
 
   getInitialState() {
@@ -32,7 +33,7 @@ export default React.createClass({
       "EMAIL": this.state.newsletterEmail
     };
 
-    $.ajax({
+    request({
       url: window.config.MAILCHIMP_URL,
       method: "POST",
       dataType: "jsonp",
@@ -64,8 +65,9 @@ export default React.createClass({
                 <FormControl
                      hasFeedback
                      required
-                     ref="newsletterInput"
-                     type="text"
+                     type="email"
+                     name="newsletter-email"
+                     autoComplete="email"
                      className="newsletter"
                      bsSize="large"
                      placeholder="Abonează-te la newsletter"

@@ -1,13 +1,12 @@
 "use strict";
 
-import React from "react";
+import createLegacyComponent from "@lib/create-legacy-component";
 
-import { Row, Col, Grid } from "react-bootstrap";
+import { Row, Col, Grid } from "@ui/bootstrap";
 import Header from "./header";
 
-import "./schedule.less";
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "SchedulePage",
 
   render() {
@@ -36,8 +35,14 @@ export default React.createClass({
       <Grid className="white-section">
         <Row className="small-spacing" />
         <Row>
-          <Col md={9} mdOffset={3}>
-             <iframe src="https://docs.google.com/document/d/e/2PACX-1vRRrkfFWKoIkJ_XrGeuXJEExZGbfQrryhLehwAQ-mRfu_MkNds0X3nF0JuXBVx69_a-zcqgO3SGb0XD/pub?embedded=true"></iframe>
+          <Col xs={12} md={10} mdOffset={1}>
+             <iframe
+               className="schedule-document"
+               title="Program InfoEducatie"
+               loading="lazy"
+               referrerPolicy="strict-origin-when-cross-origin"
+               src="https://docs.google.com/document/d/e/2PACX-1vRRrkfFWKoIkJ_XrGeuXJEExZGbfQrryhLehwAQ-mRfu_MkNds0X3nF0JuXBVx69_a-zcqgO3SGb0XD/pub?embedded=true"
+             />
           </Col>
         </Row>
       </Grid>

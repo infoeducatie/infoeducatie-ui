@@ -1,10 +1,8 @@
 "use strict";
 
-import $ from "jquery";
-import _ from "lodash";
 import ajax from "../../lib/ajax"
-import React from "react";
-import { Grid, Col, Row, Glyphicon, Table } from "react-bootstrap";
+import createLegacyComponent from "@lib/create-legacy-component";
+import { Grid, Col, Row, Glyphicon, Table } from "@ui/bootstrap";
 import ctx from "classnames";
 
 import "../../main.less";
@@ -16,7 +14,7 @@ import ProjectCard from "./project_card";
 import FilterIcon from "./filter_icon";
 
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "Contestants",
 
   componentDidMount() {
@@ -67,7 +65,7 @@ export default React.createClass({
 
   renderErrors() {
     if (this.state.hasError) {
-      return <p>"Datele nu au putut fi luate de pe server."</p>;
+      return <p>Datele nu au putut fi luate de pe server.</p>;
     }
   },
 
@@ -220,48 +218,48 @@ export default React.createClass({
         </Row>
         <Row className="xsmall-spacing" />
         <Row className="filter-buttons">
-          <Col smOffset={2} sm={1} xs={2}>
+          <Col smOffset={2} sm={1} xs={4}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="all" />
             <p>Toți</p>
           </Col>
-          <Col sm={1} xs={2}>
+          <Col sm={1} xs={4}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="web" />
             <p>Web</p>
           </Col>
-          <Col sm={1} xs={2}>
+          <Col sm={1} xs={4}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="educational" />
             <p>Educațional</p>
           </Col>
-          <Col sm={1} xs={2}>
+          <Col sm={1} xs={4}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="roboti" />
             <p>Roboți</p>
           </Col>
-          <Col sm={1} xs={2}>
+          <Col sm={1} xs={4}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="utilitar" />
             <p>Utilitar</p>
           </Col>
-          <Col sm={1} xs={2}>
+          <Col sm={1} xs={4}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="multimedia" />
             <p>Multimedia</p>
           </Col>
-          <Col smOffset={2} sm={1}>
+          <Col smOffset={2} sm={1} className="hidden-xs">
             <Glyphicon glyph="th-large"
                        className={gridClassName}
                        onClick={this.showGrid} />
           </Col>
-          <Col sm={1}>
+          <Col sm={1} className="hidden-xs">
             <Glyphicon glyph="align-justify"
                        className={tableClassName}
                        onClick={this.showTable} />

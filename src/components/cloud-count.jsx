@@ -1,12 +1,13 @@
 "use strict";
 
 import React from "react";
+import PropTypes from "prop-types";
 
 import "../main.less";
 
 export default class CloudCount extends React.Component {
   static displayName = "CloudCount"
-  static propTypes = { count: React.PropTypes.number }
+  static propTypes = { count: PropTypes.number }
 
 
   render() {

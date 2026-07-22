@@ -1,9 +1,9 @@
 "use strict";
 
-import { FormControl, Button } from "react-bootstrap";
-import React from "react";
+import { FormControl, Button } from "@ui/bootstrap";
+import createLegacyComponent from "@lib/create-legacy-component";
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "KitchenPage",
 
   render() {

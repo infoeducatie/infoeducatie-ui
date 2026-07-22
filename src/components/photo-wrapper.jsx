@@ -1,10 +1,10 @@
 "use strict";
 
-import React from "react";
+import createLegacyComponent from "@lib/create-legacy-component";
 import ctx from "classnames";
 
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "PhotoWrapper",
 
   render() {
@@ -14,7 +14,7 @@ export default React.createClass({
         <div className="photo-cover">
           <a href={this.props.link} target="_blank"
              className={this.props.year}
-             onMouseOver={this.props.onHover}>
+             onMouseOver={this.props.onHover} rel="noreferrer">
             <div className={className}></div>
             <div className="more-details">{this.props.text || "Fotografii"}</div>
           </a>

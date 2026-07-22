@@ -1,8 +1,10 @@
 "use strict";
 
-import React from "react"; import $ from "jquery";
+import request from "@lib/request";
+
+import createLegacyComponent from "@lib/create-legacy-component";
 import _ from "lodash";
-import { Grid, Col, Row, FormControl, FormGroup, ControlLabel, Button, Checkbox } from "react-bootstrap";
+import { Grid, Col, Row, FormControl, FormGroup, ControlLabel, Button, Checkbox } from "@ui/bootstrap";
 
 import Header from "./header";
 import SuccessIcon from "../../assets/img/ellipse-tick.png"
@@ -11,7 +13,7 @@ import SignIn from "./sign-in"
 import "../main.less";
 
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "Register",
 
   getInitialState() {
@@ -71,6 +73,8 @@ export default React.createClass({
             <ControlLabel>Prenume</ControlLabel>
             <FormControl
               type="text"
+              name="given-name"
+              autoComplete="given-name"
               placeholder="Tuxi"
               onChange={this.onFirstNameChange}
               required />
@@ -80,6 +84,8 @@ export default React.createClass({
             <ControlLabel>Nume</ControlLabel>
             <FormControl
               type="text"
+              name="family-name"
+              autoComplete="family-name"
               placeholder="Pinguinescu"
               onChange={this.onLastNameChange}
               required />
@@ -89,6 +95,8 @@ export default React.createClass({
             <ControlLabel>Adresa de email</ControlLabel>
             <FormControl
               type="email"
+              name="email"
+              autoComplete="email"
               placeholder="tuxi@pinguinescu.ro"
               onChange={this.onEmailChange}
               required />
@@ -98,6 +106,8 @@ export default React.createClass({
             <ControlLabel>Parola</ControlLabel>
             <FormControl
               type="password"
+              name="password"
+              autoComplete="new-password"
               placeholder="***************"
               onChange={this.onPasswordChange}
               pattern=".{8,}"
@@ -109,6 +119,8 @@ export default React.createClass({
             <ControlLabel>Confirmare parolă</ControlLabel>
             <FormControl
               type="password"
+              name="password-confirmation"
+              autoComplete="new-password"
               placeholder="***************"
               onChange={this.onPasswordConfirmationChange}
               required />
@@ -224,7 +236,7 @@ export default React.createClass({
     data["user[password_confirmation]"] = this.state.passwordConfirmation;
     data["user[newsletter]"] = this.state.newsletter;
 
-    $.ajax({
+    request({
       method: "POST",
       url: window.config.API_URL + "users.json",
       data: data,

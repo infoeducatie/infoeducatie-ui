@@ -1,26 +1,17 @@
-FROM node:16-bullseye
+FROM node:24-alpine AS build
+WORKDIR /app
 
-RUN apt-get update -y && \
-    apt-get install --no-install-recommends -y nginx && \
-    apt-get clean
+COPY package.json package-lock.json ./
+RUN npm ci
+
+COPY . .
+ARG APP_ENV=production
+RUN npm run build -- --mode "$APP_ENV"
+
+FROM nginx:stable-alpine
+
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/build /usr/share/nginx/html
 
 EXPOSE 80
-
-ADD nginx.conf /etc/nginx/sites-enabled/default
-
-RUN mkdir -p /data
-WORKDIR /data
-
-ADD package.json /data
-RUN npm install
-
-ARG APP_ENV=production
-ARG NODE_ENV=production
-
-ADD . /data
-RUN npm run build
-
-RUN mv /data/build/ /www && rm -rf /data
-WORKDIR /www
-
 CMD ["nginx", "-g", "daemon off;"]

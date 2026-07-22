@@ -1,20 +1,18 @@
 "use strict";
 
-import $ from "jquery";
 import ctx from "classnames";
-import {Grid, Row, Col} from "react-bootstrap";
-import React from "react";
+import {Grid, Row, Col} from "@ui/bootstrap";
+import createLegacyComponent from "@lib/create-legacy-component";
 
 import "../main.less";
 import ajax from "../lib/ajax"
 import gravatar from "../lib/gravatar"
 import CloudCount from "./cloud-count"
-import DefaultAvatar from "../../assets/img/jury/default.png";
 import EditionSelector from "./edition-selector";
 import Header from "./header";
 
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "Talks",
 
   getInitialState() {

@@ -1,14 +1,14 @@
 "use strict";
 
-import React from "react";
+import createLegacyComponent from "@lib/create-legacy-component";
 
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "GalaciucPage",
 
   render() {
     return <div>
-      <h1 ref="heading">Galaciuc</h1>
+      <h1>Galaciuc</h1>
     </div>;
   }
 });

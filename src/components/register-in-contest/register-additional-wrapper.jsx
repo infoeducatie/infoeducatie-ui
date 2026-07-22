@@ -1,14 +1,12 @@
 "use strict";
 
-import React from "react";
-import _ from "lodash";
-import { FormControl } from "react-bootstrap";
+import createLegacyComponent from "@lib/create-legacy-component";
 
 import RegisterAdditionalSearch from "./register-additional-search";
 import RegisterAdditionalConfirm from "./register-additional-confirm";
 
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "RegisterAdditionalWrapper",
 
   getInitialState() {

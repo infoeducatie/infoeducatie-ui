@@ -1,16 +1,16 @@
 "use strict";
 
-import $ from "jquery";
+import request from "@lib/request";
+
 import _ from "lodash";
-import React from "react";
-import { Link } from 'react-router';
-import {Grid, Row, Col, Glyphicon} from "react-bootstrap";
+import createLegacyComponent from "@lib/create-legacy-component";
+import {Grid, Row, Col, Glyphicon} from "@ui/bootstrap";
 
 import Article from "./article";
 import "../../main.less";
 
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "NewsContainer",
 
   getInitialState() {
@@ -25,7 +25,7 @@ export default React.createClass({
   },
 
   componentDidMount() {
-    $.ajax({
+    request({
       method: "GET",
       url: window.config.API_URL + "news.json",
       success: this.onSuccess
@@ -80,7 +80,8 @@ export default React.createClass({
     let news = _.clone(this.state.news).splice(firstArticle, this.state.newsPerPage);
 
     return news.map(function(article) {
-      return <Article body={article.body}
+      return <Article key={article.id}
+                      body={article.body}
                       title={article.title}
                       short={article.short}
                       created_at={article.created_at} />;

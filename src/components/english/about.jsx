@@ -1,15 +1,13 @@
 "use strict";
 
-import React from "react";
+import createLegacyComponent from "@lib/create-legacy-component";
 
-import { Row, Col, Grid } from "react-bootstrap";
+import { Row, Col, Grid } from "@ui/bootstrap";
 import Header from "../header";
 
-import "../about.less"
-import DefaultDocument from "../../../assets/img/icons/doc.png";
 
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "GalaciucPage",
 
   render() {

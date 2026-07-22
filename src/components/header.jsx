@@ -1,15 +1,15 @@
 "use strict";
 
-import React from "react";
-import { Navbar, Nav, NavItem, Row, Col } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
+import createLegacyComponent from "@lib/create-legacy-component";
+import { Navbar, Nav, NavItem, Row } from "@ui/bootstrap";
+import { LinkContainer } from "@ui/router-bootstrap";
 import "../main.less";
 
 import ROFlag from "../../assets/img/icons/RO.png";
 import ENFlag from "../../assets/img/icons/US.png";
 
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "Header",
 
   render() {
@@ -41,7 +41,7 @@ export default React.createClass({
   },
 
   renderEnglishHeader() {
-    return <Nav className="navbar-nav" eventKey={0} right ref="nav">
+    return <Nav className="navbar-nav" eventKey={0} right>
       <LinkContainer to="/home"><NavItem>Home</NavItem></LinkContainer>
       <LinkContainer to="/photos"><NavItem>Photos</NavItem></LinkContainer>
       <LinkContainer to="/about"><NavItem>About</NavItem></LinkContainer>
@@ -62,7 +62,7 @@ export default React.createClass({
 
   renderRegisterLinks() {
     if (this.props.language === "ro") {
-      return <Nav className="navbar-nav" eventKey={0} right ref="nav">
+      return <Nav className="navbar-nav" eventKey={0} right>
         <LinkContainer to="/acasa"><NavItem>Acas&#259;</NavItem></LinkContainer>
         <LinkContainer to="/alumni"><NavItem>Alumni</NavItem></LinkContainer>
         <LinkContainer to="/seminarii"><NavItem>Seminarii</NavItem></LinkContainer>
@@ -80,7 +80,7 @@ export default React.createClass({
 
   renderUnregisterLinks() {
     if (this.props.language === "ro") {
-      return <Nav className="navbar-nav" eventKey={0} right ref="nav">
+      return <Nav className="navbar-nav" eventKey={0} right>
         <LinkContainer to="/acasa"><NavItem>Acas&#259;</NavItem></LinkContainer>
         <LinkContainer to="/alumni"><NavItem>Alumni</NavItem></LinkContainer>
         <LinkContainer to="/seminarii"><NavItem>Seminarii</NavItem></LinkContainer>

@@ -1,19 +1,15 @@
 "use strict";
 
-import React from "react";
-import { Navbar, Nav, NavItem, Row, Col, Thumbnail, Grid } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
-import { Route, Link, RouteHandler } from 'react-router';
-
-import "../footer.less";
+import createLegacyComponent from "@lib/create-legacy-component";
+import { Navbar, Nav, NavItem, Row, Col, Grid } from "@ui/bootstrap";
+import { LinkContainer } from "@ui/router-bootstrap";
 import Facebook from "../../../assets/img/icons/fb.png";
 import Twitter from "../../../assets/img/icons/twitter.png";
 import Google from "../../../assets/img/icons/gplus.png";
 import Github from "../../../assets/img/icons/github.png";
 
-import NewsletterForm from "../newsletter-form";
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "FooterEnglish",
 
   render() {
@@ -23,7 +19,7 @@ export default React.createClass({
       <Row>
         <Col xs={12}>
           <Navbar>
-            <Nav className="navbar-nav" ref="nav">
+            <Nav className="navbar-nav">
               <NavItem target="_blank" href="http://community.infoeducatie.ro">Forum</NavItem>
               <NavItem target="_blank" href="http://blog.infoeducatie.ro">Blog</NavItem>
               <LinkContainer to="/contact"><NavItem>Contact</NavItem></LinkContainer>
@@ -37,10 +33,10 @@ export default React.createClass({
           <Row>
             <Col xs={12}>
               <ul className="social-logos list-inline">
-                <li><a href="https://www.facebook.com/infoeducatie" target="_blank"><img alt="Facebook" src={Facebook} /></a></li>
-                <li><a href="https://twitter.com/infoeducatie" target="_blank"><img alt="Twitter" src={Twitter} /></a></li>
-                <li><a href="https://plus.google.com/+InfoeducatieRomania" target="_blank"><img alt="Google+" src={Google} /></a></li>
-                <li><a href="https://github.com/infoeducatie" target="_blank"><img alt="Github" src={Github} /></a></li>
+                <li><a href="https://www.facebook.com/infoeducatie" target="_blank" rel="noreferrer"><img alt="Facebook" src={Facebook} /></a></li>
+                <li><a href="https://twitter.com/infoeducatie" target="_blank" rel="noreferrer"><img alt="Twitter" src={Twitter} /></a></li>
+                <li><a href="https://plus.google.com/+InfoeducatieRomania" target="_blank" rel="noreferrer"><img alt="Google+" src={Google} /></a></li>
+                <li><a href="https://github.com/infoeducatie" target="_blank" rel="noreferrer"><img alt="Github" src={Github} /></a></li>
               </ul>
             </Col>
           </Row>

@@ -1,12 +1,10 @@
 "use strict";
 
-import React from "react";
-import { Row, Modal } from "react-bootstrap";
-import $ from "jquery";
-import _ from "lodash";
+import createLegacyComponent from "@lib/create-legacy-component";
+import { Row, Modal } from "@ui/bootstrap";
 
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "News",
 
   getInitialState() {

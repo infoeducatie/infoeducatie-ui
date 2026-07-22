@@ -1,18 +1,20 @@
 "use strict";
 
-import $ from "jquery";
+import { toQueryString } from "@lib/request";
+
 import _ from "lodash";
+import PropTypes from "prop-types";
 import ajax from "../lib/ajax"
-import {FormControl} from "react-bootstrap";
+import {FormControl} from "@ui/bootstrap";
 import React from "react";
 
 
 export default class EditionSelector extends React.Component {
   static displayName = "EditionSelector"
   static propTypes = {
-    onCallback: React.PropTypes.func.isRequired,
-    filters: React.PropTypes.array,
-    filter: React.PropTypes.string
+    onCallback: PropTypes.func.isRequired,
+    filters: PropTypes.array,
+    filter: PropTypes.string
   }
 
   state = {
@@ -27,7 +29,7 @@ export default class EditionSelector extends React.Component {
     });
 
     ajax({
-      endpoint: "editions.json?" + $.param(params),
+      endpoint: "editions.json?" + toQueryString(params),
       success: this.updateEditions.bind(this)
     });
   }

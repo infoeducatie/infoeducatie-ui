@@ -1,19 +1,20 @@
 "use strict";
 
-import React from "react";
-import { browserHistory } from 'react-router';
 
-export default React.createClass({
-  displayName: "SignIn",
+import { navigate } from "@lib/navigation";
 
-  openModal() {
-    browserHistory.push({
+export default function SignIn() {
+  const openModal = (event) => {
+    event.preventDefault();
+    navigate({
       pathname: window.location.pathname,
-      query: { login: true }
+      query: { login: true },
     });
-  },
+  };
 
-  render() {
-    return <a onClick={this.openModal}>autentifica aici</a>;
-  }
-});
+  return (
+    <a href="?login=true" onClick={openModal}>
+      autentifica aici
+    </a>
+  );
+}

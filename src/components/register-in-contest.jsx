@@ -1,9 +1,10 @@
 "use strict";
 
-import $ from "jquery";
-import React from "react";
+import request from "@lib/request";
+
+import createLegacyComponent from "@lib/create-legacy-component";
 import ctx from "classnames";
-import { Grid, Col, Row, PanelGroup, Panel, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Grid, Col, Row, PanelGroup, Panel, ListGroup, ListGroupItem } from "@ui/bootstrap";
 
 import Header from "./header";
 import "../main.less";
@@ -14,7 +15,7 @@ import RegisterFinish from "./register-in-contest/register-finish"
 import RegisterTeacher from "./register-in-contest/register-teacher"
 import RegisterAdditionalWrapper from "./register-in-contest/register-additional-wrapper"
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "RegisterInContest",
 
   getDefaultProps() {
@@ -391,7 +392,7 @@ export default React.createClass({
       hasErrored: false
     });
 
-    $.ajax({
+    request({
       method: "POST",
       url: window.config.API_URL + "contestants/update_registration_step_number",
       headers: {

@@ -1,14 +1,13 @@
 "use strict";
 
-import $ from "jquery";
 import _ from "lodash";
-import React from "react";
-import { FormControl, ControlLabel, FormGroup, Button } from "react-bootstrap";
+import createLegacyComponent from "@lib/create-legacy-component";
+import { FormControl, ControlLabel, FormGroup, Button } from "@ui/bootstrap";
 
 import FormMixin from "../../mixins/form"
 
 
-export default React.createClass({
+export default createLegacyComponent({
   displayName: "RegisterTeacher",
   mixins: [FormMixin],
 
@@ -21,14 +20,14 @@ export default React.createClass({
   getInitialState() {
     return {
       teacher: {
-        /*eslint-disable */
+
         sex: "1",
         phone_number: "",
         school_name: "",
         school_county: "Arad",
         school_city: "",
         school_country: "România"
-        /*eslint-enable */
+
       }
     };
   },

@@ -1,14 +1,15 @@
 "use strict";
 
-import React from "react";
-import { Modal } from "react-bootstrap";
-import $ from "jquery";
-import { browserHistory } from 'react-router';
+import request from "@lib/request";
+
+import createLegacyComponent from "@lib/create-legacy-component";
+import { Modal } from "@ui/bootstrap";
+import { navigate, withLocation } from "@lib/navigation";
 
 import SignInForm from "./sign-in-form";
 
 
-export default React.createClass({
+const SignInModal = createLegacyComponent({
   displayName: "SignInModal",
 
   getInitialState() {
@@ -18,7 +19,7 @@ export default React.createClass({
   },
 
   closeModal() {
-    browserHistory.push({
+    navigate({
       pathname: window.location.pathname,
       query: { }
     });
@@ -29,7 +30,7 @@ export default React.createClass({
     data["user[email]"] = formData.email;
     data["user[password]"] = formData.password;
 
-    $.ajax({
+    request({
       url: window.config.API_URL + "sign_in",
       method: "POST",
       success: this.onSignInSuccess,
@@ -50,7 +51,7 @@ export default React.createClass({
   },
 
   showModal() {
-    return (location.search.indexOf("login=true") == 1)
+    return this.props.location.search.includes("login=true");
   },
 
   render() {
@@ -76,7 +77,13 @@ export default React.createClass({
       </p>
       <p>
        Dacă ai uitat parola&nbsp;
-       <a href="http://api.infoeducatie.ro/users/password/new" traget="_blank">click aici</a>
+       <a
+         href="https://api.infoeducatie.ro/users/password/new"
+         target="_blank"
+         rel="noreferrer"
+       >
+         click aici
+       </a>
       </p>
     </div>;
   },
@@ -84,6 +91,8 @@ export default React.createClass({
   onRegisterClick(event) {
     event.preventDefault();
     this.closeModal();
-    browserHistory.push("/inregistrare");
+    navigate("/inregistrare");
   }
 });
+
+export default withLocation(SignInModal);
