@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import {Grid, Row, Col} from "@ui/bootstrap";
 
 import countify from "../../lib/countify";
+import CommunityInvite from "../community-invite";
 import Header from "../header";
 
 import Google from "../../../assets/img/sponsors/google.png";
@@ -91,6 +92,8 @@ export default createLegacyComponent({
                 </Row>
             </Grid>
         </div>
+
+        <CommunityInvite language="en" />
 
         <div className="gray-section-wrapper">
             <Grid className="gray-section">

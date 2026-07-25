@@ -20,6 +20,7 @@ export default createLegacyComponent({
           <nav aria-label="Secondary navigation" className="navbar-default">
             <Nav className="navbar-nav">
               <NavItem target="_blank" href="https://community.infoeducatie.ro">Forum</NavItem>
+              <NavItem target="_blank" rel="noopener noreferrer" href="https://discord.gg/Ef6yav7wAs">Discord</NavItem>
               <NavItem target="_blank" href="https://blog.infoeducatie.ro">Blog</NavItem>
               <LinkContainer to="/contact"><NavItem>Contact</NavItem></LinkContainer>
             </Nav>

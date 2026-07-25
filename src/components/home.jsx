@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import {Grid, Row, Col} from "@ui/bootstrap";
 
 import Header from "./header";
+import CommunityInvite from "./community-invite";
 import NewsContainer from "./news/news-container";
 
 import "../main.less";
@@ -109,6 +110,8 @@ export default createLegacyComponent({
                 </Row>
             </Grid>
         </div>
+
+        <CommunityInvite language="ro" />
 
         <div className="green-section-wrapper">
           <NewsContainer />
