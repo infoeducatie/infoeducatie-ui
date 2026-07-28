@@ -51,6 +51,9 @@ const RegisterInContest = lazy(
   () => import("./components/register-in-contest"),
 );
 const Results = lazy(() => import("./components/results"));
+const RoboticsCompetition = lazy(
+  () => import("./components/robotics/robotics-competition"),
+);
 const Schedule = lazy(() => import("./components/schedule"));
 const Talks = lazy(() => import("./components/talks"));
 
@@ -197,6 +200,7 @@ const routeComponents = [
   { path: "despre", component: About },
   { path: "inregistrare", component: Register },
   { path: "rezultate", component: Results },
+  { path: "robotica/:slug", component: RoboticsCompetition },
   { path: "participanti", component: Contestants },
   { path: "home", component: HomeEnglish },
   { path: "about", component: AboutEnglish },

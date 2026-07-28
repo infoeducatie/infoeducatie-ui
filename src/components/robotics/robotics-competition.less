@@ -1,0 +1,1053 @@
+@import (reference) "../../main";
+
+.robotics-competition {
+  --robotics-surface: oklch(98.7% 0.006 205);
+  --robotics-surface-muted: oklch(96.2% 0.009 205);
+  --robotics-ink: oklch(27% 0.018 220);
+  --robotics-border: oklch(87% 0.012 210);
+  background: var(--robotics-surface);
+  color: var(--robotics-ink);
+  min-height: 100vh;
+
+  .blue-section-wrapper {
+    background-image:
+      linear-gradient(rgba(0, 109, 151, 0.76), rgba(0, 109, 151, 0.76)),
+      url("/assets/img/robotics-testing-1600.webp");
+    background-position: center 57%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .blue-section {
+    .blue-section(390px);
+    padding-bottom: 44px;
+  }
+
+  .robotics-hero-copy {
+    color: oklch(98.8% 0.006 205);
+    max-width: 930px;
+    text-align: left;
+
+    h1 {
+      margin: 10px 0 8px;
+      max-width: 780px;
+      text-wrap: balance;
+    }
+
+    p {
+      font-size: 20px;
+      margin: 0;
+      max-width: 700px;
+    }
+  }
+
+  .robotics-hero-kicker,
+  .robotics-eyebrow {
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .robotics-hero-kicker {
+    color: @yellow;
+  }
+
+  .robotics-hero-title-row {
+    align-items: end;
+    display: flex;
+    gap: 24px;
+
+    > .robotics-status {
+      flex: 0 0 auto;
+      margin-bottom: 18px;
+    }
+  }
+
+  .robotics-content {
+    padding-bottom: 80px;
+    position: relative;
+  }
+
+  .robotics-freshness {
+    align-items: center;
+    color: @grey;
+    display: flex;
+    font-size: 13px;
+    gap: 16px;
+    justify-content: flex-end;
+    min-height: 46px;
+
+    > span,
+    button {
+      align-items: center;
+      display: inline-flex;
+      gap: 7px;
+    }
+
+    button {
+      background: transparent;
+      border: 0;
+      color: @link-blue;
+      font-weight: bold;
+      min-height: 44px;
+      padding: 8px 0;
+
+      &:hover {
+        color: @black;
+        text-decoration: underline;
+      }
+
+      &:disabled {
+        color: @grey;
+        cursor: wait;
+      }
+    }
+  }
+
+  .robotics-freshness-message {
+    margin-right: auto;
+  }
+
+  .robotics-freshness-stale {
+    color: @red;
+  }
+
+  .robotics-live-dot,
+  .robotics-status-dot {
+    background: currentColor;
+    border-radius: 50%;
+    display: inline-block;
+    flex: 0 0 auto;
+  }
+
+  .robotics-live-dot {
+    color: @green;
+    height: 9px;
+    width: 9px;
+  }
+
+  .robotics-clock-strip {
+    background: var(--robotics-surface);
+    border: 1px solid var(--robotics-border);
+    box-shadow: 0 12px 32px rgba(28, 52, 61, 0.1);
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr;
+  }
+
+  .robotics-clock-period,
+  .robotics-countdown {
+    min-width: 0;
+    padding: 22px 26px;
+  }
+
+  .robotics-clock-period {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    strong {
+      font-size: 17px;
+      margin: 4px 0 2px;
+    }
+
+    > span:last-child {
+      color: @grey;
+      font-size: 14px;
+    }
+  }
+
+  .robotics-clock-label,
+  .robotics-countdown-label {
+    color: @grey;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .robotics-countdown {
+    border-left: 1px solid var(--robotics-border);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    time {
+      color: @dark-green;
+      font-size: 34px;
+      font-variant-numeric: tabular-nums;
+      font-weight: bold;
+      letter-spacing: 0.025em;
+      line-height: 1.15;
+      margin-top: 4px;
+      white-space: nowrap;
+    }
+  }
+
+  .robotics-arena {
+    align-items: stretch;
+    background: var(--robotics-surface-muted);
+    border: 1px solid var(--robotics-border);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(230px, 0.38fr);
+    margin-top: 20px;
+  }
+
+  .robotics-arena-active {
+    background: oklch(96.5% 0.025 345);
+    border-color: oklch(79% 0.12 345);
+  }
+
+  .robotics-arena-offered {
+    background: oklch(96.5% 0.035 82);
+    border-color: oklch(79% 0.11 82);
+  }
+
+  .robotics-arena-available {
+    background: oklch(96.5% 0.035 142);
+    border-color: oklch(78% 0.1 142);
+  }
+
+  .robotics-arena-state {
+    align-items: center;
+    display: flex;
+    gap: 20px;
+    min-width: 0;
+    padding: 28px;
+
+    h2 {
+      color: @dark-green;
+      font-size: 28px;
+      font-weight: bold;
+      margin: 10px 0 5px;
+      text-transform: none;
+    }
+
+    p {
+      color: @grey;
+      margin: 0;
+      max-width: 65ch;
+    }
+  }
+
+  .robotics-arena-icon {
+    align-items: center;
+    background: @dark-green;
+    border-radius: 50%;
+    color: oklch(98.8% 0.006 205);
+    display: inline-flex;
+    flex: 0 0 auto;
+    height: 58px;
+    justify-content: center;
+    width: 58px;
+  }
+
+  .robotics-arena-rule {
+    align-items: center;
+    border-left: 1px solid var(--robotics-border);
+    color: @grey;
+    display: flex;
+    gap: 12px;
+    line-height: 1.5;
+    padding: 24px;
+
+    svg {
+      color: @blue;
+      flex: 0 0 auto;
+    }
+  }
+
+  .robotics-status {
+    align-items: center;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    display: inline-flex;
+    font-size: 12px;
+    font-weight: bold;
+    gap: 7px;
+    line-height: 1.2;
+    max-width: 100%;
+    padding: 6px 10px;
+    width: fit-content;
+  }
+
+  .robotics-status-dot {
+    height: 7px;
+    width: 7px;
+  }
+
+  .robotics-status-active {
+    background: rgba(255, 0, 144, 0.08);
+    color: #a9005f;
+  }
+
+  .robotics-status-available {
+    background: rgba(87, 184, 61, 0.1);
+    color: #317a1f;
+  }
+
+  .robotics-status-offered,
+  .robotics-status-paused,
+  .robotics-status-turnover {
+    background: rgba(255, 186, 0, 0.13);
+    color: #7a5900;
+  }
+
+  .robotics-status-queued,
+  .robotics-status-scheduled {
+    background: rgba(0, 132, 176, 0.09);
+    color: @link-blue;
+  }
+
+  .robotics-status-ended,
+  .robotics-status-neutral {
+    background: rgba(77, 77, 77, 0.07);
+    color: @grey;
+  }
+
+  .robotics-access {
+    align-items: center;
+    background: oklch(97.5% 0.015 210);
+    border: 1px solid var(--robotics-border);
+    display: grid;
+    gap: 28px;
+    grid-template-columns: 1fr;
+    margin: 32px 0 52px;
+    padding: 26px 28px;
+  }
+
+  .robotics-access-authenticated {
+    background: oklch(96.5% 0.025 145);
+    grid-template-columns: 1fr;
+  }
+
+  .robotics-access-copy,
+  .robotics-team-identity {
+    align-items: flex-start;
+    display: flex;
+    gap: 16px;
+
+    > svg {
+      color: @blue;
+      flex: 0 0 auto;
+      margin-top: 2px;
+    }
+
+    h2 {
+      color: @dark-green;
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0 0 5px;
+      text-transform: none;
+    }
+
+    p {
+      color: @grey;
+      margin: 0;
+      max-width: 58ch;
+    }
+  }
+
+  .robotics-team-identity {
+    > svg {
+      color: @green;
+    }
+
+    span {
+      color: @grey;
+      display: block;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 0.06em;
+      margin-bottom: 3px;
+      text-transform: uppercase;
+    }
+  }
+
+  .robotics-pin-form {
+    align-items: end;
+    display: grid;
+    gap: 12px;
+    grid-template-columns: minmax(180px, 1fr) auto;
+  }
+
+  .robotics-pin-field {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+
+    input {
+      background: var(--robotics-surface);
+      border: 1px solid #aebbc0;
+      border-radius: 5px;
+      color: @dark-green;
+      font: inherit;
+      min-height: 46px;
+      padding: 10px 12px;
+      width: 100%;
+
+      &:hover {
+        border-color: @blue;
+      }
+
+      &:focus {
+        border-color: @blue;
+        box-shadow: 0 0 0 3px rgba(0, 132, 176, 0.14);
+      }
+    }
+
+    > span {
+      color: @grey;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+  }
+
+  .robotics-button {
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    display: inline-flex;
+    font: inherit;
+    font-weight: bold;
+    gap: 8px;
+    justify-content: center;
+    min-height: 46px;
+    padding: 10px 16px;
+    transition:
+      background-color 180ms cubic-bezier(0.165, 0.84, 0.44, 1),
+      border-color 180ms cubic-bezier(0.165, 0.84, 0.44, 1),
+      color 180ms cubic-bezier(0.165, 0.84, 0.44, 1);
+
+    &:disabled {
+      cursor: wait;
+      opacity: 0.62;
+    }
+  }
+
+  .robotics-button-primary {
+    background: @pink;
+    color: oklch(98.8% 0.006 205);
+
+    &:hover:not(:disabled) {
+      background: #d80079;
+      color: oklch(98.8% 0.006 205);
+    }
+  }
+
+  .robotics-button-secondary {
+    background: var(--robotics-surface);
+    border-color: @blue;
+    color: @link-blue;
+
+    &:hover:not(:disabled) {
+      background: rgba(0, 132, 176, 0.08);
+      color: @dark-green;
+    }
+  }
+
+  .robotics-button-danger {
+    background: @red;
+    color: oklch(98.8% 0.006 205);
+
+    &:hover:not(:disabled) {
+      background: #9f2f1b;
+      color: oklch(98.8% 0.006 205);
+    }
+  }
+
+  .robotics-button-quiet {
+    background: transparent;
+    border-color: #aebbc0;
+    color: @dark-green;
+
+    &:hover:not(:disabled) {
+      background: var(--robotics-surface);
+      border-color: @grey;
+    }
+  }
+
+  .robotics-team-actions {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+
+  .robotics-inline-error,
+  .robotics-inline-notice,
+  .robotics-team-waiting {
+    grid-column: ~"1 / -1";
+    margin: -10px 0 0;
+    padding: 10px 12px;
+  }
+
+  .robotics-inline-error {
+    background: rgba(194, 59, 34, 0.08);
+    border: 1px solid rgba(194, 59, 34, 0.45);
+    color: #8b2817;
+  }
+
+  .robotics-inline-notice {
+    background: rgba(87, 184, 61, 0.1);
+    border: 1px solid rgba(87, 184, 61, 0.45);
+    color: #286b18;
+  }
+
+  .robotics-team-waiting {
+    color: @grey;
+    padding-left: 0;
+  }
+
+  .robotics-public-layout {
+    align-items: start;
+    display: grid;
+    gap: 44px;
+    grid-template-columns: minmax(240px, 0.34fr) minmax(0, 1fr);
+  }
+
+  .robotics-section-heading {
+    align-items: end;
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    h2 {
+      color: @dark-green;
+      font-size: 28px;
+      font-weight: bold;
+      margin: 4px 0 0;
+      text-transform: none;
+    }
+  }
+
+  .robotics-eyebrow {
+    color: @pink;
+  }
+
+  .robotics-queue {
+    border-top: 4px solid @orange;
+    padding-top: 20px;
+  }
+
+  .robotics-queue-count {
+    color: @grey;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .robotics-queue-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      align-items: center;
+      border-top: 1px solid var(--robotics-border);
+      display: flex;
+      gap: 14px;
+      min-height: 70px;
+      padding: 12px 0;
+
+      &:first-child {
+        border-top: 0;
+      }
+
+      > span:last-child {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+
+      strong {
+        overflow-wrap: anywhere;
+      }
+
+      small {
+        color: @grey;
+        margin-top: 2px;
+      }
+    }
+  }
+
+  .robotics-queue-position {
+    align-items: center;
+    background: @pink;
+    border-radius: 50%;
+    color: oklch(98.8% 0.006 205);
+    display: inline-flex;
+    flex: 0 0 auto;
+    font-size: 14px;
+    font-weight: bold;
+    height: 34px;
+    justify-content: center;
+    width: 34px;
+  }
+
+  .robotics-empty-state {
+    align-items: center;
+    background: var(--robotics-surface-muted);
+    border: 1px solid var(--robotics-border);
+    color: @grey;
+    display: flex;
+    gap: 14px;
+    min-height: 92px;
+    padding: 18px;
+
+    svg {
+      color: @blue;
+      flex: 0 0 auto;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .robotics-team-table-wrap {
+    border: 1px solid var(--robotics-border);
+    overflow-x: auto;
+  }
+
+  .robotics-team-table {
+    border-collapse: collapse;
+    min-width: 680px;
+    width: 100%;
+
+    th,
+    td {
+      border-bottom: 1px solid var(--robotics-border);
+      padding: 15px 16px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    thead th {
+      background: @dark-green;
+      color: oklch(98.8% 0.006 205);
+      font-size: 12px;
+      letter-spacing: 0.045em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    tbody tr:last-child th,
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    tbody tr:hover,
+    .robotics-team-current {
+      background: rgba(0, 132, 176, 0.055);
+    }
+
+    tbody th {
+      font-size: 16px;
+      max-width: 220px;
+      overflow-wrap: anywhere;
+    }
+
+    td:last-child {
+      font-variant-numeric: tabular-nums;
+      text-align: center;
+    }
+  }
+
+  .robotics-team-progress {
+    display: grid;
+    gap: 7px;
+    min-width: 125px;
+
+    progress {
+      appearance: none;
+      background: @light-grey;
+      border: 0;
+      border-radius: 999px;
+      height: 7px;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    progress::-webkit-progress-bar {
+      background: @light-grey;
+    }
+
+    progress::-webkit-progress-value {
+      background: @blue;
+      border-radius: 999px;
+    }
+
+    progress::-moz-progress-bar {
+      background: @blue;
+      border-radius: 999px;
+    }
+
+    span {
+      color: @grey;
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+    }
+  }
+
+  .robotics-loading {
+    border: 1px solid var(--robotics-border);
+    margin-top: 34px;
+    min-height: 360px;
+    padding: 34px;
+  }
+
+  .robotics-loading-line,
+  .robotics-loading-panels span {
+    animation: robotics-pulse 1.4s ease-in-out infinite alternate;
+    background: var(--robotics-surface-muted);
+    display: block;
+  }
+
+  .robotics-loading-line {
+    height: 20px;
+    margin-bottom: 14px;
+    max-width: 520px;
+  }
+
+  .robotics-loading-line-short {
+    max-width: 180px;
+  }
+
+  .robotics-loading-panels {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 36px;
+
+    span {
+      min-height: 180px;
+    }
+  }
+
+  .robotics-page-error {
+    align-items: center;
+    background: rgba(194, 59, 34, 0.06);
+    border: 1px solid rgba(194, 59, 34, 0.45);
+    display: grid;
+    gap: 20px;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    margin-top: 34px;
+    padding: 24px;
+
+    > svg {
+      color: @red;
+    }
+
+    h2 {
+      color: @dark-green;
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0 0 5px;
+      text-transform: none;
+    }
+
+    p {
+      color: @grey;
+      margin: 0;
+    }
+  }
+}
+
+@keyframes robotics-pulse {
+  from {
+    opacity: 0.55;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (min-width: @screen-md) {
+  .robotics-competition {
+    .robotics-access {
+      grid-template-columns: minmax(250px, 1fr) minmax(360px, 0.9fr);
+    }
+
+    .robotics-access-authenticated {
+      grid-template-columns: minmax(240px, 0.8fr) minmax(420px, 1.2fr);
+    }
+  }
+}
+
+@media screen and (max-width: (@screen-md - 1px)) {
+  .robotics-competition {
+    .blue-section-wrapper {
+      background-image:
+        linear-gradient(rgba(0, 109, 151, 0.76), rgba(0, 109, 151, 0.76)),
+        url("/assets/img/robotics-testing-960.webp");
+      background-position: center 52%;
+    }
+
+    .robotics-access,
+    .robotics-access-authenticated {
+      align-items: start;
+    }
+
+    .robotics-team-actions {
+      justify-content: flex-start;
+    }
+
+    .robotics-public-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .robotics-queue {
+      max-width: none;
+    }
+  }
+}
+
+@media screen and (max-width: (@screen-sm - 1px)) {
+  .robotics-competition {
+    .blue-section {
+      padding-bottom: 34px;
+    }
+
+    .robotics-hero-copy {
+      p {
+        font-size: 17px;
+      }
+    }
+
+    .robotics-hero-title-row {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 8px;
+
+      > .robotics-status {
+        margin-bottom: 8px;
+        order: -1;
+      }
+    }
+
+    .robotics-freshness {
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 4px 12px;
+      justify-content: space-between;
+      padding: 8px 0;
+    }
+
+    .robotics-freshness-message {
+      flex-basis: 100%;
+      order: 3;
+    }
+
+    .robotics-clock-strip {
+      grid-template-columns: 1fr;
+    }
+
+    .robotics-clock-period,
+    .robotics-countdown {
+      padding: 18px 20px;
+    }
+
+    .robotics-countdown {
+      border-left: 0;
+      border-top: 1px solid var(--robotics-border);
+
+      time {
+        font-size: 30px;
+      }
+    }
+
+    .robotics-arena {
+      grid-template-columns: 1fr;
+    }
+
+    .robotics-arena-state {
+      align-items: flex-start;
+      padding: 22px 20px;
+
+      h2 {
+        font-size: 24px;
+      }
+    }
+
+    .robotics-arena-icon {
+      height: 48px;
+      width: 48px;
+    }
+
+    .robotics-arena-rule {
+      border-left: 0;
+      border-top: 1px solid var(--robotics-border);
+      padding: 18px 20px;
+    }
+
+    .robotics-access,
+    .robotics-access-authenticated {
+      gap: 22px;
+      margin: 24px 0 42px;
+      padding: 22px 20px;
+    }
+
+    .robotics-pin-form {
+      grid-template-columns: 1fr;
+    }
+
+    .robotics-button {
+      width: 100%;
+    }
+
+    .robotics-team-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      width: 100%;
+    }
+
+    .robotics-section-heading {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .robotics-team-table-wrap {
+      border: 0;
+      overflow: visible;
+    }
+
+    .robotics-team-table {
+      min-width: 0;
+
+      thead {
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+      }
+
+      tbody,
+      tr {
+        display: block;
+        width: 100%;
+      }
+
+      tr {
+        background: var(--robotics-surface);
+        border: 1px solid var(--robotics-border);
+        margin-bottom: 14px;
+      }
+
+      th,
+      td {
+        align-items: center;
+        border-bottom: 1px solid var(--robotics-border);
+        display: grid;
+        gap: 12px;
+        grid-template-columns: minmax(90px, 34%) minmax(0, 1fr);
+        max-width: none;
+        min-height: 50px;
+        padding: 11px 13px;
+        text-align: left;
+        width: 100%;
+      }
+
+      th::before,
+      td::before {
+        color: @grey;
+        content: attr(data-label);
+        font-size: 11px;
+        font-weight: bold;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      td:last-child {
+        border-bottom: 0;
+        text-align: left;
+      }
+    }
+
+    .robotics-team-progress {
+      min-width: 0;
+      width: 100%;
+    }
+
+    .robotics-loading {
+      padding: 22px;
+    }
+
+    .robotics-loading-panels {
+      grid-template-columns: 1fr;
+
+      span {
+        min-height: 110px;
+      }
+    }
+
+    .robotics-page-error {
+      align-items: start;
+      grid-template-columns: auto minmax(0, 1fr);
+
+      .robotics-button {
+        grid-column: ~"1 / -1";
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .robotics-competition {
+    .robotics-arena-state,
+    .robotics-access-copy,
+    .robotics-team-identity {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .robotics-arena-icon {
+      align-self: flex-start;
+    }
+
+    .robotics-team-table {
+      th,
+      td {
+        grid-template-columns: 82px minmax(0, 1fr);
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .robotics-competition {
+    .robotics-loading-line,
+    .robotics-loading-panels span {
+      animation: none;
+    }
+
+    .robotics-button {
+      transition: none;
+    }
+  }
+}
+
+@media (forced-colors: active) {
+  .robotics-competition {
+    .robotics-status-dot,
+    .robotics-live-dot {
+      border: 1px solid currentColor;
+    }
+
+    .robotics-status,
+    .robotics-button {
+      forced-color-adjust: auto;
+    }
+  }
+}
