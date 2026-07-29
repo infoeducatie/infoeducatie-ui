@@ -1051,10 +1051,6 @@ export default function RoboticsCompetition(props) {
                 />
               ) : null}
             </div>
-            <p>
-              Un singur mediu de testare, acces echitabil pentru fiecare
-              echipă și o stare live vizibilă tuturor.
-            </p>
           </div>
         </Grid>
       </div>
