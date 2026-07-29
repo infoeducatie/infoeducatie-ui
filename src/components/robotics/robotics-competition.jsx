@@ -461,6 +461,11 @@ function TeamAccess({
             {authError}
           </p>
         ) : null}
+        {actionNotice ? (
+          <p className="robotics-inline-notice" role="status">
+            {actionNotice}
+          </p>
+        ) : null}
       </section>
     );
   }
