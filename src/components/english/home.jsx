@@ -17,6 +17,7 @@ import Intuitext from "../../../assets/img/sponsors/intuitext.gif";
 import Apdetic from "../../../assets/img/sponsors/apdetic.png";
 import Upir from "../../../assets/img/sponsors/upir.png";
 import MEN from "../../../assets/img/sponsors/edu.jpg";
+import UVT from "../../../assets/img/sponsors/uvt.png";
 import CloudBase from "../../../assets/img/sponsors/cloudbase.png";
 import iMedicare from "../../../assets/img/sponsors/imedicare.png";
 import eSkills from "../../../assets/img/sponsors/eskills.png";
@@ -179,6 +180,9 @@ export default createLegacyComponent({
                                     </a>
                                     <a href="https://www.edu.ro/" target="_blank" rel="noreferrer">
                                       <img alt="Romanian Ministry of Education" decoding="async" height="78" loading="lazy" src={MEN} width="156" />
+                                    </a>
+                                    <a href="https://uvt.ro/" target="_blank" rel="noreferrer">
+                                      <img alt="West University of Timișoara" decoding="async" height="62" loading="lazy" src={UVT} width="300" />
                                     </a>
 
                                 </p>
