@@ -26,6 +26,7 @@ import Intuitext from "../../assets/img/sponsors/intuitext.gif";
 //import Apdetic from "../../assets/img/sponsors/apdetic.png";
 import Upir from "../../assets/img/sponsors/upir.png";
 import MEN from "../../assets/img/sponsors/edu.jpg";
+import UPB from "../../assets/img/sponsors/upb-ro.png";
 import UVT from "../../assets/img/sponsors/uvt.png";
 //import CloudBase from "../../assets/img/sponsors/cloudbase.png";
 //import iMedicare from "../../assets/img/sponsors/imedicare.png";
@@ -200,6 +201,9 @@ export default createLegacyComponent({
                         </a>
                         <a href="https://cjvrancea.ro/" target="_blank" rel="noreferrer">
                           <img alt="Consiliul Județean Vrancea" decoding="async" height="100" loading="lazy" src={CJVrancea} width="205" />
+                        </a>
+                        <a href="https://upb.ro/" target="_blank" rel="noreferrer">
+                          <img alt="Universitatea Națională de Știință și Tehnologie POLITEHNICA București" decoding="async" height="117" loading="lazy" src={UPB} width="280" />
                         </a>
                         <a href="https://uvt.ro/" target="_blank" rel="noreferrer">
                           <img alt="Universitatea de Vest din Timișoara" decoding="async" height="62" loading="lazy" src={UVT} width="300" />
