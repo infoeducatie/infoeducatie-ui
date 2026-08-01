@@ -86,6 +86,9 @@
     "multimedia": "multimedia jury",
     "technical": "technical committee",
     "secretary": "secretary",
+    "loading": "Loading jury members...",
+    "error": "The jury is currently unavailable.",
+    "empty": "No jury members are published at the moment.",
     "criteria": "judging criteria",
     "openCriteria": "Open the criteria for {{category}}",
     "roles": {

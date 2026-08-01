@@ -1,6 +1,5 @@
 "use strict";
 
-import ctx from "classnames";
 import createLegacyComponent from "@lib/create-legacy-component";
 
 
@@ -13,15 +12,11 @@ export default createLegacyComponent({
       .replace(/[^a-zA-Z0-9]+/g, "-")
       .replace(/^-|-$/g, "")
       .toLowerCase()}`;
-    let juryIcon = null;
-    if (this.props.iconClass) {
-      let juryIconClass = ctx("section-icon", this.props.iconClass);
-      juryIcon = (
-        <div className="jury-icon">
-          <span className={juryIconClass} />
-        </div>
-      );
-    }
+    let juryIcon = this.props.iconUrl ? (
+      <div className="jury-icon">
+        <img alt="" height="35" src={this.props.iconUrl} width="50" />
+      </div>
+    ) : null;
 
     return <section className="jury-description-wrapper" aria-labelledby={headingId}>
       {juryIcon}
@@ -35,11 +30,11 @@ export default createLegacyComponent({
           let memberName = String(member.name || "").replace(/\s+/g, " ").trim();
           let occupation = String(member.occupation || "").replace(/\s+/g, " ").trim();
 
-          return <article className="jury-member" key={`${member.role || "member"}-${memberName}`}>
+          return <article className="jury-member" key={member.id}>
             <div className="jury-avatar">
-              <img alt="" height="100" loading="lazy" src={member.avatar} width="100" />
+              <img alt={memberName} height="100" loading="lazy" src={member.photo_url} width="100" />
             </div>
-            {member.role ? <p className="jury-role">{member.role}</p> : null}
+            {member.title ? <p className="jury-role">{member.title}</p> : null}
             <h3 className="jury-name">{memberName}</h3>
             <p className="jury-occupation">{occupation}</p>
           </article>;

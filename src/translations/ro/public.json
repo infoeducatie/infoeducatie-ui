@@ -86,6 +86,9 @@
     "multimedia": "comisia multimedia",
     "technical": "comisia tehnică",
     "secretary": "secretar",
+    "loading": "Se \u00eencarc\u0103 membrii juriului...",
+    "error": "Juriul nu este disponibil momentan.",
+    "empty": "Nu exist\u0103 membri ai juriului publica\u021bi momentan.",
     "criteria": "criterii de jurizare",
     "openCriteria": "Deschide criteriile pentru {{category}}",
     "roles": {
