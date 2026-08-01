@@ -81,9 +81,9 @@ export default function SchedulePage(props) {
                 {t("schedule.error")}
               </p>
             ) : null}
-            <RichTextContent html={page?.body} />
             {documentUrl ? (
               <div className="schedule-preview">
+                <RichTextContent html={page?.body} />
                 <div className="schedule-heading">
                   <h2 className="content-heading">{t("schedule.documentHeading")}</h2>
                   <a
@@ -103,7 +103,9 @@ export default function SchedulePage(props) {
                   src={`${documentUrl}#view=FitH`}
                 />
               </div>
-            ) : null}
+            ) : (
+              <RichTextContent html={page?.body} />
+            )}
             {!isLoading && !hasErrored && !documentUrl ? (
               <p className="page-status" role="status">{t("schedule.empty")}</p>
             ) : null}
