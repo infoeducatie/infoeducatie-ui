@@ -1,7 +1,7 @@
 "use strict";
 
 import request from "@lib/request";
-import { Col, Grid, Row } from "@ui/bootstrap";
+import { Grid } from "@ui/bootstrap";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -66,34 +66,29 @@ export default function Photos(props) {
       </SecondaryHero>
       <div className="white-section-wrapper">
         <Grid className="white-section">
-          <Row className="small-spacing" />
-          <Row>
-            <Col md={10} mdOffset={1}>
-              <div className="photo-albums">
-                {isLoading ? (
-                  <p className="page-status" role="status">{t("loading")}</p>
-                ) : null}
-                {hasErrored ? (
-                  <p className="page-status alert alert-warning" role="alert">
-                    {t("error")}
-                  </p>
-                ) : null}
-                {!isLoading && !hasErrored && !albums.length ? (
-                  <p className="page-status" role="status">{t("empty")}</p>
-                ) : null}
-                {albums.map((album) => (
-                  <PhotoWrapper
-                    ariaLabel={t("albumLabel", { title: album.title })}
-                    coverImageUrl={album.cover_image_url}
-                    key={album.id}
-                    link={album.external_url}
-                    text={t("moreDetails")}
-                    title={album.title}
-                  />
-                ))}
-              </div>
-            </Col>
-          </Row>
+          <div className="photo-albums">
+            {isLoading ? (
+              <p className="page-status" role="status">{t("loading")}</p>
+            ) : null}
+            {hasErrored ? (
+              <p className="page-status alert alert-warning" role="alert">
+                {t("error")}
+              </p>
+            ) : null}
+            {!isLoading && !hasErrored && !albums.length ? (
+              <p className="page-status" role="status">{t("empty")}</p>
+            ) : null}
+            {albums.map((album) => (
+              <PhotoWrapper
+                ariaLabel={t("albumLabel", { title: album.title })}
+                coverImageUrl={album.cover_image_url}
+                key={album.id}
+                link={album.external_url}
+                text={t("moreDetails")}
+                title={album.title}
+              />
+            ))}
+          </div>
         </Grid>
       </div>
     </div>
