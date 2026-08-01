@@ -30,14 +30,10 @@
     "imageAlt": "The InfoEducație camp in Focșani"
   },
   "sponsors": {
-    "partners": "Educational partners and supporters",
-    "gold": "Gold sponsors",
-    "silver": "Silver sponsors",
-    "educationMinistry": "Romanian Ministry of Education",
-    "teachersUnion": "Romanian Union of Computer Science Teachers",
-    "countyCouncil": "Vrancea County Council",
-    "politehnica": "National University of Science and Technology POLITEHNICA Bucharest",
-    "westUniversity": "West University of Timișoara",
-    "educationUnion": "Vrancea Free Education Union"
+    "title": "Partners and sponsors",
+    "loading": "Loading partners and sponsors…",
+    "error": "Partners and sponsors could not be loaded.",
+    "retry": "Try again",
+    "empty": "Partners and sponsors will be announced soon."
   }
 }

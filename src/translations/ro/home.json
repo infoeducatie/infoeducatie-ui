@@ -30,14 +30,10 @@
     "imageAlt": "Tabăra InfoEducație din Focșani"
   },
   "sponsors": {
-    "partners": "Parteneri educaționali și finanțatori",
-    "gold": "Sponsori Gold",
-    "silver": "Sponsori Silver",
-    "educationMinistry": "Ministerul Educației",
-    "teachersUnion": "Uniunea Profesorilor de Informatică din România",
-    "countyCouncil": "Consiliul Județean Vrancea",
-    "politehnica": "Universitatea Națională de Știință și Tehnologie POLITEHNICA București",
-    "westUniversity": "Universitatea de Vest din Timișoara",
-    "educationUnion": "Sindicatul Liber din Învățământ Vrancea"
+    "title": "Parteneri și sponsori",
+    "loading": "Se încarcă partenerii și sponsorii…",
+    "error": "Partenerii și sponsorii nu au putut fi încărcați.",
+    "retry": "Încearcă din nou",
+    "empty": "Partenerii și sponsorii vor fi anunțați în curând."
   }
 }
