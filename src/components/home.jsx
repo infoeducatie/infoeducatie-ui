@@ -6,9 +6,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import "../main.less";
-import PajisteSmall from "../../assets/img/pajiste-720.webp";
-import PajisteMedium from "../../assets/img/pajiste-960.webp";
-import Pajiste from "../../assets/img/pajiste.webp";
+import HomeCamp from "../../assets/img/home-camp-2026.jpg";
 import CommunityInvite from "./community-invite";
 import Header from "./header";
 import JudgingCriteria from "./judging-criteria";
@@ -137,12 +135,10 @@ export default function Home(props) {
               <img
                 alt={t("camp.imageAlt")}
                 decoding="async"
-                height="998"
+                height="1155"
                 loading="lazy"
-                sizes="(min-width: 992px) 50vw, 100vw"
-                src={Pajiste}
-                srcSet={`${PajisteSmall} 720w, ${PajisteMedium} 960w, ${Pajiste} 1440w`}
-                width="1440"
+                src={HomeCamp}
+                width="1732"
               />
             </Col>
           </Row>
