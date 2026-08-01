@@ -118,14 +118,24 @@
   .pagination-icon {
     align-items: center;
     background: @white;
-    border: 1px solid @brand-border;
+    border: 1px solid fade(@brand-green, 32%);
     border-radius: 999px;
-    color: @brand-blue;
+    color: @brand-green;
     cursor: pointer;
     display: inline-flex;
     font-weight: bold;
     min-height: 44px;
     padding: 9px 16px;
+    transition: background-color 150ms ease, border-color 150ms ease,
+      color 150ms ease, transform 150ms ease;
+
+    &:focus,
+    &:hover {
+      background: #EAF6ED;
+      border-color: @brand-green;
+      color: #176C31;
+      transform: translateY(-1px);
+    }
   }
 
   .news-pagination {
