@@ -149,6 +149,16 @@
     margin: 10px 0 0;
   }
 
+  @media screen and (min-width: 1200px) {
+    padding-left: 0;
+    padding-right: 0;
+
+    &__inner.container {
+      max-width: 1440px;
+      width: calc(100% - 48px);
+    }
+  }
+
   @media screen and (max-width: (@screen-md - 1px)) {
     &__inner {
       grid-template-columns: 72px minmax(0, 1fr);
