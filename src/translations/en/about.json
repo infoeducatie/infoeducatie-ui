@@ -1,29 +1,8 @@
 {
   "title": "About InfoEducație",
-  "intro": "Founded in 1994, the competition is dedicated to high-school students interested in creating multidisciplinary software projects. It has four stages: school, local, county, and national. The national stage takes place in Focșani, Vrancea County.",
-  "categories": {
-    "web": "web",
-    "robots": "robots",
-    "multimedia": "multimedia",
-    "educational": "educational",
-    "utility": "utility"
-  },
-  "participation": {
-    "title": "Taking part in the competition",
-    "projects": "At every stage, students present projects they created regardless of their year of study (grades 9–12). Rankings from each stage decide who advances to the next one.",
-    "open": "The final stage also includes a 24-hour open team challenge. Teams build a project around a given theme, combining product design, programming, and visual design.",
-    "talks": "Software engineering talks and learning sessions take place throughout the camp."
-  },
-  "requirements": {
-    "title": "Participation requirements",
-    "intro": "Each county may participate with up to five students and one accompanying teacher, under the following conditions:",
-    "projects": "at least three projects",
-    "resources": "reasonable hardware and software requirements"
-  },
+  "loading": "Loading page...",
+  "error": "The page content is currently unavailable.",
   "documents": {
-    "rulesPrefix": "The competition rules are available",
-    "rulesLink": "here",
-    "proceduresPrefix": "and the implementation procedures are available",
     "criteria": "judging criteria",
     "criteriaLoading": "Loading judging criteria...",
     "criteriaError": "The judging criteria are currently unavailable.",

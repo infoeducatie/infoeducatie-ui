@@ -1,33 +1,12 @@
 {
   "title": "Despre InfoEducație",
-  "intro": "Organizat din 1994, concursul este dedicat elevilor cu aptitudini, înclinații și interes pentru crearea aplicațiilor informatice multidisciplinare. Se desfășoară în patru etape: pe unitatea școlară, locală, județeană și națională. Etapa națională are loc în Focșani, județul Vrancea.",
-  "categories": {
-    "web": "web",
-    "robots": "roboți",
-    "multimedia": "multimedia",
-    "educational": "educațional",
-    "utility": "utilitar"
-  },
-  "participation": {
-    "title": "Participare la concurs",
-    "projects": "La fiecare etapă sunt prezentate proiecte realizate de elevi, indiferent de anul de studiu (clasele IX–XII). Participarea la etapele următoare este decisă de clasamentele etapelor anterioare.",
-    "open": "În etapa finală există și un concurs open, pe echipe, desfășurat pe parcursul a 24 de ore. Echipele realizează un proiect pe o temă dată, îmbinând proiectarea, programarea și designul.",
-    "talks": "Pe întreaga durată a taberei sunt organizate sesiuni și prezentări pe teme de inginerie software."
-  },
-  "requirements": {
-    "title": "Condiții de participare",
-    "intro": "Fiecare județ poate participa cu maximum 5 elevi și un profesor însoțitor, în următoarele condiții:",
-    "projects": "minimum trei proiecte",
-    "resources": "cerințe hardware și software rezonabile"
-  },
+  "loading": "Se încarcă pagina...",
+  "error": "Conținutul paginii nu este disponibil momentan.",
   "documents": {
-    "rulesPrefix": "Regulamentul concursului este disponibil",
-    "rulesLink": "aici",
-    "proceduresPrefix": "iar procedurile de aplicare sunt disponibile",
     "criteria": "criterii de jurizare",
-    "criteriaLoading": "Se \u00eencarc\u0103 criteriile de jurizare...",
+    "criteriaLoading": "Se încarcă criteriile de jurizare...",
     "criteriaError": "Criteriile de jurizare nu sunt disponibile momentan.",
-    "criteriaEmpty": "Nu exist\u0103 criterii de jurizare publicate momentan.",
+    "criteriaEmpty": "Nu există criterii de jurizare publicate momentan.",
     "openCriteria": "Deschide criteriile pentru {{category}}"
   }
 }

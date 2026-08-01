@@ -69,6 +69,93 @@
 
 
   .white-section {
+    .about-rich-text {
+      h2 {
+        font-size: 30px;
+        font-weight: @font-weight-light;
+        margin: 45px 0 20px;
+      }
+
+      a {
+        text-decoration: underline;
+      }
+
+      .about-category-card {
+        align-items: center;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        float: left;
+        font-size: 18px;
+        font-weight: bold;
+        height: 175px;
+        justify-content: center;
+        margin: 35px 0 20px;
+        text-align: center;
+        text-transform: uppercase;
+        width: 20%;
+
+        &--yellow {
+          background-color: @yellow;
+          color: @black;
+        }
+
+        &--blue {
+          background-color: @blue;
+          color: @white;
+        }
+
+        &--green {
+          background-color: @green;
+          color: @black;
+        }
+
+        &--pink {
+          background-color: @pink;
+          color: @white;
+        }
+
+        &--black {
+          background-color: @light-black;
+          color: @white;
+        }
+
+        > br,
+        figcaption {
+          display: none;
+        }
+
+        > figure {
+          align-items: center;
+          background-color: @black;
+          border-radius: 50%;
+          display: flex;
+          height: 70px;
+          justify-content: center;
+          margin: 0 0 15px;
+          width: 70px;
+        }
+
+      }
+
+      .about-category-card figure img {
+          height: 45px;
+          max-width: 50px;
+          object-fit: contain;
+          width: auto;
+      }
+
+      &::after {
+        clear: both;
+        content: "";
+        display: table;
+      }
+
+      h2 {
+        clear: both;
+      }
+    }
+
     li:before {
       content: "\2014";
       position: relative;
@@ -89,76 +176,17 @@
       text-align: left;
     }
 
-    .category {
-      @category-height: 175px;
-      height: @category-height;
-      width: 180px;
-      display: inline-block;
-
-      &.yellow {
-        background-color: @yellow;
-
-        .description {
-          color: @dark-green;
-          font-weight: bold;
-        }
+    @media (max-width: 991px) {
+      .about-rich-text .about-category-card {
+        width: 50%;
       }
+    }
 
-      &.green {
-        background-color: @green;
+    @media (max-width: 479px) {
+      .about-rich-text .about-category-card {
+        margin-bottom: 0;
+        width: 100%;
       }
-
-      &.blue {
-        background-color: @blue;
-      }
-
-      &.pink {
-        background-color: @pink;
-      }
-
-      &.black {
-        background-color: @light-black;
-      }
-
-      &.yellow,
-      &.green {
-        .description {
-          color: @black;
-          font-weight: bold;
-        }
-      }
-
-      &.blue,
-      &.pink {
-        .description {
-          color: @white;
-          font-size: 18.667px;
-          font-weight: bold;
-        }
-      }
-
-      .round-icon {
-        @icon-height: 70px;
-        text-align: center;
-        width: 70px;
-        height: @icon-height;
-        background-color: @black;
-        border-radius: 100%;
-        margin: @category-height / 5 auto auto;
-
-        .section-icon {
-          margin: @icon-height / 4 auto;
-          display: inline-block;
-        }
-      }
-
-      .description {
-        color: @white;
-        text-transform: uppercase;
-        text-align: center;
-        margin-top: 15px;
-      }
-
     }
   }
 }

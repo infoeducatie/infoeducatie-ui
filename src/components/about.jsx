@@ -2,20 +2,12 @@
 
 import { Col, Grid, Row } from "@ui/bootstrap";
 import request from "@lib/request";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import "../main.less";
 import DefaultDocument from "../../assets/img/icons/doc.png";
 import Header from "./header";
-
-const categories = [
-  ["web", "yellow"],
-  ["robots", "blue", "roboti"],
-  ["multimedia", "green"],
-  ["educational", "pink"],
-  ["utility", "black", "utilitar"],
-];
 
 function resolveAssetUrl(assetUrl) {
   if (!assetUrl) return null;
@@ -27,16 +19,120 @@ function resolveAssetUrl(assetUrl) {
   }
 }
 
+function resolveRichTextAssetUrls(html) {
+  if (!html || typeof DOMParser === "undefined") return html;
+
+  const document = new DOMParser().parseFromString(html, "text/html");
+  const categoryStyles = {
+    web: "yellow",
+    robots: "blue",
+    media: "green",
+    educational: "pink",
+    utility: "black",
+  };
+
+  document.querySelectorAll("img[src]").forEach((image) => {
+    const source = image.getAttribute("src");
+    const category = Object.keys(categoryStyles).find((key) =>
+      source?.includes(`about-${key}.png`),
+    );
+
+    if (source?.startsWith("/uploads/")) {
+      image.setAttribute("src", resolveAssetUrl(source));
+    }
+
+    if (category) {
+      const card = image.closest("div");
+      if (card?.parentElement === document.body) {
+        card.classList.add(
+          "about-category-card",
+          `about-category-card--${categoryStyles[category]}`,
+        );
+      }
+    }
+  });
+
+  document.querySelectorAll("a[href]").forEach((link) => {
+    const href = link.getAttribute("href");
+    if (href?.startsWith("/uploads/")) {
+      link.setAttribute("href", resolveAssetUrl(href));
+    }
+    if (/^https?:\/\//.test(href || "")) {
+      link.setAttribute("rel", "noreferrer");
+      link.setAttribute("target", "_blank");
+    }
+  });
+
+  Array.from(document.body.children).forEach((element) => {
+    if (element.tagName === "H1") {
+      const heading = document.createElement("h2");
+      heading.innerHTML = element.innerHTML;
+      element.replaceWith(heading);
+    } else if (
+      element.tagName === "DIV" &&
+      !element.classList.contains("about-category-card")
+    ) {
+      const paragraph = document.createElement("p");
+      paragraph.innerHTML = element.innerHTML;
+      element.replaceWith(paragraph);
+    }
+  });
+
+  return document.body.innerHTML;
+}
+
 export default function About(props) {
   const { t } = useTranslation("about");
+  const [pageResult, setPageResult] = useState({
+    page: null,
+    hasErrored: false,
+    language: null,
+  });
   const [criteriaResult, setCriteriaResult] = useState({
     criteria: [],
     hasErrored: false,
     language: null,
   });
+  const pageIsLoading = pageResult.language !== props.language;
+  const pageHasErrored = !pageIsLoading && pageResult.hasErrored;
+  const page = pageIsLoading ? null : pageResult.page;
+  const pageBody = useMemo(
+    () => resolveRichTextAssetUrls(page?.body),
+    [page?.body],
+  );
   const criteriaIsLoading = criteriaResult.language !== props.language;
   const criteriaHasErrored = !criteriaIsLoading && criteriaResult.hasErrored;
   const criteria = criteriaIsLoading ? [] : criteriaResult.criteria;
+
+  useEffect(() => {
+    let isCurrent = true;
+
+    request({
+      method: "GET",
+      url: window.config.API_URL + "content_pages/about.json",
+      data: { locale: props.language },
+      success(data) {
+        if (!isCurrent) return;
+        setPageResult({
+          page: data && typeof data === "object" ? data : null,
+          hasErrored: !data || typeof data !== "object",
+          language: props.language,
+        });
+      },
+      error() {
+        if (!isCurrent) return;
+        setPageResult({
+          page: null,
+          hasErrored: true,
+          language: props.language,
+        });
+      },
+    });
+
+    return () => {
+      isCurrent = false;
+    };
+  }, [props.language]);
 
   useEffect(() => {
     let isCurrent = true;
@@ -92,7 +188,7 @@ export default function About(props) {
           <Row>
             <Row className="small-spacing" />
             <Col xs={12}>
-              <h1>{t("title")}</h1>
+              <h1>{page?.title || t("title")}</h1>
             </Col>
           </Row>
           <Row className="big-spacing" />
@@ -102,59 +198,20 @@ export default function About(props) {
         <Row>
           <Col md={10} mdOffset={1}>
             <Row className="small-spacing" />
-            <p>{t("intro")}</p>
-            <Row className="small-spacing" />
-            <Row>
-              <Col xs={12}>
-                {categories.map(([key, color, icon = key]) => (
-                  <div className={`category ${color}`} key={key}>
-                    <div className="round-icon">
-                      <span className={`section-icon ${icon}`} />
-                    </div>
-                    <div className="description">{t(`categories.${key}`)}</div>
-                  </div>
-                ))}
-              </Col>
-            </Row>
-            <Row className="small-spacing" />
-            <Row>
-              <Col xs={12}>
-                <h2 className="content-heading">{t("participation.title")}</h2>
-                <p>{t("participation.projects")}</p>
-                <p>{t("participation.open")}</p>
-                <p>{t("participation.talks")}</p>
-                <Row className="small-spacing" />
-                <h2 className="content-heading">{t("requirements.title")}</h2>
-                <p>{t("requirements.intro")}</p>
-                <ul>
-                  <li>{t("requirements.projects")}</li>
-                  <li>{t("requirements.resources")}</li>
-                </ul>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={12}>
-                <p>
-                  {t("documents.rulesPrefix")}{" "}
-                  <a
-                    href="https://data.infoeducatie.ro/manual/regulament.pdf"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    {t("documents.rulesLink")}
-                  </a>
-                  , {t("documents.proceduresPrefix")}{" "}
-                  <a
-                    href="https://data.infoeducatie.ro/manual/proceduri-de-aplicare-regulament.pdf"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    {t("documents.rulesLink")}
-                  </a>
-                  .
-                </p>
-              </Col>
-            </Row>
+            {pageIsLoading ? (
+              <p className="page-status" role="status">{t("loading")}</p>
+            ) : null}
+            {pageHasErrored ? (
+              <p className="page-status alert alert-warning" role="alert">
+                {t("error")}
+              </p>
+            ) : null}
+            {pageBody ? (
+              <div
+                className="about-rich-text"
+                dangerouslySetInnerHTML={{ __html: pageBody }}
+              />
+            ) : null}
             <Row className="small-spacing" />
           </Col>
         </Row>
