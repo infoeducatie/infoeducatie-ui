@@ -2,7 +2,7 @@
 
 import { getLocalizedPath } from "@lib/localized-routes";
 import { Col, Grid, Row } from "@ui/bootstrap";
-import { ArrowDown, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -64,7 +64,7 @@ export default function Home(props) {
                   to={getLocalizedPath("about")}
                 >
                   <span>{t("hero.about")}</span>
-                  <ArrowDown aria-hidden="true" size={19} />
+                  <ArrowRight aria-hidden="true" size={19} />
                 </Link>
               </div>
             </div>
