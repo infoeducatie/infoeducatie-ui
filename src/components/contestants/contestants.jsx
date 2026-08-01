@@ -459,7 +459,6 @@ const Contestants = createLegacyComponent({
       </Grid>
 
       <Grid className="projects">
-        <Row className="small-spacing" />
         {this.renderGrid()}
         {this.renderTable()}
         {this.renderErrors()}
