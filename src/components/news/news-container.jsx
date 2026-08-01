@@ -5,12 +5,13 @@ import request from "@lib/request";
 import _ from "lodash";
 import createLegacyComponent from "@lib/create-legacy-component";
 import {Grid, Row, Col, Glyphicon} from "@ui/bootstrap";
+import { withTranslation } from "react-i18next";
 
 import Article from "./article";
 import "../../main.less";
 
 
-export default createLegacyComponent({
+const NewsContainer = createLegacyComponent({
   displayName: "NewsContainer",
 
   getInitialState() {
@@ -95,7 +96,7 @@ export default createLegacyComponent({
                                     type="button"
                                     onClick={this.showPreviousNewsPage}>
                                  <Glyphicon glyph="chevron-left" />
-                                 &nbsp;anterioare
+                                 &nbsp;{this.props.t("news.previous")}
                                </button>;
     }
 
@@ -108,7 +109,7 @@ export default createLegacyComponent({
       nextPageController = <button className="pagination-icon"
                                 type="button"
                                 onClick={this.showNextNewsPage}>
-                             următoare &nbsp;
+                             {this.props.t("news.next")} &nbsp;
                              <Glyphicon glyph="chevron-right" />
                            </button>;
     }
@@ -134,7 +135,7 @@ export default createLegacyComponent({
       <Row>
           <Col xsOffset={1} xs={10} md={5} className="left">
               <Row className="xsmall-spacing" />
-              <h2 className="section-heading" id="news">Știri</h2>
+              <h2 className="section-heading" id="news">{this.props.t("news.title")}</h2>
               {this.renderPinnedArticle()}
           </Col>
           <Col xsOffset={1} xs={10} md={5} mdOffset={1} className="right">
@@ -150,3 +151,5 @@ export default createLegacyComponent({
     </Grid>;
   }
 });
+
+export default withTranslation("public")(NewsContainer);

@@ -1,3 +1,5 @@
+import i18n from "./i18n";
+
 export class RoboticsApiError extends Error {
   constructor(message, { code = "request_failed", status = 0 } = {}) {
     super(message);
@@ -19,7 +21,7 @@ function errorDetails(payload, response) {
   if (apiError && typeof apiError === "object") {
     return {
       code: apiError.code || "request_failed",
-      message: apiError.message || "Cererea nu a putut fi procesată.",
+      message: apiError.message || i18n.t("robotics:errors.request"),
     };
   }
 
@@ -30,20 +32,20 @@ function errorDetails(payload, response) {
   if (response.status === 404) {
     return {
       code: "not_found",
-      message: "Competiția nu a fost găsită.",
+      message: i18n.t("robotics:errors.notFound"),
     };
   }
 
   if (response.status === 409) {
     return {
       code: "state_conflict",
-      message: "Starea competiției s-a schimbat între timp.",
+      message: i18n.t("robotics:errors.conflict"),
     };
   }
 
   return {
     code: "request_failed",
-    message: "Nu am putut comunica cu serverul. Încearcă din nou.",
+    message: i18n.t("robotics:errors.communication"),
   };
 }
 
@@ -83,7 +85,7 @@ async function roboticsRequest({
     }
 
     throw new RoboticsApiError(
-      "Conexiunea cu serverul nu este disponibilă momentan.",
+      i18n.t("robotics:errors.network"),
       { code: "network_error" },
     );
   }
@@ -96,7 +98,7 @@ async function roboticsRequest({
       payload = JSON.parse(responseText);
     } catch {
       throw new RoboticsApiError(
-        "Serverul a trimis un răspuns care nu poate fi citit.",
+        i18n.t("robotics:errors.invalidResponse"),
         { code: "invalid_response", status: response.status },
       );
     }

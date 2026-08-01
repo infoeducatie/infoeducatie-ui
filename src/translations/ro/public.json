@@ -1,0 +1,104 @@
+{
+  "edition": {
+    "label": "Ediția {{edition}}",
+    "displayed": "Ediția afișată",
+    "loading": "Se încarcă edițiile..."
+  },
+  "categories": {
+    "all": "Toți",
+    "web": "Web",
+    "educational": "Educațional",
+    "robots": "Roboți",
+    "utility": "Utilitar",
+    "multimedia": "Multimedia"
+  },
+  "alumni": {
+    "title": "Alumni InfoEducație",
+    "subtitle": "Generația IT din România",
+    "participatingEditions": "Ediții participante",
+    "loading": "Se încarcă alumni...",
+    "error": "Lista alumni nu poate fi încărcată momentan."
+  },
+  "schedule": {
+    "title": "Program InfoEducație",
+    "contentTitle": "Programul ediției {{edition}}",
+    "description": "Activitățile și orele sunt actualizate în documentul de mai jos.",
+    "open": "Deschide programul",
+    "documentTitle": "Program InfoEducație"
+  },
+  "talks": {
+    "title": "Seminarii InfoEducație",
+    "loading": "Se încarcă seminariile...",
+    "error": "Seminariile nu pot fi încărcate momentan.",
+    "discuss": "Discută pe forum",
+    "authorPhoto": "Fotografie {{name}}"
+  },
+  "results": {
+    "title": "Rezultate InfoEducație",
+    "loading": "Se încarcă rezultatele...",
+    "error": "Rezultatele nu au putut fi încărcate. Reîncearcă în câteva momente.",
+    "ranking": "Clasamentul proiectelor",
+    "empty": "Nu există rezultate pentru categoria selectată.",
+    "columns": {
+      "prize": "premiul",
+      "project": "numele lucrării",
+      "contestant": "concurent",
+      "school": "liceu",
+      "county": "județ",
+      "teacher": "profesor",
+      "score": "punctaj",
+      "open": "open",
+      "total": "total"
+    }
+  },
+  "contestants": {
+    "title": "Participanți InfoEducație",
+    "serverError": "Datele nu au putut fi preluate de pe server.",
+    "projectList": "Lista proiectelor",
+    "empty": "Nu am găsit proiecte pentru filtrele selectate.",
+    "participants": "Participanți",
+    "projects": "Proiecte",
+    "counties": "Județe",
+    "searchLabel": "Caută proiecte",
+    "searchPlaceholder": "Titlu, participant sau județ",
+    "shown_one": "{{count}} proiect afișat",
+    "shown_other": "{{count}} proiecte afișate",
+    "gridAria": "Afișează proiectele sub formă de carduri",
+    "gridTitle": "Vizualizare carduri",
+    "tableAria": "Afișează proiectele sub formă de tabel",
+    "tableTitle": "Vizualizare tabel",
+    "filter": "Filtrează: {{category}}",
+    "columns": {
+      "county": "județ",
+      "project": "titlul lucrării",
+      "contestant": "concurent",
+      "category": "categorie",
+      "comments": "comentarii"
+    }
+  },
+  "jury": {
+    "title": "Juriul InfoEducație",
+    "leadership": "Conducerea juriului",
+    "educational": "comisia software educațional",
+    "utility": "comisia software utilitar",
+    "web": "comisia aplicații web",
+    "robots": "comisia roboți",
+    "multimedia": "comisia multimedia",
+    "technical": "comisia tehnică",
+    "secretary": "secretar",
+    "criteria": "criterii de jurizare",
+    "openCriteria": "Deschide criteriile pentru {{category}}",
+    "roles": {
+      "president": "Președinte",
+      "executivePresident": "Președinte executiv",
+      "vicePresident": "Vicepreședinte",
+      "executiveVicePresident": "Vicepreședinte executiv"
+    }
+  },
+  "news": {
+    "title": "Știri",
+    "readMore": "Citește mai multe...",
+    "previous": "anterioare",
+    "next": "următoare"
+  }
+}

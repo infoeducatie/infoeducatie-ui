@@ -7,9 +7,10 @@ import PropTypes from "prop-types";
 import ajax from "../lib/ajax"
 import {FormControl} from "@ui/bootstrap";
 import React from "react";
+import { withTranslation } from "react-i18next";
 
 
-export default class EditionSelector extends React.Component {
+class EditionSelector extends React.Component {
   static displayName = "EditionSelector"
   static propTypes = {
     ariaLabel: PropTypes.string,
@@ -49,7 +50,9 @@ export default class EditionSelector extends React.Component {
     let selectedEdition = _.find(this.state.editions, {
       id: this.state.selectedEditionId,
     });
-    let selectedLabel = selectedEdition ? `Ediția ${selectedEdition.name}` : "";
+    let selectedLabel = selectedEdition
+      ? this.props.t("edition.label", { edition: selectedEdition.name })
+      : "";
 
     return <>
       <FormControl componentClass="select"
@@ -61,7 +64,7 @@ export default class EditionSelector extends React.Component {
                   title={selectedLabel}
                   value={this.state.selectedEditionId}>
       {!this.state.editions.length ? (
-        <option value="0">Se încarcă edițiile...</option>
+        <option value="0">{this.props.t("edition.loading")}</option>
       ) : null}
       {this.state.editions.map(this.renderEdition)}
       </FormControl>
@@ -77,7 +80,7 @@ export default class EditionSelector extends React.Component {
     return (
       <option key={edition.id}
                         value={edition.id}>
-        Ediția {edition.name}
+        {this.props.t("edition.label", { edition: edition.name })}
       </option>
     );
   }
@@ -98,3 +101,5 @@ export default class EditionSelector extends React.Component {
     }
   }
 }
+
+export default withTranslation("public")(EditionSelector);

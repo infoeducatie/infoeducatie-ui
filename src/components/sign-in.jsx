@@ -2,8 +2,10 @@
 
 
 import { navigate } from "@lib/navigation";
+import { useTranslation } from "react-i18next";
 
 export default function SignIn() {
+  const { t } = useTranslation("forms");
   const openModal = (event) => {
     event.preventDefault();
     navigate({
@@ -14,7 +16,7 @@ export default function SignIn() {
 
   return (
     <a href="?login=true" onClick={openModal}>
-      autentifica aici
+      {t("signIn.link")}
     </a>
   );
 }

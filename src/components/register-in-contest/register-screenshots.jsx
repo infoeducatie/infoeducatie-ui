@@ -2,8 +2,9 @@
 
 import createLegacyComponent from "@lib/create-legacy-component";
 import { FormControl, Glyphicon } from "@ui/bootstrap";
+import { withTranslation } from "react-i18next";
 
-export default createLegacyComponent({
+const RegisterScreenshots = createLegacyComponent({
   displayName: "RegisterScreenshots",
 
   getInitialState() {
@@ -60,17 +61,17 @@ export default createLegacyComponent({
 
   render() {
     return <div>
-      <p>Trebuie minim <em>1</em> și maxim <em>3</em> capturi de ecran.</p>
-      <p>Până acum ai încărcat <em>{this.props.screenshotsCount}</em>.</p>
+      <p>{this.props.t("screenshots.requirements")}</p>
+      <p>{this.props.t("screenshots.count", { count: this.props.screenshotsCount })}</p>
       { this.props.screenshotsCount > 0 ?
-        <p>Daca nu vrei să mai adaugi capturi de ecran&nbsp;
+        <p>{this.props.t("screenshots.skip")}&nbsp;
           <a href="#" data-step={4} onClick={this.props.onSkipStep}>
-          click aici</a>.
+          {this.props.t("clickHere")}</a>.
         </p>
         : null
       }
       <span className="btn btn-success fileinput-button">
-        <span><Glyphicon glyph="upload" /> Alege o imagine</span>
+        <span><Glyphicon glyph="upload" /> {this.props.t("screenshots.choose")}</span>
         <FormControl
                type="file"
                name="screenshots[]"
@@ -80,7 +81,7 @@ export default createLegacyComponent({
       </span>
       {this.state.hasErrored ?
         <p className="alert alert-danger">
-          Imaginea nu a putut fi incarcata. Incearca din nou.
+          {this.props.t("screenshots.error")}
         </p>
         : null}
       <hr />
@@ -91,3 +92,5 @@ export default createLegacyComponent({
     </div>;
   }
 });
+
+export default withTranslation("registration")(RegisterScreenshots);

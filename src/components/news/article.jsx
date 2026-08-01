@@ -2,9 +2,10 @@
 
 import createLegacyComponent from "@lib/create-legacy-component";
 import { Row, Modal } from "@ui/bootstrap";
+import { withTranslation } from "react-i18next";
 
 
-export default createLegacyComponent({
+const Article = createLegacyComponent({
   displayName: "News",
 
   getInitialState() {
@@ -39,14 +40,16 @@ export default createLegacyComponent({
   },
 
   render() {
-    let date = new Date(this.props.created_at).toLocaleDateString();
+    let date = new Date(this.props.created_at).toLocaleDateString(
+      this.props.i18n.resolvedLanguage === "en" ? "en-GB" : "ro-RO",
+    );
 
     let read_more = null;
     if (this.props.body !== "") {
       read_more = <span>...<br /><button className="read-more"
                      type="button"
                      onClick={this.openModal}>
-                    Citește mai multe...
+                    {this.props.t("news.readMore")}
                   </button></span>;
     }
 
@@ -62,3 +65,5 @@ export default createLegacyComponent({
     </div>;
   }
 });
+
+export default withTranslation("public")(Article);

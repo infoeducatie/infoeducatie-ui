@@ -1,12 +1,13 @@
 "use strict";
 
 import createLegacyComponent from "@lib/create-legacy-component";
+import { withTranslation } from "react-i18next";
 
 import RegisterAdditionalSearch from "./register-additional-search";
 import RegisterAdditionalConfirm from "./register-additional-confirm";
 
 
-export default createLegacyComponent({
+const RegisterAdditionalWrapper = createLegacyComponent({
   displayName: "RegisterAdditionalWrapper",
 
   getInitialState() {
@@ -20,9 +21,7 @@ export default createLegacyComponent({
 
   render() {
     return <div>
-      <p>Ca să adaugi un concurent ca și coechipier, acesta trebuie să își
-      facă un cont, să completeze primul formular iar apoi tu îl vei putea găsi
-      după adresa sa de email.</p>
+      <p>{this.props.t("additional.instructions")}</p>
       <RegisterAdditionalSearch onSubmit={this.onRegisterAdditionalSearchSubmit}
                                 method="GET"
                                 formEndpoint="contestants.json" />
@@ -32,13 +31,14 @@ export default createLegacyComponent({
 
   renderSecondPart() {
     if (!this.state.additionalContestant.length) {
-      return <p>Nu a fost găsit niciun concurent</p>;
+      return <p>{this.props.t("additional.notFound")}</p>;
     }
     let formEndpoint = `projects/${this.props.pendingProject.id}/collaborators`;
     return <div>
-      <p>A fost gasit utilizatorul&nbsp;
-      <em>{this.state.additionalContestant[0].name}</em> de la liceul <em>
-      {this.state.additionalContestant[0].school_name}</em>.</p>
+      <p>{this.props.t("additional.found", {
+        name: this.state.additionalContestant[0].name,
+        school: this.state.additionalContestant[0].school_name,
+      })}</p>
 
       <RegisterAdditionalConfirm onSubmit={this.props.onSubmit}
                                  formEndpoint={formEndpoint}
@@ -54,3 +54,5 @@ export default createLegacyComponent({
     });
   }
 });
+
+export default withTranslation("registration")(RegisterAdditionalWrapper);

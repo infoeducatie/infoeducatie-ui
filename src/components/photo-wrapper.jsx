@@ -9,7 +9,7 @@ export default createLegacyComponent({
     return <div className="photo-cover-wrapper">
         <div className="photo-cover">
           <a href={this.props.link} target="_blank"
-             aria-label={`${this.props.text || "Fotografii"} InfoEducație ${this.props.year}`}
+             aria-label={this.props.ariaLabel}
              className="photo-album-link" rel="noreferrer">
             <div className={className}></div>
             <span className="more-details">{this.props.text || "Fotografii"}</span>

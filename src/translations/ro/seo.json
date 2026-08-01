@@ -1,0 +1,58 @@
+{
+  "home": {
+    "title": "InfoEducație | Olimpiada de creație digitală",
+    "description": "InfoEducație este olimpiada națională de inovare și creație digitală pentru elevii din România."
+  },
+  "about": {
+    "title": "Despre concurs | InfoEducație",
+    "description": "Află cum se desfășoară InfoEducație, cine poate participa și care sunt categoriile concursului."
+  },
+  "alumni": {
+    "title": "Alumni | InfoEducație",
+    "description": "Descoperă comunitatea de alumni InfoEducație și poveștile foștilor participanți."
+  },
+  "contact": {
+    "title": "Contact | InfoEducație",
+    "description": "Ia legătura cu echipa InfoEducație pentru întrebări despre concurs, participare și organizare."
+  },
+  "contestEntry": {
+    "title": "Înscriere în concurs | InfoEducație",
+    "description": "Înscrie un participant, profesor sau proiect în concursul InfoEducație."
+  },
+  "jury": {
+    "title": "Juriu | InfoEducație",
+    "description": "Cunoaște membrii juriului și comisiile care evaluează proiectele InfoEducație."
+  },
+  "participants": {
+    "title": "Participanți | InfoEducație",
+    "description": "Explorează participanții și proiectele înscrise la edițiile InfoEducație."
+  },
+  "photos": {
+    "title": "Fotografii | InfoEducație",
+    "description": "Răsfoiește albumele foto din taberele și edițiile InfoEducație."
+  },
+  "register": {
+    "title": "Creează un cont | InfoEducație",
+    "description": "Creează un cont InfoEducație pentru a participa la olimpiada de inovare și creație digitală."
+  },
+  "results": {
+    "title": "Rezultate | InfoEducație",
+    "description": "Vezi rezultatele proiectelor și participanților din edițiile InfoEducație."
+  },
+  "schedule": {
+    "title": "Program | InfoEducație",
+    "description": "Consultă programul activităților, prezentărilor și evaluărilor InfoEducație."
+  },
+  "talks": {
+    "title": "Seminarii | InfoEducație",
+    "description": "Descoperă seminariile și invitații care împărtășesc experiență cu participanții InfoEducație."
+  },
+  "robotics": {
+    "title": "Arena de robotică | InfoEducație",
+    "description": "Urmărește starea live și programul de testare din arena de robotică InfoEducație."
+  },
+  "notFound": {
+    "title": "Pagina nu a fost găsită | InfoEducație",
+    "description": "Pagina căutată nu există. Revino la pagina principală InfoEducație sau folosește navigația pentru a continua."
+  }
+}

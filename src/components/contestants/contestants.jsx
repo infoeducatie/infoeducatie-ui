@@ -4,6 +4,7 @@ import ajax from "../../lib/ajax"
 import createLegacyComponent from "@lib/create-legacy-component";
 import { Grid, Col, Row, Glyphicon, Table } from "@ui/bootstrap";
 import ctx from "classnames";
+import { withTranslation } from "react-i18next";
 
 import "../../main.less";
 import CloudCount from "../cloud-count"
@@ -24,7 +25,7 @@ function normalizeSearchValue(value) {
 }
 
 
-export default createLegacyComponent({
+const Contestants = createLegacyComponent({
   displayName: "Contestants",
 
   componentDidMount() {
@@ -45,7 +46,7 @@ export default createLegacyComponent({
   },
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.edition.name !== this.props.edition.name) {
+    if (nextProps.edition.id !== this.props.edition.id) {
       this.setState({ selectedEdition: nextProps.edition });
     }
   },
@@ -102,31 +103,31 @@ export default createLegacyComponent({
 
   renderErrors() {
     if (this.state.hasError) {
-      return <p>Datele nu au putut fi luate de pe server.</p>;
+      return <p>{this.props.t("contestants.serverError")}</p>;
     }
   },
 
   renderProjectRow(project){
     return <tr key={project.id} className="contestant">
-        <td className="county" data-label="Județ">
+        <td className="county" data-label={this.props.t("contestants.columns.county")}>
           <ul className="list-unstyled">
             {asArray(project.counties).map(function(county, index) {
               return <li key={index}>{county}</li>;
             })}
           </ul>
         </td>
-        <td className="title" data-label="Titlul lucrării">
+        <td className="title" data-label={this.props.t("contestants.columns.project")}>
           <a href={project.discourse_url}>{project.title}</a>
         </td>
-        <td className="authors" data-label="Concurent">
+        <td className="authors" data-label={this.props.t("contestants.columns.contestant")}>
           <ul className="list-unstyled">
             {asArray(project.contestants).map(function(contestant){
               return <li className="author" key={contestant.id}>{contestant.name}</li>;
             })}
           </ul>
         </td>
-        <td className="category" data-label="Categorie">{project.category}</td>
-        <td className="comments" data-label="Comentarii"><CloudCount count={project.comments_count} /></td>
+        <td className="category" data-label={this.props.t("contestants.columns.category")}>{project.category}</td>
+        <td className="comments" data-label={this.props.t("contestants.columns.comments")}><CloudCount count={project.comments_count} /></td>
       </tr>;
   },
 
@@ -137,7 +138,7 @@ export default createLegacyComponent({
       return <Row>
         <Col md={8} mdOffset={2}>
           <h2 className="visually-hidden" id="participant-projects-heading">
-            Lista proiectelor
+            {this.props.t("contestants.projectList")}
           </h2>
           <div
             aria-labelledby="participant-projects-heading"
@@ -148,11 +149,11 @@ export default createLegacyComponent({
             <Table>
               <thead>
                 <tr>
-                  <th>județ</th>
-                  <th>titlul lucrării</th>
-                  <th>concurent</th>
-                  <th>categorie</th>
-                  <th>comentarii</th>
+                  <th>{this.props.t("contestants.columns.county")}</th>
+                  <th>{this.props.t("contestants.columns.project")}</th>
+                  <th>{this.props.t("contestants.columns.contestant")}</th>
+                  <th>{this.props.t("contestants.columns.category")}</th>
+                  <th>{this.props.t("contestants.columns.comments")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -162,7 +163,7 @@ export default createLegacyComponent({
           </div>
           {!projects.length ? (
             <p className="empty-state" role="status">
-              Nu am găsit proiecte pentru filtrele selectate.
+              {this.props.t("contestants.empty")}
             </p>
           ) : null}
         </Col>
@@ -184,7 +185,7 @@ export default createLegacyComponent({
                {projects.map(this.renderProjectCard)}
                {!projects.length ? (
                  <p className="empty-state" role="status">
-                   Nu am găsit proiecte pentru filtrele selectate.
+                   {this.props.t("contestants.empty")}
                  </p>
                ) : null}
              </Grid>;
@@ -215,8 +216,12 @@ export default createLegacyComponent({
           <Row className="xsmall-spacing" />
           <Row>
             <Col>
-              <h1>Participanți InfoEducație</h1>
-              <h2>Ediția {this.state.selectedEdition.name}</h2>
+              <h1>{this.props.t("contestants.title")}</h1>
+              <h2>{this.props.t("edition.label", {
+                edition: this.state.selectedEdition.name ||
+                  this.state.selectedEdition.count ||
+                  this.state.selectedEdition.year,
+              })}</h2>
             </Col>
           </Row>
           <Row className="big-spacing" />
@@ -230,19 +235,19 @@ export default createLegacyComponent({
                xs={12}>
             <Row className="inner-stats">
               <Col xs={4}>
-                  <p className="description">Participanți</p>
+                  <p className="description">{this.props.t("contestants.participants")}</p>
                   <p className="value">
                     {this.state.selectedEdition.contestants_count}
                   </p>
               </Col>
               <Col xs={4} className="border-left">
-                  <p className="description">Proiecte</p>
+                  <p className="description">{this.props.t("contestants.projects")}</p>
                   <p className="value">
                     {this.state.selectedEdition.projects_count}
                   </p>
               </Col>
               <Col xs={4} className="border-left">
-                  <p className="description">Județe</p>
+                  <p className="description">{this.props.t("contestants.counties")}</p>
                   <p className="value">
                     {this.state.selectedEdition.counties_count}
                   </p>
@@ -258,11 +263,11 @@ export default createLegacyComponent({
           <Col xs={12}>
             <div className="edition-filter">
             <label className="control-label" htmlFor="participant-edition">
-              Ediția afișată
+              {this.props.t("edition.displayed")}
             </label>
             <EditionSelector onCallback={this.onEditionChange}
                              id="participant-edition"
-                             ariaLabel="Ediția afișată"
+                             ariaLabel={this.props.t("edition.displayed")}
                              filter="has_projects" />
             </div>
           </Col>
@@ -271,20 +276,18 @@ export default createLegacyComponent({
         <Row className="participant-search">
           <Col md={8} mdOffset={2}>
             <label className="control-label" htmlFor="participant-search">
-              Caută proiecte
+              {this.props.t("contestants.searchLabel")}
             </label>
             <input
               className="form-control"
               id="participant-search"
               onChange={this.onSearchChange}
-              placeholder="Titlu, participant sau județ"
+              placeholder={this.props.t("contestants.searchPlaceholder")}
               type="search"
               value={this.state.searchTerm}
             />
             <p aria-live="polite" className="results-count">
-              {visibleProjectCount} {visibleProjectCount === 1
-                ? "proiect afișat"
-                : "proiecte afișate"}
+              {this.props.t("contestants.shown", { count: visibleProjectCount })}
             </p>
           </Col>
         </Row>
@@ -294,45 +297,45 @@ export default createLegacyComponent({
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="all" />
-            <p>Toți</p>
+            <p>{this.props.t("categories.all")}</p>
           </Col>
           <Col sm={1} xs={4}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="web" />
-            <p>Web</p>
+            <p>{this.props.t("categories.web")}</p>
           </Col>
           <Col sm={1} xs={4}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="educational" />
-            <p>Educațional</p>
+            <p>{this.props.t("categories.educational")}</p>
           </Col>
           <Col sm={1} xs={4}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="roboti" />
-            <p>Roboți</p>
+            <p>{this.props.t("categories.robots")}</p>
           </Col>
           <Col sm={1} xs={4}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="utilitar" />
-            <p>Utilitar</p>
+            <p>{this.props.t("categories.utility")}</p>
           </Col>
           <Col sm={1} xs={4}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="multimedia" />
-            <p>Multimedia</p>
+            <p>{this.props.t("categories.multimedia")}</p>
           </Col>
           <Col smOffset={2} sm={1} className="hidden-xs">
             <button
-              aria-label="Afișează proiectele sub formă de carduri"
+              aria-label={this.props.t("contestants.gridAria")}
               aria-pressed={this.state.showGrid}
               className={gridClassName}
               onClick={this.showGrid}
-              title="Vizualizare carduri"
+              title={this.props.t("contestants.gridTitle")}
               type="button"
             >
               <Glyphicon glyph="th-large" />
@@ -340,11 +343,11 @@ export default createLegacyComponent({
           </Col>
           <Col sm={1} className="hidden-xs">
             <button
-              aria-label="Afișează proiectele sub formă de tabel"
+              aria-label={this.props.t("contestants.tableAria")}
               aria-pressed={this.state.showTable}
               className={tableClassName}
               onClick={this.showTable}
-              title="Vizualizare tabel"
+              title={this.props.t("contestants.tableTitle")}
               type="button"
             >
               <Glyphicon glyph="align-justify" />
@@ -387,3 +390,5 @@ export default createLegacyComponent({
     this.setState({ selectedEdition: edition });
   }
 });
+
+export default withTranslation("public")(Contestants);

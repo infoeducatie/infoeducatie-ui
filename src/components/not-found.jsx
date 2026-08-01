@@ -1,13 +1,16 @@
 "use strict";
 
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
+import { getLocalizedPath } from "@lib/localized-routes";
 import { Col, Grid, Row } from "@ui/bootstrap";
 import Header from "./header";
 
 import "../main.less";
 
 export default function NotFound(props) {
+  const { t } = useTranslation("notFound");
   return (
     <div className="not-found-page">
       <div className="blue-section-wrapper">
@@ -28,9 +31,9 @@ export default function NotFound(props) {
               <p className="not-found-code" aria-hidden="true">
                 404
               </p>
-              <h1>Pagina nu există</h1>
+              <h1>{t("title")}</h1>
               <p className="not-found-lead">
-                Linkul poate fi vechi sau adresa a fost introdusă greșit.
+                {t("lead")}
               </p>
             </Col>
           </Row>
@@ -40,17 +43,20 @@ export default function NotFound(props) {
       <Grid className="not-found-actions white-section">
         <Row>
           <Col md={8} mdOffset={2}>
-            <h2 className="content-heading">Hai să revenim pe traseu</h2>
-            <p>
-              Poți continua de la pagina principală sau ne poți scrie dacă
-              informația pe care o cauți ar trebui să fie aici.
-            </p>
+            <h2 className="content-heading">{t("recoveryTitle")}</h2>
+            <p>{t("recoveryText")}</p>
             <div className="not-found-links">
-              <Link className="cta-link cta-primary" to="/">
-                Pagina principală
+              <Link
+                className="cta-link cta-primary"
+                to={getLocalizedPath("home")}
+              >
+                {t("home")}
               </Link>
-              <Link className="cta-link cta-dark" to="/contacte">
-                Contactează-ne
+              <Link
+                className="cta-link cta-dark"
+                to={getLocalizedPath("contact")}
+              >
+                {t("contact")}
               </Link>
             </div>
           </Col>

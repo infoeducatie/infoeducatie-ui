@@ -1,41 +1,44 @@
 "use strict";
 
-import createLegacyComponent from "@lib/create-legacy-component";
-
-import { Row, Col, Grid } from "@ui/bootstrap";
-import Header from "./header";
+import { Col, Grid, Row } from "@ui/bootstrap";
+import { useTranslation } from "react-i18next";
 
 import "../main.less";
 import DefaultDocument from "../../assets/img/icons/doc.png";
+import Header from "./header";
 
-export default createLegacyComponent({
-  displayName: "GalaciucPage",
+const categories = [
+  ["web", "yellow"],
+  ["robots", "blue", "roboti"],
+  ["multimedia", "green"],
+  ["educational", "pink"],
+  ["utility", "black", "utilitar"],
+];
 
-  render() {
-    var criteria = [
-      {"name": "Educațional", "link": "http://data.infoeducatie.ro/manual/educational.pdf"},
-      {"name": "Multimedia", "link": "http://data.infoeducatie.ro/manual/multimedia.pdf"},
-      {"name": "Roboți", "link": "http://data.infoeducatie.ro/manual/roboti.pdf"},
-      {"name": "Utilitar", "link": "http://data.infoeducatie.ro/manual/utilitar.pdf"},
-      {"name": "Web", "link": "http://data.infoeducatie.ro/manual/web.pdf"}
-    ];
+const criteria = [
+  ["educational", "http://data.infoeducatie.ro/manual/educational.pdf"],
+  ["multimedia", "http://data.infoeducatie.ro/manual/multimedia.pdf"],
+  ["robots", "http://data.infoeducatie.ro/manual/roboti.pdf"],
+  ["utility", "http://data.infoeducatie.ro/manual/utilitar.pdf"],
+  ["web", "http://data.infoeducatie.ro/manual/web.pdf"],
+];
 
-    return <div className="galaciuc">
+export default function About(props) {
+  const { t } = useTranslation("about");
+
+  return (
+    <div className="galaciuc">
       <div className="blue-section-wrapper">
         <Grid className="blue-section">
           <Row>
             <Col xs={12}>
-              <Header isLoggedIn={this.props.isLoggedIn}
-                      current={this.props.current}
-                      language={this.props.language}
-                      changeLanguage={this.props.changeLanguage}
-                      logout={this.props.logout} />
+              <Header {...props} />
             </Col>
           </Row>
           <Row>
             <Row className="small-spacing" />
             <Col xs={12}>
-              <h1>Despre InfoEducație</h1>
+              <h1>{t("title")}</h1>
             </Col>
           </Row>
           <Row className="big-spacing" />
@@ -43,98 +46,58 @@ export default createLegacyComponent({
       </div>
       <Grid className="white-section">
         <Row>
-          <Col mdOffset={1} md={10}>
+          <Col md={10} mdOffset={1}>
             <Row className="small-spacing" />
-            <p>
-              Organizat din 1994, este dedicat elevilor cu aptitudini, înclinații și interes pentru crearea aplicațiilor informatice, multidisciplinare. Concursul se desfășoară în patru etape: pe unitatea școlară, locală, județeană și națională. Etapa națională se desfășoară în Focșani, județul Vrancea.
-            </p>
+            <p>{t("intro")}</p>
             <Row className="small-spacing" />
             <Row>
               <Col xs={12}>
-                <div className="category yellow">
-                  <div className="round-icon">
-                    <span className="section-icon web" />
+                {categories.map(([key, color, icon = key]) => (
+                  <div className={`category ${color}`} key={key}>
+                    <div className="round-icon">
+                      <span className={`section-icon ${icon}`} />
+                    </div>
+                    <div className="description">{t(`categories.${key}`)}</div>
                   </div>
-                  <div className="description">web</div>
-                </div>
-
-                <div className="category blue">
-                  <div className="round-icon">
-                    <span className="section-icon roboti" />
-                  </div>
-                  <div className="description">roboți</div>
-                </div>
-
-                <div className="category green">
-                  <div className="round-icon">
-                    <span className="section-icon multimedia" />
-                  </div>
-                  <div className="description">multimedia</div>
-                </div>
-
-                <div className="category pink">
-                  <div className="round-icon">
-                    <span className="section-icon educational" />
-                  </div>
-                  <div className="description">educațional</div>
-                </div>
-
-                <div className="category black">
-                  <div className="round-icon">
-                    <span className="section-icon utilitar" />
-                  </div>
-                  <div className="description">utilitar</div>
-                </div>
+                ))}
               </Col>
             </Row>
             <Row className="small-spacing" />
             <Row>
               <Col xs={12}>
-                <h2 className="content-heading">Participare la concurs</h2>
-                <p>
-                    La fiecare etapă vor fi prezentate lucrări
-                    realizate de către elevi, indiferent de anul de
-                    studiu (clasele IX - XII). Participarea la etapele
-                    ulterioare este hotărâtă de clasamentele etapelor
-                    anterioare.
-                </p>
-                <p>
-                    În etapa finală există și un concurs <em>open</em>
-                    , pe echipe, pe parcursul a 24 de ore. Concursul
-                    constă în realizarea unei lucrări pe o
-                    temă dată. Lucrarea va îmbina elemente de <em>
-                    proiectare, programare și design</em>.
-                </p>
-                <p>
-                    Pe întreaga durată
-                    a taberei se vor organiza și sesiuni de comunicare
-                    pe teme de inginerie software.
-                </p>
-
+                <h2 className="content-heading">{t("participation.title")}</h2>
+                <p>{t("participation.projects")}</p>
+                <p>{t("participation.open")}</p>
+                <p>{t("participation.talks")}</p>
                 <Row className="small-spacing" />
-                <h2 className="content-heading">Condiții de participare</h2>
-                <p>
-                    Fiecare județ doritor poate participa cu maximum
-                    <em>5 elevi</em> și un <em>profesor însoțitor</em>
-                    , în următoarele condiții:
-                </p>
+                <h2 className="content-heading">{t("requirements.title")}</h2>
+                <p>{t("requirements.intro")}</p>
                 <ul>
-                  <li>
-                    minim trei lucrări
-                  </li>
-                  <li>
-                    cerinte hardware și software rezonabile
-                  </li>
+                  <li>{t("requirements.projects")}</li>
+                  <li>{t("requirements.resources")}</li>
                 </ul>
               </Col>
             </Row>
             <Row>
               <Col xs={12}>
                 <p>
-                    Regulamentul concursului poate fi accesat&nbsp;
-                    <a href="http://data.infoeducatie.ro/manual/regulament.pdf" target="_blank" rel="noreferrer">aici</a>
-                    , iar criteriile de aplicare a regulamentului sunt disponibile&nbsp;
-                    <a href="http://data.infoeducatie.ro/manual/proceduri-de-aplicare-regulament.pdf" target="_blank" rel="noreferrer">aici</a>.
+                  {t("documents.rulesPrefix")}{" "}
+                  <a
+                    href="http://data.infoeducatie.ro/manual/regulament.pdf"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    {t("documents.rulesLink")}
+                  </a>
+                  , {t("documents.proceduresPrefix")}{" "}
+                  <a
+                    href="http://data.infoeducatie.ro/manual/proceduri-de-aplicare-regulament.pdf"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    {t("documents.rulesLink")}
+                  </a>
+                  .
                 </p>
               </Col>
             </Row>
@@ -147,31 +110,39 @@ export default createLegacyComponent({
           <Row>
             <Col className="block">
               <div className="jury-criteria-desc">
-                  <span className="pink-dash" />
-                    criterii de jurizare
-                  <span className="pink-dash" />
+                <span className="pink-dash" />
+                {t("documents.criteria")}
+                <span className="pink-dash" />
               </div>
               <Row className="jury-criteria-documents">
-                {criteria.map(function(doc) {
-                  return <div key={doc.link} className="jury-criteria">
-                    <div className="jury-criteria-txt">{doc.name}</div>
-                    <div className="jury-criteria-img">
-                      <a
-                        aria-label={`Deschide criteriile pentru ${doc.name}`}
-                        href={doc.link}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <img alt="" height="35" src={DefaultDocument} width="50" />
-                      </a>
+                {criteria.map(([key, link]) => {
+                  const category = t(`categories.${key}`);
+                  return (
+                    <div className="jury-criteria" key={link}>
+                      <div className="jury-criteria-txt">{category}</div>
+                      <div className="jury-criteria-img">
+                        <a
+                          aria-label={t("documents.openCriteria", { category })}
+                          href={link}
+                          rel="noreferrer"
+                          target="_blank"
+                        >
+                          <img
+                            alt=""
+                            height="35"
+                            src={DefaultDocument}
+                            width="50"
+                          />
+                        </a>
+                      </div>
                     </div>
-                  </div>;
+                  );
                 })}
               </Row>
             </Col>
           </Row>
         </Grid>
       </div>
-    </div>;
-  }
-});
+    </div>
+  );
+}

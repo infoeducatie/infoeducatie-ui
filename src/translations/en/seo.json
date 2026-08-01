@@ -1,0 +1,58 @@
+{
+  "home": {
+    "title": "InfoEducație | Digital creation competition",
+    "description": "InfoEducație is Romania's national innovation and digital creation competition for high-school students."
+  },
+  "about": {
+    "title": "About the competition | InfoEducație",
+    "description": "Learn how InfoEducație works, who can participate, and which project categories are available."
+  },
+  "alumni": {
+    "title": "Alumni | InfoEducație",
+    "description": "Meet the InfoEducație alumni community and discover stories from former participants."
+  },
+  "contact": {
+    "title": "Contact | InfoEducație",
+    "description": "Contact the InfoEducație team with questions about the competition, participation, or organization."
+  },
+  "contestEntry": {
+    "title": "Competition entry | InfoEducație",
+    "description": "Register a participant, teacher, or project for the InfoEducație competition."
+  },
+  "jury": {
+    "title": "Jury | InfoEducație",
+    "description": "Meet the jury members and committees evaluating InfoEducație projects."
+  },
+  "participants": {
+    "title": "Participants | InfoEducație",
+    "description": "Explore participants and projects from InfoEducație editions."
+  },
+  "photos": {
+    "title": "Photos | InfoEducație",
+    "description": "Browse photo albums from InfoEducație camps and past editions."
+  },
+  "register": {
+    "title": "Create an account | InfoEducație",
+    "description": "Create an InfoEducație account to participate in the innovation and digital creation competition."
+  },
+  "results": {
+    "title": "Results | InfoEducație",
+    "description": "View project and participant results from InfoEducație editions."
+  },
+  "schedule": {
+    "title": "Schedule | InfoEducație",
+    "description": "Check the schedule for InfoEducație activities, presentations, and judging sessions."
+  },
+  "talks": {
+    "title": "Talks | InfoEducație",
+    "description": "Discover the talks and guests sharing their experience with InfoEducație participants."
+  },
+  "robotics": {
+    "title": "Robotics arena | InfoEducație",
+    "description": "Follow the live state and testing schedule in the InfoEducație robotics arena."
+  },
+  "notFound": {
+    "title": "Page not found | InfoEducație",
+    "description": "The page you requested does not exist. Return to the InfoEducație homepage or use the navigation to continue."
+  }
+}

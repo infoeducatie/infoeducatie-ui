@@ -1,7 +1,17 @@
-const romanianDateTime = new Intl.DateTimeFormat("ro-RO", {
-  dateStyle: "medium",
-  timeStyle: "short",
-});
+const dateTimeFormatters = new Map();
+
+function getDateTimeFormatter(language) {
+  const locale = language === "en" ? "en-GB" : "ro-RO";
+
+  if (!dateTimeFormatters.has(locale)) {
+    dateTimeFormatters.set(locale, new Intl.DateTimeFormat(locale, {
+      dateStyle: "medium",
+      timeStyle: "short",
+    }));
+  }
+
+  return dateTimeFormatters.get(locale);
+}
 
 export function timestampMilliseconds(timestamp) {
   const milliseconds = Date.parse(timestamp);
@@ -48,14 +58,14 @@ export function formatDuration(value) {
   return `${seconds} sec`;
 }
 
-export function formatDateTime(timestamp) {
+export function formatDateTime(timestamp, language = "ro", fallback = "—") {
   const milliseconds = timestampMilliseconds(timestamp);
 
   if (milliseconds === null) {
-    return "Ora nu este stabilită";
+    return fallback;
   }
 
-  return romanianDateTime.format(new Date(milliseconds));
+  return getDateTimeFormatter(language).format(new Date(milliseconds));
 }
 
 export function boundedPercentage(value, total) {

@@ -4,8 +4,9 @@ import request from "@lib/request";
 
 import createLegacyComponent from "@lib/create-legacy-component";
 import { Row, Col, FormControl, FormGroup, Button, ListGroup, ListGroupItem } from "@ui/bootstrap";
+import { withTranslation } from "react-i18next";
 
-export default createLegacyComponent({
+const NewsletterForm = createLegacyComponent({
   displayName: "NewsletterForm",
 
   getInitialState() {
@@ -47,8 +48,7 @@ export default createLegacyComponent({
       <Col xs={12}>
         <ListGroup>
           <ListGroupItem bsStyle="danger">
-            Adresa de email este deja înregistrată sau un email de
-            confirmare a fost deja trimis către tine.
+            {this.props.t("footer.newsletterDuplicate")}
           </ListGroupItem>
         </ListGroup>
       </Col>
@@ -63,7 +63,7 @@ export default createLegacyComponent({
             <Col xs={12}>
               <FormGroup controlId="newsletter-email">
                 <label className="visually-hidden" htmlFor="newsletter-email">
-                  Adresa de email pentru newsletter
+                  {this.props.t("footer.newsletterLabel")}
                 </label>
                 <FormControl
                      aria-describedby="newsletter-description"
@@ -74,7 +74,7 @@ export default createLegacyComponent({
                      autoComplete="email"
                      className="newsletter"
                      bsSize="large"
-                     placeholder="Abonează-te la newsletter"
+                     placeholder={this.props.t("footer.newsletterPlaceholder")}
                      bsStyle={this.validationState()}
                      onChange={this.onEmailChange} />
                 <FormControl.Feedback />
@@ -85,9 +85,11 @@ export default createLegacyComponent({
           <Row>
             <Col xs={12}>
               <p className="visually-hidden" id="newsletter-description">
-                Primești noutăți despre concurs și informații pentru participanți.
+                {this.props.t("footer.newsletterDescription")}
               </p>
-              <Button type="submit" className="newsletter-submit">Abonează-te</Button>
+              <Button type="submit" className="newsletter-submit">
+                {this.props.t("footer.newsletterAction")}
+              </Button>
             </Col>
           </Row>
           <Row className="small-spacing" />
@@ -101,8 +103,7 @@ export default createLegacyComponent({
       <Row className="small-spacing" />
       <Row>
         <Col xs={12}>
-          <p>Ești aproape înscris. Mai trebuie să confirmi înscrierea dând
-             click pe link-ul trimis către tine prin email.</p>
+          <p>{this.props.t("footer.newsletterSuccess")}</p>
         </Col>
       </Row>
       <Row className="small-spacing" />
@@ -144,3 +145,5 @@ export default createLegacyComponent({
     }
   }
 });
+
+export default withTranslation("common")(NewsletterForm);

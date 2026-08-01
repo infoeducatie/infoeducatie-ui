@@ -2,6 +2,7 @@
 
 import createLegacyComponent from "@lib/create-legacy-component";
 import { Grid, Col, Row } from "@ui/bootstrap";
+import { withTranslation } from "react-i18next";
 
 import Header from "./header";
 import JuryDescription from "./jury-description";
@@ -26,9 +27,12 @@ import AdrianaCheres from "../../assets/img/jury/adrianacheres.jpg";
 import DefaultAvatar from "../../assets/img/jury/default.png";
 import DefaultDocument from "../../assets/img/icons/doc.png";
 
-export default createLegacyComponent({
+const Jury = createLegacyComponent({
   displayName: "Jury",
   render() {
+    const editionName = this.props.current.edition.name ||
+      this.props.current.edition.count ||
+      this.props.current.edition.year;
     let presedinte = [
     {"avatar": RazvanDeaconescuAvatar, "name": "Conf. Dr. Ing. Răzvan Diaconescu", "occupation": "conferențiar @ UNȘT Politehnica București"},
     ];
@@ -126,18 +130,18 @@ export default createLegacyComponent({
     ];
 
     var criteria = [
-      {"name": "Educațional", "link": "https://data.infoeducatie.ro/manual/educational.pdf"},
-      {"name": "Multimedia", "link": "https://data.infoeducatie.ro/manual/multimedia.pdf"},
-      {"name": "Roboți", "link": "https://data.infoeducatie.ro/manual/roboti.pdf"},
-      {"name": "Utilitar", "link": "https://data.infoeducatie.ro/manual/utilitar.pdf"},
-      {"name": "Web", "link": "https://data.infoeducatie.ro/manual/web.pdf"}
+      {"name": this.props.t("categories.educational"), "link": "https://data.infoeducatie.ro/manual/educational.pdf"},
+      {"name": this.props.t("categories.multimedia"), "link": "https://data.infoeducatie.ro/manual/multimedia.pdf"},
+      {"name": this.props.t("categories.robots"), "link": "https://data.infoeducatie.ro/manual/roboti.pdf"},
+      {"name": this.props.t("categories.utility"), "link": "https://data.infoeducatie.ro/manual/utilitar.pdf"},
+      {"name": this.props.t("categories.web"), "link": "https://data.infoeducatie.ro/manual/web.pdf"}
     ];
 
     let leadership = [
-      {...presedinte[0], role: "Președinte"},
-      {...presedinteExecutiv[0], role: "Președinte executiv"},
-      {...vicepresedinte[0], role: "Vicepreședinte"},
-      {...vicepresedinteExecutiv[0], role: "Vicepreședinte executiv"},
+      {...presedinte[0], role: this.props.t("jury.roles.president")},
+      {...presedinteExecutiv[0], role: this.props.t("jury.roles.executivePresident")},
+      {...vicepresedinte[0], role: this.props.t("jury.roles.vicePresident")},
+      {...vicepresedinteExecutiv[0], role: this.props.t("jury.roles.executiveVicePresident")},
     ];
 
     return <div className="jury">
@@ -151,8 +155,8 @@ export default createLegacyComponent({
             <Row className="xsmall-spacing" />
             <Row>
               <Col xs={12}>
-                <h1>Juriul InfoEduca&#355;ie </h1>
-                <h2>Ediția {this.props.current.edition.name}</h2>
+                <h1>{this.props.t("jury.title")}</h1>
+                <h2>{this.props.t("edition.label", { edition: editionName })}</h2>
               </Col>
             </Row>
           </Grid>
@@ -163,28 +167,28 @@ export default createLegacyComponent({
 
         <Grid className="white-section">
           <Row>
-            <JuryDescription name="Conducerea juriului" members={leadership}/>
+            <JuryDescription name={this.props.t("jury.leadership")} members={leadership}/>
           </Row>
           <Row>
-            <JuryDescription iconClass="section-icon educational" name="comisia software educațional" members={educational}/>
+            <JuryDescription iconClass="section-icon educational" name={this.props.t("jury.educational")} members={educational}/>
           </Row>
           <Row>
-            <JuryDescription iconClass="section-icon utilitar" name="comisia software utilitar" members={utilitar}/>
+            <JuryDescription iconClass="section-icon utilitar" name={this.props.t("jury.utility")} members={utilitar}/>
           </Row>
           <Row>
-            <JuryDescription iconClass="section-icon web" name="comisia aplicații web" members={web}/>
+            <JuryDescription iconClass="section-icon web" name={this.props.t("jury.web")} members={web}/>
           </Row>
           <Row>
-            <JuryDescription iconClass="section-icon roboti" name="comisia roboți" members={robots}/>
+            <JuryDescription iconClass="section-icon roboti" name={this.props.t("jury.robots")} members={robots}/>
           </Row>
           <Row>
-            <JuryDescription iconClass="section-icon multimedia" name="comisia multimedia" members={media}/>
+            <JuryDescription iconClass="section-icon multimedia" name={this.props.t("jury.multimedia")} members={media}/>
           </Row>
           <Row>
-            <JuryDescription name="comisia tehnică" members={comisiaTehnica}/>
+            <JuryDescription name={this.props.t("jury.technical")} members={comisiaTehnica}/>
           </Row>
           <Row>
-            <JuryDescription name="secretar" members={secretar}/>
+            <JuryDescription name={this.props.t("jury.secretary")} members={secretar}/>
           </Row>
         </Grid>
 
@@ -194,13 +198,13 @@ export default createLegacyComponent({
               <Col className="block">
                 <h2 className="jury-criteria-desc">
                     <span className="pink-dash" />
-                      criterii de jurizare
+                      {this.props.t("jury.criteria")}
                     <span className="pink-dash" />
                 </h2>
                 <div className="jury-criteria-documents">
-                  {criteria.map(function(doc) {
+                  {criteria.map((doc) => {
                     return <a
-                      aria-label={`Deschide criteriile pentru ${doc.name}`}
+                      aria-label={this.props.t("jury.openCriteria", { category: doc.name })}
                       className="jury-criteria"
                       href={doc.link}
                       key={doc.link}
@@ -220,3 +224,5 @@ export default createLegacyComponent({
     </div>;
   }
 });
+
+export default withTranslation("public")(Jury);

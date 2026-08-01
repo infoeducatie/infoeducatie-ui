@@ -1,287 +1,304 @@
 "use strict";
 
-
-import createLegacyComponent from "@lib/create-legacy-component";
-import { Link } from 'react-router-dom';
-import {Grid, Row, Col} from "@ui/bootstrap";
-
-import Header from "./header";
-import CommunityInvite from "./community-invite";
-import NewsContainer from "./news/news-container";
+import { getLocalizedPath } from "@lib/localized-routes";
+import { Col, Grid, Row } from "@ui/bootstrap";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import "../main.less";
-//import PrimariaFocsani from "../../assets/img/sponsors/logoPrimariaFocsani.jpg";
-//import Google from "../../assets/img/sponsors/google.png";
-//import Intel from "../../assets/img/sponsors/intel.png";
-import Micromet from "../../assets/img/sponsors/micromet.jpg";
+import Bitdefender from "../../assets/img/sponsors/bitdefender.jpg";
+import Cisco from "../../assets/img/sponsors/cisco.png";
+import CJVrancea from "../../assets/img/sponsors/logoCJVrancea.jpg";
+import cyberedu from "../../assets/img/sponsors/cyberedu.png";
+import EasyHost from "../../assets/img/sponsors/easyhost.png";
 import Electric from "../../assets/img/sponsors/electric.png";
+import InfoBits from "../../assets/img/sponsors/link_infobits_academy.jpg";
+import Intuitext from "../../assets/img/sponsors/intuitext.gif";
+import leonte from "../../assets/img/sponsors/leonte.png";
+import MEN from "../../assets/img/sponsors/edu.jpg";
+import Micromet from "../../assets/img/sponsors/micromet.jpg";
+import Orange from "../../assets/img/sponsors/orange.png";
 import PajisteSmall from "../../assets/img/pajiste-720.webp";
 import PajisteMedium from "../../assets/img/pajiste-960.webp";
 import Pajiste from "../../assets/img/pajiste.webp";
-
-import Orange from "../../assets/img/sponsors/orange.png";
-import EasyHost from "../../assets/img/sponsors/easyhost.png";
-import Cisco from "../../assets/img/sponsors/cisco.png";
-import Intuitext from "../../assets/img/sponsors/intuitext.gif";
-//import Apdetic from "../../assets/img/sponsors/apdetic.png";
-import Upir from "../../assets/img/sponsors/upir.png";
-import MEN from "../../assets/img/sponsors/edu.jpg";
+import sindicatVrancea from "../../assets/img/sponsors/SindicatVrancea.jpg";
 import UPB from "../../assets/img/sponsors/upb-ro.png";
+import Upir from "../../assets/img/sponsors/upir.png";
 import UVT from "../../assets/img/sponsors/uvt.png";
-//import CloudBase from "../../assets/img/sponsors/cloudbase.png";
-//import iMedicare from "../../assets/img/sponsors/imedicare.png";
-//import eSkills from "../../assets/img/sponsors/eskills.png";
-//import gwc from "../../assets/img/sponsors/girlswhocode.png";
-import leonte from "../../assets/img/sponsors/leonte.png";
-//import altex from "../../assets/img/sponsors/altex.gif";
-//import GInfo from "../../assets/img/sponsors/ginfo.png";
-//import GreenGroup from "../../assets/img/sponsors/greengroup.png";
-import VivaCredit from "../../assets/img/sponsors/vivacredit.png"
-//import OracleAcademy from "../../assets/img/sponsors/academy_wht.gif"
-import Bitdefender from "../../assets/img/sponsors/bitdefender.jpg"
-//import Xpress from "../../assets/img/sponsors/xpress.jpg"
-//import Certsign from "../../assets/img/sponsors/certsign.jpg"
-import CJVrancea from "../../assets/img/sponsors/logoCJVrancea.jpg"
-import InfoBits from "../../assets/img/sponsors/link_infobits_academy.jpg"
-import sindicatVrancea  from "../../assets/img/sponsors/SindicatVrancea.jpg"
-import cyberedu  from "../../assets/img/sponsors/cyberedu.png"
-export default createLegacyComponent({
-  displayName: "Home",
+import VivaCredit from "../../assets/img/sponsors/vivacredit.png";
+import CommunityInvite from "./community-invite";
+import Header from "./header";
+import NewsContainer from "./news/news-container";
 
-  renderCampDate() {
-    let monthNames = ["Ianuarie", "Februarie", "Martie", "Aprilie", "Mai",
-       "Iunie", "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie",
-       "Decembrie"
-    ];
-
-    if (this.props.edition.camp_start_date === undefined) {
-      return "Perioada va fi anunțată";
-    }
-
-    let startDate = new Date(this.props.edition.camp_start_date);
-    let endDate = new Date(this.props.edition.camp_end_date);
-
-    let month = monthNames[endDate.getMonth()];
-    let year = 1900 + endDate.getYear();
-
-    return `${startDate.getDate()} - ${endDate.getDate()} ${month} ${year}`;
+const educationalPartners = [
+  {
+    altKey: "educationMinistry",
+    height: 78,
+    href: "https://www.edu.ro/",
+    image: MEN,
+    width: 156,
   },
+  {
+    altKey: "teachersUnion",
+    height: 70,
+    href: "https://upir.ro/",
+    image: Upir,
+    width: 180,
+  },
+  {
+    altKey: "countyCouncil",
+    height: 100,
+    href: "https://cjvrancea.ro/",
+    image: CJVrancea,
+    width: 205,
+  },
+  {
+    altKey: "politehnica",
+    height: 117,
+    href: "https://upb.ro/",
+    image: UPB,
+    width: 280,
+  },
+  {
+    altKey: "westUniversity",
+    height: 62,
+    href: "https://uvt.ro/",
+    image: UVT,
+    width: 300,
+  },
+];
 
-  render() {
-    return <div className="home">
-        <div className="blue-section-wrapper">
-            <Grid className="blue-section">
-                        <Header isLoggedIn={this.props.isLoggedIn}
-                                current={this.props.current}
-                                changeLanguage={this.props.changeLanguage}
-                                language={this.props.language}
-                                logout={this.props.logout} />
-                <Row>
-                    <Col>
-                        <h1>
-                            InfoEducație
-                        </h1>
+const goldSponsors = [
+  ["Viva Credit", "https://vivacredit.ro/", VivaCredit, 217],
+  ["Bitdefender", "https://bitdefender.com", Bitdefender, 185],
+  ["Orange", "https://orange.ro", Orange, 100],
+  ["Cisco", "https://cisco.com/", Cisco, 183],
+  ["Intuitext", "https://www.intuitext.ro/", Intuitext, 326],
+];
 
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <h2>Olimpiada de inovare și creație digitală</h2>
-                        <p className="tagline">
-                            Ediția&nbsp;
-                            {this.props.current.edition.name}
-                        </p>
-                    </Col>
-                </Row>
-                <Row className="small-spacing" />
-                <Row className="hero-actions">
-                    <Col md={4} mdOffset={2}>
-                        <p className="left-button">
-                            <Link to="/inregistrare" className="cta-link cta-primary">
-                                Înregistrează-te
-                            </Link>
-                        </p>
-                    </Col>
-                    <Col md={4}>
-                        <p className="right-button">
-                            <Link to="/despre" className="cta-link cta-light">
-                                Despre concurs
-                            </Link>
-                        </p>
-                    </Col>
-                </Row>
-            </Grid>
-        </div>
+const silverSponsors = [
+  ["Leonte", "https://leonte.ro/", leonte, 120, 93],
+  ["Easyhost", "https://ro.easyhost.com/", EasyHost, 150],
+  ["InfoBits Academy", "https://ebooks.infobits.ro", InfoBits, 222],
+  ["educationUnion", "https://slivrancea.blogspot.com/", sindicatVrancea, 117],
+  ["CyberEDU", "https://www.cyber-edu.co/", cyberedu, 100],
+  ["Micromet", "https://www.micromet.ro/", Micromet, 533],
+  ["Electric SRL", "https://www.electricsrl.ro/", Electric, 290],
+];
 
-        <CommunityInvite language="ro" />
-
-        <div className="green-section-wrapper">
-          <NewsContainer />
-        </div>
-
-        <div className="gray-section-wrapper">
-            <Grid className="gray-section">
-                <Row className="small-spacing" />
-                <Row>
-                    <Col md={6} mdOffset={6}>
-                        <h2 className="section-heading">Alumnus</h2>
-                        <Row className="small-spacing" />
-                        <p className="quote">InfoEducatie mi-a oferit o
-                         motivație să învăț tehnologii web și să dezvolt
-                         proiectul meu de atunci. Am un sfat pentru
-                         participanți: prezentarea este la fel de importantă
-                         ca lucrarea in sine! Repetați înainte sa veniți în
-                         fața comisiei.</p>
-                        <Row className="small-spacing" />
-                        <h3 className="alumnus-name">Cristian Strat</h3>
-                        <p className="alumnus-position">
-                            Ex Growth Manager @ Twitter
-                        </p>
-                    </Col>
-                </Row>
-                <Row className="small-spacing" />
-            </Grid>
-        </div>
-
-        <div className="yellow-section-wrapper">
-            <div className="yellow-section container-fluid">
-                <Row>
-                    <Col md={4} mdOffset={2} className="text middle-align">
-                        <div className="wrapper-for-flexbox">
-                            <h2 className="location-title">Focșani</h2>
-                            <p className="data">
-                                <span className="pink-dash"></span>
-                                {this.renderCampDate()}
-                                <span className="pink-dash"></span>
-                            </p>
-                            <p className="edition">Ediția {this.props.current.edition.count}</p>
-                            <Row className="small-spacing" />
-                            <p>
-                                <Link to="/poze"
-                                   className="cta-link cta-dark">
-                                    Mai multe poze
-                                </Link>
-                            </p>
-                        </div>
-                    </Col>
-                    <Col md={6} className="grass">
-                      <img
-                        alt="Tabăra InfoEducație din Focșani"
-                        decoding="async"
-                        height="998"
-                        loading="lazy"
-                        src={Pajiste}
-                        srcSet={`${PajisteSmall} 720w, ${PajisteMedium} 960w, ${Pajiste} 1440w`}
-                        sizes="(min-width: 992px) 50vw, 100vw"
-                        width="1440"
-                      />
-                    </Col>
-                </Row>
-            </div>
-        </div>
-
-        <div className="sponsors-section-wrapper">
-            <Grid className="sponsors-section">
-
-            <Row className="small-spacing" />
-            <Row>
-                <Col xs={12}>
-                    <h2>Parteneri educaționali și finanțatori</h2>
-                </Col>
-            </Row>
-
-            <Row>
-                <Col xs={12}>
-                    <div className="logos">
-                        <a href="https://www.edu.ro/" target="_blank" rel="noreferrer">
-                          <img alt="Ministerul Educației" decoding="async" height="78" loading="lazy" src={MEN} width="156" />
-                        </a>
-                        <a href="https://upir.ro/" target="_blank" rel="noreferrer">
-                          <img alt="Uniunea Profesorilor de Informatică din România" decoding="async" height="70" loading="lazy" src={Upir} width="180" />
-                        </a>
-                        <a href="https://cjvrancea.ro/" target="_blank" rel="noreferrer">
-                          <img alt="Consiliul Județean Vrancea" decoding="async" height="100" loading="lazy" src={CJVrancea} width="205" />
-                        </a>
-                        <a href="https://upb.ro/" target="_blank" rel="noreferrer">
-                          <img alt="Universitatea Națională de Știință și Tehnologie POLITEHNICA București" decoding="async" height="117" loading="lazy" src={UPB} width="280" />
-                        </a>
-                        <a href="https://uvt.ro/" target="_blank" rel="noreferrer">
-                          <img alt="Universitatea de Vest din Timișoara" decoding="async" height="62" loading="lazy" src={UVT} width="300" />
-                        </a>
-                    </div>
-                </Col>
-            </Row>
-
-                <Row className="small-spacing" />
-               <Row>
-                    <Col xs={12}>
-                        <h3>Sponsori Gold</h3>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col xs={12}>
-                        <div className="logos">
-                          <a href="https://vivacredit.ro/" target="_blank" rel="noreferrer">
-                            <img alt="Viva Credit" decoding="async" height="100" loading="lazy" src={VivaCredit} width="217" />
-                          </a>
-                          <a href="https://bitdefender.com" target="_blank" rel="noreferrer">
-                            <img alt="Bitdefender" decoding="async" height="100" loading="lazy" src={Bitdefender} width="185" />
-                          </a>
-                          <a href="https://orange.ro" target="_blank" rel="noreferrer">
-                            <img alt="Orange" decoding="async" height="100" loading="lazy" src={Orange} width="100" />
-                          </a>
-                          <a href="https://cisco.com/" target="_blank" rel="noreferrer">
-                            <img alt="Cisco" decoding="async" height="100" loading="lazy" src={Cisco} width="183" />
-                          </a>
-                          <a href="https://www.intuitext.ro/" target="_blank" rel="noreferrer">
-                            <img alt="Intuitext" decoding="async" height="100" loading="lazy" src={Intuitext} width="326" />
-                          </a>
-                        </div>
-                    </Col>
-                </Row>
-
-                <Row className="small-spacing" />
-                <Row>
-                    <Col xs={12}>
-                        <h3>Sponsori Silver</h3>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col xs={12}>
-                        <div className="logos">
-                          
-                            <a href="https://leonte.ro/" target="_blank" rel="noreferrer">
-                              <img alt="Leonte" decoding="async" height="93" loading="lazy" src={leonte} width="120" />
-                            </a>
-							<a href="https://ro.easyhost.com/" target="_blank" rel="noreferrer">
-                              <img alt="Easyhost" decoding="async" height="100" loading="lazy" src={EasyHost} width="150" />
-                            </a>
-
-                            <a href="https://ebooks.infobits.ro" target="_blank" rel="noreferrer">
-                              <img alt="InfoBits Academy" decoding="async" height="100" loading="lazy" src={InfoBits} width="222" />
-                            </a>
-                            <a href="https://slivrancea.blogspot.com/" target="_blank" rel="noreferrer">
-                              <img alt="Sindicatul Liber din Învățământ Vrancea" decoding="async" height="100" loading="lazy" src={sindicatVrancea} width="117" />
-                            </a>
-                            <a href="https://www.cyber-edu.co/" target="_blank" rel="noreferrer">
-                              <img alt="CyberEDU" decoding="async" height="100" loading="lazy" src={cyberedu} width="100" />
-                            </a>
-                            <a href="https://www.micromet.ro/" target="_blank" rel="noreferrer">
-                              <img alt="Micromet" decoding="async" height="100" loading="lazy" src={Micromet} width="533" />
-                            </a>
-                            <a href="https://www.electricsrl.ro/" target="_blank" rel="noreferrer">
-                              <img alt="Electric SRL" decoding="async" height="100" loading="lazy" src={Electric} width="290" />
-                            </a>
-
-                        </div>
-                    </Col>
-                </Row>
-
-               
-
-
-            </Grid>
-        </div>
-    </div>;
+function formatCampDate(edition, language, t) {
+  if (!edition.camp_start_date || !edition.camp_end_date) {
+    return t("camp.datePending");
   }
-});
+
+  const start = new Date(edition.camp_start_date);
+  const end = new Date(edition.camp_end_date);
+  const locale = language === "en" ? "en-GB" : "ro-RO";
+  const month = new Intl.DateTimeFormat(locale, { month: "long" });
+
+  if (start.getMonth() === end.getMonth()) {
+    return `${start.getDate()}–${end.getDate()} ${month.format(end)} ${end.getFullYear()}`;
+  }
+
+  return (
+    `${start.getDate()} ${month.format(start)} – ` +
+    `${end.getDate()} ${month.format(end)} ${end.getFullYear()}`
+  );
+}
+
+function SponsorLogo({ alt, height = 100, href, image, width }) {
+  return (
+    <a href={href} rel="noreferrer" target="_blank">
+      <img
+        alt={alt}
+        decoding="async"
+        height={height}
+        loading="lazy"
+        src={image}
+        width={width}
+      />
+    </a>
+  );
+}
+
+export default function Home(props) {
+  const { t } = useTranslation("home");
+  const { current, language } = props;
+
+  return (
+    <div className={`home ${language === "en" ? "english" : ""}`}>
+      <div className="blue-section-wrapper">
+        <Grid className="blue-section">
+          <Header {...props} />
+          <Row>
+            <Col xs={12}>
+              <h1>{t("hero.title")}</h1>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12}>
+              <h2>{t("hero.subtitle")}</h2>
+              <p className="tagline">
+                {t("hero.edition", { count: current.edition.count })}
+              </p>
+            </Col>
+          </Row>
+          <Row className="small-spacing" />
+          <Row className="hero-actions">
+            <Col md={4} mdOffset={2}>
+              <p className="left-button">
+                <Link
+                  className="cta-link cta-primary"
+                  to={getLocalizedPath("register")}
+                >
+                  {t("hero.register")}
+                </Link>
+              </p>
+            </Col>
+            <Col md={4}>
+              <p className="right-button">
+                <Link
+                  className="cta-link cta-light"
+                  to={getLocalizedPath("about")}
+                >
+                  {t("hero.about")}
+                </Link>
+              </p>
+            </Col>
+          </Row>
+        </Grid>
+      </div>
+
+      <CommunityInvite />
+
+      <div className="green-section-wrapper">
+        <NewsContainer />
+      </div>
+
+      <div className="gray-section-wrapper">
+        <Grid className="gray-section">
+          <Row className="small-spacing" />
+          <Row>
+            <Col md={6} mdOffset={6}>
+              <h2 className="section-heading">{t("alumnus.eyebrow")}</h2>
+              <Row className="small-spacing" />
+              <p className="quote">{t("alumnus.quote")}</p>
+              <Row className="small-spacing" />
+              <h3 className="alumnus-name">{t("alumnus.name")}</h3>
+              <p className="alumnus-position">{t("alumnus.role")}</p>
+            </Col>
+          </Row>
+          <Row className="small-spacing" />
+        </Grid>
+      </div>
+
+      <div className="yellow-section-wrapper">
+        <div className="yellow-section container-fluid">
+          <Row>
+            <Col className="text middle-align" md={4} mdOffset={2}>
+              <div className="wrapper-for-flexbox">
+                <h2 className="location-title">{t("camp.location")}</h2>
+                <p className="data">
+                  <span className="pink-dash" />
+                  {formatCampDate(current.edition, language, t)}
+                  <span className="pink-dash" />
+                </p>
+                <p className="edition">
+                  {t("camp.edition", { count: current.edition.count })}
+                </p>
+                <Row className="small-spacing" />
+                <p>
+                  <Link
+                    className="cta-link cta-dark"
+                    to={getLocalizedPath("photos")}
+                  >
+                    {t("camp.photos")}
+                  </Link>
+                </p>
+              </div>
+            </Col>
+            <Col className="grass" md={6}>
+              <img
+                alt={t("camp.imageAlt")}
+                decoding="async"
+                height="998"
+                loading="lazy"
+                sizes="(min-width: 992px) 50vw, 100vw"
+                src={Pajiste}
+                srcSet={`${PajisteSmall} 720w, ${PajisteMedium} 960w, ${Pajiste} 1440w`}
+                width="1440"
+              />
+            </Col>
+          </Row>
+        </div>
+      </div>
+
+      <div className="sponsors-section-wrapper">
+        <Grid className="sponsors-section">
+          <Row className="small-spacing" />
+          <Row>
+            <Col xs={12}>
+              <h2>{t("sponsors.partners")}</h2>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12}>
+              <div className="logos">
+                {educationalPartners.map((partner) => (
+                  <SponsorLogo
+                    {...partner}
+                    alt={t(`sponsors.${partner.altKey}`)}
+                    key={partner.href}
+                  />
+                ))}
+              </div>
+            </Col>
+          </Row>
+          <Row className="small-spacing" />
+          <Row>
+            <Col xs={12}>
+              <h3>{t("sponsors.gold")}</h3>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12}>
+              <div className="logos">
+                {goldSponsors.map(([alt, href, image, width]) => (
+                  <SponsorLogo
+                    alt={alt}
+                    href={href}
+                    image={image}
+                    key={href}
+                    width={width}
+                  />
+                ))}
+              </div>
+            </Col>
+          </Row>
+          <Row className="small-spacing" />
+          <Row>
+            <Col xs={12}>
+              <h3>{t("sponsors.silver")}</h3>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12}>
+              <div className="logos">
+                {silverSponsors.map(([alt, href, image, width, height]) => (
+                  <SponsorLogo
+                    alt={alt === "educationUnion" ? t(`sponsors.${alt}`) : alt}
+                    height={height}
+                    href={href}
+                    image={image}
+                    key={href}
+                    width={width}
+                  />
+                ))}
+              </div>
+            </Col>
+          </Row>
+        </Grid>
+      </div>
+    </div>
+  );
+}

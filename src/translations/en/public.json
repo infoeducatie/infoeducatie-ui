@@ -1,0 +1,104 @@
+{
+  "edition": {
+    "label": "{{edition}} edition",
+    "displayed": "Displayed edition",
+    "loading": "Loading editions..."
+  },
+  "categories": {
+    "all": "All",
+    "web": "Web",
+    "educational": "Educational",
+    "robots": "Robotics",
+    "utility": "Utility",
+    "multimedia": "Multimedia"
+  },
+  "alumni": {
+    "title": "InfoEducation Alumni",
+    "subtitle": "Romania's IT generation",
+    "participatingEditions": "Editions attended",
+    "loading": "Loading alumni...",
+    "error": "The alumni list is currently unavailable."
+  },
+  "schedule": {
+    "title": "InfoEducation Schedule",
+    "contentTitle": "Schedule for the {{edition}} edition",
+    "description": "Activities and times are kept up to date in the document below.",
+    "open": "Open schedule",
+    "documentTitle": "InfoEducation schedule"
+  },
+  "talks": {
+    "title": "InfoEducation Talks",
+    "loading": "Loading talks...",
+    "error": "Talks are currently unavailable.",
+    "discuss": "Discuss on the forum",
+    "authorPhoto": "Photo of {{name}}"
+  },
+  "results": {
+    "title": "InfoEducation Results",
+    "loading": "Loading results...",
+    "error": "Results could not be loaded. Please try again in a few moments.",
+    "ranking": "Project ranking",
+    "empty": "There are no results in the selected category.",
+    "columns": {
+      "prize": "prize",
+      "project": "project name",
+      "contestant": "contestant",
+      "school": "school",
+      "county": "county",
+      "teacher": "teacher",
+      "score": "score",
+      "open": "open",
+      "total": "total"
+    }
+  },
+  "contestants": {
+    "title": "InfoEducation Participants",
+    "serverError": "The data could not be retrieved from the server.",
+    "projectList": "Project list",
+    "empty": "No projects match the selected filters.",
+    "participants": "Participants",
+    "projects": "Projects",
+    "counties": "Counties",
+    "searchLabel": "Search projects",
+    "searchPlaceholder": "Title, participant, or county",
+    "shown_one": "{{count}} project shown",
+    "shown_other": "{{count}} projects shown",
+    "gridAria": "Show projects as cards",
+    "gridTitle": "Card view",
+    "tableAria": "Show projects as a table",
+    "tableTitle": "Table view",
+    "filter": "Filter: {{category}}",
+    "columns": {
+      "county": "county",
+      "project": "project title",
+      "contestant": "contestant",
+      "category": "category",
+      "comments": "comments"
+    }
+  },
+  "jury": {
+    "title": "InfoEducation Jury",
+    "leadership": "Jury leadership",
+    "educational": "educational software jury",
+    "utility": "utility software jury",
+    "web": "web applications jury",
+    "robots": "robotics jury",
+    "multimedia": "multimedia jury",
+    "technical": "technical committee",
+    "secretary": "secretary",
+    "criteria": "judging criteria",
+    "openCriteria": "Open the criteria for {{category}}",
+    "roles": {
+      "president": "President",
+      "executivePresident": "Executive president",
+      "vicePresident": "Vice president",
+      "executiveVicePresident": "Executive vice president"
+    }
+  },
+  "news": {
+    "title": "News",
+    "readMore": "Read more...",
+    "previous": "previous",
+    "next": "next"
+  }
+}

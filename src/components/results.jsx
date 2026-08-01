@@ -3,6 +3,7 @@
 import _ from "lodash";
 import createLegacyComponent from "@lib/create-legacy-component";
 import { Grid, Col, Row, Table } from "@ui/bootstrap";
+import { withTranslation } from "react-i18next";
 
 import ajax from "../lib/ajax"
 import EditionSelector from "./edition-selector"
@@ -47,7 +48,7 @@ function normalizeProject(project) {
 }
 
 
-export default createLegacyComponent({
+const Results = createLegacyComponent({
   displayName: "Results",
 
   getInitialState: function() {
@@ -107,12 +108,12 @@ export default createLegacyComponent({
     });
 
     if (this.state.isLoading) {
-      return <p className="results-status" role="status">Se încarcă rezultatele...</p>;
+      return <p className="results-status" role="status">{this.props.t("results.loading")}</p>;
     }
 
     if (this.state.hasError) {
       return <p className="results-status error" role="alert">
-        Rezultatele nu au putut fi încărcate. Reîncearcă în câteva momente.
+        {this.props.t("results.error")}
       </p>;
     }
 
@@ -120,7 +121,7 @@ export default createLegacyComponent({
       <Row>
         <Col md={12}>
           <h2 className="visually-hidden" id="results-table-heading">
-            Clasamentul proiectelor
+            {this.props.t("results.ranking")}
           </h2>
           <div
             aria-labelledby="results-table-heading"
@@ -131,54 +132,54 @@ export default createLegacyComponent({
             <Table striped hover>
               <thead>
                 <tr>
-                  <th>premiul</th>
-                  <th className="left">numele lucrării</th>
-                  <th className="left">concurent</th>
-                  <th className="left hidden-sm hidden-xs">liceu</th>
-                  <th className="left hidden-sm hidden-xs">județ</th>
-                  <th className="left hidden-sm hidden-xs">profesor</th>
-                  <th className="hidden-sm hidden-xs">punctaj</th>
-                  <th className="hidden-sm hidden-xs">open</th>
-                  <th>total</th>
+                  <th>{this.props.t("results.columns.prize")}</th>
+                  <th className="left">{this.props.t("results.columns.project")}</th>
+                  <th className="left">{this.props.t("results.columns.contestant")}</th>
+                  <th className="left hidden-sm hidden-xs">{this.props.t("results.columns.school")}</th>
+                  <th className="left hidden-sm hidden-xs">{this.props.t("results.columns.county")}</th>
+                  <th className="left hidden-sm hidden-xs">{this.props.t("results.columns.teacher")}</th>
+                  <th className="hidden-sm hidden-xs">{this.props.t("results.columns.score")}</th>
+                  <th className="hidden-sm hidden-xs">{this.props.t("results.columns.open")}</th>
+                  <th>{this.props.t("results.columns.total")}</th>
                 </tr>
               </thead>
               <tbody>
                 {projects.map(function(project) {
                   return <tr key={project.id}>
-                    {this.renderTableTd(project.prize, project.discourse_url, "rank", "Premiul")}
-                    {this.renderTableTd(project.title, project.discourse_url, "", "Numele lucrării")}
+                    {this.renderTableTd(project.prize, project.discourse_url, "rank", this.props.t("results.columns.prize"))}
+                    {this.renderTableTd(project.title, project.discourse_url, "", this.props.t("results.columns.project"))}
                     {this.renderTableUl(project.contestants,
                                         project.discourse_url,
                                         "",
                                         "author",
-                                        "Concurent")}
+                                        this.props.t("results.columns.contestant"))}
                     {this.renderTableUl(project.schools,
                                         project.discourse_url,
                                         "hidden-sm hidden-xs",
                                         "school-name",
-                                        "Liceu")}
+                                        this.props.t("results.columns.school"))}
                     {this.renderTableUl(project.counties,
                                         project.discourse_url,
                                         "hidden-sm hidden-xs",
                                         "county",
-                                        "Județ")}
+                                        this.props.t("results.columns.county"))}
                     {this.renderTableUl(project.mentoring_teachers,
                                         project.discourse_url,
                                         "hidden-sm hidden-xs",
                                         "county",
-                                        "Profesor")}
+                                        this.props.t("results.columns.teacher"))}
                     {this.renderTableTd(formatScore(project.score),
                                         project.discourse_url,
                                         "hidden-sm hidden-xs score",
-                                        "Punctaj")}
+                                        this.props.t("results.columns.score"))}
                     {this.renderTableTd(formatScore(project.extra_score),
                                         project.discourse_url,
                                         "hidden-sm hidden-xs score",
-                                        "Open")}
+                                        this.props.t("results.columns.open"))}
                     {this.renderTableTd(formatScore(project.total_score),
                                         project.discourse_url,
                                         "score",
-                                        "Total")}
+                                        this.props.t("results.columns.total"))}
                   </tr>;
                 }.bind(this))}
               </tbody>
@@ -186,7 +187,7 @@ export default createLegacyComponent({
           </div>
           {!projects.length ? (
             <p className="results-status" role="status">
-              Nu există rezultate pentru categoria selectată.
+              {this.props.t("results.empty")}
             </p>
           ) : null}
         </Col>
@@ -230,7 +231,7 @@ export default createLegacyComponent({
           <Row className="xsmall-spacing" />
           <Row>
             <Col>
-              <h1>Rezultate InfoEducație</h1>
+              <h1>{this.props.t("results.title")}</h1>
               {this.state.currentEdition.name ? <h2>{this.state.currentEdition.name}</h2> : null}
             </Col>
           </Row>
@@ -244,11 +245,11 @@ export default createLegacyComponent({
           <Col xs={12}>
             <div className="edition-filter">
             <label className="control-label" htmlFor="results-edition">
-              Ediția afișată
+              {this.props.t("edition.displayed")}
             </label>
             <EditionSelector onCallback={this.onEditionChange}
                              id="results-edition"
-                             ariaLabel="Ediția afișată"
+                             ariaLabel={this.props.t("edition.displayed")}
                              filter="has_results" />
             </div>
           </Col>
@@ -259,31 +260,31 @@ export default createLegacyComponent({
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="web" />
-            <p>Web</p>
+            <p>{this.props.t("categories.web")}</p>
           </Col>
           <Col sm={1} xs={2}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="educational" />
-            <p>Educațional</p>
+            <p>{this.props.t("categories.educational")}</p>
           </Col>
           <Col sm={1} xs={2}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="roboti" />
-            <p>Roboți</p>
+            <p>{this.props.t("categories.robots")}</p>
           </Col>
           <Col sm={1} xs={2}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="utilitar" />
-            <p>Utilitar</p>
+            <p>{this.props.t("categories.utility")}</p>
           </Col>
           <Col sm={1} xs={2}>
             <FilterIcon currentCategory={this.state.currentCategory}
                         toggleCategory={this.toggleCategory}
                         category="multimedia" />
-            <p>Multimedia</p>
+            <p>{this.props.t("categories.multimedia")}</p>
           </Col>
         </Row>
         <Row className="small-spacing" />
@@ -315,3 +316,5 @@ export default createLegacyComponent({
     });
   }
 });
+
+export default withTranslation("public")(Results);

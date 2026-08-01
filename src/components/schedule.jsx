@@ -2,16 +2,21 @@
 
 import createLegacyComponent from "@lib/create-legacy-component";
 import { ExternalLink } from "lucide-react";
+import { withTranslation } from "react-i18next";
 
 import { Row, Col, Grid } from "@ui/bootstrap";
 import Header from "./header";
 
 const scheduleUrl = "https://docs.google.com/document/d/e/2PACX-1vRRrkfFWKoIkJ_XrGeuXJEExZGbfQrryhLehwAQ-mRfu_MkNds0X3nF0JuXBVx69_a-zcqgO3SGb0XD/pub?embedded=true";
 
-export default createLegacyComponent({
+const SchedulePage = createLegacyComponent({
   displayName: "SchedulePage",
 
   render() {
+    const editionName = this.props.edition.name ||
+      this.props.edition.count ||
+      this.props.edition.year;
+
     return <div className="schedule">
       <div className="blue-section-wrapper">
         <Grid className="blue-section">
@@ -27,8 +32,8 @@ export default createLegacyComponent({
           <Row>
             <Row className="small-spacing" />
             <Col xs={12}>
-              <h1>Program InfoEducație</h1>
-              <h2>Ediția {this.props.edition.name}</h2>
+              <h1>{this.props.t("schedule.title")}</h1>
+              <h2>{this.props.t("edition.label", { edition: editionName })}</h2>
             </Col>
           </Row>
           <Row className="big-spacing" />
@@ -39,16 +44,16 @@ export default createLegacyComponent({
           <Col xs={12} md={10} mdOffset={1}>
              <div className="schedule-heading">
                <div>
-                 <h2 className="content-heading">Programul ediției {this.props.edition.name}</h2>
-                 <p>Activitățile și orele sunt actualizate în documentul de mai jos.</p>
+                 <h2 className="content-heading">{this.props.t("schedule.contentTitle", { edition: editionName })}</h2>
+                 <p>{this.props.t("schedule.description")}</p>
                </div>
                <a className="schedule-external" href={scheduleUrl} target="_blank" rel="noreferrer">
-                 Deschide programul <ExternalLink aria-hidden="true" size={18} />
+                 {this.props.t("schedule.open")} <ExternalLink aria-hidden="true" size={18} />
                </a>
              </div>
              <iframe
                className="schedule-document"
-               title="Program InfoEducatie"
+               title={this.props.t("schedule.documentTitle")}
                loading="lazy"
                referrerPolicy="strict-origin-when-cross-origin"
                src={scheduleUrl}
@@ -59,3 +64,5 @@ export default createLegacyComponent({
     </div>;
   }
 });
+
+export default withTranslation("public")(SchedulePage);

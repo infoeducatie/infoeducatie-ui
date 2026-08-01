@@ -1,0 +1,35 @@
+{
+  "fields": {
+    "email": "Email address",
+    "password": "Password",
+    "firstName": "First name",
+    "lastName": "Last name"
+  },
+  "signIn": {
+    "title": "Sign in",
+    "submit": "Sign in",
+    "error": "Sign-in failed!",
+    "link": "sign in here",
+    "noAccountPrefix": "If you do not have an account,",
+    "createAccount": "create one here",
+    "forgotPrefix": "If you forgot your password,",
+    "forgotLink": "reset it here"
+  },
+  "register": {
+    "title": "Create an account",
+    "existingAccount": "Already have an account? You can",
+    "showPasswords": "Show passwords",
+    "hidePasswords": "Hide passwords",
+    "passwordPlaceholder": "At least 8 characters",
+    "passwordRule": "The password must contain at least 8 characters",
+    "passwordHelp": "Use at least 8 characters.",
+    "passwordConfirmation": "Confirm password",
+    "passwordConfirmationPlaceholder": "Repeat the password",
+    "newsletter": "Subscribe to the newsletter (competition news and useful information for participants)",
+    "submitting": "Submitting...",
+    "submit": "Create account",
+    "genericError": "The form could not be submitted.",
+    "passwordMismatch": "The password and confirmation do not match.",
+    "success": "Check your email for the confirmation message."
+  }
+}

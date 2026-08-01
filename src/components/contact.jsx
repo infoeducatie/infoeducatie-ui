@@ -1,33 +1,35 @@
 "use strict";
 
-import createLegacyComponent from "@lib/create-legacy-component";
-
-import { Row, Col, Grid } from "@ui/bootstrap";
-import Header from "./header";
+import { Col, Grid, Row } from "@ui/bootstrap";
+import { useTranslation } from "react-i18next";
 
 import "../main.less";
+import Header from "./header";
 
+const juryContacts = [
+  ["educational", "educational@infoeducatie.ro"],
+  ["multimedia", "multimedia@infoeducatie.ro"],
+  ["utility", "utilitar@infoeducatie.ro"],
+  ["robots", "roboti@infoeducatie.ro"],
+  ["web", "web@infoeducatie.ro"],
+];
 
-export default createLegacyComponent({
-  displayName: "ContactPage",
+export default function Contact(props) {
+  const { t } = useTranslation("contact");
 
-  render() {
-    return <div className="contact">
+  return (
+    <div className="contact">
       <div className="blue-section-wrapper">
         <Grid className="blue-section">
           <Row>
             <Col xs={12}>
-              <Header isLoggedIn={this.props.isLoggedIn}
-                      current={this.props.current}
-                      changeLanguage={this.props.changeLanguage}
-                      language={this.props.language}
-                      logout={this.props.logout} />
+              <Header {...props} />
             </Col>
           </Row>
           <Row>
             <Row className="small-spacing" />
             <Col xs={12}>
-              <h1>Contact</h1>
+              <h1>{t("title")}</h1>
             </Col>
           </Row>
           <Row className="big-spacing" />
@@ -35,36 +37,51 @@ export default createLegacyComponent({
       </div>
       <Grid className="white-section">
         <Row>
-          <Col mdOffset={1} md={10}>
+          <Col md={10} mdOffset={1}>
             <div className="contact-details">
-              <section className="contact-group" aria-labelledby="contact-general">
-                <h2 id="contact-general" className="content-heading">Echipa InfoEducație</h2>
+              <section
+                aria-labelledby="contact-general"
+                className="contact-group"
+              >
+                <h2 className="content-heading" id="contact-general">
+                  {t("team")}
+                </h2>
                 <ul className="contact-list">
                   <li>
-                    <span>Organizare</span>
-                    <a href="mailto:contact@infoeducatie.ro">contact@infoeducatie.ro</a>
+                    <span>{t("organization")}</span>
+                    <a href="mailto:contact@infoeducatie.ro">
+                      contact@infoeducatie.ro
+                    </a>
                     <small>Emil Onea</small>
                   </li>
                   <li>
-                    <span>Website</span>
-                    <a href="mailto:ping@infoeducatie.ro">ping@infoeducatie.ro</a>
+                    <span>{t("website")}</span>
+                    <a href="mailto:ping@infoeducatie.ro">
+                      ping@infoeducatie.ro
+                    </a>
                   </li>
                 </ul>
               </section>
-              <section className="contact-group" aria-labelledby="contact-jury">
-                <h2 id="contact-jury" className="content-heading">Juriu</h2>
+              <section
+                aria-labelledby="contact-jury"
+                className="contact-group"
+              >
+                <h2 className="content-heading" id="contact-jury">
+                  {t("jury")}
+                </h2>
                 <ul className="contact-list">
-                  <li><span>Software educațional</span><a href="mailto:educational@infoeducatie.ro">educational@infoeducatie.ro</a></li>
-                  <li><span>Multimedia</span><a href="mailto:multimedia@infoeducatie.ro">multimedia@infoeducatie.ro</a></li>
-                  <li><span>Software utilitar</span><a href="mailto:utilitar@infoeducatie.ro">utilitar@infoeducatie.ro</a></li>
-                  <li><span>Roboți</span><a href="mailto:roboti@infoeducatie.ro">roboti@infoeducatie.ro</a></li>
-                  <li><span>Web</span><a href="mailto:web@infoeducatie.ro">web@infoeducatie.ro</a></li>
+                  {juryContacts.map(([key, email]) => (
+                    <li key={email}>
+                      <span>{t(key)}</span>
+                      <a href={`mailto:${email}`}>{email}</a>
+                    </li>
+                  ))}
                 </ul>
               </section>
             </div>
           </Col>
         </Row>
       </Grid>
-    </div>;
-  }
-});
+    </div>
+  );
+}

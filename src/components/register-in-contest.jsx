@@ -5,6 +5,7 @@ import request from "@lib/request";
 import createLegacyComponent from "@lib/create-legacy-component";
 import ctx from "classnames";
 import { Link } from "react-router-dom";
+import { withTranslation } from "react-i18next";
 import { Grid, Col, Row, PanelGroup, Panel, ListGroup, ListGroupItem } from "@ui/bootstrap";
 
 import Header from "./header";
@@ -16,7 +17,7 @@ import RegisterFinish from "./register-in-contest/register-finish"
 import RegisterTeacher from "./register-in-contest/register-teacher"
 import RegisterAdditionalWrapper from "./register-in-contest/register-additional-wrapper"
 
-export default createLegacyComponent({
+const RegisterInContest = createLegacyComponent({
   displayName: "RegisterInContest",
 
   getDefaultProps() {
@@ -91,7 +92,7 @@ export default createLegacyComponent({
 
     if (this.props.current.is_teacher) {
       contestantForm = <p className="alert alert-warning">
-          Sunteți deja înregistrat.
+          {this.props.t("alreadyRegistered")}
       </p>;
 
     } else if (this.state.activeContestantForm &&
@@ -104,37 +105,37 @@ export default createLegacyComponent({
                       activeKey={this.state.activePanelKey}
                       accordion>
           <p className="alert alert-warning">
-            Înscrierile se desfășoară în perioada <br />
+            {this.props.t("period")} <br />
             {startDate} - {endDate}.
           </p>
 
-          <Panel header="Înregistrare Concurent"
+          <Panel header={this.props.t("steps.contestant")}
                  eventKey="1"
                  bsStyle={this._getPanelStyle(1)}>
             {this.renderFormOrMessage(this.renderContestantForm, 1)}
           </Panel>
-          <Panel header="Înregistrare Proiect"
+          <Panel header={this.props.t("steps.project")}
                  eventKey="2"
                  bsStyle={this._getPanelStyle(2)}>
             {this.renderError()}
             {this.renderFormOrMessage(this.renderProjectForm, 2)}
           </Panel>
 
-          <Panel header="Adăugare Capturi Ecran"
+          <Panel header={this.props.t("steps.screenshots")}
                  eventKey="3"
                  bsStyle={this._getPanelStyle(3)}>
             {this.renderFormOrMessage(this.renderScreenshotsForm, 3)}
             {this.renderError()}
           </Panel>
 
-          <Panel header="Adăugare Coechipier"
+          <Panel header={this.props.t("steps.teammate")}
                  eventKey="4"
                  bsStyle={this._getPanelStyle(4)}>
             {this.renderFormOrMessage(this.renderAdditonalForm, 4)}
             {this.renderError()}
           </Panel>
 
-          <Panel header="Finalizare"
+          <Panel header={this.props.t("steps.finish")}
                  eventKey="5"
                  bsStyle={this._getPanelStyle(5)}>
             {this.renderFormOrMessage(this.renderFinishForm, 5)}
@@ -147,9 +148,9 @@ export default createLegacyComponent({
                !this.props.current.is_registration_open) {
       contestantForm = (
         <div className="registration-closed" role="status">
-          <h2>Înscrierile s-au încheiat</h2>
-          <p>Proiectele aprobate pentru ediția curentă sunt disponibile în lista participanților.</p>
-          <Link className="registration-closed-link" to="/participanti">Vezi participanții</Link>
+          <h2>{this.props.t("closedTitle")}</h2>
+          <p>{this.props.t("closedDescription")}</p>
+          <Link className="registration-closed-link" to="/participanti">{this.props.t("viewParticipants")}</Link>
         </div>
       );
     }
@@ -176,12 +177,12 @@ export default createLegacyComponent({
                   logout={this.props.logout} />
           <Row>
             <Col xs={12}>
-              <h1>Participă la InfoEducație</h1>
+              <h1>{this.props.t("title")}</h1>
             </Col>
           </Row>
           <Row>
             <Col xs={12}>
-              <h2>Alege rolul și completează pașii de înscriere</h2>
+              <h2>{this.props.t("subtitle")}</h2>
             </Col>
           </Row>
         </Grid>
@@ -192,20 +193,20 @@ export default createLegacyComponent({
           <Col md={6} mdOffset={3}
                sm={8} smOffset={2}
                xs={12}>
-            <div className="forms-selection" role="group" aria-label="Tipul înscrierii">
+            <div className="forms-selection" role="group" aria-label={this.props.t("typeLabel")}>
               <button className={contestantsClass}
                       type="button"
                       aria-controls="registration-panel"
                       aria-pressed={this.state.activeContestantForm}
                       onClick={this.activeContestantForm}>
-                Concurenți
+                {this.props.t("contestants")}
               </button>
               <button className={teachersClass}
                       type="button"
                       aria-controls="registration-panel"
                       aria-pressed={this.state.activeTeacherForm}
                       onClick={this.activeTeacherForm}>
-                Profesori
+                {this.props.t("teachers")}
               </button>
             </div>
           </Col>
@@ -234,33 +235,33 @@ export default createLegacyComponent({
                       activeKey={this.state.activePanelKey}
                       accordion>
 
-        <Panel header="Înregistrare Concurent"
+        <Panel header={this.props.t("steps.contestant")}
                eventKey="1"
                bsStyle={this._getPanelStyle(1)}>
           {this.renderFormOrMessage(this.renderContestantForm, 1)}
         </Panel>
-        <Panel header="Înregistrare Proiect"
+        <Panel header={this.props.t("steps.project")}
                eventKey="2"
                bsStyle={this._getPanelStyle(2)}>
           {this.renderError()}
           {this.renderFormOrMessage(this.renderProjectForm, 2)}
         </Panel>
 
-        <Panel header="Adăugare Capturi Ecran"
+        <Panel header={this.props.t("steps.screenshots")}
                eventKey="3"
                bsStyle={this._getPanelStyle(3)}>
           {this.renderFormOrMessage(this.renderScreenshotsForm, 3)}
           {this.renderError()}
         </Panel>
 
-        <Panel header="Adăugare Coechipier"
+        <Panel header={this.props.t("steps.teammate")}
                eventKey="4"
                bsStyle={this._getPanelStyle(4)}>
           {this.renderFormOrMessage(this.renderAdditonalForm, 4)}
           {this.renderError()}
         </Panel>
 
-        <Panel header="Finalizare"
+        <Panel header={this.props.t("steps.finish")}
                eventKey="5"
                bsStyle={this._getPanelStyle(5)}>
           {this.renderFormOrMessage(this.renderFinishForm, 5)}
@@ -286,13 +287,13 @@ export default createLegacyComponent({
 
   renderSuccessStep() {
     return <div className="success">
-      Ai terminat acest pas cu succes.
+      {this.props.t("steps.complete")}
     </div>;
   },
 
   renderUnavailableStep() {
     return <div>
-      Termină ceilalți pași înainte să îl completezi pe acesta.
+      {this.props.t("steps.unavailable")}
     </div>;
   },
 
@@ -321,9 +322,9 @@ export default createLegacyComponent({
 
   renderProjectForm() {
     return <div>
-      <p>Dacă nu vrei sa inscrii niciun proiect&nbsp;
+      <p>{this.props.t("skipProject")}&nbsp;
         <a href="#" data-step={6} onClick={this.onUpdateRegistrationStep}>
-        click aici</a>.
+        {this.props.t("clickHere")}</a>.
       </p>
       <RegisterProject access_token={this.props.user.access_token}
                        onSubmit={this.props.refreshCurrent} />
@@ -341,9 +342,9 @@ export default createLegacyComponent({
   renderRegisteredProjects() {
     let registerAnother = null;
     if (this.props.user.registration_step_number === 6) {
-      registerAnother = <p>Pentru a înscrie un alt proiect&nbsp;
+      registerAnother = <p>{this.props.t("registerAnother")}&nbsp;
           <a href="#" data-step={2} onClick={this.onUpdateRegistrationStep}>
-          click aici</a>.</p>;
+          {this.props.t("clickHere")}</a>.</p>;
     }
 
     if (!this.props.registration.finished_projects.length) {
@@ -354,21 +355,20 @@ export default createLegacyComponent({
 
     return <div>
       {registerAnother}
-      <p>Proiectele inscrise de tine până acum:</p>
+      <p>{this.props.t("registeredProjects")}</p>
       <ul>
         {this.props.registration.finished_projects.map((project) => {
           return <li key={project.id}>{project.title}</li>;
         })}
       </ul>
-      <p>Proiectele vor trebui să fie aprobate ca să apară în secțiunea de
-      participanți</p>
+      <p>{this.props.t("approvalNotice")}</p>
     </div>;
   },
 
   renderSkipAdditionalContestant() {
     return <div>
-      <p>Dacă nu dorești să mai înscrii un coechipier,&nbsp;
-      <a href="#" data-step="5" onClick={this.onUpdateRegistrationStep}>click aici
+      <p>{this.props.t("skipTeammate")}&nbsp;
+      <a href="#" data-step="5" onClick={this.onUpdateRegistrationStep}>{this.props.t("clickHere")}
       </a>.</p>
     </div>;
   },
@@ -380,7 +380,7 @@ export default createLegacyComponent({
 
     return <ListGroup>
       <ListGroupItem bsStyle="danger">
-        A apărut o eroare la comunicarea cu serverul. Mai incercă o dată.
+        {this.props.t("serverError")}
       </ListGroupItem>
     </ListGroup>;
   },
@@ -427,3 +427,5 @@ export default createLegacyComponent({
     return "warning";
   }
 });
+
+export default withTranslation("registration")(RegisterInContest);

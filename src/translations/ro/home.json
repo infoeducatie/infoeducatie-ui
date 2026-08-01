@@ -1,0 +1,43 @@
+{
+  "hero": {
+    "title": "InfoEducație",
+    "subtitle": "Olimpiada de inovare și creație digitală",
+    "edition": "Ediția {{count}}",
+    "register": "Înregistrează-te",
+    "about": "Despre concurs"
+  },
+  "community": {
+    "eyebrow": "Comunitatea InfoEducație",
+    "title": "Construim mai departe, împreună.",
+    "description": "Intră pe serverul nostru de Discord și rămâi aproape de participanți, alumni, mentori și organizatori.",
+    "participants": "Participanți și alumni",
+    "collaboration": "Idei și colaborări",
+    "action": "Intră pe Discord",
+    "actionLabel": "Intră pe serverul Discord InfoEducație. Se deschide într-o filă nouă.",
+    "official": "Serverul oficial InfoEducație"
+  },
+  "alumnus": {
+    "eyebrow": "Alumnus",
+    "quote": "InfoEducație mi-a oferit o motivație să învăț tehnologii web și să dezvolt proiectul meu de atunci. Am un sfat pentru participanți: prezentarea este la fel de importantă ca lucrarea în sine! Repetați înainte să veniți în fața comisiei.",
+    "name": "Cristian Strat",
+    "role": "Ex Growth Manager @ Twitter"
+  },
+  "camp": {
+    "location": "Focșani",
+    "datePending": "Perioada va fi anunțată",
+    "edition": "Ediția {{count}}",
+    "photos": "Mai multe poze",
+    "imageAlt": "Tabăra InfoEducație din Focșani"
+  },
+  "sponsors": {
+    "partners": "Parteneri educaționali și finanțatori",
+    "gold": "Sponsori Gold",
+    "silver": "Sponsori Silver",
+    "educationMinistry": "Ministerul Educației",
+    "teachersUnion": "Uniunea Profesorilor de Informatică din România",
+    "countyCouncil": "Consiliul Județean Vrancea",
+    "politehnica": "Universitatea Națională de Știință și Tehnologie POLITEHNICA București",
+    "westUniversity": "Universitatea de Vest din Timișoara",
+    "educationUnion": "Sindicatul Liber din Învățământ Vrancea"
+  }
+}

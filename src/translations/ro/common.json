@@ -1,0 +1,45 @@
+{
+  "brand": "InfoEducație",
+  "accessibility": {
+    "skipToContent": "Sari la conținut"
+  },
+  "navigation": {
+    "mainLabel": "Navigație principală",
+    "openMenu": "Deschide meniul principal",
+    "home": "Acasă",
+    "alumni": "Alumni",
+    "talks": "Seminarii",
+    "schedule": "Program",
+    "participants": "Participanți",
+    "results": "Rezultate",
+    "jury": "Juriu",
+    "photos": "Fotografii",
+    "contact": "Contact",
+    "register": "Înscriere",
+    "logout": "Delogare",
+    "forum": "Forum",
+    "discord": "Discord",
+    "blog": "Blog"
+  },
+  "language": {
+    "switchTo": "Switch language to English",
+    "nextName": "English"
+  },
+  "footer": {
+    "label": "Subsol",
+    "navigationLabel": "Navigație secundară",
+    "newsletterLabel": "Adresa de email pentru newsletter",
+    "newsletterPlaceholder": "Abonează-te la newsletter",
+    "newsletterDescription": "Primești noutăți despre concurs și informații pentru participanți.",
+    "newsletterAction": "Abonează-te",
+    "newsletterDuplicate": "Adresa de email este deja înregistrată sau un email de confirmare a fost deja trimis către tine.",
+    "newsletterSuccess": "Verifică adresa de email pentru a confirma abonarea.",
+    "facebook": "Facebook",
+    "twitter": "InfoEducație pe X",
+    "github": "InfoEducație pe GitHub",
+    "copyright": "© {{year}} InfoEducație"
+  },
+  "loading": {
+    "route": "Se încarcă pagina..."
+  }
+}

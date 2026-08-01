@@ -52,6 +52,7 @@ run `npm start` for the frontend.
 - `npm run build:staging` creates a staging bundle.
 - `npm run preview` serves the current bundle on port 4173.
 - `npm run lint` checks the JavaScript and JSX sources.
+- `npm run i18n:check` verifies that Romanian and English catalogs have matching files and keys.
 - `npm test` runs lint and a production build.
 - `npm run clean` removes the generated `build/` directory.
 
@@ -64,10 +65,23 @@ Runtime settings can be overridden with `VITE_API_URL`,
 - `public/` contains files copied directly into the build.
 - `src/components/` contains pages and reusable UI components.
 - `src/lib/` contains API, analytics, authentication, and navigation helpers.
+- `src/translations/` contains matching namespaced Romanian and English JSON catalogs.
 - `src/styles/` contains shared LESS variables, mixins, and utility classes.
 - `src/main.jsx` configures the application shell and routes.
 - `src/main.less` imports the global and component styles.
 - `vite.config.js` defines runtime environments, aliases, and build behavior.
+
+## Translations
+
+The application uses one canonical URL for each page. The language selector
+updates the page in place and stores the preference in local storage for future
+visits. Add interface copy to the appropriate JSON namespace under both
+`src/translations/ro/` and `src/translations/en/`; `npm run i18n:check` catches
+missing catalogs and keys.
+
+Content returned by the public API (for example news articles and alumni
+descriptions) is displayed in the language supplied by that API. Translation
+catalogs cover the surrounding interface and locally maintained copy.
 
 ## Docker
 

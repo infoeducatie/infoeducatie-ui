@@ -2,20 +2,21 @@
 import createLegacyComponent from "@lib/create-legacy-component";
 
 import ctx from "classnames";
+import { withTranslation } from "react-i18next";
 
 import "../../main.less";
 
-const categoryLabels = {
-  all: "Toate categoriile",
-  educational: "Educațional",
-  multimedia: "Multimedia",
-  roboti: "Roboți",
-  utilitar: "Utilitar",
-  web: "Web",
+const categoryKeys = {
+  all: "all",
+  educational: "educational",
+  multimedia: "multimedia",
+  roboti: "robots",
+  utilitar: "utility",
+  web: "web",
 };
 
 
-export default createLegacyComponent({
+const FilterIcon = createLegacyComponent({
   displayName: "FilterIcon",
 
   toggleCategory() {
@@ -29,10 +30,12 @@ export default createLegacyComponent({
     });
     let childClasses = ctx("section-icon", this.props.category);
 
-    let label = this.props.label || categoryLabels[this.props.category] || this.props.category;
+    let categoryKey = categoryKeys[this.props.category];
+    let label = this.props.label ||
+      (categoryKey ? this.props.t(`categories.${categoryKey}`) : this.props.category);
 
     return <button
-      aria-label={`Filtrează: ${label}`}
+      aria-label={this.props.t("contestants.filter", { category: label })}
       aria-pressed={this.props.currentCategory === this.props.category}
       className={parentClasses}
       onClick={this.toggleCategory}
@@ -44,3 +47,5 @@ export default createLegacyComponent({
   }
 
 });
+
+export default withTranslation("public")(FilterIcon);

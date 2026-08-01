@@ -3,6 +3,7 @@
 import ctx from "classnames";
 import {Grid, Row, Col} from "@ui/bootstrap";
 import createLegacyComponent from "@lib/create-legacy-component";
+import { withTranslation } from "react-i18next";
 
 import "../main.less";
 import ajax from "../lib/ajax"
@@ -12,13 +13,15 @@ import EditionSelector from "./edition-selector";
 import Header from "./header";
 
 
-export default createLegacyComponent({
+const Talks = createLegacyComponent({
   displayName: "Talks",
 
   getInitialState() {
     return {
       talks: [],
-      selectedEdition: this.props.edition.name,
+      selectedEdition: this.props.edition.name ||
+        this.props.edition.count ||
+        this.props.edition.year,
       hasErrored: false,
       isLoading: true
     };
@@ -29,8 +32,12 @@ export default createLegacyComponent({
   },
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.edition.name !== this.props.edition.name) {
-      this.setState({ selectedEdition: nextProps.edition.name });
+    if (nextProps.edition.id !== this.props.edition.id) {
+      this.setState({
+        selectedEdition: nextProps.edition.name ||
+          nextProps.edition.count ||
+          nextProps.edition.year,
+      });
     }
   },
 
@@ -49,8 +56,8 @@ export default createLegacyComponent({
           </Row>
           <Row>
             <Col xs={12}>
-              <h1>Seminarii InfoEducație</h1>
-              <h2>Ediția {this.state.selectedEdition}</h2>
+              <h1>{this.props.t("talks.title")}</h1>
+              <h2>{this.props.t("edition.label", { edition: this.state.selectedEdition })}</h2>
             </Col>
           </Row>
           <Row className="big-spacing" />
@@ -62,17 +69,17 @@ export default createLegacyComponent({
           <Col xs={12}>
             <div className="edition-filter">
             <label className="control-label" htmlFor="talks-edition">
-              Ediția afișată
+              {this.props.t("edition.displayed")}
             </label>
             <EditionSelector onCallback={this.onEditionChange}
                              id="talks-edition"
-                             ariaLabel="Ediția afișată"
+                             ariaLabel={this.props.t("edition.displayed")}
                              filter="has_contestants"/>
             </div>
           </Col>
         </Row>
-        {this.state.isLoading ? <p className="page-status" role="status">Se încarcă seminariile...</p> : null}
-        {this.state.hasErrored ? <p className="page-status alert alert-warning" role="alert">Seminariile nu pot fi încărcate momentan.</p> : null}
+        {this.state.isLoading ? <p className="page-status" role="status">{this.props.t("talks.loading")}</p> : null}
+        {this.state.hasErrored ? <p className="page-status alert alert-warning" role="alert">{this.props.t("talks.error")}</p> : null}
         {this.state.talks.map(this.renderTalk)}
       </Grid>
    </div>;
@@ -94,7 +101,7 @@ export default createLegacyComponent({
             <h3 className="talk-title">{talk.title}</h3>
             <p className="talk-description">{talk.description}</p>
             <a className="read-more" href={talk.discourse_url}>
-              Discută pe forum <CloudCount count={talk.comments_count} />
+              {this.props.t("talks.discuss")} <CloudCount count={talk.comments_count} />
             </a>
             <ul className="list-unstyled author-list">
               {talk.users.map(this.renderAuthorText)}
@@ -107,7 +114,7 @@ export default createLegacyComponent({
 
   renderAuthorImage(author, index) {
     return <li className="author-image" key={index}>
-      <img alt={`Fotografie ${author.name}`} loading="lazy" src={gravatar(author.email_md5)} />
+      <img alt={this.props.t("talks.authorPhoto", { name: author.name })} loading="lazy" src={gravatar(author.email_md5)} />
     </li>;
   },
 
@@ -138,3 +145,5 @@ export default createLegacyComponent({
     });
   }
 });
+
+export default withTranslation("public")(Talks);

@@ -7,39 +7,13 @@ import {
   ShieldCheck,
   UsersRound,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const DISCORD_INVITE_URL = "https://discord.gg/Ef6yav7wAs";
 
-const content = {
-  ro: {
-    eyebrow: "COMUNITATEA INFOEDUCAȚIE",
-    title: "Construim mai departe, împreună.",
-    description:
-      "Intră pe serverul nostru de Discord și rămâi aproape de participanți, alumni, mentori și organizatori.",
-    participants: "Participanți și alumni",
-    collaboration: "Idei și colaborări",
-    action: "Intră pe Discord",
-    official: "Serverul oficial InfoEducație",
-    actionLabel:
-      "Intră pe serverul Discord InfoEducație. Se deschide într-o filă nouă.",
-  },
-  en: {
-    eyebrow: "INFOEDUCAȚIE COMMUNITY",
-    title: "Keep building, together.",
-    description:
-      "Join our Discord server and stay close to participants, alumni, mentors and organizers.",
-    participants: "Participants and alumni",
-    collaboration: "Ideas and collaboration",
-    action: "Join Discord",
-    official: "Official InfoEducație server",
-    actionLabel:
-      "Join the InfoEducație Discord server. Opens in a new tab.",
-  },
-};
-
-export default function CommunityInvite({ language = "ro" }) {
-  const copy = content[language] || content.ro;
-  const titleId = `community-invite-title-${language}`;
+export default function CommunityInvite() {
+  const { i18n, t } = useTranslation("home");
+  const titleId = `community-invite-title-${i18n.language}`;
 
   return (
     <section className="community-invite" aria-labelledby={titleId}>
@@ -49,35 +23,39 @@ export default function CommunityInvite({ language = "ro" }) {
         </div>
 
         <div className="community-invite__content">
-          <p className="community-invite__eyebrow">{copy.eyebrow}</p>
-          <h2 id={titleId}>{copy.title}</h2>
-          <p className="community-invite__description">{copy.description}</p>
+          <p className="community-invite__eyebrow">
+            {t("community.eyebrow")}
+          </p>
+          <h2 id={titleId}>{t("community.title")}</h2>
+          <p className="community-invite__description">
+            {t("community.description")}
+          </p>
           <ul className="community-invite__details">
             <li>
               <UsersRound aria-hidden="true" size={18} />
-              <span>{copy.participants}</span>
+              <span>{t("community.participants")}</span>
             </li>
             <li>
               <Lightbulb aria-hidden="true" size={18} />
-              <span>{copy.collaboration}</span>
+              <span>{t("community.collaboration")}</span>
             </li>
           </ul>
         </div>
 
         <div className="community-invite__actions">
           <a
-            aria-label={copy.actionLabel}
+            aria-label={t("community.actionLabel")}
             className="community-invite__cta"
             href={DISCORD_INVITE_URL}
             rel="noopener noreferrer"
             target="_blank"
           >
-            <span>{copy.action}</span>
+            <span>{t("community.action")}</span>
             <ArrowUpRight aria-hidden="true" size={20} />
           </a>
           <p className="community-invite__official">
             <ShieldCheck aria-hidden="true" size={16} />
-            <span>{copy.official}</span>
+            <span>{t("community.official")}</span>
           </p>
         </div>
       </div>
