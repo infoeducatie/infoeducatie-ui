@@ -135,19 +135,32 @@
 
   .gray-section {
     background-color: @brand-navy;
-    background-image: url(/assets/img/quotes.png), url(/assets/img/cristi.png);
-    background-position: 58% 30px, 4% 18px;
+    background-image: url(/assets/img/quotes.png);
+    background-position: 58% 30px;
     background-repeat: no-repeat;
-    background-size: auto, 440px auto;
+    background-size: auto;
     border-radius: 22px;
     box-shadow: 0 24px 60px rgba(11, 23, 51, 0.14);
     color: #DCE4F2;
     min-height: 420px;
     overflow: hidden;
+    position: relative;
+
+    &:before {
+      background: url(/assets/img/cristi.png) center top / 440px auto no-repeat;
+      bottom: 0;
+      content: "";
+      left: 0;
+      position: absolute;
+      right: 50%;
+      top: 18px;
+    }
 
     .alumnus-layout {
       align-items: center;
       min-height: 420px;
+      position: relative;
+      z-index: 1;
     }
 
     .alumnus-content {
@@ -465,8 +478,13 @@
     }
 
     .gray-section {
-      background-position: 54% 30px, -24px 22px;
-      background-size: auto, 400px auto;
+      background-position: 54% 30px;
+      background-size: auto;
+
+      &:before {
+        background-size: 400px auto;
+        right: 58%;
+      }
 
       > .row > [class*="col-"] {
         margin-left: 42%;
@@ -532,6 +550,10 @@
       background-position: 24px 28px;
       min-height: 0;
       padding: 28px 20px 42px;
+
+      &:before {
+        display: none;
+      }
 
       .alumnus-layout {
         min-height: 0;
