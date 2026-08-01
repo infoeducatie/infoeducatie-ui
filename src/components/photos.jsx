@@ -20,12 +20,7 @@ const albums = [
   [2012, "https://photos.google.com/share/AF1QipP7mmRfStuGeZZVnrUVY4LA1XyifBSm_mtM77rzbfingWYDGLv78JUKd2RpL0S3UQ?key=Q2V3bDBhQXVFbkZHMlpiTTZINW93ODZlTzAwVVl3"],
   [2011, "https://photos.google.com/share/AF1QipOQVpZ3rwYETMRwjjOPbh2knAPLmKfvkPNByhVDlfjrCpsCU-S-_hmBeBcdmABpbA?key=dGNhX0hCbTUzaUNMcWZmZzNhc2xCeEdNZWYxRWNR"],
   [2010, "https://photos.google.com/share/AF1QipMZxn0DYILoIYptkGOqOVOssvgTgJDxW5vxCUtuccbP3EZXmyU30U5jKlUXA93ORA?key=ZjlhT1FJb0VUVFF1RTJ5QlVsZkdudk1va3hCNEp3"],
-  [2009, "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127325200239501089"],
   [2008, "https://photos.google.com/share/AF1QipPi7X0Ca1NnqOLJ1rkPYIbOJTHPQ6_tcCHATwvBKRRIpggus_O0e4umD_VjprPMJA?key=NGtwY2Y4MjJsck9DZGdKR1NOejA4Z0xHRjRmWDlR"],
-  [2007, "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127715315645838257"],
-  [2006, "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127337195835590657"],
-  [2005, "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127307525772879729"],
-  [2004, "https://plus.google.com/b/110845403526646344110/photos/110845403526646344110/albums/6127315862395135249"],
 ];
 
 export default function Photos(props) {

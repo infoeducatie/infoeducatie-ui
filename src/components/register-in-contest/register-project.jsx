@@ -78,7 +78,7 @@ const RegisterProject = createLegacyComponent({
             </FormGroup>,
             <p className="alert alert-warning">
               {this.props.t("project.sourceNotice")}&nbsp;
-              <a target="_blank" href="http://blog.infoeducatie.ro/tutorial/2015/04/14/github-101.html" rel="noreferrer">{this.props.t("project.detailsLink")}</a>.
+              <a target="_blank" href="https://blog.infoeducatie.ro/tutorial/2015/04/14/github-101.html" rel="noreferrer">{this.props.t("project.detailsLink")}</a>.
             </p>
           </div>
         ]);
@@ -105,7 +105,7 @@ const RegisterProject = createLegacyComponent({
             </FormGroup>,
             <p className="alert alert-warning">
               {this.props.t("project.privateSourceNotice")}&nbsp;
-              <a target="_blank" href="http://blog.infoeducatie.ro/tutorial/2015/04/14/github-101.html" rel="noreferrer">{this.props.t("project.detailsLink")}</a>.
+              <a target="_blank" href="https://blog.infoeducatie.ro/tutorial/2015/04/14/github-101.html" rel="noreferrer">{this.props.t("project.detailsLink")}</a>.
             </p>
           </div>
         ]);

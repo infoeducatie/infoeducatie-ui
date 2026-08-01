@@ -16,11 +16,11 @@ const categories = [
 ];
 
 const criteria = [
-  ["educational", "http://data.infoeducatie.ro/manual/educational.pdf"],
-  ["multimedia", "http://data.infoeducatie.ro/manual/multimedia.pdf"],
-  ["robots", "http://data.infoeducatie.ro/manual/roboti.pdf"],
-  ["utility", "http://data.infoeducatie.ro/manual/utilitar.pdf"],
-  ["web", "http://data.infoeducatie.ro/manual/web.pdf"],
+  ["educational", "https://data.infoeducatie.ro/manual/educational.pdf"],
+  ["multimedia", "https://data.infoeducatie.ro/manual/multimedia.pdf"],
+  ["robots", "https://data.infoeducatie.ro/manual/roboti.pdf"],
+  ["utility", "https://data.infoeducatie.ro/manual/utilitar.pdf"],
+  ["web", "https://data.infoeducatie.ro/manual/web.pdf"],
 ];
 
 export default function About(props) {
@@ -83,7 +83,7 @@ export default function About(props) {
                 <p>
                   {t("documents.rulesPrefix")}{" "}
                   <a
-                    href="http://data.infoeducatie.ro/manual/regulament.pdf"
+                    href="https://data.infoeducatie.ro/manual/regulament.pdf"
                     rel="noreferrer"
                     target="_blank"
                   >
@@ -91,7 +91,7 @@ export default function About(props) {
                   </a>
                   , {t("documents.proceduresPrefix")}{" "}
                   <a
-                    href="http://data.infoeducatie.ro/manual/proceduri-de-aplicare-regulament.pdf"
+                    href="https://data.infoeducatie.ro/manual/proceduri-de-aplicare-regulament.pdf"
                     rel="noreferrer"
                     target="_blank"
                   >

@@ -79,7 +79,7 @@ const SignInModal = createLegacyComponent({
       <p>
        {this.props.t("signIn.forgotPrefix")}&nbsp;
        <a
-         href="https://api.infoeducatie.ro/users/password/new"
+         href={window.config.PASSWORD_RESET_URL}
          target="_blank"
          rel="noreferrer"
        >

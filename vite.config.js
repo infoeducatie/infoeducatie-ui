@@ -21,18 +21,21 @@ const apiProxy = {
 const environmentDefaults = {
   development: {
     API_URL: "http://localhost:3000/v1/",
+    PASSWORD_RESET_URL: "http://localhost:3000/users/password/new",
     MAILCHIMP_URL: mailchimpUrl,
     SENTRY_DSN: "",
     GA_TRACKING_ID: "",
   },
   smoke: {
     API_URL: "/api/v1/",
+    PASSWORD_RESET_URL: "https://api.infoeducatie.ro/users/password/new",
     MAILCHIMP_URL: mailchimpUrl,
     SENTRY_DSN: "",
     GA_TRACKING_ID: "",
   },
   staging: {
     API_URL: "https://api.staging.infoeducatie.ro/v1/",
+    PASSWORD_RESET_URL: "https://api.staging.infoeducatie.ro/users/password/new",
     MAILCHIMP_URL: mailchimpUrl,
     SENTRY_DSN:
       "https://e141d851f5d54ed58c5de9b1c2cf9eb4@sentry.infoeducatie.ro/5",
@@ -40,6 +43,7 @@ const environmentDefaults = {
   },
   production: {
     API_URL: "https://api.infoeducatie.ro/v1/",
+    PASSWORD_RESET_URL: "https://api.infoeducatie.ro/users/password/new",
     MAILCHIMP_URL: mailchimpUrl,
     SENTRY_DSN:
       "https://430b5651bbe24287aac4c5e4175a65a7@sentry.infoeducatie.ro/3",
