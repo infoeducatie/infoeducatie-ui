@@ -10,20 +10,33 @@
   }
 
   .white-section {
-    color: @light-black;
-    padding-bottom: 64px;
+    background: @brand-surface;
+    color: @brand-navy;
+    padding-bottom: 80px;
 
     .photo-albums {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 36px 24px;
-      padding-top: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 28px;
+      padding-top: 48px;
     }
 
     .photo-cover-wrapper {
       margin: 0 auto;
       width: 100%;
-      max-width: 260px;
+      background: @white;
+      border: 1px solid @brand-border;
+      border-radius: 18px;
+      box-shadow: 0 10px 28px rgba(11, 23, 51, 0.06);
+      max-width: 290px;
+      overflow: hidden;
+      padding: 10px 10px 16px;
+      transition: box-shadow 160ms ease, transform 160ms ease;
+
+      &:hover {
+        box-shadow: 0 16px 34px rgba(11, 23, 51, 0.11);
+        transform: translateY(-3px);
+      }
 
       .album-title {
         align-items: center;
@@ -32,11 +45,12 @@
         font-weight: 600;
         gap: 10px;
         justify-content: center;
-        margin-top: 12px;
+        color: @brand-navy;
+        margin-top: 14px;
         text-align: center;
 
         .pink-dash {
-          background: @pink;
+          background: @brand-green;
           display: inline-block;
           height: 2px;
           width: 20px;
@@ -49,15 +63,15 @@
         .photo-album-link {
           aspect-ratio: 4 / 3;
           background: @light-black;
-          border-radius: 4px;
-          box-shadow: 0 3px 12px fade(@black, 15%);
+          border-radius: 12px;
+          box-shadow: none;
           display: block;
           overflow: hidden;
           position: relative;
           text-decoration: none;
 
           &:focus-visible {
-            outline: 3px solid @pink;
+            outline: 3px solid @brand-green;
             outline-offset: 3px;
           }
 
@@ -75,7 +89,7 @@
 
         .more-details {
           border: 2px solid @white;
-          border-radius: 4px;
+          border-radius: 999px;
           color: @white;
           font-size: 16px;
           font-weight: 600;

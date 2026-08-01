@@ -10,10 +10,22 @@
   }
 
   .white-section {
-    padding-top: 40px;
+    padding-bottom: 80px;
+    padding-top: 48px;
+
+    > .row > [class*="col-"] > .rich-text-content {
+      color: #5E687D;
+      margin: 0 auto;
+      max-width: 980px;
+    }
 
     .schedule-preview {
+      background: @white;
+      border: 1px solid @brand-border;
+      border-radius: 20px;
+      box-shadow: 0 12px 34px rgba(11, 23, 51, 0.07);
       margin-top: 32px;
+      padding: 28px;
     }
 
     .schedule-heading {
@@ -33,14 +45,15 @@
       display: inline-flex;
       flex: 0 0 auto;
       font-weight: bold;
+      color: @brand-green;
       gap: 8px;
       min-height: 44px;
       padding: 8px 0;
     }
 
     .schedule-document {
-      border: 1px solid @light-grey;
-      border-radius: 4px;
+      border: 1px solid @brand-border;
+      border-radius: 14px;
       display: block;
       width: 100%;
       min-height: 725px;
@@ -70,6 +83,11 @@
         color: @grey;
         display: block;
         margin-bottom: 0;
+      }
+
+      .schedule-preview {
+        border-radius: 16px;
+        padding: 20px;
       }
     }
   }

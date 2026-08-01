@@ -63,6 +63,7 @@
     "searchLabel": "Caută proiecte",
     "searchPlaceholder": "Titlu, participant sau județ",
     "shown_one": "{{count}} proiect afișat",
+    "shown_few": "{{count}} proiecte afișate",
     "shown_other": "{{count}} proiecte afișate",
     "gridAria": "Afișează proiectele sub formă de carduri",
     "gridTitle": "Vizualizare carduri",

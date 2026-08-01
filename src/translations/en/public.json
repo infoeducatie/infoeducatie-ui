@@ -63,6 +63,7 @@
     "searchLabel": "Search projects",
     "searchPlaceholder": "Title, participant, or county",
     "shown_one": "{{count}} project shown",
+    "shown_few": "{{count}} projects shown",
     "shown_other": "{{count}} projects shown",
     "gridAria": "Show projects as cards",
     "gridTitle": "Card view",

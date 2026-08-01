@@ -12,4 +12,29 @@
   .rich-text-content h2 {
     color: @brand-blue;
   }
+
+  .white-section {
+    padding-bottom: 76px;
+    padding-top: 52px;
+
+    .rich-text-content {
+      background: @white;
+      border: 1px solid @brand-border;
+      border-radius: 20px;
+      box-shadow: 0 12px 34px rgba(11, 23, 51, 0.07);
+      padding: 34px 42px 46px;
+    }
+  }
+
+  @media screen and (max-width: (@screen-sm - 1px)) {
+    .white-section {
+      padding-bottom: 48px;
+      padding-top: 30px;
+
+      .rich-text-content {
+        border-radius: 16px;
+        padding: 24px 20px 30px;
+      }
+    }
+  }
 }

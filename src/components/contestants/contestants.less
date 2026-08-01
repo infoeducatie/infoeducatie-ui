@@ -179,3 +179,145 @@
     }
   }
 }
+
+// Modern public participants/results presentation.
+.contestants {
+  .stats-section {
+    color: @white;
+    position: relative;
+    text-align: center;
+    z-index: 2;
+
+    .inner-stats {
+      background: @brand-navy;
+      border: 1px solid fade(@white, 10%);
+      border-radius: 18px;
+      box-shadow: 0 16px 38px rgba(11, 23, 51, 0.2);
+      overflow: hidden;
+
+      .description {
+        color: #C8D4E7;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        margin-top: 18px;
+      }
+
+      .value {
+        color: @yellow;
+        font-size: 42px;
+        line-height: 1;
+        margin: 0 0 18px;
+      }
+
+      .border-left:after {
+        border-left-color: fade(@white, 16%);
+        border-left-width: 1px;
+      }
+    }
+  }
+
+  .participant-search {
+    background: @white;
+    border: 1px solid @brand-border;
+    border-radius: 16px;
+    box-shadow: 0 10px 28px rgba(11, 23, 51, 0.06);
+    margin: 18px auto 0;
+    max-width: 820px;
+    padding: 20px 8px 16px;
+
+    .results-count {
+      color: #667085;
+    }
+  }
+
+  .results-available {
+    color: @brand-green;
+  }
+
+  .empty-state {
+    background: @white;
+    border: 1px solid @brand-border;
+    border-left: 4px solid @brand-blue;
+    border-radius: 12px;
+  }
+
+  .projects {
+    padding-bottom: 72px;
+
+    .data-region {
+      background: @white;
+      border: 1px solid @brand-border;
+      border-radius: 16px;
+      box-shadow: 0 12px 32px rgba(11, 23, 51, 0.07);
+      overflow: auto;
+    }
+
+    table {
+      th {
+        background: @brand-navy;
+        border: 0;
+        color: @white;
+        padding: 14px 12px;
+      }
+
+      td {
+        border-bottom-color: @brand-border;
+
+        &.title a,
+        .list-unstyled .author {
+          color: @brand-blue;
+        }
+
+        .list-unstyled .author {
+          text-transform: none;
+        }
+      }
+
+      &.results-table {
+        td.rank {
+          color: @brand-blue;
+        }
+
+        td.total {
+          color: @brand-green;
+        }
+
+        tr:hover {
+          background: fade(@brand-blue, 5%);
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: (@screen-sm - 1px)) {
+    .stats-section {
+      margin-top: -42px;
+
+      .inner-stats {
+        .description {
+          font-size: 10px;
+          letter-spacing: 0.04em;
+          margin-top: 14px;
+        }
+
+        .value {
+          font-size: 32px;
+          margin-bottom: 14px;
+        }
+      }
+    }
+
+    .participant-search {
+      margin-left: 0;
+      margin-right: 0;
+      padding: 16px 4px 12px;
+    }
+
+    .projects .data-region {
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+  }
+}

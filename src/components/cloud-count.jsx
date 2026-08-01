@@ -2,6 +2,7 @@
 
 import React from "react";
 import PropTypes from "prop-types";
+import { MessageCircle } from "lucide-react";
 
 import "../main.less";
 
@@ -11,8 +12,9 @@ export default class CloudCount extends React.Component {
 
 
   render() {
-    return <div className="cloud-count">
-      {this.props.count}
-    </div>;
+    return <span className="cloud-count">
+      <MessageCircle aria-hidden="true" size={18} />
+      <span>{this.props.count}</span>
+    </span>;
   }
 }

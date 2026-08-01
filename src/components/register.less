@@ -13,6 +13,14 @@
   .registration-form-section {
     padding-bottom: 64px;
     padding-top: 40px;
+
+    > .row > [class*="col-"] {
+      background: @white;
+      border: 1px solid @brand-border;
+      border-radius: 20px;
+      box-shadow: 0 12px 34px rgba(11, 23, 51, 0.07);
+      padding: 30px 34px 36px;
+    }
   }
 
   .register-sign-in {
@@ -61,24 +69,25 @@
       }
 
       &:focus-visible {
-        outline: 3px solid @pink;
+        outline: 3px solid @brand-blue;
         outline-offset: 1px;
       }
     }
 
     .btn-primary {
-      background-color: @pink;
-      border-color: @pink;
-      color: #000;
+      background-color: @brand-red;
+      border-color: @brand-red;
+      border-radius: 999px;
+      color: @white;
       font-weight: bold;
       min-height: 48px;
       padding-left: 24px;
       padding-right: 24px;
 
       &:hover {
-        background-color: @white;
-        border-color: @pink;
-        color: @black;
+        background-color: darken(@brand-red, 7%);
+        border-color: darken(@brand-red, 7%);
+        color: @white;
       }
     }
   }
@@ -91,6 +100,11 @@
     .registration-form-section {
       padding-bottom: 48px;
       padding-top: 30px;
+
+      > .row > [class*="col-"] {
+        border-radius: 16px;
+        padding: 24px 20px 28px;
+      }
     }
 
     form .btn-primary {

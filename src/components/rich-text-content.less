@@ -2,12 +2,18 @@
 
 .rich-text-content {
   a {
+    color: @brand-green;
+    font-weight: bold;
     overflow-wrap: anywhere;
     text-decoration: underline;
   }
 
   figure {
+    background: @brand-surface;
+    border-radius: 16px;
     margin: 30px auto;
+    overflow: hidden;
+    padding: 14px;
     text-align: center;
 
     img {
@@ -23,8 +29,9 @@
   }
 
   h2 {
+    color: @brand-blue;
     font-size: 30px;
-    font-weight: @font-weight-light;
+    font-weight: bold;
     margin: 45px 0 20px;
   }
 
@@ -35,7 +42,7 @@
     margin-bottom: 12px;
 
     &:before {
-      color: @pink;
+      color: @brand-red;
       content: "\2014";
       font-size: 24px;
       left: -5px;
@@ -45,7 +52,20 @@
 
   p {
     font-size: 20px;
+    line-height: 1.65;
     margin-top: 20px;
     text-align: left;
+  }
+
+  @media screen and (max-width: (@screen-sm - 1px)) {
+    h2 {
+      font-size: 27px;
+      margin-top: 34px;
+    }
+
+    li,
+    p {
+      font-size: 17px;
+    }
   }
 }
