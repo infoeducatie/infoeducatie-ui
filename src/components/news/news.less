@@ -251,7 +251,7 @@
   }
 
   .modal-header {
-    align-items: flex-start;
+    align-items: center;
     background: @white;
     border-bottom: 1px solid @brand-border;
     padding: 28px 32px 24px;
@@ -279,14 +279,21 @@
   }
 
   .btn-close {
+    align-self: center;
     background-color: @brand-surface;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
     border-radius: 999px;
+    box-sizing: border-box;
     flex: 0 0 auto;
+    height: 42px;
     margin: 0;
     opacity: 0.72;
-    padding: 12px;
+    padding: 0;
     transition: background-color 150ms ease, opacity 150ms ease,
       transform 150ms ease;
+    width: 42px;
 
     &:focus,
     &:hover {
