@@ -240,8 +240,8 @@
 
   .sponsors-section {
     color: @brand-navy;
-    padding-bottom: 72px;
-    padding-top: 60px;
+    padding-bottom: 48px;
+    padding-top: 42px;
     text-align: center;
 
     h2,
@@ -264,12 +264,44 @@
       text-transform: uppercase;
     }
 
+    .logos-viewport {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 80vw;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-color: rgba(11, 74, 158, 0.35) transparent;
+      scrollbar-width: thin;
+      width: max-content;
+
+      &.is-scrolling {
+        mask-image: linear-gradient(
+          90deg,
+          transparent,
+          #000 4%,
+          #000 96%,
+          transparent
+        );
+
+        .logos {
+          animation: sponsor-pan 18s ease-in-out infinite alternate;
+        }
+
+        &:active .logos,
+        &:focus-within .logos,
+        &:hover .logos {
+          animation-play-state: paused;
+        }
+      }
+    }
+
     .logos {
       align-items: stretch;
       display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
+      gap: 16px;
+      justify-content: flex-start;
+      padding: 4px 8px 14px;
+      width: max-content;
 
       .sponsor-logo {
         align-items: center;
@@ -281,11 +313,12 @@
         flex-direction: column;
         justify-content: center;
         max-width: 100%;
-        min-height: 176px;
-        padding: 20px;
+        flex: 0 0 220px;
+        min-height: 158px;
+        padding: 18px;
         text-decoration: none;
         transition: box-shadow 160ms ease, transform 160ms ease;
-        width: 250px;
+        width: 220px;
 
         &:hover {
           box-shadow: 0 14px 32px rgba(11, 23, 51, 0.1);
@@ -300,12 +333,12 @@
     }
 
     img {
-      height: 110px;
+      height: 92px;
       max-width: 100%;
       object-fit: contain;
       padding: 10px;
       vertical-align: middle;
-      width: 220px;
+      width: 190px;
     }
 
     .sponsor-title {
@@ -321,7 +354,23 @@
     }
 
     .sponsor-tier + .sponsor-tier {
-      margin-top: 48px;
+      margin-top: 34px;
+    }
+  }
+
+  @keyframes sponsor-pan {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(calc(-100% + 80vw));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sponsors-section .logos-viewport.is-scrolling .logos {
+      animation: none;
     }
   }
 
@@ -446,7 +495,8 @@
       }
 
       .logos .sponsor-logo {
-        width: 100%;
+        flex-basis: min(68vw, 220px);
+        width: min(68vw, 220px);
       }
     }
   }

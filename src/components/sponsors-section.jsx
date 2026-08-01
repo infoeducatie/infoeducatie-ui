@@ -3,6 +3,7 @@
 import request from "@lib/request";
 import createLegacyComponent from "@lib/create-legacy-component";
 import { Col, Grid, Row } from "@ui/bootstrap";
+import { useEffect, useRef, useState } from "react";
 import { withTranslation } from "react-i18next";
 
 function resolveImageUrl(imageUrl) {
@@ -41,6 +42,48 @@ function SponsorLogo({ sponsor }) {
     >
       {logo}
     </a>
+  );
+}
+
+function SponsorTier({ tier }) {
+  const logosRef = useRef(null);
+  const viewportRef = useRef(null);
+  const [isOverflowing, setIsOverflowing] = useState(false);
+
+  useEffect(() => {
+    const measureOverflow = () => {
+      if (!logosRef.current || !viewportRef.current) {
+        return;
+      }
+
+      setIsOverflowing(
+        logosRef.current.scrollWidth > viewportRef.current.clientWidth + 1,
+      );
+    };
+
+    measureOverflow();
+
+    const resizeObserver = new ResizeObserver(measureOverflow);
+    resizeObserver.observe(logosRef.current);
+    resizeObserver.observe(viewportRef.current);
+
+    return () => resizeObserver.disconnect();
+  }, [tier.sponsors]);
+
+  return (
+    <section className="sponsor-tier">
+      <h3>{tier.title}</h3>
+      <div
+        className={`logos-viewport${isOverflowing ? " is-scrolling" : ""}`}
+        ref={viewportRef}
+      >
+        <div className="logos" ref={logosRef}>
+          {tier.sponsors.map((sponsor) => (
+            <SponsorLogo key={sponsor.id} sponsor={sponsor} />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -116,20 +159,12 @@ const SponsorsSection = createLegacyComponent({
   },
 
   renderTier(tier) {
-    return <section className="sponsor-tier" key={tier.id}>
-      <h3>{tier.title}</h3>
-      <div className="logos">
-        {tier.sponsors.map((sponsor) => (
-          <SponsorLogo key={sponsor.id} sponsor={sponsor} />
-        ))}
-      </div>
-    </section>;
+    return <SponsorTier key={tier.id} tier={tier} />;
   },
 
   render() {
     return <div className="sponsors-section-wrapper">
       <Grid className="sponsors-section">
-        <Row className="small-spacing" />
         <Row>
           <Col xs={12}>
             <h2>{this.props.t("sponsors.title")}</h2>
@@ -137,7 +172,6 @@ const SponsorsSection = createLegacyComponent({
             {this.state.tiers.map(this.renderTier)}
           </Col>
         </Row>
-        <Row className="small-spacing" />
       </Grid>
     </div>;
   },
