@@ -5,6 +5,7 @@
 @screen-xs: 480px;
 @screen-sm: 768px;
 @screen-md: 992px;
+@screen-wide: 2200px;
 @grid-gutter-width: 30px;
 
 @import "components/about";
@@ -206,6 +207,16 @@ a {
 @media screen and (min-width: 1200px) {
   .container {
     max-width: 1170px;
+  }
+}
+
+@media screen and (min-width: @screen-wide) {
+  body {
+    font-size: 18px;
+  }
+
+  .container {
+    max-width: 1440px;
   }
 }
 

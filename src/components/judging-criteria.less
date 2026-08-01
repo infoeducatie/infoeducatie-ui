@@ -93,6 +93,40 @@
   }
 }
 
+@media screen and (min-width: @screen-wide) {
+  .judging-criteria-section {
+    padding-bottom: 116px;
+    padding-top: 110px;
+  }
+
+  .judging-criteria-heading {
+    font-size: 46px;
+    padding-bottom: 40px;
+  }
+
+  .judging-criteria-documents {
+    gap: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    max-width: 1440px;
+  }
+
+  .judging-criterion {
+    gap: 16px;
+    grid-template-columns: 52px minmax(0, 1fr) 24px;
+    min-height: 116px;
+    padding: 24px;
+
+    .judging-criterion-icon {
+      height: 52px;
+      width: 52px;
+    }
+
+    .judging-criterion-title {
+      font-size: 17px;
+    }
+  }
+}
+
 @media screen and (max-width: (@screen-sm - 1px)) {
   .judging-criteria-section {
     padding-bottom: 64px;

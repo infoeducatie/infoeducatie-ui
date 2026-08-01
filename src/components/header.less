@@ -137,6 +137,43 @@
     }
   }
 
+  @media screen and (min-width: @screen-wide) {
+    .header-shell {
+      min-height: 104px;
+    }
+
+    .site-logo {
+      margin-right: 32px;
+      min-height: 64px;
+
+      .site-logo-wordmark {
+        font-size: 48px;
+      }
+    }
+
+    .navbar {
+      min-height: 76px;
+    }
+
+    .navbar-nav {
+      .nav-link {
+        font-size: 17px;
+        line-height: 22px;
+        min-height: 68px;
+        padding: 16px 9px;
+      }
+
+      .nav-link.active:after {
+        bottom: 7px;
+      }
+
+      .language-switch img {
+        height: 28px;
+        width: 28px;
+      }
+    }
+  }
+
   @media screen and (max-width: (@screen-md - 1px)) {
     .header-shell {
       min-height: 78px;
