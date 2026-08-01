@@ -104,6 +104,7 @@
   },
   "news": {
     "title": "Noutăți și actualizări",
+    "pinned": "Fixat",
     "readMore": "Citește mai multe...",
     "previous": "anterioare",
     "next": "următoare",

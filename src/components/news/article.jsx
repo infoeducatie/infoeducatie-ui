@@ -61,7 +61,12 @@ const Article = createLegacyComponent({
     return <article className="news-article">
       <Row className="xsmall-spacing" />
       <Row>
-        <p className="date">{date}</p>
+        <div className="news-meta">
+          <p className="date">{date}</p>
+          {this.props.pinned ? (
+            <span className="pinned-badge">{this.props.t("news.pinned")}</span>
+          ) : null}
+        </div>
         <p className="title">{this.props.title}</p>
         <p className="message">{this.props.short}{canReadMore ? " …" : ""}</p>
         {canReadMore ? (

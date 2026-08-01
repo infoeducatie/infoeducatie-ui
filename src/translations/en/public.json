@@ -104,6 +104,7 @@
   },
   "news": {
     "title": "News and updates",
+    "pinned": "Pinned",
     "readMore": "Read more...",
     "previous": "previous",
     "next": "next",

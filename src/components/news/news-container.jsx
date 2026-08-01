@@ -137,6 +137,7 @@ const NewsContainer = createLegacyComponent({
                       body={article.body}
                       title={article.title}
                       short={article.short}
+                      pinned={article.pinned}
                       created_at={article.created_at} />;
     });
   },
@@ -175,6 +176,7 @@ const NewsContainer = createLegacyComponent({
     return <Article body={this.state.pinned.body}
                     title={this.state.pinned.title}
                     short={this.state.pinned.short}
+                    pinned={this.state.pinned.pinned}
                     created_at={this.state.pinned.created_at} />;
   },
 
