@@ -21,6 +21,12 @@
     position: relative;
   }
 
+  // Override Bootstrap's generic .container gutters for this full-width card.
+  &__inner.container {
+    padding-left: 72px;
+    padding-right: 72px;
+  }
+
   &__inner:after {
     border: 42px solid rgba(255, 255, 255, 0.035);
     border-radius: 50%;
@@ -150,6 +156,11 @@
       padding: 36px;
     }
 
+    &__inner.container {
+      padding-left: 48px;
+      padding-right: 48px;
+    }
+
     &__mark {
       height: 68px;
       width: 68px;
@@ -169,6 +180,11 @@
     &__inner {
       display: block;
       padding: 30px 24px;
+    }
+
+    &__inner.container {
+      padding-left: 24px;
+      padding-right: 24px;
     }
 
     &__mark {
