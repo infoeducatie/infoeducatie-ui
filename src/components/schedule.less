@@ -12,6 +12,10 @@
   .white-section {
     padding-top: 40px;
 
+    .schedule-preview {
+      margin-top: 32px;
+    }
+
     .schedule-heading {
       align-items: end;
       display: flex;
@@ -19,14 +23,8 @@
       justify-content: space-between;
       margin-bottom: 24px;
 
-      h2,
-      p {
+      h2 {
         margin-bottom: 0;
-      }
-
-      p {
-        color: @grey;
-        margin-top: 6px;
       }
     }
 
@@ -48,6 +46,10 @@
       min-height: 725px;
       height: 80vh;
     }
+
+    .schedule-preview-note {
+      display: none;
+    }
   }
 
   @media screen and (max-width: (@screen-sm - 1px)) {
@@ -61,8 +63,13 @@
       }
 
       .schedule-document {
-        height: 72vh;
-        min-height: 560px;
+        display: none;
+      }
+
+      .schedule-preview-note {
+        color: @grey;
+        display: block;
+        margin-bottom: 0;
       }
     }
   }

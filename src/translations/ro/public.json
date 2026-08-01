@@ -21,10 +21,13 @@
   },
   "schedule": {
     "title": "Program InfoEducație",
-    "contentTitle": "Programul ediției {{edition}}",
-    "description": "Activitățile și orele sunt actualizate în documentul de mai jos.",
-    "open": "Deschide programul",
-    "documentTitle": "Program InfoEducație"
+    "loading": "Se încarcă programul...",
+    "error": "Programul nu este disponibil momentan.",
+    "empty": "Nu a fost publicat încă un document pentru program.",
+    "documentHeading": "Documentul programului",
+    "open": "Deschide sau descarcă programul",
+    "documentTitle": "Program InfoEducație",
+    "previewNote": "Deschide documentul pentru a consulta programul pe telefon."
   },
   "talks": {
     "title": "Seminarii InfoEducație",

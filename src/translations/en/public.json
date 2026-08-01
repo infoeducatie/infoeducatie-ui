@@ -21,10 +21,13 @@
   },
   "schedule": {
     "title": "InfoEducation Schedule",
-    "contentTitle": "Schedule for the {{edition}} edition",
-    "description": "Activities and times are kept up to date in the document below.",
-    "open": "Open schedule",
-    "documentTitle": "InfoEducation schedule"
+    "loading": "Loading schedule...",
+    "error": "The schedule is currently unavailable.",
+    "empty": "No schedule document has been published yet.",
+    "documentHeading": "Schedule document",
+    "open": "Open or download schedule",
+    "documentTitle": "InfoEducation schedule",
+    "previewNote": "Open the document to view the schedule on your phone."
   },
   "talks": {
     "title": "InfoEducation Talks",
