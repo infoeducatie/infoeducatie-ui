@@ -2,6 +2,7 @@
 
 import createLegacyComponent from "@lib/create-legacy-component";
 import { Row, Modal } from "@ui/bootstrap";
+import { Pin } from "lucide-react";
 import { withTranslation } from "react-i18next";
 
 
@@ -64,7 +65,10 @@ const Article = createLegacyComponent({
         <div className="news-meta">
           <p className="date">{date}</p>
           {this.props.pinned ? (
-            <span className="pinned-badge">{this.props.t("news.pinned")}</span>
+            <span className="pinned-indicator" title={this.props.t("news.pinned")}>
+              <Pin aria-hidden="true" size={17} strokeWidth={2.3} />
+              <span className="visually-hidden">{this.props.t("news.pinned")}</span>
+            </span>
           ) : null}
         </div>
         <p className="title">{this.props.title}</p>

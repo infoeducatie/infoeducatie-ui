@@ -63,6 +63,7 @@
     align-items: center;
     display: flex;
     gap: 10px;
+    justify-content: space-between;
     margin-bottom: 16px;
     min-height: 22px;
   }
@@ -76,17 +77,19 @@
     text-transform: uppercase;
   }
 
-  .pinned-badge {
-    background: fade(@yellow, 22%);
-    border: 1px solid fade(#8A5A00, 24%);
-    border-radius: 999px;
-    color: #7A5100;
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 0.05em;
+  .pinned-indicator {
+    align-items: center;
+    color: @brand-green;
+    display: inline-flex;
+    flex: 0 0 18px;
+    height: 18px;
+    justify-content: center;
     line-height: 1;
-    padding: 5px 8px;
-    text-transform: uppercase;
+    width: 18px;
+
+    svg {
+      display: block;
+    }
   }
 
   .title {
