@@ -60,7 +60,7 @@
   }
 
   .date {
-    color: @brand-red;
+    color: @brand-green;
     font-size: 12px;
     font-weight: bold;
     letter-spacing: 0.06em;
@@ -97,7 +97,7 @@
   .read-more {
     background: transparent;
     border: 0;
-    color: @brand-red;
+    color: @brand-green;
     cursor: pointer;
     font-size: 13px;
     font-style: normal;
@@ -106,6 +106,13 @@
     padding: 8px 0;
     text-align: left;
     text-decoration: none;
+    transition: color 150ms ease;
+
+    &:focus,
+    &:hover {
+      color: #176C31;
+      text-decoration: underline;
+    }
   }
 
   .pagination-icon {
