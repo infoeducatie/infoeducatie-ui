@@ -91,7 +91,7 @@
     "loading": "Loading jury members...",
     "error": "The jury is currently unavailable.",
     "empty": "No jury members are published at the moment.",
-    "criteria": "judging criteria",
+    "criteria": "Judging criteria",
     "criteriaLoading": "Loading judging criteria...",
     "criteriaError": "The judging criteria are currently unavailable.",
     "criteriaEmpty": "No judging criteria are published at the moment.",
