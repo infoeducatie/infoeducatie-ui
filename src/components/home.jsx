@@ -82,7 +82,7 @@ export default function Home(props) {
         </Grid>
       </div>
 
-      <CommunityInvite />
+      <CommunityInvite inviteUrl={current.site_links?.discord} />
 
       <div className="green-section-wrapper">
         <NewsContainer language={language} />

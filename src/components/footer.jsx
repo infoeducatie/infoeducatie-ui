@@ -48,13 +48,15 @@ const Footer = createLegacyComponent({
                 >
                   {t("navigation.forum")}
                 </NavItem>
-                <NavItem
-                  href="https://discord.gg/Ef6yav7wAs"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  {t("navigation.discord")}
-                </NavItem>
+                {this.props.current.site_links?.discord ? (
+                  <NavItem
+                    href={this.props.current.site_links.discord}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {t("navigation.discord")}
+                  </NavItem>
+                ) : null}
                 <NavItem
                   href="https://blog.infoeducatie.ro"
                   target="_blank"

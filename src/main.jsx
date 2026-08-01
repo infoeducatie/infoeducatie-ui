@@ -70,6 +70,7 @@ const defaultCurrent = {
     total_projects: 0,
     total_counties: 0,
   },
+  site_links: {},
   last_edition_with_results: {
     year: 2014,
     id: 0,
