@@ -129,9 +129,9 @@ export default function Home(props) {
         </div>
       </div>
 
-      <SponsorsSection language={language} />
-
       <CommunityInvite />
+
+      <SponsorsSection language={language} />
     </div>
   );
 }
