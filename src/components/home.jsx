@@ -80,18 +80,14 @@ export default function Home(props) {
 
       <div className="gray-section-wrapper">
         <Grid className="gray-section">
-          <Row className="small-spacing" />
-          <Row>
-            <Col md={6} mdOffset={6}>
+          <Row className="alumnus-layout">
+            <Col className="alumnus-content" md={6} mdOffset={6}>
               <h2 className="section-heading">{t("alumnus.eyebrow")}</h2>
-              <Row className="small-spacing" />
               <p className="quote">{t("alumnus.quote")}</p>
-              <Row className="small-spacing" />
               <h3 className="alumnus-name">{t("alumnus.name")}</h3>
               <p className="alumnus-position">{t("alumnus.role")}</p>
             </Col>
           </Row>
-          <Row className="small-spacing" />
         </Grid>
       </div>
 

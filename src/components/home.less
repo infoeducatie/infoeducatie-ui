@@ -126,23 +126,41 @@
 
   .gray-section-wrapper {
     background: @white;
-    padding: 88px 0;
+    padding: 32px 0 36px;
+  }
+
+  .judging-criteria-section {
+    padding-bottom: 56px;
   }
 
   .gray-section {
     background-color: @brand-navy;
     background-image: url(/assets/img/quotes.png), url(/assets/img/cristi.png);
-    background-position: 58% 34px, 6% bottom;
+    background-position: 58% 30px, 4% 18px;
     background-repeat: no-repeat;
+    background-size: auto, 440px auto;
     border-radius: 22px;
     box-shadow: 0 24px 60px rgba(11, 23, 51, 0.14);
     color: #DCE4F2;
-    min-height: 480px;
+    min-height: 420px;
     overflow: hidden;
+
+    .alumnus-layout {
+      align-items: center;
+      min-height: 420px;
+    }
+
+    .alumnus-content {
+      padding-bottom: 44px;
+      padding-left: 44px;
+      padding-right: 48px;
+      padding-top: 48px;
+    }
 
     .quote {
       font-size: 22px;
       line-height: 1.55;
+      margin: 22px 0 30px;
     }
 
     .alumnus-name {
@@ -154,6 +172,7 @@
 
     .alumnus-position {
       color: #AEBBD0;
+      margin-bottom: 0;
     }
 
     .section-heading {
@@ -168,7 +187,7 @@
   .yellow-section-wrapper {
     background: @brand-surface;
     color: @brand-navy;
-    padding: 88px 0;
+    padding: 56px 0;
     text-align: center;
 
     .yellow-section {
@@ -433,11 +452,17 @@
     }
 
     .gray-section {
-      background-position: 40px 34px, -40px bottom;
+      background-position: 54% 30px, -24px 22px;
+      background-size: auto, 400px auto;
 
       > .row > [class*="col-"] {
         margin-left: 42%;
         width: 54%;
+      }
+
+      .alumnus-content {
+        padding-left: 32px;
+        padding-right: 32px;
       }
     }
   }
@@ -494,6 +519,14 @@
       background-position: 24px 28px;
       min-height: 0;
       padding: 28px 20px 42px;
+
+      .alumnus-layout {
+        min-height: 0;
+      }
+
+      .alumnus-content {
+        padding: 0;
+      }
 
       > .row > [class*="col-"] {
         margin-left: 0;
