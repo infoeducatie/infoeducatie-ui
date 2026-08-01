@@ -11,13 +11,13 @@ import JuryDescription from "./jury-description";
 import "../main.less";
 import DefaultDocument from "../../assets/img/icons/doc.png";
 
-function resolveImageUrl(imageUrl) {
-  if (!imageUrl) return null;
+function resolveAssetUrl(assetUrl) {
+  if (!assetUrl) return null;
 
   try {
-    return new URL(imageUrl, window.config.API_URL).toString();
+    return new URL(assetUrl, window.config.API_URL).toString();
   } catch {
-    return imageUrl;
+    return assetUrl;
   }
 }
 
@@ -27,6 +27,9 @@ const Jury = createLegacyComponent({
   getInitialState() {
     return {
       categories: [],
+      criteria: [],
+      criteriaHasErrored: false,
+      criteriaIsLoading: true,
       hasErrored: false,
       isLoading: true,
     };
@@ -34,11 +37,13 @@ const Jury = createLegacyComponent({
 
   componentDidMount() {
     this.loadJury();
+    this.loadCriteria();
   },
 
   componentDidUpdate(previousProps) {
     if (previousProps.language !== this.props.language) {
       this.loadJury();
+      this.loadCriteria();
     }
   },
 
@@ -62,11 +67,11 @@ const Jury = createLegacyComponent({
 
     const categories = data.map((category) => ({
       ...category,
-      icon_url: resolveImageUrl(category.icon_url),
+      icon_url: resolveAssetUrl(category.icon_url),
       members: Array.isArray(category.members)
         ? category.members.map((member) => ({
           ...member,
-          photo_url: resolveImageUrl(member.photo_url),
+          photo_url: resolveAssetUrl(member.photo_url),
         }))
         : [],
     }));
@@ -76,6 +81,40 @@ const Jury = createLegacyComponent({
 
   onJuryError() {
     this.setState({ hasErrored: true, isLoading: false });
+  },
+
+  loadCriteria() {
+    this.setState({ criteriaHasErrored: false, criteriaIsLoading: true });
+
+    request({
+      method: "GET",
+      url: window.config.API_URL + "judging_criteria.json",
+      data: { locale: this.props.language },
+      success: this.onCriteriaLoaded,
+      error: this.onCriteriaError,
+    });
+  },
+
+  onCriteriaLoaded(data) {
+    if (!Array.isArray(data)) {
+      this.onCriteriaError();
+      return;
+    }
+
+    const criteria = data.map((criterion) => ({
+      ...criterion,
+      document_url: resolveAssetUrl(criterion.document_url),
+    }));
+
+    this.setState({
+      criteria,
+      criteriaHasErrored: false,
+      criteriaIsLoading: false,
+    });
+  },
+
+  onCriteriaError() {
+    this.setState({ criteriaHasErrored: true, criteriaIsLoading: false });
   },
 
   renderStatus() {
@@ -100,6 +139,28 @@ const Jury = createLegacyComponent({
     return null;
   },
 
+  renderCriteriaStatus() {
+    if (this.state.criteriaIsLoading) {
+      return <p className="page-status" role="status">
+        {this.props.t("jury.criteriaLoading")}
+      </p>;
+    }
+
+    if (this.state.criteriaHasErrored) {
+      return <p className="page-status alert alert-warning" role="alert">
+        {this.props.t("jury.criteriaError")}
+      </p>;
+    }
+
+    if (!this.state.criteria.length) {
+      return <p className="page-status" role="status">
+        {this.props.t("jury.criteriaEmpty")}
+      </p>;
+    }
+
+    return null;
+  },
+
   renderCategory(category) {
     return <Row key={category.id}>
       <JuryDescription
@@ -114,14 +175,6 @@ const Jury = createLegacyComponent({
     const editionName = this.props.current.edition.name ||
       this.props.current.edition.count ||
       this.props.current.edition.year;
-    const criteria = [
-      {"name": this.props.t("categories.educational"), "link": "https://data.infoeducatie.ro/manual/educational.pdf"},
-      {"name": this.props.t("categories.multimedia"), "link": "https://data.infoeducatie.ro/manual/multimedia.pdf"},
-      {"name": this.props.t("categories.robots"), "link": "https://data.infoeducatie.ro/manual/roboti.pdf"},
-      {"name": this.props.t("categories.utility"), "link": "https://data.infoeducatie.ro/manual/utilitar.pdf"},
-      {"name": this.props.t("categories.web"), "link": "https://data.infoeducatie.ro/manual/web.pdf"},
-    ];
-
     return <div className="jury">
       <div className="blue-section-wrapper">
         <Grid className="blue-section">
@@ -155,16 +208,19 @@ const Jury = createLegacyComponent({
                 <span className="pink-dash" />
               </h2>
               <div className="jury-criteria-documents">
-                {criteria.map((doc) => (
+                {this.renderCriteriaStatus()}
+                {this.state.criteria.map((criterion) => (
                   <a
-                    aria-label={this.props.t("jury.openCriteria", { category: doc.name })}
+                    aria-label={this.props.t("jury.openCriteria", {
+                      category: criterion.title,
+                    })}
                     className="jury-criteria"
-                    href={doc.link}
-                    key={doc.link}
+                    href={criterion.document_url}
+                    key={criterion.id}
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <span className="jury-criteria-txt">{doc.name}</span>
+                    <span className="jury-criteria-txt">{criterion.title}</span>
                     <img alt="" height="35" src={DefaultDocument} width="50" />
                   </a>
                 ))}

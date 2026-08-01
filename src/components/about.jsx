@@ -1,6 +1,8 @@
 "use strict";
 
 import { Col, Grid, Row } from "@ui/bootstrap";
+import request from "@lib/request";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import "../main.less";
@@ -15,16 +17,68 @@ const categories = [
   ["utility", "black", "utilitar"],
 ];
 
-const criteria = [
-  ["educational", "https://data.infoeducatie.ro/manual/educational.pdf"],
-  ["multimedia", "https://data.infoeducatie.ro/manual/multimedia.pdf"],
-  ["robots", "https://data.infoeducatie.ro/manual/roboti.pdf"],
-  ["utility", "https://data.infoeducatie.ro/manual/utilitar.pdf"],
-  ["web", "https://data.infoeducatie.ro/manual/web.pdf"],
-];
+function resolveAssetUrl(assetUrl) {
+  if (!assetUrl) return null;
+
+  try {
+    return new URL(assetUrl, window.config.API_URL).toString();
+  } catch {
+    return assetUrl;
+  }
+}
 
 export default function About(props) {
   const { t } = useTranslation("about");
+  const [criteriaResult, setCriteriaResult] = useState({
+    criteria: [],
+    hasErrored: false,
+    language: null,
+  });
+  const criteriaIsLoading = criteriaResult.language !== props.language;
+  const criteriaHasErrored = !criteriaIsLoading && criteriaResult.hasErrored;
+  const criteria = criteriaIsLoading ? [] : criteriaResult.criteria;
+
+  useEffect(() => {
+    let isCurrent = true;
+
+    request({
+      method: "GET",
+      url: window.config.API_URL + "judging_criteria.json",
+      data: { locale: props.language },
+      success(data) {
+        if (!isCurrent) return;
+        if (!Array.isArray(data)) {
+          setCriteriaResult({
+            criteria: [],
+            hasErrored: true,
+            language: props.language,
+          });
+          return;
+        }
+
+        setCriteriaResult({
+          criteria: data.map((criterion) => ({
+            ...criterion,
+            document_url: resolveAssetUrl(criterion.document_url),
+          })),
+          hasErrored: false,
+          language: props.language,
+        });
+      },
+      error() {
+        if (!isCurrent) return;
+        setCriteriaResult({
+          criteria: [],
+          hasErrored: true,
+          language: props.language,
+        });
+      },
+    });
+
+    return () => {
+      isCurrent = false;
+    };
+  }, [props.language]);
 
   return (
     <div className="galaciuc">
@@ -115,29 +169,43 @@ export default function About(props) {
                 <span className="pink-dash" />
               </div>
               <Row className="jury-criteria-documents">
-                {criteria.map(([key, link]) => {
-                  const category = t(`categories.${key}`);
-                  return (
-                    <div className="jury-criteria" key={link}>
-                      <div className="jury-criteria-txt">{category}</div>
-                      <div className="jury-criteria-img">
-                        <a
-                          aria-label={t("documents.openCriteria", { category })}
-                          href={link}
-                          rel="noreferrer"
-                          target="_blank"
-                        >
-                          <img
-                            alt=""
-                            height="35"
-                            src={DefaultDocument}
-                            width="50"
-                          />
-                        </a>
-                      </div>
+                {criteriaIsLoading ? (
+                  <p className="page-status" role="status">
+                    {t("documents.criteriaLoading")}
+                  </p>
+                ) : null}
+                {criteriaHasErrored ? (
+                  <p className="page-status alert alert-warning" role="alert">
+                    {t("documents.criteriaError")}
+                  </p>
+                ) : null}
+                {!criteriaIsLoading && !criteriaHasErrored && !criteria.length ? (
+                  <p className="page-status" role="status">
+                    {t("documents.criteriaEmpty")}
+                  </p>
+                ) : null}
+                {criteria.map((criterion) => (
+                  <div className="jury-criteria" key={criterion.id}>
+                    <div className="jury-criteria-txt">{criterion.title}</div>
+                    <div className="jury-criteria-img">
+                      <a
+                        aria-label={t("documents.openCriteria", {
+                          category: criterion.title,
+                        })}
+                        href={criterion.document_url}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        <img
+                          alt=""
+                          height="35"
+                          src={DefaultDocument}
+                          width="50"
+                        />
+                      </a>
                     </div>
-                  );
-                })}
+                  </div>
+                ))}
               </Row>
             </Col>
           </Row>

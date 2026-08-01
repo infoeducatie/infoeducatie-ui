@@ -25,6 +25,9 @@
     "rulesLink": "here",
     "proceduresPrefix": "and the implementation procedures are available",
     "criteria": "judging criteria",
+    "criteriaLoading": "Loading judging criteria...",
+    "criteriaError": "The judging criteria are currently unavailable.",
+    "criteriaEmpty": "No judging criteria are published at the moment.",
     "openCriteria": "Open the judging criteria for {{category}}"
   }
 }

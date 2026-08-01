@@ -25,6 +25,9 @@
     "rulesLink": "aici",
     "proceduresPrefix": "iar procedurile de aplicare sunt disponibile",
     "criteria": "criterii de jurizare",
+    "criteriaLoading": "Se \u00eencarc\u0103 criteriile de jurizare...",
+    "criteriaError": "Criteriile de jurizare nu sunt disponibile momentan.",
+    "criteriaEmpty": "Nu exist\u0103 criterii de jurizare publicate momentan.",
     "openCriteria": "Deschide criteriile pentru {{category}}"
   }
 }
