@@ -269,8 +269,8 @@ textarea,
   text-transform: none;
 }
 
-// Public content and task pages use a compact header. The homepage keeps its
-// original, immersive first viewport.
+// Non-home banners share the same height as the homepage while using more
+// compact typography for their shorter page titles.
 #main-content > :not(.home) {
   > .blue-section-wrapper,
   > .gray-section-wrapper {
@@ -278,7 +278,6 @@ textarea,
 
     > .blue-section,
     > .gray-section {
-      min-height: 320px;
       padding-bottom: 32px;
 
       h1 {
@@ -446,7 +445,6 @@ textarea,
     > .gray-section-wrapper {
       > .blue-section,
       > .gray-section {
-        min-height: 300px;
         padding-bottom: 28px;
 
         h1 {
