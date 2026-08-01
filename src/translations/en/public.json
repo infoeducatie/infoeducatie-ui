@@ -99,6 +99,10 @@
     "title": "News",
     "readMore": "Read more...",
     "previous": "previous",
-    "next": "next"
+    "next": "next",
+    "loading": "Loading news...",
+    "error": "News could not be loaded.",
+    "empty": "There is no published news at the moment.",
+    "retry": "Try again"
   }
 }

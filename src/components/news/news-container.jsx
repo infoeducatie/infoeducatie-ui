@@ -20,20 +20,34 @@ const NewsContainer = createLegacyComponent({
       newsPerPage: 2,
       canShowNext: false,
       canShowPrevious: false,
+      hasError: false,
+      isLoading: true,
       news: [],
       pinned: null
     };
   },
 
   componentDidMount() {
+    this.loadNews();
+  },
+
+  loadNews() {
+    this.setState({ hasError: false, isLoading: true });
+
     request({
       method: "GET",
       url: window.config.API_URL + "news.json",
-      success: this.onSuccess
+      success: this.onSuccess,
+      error: this.onError,
     });
   },
 
   onSuccess(data) {
+    if (!Array.isArray(data)) {
+      this.onError();
+      return;
+    }
+
     let news = data.filter((article) => {
       return !article.pinned;
     });
@@ -47,8 +61,39 @@ const NewsContainer = createLegacyComponent({
     this.setState({
       news: news,
       pinned: pinned[0],
-      canShowNext: news.length > this.state.newsPerPage
+      canShowNext: news.length > this.state.newsPerPage,
+      hasError: false,
+      isLoading: false,
     });
+  },
+
+  onError() {
+    this.setState({ hasError: true, isLoading: false });
+  },
+
+  renderStatus() {
+    if (this.state.isLoading) {
+      return <p className="news-status" role="status">
+        {this.props.t("news.loading")}
+      </p>;
+    }
+
+    if (this.state.hasError) {
+      return <div className="news-status" role="alert">
+        <p>{this.props.t("news.error")}</p>
+        <button className="news-retry" onClick={this.loadNews} type="button">
+          {this.props.t("news.retry")}
+        </button>
+      </div>;
+    }
+
+    if (!this.state.pinned && !this.state.news.length) {
+      return <p className="news-status" role="status">
+        {this.props.t("news.empty")}
+      </p>;
+    }
+
+    return null;
   },
 
   canShowNextPage() {
@@ -136,6 +181,7 @@ const NewsContainer = createLegacyComponent({
           <Col xsOffset={1} xs={10} md={5} className="left">
               <Row className="xsmall-spacing" />
               <h2 className="section-heading" id="news">{this.props.t("news.title")}</h2>
+              {this.renderStatus()}
               {this.renderPinnedArticle()}
           </Col>
           <Col xsOffset={1} xs={10} md={5} mdOffset={1} className="right">

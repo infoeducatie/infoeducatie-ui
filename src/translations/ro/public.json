@@ -99,6 +99,10 @@
     "title": "Știri",
     "readMore": "Citește mai multe...",
     "previous": "anterioare",
-    "next": "următoare"
+    "next": "următoare",
+    "loading": "Se încarcă știrile...",
+    "error": "Știrile nu au putut fi încărcate.",
+    "empty": "Nu sunt știri publicate momentan.",
+    "retry": "Încearcă din nou"
   }
 }
