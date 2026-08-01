@@ -1,0 +1,45 @@
+@import (reference) "../main";
+
+.rich-text-content {
+  a {
+    overflow-wrap: anywhere;
+    text-decoration: underline;
+  }
+
+  figure {
+    margin: 30px auto;
+    text-align: center;
+
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+  }
+
+  h2 {
+    font-size: 30px;
+    font-weight: @font-weight-light;
+    margin: 45px 0 20px;
+  }
+
+  li {
+    font-size: 20px;
+    font-weight: @font-weight-light;
+    list-style-type: none;
+    margin-bottom: 12px;
+
+    &:before {
+      color: @pink;
+      content: "\2014";
+      font-size: 24px;
+      left: -5px;
+      position: relative;
+    }
+  }
+
+  p {
+    font-size: 20px;
+    margin-top: 20px;
+    text-align: left;
+  }
+}

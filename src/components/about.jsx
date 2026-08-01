@@ -2,12 +2,13 @@
 
 import { Col, Grid, Row } from "@ui/bootstrap";
 import request from "@lib/request";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import "../main.less";
 import DefaultDocument from "../../assets/img/icons/doc.png";
 import Header from "./header";
+import RichTextContent from "./rich-text-content";
 
 function resolveAssetUrl(assetUrl) {
   if (!assetUrl) return null;
@@ -17,48 +18,6 @@ function resolveAssetUrl(assetUrl) {
   } catch {
     return assetUrl;
   }
-}
-
-function resolveRichTextAssetUrls(html) {
-  if (!html || typeof DOMParser === "undefined") return html;
-
-  const document = new DOMParser().parseFromString(html, "text/html");
-
-  document.querySelectorAll("img[src]").forEach((image) => {
-    const source = image.getAttribute("src");
-
-    if (source?.startsWith("/uploads/")) {
-      image.setAttribute("src", resolveAssetUrl(source));
-    }
-  });
-
-  document.querySelectorAll("a[href]").forEach((link) => {
-    const href = link.getAttribute("href");
-    if (href?.startsWith("/uploads/")) {
-      link.setAttribute("href", resolveAssetUrl(href));
-    }
-    if (/^https?:\/\//.test(href || "")) {
-      link.setAttribute("rel", "noreferrer");
-      link.setAttribute("target", "_blank");
-    }
-  });
-
-  Array.from(document.body.children).forEach((element) => {
-    if (element.tagName === "H1") {
-      const heading = document.createElement("h2");
-      heading.innerHTML = element.innerHTML;
-      element.replaceWith(heading);
-    } else if (
-      element.tagName === "DIV" &&
-      !element.querySelector("figure")
-    ) {
-      const paragraph = document.createElement("p");
-      paragraph.innerHTML = element.innerHTML;
-      element.replaceWith(paragraph);
-    }
-  });
-
-  return document.body.innerHTML;
 }
 
 export default function About(props) {
@@ -76,10 +35,6 @@ export default function About(props) {
   const pageIsLoading = pageResult.language !== props.language;
   const pageHasErrored = !pageIsLoading && pageResult.hasErrored;
   const page = pageIsLoading ? null : pageResult.page;
-  const pageBody = useMemo(
-    () => resolveRichTextAssetUrls(page?.body),
-    [page?.body],
-  );
   const criteriaIsLoading = criteriaResult.language !== props.language;
   const criteriaHasErrored = !criteriaIsLoading && criteriaResult.hasErrored;
   const criteria = criteriaIsLoading ? [] : criteriaResult.criteria;
@@ -186,12 +141,7 @@ export default function About(props) {
                 {t("error")}
               </p>
             ) : null}
-            {pageBody ? (
-              <div
-                className="about-rich-text"
-                dangerouslySetInnerHTML={{ __html: pageBody }}
-              />
-            ) : null}
+            <RichTextContent html={page?.body} />
             <Row className="small-spacing" />
           </Col>
         </Row>

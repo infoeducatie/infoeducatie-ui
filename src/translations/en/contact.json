@@ -1,12 +1,5 @@
 {
   "title": "Contact",
-  "team": "InfoEducație team",
-  "organization": "Organization",
-  "website": "Website",
-  "jury": "Jury",
-  "educational": "Educational software",
-  "multimedia": "Multimedia",
-  "utility": "Utility software",
-  "robots": "Robotics",
-  "web": "Web"
+  "loading": "Loading the contact page...",
+  "error": "The contact page could not be loaded. Please try again later."
 }

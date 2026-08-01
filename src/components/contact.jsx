@@ -1,21 +1,54 @@
 "use strict";
 
 import { Col, Grid, Row } from "@ui/bootstrap";
+import request from "@lib/request";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import "../main.less";
 import Header from "./header";
-
-const juryContacts = [
-  ["educational", "educational@infoeducatie.ro"],
-  ["multimedia", "multimedia@infoeducatie.ro"],
-  ["utility", "utilitar@infoeducatie.ro"],
-  ["robots", "roboti@infoeducatie.ro"],
-  ["web", "web@infoeducatie.ro"],
-];
+import RichTextContent from "./rich-text-content";
 
 export default function Contact(props) {
   const { t } = useTranslation("contact");
+  const [pageResult, setPageResult] = useState({
+    page: null,
+    hasErrored: false,
+    language: null,
+  });
+  const isLoading = pageResult.language !== props.language;
+  const hasErrored = !isLoading && pageResult.hasErrored;
+  const page = isLoading ? null : pageResult.page;
+
+  useEffect(() => {
+    let isCurrent = true;
+
+    request({
+      method: "GET",
+      url: window.config.API_URL + "content_pages/contact.json",
+      data: { locale: props.language },
+      success(data) {
+        if (!isCurrent) return;
+        setPageResult({
+          page: data && typeof data === "object" ? data : null,
+          hasErrored: !data || typeof data !== "object",
+          language: props.language,
+        });
+      },
+      error() {
+        if (!isCurrent) return;
+        setPageResult({
+          page: null,
+          hasErrored: true,
+          language: props.language,
+        });
+      },
+    });
+
+    return () => {
+      isCurrent = false;
+    };
+  }, [props.language]);
 
   return (
     <div className="contact">
@@ -29,7 +62,7 @@ export default function Contact(props) {
           <Row>
             <Row className="small-spacing" />
             <Col xs={12}>
-              <h1>{t("title")}</h1>
+              <h1>{page?.title || t("title")}</h1>
             </Col>
           </Row>
           <Row className="big-spacing" />
@@ -38,47 +71,17 @@ export default function Contact(props) {
       <Grid className="white-section">
         <Row>
           <Col md={10} mdOffset={1}>
-            <div className="contact-details">
-              <section
-                aria-labelledby="contact-general"
-                className="contact-group"
-              >
-                <h2 className="content-heading" id="contact-general">
-                  {t("team")}
-                </h2>
-                <ul className="contact-list">
-                  <li>
-                    <span>{t("organization")}</span>
-                    <a href="mailto:contact@infoeducatie.ro">
-                      contact@infoeducatie.ro
-                    </a>
-                    <small>Emil Onea</small>
-                  </li>
-                  <li>
-                    <span>{t("website")}</span>
-                    <a href="mailto:ping@infoeducatie.ro">
-                      ping@infoeducatie.ro
-                    </a>
-                  </li>
-                </ul>
-              </section>
-              <section
-                aria-labelledby="contact-jury"
-                className="contact-group"
-              >
-                <h2 className="content-heading" id="contact-jury">
-                  {t("jury")}
-                </h2>
-                <ul className="contact-list">
-                  {juryContacts.map(([key, email]) => (
-                    <li key={email}>
-                      <span>{t(key)}</span>
-                      <a href={`mailto:${email}`}>{email}</a>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            </div>
+            <Row className="small-spacing" />
+            {isLoading ? (
+              <p className="page-status" role="status">{t("loading")}</p>
+            ) : null}
+            {hasErrored ? (
+              <p className="page-status alert alert-warning" role="alert">
+                {t("error")}
+              </p>
+            ) : null}
+            <RichTextContent html={page?.body} />
+            <Row className="small-spacing" />
           </Col>
         </Row>
       </Grid>

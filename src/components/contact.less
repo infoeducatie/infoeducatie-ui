@@ -9,72 +9,7 @@
     .blue-section();
   }
 
-  .white-section {
-    .contact-details {
-      display: grid;
-      gap: 56px;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-      padding-top: 48px;
-    }
-
-    .contact-group {
-      border-top: 3px solid @pink;
-      min-width: 0;
-      padding-top: 20px;
-    }
-
-    .content-heading {
-      margin: 0 0 20px;
-    }
-
-    .contact-list {
-      margin: 0;
-      padding: 0;
-
-      li {
-        align-items: baseline;
-        border-bottom: 1px solid @light-grey;
-        display: grid;
-        font-size: @font-size-base;
-        gap: 3px;
-        grid-template-columns: minmax(150px, 1fr) minmax(0, 1.35fr);
-        list-style: none;
-        padding: 14px 0;
-      }
-
-      span {
-        color: @light-black;
-        font-weight: bold;
-      }
-
-      a {
-        overflow-wrap: anywhere;
-      }
-
-      small {
-        color: @grey;
-        grid-column: 2;
-      }
-    }
-  }
-
-  @media screen and (max-width: (@screen-md - 1px)) {
-    .white-section .contact-details {
-      gap: 36px;
-      grid-template-columns: 1fr;
-      padding-top: 36px;
-    }
-  }
-
-  @media screen and (max-width: (@screen-sm - 1px)) {
-    .white-section .contact-list {
-      li {
-        grid-template-columns: 1fr;
-      }
-
-      small {
-        grid-column: 1;
-      }
-    }
+  .white-section .rich-text-content {
+    max-width: 820px;
   }
 }
