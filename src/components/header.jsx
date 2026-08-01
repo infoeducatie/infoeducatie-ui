@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { withTranslation } from "react-i18next";
 
 import "../main.less";
-import ENFlag from "../../assets/img/icons/US.png";
+import ENFlag from "../../assets/img/icons/UK.svg";
 import ROFlag from "../../assets/img/icons/RO.png";
 
 const Header = createLegacyComponent({
