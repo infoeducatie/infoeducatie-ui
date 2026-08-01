@@ -26,9 +26,22 @@ const Alumni = createLegacyComponent({
   },
 
   componentDidMount() {
+    this.loadAlumni();
+  },
+
+  componentDidUpdate(previousProps) {
+    if (previousProps.language !== this.props.language) {
+      this.loadAlumni();
+    }
+  },
+
+  loadAlumni() {
+    this.setState({ hasErrored: false, isLoading: true });
+
     request({
       method: "GET",
       url: window.config.API_URL + "alumni.json",
+      data: { locale: this.props.language },
       success: this.onSuccess,
       error: this.onError
     });

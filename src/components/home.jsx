@@ -172,7 +172,7 @@ export default function Home(props) {
       <CommunityInvite />
 
       <div className="green-section-wrapper">
-        <NewsContainer />
+        <NewsContainer language={language} />
       </div>
 
       <div className="gray-section-wrapper">

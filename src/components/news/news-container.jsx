@@ -31,12 +31,19 @@ const NewsContainer = createLegacyComponent({
     this.loadNews();
   },
 
+  componentDidUpdate(previousProps) {
+    if (previousProps.language !== this.props.language) {
+      this.loadNews();
+    }
+  },
+
   loadNews() {
-    this.setState({ hasError: false, isLoading: true });
+    this.setState({ currentPage: 1, hasError: false, isLoading: true });
 
     request({
       method: "GET",
       url: window.config.API_URL + "news.json",
+      data: { locale: this.props.language },
       success: this.onSuccess,
       error: this.onError,
     });

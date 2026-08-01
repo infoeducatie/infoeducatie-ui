@@ -22,6 +22,7 @@ const Talks = createLegacyComponent({
       selectedEdition: this.props.edition.name ||
         this.props.edition.count ||
         this.props.edition.year,
+      selectedEditionId: this.props.edition.id,
       hasErrored: false,
       isLoading: true
     };
@@ -37,7 +38,14 @@ const Talks = createLegacyComponent({
         selectedEdition: nextProps.edition.name ||
           nextProps.edition.count ||
           nextProps.edition.year,
+        selectedEditionId: nextProps.edition.id,
       });
+    }
+  },
+
+  componentDidUpdate(previousProps) {
+    if (previousProps.language !== this.props.language) {
+      this.getTalks(this.state.selectedEditionId);
     }
   },
 
@@ -127,12 +135,15 @@ const Talks = createLegacyComponent({
 
   onEditionChange(edition) {
     this.getTalks(edition.id);
-    this.setState({ selectedEdition: edition.name });
+    this.setState({
+      selectedEdition: edition.name,
+      selectedEditionId: edition.id,
+    });
   },
 
   getTalks(editionId=undefined) {
     this.setState({ hasErrored: false, isLoading: true });
-    let data = {};
+    let data = { locale: this.props.language };
     if (editionId) {
       data.edition = editionId;
     }
