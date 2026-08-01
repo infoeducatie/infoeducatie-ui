@@ -2,8 +2,9 @@
 
 import ajax from "../../lib/ajax"
 import createLegacyComponent from "@lib/create-legacy-component";
-import { Grid, Col, Row, Glyphicon, Table } from "@ui/bootstrap";
+import { Grid, Col, Row, Table } from "@ui/bootstrap";
 import ctx from "classnames";
+import { LayoutGrid, List } from "lucide-react";
 import { withTranslation } from "react-i18next";
 
 import "../../main.less";
@@ -310,21 +311,31 @@ const Contestants = createLegacyComponent({
   },
 
   renderProjectCard(project) {
-    return <ProjectCard project={project} key={project.id} />;
+    return <ProjectCard
+      project={project}
+      key={project.id}
+      showResults={this.hasPublishedResults()}
+      t={this.props.t}
+    />;
   },
 
   renderGrid() {
     let projects = this.getVisibleProjects();
 
     if (this.state.showGrid) {
-      return <Grid className="projects-grid">
+      return <div className="projects-grid">
+               <h2 className="visually-hidden" id="participant-projects-grid-heading">
+                 {this.props.t(this.hasPublishedResults()
+                   ? "contestants.results.ranking"
+                   : "contestants.projectList")}
+               </h2>
                {projects.map(this.renderProjectCard)}
                {!projects.length ? (
                  <p className="empty-state" role="status">
                    {this.props.t("contestants.empty")}
                  </p>
                ) : null}
-             </Grid>;
+             </div>;
     }
 
     return null;
@@ -332,14 +343,22 @@ const Contestants = createLegacyComponent({
 
   render() {
     let gridClassName = ctx({
-      "view-toggle hidden-xs": true,
+      "view-toggle": true,
       "inactive": !this.state.showGrid
     });
     let tableClassName = ctx({
-      "view-toggle hidden-xs": true,
+      "view-toggle": true,
       "inactive": !this.state.showTable
     });
     let visibleProjectCount = this.getVisibleProjects().length;
+    let categoryFilters = [
+      ["all", "categories.all"],
+      ["web", "categories.web"],
+      ["educational", "categories.educational"],
+      ["roboti", "categories.robots"],
+      ["utilitar", "categories.utility"],
+      ["multimedia", "categories.multimedia"],
+    ];
 
     return <div className="contestants">
       <SecondaryHero headerProps={this.props}>
@@ -352,39 +371,25 @@ const Contestants = createLegacyComponent({
       </SecondaryHero>
 
       <Grid className="stats-section">
-        <Row>
-          <Col md={6} mdOffset={3}
-               sm={8} smOffset={2}
-               xs={12}>
-            <Row className="inner-stats">
-              <Col xs={4}>
-                  <p className="description">{this.props.t("contestants.participants")}</p>
-                  <p className="value">
-                    {this.state.selectedEdition.contestants_count}
-                  </p>
-              </Col>
-              <Col xs={4} className="border-left">
-                  <p className="description">{this.props.t("contestants.projects")}</p>
-                  <p className="value">
-                    {this.state.selectedEdition.projects_count}
-                  </p>
-              </Col>
-              <Col xs={4} className="border-left">
-                  <p className="description">{this.props.t("contestants.counties")}</p>
-                  <p className="value">
-                    {this.state.selectedEdition.counties_count}
-                  </p>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
+        <div className="inner-stats">
+          <div className="stat-item">
+            <p className="description">{this.props.t("contestants.participants")}</p>
+            <p className="value">{this.state.selectedEdition.contestants_count}</p>
+          </div>
+          <div className="stat-item">
+            <p className="description">{this.props.t("contestants.projects")}</p>
+            <p className="value">{this.state.selectedEdition.projects_count}</p>
+          </div>
+          <div className="stat-item">
+            <p className="description">{this.props.t("contestants.counties")}</p>
+            <p className="value">{this.state.selectedEdition.counties_count}</p>
+          </div>
+        </div>
       </Grid>
 
-      <Grid>
-        <Row className="xsmall-spacing" />
-        <Row>
-          <Col xs={12}>
-            <div className="edition-filter">
+      <Grid className="participant-tools">
+        <div className="participant-controls">
+          <div className="edition-filter tool-field">
             <label className="control-label" htmlFor="participant-edition">
               {this.props.t("edition.displayed")}
             </label>
@@ -397,12 +402,8 @@ const Contestants = createLegacyComponent({
                 {this.props.t("contestants.results.published")}
               </p>
             ) : null}
-            </div>
-          </Col>
-        </Row>
-        <Row className="xsmall-spacing" />
-        <Row className="participant-search">
-          <Col md={8} mdOffset={2}>
+          </div>
+          <div className="participant-search tool-field">
             <label className="control-label" htmlFor="participant-search">
               {this.props.t("contestants.searchLabel")}
             </label>
@@ -417,47 +418,20 @@ const Contestants = createLegacyComponent({
             <p aria-live="polite" className="results-count">
               {this.props.t("contestants.shown", { count: visibleProjectCount })}
             </p>
-          </Col>
-        </Row>
-        <Row className="xsmall-spacing" />
-        <Row className="filter-buttons">
-          <Col smOffset={2} sm={1} xs={4}>
-            <FilterIcon currentCategory={this.state.currentCategory}
-                        toggleCategory={this.toggleCategory}
-                        category="all" />
-            <p>{this.props.t("categories.all")}</p>
-          </Col>
-          <Col sm={1} xs={4}>
-            <FilterIcon currentCategory={this.state.currentCategory}
-                        toggleCategory={this.toggleCategory}
-                        category="web" />
-            <p>{this.props.t("categories.web")}</p>
-          </Col>
-          <Col sm={1} xs={4}>
-            <FilterIcon currentCategory={this.state.currentCategory}
-                        toggleCategory={this.toggleCategory}
-                        category="educational" />
-            <p>{this.props.t("categories.educational")}</p>
-          </Col>
-          <Col sm={1} xs={4}>
-            <FilterIcon currentCategory={this.state.currentCategory}
-                        toggleCategory={this.toggleCategory}
-                        category="roboti" />
-            <p>{this.props.t("categories.robots")}</p>
-          </Col>
-          <Col sm={1} xs={4}>
-            <FilterIcon currentCategory={this.state.currentCategory}
-                        toggleCategory={this.toggleCategory}
-                        category="utilitar" />
-            <p>{this.props.t("categories.utility")}</p>
-          </Col>
-          <Col sm={1} xs={4}>
-            <FilterIcon currentCategory={this.state.currentCategory}
-                        toggleCategory={this.toggleCategory}
-                        category="multimedia" />
-            <p>{this.props.t("categories.multimedia")}</p>
-          </Col>
-          <Col smOffset={2} sm={1} className="hidden-xs">
+          </div>
+        </div>
+        <div className="filter-buttons">
+          <div className="category-filters">
+            {categoryFilters.map(([category, labelKey]) => (
+              <div className="filter-option" key={category}>
+                <FilterIcon currentCategory={this.state.currentCategory}
+                            toggleCategory={this.toggleCategory}
+                            category={category} />
+                <p>{this.props.t(labelKey)}</p>
+              </div>
+            ))}
+          </div>
+          <div className="view-controls">
             <button
               aria-label={this.props.t("contestants.gridAria")}
               aria-pressed={this.state.showGrid}
@@ -466,10 +440,9 @@ const Contestants = createLegacyComponent({
               title={this.props.t("contestants.gridTitle")}
               type="button"
             >
-              <Glyphicon glyph="th-large" />
+              <LayoutGrid aria-hidden="true" size={20} />
+              <span>{this.props.t("contestants.gridTitle")}</span>
             </button>
-          </Col>
-          <Col sm={1} className="hidden-xs">
             <button
               aria-label={this.props.t("contestants.tableAria")}
               aria-pressed={this.state.showTable}
@@ -478,10 +451,11 @@ const Contestants = createLegacyComponent({
               title={this.props.t("contestants.tableTitle")}
               type="button"
             >
-              <Glyphicon glyph="align-justify" />
+              <List aria-hidden="true" size={20} />
+              <span>{this.props.t("contestants.tableTitle")}</span>
             </button>
-          </Col>
-        </Row>
+          </div>
+        </div>
       </Grid>
 
       <Grid className="projects">
