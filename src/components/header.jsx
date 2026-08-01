@@ -29,15 +29,10 @@ const Header = createLegacyComponent({
     );
   },
 
-  renderResultsContestants() {
-    const lastEdition = this.props.current.last_edition_with_results;
-    const showResults =
-      lastEdition && this.props.current.edition.id == lastEdition.id;
-    const route = showResults ? "results" : "participants";
-
+  renderParticipants() {
     return (
-      <LinkContainer to={getLocalizedPath(route)}>
-        <NavItem>{this.props.t(`navigation.${route}`)}</NavItem>
+      <LinkContainer to={getLocalizedPath("participants")}>
+        <NavItem>{this.props.t("navigation.participants")}</NavItem>
       </LinkContainer>
     );
   },
@@ -66,7 +61,7 @@ const Header = createLegacyComponent({
             <LinkContainer to={getLocalizedPath("schedule")}>
               <NavItem>{t("navigation.schedule")}</NavItem>
             </LinkContainer>
-            {this.renderResultsContestants()}
+            {this.renderParticipants()}
             <LinkContainer to={getLocalizedPath("jury")}>
               <NavItem>{t("navigation.jury")}</NavItem>
             </LinkContainer>

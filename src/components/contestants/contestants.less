@@ -60,6 +60,12 @@
     }
   }
 
+  .results-available {
+    color: @dark-green;
+    font-weight: bold;
+    margin: 10px 0 0;
+  }
+
   .empty-state {
     background: @light-grey;
     border-left: 4px solid @blue;
@@ -134,6 +140,40 @@
             text-transform: uppercase;
             color: @link-blue;
           }
+        }
+      }
+
+      &.results-table {
+        th {
+          text-align: center;
+
+          &.left {
+            text-align: left;
+          }
+        }
+
+        td {
+          max-width: 260px;
+
+          &.county {
+            color: @black;
+            text-transform: none;
+          }
+
+          &.rank {
+            color: @link-blue;
+            letter-spacing: @big-letter-spacing;
+            text-align: center;
+            text-transform: uppercase;
+          }
+
+          &.total {
+            color: @dark-green;
+          }
+        }
+
+        tr:hover {
+          background-color: @orange;
         }
       }
     }

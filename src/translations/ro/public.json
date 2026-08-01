@@ -33,29 +33,27 @@
     "discuss": "Discută pe forum",
     "authorPhoto": "Fotografie {{name}}"
   },
-  "results": {
-    "title": "Rezultate InfoEducație",
-    "loading": "Se încarcă rezultatele...",
-    "error": "Rezultatele nu au putut fi încărcate. Reîncearcă în câteva momente.",
-    "ranking": "Clasamentul proiectelor",
-    "empty": "Nu există rezultate pentru categoria selectată.",
-    "columns": {
-      "prize": "premiul",
-      "project": "numele lucrării",
-      "contestant": "concurent",
-      "school": "liceu",
-      "county": "județ",
-      "teacher": "profesor",
-      "score": "punctaj",
-      "open": "open",
-      "total": "total"
-    }
-  },
   "contestants": {
     "title": "Participanți InfoEducație",
     "serverError": "Datele nu au putut fi preluate de pe server.",
     "projectList": "Lista proiectelor",
     "empty": "Nu am găsit proiecte pentru filtrele selectate.",
+    "results": {
+      "published": "Pentru această ediție sunt afișate rezultatele publicate.",
+      "ranking": "Clasamentul proiectelor",
+      "empty": "Nu există rezultate pentru categoria selectată.",
+      "columns": {
+        "prize": "premiul",
+        "project": "numele lucrării",
+        "contestant": "concurent",
+        "school": "liceu",
+        "county": "județ",
+        "teacher": "profesor",
+        "score": "punctaj",
+        "open": "open",
+        "total": "total"
+      }
+    },
     "participants": "Participanți",
     "projects": "Proiecte",
     "counties": "Județe",

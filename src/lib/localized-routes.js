@@ -9,7 +9,6 @@ export const localizedPaths = {
   participants: "/participanti",
   photos: "/poze",
   register: "/inregistrare",
-  results: "/rezultate",
   schedule: "/program",
   talks: "/seminarii",
 };

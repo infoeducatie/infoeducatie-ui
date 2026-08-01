@@ -53,7 +53,6 @@ const Register = lazy(() => import("./components/register"));
 const RegisterInContest = lazy(
   () => import("./components/register-in-contest"),
 );
-const Results = lazy(() => import("./components/results"));
 const RoboticsCompetition = lazy(
   () => import("./components/robotics/robotics-competition"),
 );
@@ -236,7 +235,6 @@ const routeComponents = [
   { path: "contacte", component: Contact },
   { path: "despre", component: About },
   { path: "inregistrare", component: Register },
-  { path: "rezultate", component: Results },
   { path: "robotica/:slug", component: RoboticsCompetition },
   { path: "participanti", component: Contestants },
   { path: "seminarii", component: Talks },
@@ -273,6 +271,10 @@ root.render(
           <Route path="about" element={<Navigate replace to="/despre" />} />
           <Route path="contact" element={<Navigate replace to="/contacte" />} />
           <Route path="photos" element={<Navigate replace to="/poze" />} />
+          <Route
+            path="rezultate"
+            element={<Navigate replace to="/participanti" />}
+          />
           <Route
             path="*"
             element={<RouteContent component={NotFound} />}

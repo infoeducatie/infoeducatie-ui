@@ -15,15 +15,10 @@ import NewsletterForm from "./newsletter-form";
 const Footer = createLegacyComponent({
   displayName: "Footer",
 
-  renderResultsContestants() {
-    const lastEdition = this.props.current.last_edition_with_results;
-    const showResults =
-      lastEdition && this.props.current.edition.id != lastEdition.id;
-    const route = showResults ? "results" : "participants";
-
+  renderParticipants() {
     return (
-      <LinkContainer to={getLocalizedPath(route)}>
-        <NavItem>{this.props.t(`navigation.${route}`)}</NavItem>
+      <LinkContainer to={getLocalizedPath("participants")}>
+        <NavItem>{this.props.t("navigation.participants")}</NavItem>
       </LinkContainer>
     );
   },
@@ -58,7 +53,7 @@ const Footer = createLegacyComponent({
                 <LinkContainer to={getLocalizedPath("blog")}>
                   <NavItem>{t("navigation.blog")}</NavItem>
                 </LinkContainer>
-                {this.renderResultsContestants()}
+                {this.renderParticipants()}
                 <LinkContainer to={getLocalizedPath("photos")}>
                   <NavItem>{t("navigation.photos")}</NavItem>
                 </LinkContainer>

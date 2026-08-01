@@ -33,29 +33,27 @@
     "discuss": "Discuss on the forum",
     "authorPhoto": "Photo of {{name}}"
   },
-  "results": {
-    "title": "InfoEducation Results",
-    "loading": "Loading results...",
-    "error": "Results could not be loaded. Please try again in a few moments.",
-    "ranking": "Project ranking",
-    "empty": "There are no results in the selected category.",
-    "columns": {
-      "prize": "prize",
-      "project": "project name",
-      "contestant": "contestant",
-      "school": "school",
-      "county": "county",
-      "teacher": "teacher",
-      "score": "score",
-      "open": "open",
-      "total": "total"
-    }
-  },
   "contestants": {
     "title": "InfoEducation Participants",
     "serverError": "The data could not be retrieved from the server.",
     "projectList": "Project list",
     "empty": "No projects match the selected filters.",
+    "results": {
+      "published": "Published results are shown for this edition.",
+      "ranking": "Project ranking",
+      "empty": "There are no results in the selected category.",
+      "columns": {
+        "prize": "prize",
+        "project": "project name",
+        "contestant": "contestant",
+        "school": "school",
+        "county": "county",
+        "teacher": "teacher",
+        "score": "score",
+        "open": "open",
+        "total": "total"
+      }
+    },
     "participants": "Participants",
     "projects": "Projects",
     "counties": "Counties",

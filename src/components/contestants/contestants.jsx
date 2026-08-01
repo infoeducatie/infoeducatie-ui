@@ -24,6 +24,26 @@ function normalizeSearchValue(value) {
     .toLocaleLowerCase("ro");
 }
 
+function itemName(item) {
+  if (typeof item === "string") {
+    return item;
+  }
+
+  return item && (item.name || item.title);
+}
+
+function formatScore(score) {
+  if (
+    score === null ||
+    score === undefined ||
+    (typeof score === "string" && score.trim() === "")
+  ) {
+    return score;
+  }
+
+  const numericScore = Number(score);
+  return Number.isFinite(numericScore) ? numericScore.toFixed(2) : score;
+}
 
 const Contestants = createLegacyComponent({
   displayName: "Contestants",
@@ -31,6 +51,7 @@ const Contestants = createLegacyComponent({
   componentDidMount() {
     this.props.refreshCurrent();
     this.getContestants();
+    this.getResultEditions();
   },
 
   getInitialState: function() {
@@ -41,7 +62,10 @@ const Contestants = createLegacyComponent({
       showTable: true,
       currentCategory: "all",
       searchTerm: "",
-      selectedEdition: this.props.edition
+      selectedEdition: this.props.edition,
+      resultEditionIds: this.props.lastEditionWithResults
+        ? [this.props.lastEditionWithResults.id]
+        : [],
    };
   },
 
@@ -82,7 +106,7 @@ const Contestants = createLegacyComponent({
   getVisibleProjects() {
     let query = normalizeSearchValue(this.state.searchTerm.trim());
 
-    return this.state.projects.filter((project) => {
+    let projects = this.state.projects.filter((project) => {
       let matchesCategory = this.state.currentCategory === "all" ||
         project.category === this.state.currentCategory;
 
@@ -99,6 +123,23 @@ const Contestants = createLegacyComponent({
 
       return normalizeSearchValue(searchableValues.join(" ")).includes(query);
     });
+
+    if (this.hasPublishedResults()) {
+      return [...projects].sort((first, second) => {
+        if (this.state.currentCategory === "all") {
+          const categoryOrder = first.category.localeCompare(second.category);
+          if (categoryOrder !== 0) return categoryOrder;
+        }
+
+        return Number(second.total_score || 0) - Number(first.total_score || 0);
+      });
+    }
+
+    return projects;
+  },
+
+  hasPublishedResults() {
+    return this.state.resultEditionIds.includes(this.state.selectedEdition.id);
   },
 
   renderErrors() {
@@ -107,24 +148,99 @@ const Contestants = createLegacyComponent({
     }
   },
 
-  renderProjectRow(project){
+  renderList(items, className) {
+    return (
+      <ul className="list-unstyled">
+        {asArray(items).map(itemName).filter(Boolean).map((item, index) => (
+          <li className={className} key={`${item}-${index}`}>{item}</li>
+        ))}
+      </ul>
+    );
+  },
+
+  renderProjectTitle(project) {
+    return project.discourse_url ? (
+      <a href={project.discourse_url}>{project.title}</a>
+    ) : project.title;
+  },
+
+  renderProjectRow(project) {
+    if (this.hasPublishedResults()) {
+      return (
+        <tr key={project.id} className="contestant result">
+          <td
+            className="rank"
+            data-label={this.props.t("contestants.results.columns.prize")}
+          >
+            {project.prize}
+          </td>
+          <td
+            className="title"
+            data-label={this.props.t("contestants.results.columns.project")}
+          >
+            {this.renderProjectTitle(project)}
+          </td>
+          <td
+            className="authors"
+            data-label={this.props.t("contestants.results.columns.contestant")}
+          >
+            {this.renderList(project.contestants, "author")}
+          </td>
+          <td
+            className="school hidden-sm hidden-xs"
+            data-label={this.props.t("contestants.results.columns.school")}
+          >
+            {this.renderList(project.schools)}
+          </td>
+          <td
+            className="county hidden-sm hidden-xs"
+            data-label={this.props.t("contestants.results.columns.county")}
+          >
+            {this.renderList(project.counties)}
+          </td>
+          <td
+            className="teacher hidden-sm hidden-xs"
+            data-label={this.props.t("contestants.results.columns.teacher")}
+          >
+            {this.renderList(project.mentoring_teachers)}
+          </td>
+          <td
+            className="category hidden-sm hidden-xs"
+            data-label={this.props.t("contestants.columns.category")}
+          >
+            {project.category}
+          </td>
+          <td
+            className="score hidden-sm hidden-xs"
+            data-label={this.props.t("contestants.results.columns.score")}
+          >
+            {formatScore(project.score)}
+          </td>
+          <td
+            className="score hidden-sm hidden-xs"
+            data-label={this.props.t("contestants.results.columns.open")}
+          >
+            {formatScore(project.extra_score)}
+          </td>
+          <td
+            className="score total"
+            data-label={this.props.t("contestants.results.columns.total")}
+          >
+            {formatScore(project.total_score)}
+          </td>
+        </tr>
+      );
+    }
+
     return <tr key={project.id} className="contestant">
         <td className="county" data-label={this.props.t("contestants.columns.county")}>
-          <ul className="list-unstyled">
-            {asArray(project.counties).map(function(county, index) {
-              return <li key={index}>{county}</li>;
-            })}
-          </ul>
+          {this.renderList(project.counties)}
         </td>
         <td className="title" data-label={this.props.t("contestants.columns.project")}>
-          <a href={project.discourse_url}>{project.title}</a>
+          {this.renderProjectTitle(project)}
         </td>
         <td className="authors" data-label={this.props.t("contestants.columns.contestant")}>
-          <ul className="list-unstyled">
-            {asArray(project.contestants).map(function(contestant){
-              return <li className="author" key={contestant.id}>{contestant.name}</li>;
-            })}
-          </ul>
+          {this.renderList(project.contestants, "author")}
         </td>
         <td className="category" data-label={this.props.t("contestants.columns.category")}>{project.category}</td>
         <td className="comments" data-label={this.props.t("contestants.columns.comments")}><CloudCount count={project.comments_count} /></td>
@@ -133,12 +249,15 @@ const Contestants = createLegacyComponent({
 
   renderTable() {
     let projects = this.getVisibleProjects();
+    let showResults = this.hasPublishedResults();
 
     if (this.state.showTable) {
       return <Row>
-        <Col md={8} mdOffset={2}>
+        <Col md={showResults ? 12 : 8} mdOffset={showResults ? 0 : 2}>
           <h2 className="visually-hidden" id="participant-projects-heading">
-            {this.props.t("contestants.projectList")}
+            {this.props.t(showResults
+              ? "contestants.results.ranking"
+              : "contestants.projectList")}
           </h2>
           <div
             aria-labelledby="participant-projects-heading"
@@ -146,15 +265,30 @@ const Contestants = createLegacyComponent({
             role="region"
             tabIndex="0"
           >
-            <Table>
+            <Table className={showResults ? "results-table" : ""}>
               <thead>
-                <tr>
-                  <th>{this.props.t("contestants.columns.county")}</th>
-                  <th>{this.props.t("contestants.columns.project")}</th>
-                  <th>{this.props.t("contestants.columns.contestant")}</th>
-                  <th>{this.props.t("contestants.columns.category")}</th>
-                  <th>{this.props.t("contestants.columns.comments")}</th>
-                </tr>
+                {showResults ? (
+                  <tr>
+                    <th>{this.props.t("contestants.results.columns.prize")}</th>
+                    <th className="left">{this.props.t("contestants.results.columns.project")}</th>
+                    <th className="left">{this.props.t("contestants.results.columns.contestant")}</th>
+                    <th className="left hidden-sm hidden-xs">{this.props.t("contestants.results.columns.school")}</th>
+                    <th className="left hidden-sm hidden-xs">{this.props.t("contestants.results.columns.county")}</th>
+                    <th className="left hidden-sm hidden-xs">{this.props.t("contestants.results.columns.teacher")}</th>
+                    <th className="left hidden-sm hidden-xs">{this.props.t("contestants.columns.category")}</th>
+                    <th className="hidden-sm hidden-xs">{this.props.t("contestants.results.columns.score")}</th>
+                    <th className="hidden-sm hidden-xs">{this.props.t("contestants.results.columns.open")}</th>
+                    <th>{this.props.t("contestants.results.columns.total")}</th>
+                  </tr>
+                ) : (
+                  <tr>
+                    <th>{this.props.t("contestants.columns.county")}</th>
+                    <th>{this.props.t("contestants.columns.project")}</th>
+                    <th>{this.props.t("contestants.columns.contestant")}</th>
+                    <th>{this.props.t("contestants.columns.category")}</th>
+                    <th>{this.props.t("contestants.columns.comments")}</th>
+                  </tr>
+                )}
               </thead>
               <tbody>
                  {projects.map(this.renderProjectRow)}
@@ -163,7 +297,9 @@ const Contestants = createLegacyComponent({
           </div>
           {!projects.length ? (
             <p className="empty-state" role="status">
-              {this.props.t("contestants.empty")}
+              {this.props.t(showResults
+                ? "contestants.results.empty"
+                : "contestants.empty")}
             </p>
           ) : null}
         </Col>
@@ -269,6 +405,11 @@ const Contestants = createLegacyComponent({
                              id="participant-edition"
                              ariaLabel={this.props.t("edition.displayed")}
                              filter="has_projects" />
+            {this.hasPublishedResults() ? (
+              <p className="results-available" role="status">
+                {this.props.t("contestants.results.published")}
+              </p>
+            ) : null}
             </div>
           </Col>
         </Row>
@@ -363,6 +504,16 @@ const Contestants = createLegacyComponent({
         {this.renderErrors()}
       </Grid>
     </div>;
+  },
+
+  getResultEditions() {
+    ajax({
+      endpoint: "editions.json?has_results=true",
+      success: (data) => {
+        let resultEditionIds = asArray(data).map((edition) => edition.id);
+        this.setState({ resultEditionIds });
+      },
+    });
   },
 
   getContestants(editionId) {
