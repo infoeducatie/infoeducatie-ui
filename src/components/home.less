@@ -240,9 +240,13 @@
 
   .sponsors-section {
     color: @brand-navy;
+    max-width: none;
     padding-bottom: 48px;
+    padding-left: 0;
+    padding-right: 0;
     padding-top: 42px;
     text-align: center;
+    width: 100%;
 
     h2,
     h3 {
@@ -267,41 +271,60 @@
     .logos-viewport {
       margin-left: auto;
       margin-right: auto;
-      max-width: 80vw;
-      overflow-x: auto;
-      overflow-y: hidden;
-      scrollbar-color: rgba(11, 74, 158, 0.35) transparent;
-      scrollbar-width: thin;
-      width: max-content;
+      overflow: hidden;
+      width: 80vw;
 
       &.is-scrolling {
+        -webkit-mask-image: linear-gradient(
+          90deg,
+          transparent,
+          #000 5%,
+          #000 95%,
+          transparent
+        );
         mask-image: linear-gradient(
           90deg,
           transparent,
-          #000 4%,
-          #000 96%,
+          #000 5%,
+          #000 95%,
           transparent
         );
 
-        .logos {
-          animation: sponsor-pan 18s ease-in-out infinite alternate;
+        .logos-track {
+          animation: sponsor-marquee 28s linear infinite;
+          width: max-content;
         }
 
-        &:active .logos,
-        &:focus-within .logos,
-        &:hover .logos {
+        .logos {
+          flex: 0 0 auto;
+          justify-content: flex-start;
+          width: max-content;
+        }
+
+        .logos--duplicate {
+          margin-left: 16px;
+        }
+
+        &:active .logos-track,
+        &:focus-within .logos-track,
+        &:hover .logos-track {
           animation-play-state: paused;
         }
       }
+    }
+
+    .logos-track {
+      display: flex;
+      width: 100%;
     }
 
     .logos {
       align-items: stretch;
       display: flex;
       gap: 16px;
-      justify-content: flex-start;
+      justify-content: space-between;
       padding: 4px 8px 14px;
-      width: max-content;
+      width: 100%;
 
       .sponsor-logo {
         align-items: center;
@@ -358,19 +381,29 @@
     }
   }
 
-  @keyframes sponsor-pan {
+  @keyframes sponsor-marquee {
     from {
       transform: translateX(0);
     }
 
     to {
-      transform: translateX(calc(-100% + 80vw));
+      transform: translateX(calc(-50% - 8px));
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .sponsors-section .logos-viewport.is-scrolling .logos {
-      animation: none;
+    .sponsors-section .logos-viewport.is-scrolling {
+      -webkit-mask-image: none;
+      mask-image: none;
+      overflow-x: auto;
+
+      .logos-track {
+        animation: none;
+      }
+
+      .logos--duplicate {
+        display: none;
+      }
     }
   }
 

@@ -14,7 +14,7 @@ function resolveImageUrl(imageUrl) {
   }
 }
 
-function SponsorLogo({ sponsor }) {
+function SponsorLogo({ isDuplicate = false, sponsor }) {
   const logo = (
     <>
       <img
@@ -29,7 +29,7 @@ function SponsorLogo({ sponsor }) {
     </>
   );
 
-  if (!sponsor.website_url) {
+  if (!sponsor.website_url || isDuplicate) {
     return <div className="sponsor-logo">{logo}</div>;
   }
 
@@ -77,10 +77,23 @@ function SponsorTier({ tier }) {
         className={`logos-viewport${isOverflowing ? " is-scrolling" : ""}`}
         ref={viewportRef}
       >
-        <div className="logos" ref={logosRef}>
-          {tier.sponsors.map((sponsor) => (
-            <SponsorLogo key={sponsor.id} sponsor={sponsor} />
-          ))}
+        <div className="logos-track">
+          <div className="logos" ref={logosRef}>
+            {tier.sponsors.map((sponsor) => (
+              <SponsorLogo key={sponsor.id} sponsor={sponsor} />
+            ))}
+          </div>
+          {isOverflowing ? (
+            <div aria-hidden="true" className="logos logos--duplicate">
+              {tier.sponsors.map((sponsor) => (
+                <SponsorLogo
+                  isDuplicate
+                  key={`duplicate-${sponsor.id}`}
+                  sponsor={sponsor}
+                />
+              ))}
+            </div>
+          ) : null}
         </div>
       </div>
     </section>
