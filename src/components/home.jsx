@@ -2,6 +2,7 @@
 
 import { getLocalizedPath } from "@lib/localized-routes";
 import { Col, Grid, Row } from "@ui/bootstrap";
+import { ArrowDown, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -42,46 +43,34 @@ export default function Home(props) {
       <div className="blue-section-wrapper">
         <Grid className="blue-section">
           <Header {...props} />
-          <Row>
-            <Col xs={12}>
-              <h1>{t("hero.title")}</h1>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={12}>
-              <h2>{t("hero.subtitle")}</h2>
+          <div className="hero-layout">
+            <div className="hero-copy">
+              <p className="hero-eyebrow">{t("hero.subtitle")}</p>
+              <h1>{t("hero.statement")}</h1>
+              <p className="hero-description">{t("hero.description")}</p>
               <p className="tagline">
-                {t("hero.edition", { count: current.edition.count })}
+                {t("hero.title")} · {t("hero.edition", { count: current.edition.count })}
               </p>
-            </Col>
-          </Row>
-          <Row className="small-spacing" />
-          <Row className="hero-actions">
-            <Col md={4} mdOffset={2}>
-              <p className="left-button">
+              <div className="hero-actions">
                 <Link
                   className="cta-link cta-primary"
                   to={getLocalizedPath("register")}
                 >
-                  {t("hero.register")}
+                  <span>{t("hero.register")}</span>
+                  <ArrowRight aria-hidden="true" size={19} />
                 </Link>
-              </p>
-            </Col>
-            <Col md={4}>
-              <p className="right-button">
                 <Link
                   className="cta-link cta-light"
                   to={getLocalizedPath("about")}
                 >
-                  {t("hero.about")}
+                  <span>{t("hero.about")}</span>
+                  <ArrowDown aria-hidden="true" size={19} />
                 </Link>
-              </p>
-            </Col>
-          </Row>
+              </div>
+            </div>
+          </div>
         </Grid>
       </div>
-
-      <CommunityInvite />
 
       <div className="green-section-wrapper">
         <NewsContainer language={language} />
@@ -146,6 +135,8 @@ export default function Home(props) {
       </div>
 
       <SponsorsSection language={language} />
+
+      <CommunityInvite />
     </div>
   );
 }

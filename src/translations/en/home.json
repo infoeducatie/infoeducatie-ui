@@ -1,6 +1,8 @@
 {
   "hero": {
     "title": "InfoEducație",
+    "statement": "Build ideas. Test the future.",
+    "description": "Where technology, creativity, and collaboration come together to create solutions that matter.",
     "subtitle": "National innovation and digital creation competition",
     "edition": "Edition {{count}}",
     "register": "Create an account",

@@ -2,35 +2,35 @@
 
 
 .judging-criteria-section-wrapper {
-  background-color: @orange;
-  color: @black;
+  background-color: @white;
+  color: @brand-navy;
 }
 
 .judging-criteria-section {
   margin-bottom: 0;
   margin-top: 0;
   min-height: 0;
-  padding-bottom: 40px;
+  padding-bottom: 92px;
+  padding-top: 88px;
 }
 
 .judging-criteria-heading {
-  color: @black;
-  font-size: 20px;
+  color: @brand-navy;
+  font-size: 38px;
   font-weight: bold;
   margin: 0 auto;
-  padding: 36px 0 26px;
+  padding: 0 0 34px;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: none;
 
   .pink-dash {
-    margin-left: 10px;
-    margin-right: 10px;
+    display: none;
   }
 }
 
 .judging-criteria-documents {
   display: grid;
-  gap: 14px;
+  gap: 18px;
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   margin: 0 auto;
   max-width: 1120px;
@@ -44,26 +44,26 @@
 
 .judging-criterion {
   align-items: center;
-  background: fade(@white, 96%);
-  border: 1px solid fade(@black, 18%);
-  border-radius: 12px;
-  box-shadow: 0 5px 14px fade(@black, 12%);
-  color: @black;
+  background: @brand-surface;
+  border: 1px solid @brand-border;
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(11, 23, 51, 0.05);
+  color: @brand-navy;
   display: grid;
   font-weight: bold;
   gap: 12px;
   grid-template-columns: 42px minmax(0, 1fr) 20px;
-  min-height: 82px;
-  padding: 14px;
+  min-height: 92px;
+  padding: 18px;
   text-decoration: none;
   transition: border-color 160ms ease, box-shadow 160ms ease,
               transform 160ms ease;
 
   .judging-criterion-icon {
     align-items: center;
-    background: fade(@pink, 12%);
-    border-radius: 10px;
-    color: darken(@pink, 8%);
+    background: fade(@brand-blue, 10%);
+    border-radius: 12px;
+    color: @brand-blue;
     display: inline-flex;
     height: 42px;
     justify-content: center;
@@ -76,18 +76,18 @@
   }
 
   .judging-criterion-action {
-    color: @grey;
+    color: #7E899D;
     transition: color 160ms ease, transform 160ms ease;
   }
 
   &:hover {
-    border-color: fade(@pink, 75%);
-    box-shadow: 0 9px 22px fade(@black, 16%);
-    color: @black;
+    border-color: fade(@brand-blue, 45%);
+    box-shadow: 0 14px 30px rgba(11, 23, 51, 0.1);
+    color: @brand-navy;
     transform: translateY(-2px);
 
     .judging-criterion-action {
-      color: @pink;
+      color: @brand-red;
       transform: translate(2px, -2px);
     }
   }
@@ -95,12 +95,13 @@
 
 @media screen and (max-width: (@screen-sm - 1px)) {
   .judging-criteria-section {
-    padding-bottom: 32px;
+    padding-bottom: 64px;
+    padding-top: 64px;
   }
 
   .judging-criteria-heading {
-    font-size: 18px;
-    padding: 30px 0 22px;
+    font-size: 32px;
+    padding: 0 0 28px;
   }
 
   .judging-criteria-documents {

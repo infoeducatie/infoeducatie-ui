@@ -1,16 +1,54 @@
 @import (reference) "../main";
 
-
 .header {
-  .section-title();
+  background: @white;
+  box-shadow: 0 0 0 100vmax @white, 0 10px 32px rgba(11, 23, 51, 0.08);
+  clip-path: inset(0 -100vmax -32px);
+  color: @brand-navy;
+  position: relative;
+  z-index: 20;
+
+  .header-shell {
+    align-items: center;
+    display: flex;
+    min-height: 88px;
+  }
+
+  .site-logo {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 auto;
+    margin-right: 26px;
+    min-height: 52px;
+    text-decoration: none;
+
+    &:focus,
+    &:hover {
+      text-decoration: none;
+    }
+
+    .site-logo-wordmark {
+      color: #1F4D8F;
+      font-family: @font-family-serif;
+      font-size: 39px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+  }
 
   .navbar {
-    --bs-navbar-active-color: @white;
-    --bs-navbar-color: @white;
-    --bs-navbar-hover-color: @white;
-    margin-bottom: 20px;
-    min-height: 50px;
+    --bs-navbar-active-color: @brand-navy;
+    --bs-navbar-color: @brand-navy;
+    --bs-navbar-hover-color: @brand-red;
+    flex: 1 1 auto;
+    margin: 0;
+    min-height: 64px;
     padding: 0;
+    position: static;
+  }
+
+  .navbar-collapse {
+    justify-content: flex-end;
   }
 
   .navbar-nav {
@@ -21,75 +59,137 @@
       position: relative;
     }
 
-    .nav-link.active:after {
-      border-radius: 150px;
-      content: "";
-      position: absolute;
-      width: 40%;
-      height: 1px;
-      bottom: 6px;
-      left: 30%;
-      border-bottom: 3px solid @yellow;
-    }
-
     .nav-link {
       align-items: center;
-      color: @white;
+      color: @brand-navy;
       display: flex;
+      font-size: 13px;
+      font-weight: bold;
       justify-content: center;
-      line-height: 20px;
-      min-height: 50px;
-      padding: 15px 10px;
+      line-height: 18px;
+      min-height: 56px;
+      padding: 14px 7px;
+      text-transform: none;
+      transition: color 150ms ease;
 
       &:focus,
       &:hover,
       &:visited {
-        color: @white;
+        color: @brand-navy;
+      }
+
+      &:hover {
+        color: @brand-red;
+        text-decoration: none;
+      }
+    }
+
+    .nav-link.active:after {
+      background: @brand-red;
+      border: 0;
+      border-radius: 999px;
+      bottom: 6px;
+      content: "";
+      height: 3px;
+      left: 25%;
+      position: absolute;
+      width: 50%;
+    }
+
+    .language-switch {
+      border-radius: 8px;
+      margin-left: 5px;
+      padding-left: 8px;
+      padding-right: 8px;
+
+      img {
+        border-radius: 3px;
       }
     }
   }
 
-  .navbar-collapse {
-    justify-content: flex-end;
-  }
-
   .navbar-toggler {
-    border: 2px solid @white;
-    border-radius: 4px;
+    border: 2px solid @brand-navy;
+    border-radius: 10px;
     margin-left: auto;
-    min-height: 44px;
-    min-width: 44px;
+    min-height: 46px;
+    min-width: 46px;
     padding: 8px;
   }
 
   .navbar-toggler-icon {
-    filter: brightness(0) invert(1);
+    filter: none;
+  }
+
+  @media screen and (max-width: 1199px) and (min-width: @screen-md) {
+    .site-logo {
+      margin-right: 14px;
+
+      .site-logo-wordmark {
+        font-size: 34px;
+      }
+    }
+
+    .navbar-nav .nav-link {
+      font-size: 12px;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
   }
 
   @media screen and (max-width: (@screen-md - 1px)) {
+    .header-shell {
+      min-height: 78px;
+    }
+
+    .site-logo .site-logo-wordmark {
+      font-size: 36px;
+    }
+
+    .navbar {
+      justify-content: flex-end;
+    }
+
     .navbar-collapse {
-      flex-basis: 100%;
+      background: @white;
+      border-top: 1px solid @brand-border;
+      box-shadow: 0 18px 28px rgba(11, 23, 51, 0.12);
+      left: 50%;
+      padding: 12px 20px 20px;
+      position: absolute;
+      top: 100%;
+      transform: translateX(-50%);
+      width: 100vw;
     }
 
     .navbar-nav {
       align-items: stretch;
-      margin: 8px 0 0;
+      margin: 0 auto;
+      max-width: 720px;
       width: 100%;
 
       .nav-link {
+        font-size: 15px;
+        justify-content: flex-start;
         min-height: 44px;
-        padding: 10px 15px;
+        padding: 10px 12px;
       }
 
       .nav-link.active:after {
-        bottom: 3px;
-        left: 40%;
-        width: 20%;
+        bottom: 7px;
+        left: 12px;
+        width: 28px;
+      }
+
+      .language-switch {
+        margin-left: 0;
       }
     }
   }
 
-  .nav-link:hover {
-    text-decoration: underline;
+  @media screen and (max-width: 420px) {
+    .site-logo .site-logo-wordmark {
+      font-size: 32px;
+    }
   }
 }

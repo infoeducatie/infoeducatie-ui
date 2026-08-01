@@ -53,7 +53,7 @@ const Article = createLegacyComponent({
                   </button></span>;
     }
 
-    return <div>
+    return <article className="news-article">
       <Row className="xsmall-spacing" />
       <Row>
         <p className="date">{date}</p>
@@ -62,7 +62,7 @@ const Article = createLegacyComponent({
           {this.props.short} {read_more}</p>
       </Row>
       { this.renderOverlay() }
-    </div>;
+    </article>;
   }
 });
 
