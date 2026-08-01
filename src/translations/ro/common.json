@@ -35,7 +35,7 @@
     "newsletterDuplicate": "Adresa de email este deja înregistrată sau un email de confirmare a fost deja trimis către tine.",
     "newsletterSuccess": "Verifică adresa de email pentru a confirma abonarea.",
     "facebook": "Facebook",
-    "twitter": "InfoEducație pe X",
+    "x": "InfoEducație pe X",
     "github": "InfoEducație pe GitHub",
     "copyright": "© {{year}} InfoEducație"
   },

@@ -9,7 +9,7 @@ import { withTranslation } from "react-i18next";
 import "../main.less";
 import Facebook from "../../assets/img/icons/fb.png";
 import Github from "../../assets/img/icons/github.png";
-import Twitter from "../../assets/img/icons/twitter.png";
+import XLogo from "../../assets/img/icons/x.svg";
 import NewsletterForm from "./newsletter-form";
 
 const Footer = createLegacyComponent({
@@ -89,14 +89,15 @@ const Footer = createLegacyComponent({
                   </li>
                   <li>
                     <a
-                      href="https://twitter.com/infoeducatie"
+                      href="https://x.com/infoeducatie"
                       rel="noreferrer"
                       target="_blank"
                     >
                       <img
-                        alt={t("footer.twitter")}
+                        alt={t("footer.x")}
+                        className="x-logo"
                         height="58"
-                        src={Twitter}
+                        src={XLogo}
                         width="58"
                       />
                     </a>

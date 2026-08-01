@@ -35,7 +35,7 @@
     "newsletterDuplicate": "This email address is already subscribed or a confirmation email has already been sent.",
     "newsletterSuccess": "Check your email address to confirm your subscription.",
     "facebook": "Facebook",
-    "twitter": "InfoEducație on X",
+    "x": "InfoEducație on X",
     "github": "InfoEducație on GitHub",
     "copyright": "© {{year}} InfoEducație"
   },
