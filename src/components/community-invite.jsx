@@ -9,11 +9,11 @@ import {
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-export default function CommunityInvite({ inviteUrl }) {
+const DISCORD_INVITE_URL = "https://discord.gg/Ef6yav7wAs";
+
+export default function CommunityInvite() {
   const { i18n, t } = useTranslation("home");
   const titleId = `community-invite-title-${i18n.language}`;
-
-  if (!inviteUrl) return null;
 
   return (
     <section className="community-invite" aria-labelledby={titleId}>
@@ -46,7 +46,7 @@ export default function CommunityInvite({ inviteUrl }) {
           <a
             aria-label={t("community.actionLabel")}
             className="community-invite__cta"
-            href={inviteUrl}
+            href={DISCORD_INVITE_URL}
             rel="noopener noreferrer"
             target="_blank"
           >
