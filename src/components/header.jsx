@@ -10,6 +10,19 @@ import "../main.less";
 import ENFlag from "../../assets/img/icons/US.png";
 import ROFlag from "../../assets/img/icons/RO.png";
 
+const primaryNavigation = [
+  ["home", "home"],
+  ["about", "about"],
+  ["schedule", "schedule"],
+  ["participants", "participants"],
+  ["jury", "jury"],
+  ["talks", "talks"],
+  ["alumni", "alumni"],
+  ["photos", "photos"],
+  ["blog", "blog"],
+  ["contact", "contact"],
+];
+
 const Header = createLegacyComponent({
   displayName: "Header",
 
@@ -29,14 +42,6 @@ const Header = createLegacyComponent({
     );
   },
 
-  renderParticipants() {
-    return (
-      <LinkContainer to={getLocalizedPath("participants")}>
-        <NavItem>{this.props.t("navigation.participants")}</NavItem>
-      </LinkContainer>
-    );
-  },
-
   render() {
     const { isLoggedIn, t } = this.props;
 
@@ -49,22 +54,11 @@ const Header = createLegacyComponent({
           toggleNavKey={0}
         >
           <Nav className="navbar-nav" eventKey={0} right>
-            <LinkContainer to={getLocalizedPath("home")}>
-              <NavItem>{t("navigation.home")}</NavItem>
-            </LinkContainer>
-            <LinkContainer to={getLocalizedPath("alumni")}>
-              <NavItem>{t("navigation.alumni")}</NavItem>
-            </LinkContainer>
-            <LinkContainer to={getLocalizedPath("talks")}>
-              <NavItem>{t("navigation.talks")}</NavItem>
-            </LinkContainer>
-            <LinkContainer to={getLocalizedPath("schedule")}>
-              <NavItem>{t("navigation.schedule")}</NavItem>
-            </LinkContainer>
-            {this.renderParticipants()}
-            <LinkContainer to={getLocalizedPath("jury")}>
-              <NavItem>{t("navigation.jury")}</NavItem>
-            </LinkContainer>
+            {primaryNavigation.map(([route, label]) => (
+              <LinkContainer key={route} to={getLocalizedPath(route)}>
+                <NavItem>{t(`navigation.${label}`)}</NavItem>
+              </LinkContainer>
+            ))}
             {isLoggedIn ? (
               <NavItem onClick={this.props.logout}>
                 {t("navigation.logout")}
