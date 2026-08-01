@@ -1,0 +1,71 @@
+@import (reference) "../main";
+
+@brand-shapes: url("/assets/img/brand-shapes.svg");
+
+// A quiet, reusable layer inspired by the geometric reference artwork. The
+// SVG contains only brand-colour vectors, keeping text and content untouched.
+#main-content > :not(.home):not(.robotics-competition) {
+  background-color: @brand-surface;
+  background-image: @brand-shapes;
+  background-position: center 180px;
+  background-repeat: repeat-y;
+  background-size: 1600px 1000px;
+}
+
+.home {
+  .green-section-wrapper,
+  .judging-criteria-section,
+  .gray-section-wrapper,
+  .yellow-section-wrapper,
+  .community-invite,
+  .sponsors-section-wrapper {
+    background-image: @brand-shapes;
+    background-repeat: no-repeat;
+    background-size: 1600px 1000px;
+  }
+
+  .green-section-wrapper,
+  .yellow-section-wrapper,
+  .sponsors-section-wrapper {
+    background-position: center 8%;
+  }
+
+  .judging-criteria-section,
+  .community-invite {
+    background-position: center 52%;
+  }
+
+  .gray-section-wrapper {
+    background-position: center 82%;
+  }
+}
+
+@media screen and (min-width: @screen-wide) {
+  #main-content > :not(.home):not(.robotics-competition),
+  .home .green-section-wrapper,
+  .home .judging-criteria-section,
+  .home .gray-section-wrapper,
+  .home .yellow-section-wrapper,
+  .home .community-invite,
+  .home .sponsors-section-wrapper {
+    background-size: 2000px 1250px;
+  }
+}
+
+@media screen and (max-width: (@screen-sm - 1px)) {
+  #main-content > :not(.home):not(.robotics-competition) {
+    background-position: center 220px;
+    background-size: 900px 563px;
+  }
+
+  .home {
+    .green-section-wrapper,
+    .judging-criteria-section,
+    .gray-section-wrapper,
+    .yellow-section-wrapper,
+    .community-invite,
+    .sponsors-section-wrapper {
+      background-size: 900px 563px;
+    }
+  }
+}
