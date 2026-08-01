@@ -10,15 +10,15 @@
   margin-bottom: 0;
   margin-top: 0;
   min-height: 0;
-  padding-bottom: 36px;
+  padding-bottom: 40px;
 }
 
 .judging-criteria-heading {
   color: @black;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   margin: 0 auto;
-  padding: 32px 0 24px;
+  padding: 36px 0 26px;
   text-align: center;
   text-transform: uppercase;
 
@@ -29,12 +29,14 @@
 }
 
 .judging-criteria-documents {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: center;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  margin: 0 auto;
+  max-width: 1120px;
 
   .page-status {
+    grid-column: 1 / -1;
     margin-bottom: 0;
     width: 100%;
   }
@@ -42,37 +44,84 @@
 
 .judging-criterion {
   align-items: center;
-  background: @white;
-  border: 2px solid @black;
-  border-radius: 4px;
+  background: fade(@white, 96%);
+  border: 1px solid fade(@black, 18%);
+  border-radius: 12px;
+  box-shadow: 0 5px 14px fade(@black, 12%);
   color: @black;
-  display: inline-flex;
-  flex-direction: column;
+  display: grid;
   font-weight: bold;
-  gap: 10px;
-  justify-content: center;
-  min-height: 96px;
-  padding: 12px 18px;
+  gap: 12px;
+  grid-template-columns: 42px minmax(0, 1fr) 20px;
+  min-height: 82px;
+  padding: 14px;
   text-decoration: none;
-  text-transform: uppercase;
-  width: 160px;
+  transition: border-color 160ms ease, box-shadow 160ms ease,
+              transform 160ms ease;
 
-  img {
-    filter: brightness(0);
+  .judging-criterion-icon {
+    align-items: center;
+    background: fade(@pink, 12%);
+    border-radius: 10px;
+    color: darken(@pink, 8%);
+    display: inline-flex;
+    height: 42px;
+    justify-content: center;
+    width: 42px;
+  }
+
+  .judging-criterion-title {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .judging-criterion-action {
+    color: @grey;
+    transition: color 160ms ease, transform 160ms ease;
   }
 
   &:hover {
-    background: @black;
-    color: @white;
+    border-color: fade(@pink, 75%);
+    box-shadow: 0 9px 22px fade(@black, 16%);
+    color: @black;
+    transform: translateY(-2px);
 
-    img {
-      filter: brightness(0) invert(1);
+    .judging-criterion-action {
+      color: @pink;
+      transform: translate(2px, -2px);
     }
   }
 }
 
 @media screen and (max-width: (@screen-sm - 1px)) {
+  .judging-criteria-section {
+    padding-bottom: 32px;
+  }
+
+  .judging-criteria-heading {
+    font-size: 18px;
+    padding: 30px 0 22px;
+  }
+
+  .judging-criteria-documents {
+    gap: 10px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .judging-criterion {
-    width: min(160px, calc(50% - 6px));
+    gap: 8px;
+    grid-template-columns: 36px minmax(0, 1fr);
+    min-height: 74px;
+    padding: 10px;
+
+    .judging-criterion-icon {
+      border-radius: 8px;
+      height: 36px;
+      width: 36px;
+    }
+
+    .judging-criterion-action {
+      display: none;
+    }
   }
 }

@@ -200,7 +200,6 @@ const NewsContainer = createLegacyComponent({
             </Row>
           </Col>
       </Row>
-      <Row className="xsmall-spacing" />
     </Grid>;
   }
 });

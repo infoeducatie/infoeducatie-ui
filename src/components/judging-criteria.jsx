@@ -2,10 +2,9 @@
 
 import request from "@lib/request";
 import { Col, Grid, Row } from "@ui/bootstrap";
+import { ArrowUpRight, FileText } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-
-import DefaultDocument from "../../assets/img/icons/doc.png";
 
 function resolveAssetUrl(assetUrl) {
   if (!assetUrl) return null;
@@ -106,8 +105,16 @@ export default function JudgingCriteria({ language }) {
                 rel="noreferrer"
                 target="_blank"
               >
+                <span className="judging-criterion-icon" aria-hidden="true">
+                  <FileText size={26} strokeWidth={1.8} />
+                </span>
                 <span className="judging-criterion-title">{criterion.title}</span>
-                <img alt="" height="35" src={DefaultDocument} width="50" />
+                <ArrowUpRight
+                  aria-hidden="true"
+                  className="judging-criterion-action"
+                  size={20}
+                  strokeWidth={2}
+                />
               </a>
             ))}
           </div>
