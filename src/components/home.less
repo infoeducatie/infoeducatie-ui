@@ -187,7 +187,7 @@
   .yellow-section-wrapper {
     background: @brand-surface;
     color: @brand-navy;
-    padding: 56px 0;
+    padding: 32px 0;
     text-align: center;
 
     .yellow-section {
@@ -205,9 +205,13 @@
     }
 
     .text {
-      min-height: 500px;
+      min-height: 440px;
       padding-left: 42px;
       padding-right: 42px;
+
+      .wrapper-for-flexbox {
+        width: 100%;
+      }
 
       .data {
         color: #556078;
@@ -226,6 +230,7 @@
       .edition {
         color: @brand-red;
         font-weight: bold;
+        margin-bottom: 32px;
       }
 
       .cta-dark {
@@ -241,12 +246,12 @@
 
     .grass {
       background: @brand-navy;
-      min-height: 500px;
+      min-height: 440px;
       overflow: hidden;
       padding: 0;
 
       img {
-        height: 500px;
+        height: 440px;
         object-fit: cover;
         width: 100%;
       }
@@ -535,8 +540,10 @@
     }
 
     .yellow-section-wrapper {
+      padding-bottom: 40px;
       padding-left: 15px;
       padding-right: 15px;
+      padding-top: 40px;
 
       .text {
         min-height: 430px;

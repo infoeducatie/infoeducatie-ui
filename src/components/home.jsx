@@ -94,7 +94,7 @@ export default function Home(props) {
       <div className="yellow-section-wrapper">
         <div className="yellow-section container-fluid">
           <Row>
-            <Col className="text middle-align" md={4} mdOffset={2}>
+            <Col className="text middle-align" md={6}>
               <div className="wrapper-for-flexbox">
                 <h2 className="location-title">{t("camp.location")}</h2>
                 <p className="data">
@@ -105,7 +105,6 @@ export default function Home(props) {
                 <p className="edition">
                   {t("camp.edition", { count: current.edition.count })}
                 </p>
-                <Row className="small-spacing" />
                 <p>
                   <Link
                     className="cta-link cta-dark"
