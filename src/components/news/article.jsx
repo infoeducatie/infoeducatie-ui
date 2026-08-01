@@ -60,7 +60,6 @@ const Article = createLegacyComponent({
     const canReadMore = this.props.body !== "";
 
     return <article className="news-article">
-      <Row className="xsmall-spacing" />
       <Row>
         <div className="news-meta">
           <p className="date">{date}</p>
