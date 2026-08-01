@@ -1,7 +1,7 @@
 "use strict";
 
 import request from "@lib/request";
-import { Col, Grid, Row } from "@ui/bootstrap";
+import { Grid } from "@ui/bootstrap";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
@@ -61,39 +61,33 @@ export default function Blog(props) {
         <h2>{t("subtitle")}</h2>
       </SecondaryHero>
       <Grid className="white-section blog-list">
-        <Row>
-          <Col md={10} mdOffset={1}>
-            <Row className="small-spacing" />
-            {isLoading ? <p role="status">{t("loading")}</p> : null}
-            {hasErrored ? (
-              <p className="alert alert-warning" role="alert">{t("error")}</p>
-            ) : null}
-            {!isLoading && !hasErrored && !posts.length ? (
-              <p role="status">{t("empty")}</p>
-            ) : null}
-            {posts.map((post) => (
-              <article className="blog-card" key={post.id}>
-                <div className="blog-card__meta">
-                  {post.category ? <span>{post.category}</span> : null}
-                  <time dateTime={post.published_at}>
-                    {formatDate(post.published_at, props.language)}
-                  </time>
-                </div>
-                <h2>
-                  <Link to={`/blog/${post.slug}`}>{post.title}</Link>
-                </h2>
-                <p>{post.excerpt}</p>
-                <p className="blog-card__author">
-                  {t("by", { author: post.author_name })}
-                </p>
-                <Link className="blog-card__link" to={`/blog/${post.slug}`}>
-                  {t("readMore")}
-                </Link>
-              </article>
-            ))}
-            <Row className="small-spacing" />
-          </Col>
-        </Row>
+        {isLoading ? <p role="status">{t("loading")}</p> : null}
+        {hasErrored ? (
+          <p className="alert alert-warning" role="alert">{t("error")}</p>
+        ) : null}
+        {!isLoading && !hasErrored && !posts.length ? (
+          <p role="status">{t("empty")}</p>
+        ) : null}
+        {posts.map((post) => (
+          <article className="blog-card" key={post.id}>
+            <div className="blog-card__meta">
+              {post.category ? <span>{post.category}</span> : null}
+              <time dateTime={post.published_at}>
+                {formatDate(post.published_at, props.language)}
+              </time>
+            </div>
+            <h2>
+              <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+            </h2>
+            <p>{post.excerpt}</p>
+            <p className="blog-card__author">
+              {t("by", { author: post.author_name })}
+            </p>
+            <Link className="blog-card__link" to={`/blog/${post.slug}`}>
+              {t("readMore")}
+            </Link>
+          </article>
+        ))}
       </Grid>
     </div>
   );
