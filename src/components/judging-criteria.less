@@ -1,0 +1,78 @@
+@import (reference) "../main";
+
+
+.judging-criteria-section-wrapper {
+  background-color: @orange;
+  color: @black;
+}
+
+.judging-criteria-section {
+  margin-bottom: 0;
+  margin-top: 0;
+  min-height: 0;
+  padding-bottom: 36px;
+}
+
+.judging-criteria-heading {
+  color: @black;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 auto;
+  padding: 32px 0 24px;
+  text-align: center;
+  text-transform: uppercase;
+
+  .pink-dash {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+.judging-criteria-documents {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+
+  .page-status {
+    margin-bottom: 0;
+    width: 100%;
+  }
+}
+
+.judging-criterion {
+  align-items: center;
+  background: @white;
+  border: 2px solid @black;
+  border-radius: 4px;
+  color: @black;
+  display: inline-flex;
+  flex-direction: column;
+  font-weight: bold;
+  gap: 10px;
+  justify-content: center;
+  min-height: 96px;
+  padding: 12px 18px;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 160px;
+
+  img {
+    filter: brightness(0);
+  }
+
+  &:hover {
+    background: @black;
+    color: @white;
+
+    img {
+      filter: brightness(0) invert(1);
+    }
+  }
+}
+
+@media screen and (max-width: (@screen-sm - 1px)) {
+  .judging-criterion {
+    width: min(160px, calc(50% - 6px));
+  }
+}

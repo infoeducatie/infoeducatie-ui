@@ -11,6 +11,7 @@ import PajisteMedium from "../../assets/img/pajiste-960.webp";
 import Pajiste from "../../assets/img/pajiste.webp";
 import CommunityInvite from "./community-invite";
 import Header from "./header";
+import JudgingCriteria from "./judging-criteria";
 import NewsContainer from "./news/news-container";
 import SponsorsSection from "./sponsors-section";
 
@@ -87,6 +88,8 @@ export default function Home(props) {
       <div className="green-section-wrapper">
         <NewsContainer language={language} />
       </div>
+
+      <JudgingCriteria language={language} />
 
       <div className="gray-section-wrapper">
         <Grid className="gray-section">
