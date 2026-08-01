@@ -5,174 +5,204 @@
   .blue-section-wrapper {
     .blue-section-wrapper (@img_path: "/assets/img/banner-talks-2026.jpg");
   }
+
   .blue-section {
     .blue-section();
   }
 
-  .talk-container {
-    align-items: start;
-    background: @white;
-    border: 1px solid @brand-border;
-    border-left: 5px solid @brand-green;
-    border-radius: 18px;
-    box-shadow: 0 12px 32px rgba(11, 23, 51, 0.07);
-    color: @brand-navy;
-    display: grid;
-    gap: 28px;
-    grid-template-columns: 170px minmax(0, 1fr);
-    margin-bottom: 24px;
-    padding: 28px 32px;
-    text-align: left;
-    transition: box-shadow 160ms ease, transform 160ms ease;
-
-    &:hover {
-      box-shadow: 0 18px 38px rgba(11, 23, 51, 0.11);
-      transform: translateY(-2px);
-    }
-
-    .talk-title {
-      font-size: @font-size-h4;
-      font-weight: bold;
-      color: @brand-navy;
-      margin: 0 0 12px;
-      text-align: left;
-    }
-
-    .talk-description {
-      font-size: 18px;
-      line-height: 1.55;
-      color: #5E687D;
-    }
-
-    .read-more {
-      color: @brand-green;
-      cursor: pointer;
-      align-items: center;
-      display: inline-flex;
-      font-size: 16px;
-      font-weight: bold;
-      gap: 6px;
-      min-height: 44px;
-
-      &:hover {
-        color: darken(@brand-green, 8%);
-      }
-    }
-
-
-    .author-text {
-      margin: 0 0 16px;
-
-      .author-name {
-        color: @brand-navy;
-        text-transform: uppercase;
-        letter-spacing: @medium-letter-spacing / 2;
-        font-weight: bold;
-      }
-
-      .author-job {
-        color: #667085;
-        text-align: left;
-        font-size: @font-size-h6;
-      }
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-
-    .author-image {
-      height: 112px;
-      margin: 0;
-      width: 112px;
-
-      img {
-        width: 100%;
-        height: 100%;
-        -webkit-filter: grayscale(1);
-        filter: grayscale(1);
-        filter: gray;
-        border-radius: 100%;
-        border: 4px solid @brand-surface;
-        box-shadow: 0 8px 22px rgba(11, 23, 51, 0.12);
-      }
-    }
-
-    &.green {
-      border-left-color: @brand-green;
-    }
-
-    &.orange {
-      border-left-color: @yellow;
-    }
-
-    &.black {
-      border-left-color: @brand-blue;
-      color: @brand-navy;
-
-      .author-name {
-        color: @brand-navy;
-      }
-
-      .author-job {
-        color: #667085;
-      }
-
-      .read-more,
-      .read-more:hover {
-        color: @brand-green;
-      }
-    }
-
-    .talk-authors .list-inline {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-      margin: 0;
-      padding: 0;
-    }
-
-    .author-list {
-      margin: 18px 0 0;
-    }
-
-  }
-
-  .talk-row:first-of-type {
-    margin-top: 30px;
-  }
-
-  > .container:not(.secondary-hero__inner) {
+  .talks-content {
     padding-bottom: 64px;
   }
 
+  .edition-filter {
+    margin-bottom: 24px;
+    margin-top: 48px;
+  }
+
+  .talk-list {
+    display: grid;
+    gap: 20px;
+  }
+
+  .talk-container {
+    background: @white;
+    border: 1px solid @brand-border;
+    border-radius: 18px;
+    box-shadow: 0 12px 32px rgba(11, 23, 51, 0.07);
+    color: @brand-navy;
+    padding: 30px 32px;
+    transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+
+    &:hover {
+      border-color: fade(@brand-blue, 28%);
+      box-shadow: 0 18px 38px rgba(11, 23, 51, 0.11);
+      transform: translateY(-2px);
+    }
+  }
+
+  .talk-title {
+    color: @brand-navy;
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 1.25;
+    margin: 0 0 10px;
+    text-align: left;
+  }
+
+  .talk-description {
+    color: #5E687D;
+    font-size: 18px;
+    line-height: 1.55;
+    margin: 0;
+    max-width: 1100px;
+  }
+
+  .read-more {
+    align-items: center;
+    color: @brand-green;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 15px;
+    font-weight: bold;
+    gap: 6px;
+    margin-top: 14px;
+    min-height: 36px;
+
+    &:hover {
+      color: darken(@brand-green, 8%);
+    }
+  }
+
+  .talk-speakers {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: minmax(0, 460px);
+    justify-content: center;
+    list-style: none;
+    margin: 24px 0 0;
+    padding: 20px 0 0;
+    position: relative;
+
+    &:before {
+      background: @brand-border;
+      border-radius: 999px;
+      content: "";
+      height: 1px;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    &.talk-speakers--multiple {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .talk-speaker {
+    align-items: center;
+    background: @brand-surface;
+    border: 1px solid fade(@brand-border, 82%);
+    border-radius: 14px;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 76px minmax(0, 1fr);
+    min-width: 0;
+    padding: 14px 16px;
+  }
+
+  .author-image {
+    background: @white;
+    border: 3px solid @white;
+    border-radius: 50%;
+    box-shadow: 0 6px 16px rgba(11, 23, 51, 0.12);
+    filter: grayscale(1);
+    height: 76px;
+    object-fit: cover;
+    object-position: center;
+    width: 76px;
+  }
+
+  .author-copy {
+    min-width: 0;
+  }
+
+  .author-name {
+    color: @brand-navy;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.02em;
+    line-height: 1.25;
+    margin: 0 0 5px;
+    text-transform: none;
+  }
+
+  .author-job {
+    color: #667085;
+    font-size: 15px;
+    line-height: 1.4;
+    margin: 0;
+    text-align: left;
+  }
+
   .page-status {
-    margin: 32px auto;
-    max-width: 760px;
+    margin: 24px 0;
+    max-width: none;
     text-align: center;
   }
 
   @media screen and (max-width: (@screen-md - 1px)) {
-    .talk-container {
-      grid-template-columns: 140px minmax(0, 1fr);
-      padding: 24px;
-
-      .author-image {
-        height: 104px;
-        width: 104px;
-      }
+    .talk-speakers.talk-speakers--multiple {
+      grid-template-columns: 1fr;
     }
   }
 
   @media screen and (max-width: (@screen-sm - 1px)) {
-    .talk-container {
-      grid-template-columns: 1fr;
-      padding: 24px 20px;
+    .talks-content {
+      padding-bottom: 48px;
+    }
 
-      .talk-description {
-        font-size: 16px;
-      }
+    .edition-filter {
+      margin-bottom: 18px;
+      margin-top: 28px;
+    }
+
+    .talk-container {
+      padding: 22px 20px;
+    }
+
+    .talk-title {
+      font-size: 22px;
+    }
+
+    .talk-description {
+      font-size: 16px;
+    }
+
+    .talk-speaker {
+      gap: 12px;
+      grid-template-columns: 64px minmax(0, 1fr);
+      padding: 12px;
+    }
+
+    .author-image {
+      height: 64px;
+      width: 64px;
+    }
+
+    .author-name {
+      font-size: 16px;
+    }
+
+    .author-job {
+      font-size: 14px;
     }
   }
+}
+
+// Match the seminar selector to the full content/card width instead of the
+// shared narrow edition selector used on simpler secondary pages.
+#main-content > .talks.talks .talks-content .edition-filter {
+  max-width: none;
+  width: 100%;
 }

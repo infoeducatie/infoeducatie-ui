@@ -4,7 +4,6 @@ import request from "@lib/request";
 
 import createLegacyComponent from "@lib/create-legacy-component";
 
-import ctx from "classnames";
 import {Grid, Row, Col} from "@ui/bootstrap";
 import { withTranslation } from "react-i18next";
 
@@ -59,15 +58,13 @@ const Alumni = createLegacyComponent({
   },
 
   renderAlumnus(alumnus, index) {
-    let colors = ["green", "orange", "black"];
-    let className = ctx("alumnus-container", colors[index % colors.length]);
     let editions = alumnus.editions.map(function(edition) {
                       return parseInt(edition.name);
                    });
 
     return <Row className="alumnus-row" key={index}>
       <Col mdOffset={1} md={10} smOffset={1} sm={10}>
-        <article className={className}>
+        <article className="alumnus-container">
           <div className="alumnus-image">
             <img
               alt=""

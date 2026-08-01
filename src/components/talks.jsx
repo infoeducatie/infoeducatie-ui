@@ -1,7 +1,7 @@
 "use strict";
 
 import ctx from "classnames";
-import {Grid, Row, Col} from "@ui/bootstrap";
+import {Grid} from "@ui/bootstrap";
 import createLegacyComponent from "@lib/create-legacy-component";
 import { withTranslation } from "react-i18next";
 
@@ -55,65 +55,58 @@ const Talks = createLegacyComponent({
         <h1>{this.props.t("talks.title")}</h1>
         <h2>{this.props.t("edition.label", { edition: this.state.selectedEdition })}</h2>
       </SecondaryHero>
-      <Grid>
-        <Row className="small-spacing" />
-        <Row>
-          <Col xs={12}>
-            <div className="edition-filter">
-            <label className="control-label" htmlFor="talks-edition">
-              {this.props.t("edition.displayed")}
-            </label>
-            <EditionSelector onCallback={this.onEditionChange}
-                             id="talks-edition"
-                             ariaLabel={this.props.t("edition.displayed")}
-                             filter="has_contestants"/>
-            </div>
-          </Col>
-        </Row>
+      <Grid className="talks-content">
+        <div className="edition-filter">
+          <label className="control-label" htmlFor="talks-edition">
+            {this.props.t("edition.displayed")}
+          </label>
+          <EditionSelector onCallback={this.onEditionChange}
+                           id="talks-edition"
+                           ariaLabel={this.props.t("edition.displayed")}
+                           filter="has_contestants"/>
+        </div>
         {this.state.isLoading ? <p className="page-status" role="status">{this.props.t("talks.loading")}</p> : null}
         {this.state.hasErrored ? <p className="page-status alert alert-warning" role="alert">{this.props.t("talks.error")}</p> : null}
-        {this.state.talks.map(this.renderTalk)}
+        <div className="talk-list">
+          {this.state.talks.map(this.renderTalk)}
+        </div>
       </Grid>
    </div>;
   },
 
   renderTalk(talk, index) {
-    let colors = ["green", "orange", "black"];
-    let className = ctx("talk-container", colors[index % colors.length]);
+    let speakerClasses = ctx("talk-speakers", {
+      "talk-speakers--multiple": talk.users.length > 1,
+    });
 
-    return <Row className="talk-row" key={index}>
-      <Col mdOffset={1} md={10} smOffset={1} sm={10}>
-        <article className={className}>
-          <div className="talk-authors">
-            <ul className="list-inline">
-              {talk.users.map(this.renderAuthorImage)}
-            </ul>
-          </div>
-          <div className="talk-copy">
-            <h3 className="talk-title">{talk.title}</h3>
-            <p className="talk-description">{talk.description}</p>
+    return <article className="talk-container" key={`${talk.title}-${index}`}>
+      <div className="talk-copy">
+        <h3 className="talk-title">{talk.title}</h3>
+        <p className="talk-description">{talk.description}</p>
+        {talk.discourse_url ? (
             <a className="read-more" href={talk.discourse_url}>
               {this.props.t("talks.discuss")} <CloudCount count={talk.comments_count} />
             </a>
-            <ul className="list-unstyled author-list">
-              {talk.users.map(this.renderAuthorText)}
-            </ul>
-          </div>
-        </article>
-      </Col>
-    </Row>;
+        ) : null}
+      </div>
+      <ul className={speakerClasses}>
+        {talk.users.map(this.renderSpeaker)}
+      </ul>
+    </article>;
   },
 
-  renderAuthorImage(author, index) {
-    return <li className="author-image" key={index}>
-      <img alt={this.props.t("talks.authorPhoto", { name: author.name })} loading="lazy" src={gravatar(author.email_md5)} />
-    </li>;
-  },
-
-  renderAuthorText(author, index) {
-    return <li key={index} className="author-text">
-      <h4 className="author-name">{author.name}</h4>
-      <p className="author-job">{author.job}</p>
+  renderSpeaker(author, index) {
+    return <li className="talk-speaker" key={`${author.name}-${index}`}>
+      <img
+        alt={this.props.t("talks.authorPhoto", { name: author.name })}
+        className="author-image"
+        loading="lazy"
+        src={gravatar(author.email_md5)}
+      />
+      <div className="author-copy">
+        <h4 className="author-name">{author.name}</h4>
+        <p className="author-job">{author.job}</p>
+      </div>
     </li>;
   },
 
