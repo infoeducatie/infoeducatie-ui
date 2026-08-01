@@ -6,19 +6,9 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import "../main.less";
-import DefaultDocument from "../../assets/img/icons/doc.png";
 import Header from "./header";
+import JudgingCriteria from "./judging-criteria";
 import RichTextContent from "./rich-text-content";
-
-function resolveAssetUrl(assetUrl) {
-  if (!assetUrl) return null;
-
-  try {
-    return new URL(assetUrl, window.config.API_URL).toString();
-  } catch {
-    return assetUrl;
-  }
-}
 
 export default function About(props) {
   const { t } = useTranslation("about");
@@ -27,17 +17,9 @@ export default function About(props) {
     hasErrored: false,
     language: null,
   });
-  const [criteriaResult, setCriteriaResult] = useState({
-    criteria: [],
-    hasErrored: false,
-    language: null,
-  });
   const pageIsLoading = pageResult.language !== props.language;
   const pageHasErrored = !pageIsLoading && pageResult.hasErrored;
   const page = pageIsLoading ? null : pageResult.page;
-  const criteriaIsLoading = criteriaResult.language !== props.language;
-  const criteriaHasErrored = !criteriaIsLoading && criteriaResult.hasErrored;
-  const criteria = criteriaIsLoading ? [] : criteriaResult.criteria;
 
   useEffect(() => {
     let isCurrent = true;
@@ -58,48 +40,6 @@ export default function About(props) {
         if (!isCurrent) return;
         setPageResult({
           page: null,
-          hasErrored: true,
-          language: props.language,
-        });
-      },
-    });
-
-    return () => {
-      isCurrent = false;
-    };
-  }, [props.language]);
-
-  useEffect(() => {
-    let isCurrent = true;
-
-    request({
-      method: "GET",
-      url: window.config.API_URL + "judging_criteria.json",
-      data: { locale: props.language },
-      success(data) {
-        if (!isCurrent) return;
-        if (!Array.isArray(data)) {
-          setCriteriaResult({
-            criteria: [],
-            hasErrored: true,
-            language: props.language,
-          });
-          return;
-        }
-
-        setCriteriaResult({
-          criteria: data.map((criterion) => ({
-            ...criterion,
-            document_url: resolveAssetUrl(criterion.document_url),
-          })),
-          hasErrored: false,
-          language: props.language,
-        });
-      },
-      error() {
-        if (!isCurrent) return;
-        setCriteriaResult({
-          criteria: [],
           hasErrored: true,
           language: props.language,
         });
@@ -146,58 +86,7 @@ export default function About(props) {
           </Col>
         </Row>
       </Grid>
-      <div className="orange-section-wrapper">
-        <Grid className="orange-section">
-          <Row>
-            <Col className="block">
-              <div className="jury-criteria-desc">
-                <span className="pink-dash" />
-                {t("documents.criteria")}
-                <span className="pink-dash" />
-              </div>
-              <Row className="jury-criteria-documents">
-                {criteriaIsLoading ? (
-                  <p className="page-status" role="status">
-                    {t("documents.criteriaLoading")}
-                  </p>
-                ) : null}
-                {criteriaHasErrored ? (
-                  <p className="page-status alert alert-warning" role="alert">
-                    {t("documents.criteriaError")}
-                  </p>
-                ) : null}
-                {!criteriaIsLoading && !criteriaHasErrored && !criteria.length ? (
-                  <p className="page-status" role="status">
-                    {t("documents.criteriaEmpty")}
-                  </p>
-                ) : null}
-                {criteria.map((criterion) => (
-                  <div className="jury-criteria" key={criterion.id}>
-                    <div className="jury-criteria-txt">{criterion.title}</div>
-                    <div className="jury-criteria-img">
-                      <a
-                        aria-label={t("documents.openCriteria", {
-                          category: criterion.title,
-                        })}
-                        href={criterion.document_url}
-                        rel="noreferrer"
-                        target="_blank"
-                      >
-                        <img
-                          alt=""
-                          height="35"
-                          src={DefaultDocument}
-                          width="50"
-                        />
-                      </a>
-                    </div>
-                  </div>
-                ))}
-              </Row>
-            </Col>
-          </Row>
-        </Grid>
-      </div>
+      <JudgingCriteria language={props.language} />
     </div>
   );
 }
