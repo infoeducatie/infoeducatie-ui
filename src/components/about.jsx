@@ -23,32 +23,12 @@ function resolveRichTextAssetUrls(html) {
   if (!html || typeof DOMParser === "undefined") return html;
 
   const document = new DOMParser().parseFromString(html, "text/html");
-  const categoryStyles = {
-    web: "yellow",
-    robots: "blue",
-    media: "green",
-    educational: "pink",
-    utility: "black",
-  };
 
   document.querySelectorAll("img[src]").forEach((image) => {
     const source = image.getAttribute("src");
-    const category = Object.keys(categoryStyles).find((key) =>
-      source?.includes(`about-${key}.png`),
-    );
 
     if (source?.startsWith("/uploads/")) {
       image.setAttribute("src", resolveAssetUrl(source));
-    }
-
-    if (category) {
-      const card = image.closest("div");
-      if (card?.parentElement === document.body) {
-        card.classList.add(
-          "about-category-card",
-          `about-category-card--${categoryStyles[category]}`,
-        );
-      }
     }
   });
 
@@ -70,7 +50,7 @@ function resolveRichTextAssetUrls(html) {
       element.replaceWith(heading);
     } else if (
       element.tagName === "DIV" &&
-      !element.classList.contains("about-category-card")
+      !element.querySelector("figure")
     ) {
       const paragraph = document.createElement("p");
       paragraph.innerHTML = element.innerHTML;
