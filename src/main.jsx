@@ -34,7 +34,7 @@ import {
   removeAccessToken,
   setAccessToken,
 } from "./lib/auth-token";
-import { initializeAnalytics } from "./lib/telemetry";
+import { initializeAnalytics } from "./lib/client-events";
 import { persistLanguage } from "./lib/i18n";
 import { getLocalizedPath } from "./lib/localized-routes";
 import { navigate, NavigationBridge } from "./lib/navigation";

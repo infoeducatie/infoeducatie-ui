@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { trackPageView } from "./telemetry";
+import { trackPageView } from "./client-events";
 
 let navigateWithRouter = null;
 
