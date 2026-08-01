@@ -69,7 +69,6 @@ export default function About(props) {
               </p>
             ) : null}
             <RichTextContent html={page?.body} />
-            <Row className="small-spacing" />
           </Col>
         </Row>
       </Grid>

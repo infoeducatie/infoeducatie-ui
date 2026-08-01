@@ -1,7 +1,7 @@
 @import (reference) "../main";
 
 
-.galaciuc {
+#main-content > .galaciuc.galaciuc {
   .blue-section-wrapper {
     .blue-section-wrapper (@img_path: "/assets/img/banner-about-talks-2026.jpg");
   }
@@ -14,7 +14,7 @@
   }
 
   .white-section {
-    padding-bottom: 76px;
+    padding-bottom: 32px;
     padding-top: 52px;
 
     .rich-text-content {
@@ -26,15 +26,23 @@
     }
   }
 
+  > .judging-criteria-section-wrapper > .judging-criteria-section {
+    padding-top: 48px;
+  }
+
   @media screen and (max-width: (@screen-sm - 1px)) {
     .white-section {
-      padding-bottom: 48px;
+      padding-bottom: 28px;
       padding-top: 30px;
 
       .rich-text-content {
         border-radius: 16px;
         padding: 24px 20px 30px;
       }
+    }
+
+    > .judging-criteria-section-wrapper > .judging-criteria-section {
+      padding-top: 40px;
     }
   }
 }
