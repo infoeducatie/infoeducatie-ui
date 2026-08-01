@@ -2,6 +2,7 @@
 
 import createLegacyComponent from "@lib/create-legacy-component";
 import { getLocalizedPath } from "@lib/localized-routes";
+import { primaryNavigation } from "@lib/public-navigation";
 import { Col, Grid, Nav, NavItem, Row } from "@ui/bootstrap";
 import { LinkContainer } from "@ui/router-bootstrap";
 import { withTranslation } from "react-i18next";
@@ -14,14 +15,6 @@ import NewsletterForm from "./newsletter-form";
 
 const Footer = createLegacyComponent({
   displayName: "Footer",
-
-  renderParticipants() {
-    return (
-      <LinkContainer to={getLocalizedPath("participants")}>
-        <NavItem>{this.props.t("navigation.participants")}</NavItem>
-      </LinkContainer>
-    );
-  },
 
   render() {
     const { t } = this.props;
@@ -37,6 +30,11 @@ const Footer = createLegacyComponent({
               className="navbar-default"
             >
               <Nav className="navbar-nav">
+                {primaryNavigation.map(([route, label]) => (
+                  <LinkContainer key={route} to={getLocalizedPath(route)}>
+                    <NavItem>{t(`navigation.${label}`)}</NavItem>
+                  </LinkContainer>
+                ))}
                 <NavItem
                   href="https://community.infoeducatie.ro"
                   target="_blank"
@@ -50,16 +48,6 @@ const Footer = createLegacyComponent({
                 >
                   {t("navigation.discord")}
                 </NavItem>
-                <LinkContainer to={getLocalizedPath("blog")}>
-                  <NavItem>{t("navigation.blog")}</NavItem>
-                </LinkContainer>
-                {this.renderParticipants()}
-                <LinkContainer to={getLocalizedPath("photos")}>
-                  <NavItem>{t("navigation.photos")}</NavItem>
-                </LinkContainer>
-                <LinkContainer to={getLocalizedPath("contact")}>
-                  <NavItem>{t("navigation.contact")}</NavItem>
-                </LinkContainer>
               </Nav>
             </nav>
           </Col>

@@ -2,6 +2,7 @@
 
 import createLegacyComponent from "@lib/create-legacy-component";
 import { getLocalizedPath } from "@lib/localized-routes";
+import { primaryNavigation } from "@lib/public-navigation";
 import { Nav, NavItem, Navbar, Row } from "@ui/bootstrap";
 import { LinkContainer } from "@ui/router-bootstrap";
 import { withTranslation } from "react-i18next";
@@ -9,19 +10,6 @@ import { withTranslation } from "react-i18next";
 import "../main.less";
 import ENFlag from "../../assets/img/icons/US.png";
 import ROFlag from "../../assets/img/icons/RO.png";
-
-const primaryNavigation = [
-  ["home", "home"],
-  ["about", "about"],
-  ["schedule", "schedule"],
-  ["participants", "participants"],
-  ["jury", "jury"],
-  ["talks", "talks"],
-  ["alumni", "alumni"],
-  ["photos", "photos"],
-  ["blog", "blog"],
-  ["contact", "contact"],
-];
 
 const Header = createLegacyComponent({
   displayName: "Header",

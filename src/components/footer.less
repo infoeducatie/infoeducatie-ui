@@ -42,23 +42,18 @@
     text-align: center;
     letter-spacing: @medium-letter-spacing;
 
-    @media screen and (min-width: @screen-sm) {
-      // http://stackoverflow.com/questions/14601425/bootstrap-navbar-justify-span-menu-items-occupying-full-width
-      .navbar-nav {
-        display: table;
-        width: 100%;
-
-        li {
-          width: auto;
-          float: none;
-          display: table-cell;
-        }
-      }
-    }
-
     .navbar-nav {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0 28px;
+      justify-content: center;
       text-transform: uppercase;
+
       li {
+        float: none;
+
         &.active {
           a {
             color: @grey;
@@ -66,6 +61,8 @@
         }
         a {
           color: @grey;
+          padding: 12px 0;
+
           &:hover {
             color: @black;
           }
@@ -74,6 +71,12 @@
           }
         }
       }
+    }
+  }
+
+  @media screen and (max-width: (@screen-sm - 1px)) {
+    .navbar-default .navbar-nav {
+      gap: 0 20px;
     }
   }
 
