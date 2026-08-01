@@ -59,7 +59,6 @@ export default function About(props) {
       <Grid className="white-section">
         <Row>
           <Col md={10} mdOffset={1}>
-            <Row className="small-spacing" />
             {pageIsLoading ? (
               <p className="page-status" role="status">{t("loading")}</p>
             ) : null}
