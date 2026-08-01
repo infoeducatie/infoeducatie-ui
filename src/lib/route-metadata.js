@@ -7,6 +7,7 @@ const routeEntries = Object.entries(localizedPaths);
 
 function getRouteKey(pathname) {
   if (pathname.startsWith("/robotica/")) return "robotics";
+  if (pathname.startsWith("/blog/")) return "blog";
   if (pathname === "/acasa") return "home";
 
   return routeEntries.find(([, path]) => path === pathname)?.[0];

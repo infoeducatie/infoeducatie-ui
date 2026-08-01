@@ -2,6 +2,7 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
 import aboutEn from "../translations/en/about.json";
+import blogEn from "../translations/en/blog.json";
 import commonEn from "../translations/en/common.json";
 import contactEn from "../translations/en/contact.json";
 import formsEn from "../translations/en/forms.json";
@@ -12,6 +13,7 @@ import publicEn from "../translations/en/public.json";
 import registrationEn from "../translations/en/registration.json";
 import roboticsEn from "../translations/en/robotics.json";
 import aboutRo from "../translations/ro/about.json";
+import blogRo from "../translations/ro/blog.json";
 import commonRo from "../translations/ro/common.json";
 import contactRo from "../translations/ro/contact.json";
 import formsRo from "../translations/ro/forms.json";
@@ -47,6 +49,7 @@ export function persistLanguage(language) {
 const resources = {
   en: {
     about: aboutEn,
+    blog: blogEn,
     common: commonEn,
     contact: contactEn,
     forms: formsEn,
@@ -59,6 +62,7 @@ const resources = {
   },
   ro: {
     about: aboutRo,
+    blog: blogRo,
     common: commonRo,
     contact: contactRo,
     forms: formsRo,
@@ -82,6 +86,7 @@ i18n.use(initReactI18next).init({
     "common",
     "home",
     "about",
+    "blog",
     "contact",
     "forms",
     "photos",

@@ -43,6 +43,8 @@ import { getRouteMetadata } from "./lib/route-metadata";
 
 const About = lazy(() => import("./components/about"));
 const Alumni = lazy(() => import("./components/alumni"));
+const Blog = lazy(() => import("./components/blog"));
+const BlogArticle = lazy(() => import("./components/blog/article"));
 const Contact = lazy(() => import("./components/contact"));
 const Contestants = lazy(() => import("./components/contestants/contestants"));
 const Jury = lazy(() => import("./components/jury"));
@@ -228,6 +230,8 @@ const routeComponents = [
   { path: "juriu", component: Jury },
   { path: "inscriere", component: RegisterInContest },
   { path: "alumni", component: Alumni },
+  { path: "blog", component: Blog },
+  { path: "blog/:slug", component: BlogArticle },
   { path: "poze", component: Photos },
   { path: "contacte", component: Contact },
   { path: "despre", component: About },

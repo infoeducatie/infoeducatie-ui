@@ -1,6 +1,7 @@
 export const localizedPaths = {
   about: "/despre",
   alumni: "/alumni",
+  blog: "/blog",
   contact: "/contacte",
   contestEntry: "/inscriere",
   home: "/",

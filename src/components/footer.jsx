@@ -55,12 +55,9 @@ const Footer = createLegacyComponent({
                 >
                   {t("navigation.discord")}
                 </NavItem>
-                <NavItem
-                  href="https://blog.infoeducatie.ro"
-                  target="_blank"
-                >
-                  {t("navigation.blog")}
-                </NavItem>
+                <LinkContainer to={getLocalizedPath("blog")}>
+                  <NavItem>{t("navigation.blog")}</NavItem>
+                </LinkContainer>
                 {this.renderResultsContestants()}
                 <LinkContainer to={getLocalizedPath("photos")}>
                   <NavItem>{t("navigation.photos")}</NavItem>

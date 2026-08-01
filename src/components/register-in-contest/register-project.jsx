@@ -4,6 +4,7 @@ import createLegacyComponent from "@lib/create-legacy-component";
 import _ from "lodash";
 import { FormControl, ControlLabel, FormGroup, Button } from "@ui/bootstrap";
 import { withTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 import FormMixin from "../../mixins/form"
 
@@ -78,7 +79,7 @@ const RegisterProject = createLegacyComponent({
             </FormGroup>,
             <p className="alert alert-warning">
               {this.props.t("project.sourceNotice")}&nbsp;
-              <a target="_blank" href="https://blog.infoeducatie.ro/tutorial/2015/04/14/github-101.html" rel="noreferrer">{this.props.t("project.detailsLink")}</a>.
+              <Link to="/blog/github-101">{this.props.t("project.detailsLink")}</Link>.
             </p>
           </div>
         ]);
@@ -105,7 +106,7 @@ const RegisterProject = createLegacyComponent({
             </FormGroup>,
             <p className="alert alert-warning">
               {this.props.t("project.privateSourceNotice")}&nbsp;
-              <a target="_blank" href="https://blog.infoeducatie.ro/tutorial/2015/04/14/github-101.html" rel="noreferrer">{this.props.t("project.detailsLink")}</a>.
+              <Link to="/blog/github-101">{this.props.t("project.detailsLink")}</Link>.
             </p>
           </div>
         ]);
