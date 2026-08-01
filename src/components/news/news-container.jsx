@@ -4,7 +4,7 @@ import request from "@lib/request";
 
 import _ from "lodash";
 import createLegacyComponent from "@lib/create-legacy-component";
-import {Grid, Row, Col, Glyphicon} from "@ui/bootstrap";
+import {Grid, Glyphicon} from "@ui/bootstrap";
 import { withTranslation } from "react-i18next";
 
 import Article from "./article";
@@ -142,31 +142,29 @@ const NewsContainer = createLegacyComponent({
   },
 
   renderPreviousPageLink() {
-    let previousPageController = null;
-    if (this.state.canShowPrevious) {
-      previousPageController = <button className="pagination-icon"
-                                    type="button"
-                                    onClick={this.showPreviousNewsPage}>
-                                 <Glyphicon glyph="chevron-left" />
-                                 &nbsp;{this.props.t("news.previous")}
-                               </button>;
+    if (!this.state.canShowPrevious) {
+      return null;
     }
 
-    return <Col md={4} mdOffset={2}>{previousPageController}</Col>;
+    return <button className="pagination-icon"
+                   type="button"
+                   onClick={this.showPreviousNewsPage}>
+             <Glyphicon glyph="chevron-left" />
+             &nbsp;{this.props.t("news.previous")}
+           </button>;
   },
 
   renderNextPageLink() {
-    let nextPageController = null;
-    if (this.state.canShowNext) {
-      nextPageController = <button className="pagination-icon"
-                                type="button"
-                                onClick={this.showNextNewsPage}>
-                             {this.props.t("news.next")} &nbsp;
-                             <Glyphicon glyph="chevron-right" />
-                           </button>;
+    if (!this.state.canShowNext) {
+      return null;
     }
 
-    return <Col md={4}>{nextPageController}</Col>;
+    return <button className="pagination-icon"
+                   type="button"
+                   onClick={this.showNextNewsPage}>
+             {this.props.t("news.next")} &nbsp;
+             <Glyphicon glyph="chevron-right" />
+           </button>;
   },
 
   renderPinnedArticle() {
@@ -174,32 +172,26 @@ const NewsContainer = createLegacyComponent({
       return null;
     }
 
-    return <Row className="pinned-news">
-      <Article body={this.state.pinned.body}
-               title={this.state.pinned.title}
-               short={this.state.pinned.short}
-               created_at={this.state.pinned.created_at} />
-    </Row>;
+    return <Article body={this.state.pinned.body}
+                    title={this.state.pinned.title}
+                    short={this.state.pinned.short}
+                    created_at={this.state.pinned.created_at} />;
   },
 
   render() {
     return <Grid className="news-section">
-      <Row>
-          <Col xsOffset={1} xs={10} md={5} className="left">
-              <Row className="xsmall-spacing" />
-              <h2 className="section-heading" id="news">{this.props.t("news.title")}</h2>
-              {this.renderStatus()}
-              {this.renderPinnedArticle()}
-          </Col>
-          <Col xsOffset={1} xs={10} md={5} mdOffset={1} className="right">
-            {this.renderNews()}
-            <Row className="xsmall-spacing" />
-            <Row>
-              {this.renderPreviousPageLink()}
-              {this.renderNextPageLink()}
-            </Row>
-          </Col>
-      </Row>
+      <div className="news-heading-row">
+        <h2 className="section-heading" id="news">{this.props.t("news.title")}</h2>
+        {this.renderStatus()}
+      </div>
+      <div className="news-grid">
+        {this.renderPinnedArticle()}
+        {this.renderNews()}
+      </div>
+      <div className="news-pagination">
+        {this.renderPreviousPageLink()}
+        {this.renderNextPageLink()}
+      </div>
     </Grid>;
   }
 });

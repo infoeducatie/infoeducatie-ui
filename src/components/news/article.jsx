@@ -44,22 +44,21 @@ const Article = createLegacyComponent({
       this.props.i18n.resolvedLanguage === "en" ? "en-GB" : "ro-RO",
     );
 
-    let read_more = null;
-    if (this.props.body !== "") {
-      read_more = <span>...<br /><button className="read-more"
-                     type="button"
-                     onClick={this.openModal}>
-                    {this.props.t("news.readMore")}
-                  </button></span>;
-    }
+    const canReadMore = this.props.body !== "";
 
     return <article className="news-article">
       <Row className="xsmall-spacing" />
       <Row>
         <p className="date">{date}</p>
         <p className="title">{this.props.title}</p>
-        <p className="message">
-          {this.props.short} {read_more}</p>
+        <p className="message">{this.props.short}{canReadMore ? " …" : ""}</p>
+        {canReadMore ? (
+          <button className="read-more"
+                  type="button"
+                  onClick={this.openModal}>
+            {this.props.t("news.readMore")}
+          </button>
+        ) : null}
       </Row>
       { this.renderOverlay() }
     </article>;
