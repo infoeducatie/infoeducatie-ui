@@ -1,6 +1,9 @@
 {
   "title": "InfoEducație photo albums",
   "subtitle": "People and memories",
-  "albumLabel": "InfoEducație photos from {{year}}",
-  "moreDetails": "Photos"
+  "albumLabel": "InfoEducație album: {{title}}",
+  "moreDetails": "Photos",
+  "loading": "Loading photo albums...",
+  "error": "The photo albums are currently unavailable.",
+  "empty": "No photo albums are published at the moment."
 }

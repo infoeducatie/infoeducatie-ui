@@ -1,30 +1,62 @@
 "use strict";
 
+import request from "@lib/request";
 import { Col, Grid, Row } from "@ui/bootstrap";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import "../main.less";
 import Header from "./header";
 import PhotoWrapper from "./photo-wrapper.jsx";
 
-const albums = [
-  [2023, "https://photos.app.goo.gl/YQykPWLecHXudJrz8"],
-  [2022, "https://photos.app.goo.gl/zmRNv7SUxph37wbo9"],
-  [2019, "https://photos.app.goo.gl/NLxQgokxJtn5odG68"],
-  [2018, "https://photos.google.com/share/AF1QipP99v0CmRfkClWlyQweO_Tqmzyme6_aFVQFImVaY-atPTR0C2GTu9o3IFoRudIO5g?key=eE4yaGZiZkRLSy00RFpBQ3J4ZEhPZnFhUjQxNVF3"],
-  [2017, "https://photos.google.com/share/AF1QipO_5iITpX8h7IN9RBqw-73bWglfMnQjVN6vSSj2jZv8i9FEbGkbmL43qOYd3gwUjQ?key=ZGVJVlkyTmxzeGhyemt5NUZOdGZiOUlpSzh4SlJB"],
-  [2016, "https://photos.google.com/share/AF1QipNR1NnntBtXS5vuK1g9ZajZZnWwAgmWVYrTKIW_Pfy3Lk7vnUWpai7w_-D7XUMcSg?key=WTFPVnltWW8tMHRHd0poZVZxYWJ1SFZrVlRmcE93"],
-  [2015, "https://photos.google.com/share/AF1QipM0WQyv0H4hGG4ez_NnfTCcmTduxSQ8PSI1_0IsS2umMIRrpSI8XtPuMYG_2bIvmA?key=TTNHaVY3VHotbmNqVE42TmhzVWhJSVBWMHNfVjJR"],
-  [2014, "https://photos.google.com/share/AF1QipPhy1QnT48Cfp18B9Czft1D463wAtbcnnKdLyNcavIwjLuViTA1mJ_nwWP3qofQoA?key=WEF1RG8yQmhISVRGZ3lDazZPNmphM3IxakhJS3pB"],
-  [2013, "https://photos.google.com/share/AF1QipMoCFsIAokt6vAMbvPKDBBbL-cqNfmzCzE8Iq0FTKC53r8hO2o_--iEkPWqTMAUDg?key=R1E1bzcwNENPZWlYM0JvSDUtLXYycUtnTHVUa29n"],
-  [2012, "https://photos.google.com/share/AF1QipP7mmRfStuGeZZVnrUVY4LA1XyifBSm_mtM77rzbfingWYDGLv78JUKd2RpL0S3UQ?key=Q2V3bDBhQXVFbkZHMlpiTTZINW93ODZlTzAwVVl3"],
-  [2011, "https://photos.google.com/share/AF1QipOQVpZ3rwYETMRwjjOPbh2knAPLmKfvkPNByhVDlfjrCpsCU-S-_hmBeBcdmABpbA?key=dGNhX0hCbTUzaUNMcWZmZzNhc2xCeEdNZWYxRWNR"],
-  [2010, "https://photos.google.com/share/AF1QipMZxn0DYILoIYptkGOqOVOssvgTgJDxW5vxCUtuccbP3EZXmyU30U5jKlUXA93ORA?key=ZjlhT1FJb0VUVFF1RTJ5QlVsZkdudk1va3hCNEp3"],
-  [2008, "https://photos.google.com/share/AF1QipPi7X0Ca1NnqOLJ1rkPYIbOJTHPQ6_tcCHATwvBKRRIpggus_O0e4umD_VjprPMJA?key=NGtwY2Y4MjJsck9DZGdKR1NOejA4Z0xHRjRmWDlR"],
-];
+function resolveAssetUrl(assetUrl) {
+  if (!assetUrl) return null;
+
+  try {
+    return new URL(assetUrl, window.config.API_URL).toString();
+  } catch {
+    return assetUrl;
+  }
+}
 
 export default function Photos(props) {
   const { t } = useTranslation("photos");
+  const [albums, setAlbums] = useState([]);
+  const [hasErrored, setHasErrored] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    let isCurrent = true;
+
+    request({
+      method: "GET",
+      url: window.config.API_URL + "photo_albums.json",
+      success(data) {
+        if (!isCurrent) return;
+        if (!Array.isArray(data)) {
+          setHasErrored(true);
+          setIsLoading(false);
+          return;
+        }
+
+        setAlbums(data.map((album) => ({
+          ...album,
+          cover_image_url: resolveAssetUrl(album.cover_image_url),
+        })));
+        setHasErrored(false);
+        setIsLoading(false);
+      },
+      error() {
+        if (!isCurrent) return;
+        setHasErrored(true);
+        setIsLoading(false);
+      },
+    });
+
+    return () => {
+      isCurrent = false;
+    };
+  }, []);
 
   return (
     <div className="photos">
@@ -50,13 +82,25 @@ export default function Photos(props) {
           <Row>
             <Col md={10} mdOffset={1}>
               <div className="photo-albums">
-                {albums.map(([year, link]) => (
+                {isLoading ? (
+                  <p className="page-status" role="status">{t("loading")}</p>
+                ) : null}
+                {hasErrored ? (
+                  <p className="page-status alert alert-warning" role="alert">
+                    {t("error")}
+                  </p>
+                ) : null}
+                {!isLoading && !hasErrored && !albums.length ? (
+                  <p className="page-status" role="status">{t("empty")}</p>
+                ) : null}
+                {albums.map((album) => (
                   <PhotoWrapper
-                    ariaLabel={t("albumLabel", { year })}
-                    key={link}
-                    link={link}
+                    ariaLabel={t("albumLabel", { title: album.title })}
+                    coverImageUrl={album.cover_image_url}
+                    key={album.id}
+                    link={album.external_url}
                     text={t("moreDetails")}
-                    year={year}
+                    title={album.title}
                   />
                 ))}
               </div>
