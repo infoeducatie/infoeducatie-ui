@@ -23,6 +23,16 @@ function itemName(item) {
   return item && (item.name || item.title);
 }
 
+function formatScore(score) {
+  if (score === null || score === undefined ||
+      (typeof score === "string" && score.trim() === "")) {
+    return score;
+  }
+
+  const numericScore = Number(score);
+  return Number.isFinite(numericScore) ? numericScore.toFixed(2) : score;
+}
+
 function normalizeProject(project) {
   return {
     ...project,
@@ -157,15 +167,15 @@ export default createLegacyComponent({
                                         "hidden-sm hidden-xs",
                                         "county",
                                         "Profesor")}
-                    {this.renderTableTd(project.score,
+                    {this.renderTableTd(formatScore(project.score),
                                         project.discourse_url,
                                         "hidden-sm hidden-xs score",
                                         "Punctaj")}
-                    {this.renderTableTd(project.extra_score,
+                    {this.renderTableTd(formatScore(project.extra_score),
                                         project.discourse_url,
                                         "hidden-sm hidden-xs score",
                                         "Open")}
-                    {this.renderTableTd(project.total_score,
+                    {this.renderTableTd(formatScore(project.total_score),
                                         project.discourse_url,
                                         "score",
                                         "Total")}
