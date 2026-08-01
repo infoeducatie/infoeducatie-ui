@@ -30,6 +30,7 @@
 @import "components/rich-text-content";
 @import "components/robotics/robotics-competition";
 @import "components/schedule";
+@import "components/secondary-hero";
 @import "components/talks";
 
 
@@ -281,11 +282,10 @@ textarea,
   text-transform: none;
 }
 
-// Non-home banners share the same height as the homepage while using more
-// compact typography for their shorter page titles.
+// Legacy banners that have not moved to the shared secondary hero yet.
 #main-content > :not(.home) {
-  > .blue-section-wrapper,
-  > .gray-section-wrapper {
+  > .blue-section-wrapper:not(.secondary-hero),
+  > .gray-section-wrapper:not(.secondary-hero) {
     background-position: center;
 
     > .blue-section,
@@ -453,8 +453,8 @@ textarea,
 
 @media screen and (max-width: (@screen-sm - 1px)) {
   #main-content > :not(.home) {
-    > .blue-section-wrapper,
-    > .gray-section-wrapper {
+    > .blue-section-wrapper:not(.secondary-hero),
+    > .gray-section-wrapper:not(.secondary-hero) {
       > .blue-section,
       > .gray-section {
         padding-bottom: 28px;
@@ -481,8 +481,8 @@ textarea,
 
 @media screen and (max-width: 360px) {
   #main-content > :not(.home) {
-    > .blue-section-wrapper,
-    > .gray-section-wrapper {
+    > .blue-section-wrapper:not(.secondary-hero),
+    > .gray-section-wrapper:not(.secondary-hero) {
       > .blue-section,
       > .gray-section {
         h1 {

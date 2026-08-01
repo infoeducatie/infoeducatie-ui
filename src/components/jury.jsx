@@ -2,12 +2,12 @@
 
 import createLegacyComponent from "@lib/create-legacy-component";
 import request from "@lib/request";
-import { Grid, Col, Row } from "@ui/bootstrap";
+import { Grid, Row } from "@ui/bootstrap";
 import { withTranslation } from "react-i18next";
 
-import Header from "./header";
 import JudgingCriteria from "./judging-criteria";
 import JuryDescription from "./jury-description";
+import SecondaryHero from "./secondary-hero";
 
 import "../main.less";
 
@@ -115,22 +115,10 @@ const Jury = createLegacyComponent({
       this.props.current.edition.count ||
       this.props.current.edition.year;
     return <div className="jury">
-      <div className="blue-section-wrapper">
-        <Grid className="blue-section">
-          <Header isLoggedIn={this.props.isLoggedIn}
-                  current={this.props.current}
-                  language={this.props.language}
-                  changeLanguage={this.props.changeLanguage}
-                  logout={this.props.logout} />
-          <Row className="xsmall-spacing" />
-          <Row>
-            <Col xs={12}>
-              <h1>{this.props.t("jury.title")}</h1>
-              <h2>{this.props.t("edition.label", { edition: editionName })}</h2>
-            </Col>
-          </Row>
-        </Grid>
-      </div>
+      <SecondaryHero headerProps={this.props}>
+        <h1>{this.props.t("jury.title")}</h1>
+        <h2>{this.props.t("edition.label", { edition: editionName })}</h2>
+      </SecondaryHero>
 
       <Grid className="white-section">
         {this.renderStatus()}

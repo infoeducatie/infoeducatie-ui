@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
 
 import "../../main.less";
-import Header from "../header";
+import SecondaryHero from "../secondary-hero";
 import RichTextContent from "../rich-text-content";
 
 function formatDate(value, language) {
@@ -61,22 +61,9 @@ export default function BlogArticle(props) {
 
   return (
     <div className="blog-page blog-article-page">
-      <div className="blue-section-wrapper">
-        <Grid className="blue-section">
-          <Row>
-            <Col xs={12}>
-              <Header {...props} />
-            </Col>
-          </Row>
-          <Row>
-            <Row className="small-spacing" />
-            <Col xs={12}>
-              <h1>{t("title")}</h1>
-            </Col>
-          </Row>
-          <Row className="big-spacing" />
-        </Grid>
-      </div>
+      <SecondaryHero headerProps={props}>
+        <h1>{t("title")}</h1>
+      </SecondaryHero>
       <Grid className="white-section">
         <Row>
           <Col md={10} mdOffset={1}>

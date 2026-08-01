@@ -8,7 +8,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { withTranslation } from "react-i18next";
 import { Grid, Col, Row, FormControl, FormGroup, ControlLabel, Button, Checkbox } from "@ui/bootstrap";
 
-import Header from "./header";
+import SecondaryHero from "./secondary-hero";
 import SuccessIcon from "../../assets/img/ellipse-tick.png"
 import Spinner from "../../assets/img/spinner.gif"
 import SignIn from "./sign-in"
@@ -36,21 +36,9 @@ const Register = createLegacyComponent({
 
   render() {
     return <div className="register">
-      <div className="blue-section-wrapper">
-        <Grid className="blue-section">
-          <Header isLoggedIn={this.props.isLoggedIn}
-                  current={this.props.current}
-                  language={this.props.language}
-                  changeLanguage={this.props.changeLanguage}
-                  logout={this.props.logout} />
-          <Row className="small-spacing" />
-          <Row>
-            <Col xs={12}>
-              <h1>{this.props.t("register.title")}</h1>
-            </Col>
-          </Row>
-        </Grid>
-      </div>
+      <SecondaryHero headerProps={this.props}>
+        <h1>{this.props.t("register.title")}</h1>
+      </SecondaryHero>
       <Grid className="registration-form-section">
         <Row>
           <Col md={6} mdOffset={3} sm={8} smOffset={2}>

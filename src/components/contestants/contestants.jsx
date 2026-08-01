@@ -8,7 +8,7 @@ import { withTranslation } from "react-i18next";
 
 import "../../main.less";
 import CloudCount from "../cloud-count"
-import Header from "../header";
+import SecondaryHero from "../secondary-hero";
 import EditionSelector from "../edition-selector";
 import ProjectCard from "./project_card";
 import FilterIcon from "./filter_icon";
@@ -342,27 +342,14 @@ const Contestants = createLegacyComponent({
     let visibleProjectCount = this.getVisibleProjects().length;
 
     return <div className="contestants">
-      <div className="blue-section-wrapper">
-        <Grid className="blue-section">
-          <Header isLoggedIn={this.props.isLoggedIn}
-                  current={this.props.current}
-                  language={this.props.language}
-                  changeLanguage={this.props.changeLanguage}
-                  logout={this.props.logout} />
-          <Row className="xsmall-spacing" />
-          <Row>
-            <Col>
-              <h1>{this.props.t("contestants.title")}</h1>
-              <h2>{this.props.t("edition.label", {
-                edition: this.state.selectedEdition.name ||
-                  this.state.selectedEdition.count ||
-                  this.state.selectedEdition.year,
-              })}</h2>
-            </Col>
-          </Row>
-          <Row className="big-spacing" />
-        </Grid>
-      </div>
+      <SecondaryHero headerProps={this.props}>
+        <h1>{this.props.t("contestants.title")}</h1>
+        <h2>{this.props.t("edition.label", {
+          edition: this.state.selectedEdition.name ||
+            this.state.selectedEdition.count ||
+            this.state.selectedEdition.year,
+        })}</h2>
+      </SecondaryHero>
 
       <Grid className="stats-section">
         <Row>

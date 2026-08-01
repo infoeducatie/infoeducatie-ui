@@ -6,9 +6,9 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import "../main.less";
-import Header from "./header";
 import JudgingCriteria from "./judging-criteria";
 import RichTextContent from "./rich-text-content";
+import SecondaryHero from "./secondary-hero";
 
 export default function About(props) {
   const { t } = useTranslation("about");
@@ -53,22 +53,9 @@ export default function About(props) {
 
   return (
     <div className="galaciuc">
-      <div className="blue-section-wrapper">
-        <Grid className="blue-section">
-          <Row>
-            <Col xs={12}>
-              <Header {...props} />
-            </Col>
-          </Row>
-          <Row>
-            <Row className="small-spacing" />
-            <Col xs={12}>
-              <h1>{page?.title || t("title")}</h1>
-            </Col>
-          </Row>
-          <Row className="big-spacing" />
-        </Grid>
-      </div>
+      <SecondaryHero headerProps={props}>
+        <h1>{page?.title || t("title")}</h1>
+      </SecondaryHero>
       <Grid className="white-section">
         <Row>
           <Col md={10} mdOffset={1}>

@@ -1,8 +1,14 @@
 @import (reference) "../styles/variables";
 
 .gray-section-wrapper (@img_path){
-  @blue-gradient: rgba(0, 129, 177, 0.7);
-  background: linear-gradient(@blue-gradient, @blue-gradient), url(@img_path);
+  background-image:
+    linear-gradient(
+      110deg,
+      rgba(11, 23, 51, 0.9) 0%,
+      rgba(11, 74, 158, 0.7) 58%,
+      rgba(11, 23, 51, 0.52) 100%
+    ),
+    url(@img_path);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -17,8 +23,14 @@
 }
 
 .blue-section-wrapper (@img_path){
-  @blue-gradient: rgba(0, 129, 177, 0.7);
-  background: linear-gradient(@blue-gradient, @blue-gradient), url(@img_path);
+  background-image:
+    linear-gradient(
+      110deg,
+      rgba(11, 23, 51, 0.9) 0%,
+      rgba(11, 74, 158, 0.7) 58%,
+      rgba(11, 23, 51, 0.52) 100%
+    ),
+    url(@img_path);
   background-repeat: no-repeat;
   background-size: cover;
 }

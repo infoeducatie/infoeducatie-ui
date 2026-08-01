@@ -6,8 +6,8 @@ import { useTranslation } from "react-i18next";
 
 import { Col, Grid, Row } from "@ui/bootstrap";
 import request from "@lib/request";
-import Header from "./header";
 import RichTextContent from "./rich-text-content";
+import SecondaryHero from "./secondary-hero";
 
 function resolveAssetUrl(assetUrl) {
   if (!assetUrl) return null;
@@ -66,23 +66,10 @@ export default function SchedulePage(props) {
 
   return (
     <div className="schedule">
-      <div className="blue-section-wrapper">
-        <Grid className="blue-section">
-          <Row>
-            <Col xs={12}>
-              <Header {...props} />
-            </Col>
-          </Row>
-          <Row>
-            <Row className="small-spacing" />
-            <Col xs={12}>
-              <h1>{page?.title || t("schedule.title")}</h1>
-              <h2>{t("edition.label", { edition: editionName })}</h2>
-            </Col>
-          </Row>
-          <Row className="big-spacing" />
-        </Grid>
-      </div>
+      <SecondaryHero headerProps={props}>
+        <h1>{page?.title || t("schedule.title")}</h1>
+        <h2>{t("edition.label", { edition: editionName })}</h2>
+      </SecondaryHero>
       <Grid className="white-section">
         <Row>
           <Col xs={12} md={10} mdOffset={1}>

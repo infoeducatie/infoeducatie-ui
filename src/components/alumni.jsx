@@ -9,7 +9,7 @@ import {Grid, Row, Col} from "@ui/bootstrap";
 import { withTranslation } from "react-i18next";
 
 import gravatar from "../lib/gravatar";
-import Header from "./header";
+import SecondaryHero from "./secondary-hero";
 
 import "../main.less";
 
@@ -96,26 +96,10 @@ const Alumni = createLegacyComponent({
 
   render() {
     return <div className="alumni">
-      <div className="gray-section-wrapper">
-        <Grid className="gray-section">
-          <Row>
-            <Col xs={12}>
-              <Header isLoggedIn={this.props.isLoggedIn}
-                      current={this.props.current}
-                      language={this.props.language}
-                      changeLanguage={this.props.changeLanguage}
-                      logout={this.props.logout} />
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={12}>
-              <h1>{this.props.t("alumni.title")}</h1>
-              <h2>{this.props.t("alumni.subtitle")}</h2>
-            </Col>
-          </Row>
-          <Row className="big-spacing" />
-        </Grid>
-      </div>
+      <SecondaryHero headerProps={this.props} tone="gray">
+        <h1>{this.props.t("alumni.title")}</h1>
+        <h2>{this.props.t("alumni.subtitle")}</h2>
+      </SecondaryHero>
       <Grid>
         {this.state.isLoading ? <p className="page-status" role="status">{this.props.t("alumni.loading")}</p> : null}
         {this.state.hasErrored ? <p className="page-status alert alert-warning" role="alert">{this.props.t("alumni.error")}</p> : null}

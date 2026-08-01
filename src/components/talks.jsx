@@ -10,7 +10,7 @@ import ajax from "../lib/ajax"
 import gravatar from "../lib/gravatar"
 import CloudCount from "./cloud-count"
 import EditionSelector from "./edition-selector";
-import Header from "./header";
+import SecondaryHero from "./secondary-hero";
 
 
 const Talks = createLegacyComponent({
@@ -51,26 +51,10 @@ const Talks = createLegacyComponent({
 
   render() {
     return <div className="talks">
-      <div className="blue-section-wrapper">
-        <Grid className="blue-section">
-          <Row>
-            <Col xs={12}>
-              <Header isLoggedIn={this.props.isLoggedIn}
-                      current={this.props.current}
-                      language={this.props.language}
-                      changeLanguage={this.props.changeLanguage}
-                      logout={this.props.logout} />
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={12}>
-              <h1>{this.props.t("talks.title")}</h1>
-              <h2>{this.props.t("edition.label", { edition: this.state.selectedEdition })}</h2>
-            </Col>
-          </Row>
-          <Row className="big-spacing" />
-        </Grid>
-      </div>
+      <SecondaryHero headerProps={this.props}>
+        <h1>{this.props.t("talks.title")}</h1>
+        <h2>{this.props.t("edition.label", { edition: this.state.selectedEdition })}</h2>
+      </SecondaryHero>
       <Grid>
         <Row className="small-spacing" />
         <Row>

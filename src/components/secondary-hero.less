@@ -1,0 +1,99 @@
+@import (reference) "../main";
+
+.secondary-hero {
+  background-position: center 46%;
+  border-bottom: 4px solid @brand-blue;
+
+  .secondary-hero__inner.blue-section,
+  .secondary-hero__inner.gray-section {
+    min-height: 0;
+    position: relative;
+  }
+
+  .secondary-hero__copy {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 260px;
+    padding: 34px 20px 42px;
+    text-align: center;
+
+    h1 {
+      color: @white;
+      font-family: @font-family-sans-serif;
+      font-size: clamp(42px, 4vw, 58px);
+      font-weight: bold;
+      letter-spacing: -0.035em;
+      line-height: 1.02;
+      margin: 0;
+      max-width: 980px;
+      text-shadow: 0 3px 18px rgba(11, 23, 51, 0.35);
+      text-wrap: balance;
+
+      &:after {
+        background: @brand-red;
+        border-radius: 999px;
+        content: "";
+        display: block;
+        height: 4px;
+        margin: 20px auto 0;
+        width: 58px;
+      }
+    }
+
+    h2 {
+      color: fade(@white, 88%);
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      line-height: 1.35;
+      margin: 18px 0 0;
+      max-width: 900px;
+      text-shadow: 0 2px 12px rgba(11, 23, 51, 0.4);
+      text-transform: uppercase;
+      text-wrap: balance;
+    }
+  }
+}
+
+@media screen and (min-width: @screen-wide) {
+  .secondary-hero .secondary-hero__copy {
+    min-height: 290px;
+
+    h1 {
+      font-size: 64px;
+    }
+
+    h2 {
+      font-size: 18px;
+    }
+  }
+}
+
+@media screen and (max-width: (@screen-sm - 1px)) {
+  .secondary-hero {
+    background-position: center;
+
+    .secondary-hero__copy {
+      min-height: 210px;
+      padding: 28px 14px 34px;
+
+      h1 {
+        font-size: clamp(36px, 11vw, 46px);
+
+        &:after {
+          height: 3px;
+          margin-top: 16px;
+          width: 48px;
+        }
+      }
+
+      h2 {
+        font-size: 14px;
+        letter-spacing: 0.06em;
+        margin-top: 14px;
+      }
+    }
+  }
+}

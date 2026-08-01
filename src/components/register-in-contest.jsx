@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { withTranslation } from "react-i18next";
 import { Grid, Col, Row, PanelGroup, Panel, ListGroup, ListGroupItem } from "@ui/bootstrap";
 
-import Header from "./header";
+import SecondaryHero from "./secondary-hero";
 import "../main.less";
 import RegisterContestant from "./register-in-contest/register-contestant"
 import RegisterProject from "./register-in-contest/register-project"
@@ -168,25 +168,10 @@ const RegisterInContest = createLegacyComponent({
     });
 
     return <div className="register-in-contest">
-      <div className="blue-section-wrapper">
-        <Grid className="blue-section">
-          <Header isLoggedIn={this.props.isLoggedIn}
-                  current={this.props.current}
-                  language={this.props.language}
-                  changeLanguage={this.props.changeLanguage}
-                  logout={this.props.logout} />
-          <Row>
-            <Col xs={12}>
-              <h1>{this.props.t("title")}</h1>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={12}>
-              <h2>{this.props.t("subtitle")}</h2>
-            </Col>
-          </Row>
-        </Grid>
-      </div>
+      <SecondaryHero headerProps={this.props}>
+        <h1>{this.props.t("title")}</h1>
+        <h2>{this.props.t("subtitle")}</h2>
+      </SecondaryHero>
 
       <Grid className="forms-section">
         <Row>

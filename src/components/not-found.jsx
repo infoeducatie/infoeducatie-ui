@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import { getLocalizedPath } from "@lib/localized-routes";
 import { Col, Grid, Row } from "@ui/bootstrap";
-import Header from "./header";
+import SecondaryHero from "./secondary-hero";
 
 import "../main.less";
 
@@ -13,32 +13,11 @@ export default function NotFound(props) {
   const { t } = useTranslation("notFound");
   return (
     <div className="not-found-page">
-      <div className="blue-section-wrapper">
-        <Grid className="blue-section">
-          <Row>
-            <Col xs={12}>
-              <Header
-                changeLanguage={props.changeLanguage}
-                current={props.current}
-                isLoggedIn={props.isLoggedIn}
-                language={props.language}
-                logout={props.logout}
-              />
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={12}>
-              <p className="not-found-code" aria-hidden="true">
-                404
-              </p>
-              <h1>{t("title")}</h1>
-              <p className="not-found-lead">
-                {t("lead")}
-              </p>
-            </Col>
-          </Row>
-        </Grid>
-      </div>
+      <SecondaryHero headerProps={props}>
+        <p className="not-found-code" aria-hidden="true">404</p>
+        <h1>{t("title")}</h1>
+        <p className="not-found-lead">{t("lead")}</p>
+      </SecondaryHero>
 
       <Grid className="not-found-actions white-section">
         <Row>

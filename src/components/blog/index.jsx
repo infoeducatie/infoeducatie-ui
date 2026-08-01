@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 import "../../main.less";
-import Header from "../header";
+import SecondaryHero from "../secondary-hero";
 
 function formatDate(value, language) {
   return new Intl.DateTimeFormat(language === "en" ? "en-GB" : "ro-RO", {
@@ -56,23 +56,10 @@ export default function Blog(props) {
 
   return (
     <div className="blog-page">
-      <div className="blue-section-wrapper">
-        <Grid className="blue-section">
-          <Row>
-            <Col xs={12}>
-              <Header {...props} />
-            </Col>
-          </Row>
-          <Row>
-            <Row className="small-spacing" />
-            <Col xs={12}>
-              <h1>{t("title")}</h1>
-              <h2>{t("subtitle")}</h2>
-            </Col>
-          </Row>
-          <Row className="big-spacing" />
-        </Grid>
-      </div>
+      <SecondaryHero headerProps={props}>
+        <h1>{t("title")}</h1>
+        <h2>{t("subtitle")}</h2>
+      </SecondaryHero>
       <Grid className="white-section blog-list">
         <Row>
           <Col md={10} mdOffset={1}>

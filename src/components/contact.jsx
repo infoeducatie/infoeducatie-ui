@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import "../main.less";
-import Header from "./header";
 import RichTextContent from "./rich-text-content";
+import SecondaryHero from "./secondary-hero";
 
 export default function Contact(props) {
   const { t } = useTranslation("contact");
@@ -52,22 +52,9 @@ export default function Contact(props) {
 
   return (
     <div className="contact">
-      <div className="blue-section-wrapper">
-        <Grid className="blue-section">
-          <Row>
-            <Col xs={12}>
-              <Header {...props} />
-            </Col>
-          </Row>
-          <Row>
-            <Row className="small-spacing" />
-            <Col xs={12}>
-              <h1>{page?.title || t("title")}</h1>
-            </Col>
-          </Row>
-          <Row className="big-spacing" />
-        </Grid>
-      </div>
+      <SecondaryHero headerProps={props}>
+        <h1>{page?.title || t("title")}</h1>
+      </SecondaryHero>
       <Grid className="white-section">
         <Row>
           <Col md={10} mdOffset={1}>

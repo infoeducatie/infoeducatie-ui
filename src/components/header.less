@@ -11,7 +11,7 @@
   .header-shell {
     align-items: center;
     display: flex;
-    min-height: 88px;
+    min-height: 76px;
   }
 
   .site-logo {
@@ -19,7 +19,7 @@
     display: inline-flex;
     flex: 0 0 auto;
     margin-right: 26px;
-    min-height: 52px;
+    min-height: 44px;
     text-decoration: none;
 
     &:focus,
@@ -42,7 +42,7 @@
     --bs-navbar-hover-color: @brand-red;
     flex: 1 1 auto;
     margin: 0;
-    min-height: 64px;
+    min-height: 56px;
     padding: 0;
     position: static;
   }
@@ -67,8 +67,8 @@
       font-weight: bold;
       justify-content: center;
       line-height: 18px;
-      min-height: 56px;
-      padding: 14px 7px;
+      min-height: 50px;
+      padding: 10px 7px;
       text-transform: none;
       transition: color 150ms ease;
 
@@ -88,7 +88,7 @@
       background: @brand-red;
       border: 0;
       border-radius: 999px;
-      bottom: 6px;
+      bottom: 3px;
       content: "";
       height: 3px;
       left: 25%;
@@ -139,12 +139,12 @@
 
   @media screen and (min-width: @screen-wide) {
     .header-shell {
-      min-height: 104px;
+      min-height: 88px;
     }
 
     .site-logo {
       margin-right: 32px;
-      min-height: 64px;
+      min-height: 54px;
 
       .site-logo-wordmark {
         font-size: 48px;
@@ -152,19 +152,19 @@
     }
 
     .navbar {
-      min-height: 76px;
+      min-height: 64px;
     }
 
     .navbar-nav {
       .nav-link {
         font-size: 17px;
         line-height: 22px;
-        min-height: 68px;
-        padding: 16px 9px;
+        min-height: 58px;
+        padding: 12px 9px;
       }
 
       .nav-link.active:after {
-        bottom: 7px;
+        bottom: 3px;
       }
 
       .language-switch img {
@@ -176,7 +176,7 @@
 
   @media screen and (max-width: (@screen-md - 1px)) {
     .header-shell {
-      min-height: 78px;
+      min-height: 72px;
     }
 
     .site-logo .site-logo-wordmark {

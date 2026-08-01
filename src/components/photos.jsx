@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import "../main.less";
-import Header from "./header";
 import PhotoWrapper from "./photo-wrapper.jsx";
+import SecondaryHero from "./secondary-hero";
 
 function resolveAssetUrl(assetUrl) {
   if (!assetUrl) return null;
@@ -60,22 +60,10 @@ export default function Photos(props) {
 
   return (
     <div className="photos">
-      <div className="gray-section-wrapper">
-        <Grid className="gray-section">
-          <Row>
-            <Col md={12}>
-              <Header {...props} />
-            </Col>
-          </Row>
-          <Row className="small-spacing header-spacing" />
-          <Row>
-            <Col md={12}>
-              <h1>{t("title")}</h1>
-              <h2>{t("subtitle")}</h2>
-            </Col>
-          </Row>
-        </Grid>
-      </div>
+      <SecondaryHero headerProps={props} tone="gray">
+        <h1>{t("title")}</h1>
+        <h2>{t("subtitle")}</h2>
+      </SecondaryHero>
       <div className="white-section-wrapper">
         <Grid className="white-section">
           <Row className="small-spacing" />
