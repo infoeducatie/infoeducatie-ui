@@ -26,14 +26,26 @@ const Article = createLegacyComponent({
     });
   },
 
-  renderOverlay() {
+  renderOverlay(date) {
     return (
-      <Modal show={this.state.isModalOpen} onHide={this.closeModal}>
+      <Modal
+        centered
+        className="news-modal"
+        scrollable
+        show={this.state.isModalOpen}
+        onHide={this.closeModal}
+      >
         <Modal.Header closeButton>
-          <Modal.Title>{this.props.title}</Modal.Title>
+          <div className="news-modal-heading">
+            <p className="news-modal-date">{date}</p>
+            <Modal.Title>{this.props.title}</Modal.Title>
+          </div>
         </Modal.Header>
         <Modal.Body>
-          <div dangerouslySetInnerHTML={{__html: this.props.body}} />
+          <div
+            className="news-modal-body"
+            dangerouslySetInnerHTML={{__html: this.props.body}}
+          />
         </Modal.Body>
       </Modal>
     );
@@ -60,7 +72,7 @@ const Article = createLegacyComponent({
           </button>
         ) : null}
       </Row>
-      { this.renderOverlay() }
+      { this.renderOverlay(date) }
     </article>;
   }
 });
