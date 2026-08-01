@@ -66,7 +66,6 @@ export default createLegacyComponent({
                   Adresa de email pentru newsletter
                 </label>
                 <FormControl
-                     id="newsletter-email"
                      aria-describedby="newsletter-description"
                      hasFeedback
                      required

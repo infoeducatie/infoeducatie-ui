@@ -44,8 +44,8 @@ Status: `[x]` complete, `[-]` in progress, `[ ]` queued.
 - [ ] DATA-003 Add participant sorting and shareable URL filters.
 - [-] DATA-005 Add consistent loading, empty, error, and retry components to every API view; alumni, seminars, participants, and results now cover the main states.
 - [ ] NEWS-001 Restore focus after closing an article and announce pagination status.
-- [ ] NAV-001 Preserve focus and scroll behavior after client-side route changes.
-- [ ] NAV-002 Add a dedicated not-found route.
+- [x] NAV-001 Preserve focus and scroll behavior after client-side route changes.
+- [x] NAV-002 Add a dedicated not-found route.
 - [-] EMBED-001 Replace or isolate the Google Docs schedule embed; the resilient external fallback link is complete.
 
 ## Registration Follow-Up
@@ -63,7 +63,7 @@ Status: `[x]` complete, `[-]` in progress, `[ ]` queued.
 
 ## Content And Trust
 
-- [-] SEO-001 Add metadata, canonical/social URLs, `robots.txt`, and sitemap; route-specific titles/descriptions remain.
+- [x] SEO-001 Add route-specific metadata, canonical/social URLs, `robots.txt`, and sitemap.
 - [-] COPY-001 Correct visible registration/gallery copy; complete the full Romanian content review.
 - [-] I18N-001 Derive language from direct URLs; full Romanian/English content parity remains.
 - [ ] TRUST-001 Verify Forum, Blog, sponsor, and social destinations and remove dead links.

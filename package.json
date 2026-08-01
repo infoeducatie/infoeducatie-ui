@@ -16,7 +16,7 @@
     "clean": "node -e \"require('node:fs').rmSync('build', { recursive: true, force: true })\""
   },
   "engines": {
-    "node": ">=22.12.0",
+    "node": "^22.13.0 || >=24.0.0",
     "npm": ">=10.0.0"
   },
   "repository": {

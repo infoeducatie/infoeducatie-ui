@@ -92,7 +92,13 @@ export function Navbar({
   );
 }
 
-export function Nav({ children, className = "", right, ...props }) {
+export function Nav({
+  children,
+  className = "",
+  eventKey: _eventKey,
+  right,
+  ...props
+}) {
   return (
     <BootstrapNav
       as="ul"

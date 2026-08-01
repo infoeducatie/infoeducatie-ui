@@ -45,12 +45,10 @@ Production currently serves the released React 19 baseline at commit `45691c3`. 
 - Add consistent loading, empty, error, and retry states to every API-driven page.
 - Complete registration feedback with live password requirements, inline confirmation matching, and a focused error summary.
 - Replace or isolate the Google Docs schedule iframe; the resilient external fallback is now present.
-- Add a dedicated not-found page instead of redirecting every unknown URL.
 
 ## Remaining P2 Work
 
 - Add participant sorting and shareable URL-backed filters.
-- Add route-specific titles and descriptions; canonical and Open Graph URLs are already route-aware.
 - Finish Romanian/English content parity and review all copy, dates, and diacritics.
 - Verify Forum, Blog, sponsor, and social destinations on a scheduled basis.
 - Add privacy information beside account and newsletter consent controls.

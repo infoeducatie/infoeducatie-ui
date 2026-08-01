@@ -7,6 +7,7 @@ import {
   useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import { createRoot } from "react-dom/client";
@@ -26,6 +27,7 @@ import "./main.less";
 import FooterEnglish from "./components/english/footer";
 import Footer from "./components/footer";
 import Home from "./components/home";
+import NotFound from "./components/not-found";
 import SignInModal from "./components/sign-in-modal";
 import {
   getAccessToken,
@@ -35,6 +37,7 @@ import {
 import { initializeAnalytics } from "./lib/analytics";
 import { navigate, NavigationBridge } from "./lib/navigation";
 import request from "./lib/request";
+import { getRouteMetadata } from "./lib/route-metadata";
 
 const About = lazy(() => import("./components/about"));
 const Alumni = lazy(() => import("./components/alumni"));
@@ -80,6 +83,7 @@ const defaultCurrent = {
 
 function App() {
   const location = useLocation();
+  const previousPath = useRef(location.pathname);
   const [current, setCurrent] = useState(defaultCurrent);
   const [isLoggedIn, setIsLoggedIn] = useState(Boolean(getAccessToken()));
   const language = englishRoutes.has(location.pathname) ? "en" : "ro";
@@ -89,12 +93,37 @@ function App() {
   }, [language]);
 
   useEffect(() => {
+    const metadata = getRouteMetadata(location.pathname);
     const canonicalUrl = new URL(location.pathname, window.location.origin).href;
     const canonical = document.querySelector('link[rel="canonical"]');
+    const description = document.querySelector('meta[name="description"]');
+    const openGraphTitle = document.querySelector('meta[property="og:title"]');
+    const openGraphDescription = document.querySelector(
+      'meta[property="og:description"]',
+    );
     const openGraphUrl = document.querySelector('meta[property="og:url"]');
 
+    document.title = metadata.title;
     if (canonical) canonical.href = canonicalUrl;
+    if (description) description.content = metadata.description;
+    if (openGraphTitle) openGraphTitle.content = metadata.title;
+    if (openGraphDescription) {
+      openGraphDescription.content = metadata.description;
+    }
     if (openGraphUrl) openGraphUrl.content = canonicalUrl;
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (previousPath.current === location.pathname) return undefined;
+
+    previousPath.current = location.pathname;
+    window.scrollTo({ left: 0, top: 0, behavior: "auto" });
+
+    const animationFrame = window.requestAnimationFrame(() => {
+      document.getElementById("main-content")?.focus({ preventScroll: true });
+    });
+
+    return () => window.cancelAnimationFrame(animationFrame);
   }, [location.pathname]);
 
   const getCurrent = useCallback(() => {
@@ -236,7 +265,10 @@ root.render(
           ))}
           <Route path="calendar" element={<Navigate replace to="/program" />} />
           <Route path="kitchen" element={<Navigate replace to="/" />} />
-          <Route path="*" element={<Navigate replace to="/" />} />
+          <Route
+            path="*"
+            element={<RouteContent component={NotFound} />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>
