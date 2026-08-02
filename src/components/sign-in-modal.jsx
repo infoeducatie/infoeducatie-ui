@@ -57,7 +57,12 @@ const SignInModal = createLegacyComponent({
 
   render() {
     return (
-      <Modal show={this.showModal()} onHide={this.closeModal}>
+      <Modal
+        className="sign-in-modal"
+        centered
+        show={this.showModal()}
+        onHide={this.closeModal}
+      >
         <Modal.Header closeButton>
           <Modal.Title>{this.props.t("signIn.title")}</Modal.Title>
         </Modal.Header>
@@ -71,7 +76,7 @@ const SignInModal = createLegacyComponent({
   },
 
   renderRegisterMessage() {
-    return <div>
+    return <div className="sign-in-links">
       <p>
         {this.props.t("signIn.noAccountPrefix")}&nbsp;
         <a href="/inregistrare" onClick={this.onRegisterClick}>{this.props.t("signIn.createAccount")}</a>.

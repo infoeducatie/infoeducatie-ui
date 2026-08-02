@@ -35,7 +35,7 @@ const SignInForm = createLegacyComponent({
 
   render() {
     return <div>
-      <form onSubmit={this.onSubmit}>
+      <form className="sign-in-form" onSubmit={this.onSubmit}>
         <FormGroup controlId="sign-in-email">
           <ControlLabel htmlFor="sign-in-email">{this.props.t("fields.email")}</ControlLabel>
           <FormControl type="email"
@@ -57,7 +57,9 @@ const SignInForm = createLegacyComponent({
                <FormControl.Feedback />
         </FormGroup>
         <FormGroup>
-          <Button type="submit" bsStyle="primary">{this.props.t("signIn.submit")}</Button>
+          <Button className="sign-in-submit" type="submit" bsStyle="primary">
+            {this.props.t("signIn.submit")}
+          </Button>
           <FormControl.Feedback />
         </FormGroup>
       </form>
@@ -66,7 +68,7 @@ const SignInForm = createLegacyComponent({
   },
 
   renderError() {
-    return <ListGroup>
+    return <ListGroup className="sign-in-error">
       <ListGroupItem bsStyle="danger">{this.props.t("signIn.error")}</ListGroupItem>
     </ListGroup>;
   },
