@@ -173,7 +173,7 @@ const Contestants = createLegacyComponent({
             className="rank"
             data-label={this.props.t("contestants.results.columns.prize")}
           >
-            {project.prize}
+            <span className="result-rank-value">{project.prize}</span>
           </td>
           <td
             className="title"
@@ -227,7 +227,9 @@ const Contestants = createLegacyComponent({
             className="score total"
             data-label={this.props.t("contestants.results.columns.total")}
           >
-            {formatScore(project.total_score)}
+            <span className="result-total-value">
+              {formatScore(project.total_score)}
+            </span>
           </td>
         </tr>
       );

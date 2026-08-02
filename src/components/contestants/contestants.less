@@ -357,6 +357,131 @@
       box-shadow: none;
     }
 
+    .projects .data-region table.results-table {
+      background: transparent;
+
+      tbody {
+        display: grid;
+        gap: 14px;
+      }
+
+      tr.result {
+        background: @white;
+        border: 1px solid @brand-border;
+        border-radius: 16px;
+        box-shadow: 0 10px 26px rgba(11, 23, 51, 0.07);
+        display: grid;
+        gap: 0 14px;
+        grid-template-areas:
+          "rank total"
+          "title title"
+          "authors authors";
+        grid-template-columns: minmax(0, 1fr) auto;
+        margin: 0;
+        overflow: hidden;
+        padding: 16px;
+
+        &:hover {
+          background: @white;
+        }
+      }
+
+      td {
+        border: 0 !important;
+        display: flex !important;
+        height: auto;
+        min-height: 0;
+        padding: 0 !important;
+
+        &:before {
+          padding: 0;
+        }
+
+        &.rank,
+        &.total {
+          align-items: center;
+          gap: 8px;
+        }
+
+        &.rank {
+          grid-area: rank;
+          justify-content: flex-start;
+          text-align: left;
+        }
+
+        &.total {
+          grid-area: total;
+          justify-content: flex-end;
+          text-align: right;
+        }
+
+        &.title,
+        &.authors {
+          align-items: flex-start;
+          border-top: 1px solid @brand-border !important;
+          flex-direction: column;
+          margin-top: 14px;
+          padding-top: 13px !important;
+
+          &:before {
+            color: #667085;
+            margin-bottom: 5px;
+          }
+        }
+
+        &.title {
+          grid-area: title;
+
+          a {
+            color: @brand-navy;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1.3;
+            min-height: 0;
+          }
+        }
+
+        &.authors {
+          grid-area: authors;
+
+          .list-unstyled {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 12px;
+
+            li {
+              margin: 0;
+            }
+
+            .author {
+              min-height: 0;
+            }
+          }
+        }
+      }
+
+      .result-rank-value {
+        align-items: center;
+        background: fade(@brand-blue, 10%);
+        border-radius: 999px;
+        color: @brand-blue;
+        display: inline-flex;
+        font-size: 13px;
+        font-weight: bold;
+        justify-content: center;
+        letter-spacing: 0.05em;
+        min-height: 30px;
+        min-width: 38px;
+        padding: 5px 10px;
+      }
+
+      .result-total-value {
+        color: @brand-green;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+
     .projects-grid {
       grid-template-columns: 1fr;
     }
