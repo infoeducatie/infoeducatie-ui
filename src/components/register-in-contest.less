@@ -70,6 +70,112 @@
       padding: 30px 34px 36px;
     }
 
+    #registration-panel {
+      .alert-warning {
+        --bs-alert-bg: @brand-surface;
+        --bs-alert-border-color: @brand-border;
+        --bs-alert-color: #3F4960;
+        background-color: @brand-surface !important;
+        border: 1px solid @brand-border !important;
+        border-radius: 14px;
+        color: #3F4960;
+        line-height: 1.5;
+        margin-bottom: 16px;
+        padding: 16px 18px;
+      }
+
+      .accordion {
+        --bs-accordion-border-color: transparent;
+        --bs-accordion-border-radius: 14px;
+        --bs-accordion-inner-border-radius: 13px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .accordion-item {
+        background: @white;
+        border: 1px solid @brand-border !important;
+        border-radius: 14px !important;
+        box-shadow: 0 5px 16px rgba(11, 23, 51, 0.045);
+        overflow: hidden;
+        transition: border-color 150ms ease, box-shadow 150ms ease,
+          transform 150ms ease;
+
+        &:has(.accordion-button:not(.collapsed)) {
+          border-color: fade(@brand-blue, 38%) !important;
+          box-shadow: 0 10px 24px rgba(11, 23, 51, 0.08);
+        }
+
+        &.border-success {
+          border-color: fade(@brand-green, 34%) !important;
+        }
+
+        &.border-warning {
+          background: #FBFCFE;
+          border-color: @brand-border !important;
+        }
+      }
+
+      .accordion-button {
+        background: @white;
+        box-shadow: none;
+        color: @brand-navy;
+        font-size: 16px;
+        font-weight: bold;
+        gap: 12px;
+        line-height: 1.35;
+        min-height: 58px;
+        padding: 16px 18px;
+
+        &:focus {
+          border-color: transparent;
+          box-shadow: inset 0 0 0 3px fade(@brand-blue, 14%);
+        }
+
+        &:not(.collapsed) {
+          background: fade(@brand-blue, 9%);
+          color: @brand-navy;
+        }
+      }
+
+      .border-success .accordion-button {
+        &:before {
+          align-items: center;
+          background: fade(@brand-green, 12%);
+          border-radius: 999px;
+          color: @brand-green;
+          content: "\2713";
+          display: inline-flex;
+          flex: 0 0 auto;
+          font-size: 13px;
+          height: 26px;
+          justify-content: center;
+          width: 26px;
+        }
+      }
+
+      .border-warning .accordion-button {
+        background: #FBFCFE;
+        color: #59647A;
+
+        &:not(.collapsed) {
+          background: fade(@brand-blue, 9%);
+          color: @brand-navy;
+        }
+      }
+
+      .accordion-body {
+        border-top: 1px solid @brand-border;
+        color: #3F4960;
+        line-height: 1.55;
+        padding: 18px;
+
+        > :last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
     form {
       .form-group {
         margin-bottom: 18px;
