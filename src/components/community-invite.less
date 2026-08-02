@@ -3,7 +3,7 @@
 .community-invite {
   background: @white;
   color: @white;
-  padding: 10px 15px 0;
+  padding: 10px 0 0;
 
   &__inner {
     align-items: center;
@@ -23,8 +23,10 @@
 
   // Override Bootstrap's generic .container gutters for this full-width card.
   &__inner.container {
+    max-width: none;
     padding-left: 72px;
     padding-right: 72px;
+    width: calc(100% - 30px);
   }
 
   &__inner:after {
@@ -243,6 +245,9 @@
   }
 
   @media screen and (max-width: (@screen-sm - 1px)) {
+    padding-bottom: 16px;
+    padding-top: 16px;
+
     &__inner {
       display: block;
       padding: 30px 24px;

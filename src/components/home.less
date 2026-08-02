@@ -277,6 +277,12 @@
     }
   }
 
+  .gray-section,
+  .yellow-section-wrapper .yellow-section {
+    max-width: none;
+    width: calc(100% - 30px);
+  }
+
   .sponsors-section-wrapper {
     background: @white;
   }
@@ -722,27 +728,35 @@
       padding-top: 64px;
     }
 
+    .gray-section-wrapper {
+      padding-bottom: 16px;
+      padding-top: 40px;
+    }
+
     .gray-section {
       background-image: url(/assets/img/quotes.png);
-      background-position: calc(100% - 20px) 210px;
+      background-position: calc(100% - 18px) calc(100% - 20px);
       background-size: 118px auto;
       min-height: 0;
-      padding: 12px 20px 32px;
+      padding: 30px 28px 32px;
 
       &:before {
-        background-position: center top;
-        background-size: 150px auto;
-        bottom: auto;
+        background-position: right -14px top -8px;
+        background-size: auto 118%;
+        bottom: 0;
         display: block;
-        height: 205px;
-        left: auto;
-        position: relative;
-        right: auto;
-        top: auto;
-        width: 100%;
+        height: auto;
+        left: 0;
+        opacity: 0.18;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: auto;
       }
 
       .alumnus-layout {
+        margin-left: 0;
+        margin-right: 0;
         min-height: 0;
       }
 
@@ -772,10 +786,10 @@
     }
 
     .yellow-section-wrapper {
-      padding-bottom: 40px;
-      padding-left: 15px;
-      padding-right: 15px;
-      padding-top: 40px;
+      padding-bottom: 16px;
+      padding-left: 0;
+      padding-right: 0;
+      padding-top: 16px;
 
       .text {
         min-height: 430px;
