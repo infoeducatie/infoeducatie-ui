@@ -724,12 +724,22 @@
 
     .gray-section {
       background-image: url(/assets/img/quotes.png);
-      background-position: 24px 28px;
+      background-position: calc(100% - 20px) 210px;
+      background-size: 118px auto;
       min-height: 0;
-      padding: 28px 20px 42px;
+      padding: 12px 20px 32px;
 
       &:before {
-        display: none;
+        background-position: center top;
+        background-size: 150px auto;
+        bottom: auto;
+        display: block;
+        height: 205px;
+        left: auto;
+        position: relative;
+        right: auto;
+        top: auto;
+        width: 100%;
       }
 
       .alumnus-layout {
@@ -738,6 +748,21 @@
 
       .alumnus-content {
         padding: 0;
+      }
+
+      .quote {
+        font-size: 17px;
+        line-height: 1.5;
+        margin: 18px 0 24px;
+      }
+
+      .alumnus-name {
+        font-size: 22px;
+      }
+
+      .section-heading {
+        font-size: 12px;
+        margin: 0;
       }
 
       > .row > [class*="col-"] {
