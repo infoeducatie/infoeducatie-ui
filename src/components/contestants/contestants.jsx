@@ -46,21 +46,36 @@ function formatScore(score) {
   return Number.isFinite(numericScore) ? numericScore.toFixed(2) : score;
 }
 
+const MOBILE_VIEW_QUERY = "(max-width: 767px)";
+
+function usesMobileCardView() {
+  return typeof window !== "undefined" &&
+    window.matchMedia(MOBILE_VIEW_QUERY).matches;
+}
+
 const Contestants = createLegacyComponent({
   displayName: "Contestants",
 
   componentDidMount() {
+    this.mobileViewQuery = window.matchMedia(MOBILE_VIEW_QUERY);
+    this.mobileViewQuery.addEventListener("change", this.onViewportChange);
     this.props.refreshCurrent();
     this.getContestants();
     this.getResultEditions();
   },
 
+  componentWillUnmount() {
+    this.mobileViewQuery?.removeEventListener("change", this.onViewportChange);
+  },
+
   getInitialState: function() {
+    let mobileCardView = usesMobileCardView();
+
     return {
       projects: [],
       hasError: false,
-      showGrid: false,
-      showTable: true,
+      showGrid: mobileCardView,
+      showTable: !mobileCardView,
       currentCategory: "all",
       searchTerm: "",
       selectedEdition: this.props.edition,
@@ -68,6 +83,12 @@ const Contestants = createLegacyComponent({
         ? [this.props.lastEditionWithResults.id]
         : [],
    };
+  },
+
+  onViewportChange(event) {
+    if (event.matches) {
+      this.showGrid();
+    }
   },
 
   componentWillReceiveProps(nextProps) {
