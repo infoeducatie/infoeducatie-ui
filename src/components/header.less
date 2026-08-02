@@ -22,7 +22,7 @@
   .header-shell {
     align-items: center;
     display: flex;
-    min-height: 64px;
+    height: 56px;
     position: relative;
     z-index: 1;
   }
@@ -32,7 +32,7 @@
     display: inline-flex;
     flex: 0 0 auto;
     margin-right: 24px;
-    min-height: 38px;
+    min-height: 0;
     text-decoration: none;
 
     &:focus,
@@ -43,7 +43,7 @@
     .site-logo-wordmark {
       color: #1F4D8F;
       font-family: @font-family-serif;
-      font-size: 35px;
+      font-size: 32px;
       line-height: 1;
       white-space: nowrap;
     }
@@ -54,8 +54,9 @@
     --bs-navbar-color: @brand-navy;
     --bs-navbar-hover-color: @brand-red;
     flex: 1 1 auto;
+    height: 44px;
     margin: 0;
-    min-height: 48px;
+    min-height: 0;
     padding: 0;
     position: static;
   }
@@ -80,8 +81,8 @@
       font-weight: bold;
       justify-content: center;
       line-height: 18px;
-      min-height: 44px;
-      padding: 8px 7px;
+      min-height: 40px;
+      padding: 6px 7px;
       text-transform: none;
       transition: color 150ms ease;
 
@@ -125,9 +126,9 @@
     border: 2px solid @brand-navy;
     border-radius: 10px;
     margin-left: auto;
-    min-height: 46px;
-    min-width: 46px;
-    padding: 8px;
+    min-height: 42px;
+    min-width: 42px;
+    padding: 6px;
   }
 
   .navbar-toggler-icon {
@@ -139,7 +140,7 @@
       margin-right: 14px;
 
       .site-logo-wordmark {
-        font-size: 34px;
+        font-size: 31px;
       }
     }
 
@@ -152,28 +153,29 @@
 
   @media screen and (min-width: @screen-wide) {
     .header-shell {
-      min-height: 72px;
+      height: 60px;
     }
 
     .site-logo {
       margin-right: 28px;
-      min-height: 44px;
+      min-height: 0;
 
       .site-logo-wordmark {
-        font-size: 42px;
+        font-size: 36px;
       }
     }
 
     .navbar {
-      min-height: 54px;
+      height: 48px;
+      min-height: 0;
     }
 
     .navbar-nav {
       .nav-link {
         font-size: 17px;
         line-height: 22px;
-        min-height: 48px;
-        padding: 9px;
+        min-height: 44px;
+        padding: 7px 9px;
       }
 
       .nav-link.active:after {
@@ -181,19 +183,19 @@
       }
 
       .language-switch img {
-        height: 28px;
-        width: 28px;
+        height: 26px;
+        width: 26px;
       }
     }
   }
 
   @media screen and (max-width: (@screen-md - 1px)) {
     .header-shell {
-      min-height: 64px;
+      height: 58px;
     }
 
     .site-logo .site-logo-wordmark {
-      font-size: 34px;
+      font-size: 32px;
     }
 
     .navbar {
@@ -239,7 +241,7 @@
 
   @media screen and (max-width: 420px) {
     .site-logo .site-logo-wordmark {
-      font-size: 30px;
+      font-size: 29px;
     }
   }
 }
