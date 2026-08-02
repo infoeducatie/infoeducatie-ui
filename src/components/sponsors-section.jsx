@@ -21,7 +21,7 @@ function SponsorLogo({ isDuplicate = false, sponsor }) {
         alt=""
         decoding="async"
         height="120"
-        loading="lazy"
+        loading="eager"
         src={resolveImageUrl(sponsor.image_url)}
         width="240"
       />
