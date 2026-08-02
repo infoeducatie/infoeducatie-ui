@@ -1,24 +1,51 @@
 @import (reference) "../main";
 
 .community-invite {
-  background-color: @dark-green;
-  border-top: 4px solid @orange;
+  background: @white;
   color: @white;
+  padding: 10px 0 0;
 
   &__inner {
     align-items: center;
+    background:
+      radial-gradient(circle at 88% 18%, rgba(31, 98, 190, 0.34), transparent 34%),
+      linear-gradient(120deg, #10284F, #0A1B37 72%);
+    border-radius: 20px;
+    box-shadow: 0 22px 48px rgba(11, 23, 51, 0.16);
     display: grid;
     gap: 32px;
     grid-template-columns: 84px minmax(0, 1fr) minmax(220px, auto);
-    min-height: 236px;
-    padding-bottom: 42px;
-    padding-top: 42px;
+    min-height: 220px;
+    overflow: hidden;
+    padding: 40px 48px;
+    position: relative;
+  }
+
+  // Override Bootstrap's generic .container gutters for this full-width card.
+  &__inner.container {
+    max-width: none;
+    padding-left: 72px;
+    padding-right: 72px;
+    width: calc(100% - 30px);
+  }
+
+  &__inner:after {
+    border: 42px solid rgba(255, 255, 255, 0.035);
+    border-radius: 50%;
+    content: "";
+    height: 220px;
+    position: absolute;
+    right: -70px;
+    top: -80px;
+    width: 220px;
   }
 
   &__mark {
     align-items: center;
-    background-color: @blue;
-    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 18px;
+    color: #6FB3FF;
     display: flex;
     height: 80px;
     justify-content: center;
@@ -26,7 +53,7 @@
   }
 
   &__eyebrow {
-    color: @orange;
+    color: #FFBE19;
     font-size: 13px;
     font-weight: bold;
     margin: 0 0 8px;
@@ -34,19 +61,20 @@
 
   h2 {
     color: @white;
-    font-size: 32px;
-    font-weight: normal;
+    font-size: 31px;
+    font-weight: bold;
+    letter-spacing: -0.025em;
     line-height: 1.2;
     margin: 0 0 10px;
     text-transform: none;
   }
 
   &__description {
-    color: @dark-gray;
-    font-size: 18px;
-    line-height: 1.5;
+    color: #C4CEE0;
+    font-size: 16px;
+    line-height: 1.55;
     margin: 0;
-    max-width: 670px;
+    max-width: 650px;
   }
 
   &__details {
@@ -54,23 +82,23 @@
     flex-wrap: wrap;
     gap: 10px 24px;
     list-style: none;
-    margin: 18px 0 0;
+    margin: 17px 0 0;
     padding: 0;
 
     li {
       align-items: center;
       color: @white;
       display: inline-flex;
-      font-size: 14px;
+      font-size: 13px;
       gap: 8px;
     }
 
     li:first-child svg {
-      color: @green;
+      color: #61C974;
     }
 
     li:last-child svg {
-      color: @orange;
+      color: #61C974;
     }
   }
 
@@ -79,16 +107,18 @@
     display: flex;
     flex-direction: column;
     min-width: 220px;
+    position: relative;
+    z-index: 1;
   }
 
   &__cta {
     align-items: center;
-    background-color: @pink;
-    border: 2px solid @pink;
-    border-radius: 4px;
-    color: @white;
+    background: @white;
+    border: 2px solid @white;
+    border-radius: 999px;
+    color: @brand-navy;
     display: inline-flex;
-    font-size: 19px;
+    font-size: 15px;
     font-weight: bold;
     gap: 12px;
     justify-content: center;
@@ -96,38 +126,109 @@
     padding: 12px 20px;
     text-decoration: none;
     transition: background-color 150ms ease, border-color 150ms ease,
-      color 150ms ease;
+      color 150ms ease, transform 150ms ease;
 
     &:hover {
-      background-color: @white;
-      border-color: @white;
-      color: @black;
+      background: #EAF2FF;
+      border-color: #EAF2FF;
+      color: @brand-blue;
       text-decoration: none;
+      transform: translateY(-2px);
     }
 
     &:visited {
-      color: @white;
-    }
-
-    &:visited:hover {
-      color: @black;
+      color: @brand-navy;
     }
   }
 
   &__official {
     align-items: center;
-    color: @dark-gray;
+    color: #AEBBD0;
     display: flex;
-    font-size: 13px;
+    font-size: 12px;
     gap: 7px;
     justify-content: center;
     margin: 10px 0 0;
+
+    svg {
+      color: #61C974;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    padding-left: 0;
+    padding-right: 0;
+
+    &__inner.container {
+      max-width: 1440px;
+      width: calc(100% - 48px);
+    }
+  }
+
+  @media screen and (min-width: @screen-wide) {
+    padding-top: 14px;
+
+    &__inner.container {
+      gap: 40px;
+      grid-template-columns: 104px minmax(0, 1fr) minmax(280px, auto);
+      max-width: 1800px;
+      min-height: 275px;
+      padding: 52px 90px;
+      width: calc(100% - 64px);
+    }
+
+    &__mark {
+      height: 96px;
+      width: 96px;
+
+      svg {
+        height: 52px;
+        width: 52px;
+      }
+    }
+
+    &__eyebrow {
+      font-size: 15px;
+    }
+
+    h2 {
+      font-size: 38px;
+    }
+
+    &__description {
+      font-size: 19px;
+      max-width: 800px;
+    }
+
+    &__details li {
+      font-size: 15px;
+    }
+
+    &__actions {
+      min-width: 280px;
+    }
+
+    &__cta {
+      font-size: 17px;
+      min-height: 64px;
+      padding: 15px 24px;
+    }
+
+    &__official {
+      font-size: 14px;
+    }
   }
 
   @media screen and (max-width: (@screen-md - 1px)) {
     &__inner {
       grid-template-columns: 72px minmax(0, 1fr);
       min-height: 0;
+      padding: 36px;
+    }
+
+    &__inner.container {
+      padding-left: 48px;
+      padding-right: 48px;
     }
 
     &__mark {
@@ -144,10 +245,17 @@
   }
 
   @media screen and (max-width: (@screen-sm - 1px)) {
+    padding-bottom: 16px;
+    padding-top: 16px;
+
     &__inner {
       display: block;
-      padding-bottom: 36px;
-      padding-top: 36px;
+      padding: 30px 24px;
+    }
+
+    &__inner.container {
+      padding-left: 24px;
+      padding-right: 24px;
     }
 
     &__mark {
@@ -162,11 +270,11 @@
     }
 
     h2 {
-      font-size: 28px;
+      font-size: 27px;
     }
 
     &__description {
-      font-size: 17px;
+      font-size: 15px;
     }
 
     &__details {

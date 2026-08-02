@@ -5,6 +5,7 @@ import request from "@lib/request";
 import createLegacyComponent from "@lib/create-legacy-component";
 import { Modal } from "@ui/bootstrap";
 import { navigate, withLocation } from "@lib/navigation";
+import { withTranslation } from "react-i18next";
 
 import SignInForm from "./sign-in-form";
 
@@ -56,9 +57,14 @@ const SignInModal = createLegacyComponent({
 
   render() {
     return (
-      <Modal show={this.showModal()} onHide={this.closeModal}>
+      <Modal
+        className="sign-in-modal"
+        centered
+        show={this.showModal()}
+        onHide={this.closeModal}
+      >
         <Modal.Header closeButton>
-          <Modal.Title>Autentificare</Modal.Title>
+          <Modal.Title>{this.props.t("signIn.title")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <SignInForm onSignIn={this.onSignIn}
@@ -70,19 +76,19 @@ const SignInModal = createLegacyComponent({
   },
 
   renderRegisterMessage() {
-    return <div>
+    return <div className="sign-in-links">
       <p>
-        Dacă nu ai un cont,&nbsp;
-        <a href="/inregistrare" onClick={this.onRegisterClick}>creează unul nou aici</a>.
+        {this.props.t("signIn.noAccountPrefix")}&nbsp;
+        <a href="/inregistrare" onClick={this.onRegisterClick}>{this.props.t("signIn.createAccount")}</a>.
       </p>
       <p>
-       Dacă ai uitat parola&nbsp;
+       {this.props.t("signIn.forgotPrefix")}&nbsp;
        <a
-         href="https://api.infoeducatie.ro/users/password/new"
+         href={window.config.PASSWORD_RESET_URL}
          target="_blank"
          rel="noreferrer"
        >
-         click aici
+         {this.props.t("signIn.forgotLink")}
        </a>
       </p>
     </div>;
@@ -95,4 +101,4 @@ const SignInModal = createLegacyComponent({
   }
 });
 
-export default withLocation(SignInModal);
+export default withTranslation("forms")(withLocation(SignInModal));

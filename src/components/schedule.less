@@ -3,14 +3,34 @@
 
 .schedule {
   .blue-section-wrapper {
-    .blue-section-wrapper (@img_path: "/assets/img/register.webp");
+    .blue-section-wrapper (@img_path: "/assets/img/banner-general-2026.jpg");
   }
   .blue-section {
-    .blue-section(420px);
+    .blue-section();
   }
 
   .white-section {
-    padding-top: 40px;
+    padding-bottom: 80px;
+    padding-top: 48px;
+
+    > .row > [class*="col-"] > .rich-text-content {
+      color: #5E687D;
+      margin: 0 auto;
+      max-width: 980px;
+    }
+
+    .schedule-preview {
+      background: @white;
+      border: 1px solid @brand-border;
+      border-radius: 20px;
+      box-shadow: 0 12px 34px rgba(11, 23, 51, 0.07);
+      padding: 28px;
+
+      > .rich-text-content {
+        color: #5E687D;
+        margin-bottom: 28px;
+      }
+    }
 
     .schedule-heading {
       align-items: end;
@@ -19,14 +39,8 @@
       justify-content: space-between;
       margin-bottom: 24px;
 
-      h2,
-      p {
+      h2 {
         margin-bottom: 0;
-      }
-
-      p {
-        color: @grey;
-        margin-top: 6px;
       }
     }
 
@@ -35,18 +49,23 @@
       display: inline-flex;
       flex: 0 0 auto;
       font-weight: bold;
+      color: @brand-green;
       gap: 8px;
       min-height: 44px;
       padding: 8px 0;
     }
 
     .schedule-document {
-      border: 1px solid @light-grey;
-      border-radius: 4px;
+      border: 1px solid @brand-border;
+      border-radius: 14px;
       display: block;
       width: 100%;
       min-height: 725px;
       height: 80vh;
+    }
+
+    .schedule-preview-note {
+      display: none;
     }
   }
 
@@ -61,8 +80,18 @@
       }
 
       .schedule-document {
-        height: 72vh;
-        min-height: 560px;
+        display: none;
+      }
+
+      .schedule-preview-note {
+        color: @grey;
+        display: block;
+        margin-bottom: 0;
+      }
+
+      .schedule-preview {
+        border-radius: 16px;
+        padding: 20px;
       }
     }
   }

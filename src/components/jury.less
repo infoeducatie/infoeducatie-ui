@@ -3,7 +3,7 @@
 
 .jury {
   .blue-section-wrapper {
-    .blue-section-wrapper (@img_path: "/assets/img/jury.webp");
+    .blue-section-wrapper (@img_path: "/assets/img/banner-jury-2026.jpg");
   }
 
   .blue-section {
@@ -11,47 +11,60 @@
   }
 
   .white-section {
+    background: @brand-surface;
     margin-bottom: 0;
     margin-top: 0;
-    padding-top: 32px;
+    padding-bottom: 28px;
+    padding-top: 56px;
     text-align: center;
   }
 
   .jury-description-wrapper {
     display: block;
-    margin: 0 auto 52px;
+    margin: 0 auto 64px;
     max-width: 1120px;
     width: 100%;
   }
 
   .jury-icon {
-    color: @pink;
-    filter: hue-rotate(-70deg);
-    height: 35px;
-    margin: 0 auto 10px;
-    width: 50px;
+    align-items: center;
+    background: fade(@brand-blue, 9%);
+    border-radius: 14px;
+    color: @brand-blue;
+    display: flex;
+    height: 52px;
+    justify-content: center;
+    margin: 0 auto 14px;
+    padding: 10px;
+    width: 52px;
+
+    img {
+      height: 100%;
+      object-fit: contain;
+      width: 100%;
+    }
   }
 
   .jury-description {
     align-items: center;
-    color: @dark-green;
+    color: @brand-navy;
     display: flex;
     font-size: 18px;
     font-weight: bold;
     gap: 12px;
     justify-content: center;
     line-height: 1.3;
-    margin: 0 0 22px;
-    text-transform: uppercase;
+    margin: 0 0 28px;
+    text-transform: none;
 
     .orange-dash {
-      color: @orange;
+      color: @brand-green;
     }
   }
 
   .jury-members {
     display: grid;
-    gap: 20px;
+    gap: 22px;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     margin: 0;
     padding: 0;
@@ -61,17 +74,23 @@
   .jury-member {
     align-items: center;
     background: @white;
-    border: 1px solid @light-grey;
-    border-radius: 4px;
-    box-shadow: 0 2px 0 @light-grey;
+    border: 1px solid @brand-border;
+    border-radius: 18px;
+    box-shadow: 0 10px 28px rgba(11, 23, 51, 0.06);
     display: flex;
     flex-direction: column;
     justify-self: center;
     max-width: 320px;
-    min-height: 230px;
-    padding: 22px 18px;
+    min-height: 250px;
+    padding: 26px 20px;
     text-align: center;
     width: 100%;
+    transition: box-shadow 160ms ease, transform 160ms ease;
+
+    &:hover {
+      box-shadow: 0 16px 34px rgba(11, 23, 51, 0.1);
+      transform: translateY(-2px);
+    }
   }
 
   .jury-avatar {
@@ -81,6 +100,8 @@
 
     img {
       border-radius: 50%;
+      border: 4px solid @brand-surface;
+      box-shadow: 0 7px 20px rgba(11, 23, 51, 0.12);
       filter: grayscale(1);
       height: 100%;
       object-fit: cover;
@@ -89,7 +110,7 @@
   }
 
   .jury-role {
-    color: darken(@pink, 12%);
+    color: @brand-green;
     font-size: 12px;
     font-weight: bold;
     margin-bottom: 6px;
@@ -97,12 +118,12 @@
   }
 
   .jury-name {
-    color: @dark-green;
+    color: @brand-navy;
     font-size: 16px;
     font-weight: bold;
     line-height: 1.3;
     margin: 0 0 8px;
-    text-transform: uppercase;
+    text-transform: none;
   }
 
   .jury-occupation {
@@ -111,70 +132,6 @@
     line-height: 1.4;
     margin: 0;
     text-transform: none;
-  }
-
-  .orange-section-wrapper {
-    background-color: @orange;
-  }
-
-  .orange-section {
-    margin-bottom: 0;
-    margin-top: 0;
-    min-height: 0;
-    padding-bottom: 32px;
-  }
-
-  .jury-criteria-desc {
-    color: @black;
-    font-size: 18px;
-    font-weight: bold;
-    margin: 0 auto;
-    padding: 28px 0 22px;
-    text-align: center;
-    text-transform: uppercase;
-
-    .pink-dash {
-      margin-left: 10px;
-      margin-right: 10px;
-    }
-  }
-
-  .jury-criteria-documents {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: center;
-  }
-
-  .jury-criteria {
-    align-items: center;
-    background: @white;
-    border: 2px solid @black;
-    border-radius: 4px;
-    color: @black;
-    display: inline-flex;
-    flex-direction: column;
-    font-weight: bold;
-    gap: 10px;
-    justify-content: center;
-    min-height: 96px;
-    padding: 12px 18px;
-    text-decoration: none;
-    text-transform: uppercase;
-    width: 160px;
-
-    img {
-      filter: brightness(0);
-    }
-
-    &:hover {
-      background: @black;
-      color: @white;
-
-      img {
-        filter: brightness(0) invert(1);
-      }
-    }
   }
 
   @media screen and (max-width: (@screen-sm - 1px)) {
@@ -192,10 +149,6 @@
 
     .jury-member {
       max-width: 340px;
-    }
-
-    .jury-criteria {
-      width: min(160px, calc(50% - 6px));
     }
   }
 }

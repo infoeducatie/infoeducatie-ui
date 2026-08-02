@@ -5,10 +5,12 @@
 @screen-xs: 480px;
 @screen-sm: 768px;
 @screen-md: 992px;
+@screen-wide: 2200px;
 @grid-gutter-width: 30px;
 
 @import "components/about";
 @import "components/alumni";
+@import "components/blog/blog";
 @import "components/cloud-count";
 @import "components/contact";
 @import "components/contestants/contestants";
@@ -18,15 +20,21 @@
 @import "components/footer";
 @import "components/header";
 @import "components/home";
+@import "components/judging-criteria";
 @import "components/jury";
 @import "components/news/news";
+@import "components/not-found";
 @import "components/photos";
 @import "components/register-in-contest";
 @import "components/register";
-@import "components/results";
+@import "components/rich-text-content";
 @import "components/robotics/robotics-competition";
 @import "components/schedule";
+@import "components/secondary-content";
+@import "components/secondary-hero";
+@import "components/sign-in-modal";
 @import "components/talks";
+@import "components/background-shapes";
 
 
 @font-face {
@@ -206,6 +214,16 @@ a {
   }
 }
 
+@media screen and (min-width: @screen-wide) {
+  body {
+    font-size: 18px;
+  }
+
+  .container {
+    max-width: 1440px;
+  }
+}
+
 a,
 button,
 input,
@@ -267,16 +285,14 @@ textarea,
   text-transform: none;
 }
 
-// Public content and task pages use a compact header. The homepage keeps its
-// original, immersive first viewport.
+// Legacy banners that have not moved to the shared secondary hero yet.
 #main-content > :not(.home) {
-  > .blue-section-wrapper,
-  > .gray-section-wrapper {
+  > .blue-section-wrapper:not(.secondary-hero),
+  > .gray-section-wrapper:not(.secondary-hero) {
     background-position: center;
 
     > .blue-section,
     > .gray-section {
-      min-height: 320px;
       padding-bottom: 32px;
 
       h1 {
@@ -324,10 +340,6 @@ textarea,
 @media screen and (max-width: (@screen-sm - 1px)) {
   .hidden-xs {
     display: none !important;
-  }
-
-  .selected-edition-name {
-    display: block;
   }
 
   .data-region.table-responsive {
@@ -440,11 +452,10 @@ textarea,
 
 @media screen and (max-width: (@screen-sm - 1px)) {
   #main-content > :not(.home) {
-    > .blue-section-wrapper,
-    > .gray-section-wrapper {
+    > .blue-section-wrapper:not(.secondary-hero),
+    > .gray-section-wrapper:not(.secondary-hero) {
       > .blue-section,
       > .gray-section {
-        min-height: 300px;
         padding-bottom: 28px;
 
         h1 {
@@ -469,8 +480,8 @@ textarea,
 
 @media screen and (max-width: 360px) {
   #main-content > :not(.home) {
-    > .blue-section-wrapper,
-    > .gray-section-wrapper {
+    > .blue-section-wrapper:not(.secondary-hero),
+    > .gray-section-wrapper:not(.secondary-hero) {
       > .blue-section,
       > .gray-section {
         h1 {

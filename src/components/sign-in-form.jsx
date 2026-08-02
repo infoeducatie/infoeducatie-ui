@@ -2,10 +2,11 @@
 
 import createLegacyComponent from "@lib/create-legacy-component";
 import PropTypes from "prop-types";
+import { withTranslation } from "react-i18next";
 
 import { Button, FormControl, ControlLabel, FormGroup, ListGroup, ListGroupItem } from "@ui/bootstrap";
 
-export default createLegacyComponent({
+const SignInForm = createLegacyComponent({
   displayName: "SignInForm",
 
   propTypes: {
@@ -34,9 +35,9 @@ export default createLegacyComponent({
 
   render() {
     return <div>
-      <form onSubmit={this.onSubmit}>
+      <form className="sign-in-form" onSubmit={this.onSubmit}>
         <FormGroup controlId="sign-in-email">
-          <ControlLabel htmlFor="sign-in-email">Adresa de email</ControlLabel>
+          <ControlLabel htmlFor="sign-in-email">{this.props.t("fields.email")}</ControlLabel>
           <FormControl type="email"
                  id="sign-in-email"
                  name="email"
@@ -46,7 +47,7 @@ export default createLegacyComponent({
           <FormControl.Feedback />
         </FormGroup>
         <FormGroup controlId="sign-in-password">
-          <ControlLabel htmlFor="sign-in-password">Parola</ControlLabel>
+          <ControlLabel htmlFor="sign-in-password">{this.props.t("fields.password")}</ControlLabel>
           <FormControl type="password"
                  id="sign-in-password"
                  name="password"
@@ -56,7 +57,9 @@ export default createLegacyComponent({
                <FormControl.Feedback />
         </FormGroup>
         <FormGroup>
-          <Button type="submit" bsStyle="primary">Loghează-te</Button>
+          <Button className="sign-in-submit" type="submit" bsStyle="primary">
+            {this.props.t("signIn.submit")}
+          </Button>
           <FormControl.Feedback />
         </FormGroup>
       </form>
@@ -65,8 +68,8 @@ export default createLegacyComponent({
   },
 
   renderError() {
-    return <ListGroup>
-      <ListGroupItem bsStyle="danger">Autentificarea nu a reușit!</ListGroupItem>
+    return <ListGroup className="sign-in-error">
+      <ListGroupItem bsStyle="danger">{this.props.t("signIn.error")}</ListGroupItem>
     </ListGroup>;
   },
 
@@ -92,3 +95,5 @@ export default createLegacyComponent({
     });
   }
 });
+
+export default withTranslation("forms")(SignInForm);

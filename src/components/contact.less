@@ -3,77 +3,35 @@
 
 .contact {
   .blue-section-wrapper {
-    .blue-section-wrapper (@img_path: "/assets/img/register.webp");
+    .blue-section-wrapper (@img_path: "/assets/img/banner-contact-2026.jpg");
   }
   .blue-section {
     .blue-section();
   }
 
   .white-section {
-    .contact-details {
-      display: grid;
-      gap: 56px;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-      padding-top: 48px;
-    }
+    padding-bottom: 76px;
+    padding-top: 52px;
 
-    .contact-group {
-      border-top: 3px solid @pink;
-      min-width: 0;
-      padding-top: 20px;
-    }
-
-    .content-heading {
-      margin: 0 0 20px;
-    }
-
-    .contact-list {
-      margin: 0;
-      padding: 0;
-
-      li {
-        align-items: baseline;
-        border-bottom: 1px solid @light-grey;
-        display: grid;
-        font-size: @font-size-base;
-        gap: 3px;
-        grid-template-columns: minmax(150px, 1fr) minmax(0, 1.35fr);
-        list-style: none;
-        padding: 14px 0;
-      }
-
-      span {
-        color: @light-black;
-        font-weight: bold;
-      }
-
-      a {
-        overflow-wrap: anywhere;
-      }
-
-      small {
-        color: @grey;
-        grid-column: 2;
-      }
-    }
-  }
-
-  @media screen and (max-width: (@screen-md - 1px)) {
-    .white-section .contact-details {
-      gap: 36px;
-      grid-template-columns: 1fr;
-      padding-top: 36px;
+    .rich-text-content {
+      background: @white;
+      border: 1px solid @brand-border;
+      border-radius: 20px;
+      box-shadow: 0 12px 34px rgba(11, 23, 51, 0.07);
+      margin: 0 auto;
+      max-width: 820px;
+      padding: 34px 42px 46px;
     }
   }
 
   @media screen and (max-width: (@screen-sm - 1px)) {
-    .white-section .contact-list {
-      li {
-        grid-template-columns: 1fr;
-      }
+    .white-section {
+      padding-bottom: 48px;
+      padding-top: 30px;
 
-      small {
-        grid-column: 1;
+      .rich-text-content {
+        border-radius: 16px;
+        padding: 24px 20px 30px;
       }
     }
   }

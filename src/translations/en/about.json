@@ -1,0 +1,12 @@
+{
+  "title": "About InfoEducație",
+  "loading": "Loading page...",
+  "error": "The page content is currently unavailable.",
+  "documents": {
+    "criteria": "Judging criteria",
+    "criteriaLoading": "Loading judging criteria...",
+    "criteriaError": "The judging criteria are currently unavailable.",
+    "criteriaEmpty": "No judging criteria are published at the moment.",
+    "openCriteria": "Open the judging criteria for {{category}}"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Blog",
+  "subtitle": "Articles and resources from the InfoEducație community",
+  "loading": "Loading articles...",
+  "error": "The articles could not be loaded. Please try again later.",
+  "empty": "There are no published articles yet.",
+  "by": "by {{author}}",
+  "readMore": "Read article",
+  "back": "Back to all articles",
+  "articleLoading": "Loading article...",
+  "articleError": "The article was not found or is no longer available.",
+  "publishedBy": "Published by {{author}} on {{date}}"
+}

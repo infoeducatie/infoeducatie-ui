@@ -1,0 +1,41 @@
+{
+  "hero": {
+    "title": "InfoEducație",
+    "statement": "Construim idei. Testăm viitorul.",
+    "description": "Locul unde tehnologia, creativitatea și colaborarea se întâlnesc pentru a crea soluții care contează.",
+    "subtitle": "Olimpiada Nationala de Inovatie si Creare Digitala",
+    "edition": "Ediția {{count}}",
+    "register": "Înregistrează-te",
+    "about": "Despre concurs"
+  },
+  "community": {
+    "eyebrow": "Comunitatea InfoEducație",
+    "title": "Construim mai departe, împreună.",
+    "description": "Intră pe serverul nostru de Discord și rămâi aproape de participanți, alumni, mentori și organizatori.",
+    "participants": "Participanți și alumni",
+    "collaboration": "Idei și colaborări",
+    "action": "Intră pe Discord",
+    "actionLabel": "Intră pe serverul Discord InfoEducație. Se deschide într-o filă nouă.",
+    "official": "Serverul oficial InfoEducație"
+  },
+  "alumnus": {
+    "eyebrow": "Alumnus",
+    "quote": "InfoEducație mi-a oferit o motivație să învăț tehnologii web și să dezvolt proiectul meu de atunci. Am un sfat pentru participanți: prezentarea este la fel de importantă ca lucrarea în sine! Repetați înainte să veniți în fața comisiei.",
+    "name": "Cristian Strat",
+    "role": "Ex Growth Manager @ Twitter"
+  },
+  "camp": {
+    "location": "Focșani",
+    "datePending": "Perioada va fi anunțată",
+    "edition": "Ediția {{count}}",
+    "photos": "Mai multe poze",
+    "imageAlt": "Tabăra InfoEducație din Focșani"
+  },
+  "sponsors": {
+    "title": "Parteneri și sponsori",
+    "loading": "Se încarcă partenerii și sponsorii…",
+    "error": "Partenerii și sponsorii nu au putut fi încărcați.",
+    "retry": "Încearcă din nou",
+    "empty": "Partenerii și sponsorii vor fi anunțați în curând."
+  }
+}

@@ -1,24 +1,28 @@
 "use strict";
 
 import ctx from "classnames";
-import {Grid, Row, Col} from "@ui/bootstrap";
+import {Grid} from "@ui/bootstrap";
 import createLegacyComponent from "@lib/create-legacy-component";
+import { withTranslation } from "react-i18next";
 
 import "../main.less";
 import ajax from "../lib/ajax"
 import gravatar from "../lib/gravatar"
 import CloudCount from "./cloud-count"
 import EditionSelector from "./edition-selector";
-import Header from "./header";
+import SecondaryHero from "./secondary-hero";
 
 
-export default createLegacyComponent({
+const Talks = createLegacyComponent({
   displayName: "Talks",
 
   getInitialState() {
     return {
       talks: [],
-      selectedEdition: this.props.edition.name,
+      selectedEdition: this.props.edition.name ||
+        this.props.edition.count ||
+        this.props.edition.year,
+      selectedEditionId: this.props.edition.id,
       hasErrored: false,
       isLoading: true
     };
@@ -29,103 +33,94 @@ export default createLegacyComponent({
   },
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.edition.name !== this.props.edition.name) {
-      this.setState({ selectedEdition: nextProps.edition.name });
+    if (nextProps.edition.id !== this.props.edition.id) {
+      this.setState({
+        selectedEdition: nextProps.edition.name ||
+          nextProps.edition.count ||
+          nextProps.edition.year,
+        selectedEditionId: nextProps.edition.id,
+      });
+    }
+  },
+
+  componentDidUpdate(previousProps) {
+    if (previousProps.language !== this.props.language) {
+      this.getTalks(this.state.selectedEditionId);
     }
   },
 
   render() {
     return <div className="talks">
-      <div className="blue-section-wrapper">
-        <Grid className="blue-section">
-          <Row>
-            <Col xs={12}>
-              <Header isLoggedIn={this.props.isLoggedIn}
-                      current={this.props.current}
-                      language={this.props.language}
-                      changeLanguage={this.props.changeLanguage}
-                      logout={this.props.logout} />
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={12}>
-              <h1>Seminarii InfoEducație</h1>
-              <h2>Ediția {this.state.selectedEdition}</h2>
-            </Col>
-          </Row>
-          <Row className="big-spacing" />
-        </Grid>
-      </div>
-      <Grid>
-        <Row className="small-spacing" />
-        <Row>
-          <Col xs={12}>
-            <div className="edition-filter">
-            <label className="control-label" htmlFor="talks-edition">
-              Ediția afișată
-            </label>
-            <EditionSelector onCallback={this.onEditionChange}
-                             id="talks-edition"
-                             ariaLabel="Ediția afișată"
-                             filter="has_contestants"/>
-            </div>
-          </Col>
-        </Row>
-        {this.state.isLoading ? <p className="page-status" role="status">Se încarcă seminariile...</p> : null}
-        {this.state.hasErrored ? <p className="page-status alert alert-warning" role="alert">Seminariile nu pot fi încărcate momentan.</p> : null}
-        {this.state.talks.map(this.renderTalk)}
+      <SecondaryHero headerProps={this.props}>
+        <h1>{this.props.t("talks.title")}</h1>
+        <h2>{this.props.t("edition.label", { edition: this.state.selectedEdition })}</h2>
+      </SecondaryHero>
+      <Grid className="talks-content">
+        <div className="edition-filter">
+          <label className="control-label" htmlFor="talks-edition">
+            {this.props.t("edition.displayed")}
+          </label>
+          <EditionSelector onCallback={this.onEditionChange}
+                           id="talks-edition"
+                           ariaLabel={this.props.t("edition.displayed")}
+                           filter="has_contestants"/>
+        </div>
+        {this.state.isLoading ? <p className="page-status" role="status">{this.props.t("talks.loading")}</p> : null}
+        {this.state.hasErrored ? <p className="page-status alert alert-warning" role="alert">{this.props.t("talks.error")}</p> : null}
+        <div className="talk-list">
+          {this.state.talks.map(this.renderTalk)}
+        </div>
       </Grid>
    </div>;
   },
 
   renderTalk(talk, index) {
-    let colors = ["green", "orange", "black"];
-    let className = ctx("talk-container", colors[index % colors.length]);
+    let speakerClasses = ctx("talk-speakers", {
+      "talk-speakers--multiple": talk.users.length > 1,
+    });
 
-    return <Row className="talk-row" key={index}>
-      <Col mdOffset={1} md={10} smOffset={1} sm={10}>
-        <article className={className}>
-          <div className="talk-authors">
-            <ul className="list-inline">
-              {talk.users.map(this.renderAuthorImage)}
-            </ul>
-          </div>
-          <div className="talk-copy">
-            <h3 className="talk-title">{talk.title}</h3>
-            <p className="talk-description">{talk.description}</p>
+    return <article className="talk-container" key={`${talk.title}-${index}`}>
+      <div className="talk-copy">
+        <h3 className="talk-title">{talk.title}</h3>
+        <p className="talk-description">{talk.description}</p>
+        {talk.discourse_url ? (
             <a className="read-more" href={talk.discourse_url}>
-              Discută pe forum <CloudCount count={talk.comments_count} />
+              {this.props.t("talks.discuss")} <CloudCount count={talk.comments_count} />
             </a>
-            <ul className="list-unstyled author-list">
-              {talk.users.map(this.renderAuthorText)}
-            </ul>
-          </div>
-        </article>
-      </Col>
-    </Row>;
+        ) : null}
+      </div>
+      <ul className={speakerClasses}>
+        {talk.users.map(this.renderSpeaker)}
+      </ul>
+    </article>;
   },
 
-  renderAuthorImage(author, index) {
-    return <li className="author-image" key={index}>
-      <img alt={`Fotografie ${author.name}`} loading="lazy" src={gravatar(author.email_md5)} />
-    </li>;
-  },
-
-  renderAuthorText(author, index) {
-    return <li key={index} className="author-text">
-      <h4 className="author-name">{author.name}</h4>
-      <p className="author-job">{author.job}</p>
+  renderSpeaker(author, index) {
+    return <li className="talk-speaker" key={`${author.name}-${index}`}>
+      <img
+        alt={this.props.t("talks.authorPhoto", { name: author.name })}
+        className="author-image"
+        loading="lazy"
+        src={gravatar(author.email_md5)}
+      />
+      <div className="author-copy">
+        <h4 className="author-name">{author.name}</h4>
+        <p className="author-job">{author.job}</p>
+      </div>
     </li>;
   },
 
   onEditionChange(edition) {
     this.getTalks(edition.id);
-    this.setState({ selectedEdition: edition.name });
+    this.setState({
+      selectedEdition: edition.name,
+      selectedEditionId: edition.id,
+    });
   },
 
   getTalks(editionId=undefined) {
     this.setState({ hasErrored: false, isLoading: true });
-    let data = {};
+    let data = { locale: this.props.language };
     if (editionId) {
       data.edition = editionId;
     }
@@ -138,3 +133,5 @@ export default createLegacyComponent({
     });
   }
 });
+
+export default withTranslation("public")(Talks);

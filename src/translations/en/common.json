@@ -1,0 +1,49 @@
+{
+  "brand": "InfoEducație",
+  "accessibility": {
+    "skipToContent": "Skip to content"
+  },
+  "navigation": {
+    "mainLabel": "Main navigation",
+    "openMenu": "Open main menu",
+    "home": "Home",
+    "about": "About",
+    "alumni": "Alumni",
+    "talks": "Talks",
+    "schedule": "Schedule",
+    "participants": "Participants",
+    "jury": "Jury",
+    "photos": "Photos",
+    "contact": "Contact",
+    "register": "Registration",
+    "logout": "Log out",
+    "forum": "Forum",
+    "discord": "Discord",
+    "blog": "Blog"
+  },
+  "language": {
+    "switchTo": "Schimbă limba în română",
+    "nextName": "Română"
+  },
+  "footer": {
+    "label": "Footer",
+    "brandDescription": "National Innovation and Digital Creation Competition",
+    "pages": "Pages",
+    "community": "Community",
+    "stayConnected": "Stay connected",
+    "navigationLabel": "Secondary navigation",
+    "newsletterLabel": "Newsletter email address",
+    "newsletterPlaceholder": "Subscribe to the newsletter",
+    "newsletterDescription": "Receive competition news and information for participants.",
+    "newsletterAction": "Subscribe",
+    "newsletterDuplicate": "This email address is already subscribed or a confirmation email has already been sent.",
+    "newsletterSuccess": "Check your email address to confirm your subscription.",
+    "facebook": "Facebook",
+    "x": "InfoEducație on X",
+    "github": "InfoEducație on GitHub",
+    "copyright": "© {{year}} InfoEducație"
+  },
+  "loading": {
+    "route": "Loading page..."
+  }
+}

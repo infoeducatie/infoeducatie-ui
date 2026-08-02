@@ -19,6 +19,7 @@ import {
   useState,
 } from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import { Grid } from "@ui/bootstrap";
 import {
@@ -49,38 +50,38 @@ const pollIntervalMilliseconds = 5000;
 const staleAfterMilliseconds = 15000;
 
 const competitionStatuses = {
-  active: { label: "În desfășurare", tone: "active" },
-  cancelled: { label: "Anulată", tone: "ended" },
-  canceled: { label: "Anulată", tone: "ended" },
-  completed: { label: "Încheiată", tone: "ended" },
-  ended: { label: "Încheiată", tone: "ended" },
-  live: { label: "În desfășurare", tone: "active" },
-  paused: { label: "În pauză", tone: "paused" },
-  running: { label: "În desfășurare", tone: "active" },
-  scheduled: { label: "Programată", tone: "scheduled" },
-  upcoming: { label: "Programată", tone: "scheduled" },
+  active: { key: "active", tone: "active" },
+  cancelled: { key: "cancelled", tone: "ended" },
+  canceled: { key: "cancelled", tone: "ended" },
+  completed: { key: "completed", tone: "ended" },
+  ended: { key: "completed", tone: "ended" },
+  live: { key: "active", tone: "active" },
+  paused: { key: "paused", tone: "paused" },
+  running: { key: "active", tone: "active" },
+  scheduled: { key: "scheduled", tone: "scheduled" },
+  upcoming: { key: "scheduled", tone: "scheduled" },
 };
 
 const arenaStatuses = {
-  active: { label: "În testare", tone: "active" },
-  available: { label: "Liberă", tone: "available" },
-  claimable: { label: "Așteaptă confirmarea", tone: "offered" },
-  closed: { label: "Închisă", tone: "ended" },
-  cooldown: { label: "În pregătire", tone: "turnover" },
-  idle: { label: "Liberă", tone: "available" },
-  in_use: { label: "În testare", tone: "active" },
-  offered: { label: "Așteaptă confirmarea", tone: "offered" },
-  paused: { label: "Indisponibilă", tone: "paused" },
-  reserved: { label: "Așteaptă confirmarea", tone: "offered" },
-  scheduled: { label: "Programată", tone: "scheduled" },
-  testing: { label: "În testare", tone: "active" },
-  turnover: { label: "În pregătire", tone: "turnover" },
-  unavailable: { label: "Indisponibilă", tone: "paused" },
+  active: { key: "active", tone: "active" },
+  available: { key: "available", tone: "available" },
+  claimable: { key: "offered", tone: "offered" },
+  closed: { key: "closed", tone: "ended" },
+  cooldown: { key: "turnover", tone: "turnover" },
+  idle: { key: "available", tone: "available" },
+  in_use: { key: "active", tone: "active" },
+  offered: { key: "offered", tone: "offered" },
+  paused: { key: "paused", tone: "paused" },
+  reserved: { key: "offered", tone: "offered" },
+  scheduled: { key: "scheduled", tone: "scheduled" },
+  testing: { key: "active", tone: "active" },
+  turnover: { key: "turnover", tone: "turnover" },
+  unavailable: { key: "paused", tone: "paused" },
 };
 
 const teamStatuses = {
-  exhausted: { label: "Timp utilizat", tone: "ended" },
-  inactive: { label: "Inactivă", tone: "neutral" },
+  exhausted: { key: "exhausted", tone: "ended" },
+  inactive: { key: "inactive", tone: "neutral" },
 };
 
 function sameIdentifier(first, second) {
@@ -91,21 +92,23 @@ function sameIdentifier(first, second) {
     String(first) === String(second);
 }
 
-function competitionPresentation(competition = {}) {
-  return competitionStatuses[competition.status] || {
-    label: "Stare necunoscută",
+function competitionPresentation(competition = {}, t) {
+  const status = competitionStatuses[competition.status] || {
+    key: "unknown",
     tone: "scheduled",
   };
+  return { ...status, label: t(`competitionStatus.${status.key}`) };
 }
 
-function arenaPresentation(arena = {}) {
-  return arenaStatuses[arena.status] || {
-    label: "Se actualizează",
+function arenaPresentation(arena = {}, t) {
+  const status = arenaStatuses[arena.status] || {
+    key: "updating",
     tone: "turnover",
   };
+  return { ...status, label: t(`arenaStatus.${status.key}`) };
 }
 
-function competitionClock(competition = {}, nowMilliseconds) {
+function competitionClock(competition = {}, nowMilliseconds, t) {
   const startsAt = timestampMilliseconds(competition.starts_at);
   const endsAt = timestampMilliseconds(competition.ends_at);
 
@@ -115,7 +118,7 @@ function competitionClock(competition = {}, nowMilliseconds) {
     !["active", "live", "running"].includes(competition.status)
   ) {
     return {
-      label: "Până la start",
+      label: t("clock.untilStart"),
       seconds: secondsUntil(competition.starts_at, nowMilliseconds),
     };
   }
@@ -126,26 +129,26 @@ function competitionClock(competition = {}, nowMilliseconds) {
     ) ||
     (endsAt !== null && endsAt <= nowMilliseconds)
   ) {
-    return { label: "Competiție încheiată", seconds: 0 };
+    return { label: t("clock.ended"), seconds: 0 };
   }
 
   return {
-    label: "Timp rămas",
+    label: t("clock.remaining"),
     seconds: secondsUntil(competition.ends_at, nowMilliseconds),
   };
 }
 
-function arenaClock(arena = {}, nowMilliseconds) {
+function arenaClock(arena = {}, nowMilliseconds, t) {
   if (arena.status === "active" && arena.session_ends_at) {
     return {
-      label: "Tura se încheie în",
+      label: t("clock.turnEnds"),
       seconds: secondsUntil(arena.session_ends_at, nowMilliseconds),
     };
   }
 
   if (arena.status === "offered" && arena.offer_expires_at) {
     return {
-      label: "Confirmare în",
+      label: t("clock.confirmWithin"),
       seconds: secondsUntil(arena.offer_expires_at, nowMilliseconds),
     };
   }
@@ -155,45 +158,45 @@ function arenaClock(arena = {}, nowMilliseconds) {
     arena.available_at
   ) {
     return {
-      label: "Disponibilă în",
+      label: t("clock.availableWithin"),
       seconds: secondsUntil(arena.available_at, nowMilliseconds),
     };
   }
 
   if (arena.status === "available") {
-    return { label: "Disponibilă acum", seconds: 0 };
+    return { label: t("clock.availableNow"), seconds: 0 };
   }
 
   if (arena.status === "closed") {
-    return { label: "Competiție încheiată", seconds: 0 };
+    return { label: t("clock.ended"), seconds: 0 };
   }
 
-  return { label: "Fără tură activă", seconds: null };
+  return { label: t("clock.noActiveTurn"), seconds: null };
 }
 
-function arenaDescription(arena = {}) {
-  const presentation = arenaPresentation(arena);
+function arenaDescription(arena = {}, t) {
+  const presentation = arenaPresentation(arena, t);
 
   if (presentation.tone === "active") {
-    return "Doar această echipă poate folosi acum mediul de testare.";
+    return t("arena.active");
   }
 
   if (presentation.tone === "offered") {
-    return "Echipa trebuie să confirme tura înainte să expire rezervarea.";
+    return t("arena.offered");
   }
 
   if (presentation.tone === "available") {
-    return "Mediul este liber și următoarea echipă se poate pregăti.";
+    return t("arena.available");
   }
 
   if (presentation.tone === "turnover") {
-    return "Organizatorii pregătesc mediul pentru următoarea tură.";
+    return t("arena.turnover");
   }
 
-  return "Mediul de testare nu poate fi preluat momentan.";
+  return t("arena.unavailable");
 }
 
-function teamPresentation(team, snapshot, nowMilliseconds) {
+function teamPresentation(team, snapshot, nowMilliseconds, t) {
   const arena = snapshot.arena || {};
   const queue = Array.isArray(snapshot.queue) ? snapshot.queue : [];
   const queueEntry = queue.find((entry) =>
@@ -203,11 +206,11 @@ function teamPresentation(team, snapshot, nowMilliseconds) {
   const cooldown = secondsUntil(team.cooldown_until, nowMilliseconds);
 
   if (sameIdentifier(arena.team_id, team.id)) {
-    const currentArena = arenaPresentation(arena);
+    const currentArena = arenaPresentation(arena, t);
     return {
       label:
         currentArena.tone === "offered"
-          ? "Trebuie să confirme"
+          ? t("teamStatus.confirm")
           : currentArena.label,
       tone: currentArena.tone,
     };
@@ -215,51 +218,54 @@ function teamPresentation(team, snapshot, nowMilliseconds) {
 
   if (queuePosition) {
     return {
-      label: `În coadă, poziția ${queuePosition}`,
+      label: t("teamStatus.queued", { position: queuePosition }),
       tone: "queued",
     };
   }
 
   if (cooldown !== null && cooldown > 0) {
     return {
-      label: `Pauză ${formatCountdown(cooldown)}`,
+      label: t("teamStatus.cooldown", { duration: formatCountdown(cooldown) }),
       tone: "turnover",
     };
   }
 
   if (Number(team.remaining_seconds) <= 0) {
-    return { label: "Timp utilizat", tone: "ended" };
+    return { label: t("teamStatus.exhausted"), tone: "ended" };
   }
 
   if (teamStatuses[team.status]) {
-    return teamStatuses[team.status];
+    const status = teamStatuses[team.status];
+    return { ...status, label: t(`teamStatus.${status.key}`) };
   }
 
   if (team.ready) {
-    return { label: "Pregătită", tone: "available" };
+    return { label: t("teamStatus.ready"), tone: "available" };
   }
 
   const knownStatus = arenaStatuses[team.status];
   if (knownStatus) {
-    return knownStatus;
+    return { ...knownStatus, label: t(`arenaStatus.${knownStatus.key}`) };
   }
 
-  return { label: "Disponibilă", tone: "neutral" };
+  return { label: t("teamStatus.available"), tone: "neutral" };
 }
 
-function statusAnnouncement(snapshot) {
+function statusAnnouncement(snapshot, t) {
   if (!snapshot) {
     return "";
   }
 
-  const competition = competitionPresentation(snapshot.competition);
-  const arena = arenaPresentation(snapshot.arena);
+  const competition = competitionPresentation(snapshot.competition, t);
+  const arena = arenaPresentation(snapshot.arena, t);
   const teamName = snapshot.arena?.team_name;
-  const teamMessage = teamName ? `, echipa ${teamName}` : "";
+  const teamMessage = teamName ? t("announcementTeam", { team: teamName }) : "";
 
-  return `Competiție ${competition.label.toLowerCase()}. Arena ${
-    arena.label
-  }${teamMessage}.`;
+  return t("announcement", {
+    arena: arena.label,
+    competition: competition.label.toLowerCase(),
+    team: teamMessage,
+  });
 }
 
 function StatusChip({ label, tone }) {
@@ -284,26 +290,29 @@ function Countdown({ label, seconds }) {
 }
 
 function LiveOverview({ nowMilliseconds, snapshot }) {
+  const { i18n, t } = useTranslation("robotics");
+  const language = i18n.resolvedLanguage || "ro";
   const competition = snapshot.competition || {};
   const arena = snapshot.arena || {};
   const currentCompetitionClock = competitionClock(
     competition,
     nowMilliseconds,
+    t,
   );
-  const currentArenaClock = arenaClock(arena, nowMilliseconds);
-  const currentArena = arenaPresentation(arena);
+  const currentArenaClock = arenaClock(arena, nowMilliseconds, t);
+  const currentArena = arenaPresentation(arena, t);
   const turnDuration = formatDuration(competition.turn_duration_seconds);
 
   return (
     <>
       <section
-        aria-label="Cronometrele competiției"
+        aria-label={t("clock.aria")}
         className="robotics-clock-strip"
       >
         <div className="robotics-clock-period">
-          <span className="robotics-clock-label">Program</span>
-          <strong>{formatDateTime(competition.starts_at)}</strong>
-          <span>până la {formatDateTime(competition.ends_at)}</span>
+          <span className="robotics-clock-label">{t("clock.label")}</span>
+          <strong>{formatDateTime(competition.starts_at, language, t("clock.unscheduled"))}</strong>
+          <span>{t("clock.until", { date: formatDateTime(competition.ends_at, language, t("clock.unscheduled")) })}</span>
         </div>
         <Countdown
           label={currentCompetitionClock.label}
@@ -333,16 +342,15 @@ function LiveOverview({ nowMilliseconds, snapshot }) {
               tone={currentArena.tone}
             />
             <h2 id="robotics-arena-title">
-              {arena.team_name || "Mediul de testare este liber"}
+              {arena.team_name || t("arena.free")}
             </h2>
-            <p>{arenaDescription(arena)}</p>
+            <p>{arenaDescription(arena, t)}</p>
           </div>
         </div>
         <div className="robotics-arena-rule">
           <Clock aria-hidden="true" size={20} />
           <span>
-            Ture de <strong>{turnDuration}</strong>. O singură echipă testează
-            la un moment dat.
+            {t("arena.rule", { duration: turnDuration })}
           </span>
         </div>
       </section>
@@ -351,6 +359,7 @@ function LiveOverview({ nowMilliseconds, snapshot }) {
 }
 
 function LoadingState() {
+  const { t } = useTranslation("robotics");
   return (
     <section
       aria-busy="true"
@@ -358,7 +367,7 @@ function LoadingState() {
       role="status"
     >
       <span className="visually-hidden">
-        Se încarcă starea competiției.
+        {t("loading")}
       </span>
       <div className="robotics-loading-line robotics-loading-line-short" />
       <div className="robotics-loading-line" />
@@ -372,11 +381,12 @@ function LoadingState() {
 }
 
 function PublicError({ message, onRetry }) {
+  const { t } = useTranslation("robotics");
   return (
     <section className="robotics-page-error" role="alert">
       <WifiOff aria-hidden="true" size={32} />
       <div>
-        <h2>Datele live nu sunt disponibile</h2>
+        <h2>{t("errorTitle")}</h2>
         <p>{message}</p>
       </div>
       <button
@@ -385,7 +395,7 @@ function PublicError({ message, onRetry }) {
         type="button"
       >
         <RefreshCw aria-hidden="true" size={18} />
-        Reîncearcă
+        {t("retry")}
       </button>
     </section>
   );
@@ -403,6 +413,7 @@ function TeamAccess({
   setPin,
   snapshot,
 }) {
+  const { t } = useTranslation("robotics");
   const viewer = snapshot.viewer;
   const teams = Array.isArray(snapshot.teams) ? snapshot.teams : [];
   const viewerTeam = viewer
@@ -419,16 +430,13 @@ function TeamAccess({
         <div className="robotics-access-copy">
           <LogIn aria-hidden="true" size={28} />
           <div>
-            <h2 id="robotics-team-access-title">Acces pentru echipe</h2>
-            <p>
-              Introdu PIN-ul primit de la organizatori pentru a intra în coadă
-              sau a controla tura echipei tale.
-            </p>
+            <h2 id="robotics-team-access-title">{t("access.title")}</h2>
+            <p>{t("access.description")}</p>
           </div>
         </div>
         <form className="robotics-pin-form" onSubmit={onAuthenticate}>
           <div className="robotics-pin-field">
-            <label htmlFor="robotics-team-pin">PIN echipă</label>
+            <label htmlFor="robotics-team-pin">{t("access.pin")}</label>
             <input
               aria-describedby={
                 authError ? "robotics-auth-error" : "robotics-pin-help"
@@ -438,13 +446,13 @@ function TeamAccess({
               inputMode="numeric"
               maxLength="24"
               onChange={(event) => setPin(event.currentTarget.value)}
-              placeholder="Introdu PIN-ul"
+              placeholder={t("access.pinPlaceholder")}
               required
               type="password"
               value={pin}
             />
             <span id="robotics-pin-help">
-              PIN-ul rămâne doar în acest formular.
+              {t("access.pinHelp")}
             </span>
           </div>
           <button
@@ -453,7 +461,7 @@ function TeamAccess({
             type="submit"
           >
             <LogIn aria-hidden="true" size={18} />
-            {pendingAction === "authenticate" ? "Se verifică…" : "Intră"}
+            {pendingAction === "authenticate" ? t("access.checking") : t("access.enter")}
           </button>
         </form>
         {authError ? (
@@ -485,23 +493,22 @@ function TeamAccess({
       <div className="robotics-team-identity">
         <ShieldCheck aria-hidden="true" size={28} />
         <div>
-          <span>Sesiune de echipă activă</span>
+          <span>{t("access.active")}</span>
           <h2 id="robotics-team-controls-title">
-            {viewerTeam?.name || "Echipa ta"}
+            {viewerTeam?.name || t("access.yourTeam")}
           </h2>
           <p>
             {viewerTeam
-              ? `${formatDuration(
-                  viewerTeam.remaining_seconds,
-                )} rămase din ${formatDuration(
-                  viewerTeam.allocated_seconds,
-                )}.`
-              : "Poți controla doar accesul echipei tale."}
+              ? t("access.time", {
+                  allocated: formatDuration(viewerTeam.allocated_seconds),
+                  remaining: formatDuration(viewerTeam.remaining_seconds),
+                })
+              : t("access.limited")}
           </p>
         </div>
       </div>
 
-      <div className="robotics-team-actions" aria-label="Acțiuni echipă">
+      <div className="robotics-team-actions" aria-label={t("access.actions")}>
         {capabilities.claim ? (
           <button
             className="robotics-button robotics-button-primary"
@@ -510,7 +517,7 @@ function TeamAccess({
             type="button"
           >
             <Play aria-hidden="true" size={18} />
-            {pendingAction === "claim" ? "Se pornește…" : "Începe tura"}
+            {pendingAction === "claim" ? t("access.starting") : t("access.start")}
           </button>
         ) : null}
         {capabilities.stop ? (
@@ -521,7 +528,7 @@ function TeamAccess({
             type="button"
           >
             <Square aria-hidden="true" size={17} />
-            {pendingAction === "stop" ? "Se oprește…" : "Oprește testarea"}
+            {pendingAction === "stop" ? t("access.stopping") : t("access.stop")}
           </button>
         ) : null}
         {capabilities.join_queue ? (
@@ -532,7 +539,7 @@ function TeamAccess({
             type="button"
           >
             <Users aria-hidden="true" size={18} />
-            {pendingAction === "join" ? "Se adaugă…" : "Intră în coadă"}
+            {pendingAction === "join" ? t("access.joining") : t("access.join")}
           </button>
         ) : null}
         {capabilities.leave_queue ? (
@@ -543,7 +550,7 @@ function TeamAccess({
             type="button"
           >
             <DoorOpen aria-hidden="true" size={18} />
-            {pendingAction === "leave" ? "Se retrage…" : "Ieși din coadă"}
+            {pendingAction === "leave" ? t("access.leaving") : t("access.leave")}
           </button>
         ) : null}
         {capabilities.pass ? (
@@ -554,7 +561,7 @@ function TeamAccess({
             type="button"
           >
             <RefreshCw aria-hidden="true" size={18} />
-            {pendingAction === "pass" ? "Se cedează…" : "Cedează tura"}
+            {pendingAction === "pass" ? t("access.passing") : t("access.pass")}
           </button>
         ) : null}
         <button
@@ -564,14 +571,13 @@ function TeamAccess({
           type="button"
         >
           <LogOut aria-hidden="true" size={18} />
-          Ieși din sesiune
+          {t("access.logout")}
         </button>
       </div>
 
       {!hasPrimaryAction ? (
         <p className="robotics-team-waiting">
-          Nu ai nicio acțiune disponibilă momentan. Starea se actualizează
-          automat.
+          {t("access.waiting")}
         </p>
       ) : null}
       {actionError ? (
@@ -589,6 +595,7 @@ function TeamAccess({
 }
 
 function Queue({ queue }) {
+  const { t } = useTranslation("robotics");
   const sortedQueue = [...queue].sort(
     (first, second) => Number(first.position) - Number(second.position),
   );
@@ -597,12 +604,11 @@ function Queue({ queue }) {
     <section aria-labelledby="robotics-queue-title" className="robotics-queue">
       <div className="robotics-section-heading">
         <div>
-          <span className="robotics-eyebrow">Ordine live</span>
-          <h2 id="robotics-queue-title">Coada de testare</h2>
+          <span className="robotics-eyebrow">{t("queue.eyebrow")}</span>
+          <h2 id="robotics-queue-title">{t("queue.title")}</h2>
         </div>
         <span className="robotics-queue-count">
-          {sortedQueue.length}{" "}
-          {sortedQueue.length === 1 ? "echipă" : "echipe"}
+          {t("queue.count", { count: sortedQueue.length })}
         </span>
       </div>
 
@@ -615,7 +621,7 @@ function Queue({ queue }) {
               </span>
               <span>
                 <strong>{entry.team_name}</strong>
-                <small>Pregătită pentru următoarea tură</small>
+                <small>{t("queue.ready")}</small>
               </span>
             </li>
           ))}
@@ -623,10 +629,7 @@ function Queue({ queue }) {
       ) : (
         <div className="robotics-empty-state">
           <DoorOpen aria-hidden="true" size={28} />
-          <p>
-            Coada este liberă. O echipă autentificată poate solicita următoarea
-            tură.
-          </p>
+          <p>{t("queue.empty")}</p>
         </div>
       )}
     </section>
@@ -634,6 +637,7 @@ function Queue({ queue }) {
 }
 
 function TeamsTable({ nowMilliseconds, snapshot }) {
+  const { t } = useTranslation("robotics");
   const teams = Array.isArray(snapshot.teams) ? snapshot.teams : [];
   const sortedTeams = [...teams].sort(
     (first, second) => Number(first.position) - Number(second.position),
@@ -643,8 +647,8 @@ function TeamsTable({ nowMilliseconds, snapshot }) {
     <section aria-labelledby="robotics-teams-title" className="robotics-teams">
       <div className="robotics-section-heading">
         <div>
-          <span className="robotics-eyebrow">Timp egal, stare publică</span>
-          <h2 id="robotics-teams-title">Toate echipele</h2>
+          <span className="robotics-eyebrow">{t("teams.eyebrow")}</span>
+          <h2 id="robotics-teams-title">{t("teams.title")}</h2>
         </div>
       </div>
 
@@ -652,15 +656,15 @@ function TeamsTable({ nowMilliseconds, snapshot }) {
         <div className="robotics-team-table-wrap">
           <table className="robotics-team-table">
             <caption className="visually-hidden">
-              Timpul folosit, timpul rămas și starea fiecărei echipe
+              {t("teams.caption")}
             </caption>
             <thead>
               <tr>
-                <th scope="col">Echipă</th>
-                <th scope="col">Stare</th>
-                <th scope="col">Timp folosit</th>
-                <th scope="col">Timp rămas</th>
-                <th scope="col">Ture</th>
+                <th scope="col">{t("teams.team")}</th>
+                <th scope="col">{t("teams.status")}</th>
+                <th scope="col">{t("teams.used")}</th>
+                <th scope="col">{t("teams.remaining")}</th>
+                <th scope="col">{t("teams.turns")}</th>
               </tr>
             </thead>
             <tbody>
@@ -669,6 +673,7 @@ function TeamsTable({ nowMilliseconds, snapshot }) {
                   team,
                   snapshot,
                   nowMilliseconds,
+                  t,
                 );
                 const percentage = boundedPercentage(
                   team.used_seconds,
@@ -684,28 +689,29 @@ function TeamsTable({ nowMilliseconds, snapshot }) {
                     }
                     key={team.id}
                   >
-                    <th data-label="Echipă" scope="row">
+                    <th data-label={t("teams.team")} scope="row">
                       <strong>{team.name}</strong>
                     </th>
-                    <td data-label="Stare">
+                    <td data-label={t("teams.status")}>
                       <StatusChip label={status.label} tone={status.tone} />
                     </td>
-                    <td data-label="Timp folosit">
+                    <td data-label={t("teams.used")}>
                       <div className="robotics-team-progress">
                         <progress
-                          aria-label={`${team.name}: ${Math.round(
-                            percentage,
-                          )}% din timpul alocat a fost folosit`}
+                          aria-label={t("teams.progress", {
+                            percentage: Math.round(percentage),
+                            team: team.name,
+                          })}
                           max="100"
                           value={percentage}
                         />
                         <span>{formatDuration(team.used_seconds)}</span>
                       </div>
                     </td>
-                    <td data-label="Timp rămas">
+                    <td data-label={t("teams.remaining")}>
                       <strong>{formatDuration(team.remaining_seconds)}</strong>
                     </td>
-                    <td data-label="Ture">
+                    <td data-label={t("teams.turns")}>
                       {Number(team.turns_completed) || 0}
                     </td>
                   </tr>
@@ -717,7 +723,7 @@ function TeamsTable({ nowMilliseconds, snapshot }) {
       ) : (
         <div className="robotics-empty-state">
           <Users aria-hidden="true" size={28} />
-          <p>Echipele nu au fost adăugate încă.</p>
+          <p>{t("teams.empty")}</p>
         </div>
       )}
     </section>
@@ -725,6 +731,7 @@ function TeamsTable({ nowMilliseconds, snapshot }) {
 }
 
 export default function RoboticsCompetition(props) {
+  const { t } = useTranslation("robotics");
   const { slug } = useParams();
   const [snapshot, setSnapshot] = useState(null);
   const [teamToken, setTeamTokenState] = useState(() =>
@@ -748,7 +755,7 @@ export default function RoboticsCompetition(props) {
 
   const applySnapshot = useCallback((nextSnapshot, sequence) => {
     if (!nextSnapshot || !nextSnapshot.competition) {
-      throw new Error("Serverul nu a trimis starea completă a competiției.");
+      throw new Error(t("errors.incomplete"));
     }
 
     if (sequence < appliedSequence.current) {
@@ -769,10 +776,10 @@ export default function RoboticsCompetition(props) {
     setPageError("");
     setConnectionError("");
     setIsLoading(false);
-  }, []);
+  }, [t]);
 
   const expireTeamSession = useCallback(
-    (message = "Sesiunea echipei a expirat. Introdu din nou PIN-ul.") => {
+    (message = t("notices.expired")) => {
       clearRoboticsTeamToken(slug);
       setTeamTokenState("");
       setSnapshot((currentSnapshot) =>
@@ -782,7 +789,7 @@ export default function RoboticsCompetition(props) {
       );
       setActionNotice(message);
     },
-    [slug],
+    [slug, t],
   );
 
   const loadCompetition = useCallback(
@@ -893,8 +900,8 @@ export default function RoboticsCompetition(props) {
   useEffect(() => {
     document.title = snapshot?.competition?.name
       ? `${snapshot.competition.name} | InfoEducație`
-      : "Competiție de robotică | InfoEducație";
-  }, [snapshot?.competition?.name]);
+      : t("page.title");
+  }, [snapshot?.competition?.name, t]);
 
   const performAction = useCallback(
     async (action) => {
@@ -920,11 +927,11 @@ export default function RoboticsCompetition(props) {
           }),
       };
       const notices = {
-        claim: "Tura a început. Cronometrul este activ.",
-        join: "Echipa a intrat în coada de testare.",
-        leave: "Echipa a ieșit din coada de testare.",
-        pass: "Tura a fost cedată, iar timpul nefolosit rămâne echipei.",
-        stop: "Testarea s-a oprit, iar mediul a fost eliberat.",
+        claim: t("notices.claim"),
+        join: t("notices.join"),
+        leave: t("notices.leave"),
+        pass: t("notices.pass"),
+        stop: t("notices.stop"),
       };
       const operation = operations[action];
 
@@ -946,7 +953,7 @@ export default function RoboticsCompetition(props) {
           expireTeamSession();
         } else if (requestError.status === 409) {
           setActionError(
-            `${requestError.message} Datele sunt actualizate acum.`,
+            `${requestError.message} ${t("notices.refreshing")}`,
           );
           loadCompetition({ silent: true });
         } else {
@@ -963,6 +970,7 @@ export default function RoboticsCompetition(props) {
       loadCompetition,
       slug,
       teamToken,
+      t,
     ],
   );
 
@@ -972,7 +980,7 @@ export default function RoboticsCompetition(props) {
       const normalizedPin = pin.trim();
 
       if (!normalizedPin) {
-        setAuthError("Introdu PIN-ul echipei.");
+        setAuthError(t("errors.missingPin"));
         return;
       }
 
@@ -986,7 +994,7 @@ export default function RoboticsCompetition(props) {
 
         if (!response?.token || !response?.state) {
           throw new Error(
-            "Serverul nu a putut deschide sesiunea echipei. Încearcă din nou.",
+            t("errors.session"),
           );
         }
 
@@ -994,31 +1002,31 @@ export default function RoboticsCompetition(props) {
         setTeamTokenState(response.token);
         applySnapshot(response.state, sequence);
         setPin("");
-        setActionNotice("Echipa a fost autentificată.");
+        setActionNotice(t("notices.authenticated"));
       } catch (requestError) {
         setAuthError(
           requestError.status === 401 || requestError.status === 422
-            ? "PIN-ul nu este valid. Verifică-l și încearcă din nou."
+            ? t("errors.invalidPin")
             : requestError.message,
         );
       } finally {
         setPendingAction("");
       }
     },
-    [applySnapshot, pin, slug],
+    [applySnapshot, pin, slug, t],
   );
 
   const logoutTeam = useCallback(() => {
     clearRoboticsTeamToken(slug);
     setTeamTokenState("");
     setActionError("");
-    setActionNotice("Ai ieșit din sesiunea echipei.");
+    setActionNotice(t("notices.loggedOut"));
     setSnapshot((currentSnapshot) =>
       currentSnapshot
         ? { ...currentSnapshot, viewer: null }
         : currentSnapshot,
     );
-  }, [slug]);
+  }, [slug, t]);
 
   const nowMilliseconds = clientNow + clockOffset;
   const staleSeconds = lastSyncedAt
@@ -1028,9 +1036,9 @@ export default function RoboticsCompetition(props) {
     staleSeconds !== null &&
     clientNow - lastSyncedAt >= staleAfterMilliseconds;
   const competition = snapshot?.competition || {};
-  const competitionStatus = competitionPresentation(competition);
+  const competitionStatus = competitionPresentation(competition, t);
   const queue = Array.isArray(snapshot?.queue) ? snapshot.queue : [];
-  const liveAnnouncement = statusAnnouncement(snapshot);
+  const liveAnnouncement = statusAnnouncement(snapshot, t);
 
   return (
     <div className="robotics-competition">
@@ -1044,10 +1052,10 @@ export default function RoboticsCompetition(props) {
             logout={props.logout}
           />
           <div className="robotics-hero-copy">
-            <span className="robotics-hero-kicker">Zonă de testare drone</span>
+            <span className="robotics-hero-kicker">{t("page.kicker")}</span>
             <div className="robotics-hero-title-row">
               <h1>
-                {competition.name || "Competiție de robotică"}
+                {competition.name || t("page.competition")}
               </h1>
               {snapshot ? (
                 <StatusChip
@@ -1079,8 +1087,8 @@ export default function RoboticsCompetition(props) {
                   <span aria-hidden="true" className="robotics-live-dot" />
                 )}
                 {lastSyncedAt
-                  ? `Actualizat acum ${staleSeconds} sec`
-                  : "Se conectează la datele live"}
+                  ? t("page.updated", { seconds: staleSeconds })
+                  : t("page.connecting")}
               </span>
               {connectionError ? (
                 <span className="robotics-freshness-message">
@@ -1088,13 +1096,13 @@ export default function RoboticsCompetition(props) {
                 </span>
               ) : null}
               <button
-                aria-label="Actualizează acum datele competiției"
+                aria-label={t("page.refreshAria")}
                 disabled={isRefreshing}
                 onClick={() => loadCompetition({ silent: false })}
                 type="button"
               >
                 <RefreshCw aria-hidden="true" size={17} />
-                {isRefreshing ? "Se actualizează…" : "Actualizează"}
+                {isRefreshing ? t("page.refreshing") : t("page.refresh")}
               </button>
             </div>
 

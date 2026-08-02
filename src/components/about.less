@@ -1,164 +1,48 @@
 @import (reference) "../main";
 
 
-.galaciuc {
+#main-content > .galaciuc.galaciuc {
   .blue-section-wrapper {
-    .blue-section-wrapper (@img_path: "/assets/img/galaciuc.webp");
+    .blue-section-wrapper (@img_path: "/assets/img/banner-about-talks-2026.jpg");
   }
   .blue-section {
     .blue-section();
   }
 
-  .orange-section-wrapper{
-    background-color: @orange;
+  .rich-text-content h2 {
+    color: @brand-blue;
   }
-
-  .orange-section{
-    min-height: 0px;
-
-    margin-top: 20px;
-    margin-bottom: 20px;
-
-    .jury-criteria-documents {
-      min-height: 0px;
-      text-align: center;
-
-      .jury-criteria {
-        text-align: center;
-        margin: 0 20px 40px auto;
-        width: 150px;
-        letter-spacing: 0;
-        color: @black;
-        display: inline-block;
-
-        .jury-criteria-txt {
-          margin-bottom: 5px;
-          text-transform: uppercase;
-        }
-        .jury-criteria-img {
-          filter: brightness(0);
-
-          a {
-            align-items: center;
-            display: inline-flex;
-            justify-content: center;
-            min-height: 44px;
-            min-width: 44px;
-          }
-        }
-      }
-    }
-
-    .jury-criteria-desc {
-      width: 300px;
-      margin: 0 auto;
-      text-transform: uppercase;
-      min-height: 0px;
-      padding-top: 30px;
-      padding-bottom: 20px;
-      letter-spacing: 0;
-
-      .pink-dash {
-        color: @pink;
-        margin-left: 10px;
-        margin-right: 10px;
-      }
-    }
-  }
-
-
 
   .white-section {
-    li:before {
-      content: "\2014";
-      position: relative;
-      left: -5px;
-      font-size: 24px;
-      color: @pink;
+    padding-bottom: 32px;
+    padding-top: 32px;
+
+    .rich-text-content {
+      background: @white;
+      border: 1px solid @brand-border;
+      border-radius: 20px;
+      box-shadow: 0 12px 34px rgba(11, 23, 51, 0.07);
+      padding: 34px 42px 46px;
+    }
+  }
+
+  > .judging-criteria-section-wrapper > .judging-criteria-section {
+    padding-top: 48px;
+  }
+
+  @media screen and (max-width: (@screen-sm - 1px)) {
+    .white-section {
+      padding-bottom: 28px;
+      padding-top: 28px;
+
+      .rich-text-content {
+        border-radius: 16px;
+        padding: 24px 20px 30px;
+      }
     }
 
-    li {
-      list-style-type: none;
-      font-size: 20px;
-      font-weight: @font-weight-light;
-    }
-
-    p {
-      font-size: 20px;
-      margin-top: 20px;
-      text-align: left;
-    }
-
-    .category {
-      @category-height: 175px;
-      height: @category-height;
-      width: 180px;
-      display: inline-block;
-
-      &.yellow {
-        background-color: @yellow;
-
-        .description {
-          color: @dark-green;
-          font-weight: bold;
-        }
-      }
-
-      &.green {
-        background-color: @green;
-      }
-
-      &.blue {
-        background-color: @blue;
-      }
-
-      &.pink {
-        background-color: @pink;
-      }
-
-      &.black {
-        background-color: @light-black;
-      }
-
-      &.yellow,
-      &.green {
-        .description {
-          color: @black;
-          font-weight: bold;
-        }
-      }
-
-      &.blue,
-      &.pink {
-        .description {
-          color: @white;
-          font-size: 18.667px;
-          font-weight: bold;
-        }
-      }
-
-      .round-icon {
-        @icon-height: 70px;
-        text-align: center;
-        width: 70px;
-        height: @icon-height;
-        background-color: @black;
-        border-radius: 100%;
-        margin: @category-height / 5 auto auto;
-
-        .section-icon {
-          margin: @icon-height / 4 auto;
-          display: inline-block;
-        }
-      }
-
-      .description {
-        color: @white;
-        text-transform: uppercase;
-        text-align: center;
-        margin-top: 15px;
-      }
-
+    > .judging-criteria-section-wrapper > .judging-criteria-section {
+      padding-top: 40px;
     }
   }
 }

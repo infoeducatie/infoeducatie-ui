@@ -2,9 +2,11 @@
 
 import createLegacyComponent from "@lib/create-legacy-component";
 import { Row, Modal } from "@ui/bootstrap";
+import { Pin } from "lucide-react";
+import { withTranslation } from "react-i18next";
 
 
-export default createLegacyComponent({
+const Article = createLegacyComponent({
   displayName: "News",
 
   getInitialState() {
@@ -25,40 +27,62 @@ export default createLegacyComponent({
     });
   },
 
-  renderOverlay() {
+  renderOverlay(date) {
     return (
-      <Modal show={this.state.isModalOpen} onHide={this.closeModal}>
+      <Modal
+        centered
+        className="news-modal"
+        scrollable
+        show={this.state.isModalOpen}
+        onHide={this.closeModal}
+      >
         <Modal.Header closeButton>
-          <Modal.Title>{this.props.title}</Modal.Title>
+          <div className="news-modal-heading">
+            <p className="news-modal-date">{date}</p>
+            <Modal.Title>{this.props.title}</Modal.Title>
+          </div>
         </Modal.Header>
         <Modal.Body>
-          <div dangerouslySetInnerHTML={{__html: this.props.body}} />
+          <div
+            className="news-modal-body"
+            dangerouslySetInnerHTML={{__html: this.props.body}}
+          />
         </Modal.Body>
       </Modal>
     );
   },
 
   render() {
-    let date = new Date(this.props.created_at).toLocaleDateString();
+    let date = new Date(this.props.created_at).toLocaleDateString(
+      this.props.i18n.resolvedLanguage === "en" ? "en-GB" : "ro-RO",
+    );
 
-    let read_more = null;
-    if (this.props.body !== "") {
-      read_more = <span>...<br /><button className="read-more"
-                     type="button"
-                     onClick={this.openModal}>
-                    Citește mai multe...
-                  </button></span>;
-    }
+    const canReadMore = this.props.body !== "";
 
-    return <div>
-      <Row className="xsmall-spacing" />
+    return <article className="news-article">
       <Row>
-        <p className="date">{date}</p>
+        <div className="news-meta">
+          <p className="date">{date}</p>
+          {this.props.pinned ? (
+            <span className="pinned-indicator" title={this.props.t("news.pinned")}>
+              <Pin aria-hidden="true" size={17} strokeWidth={2.3} />
+              <span className="visually-hidden">{this.props.t("news.pinned")}</span>
+            </span>
+          ) : null}
+        </div>
         <p className="title">{this.props.title}</p>
-        <p className="message">
-          {this.props.short} {read_more}</p>
+        <p className="message">{this.props.short}{canReadMore ? " …" : ""}</p>
+        {canReadMore ? (
+          <button className="read-more"
+                  type="button"
+                  onClick={this.openModal}>
+            {this.props.t("news.readMore")}
+          </button>
+        ) : null}
       </Row>
-      { this.renderOverlay() }
-    </div>;
+      { this.renderOverlay(date) }
+    </article>;
   }
 });
+
+export default withTranslation("public")(Article);

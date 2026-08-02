@@ -5,16 +5,17 @@ import request from "@lib/request";
 import createLegacyComponent from "@lib/create-legacy-component";
 import _ from "lodash";
 import { Eye, EyeOff } from "lucide-react";
+import { withTranslation } from "react-i18next";
 import { Grid, Col, Row, FormControl, FormGroup, ControlLabel, Button, Checkbox } from "@ui/bootstrap";
 
-import Header from "./header";
+import SecondaryHero from "./secondary-hero";
 import SuccessIcon from "../../assets/img/ellipse-tick.png"
 import Spinner from "../../assets/img/spinner.gif"
 import SignIn from "./sign-in"
 import "../main.less";
 
 
-export default createLegacyComponent({
+const Register = createLegacyComponent({
   displayName: "Register",
 
   getInitialState() {
@@ -35,26 +36,14 @@ export default createLegacyComponent({
 
   render() {
     return <div className="register">
-      <div className="blue-section-wrapper">
-        <Grid className="blue-section">
-          <Header isLoggedIn={this.props.isLoggedIn}
-                  current={this.props.current}
-                  language={this.props.language}
-                  changeLanguage={this.props.changeLanguage}
-                  logout={this.props.logout} />
-          <Row className="small-spacing" />
-          <Row>
-            <Col xs={12}>
-              <h1>Înregistrare</h1>
-            </Col>
-          </Row>
-        </Grid>
-      </div>
+      <SecondaryHero headerProps={this.props}>
+        <h1>{this.props.t("register.title")}</h1>
+      </SecondaryHero>
       <Grid className="registration-form-section">
         <Row>
           <Col md={6} mdOffset={3} sm={8} smOffset={2}>
             <p className="register-sign-in">
-              Ai deja un cont? Te poți&nbsp;
+              {this.props.t("register.existingAccount")}&nbsp;
               <SignIn />.
             </p>
             {this.renderForm()}
@@ -69,13 +58,15 @@ export default createLegacyComponent({
     if (!this.state.hasSubmited) {
       const PasswordIcon = this.state.showPasswords ? EyeOff : Eye;
       const passwordType = this.state.showPasswords ? "text" : "password";
-      const toggleLabel = this.state.showPasswords ? "Ascunde parolele" : "Arată parolele";
+      const toggleLabel = this.state.showPasswords
+        ? this.props.t("register.hidePasswords")
+        : this.props.t("register.showPasswords");
 
       return <div>
         {this.renderErrors()}
         <form onSubmit={this.onFormSubmit}>
           <FormGroup controlId="register-first-name">
-            <ControlLabel htmlFor="register-first-name">Prenume</ControlLabel>
+            <ControlLabel htmlFor="register-first-name">{this.props.t("fields.firstName")}</ControlLabel>
             <FormControl
               id="register-first-name"
               type="text"
@@ -87,7 +78,7 @@ export default createLegacyComponent({
             <FormControl.Feedback />
           </FormGroup>
           <FormGroup controlId="register-last-name">
-            <ControlLabel htmlFor="register-last-name">Nume</ControlLabel>
+            <ControlLabel htmlFor="register-last-name">{this.props.t("fields.lastName")}</ControlLabel>
             <FormControl
               id="register-last-name"
               type="text"
@@ -99,7 +90,7 @@ export default createLegacyComponent({
             <FormControl.Feedback />
           </FormGroup>
           <FormGroup controlId="register-email">
-            <ControlLabel htmlFor="register-email">Adresa de email</ControlLabel>
+            <ControlLabel htmlFor="register-email">{this.props.t("fields.email")}</ControlLabel>
             <FormControl
               id="register-email"
               type="email"
@@ -111,7 +102,7 @@ export default createLegacyComponent({
             <FormControl.Feedback />
           </FormGroup>
           <FormGroup controlId="register-password">
-            <ControlLabel htmlFor="register-password">Parola</ControlLabel>
+            <ControlLabel htmlFor="register-password">{this.props.t("fields.password")}</ControlLabel>
             <div className="password-field">
               <FormControl
                 id="register-password"
@@ -119,10 +110,10 @@ export default createLegacyComponent({
                 type={passwordType}
                 name="password"
                 autoComplete="new-password"
-                placeholder="Minimum 8 caractere"
+                placeholder={this.props.t("register.passwordPlaceholder")}
                 onChange={this.onPasswordChange}
                 pattern=".{8,}"
-                title="Parola trebuie să conțină minim 8 caractere"
+                title={this.props.t("register.passwordRule")}
                 required />
               <button className="password-toggle" type="button"
                       aria-label={toggleLabel} aria-pressed={this.state.showPasswords}
@@ -131,19 +122,19 @@ export default createLegacyComponent({
               </button>
             </div>
             <p className="form-text" id="register-password-help">
-              Folosește minimum 8 caractere.
+              {this.props.t("register.passwordHelp")}
             </p>
             <FormControl.Feedback />
           </FormGroup>
           <FormGroup controlId="register-password-confirmation">
-            <ControlLabel htmlFor="register-password-confirmation">Confirmare parolă</ControlLabel>
+            <ControlLabel htmlFor="register-password-confirmation">{this.props.t("register.passwordConfirmation")}</ControlLabel>
             <div className="password-field">
               <FormControl
                 id="register-password-confirmation"
                 type={passwordType}
                 name="password-confirmation"
                 autoComplete="new-password"
-                placeholder="Repetă parola"
+                placeholder={this.props.t("register.passwordConfirmationPlaceholder")}
                 onChange={this.onPasswordConfirmationChange}
                 required />
               <button className="password-toggle" type="button"
@@ -159,7 +150,7 @@ export default createLegacyComponent({
               id="register-newsletter"
               checked={this.state.newsletter}
               onChange={this.onNewsletterChange}>
-              Abonare newsletter (noutăți despre concurs, informații utile pentru participanți)
+              {this.props.t("register.newsletter")}
             </Checkbox>
             <FormControl.Feedback />
           </FormGroup>
@@ -169,7 +160,9 @@ export default createLegacyComponent({
               bsStyle="primary"
               disabled={this.state.waitingForServerResponse}
             >
-              {this.state.waitingForServerResponse ? "Se trimite..." : "Înregistrează-te"}
+              {this.state.waitingForServerResponse
+                ? this.props.t("register.submitting")
+                : this.props.t("register.submit")}
             </Button>
             <FormControl.Feedback />
           </FormGroup>
@@ -186,7 +179,7 @@ export default createLegacyComponent({
       let errors = _.clone(this.state.errors);
 
       if (!errors.length) {
-        errors.push("Formularul nu a putut fi trimis.");
+        errors.push(this.props.t("register.genericError"));
       }
 
       return <ul className="errors list-group" role="alert">
@@ -204,8 +197,7 @@ export default createLegacyComponent({
     if (this.state.hasSubmited) {
       return <div className="register-success" role="status">
         <p><img alt="" aria-hidden="true" src={SuccessIcon} /></p>
-        <p>Verifică căsuța ta de poștă electronică pentru un mesaj de
-        confirmare.</p>
+        <p>{this.props.t("register.success")}</p>
       </div>;
     }
   },
@@ -259,7 +251,7 @@ export default createLegacyComponent({
     if (this.state.password !== this.state.passwordConfirmation) {
       this.setState({
         hasErrored: true,
-        errors: ["Parola și confirmarea de parolă nu sunt identice"]
+        errors: [this.props.t("register.passwordMismatch")]
       });
 
       return false;
@@ -313,3 +305,5 @@ export default createLegacyComponent({
     }
   }
 });
+
+export default withTranslation("forms")(Register);

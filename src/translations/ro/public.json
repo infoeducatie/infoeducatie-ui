@@ -1,0 +1,117 @@
+{
+  "edition": {
+    "label": "Ediția {{edition}}",
+    "displayed": "Ediția afișată",
+    "loading": "Se încarcă edițiile..."
+  },
+  "categories": {
+    "all": "Toți",
+    "web": "Web",
+    "educational": "Educațional",
+    "robots": "Roboți",
+    "utility": "Utilitar",
+    "multimedia": "Multimedia"
+  },
+  "alumni": {
+    "title": "Alumni InfoEducație",
+    "subtitle": "Generația IT din România",
+    "participatingEditions": "Ediții participante",
+    "loading": "Se încarcă alumni...",
+    "error": "Lista alumni nu poate fi încărcată momentan."
+  },
+  "schedule": {
+    "title": "Program InfoEducație",
+    "loading": "Se încarcă programul...",
+    "error": "Programul nu este disponibil momentan.",
+    "empty": "Nu a fost publicat încă un document pentru program.",
+    "documentHeading": "Documentul programului",
+    "open": "Deschide sau descarcă programul",
+    "documentTitle": "Program InfoEducație",
+    "previewNote": "Deschide documentul pentru a consulta programul pe telefon."
+  },
+  "talks": {
+    "title": "Seminarii InfoEducație",
+    "loading": "Se încarcă seminariile...",
+    "error": "Seminariile nu pot fi încărcate momentan.",
+    "discuss": "Discută pe forum",
+    "authorPhoto": "Fotografie {{name}}"
+  },
+  "contestants": {
+    "title": "Participanți InfoEducație",
+    "serverError": "Datele nu au putut fi preluate de pe server.",
+    "projectList": "Lista proiectelor",
+    "empty": "Nu am găsit proiecte pentru filtrele selectate.",
+    "results": {
+      "published": "Pentru această ediție sunt afișate rezultatele publicate.",
+      "ranking": "Clasamentul proiectelor",
+      "empty": "Nu există rezultate pentru categoria selectată.",
+      "columns": {
+        "prize": "premiul",
+        "project": "numele lucrării",
+        "contestant": "concurent",
+        "school": "liceu",
+        "county": "județ",
+        "teacher": "profesor",
+        "score": "punctaj",
+        "open": "open",
+        "total": "total"
+      }
+    },
+    "participants": "Participanți",
+    "projects": "Proiecte",
+    "counties": "Județe",
+    "searchLabel": "Caută proiecte",
+    "searchPlaceholder": "Titlu, participant sau județ",
+    "shown_one": "{{count}} proiect afișat",
+    "shown_few": "{{count}} proiecte afișate",
+    "shown_other": "{{count}} proiecte afișate",
+    "gridAria": "Afișează proiectele sub formă de carduri",
+    "gridTitle": "Vizualizare carduri",
+    "tableAria": "Afișează proiectele sub formă de tabel",
+    "tableTitle": "Vizualizare tabel",
+    "filter": "Filtrează: {{category}}",
+    "columns": {
+      "county": "județ",
+      "project": "titlul lucrării",
+      "contestant": "concurent",
+      "category": "categorie",
+      "comments": "comentarii"
+    }
+  },
+  "jury": {
+    "title": "Juriul InfoEducație",
+    "leadership": "Conducerea juriului",
+    "educational": "comisia software educațional",
+    "utility": "comisia software utilitar",
+    "web": "comisia aplicații web",
+    "robots": "comisia roboți",
+    "multimedia": "comisia multimedia",
+    "technical": "comisia tehnică",
+    "secretary": "secretar",
+    "loading": "Se \u00eencarc\u0103 membrii juriului...",
+    "error": "Juriul nu este disponibil momentan.",
+    "empty": "Nu exist\u0103 membri ai juriului publica\u021bi momentan.",
+    "criteria": "Criterii de jurizare",
+    "criteriaLoading": "Se \u00eencarc\u0103 criteriile de jurizare...",
+    "criteriaError": "Criteriile de jurizare nu sunt disponibile momentan.",
+    "criteriaEmpty": "Nu exist\u0103 criterii de jurizare publicate momentan.",
+    "openCriteria": "Deschide criteriile pentru {{category}}",
+    "roles": {
+      "president": "Președinte",
+      "executivePresident": "Președinte executiv",
+      "vicePresident": "Vicepreședinte",
+      "executiveVicePresident": "Vicepreședinte executiv"
+    }
+  },
+  "news": {
+    "title": "Noutăți și actualizări",
+    "pinned": "Fixat",
+    "readMore": "Citește mai multe...",
+    "previous": "Anterioare",
+    "next": "Următoare",
+    "loading": "Se încarcă știrile...",
+    "error": "Știrile nu au putut fi încărcate.",
+    "empty": "Nu sunt știri publicate momentan.",
+    "retry": "Încearcă din nou"
+  }
+}

@@ -1,70 +1,77 @@
 "use strict";
 
-import createLegacyComponent from "@lib/create-legacy-component";
-
-import { Row, Col, Grid } from "@ui/bootstrap";
-import Header from "./header";
+import { Col, Grid, Row } from "@ui/bootstrap";
+import request from "@lib/request";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import "../main.less";
+import RichTextContent from "./rich-text-content";
+import SecondaryHero from "./secondary-hero";
 
+export default function Contact(props) {
+  const { t } = useTranslation("contact");
+  const [pageResult, setPageResult] = useState({
+    page: null,
+    hasErrored: false,
+    language: null,
+  });
+  const isLoading = pageResult.language !== props.language;
+  const hasErrored = !isLoading && pageResult.hasErrored;
+  const page = isLoading ? null : pageResult.page;
 
-export default createLegacyComponent({
-  displayName: "ContactPage",
+  useEffect(() => {
+    let isCurrent = true;
 
-  render() {
-    return <div className="contact">
-      <div className="blue-section-wrapper">
-        <Grid className="blue-section">
-          <Row>
-            <Col xs={12}>
-              <Header isLoggedIn={this.props.isLoggedIn}
-                      current={this.props.current}
-                      changeLanguage={this.props.changeLanguage}
-                      language={this.props.language}
-                      logout={this.props.logout} />
-            </Col>
-          </Row>
-          <Row>
-            <Row className="small-spacing" />
-            <Col xs={12}>
-              <h1>Contact</h1>
-            </Col>
-          </Row>
-          <Row className="big-spacing" />
-        </Grid>
-      </div>
+    request({
+      method: "GET",
+      url: window.config.API_URL + "content_pages/contact.json",
+      data: { locale: props.language },
+      success(data) {
+        if (!isCurrent) return;
+        setPageResult({
+          page: data && typeof data === "object" ? data : null,
+          hasErrored: !data || typeof data !== "object",
+          language: props.language,
+        });
+      },
+      error() {
+        if (!isCurrent) return;
+        setPageResult({
+          page: null,
+          hasErrored: true,
+          language: props.language,
+        });
+      },
+    });
+
+    return () => {
+      isCurrent = false;
+    };
+  }, [props.language]);
+
+  return (
+    <div className="contact">
+      <SecondaryHero headerProps={props}>
+        <h1>{page?.title || t("title")}</h1>
+      </SecondaryHero>
       <Grid className="white-section">
         <Row>
-          <Col mdOffset={1} md={10}>
-            <div className="contact-details">
-              <section className="contact-group" aria-labelledby="contact-general">
-                <h2 id="contact-general" className="content-heading">Echipa InfoEducație</h2>
-                <ul className="contact-list">
-                  <li>
-                    <span>Organizare</span>
-                    <a href="mailto:contact@infoeducatie.ro">contact@infoeducatie.ro</a>
-                    <small>Emil Onea</small>
-                  </li>
-                  <li>
-                    <span>Website</span>
-                    <a href="mailto:ping@infoeducatie.ro">ping@infoeducatie.ro</a>
-                  </li>
-                </ul>
-              </section>
-              <section className="contact-group" aria-labelledby="contact-jury">
-                <h2 id="contact-jury" className="content-heading">Juriu</h2>
-                <ul className="contact-list">
-                  <li><span>Software educațional</span><a href="mailto:educational@infoeducatie.ro">educational@infoeducatie.ro</a></li>
-                  <li><span>Multimedia</span><a href="mailto:multimedia@infoeducatie.ro">multimedia@infoeducatie.ro</a></li>
-                  <li><span>Software utilitar</span><a href="mailto:utilitar@infoeducatie.ro">utilitar@infoeducatie.ro</a></li>
-                  <li><span>Roboți</span><a href="mailto:roboti@infoeducatie.ro">roboti@infoeducatie.ro</a></li>
-                  <li><span>Web</span><a href="mailto:web@infoeducatie.ro">web@infoeducatie.ro</a></li>
-                </ul>
-              </section>
-            </div>
+          <Col md={10} mdOffset={1}>
+            <Row className="small-spacing" />
+            {isLoading ? (
+              <p className="page-status" role="status">{t("loading")}</p>
+            ) : null}
+            {hasErrored ? (
+              <p className="page-status alert alert-warning" role="alert">
+                {t("error")}
+              </p>
+            ) : null}
+            <RichTextContent html={page?.body} />
+            <Row className="small-spacing" />
           </Col>
         </Row>
       </Grid>
-    </div>;
-  }
-});
+    </div>
+  );
+}

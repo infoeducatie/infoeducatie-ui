@@ -1,0 +1,9 @@
+{
+  "title": "Albumul foto InfoEducație",
+  "subtitle": "Oameni și amintiri",
+  "albumLabel": "Album foto InfoEducație: {{title}}",
+  "moreDetails": "Fotografii",
+  "loading": "Se \u00eencarc\u0103 albumele foto...",
+  "error": "Albumele foto nu sunt disponibile momentan.",
+  "empty": "Nu exist\u0103 albume foto publicate momentan."
+}

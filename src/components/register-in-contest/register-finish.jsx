@@ -2,22 +2,24 @@
 
 import createLegacyComponent from "@lib/create-legacy-component";
 import { Button, FormGroup } from "@ui/bootstrap";
+import { withTranslation } from "react-i18next";
 
 import FormMixin from "../../mixins/form"
 
 
-export default createLegacyComponent({
+const RegisterFinish = createLegacyComponent({
   displayName: "RegisterFinish",
   mixins: [FormMixin],
 
   render() {
     return <form onSubmit={this.onFormSubmit}>
-      <p>Trimite proiectul tău&nbsp;
-      <em>{this.props.pending_project_title}</em>.</p>
+      <p>{this.props.t("finish.description", {
+        project: this.props.pending_project_title,
+      })}</p>
       <FormGroup>
         <Button type="submit"
                 disabled={this.state.waitingForServerResponse}>
-          Termină
+          {this.props.t("finish.submit")}
         </Button>
       </FormGroup>
       {this.renderErrors()}
@@ -28,3 +30,5 @@ export default createLegacyComponent({
     return {};
   }
 });
+
+export default withTranslation("registration")(RegisterFinish);

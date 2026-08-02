@@ -3,11 +3,13 @@
 import createLegacyComponent from "@lib/create-legacy-component";
 import _ from "lodash";
 import { FormControl, ControlLabel, FormGroup, Button } from "@ui/bootstrap";
+import { withTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 import FormMixin from "../../mixins/form"
 
 
-export default createLegacyComponent({
+const RegisterProject = createLegacyComponent({
   displayName: "RegisterProject",
   mixins: [FormMixin],
 
@@ -46,11 +48,11 @@ export default createLegacyComponent({
     let openSource = null;
     if (this.state.project.category !== "multimedia") {
         openSource = <FormGroup key="a">
-          <ControlLabel>Ești de acord ca proiectul să fie public (open-source) ? *</ControlLabel>
+          <ControlLabel>{this.props.t("project.openSource")}</ControlLabel>
           <FormControl componentClass="select"
                        onChange={this.onOpenSourceChange}>
-            <option value="true">Da</option>
-            <option value="false">Nu</option>
+            <option value="true">{this.props.t("common.yes")}</option>
+            <option value="false">{this.props.t("common.no")}</option>
           </FormControl>
           <FormControl.Feedback />
         </FormGroup>;
@@ -66,19 +68,18 @@ export default createLegacyComponent({
         wantsOpenSource = ([
           <div key="open-source-code">
             <FormGroup>
-              <ControlLabel>Link către surse și documentație</ControlLabel>
+              <ControlLabel>{this.props.t("project.sourceLink")}</ControlLabel>
               <FormControl type="url"
                      placeholder="https://github.com/infoeducatie/infoeducatie-ui"
-                     title="Sursele proiectului trebuie să fie încărcate și accesibile pe GitHub"
+                     title={this.props.t("project.sourceRule")}
                      pattern="https?:\/\/github.com\/[^\/]+\/[^\/]+(\.git)?(\/)?"
                      onChange={this.onChange.bind(this, "source_url")}
                      required />
               <FormControl.Feedback />
             </FormGroup>,
             <p className="alert alert-warning">
-              Sursele proiectului trebuie să fie încărcate pe acel repository.
-              În cazul în care întâmpini probleme poți găsi mai multe detalii&nbsp;
-              <a target="_blank" href="http://blog.infoeducatie.ro/tutorial/2015/04/14/github-101.html" rel="noreferrer">aici</a>.
+              {this.props.t("project.sourceNotice")}&nbsp;
+              <Link to="/blog/github-101">{this.props.t("project.detailsLink")}</Link>.
             </p>
           </div>
         ]);
@@ -86,16 +87,16 @@ export default createLegacyComponent({
         wantsOpenSource = ([
           <div key="not-open-source-code">
             <FormGroup>
-              <ControlLabel>Care este motivul pentru care dorești ca proiectul tău să nu fie public (open-source) ? *</ControlLabel>
+              <ControlLabel>{this.props.t("project.closedReason")}</ControlLabel>
               <FormControl
-                     placeholder="Îmi este mult prea frică că îmi va fura un om rău codul"
+                     placeholder={this.props.t("project.closedReasonPlaceholder")}
                      onChange={this.onChange.bind(this, "closed_source_reason")}
                      pattern="(.+)"
                      required />
               <FormControl.Feedback />
             </FormGroup>,
             <FormGroup>
-              <ControlLabel>Care este numele tau de utilizator pe GitHub ? *</ControlLabel>
+              <ControlLabel>{this.props.t("project.githubUsername")}</ControlLabel>
               <FormControl
                      placeholder="infoeducatie"
                      onChange={this.onChange.bind(this, "github_username")}
@@ -104,9 +105,8 @@ export default createLegacyComponent({
               <FormControl.Feedback />
             </FormGroup>,
             <p className="alert alert-warning">
-              Dacă nu dorești să încarci sursele pe GitHub poți să trimiți un link cu ele pe adresa contact@infoeducatie.ro
-              În cazul în care întâmpini probleme cu încărcatul surselor pe GitHub poți găsi mai multe detalii&nbsp;
-              <a target="_blank" href="http://blog.infoeducatie.ro/tutorial/2015/04/14/github-101.html" rel="noreferrer">aici</a>.
+              {this.props.t("project.privateSourceNotice")}&nbsp;
+              <Link to="/blog/github-101">{this.props.t("project.detailsLink")}</Link>.
             </p>
           </div>
         ]);
@@ -115,7 +115,7 @@ export default createLegacyComponent({
       wantsOpenSource = ([
         <div key="open-source-multimedia">
           <FormGroup>
-            <ControlLabel>Link către surse și documentație</ControlLabel>
+            <ControlLabel>{this.props.t("project.sourceLink")}</ControlLabel>
             <FormControl type="url"
                    placeholder="https://www.youtube.com/watch?v=Pa6gIc7spVc"
                    onChange={this.onChange.bind(this, "source_url")}
@@ -124,7 +124,7 @@ export default createLegacyComponent({
              <FormControl.Feedback />
            </FormGroup>,
           <p className="alert alert-warning">
-            Proiectul trebuie să fie încărcat și accesibil pe Youtube.
+            {this.props.t("project.youtubeNotice")}
           </p>
         </div>
       ]);
@@ -136,43 +136,43 @@ export default createLegacyComponent({
   render() {
     return <form onSubmit={this.onFormSubmit}>
       <FormGroup>
-        <ControlLabel>Titlul Lucrării *</ControlLabel>
+        <ControlLabel>{this.props.t("project.title")}</ControlLabel>
         <FormControl
           type="text"
-          placeholder="Catalog Școlar"
+          placeholder={this.props.t("project.titlePlaceholder")}
           onChange={this.onChange.bind(this, "title")}
           required />
         <FormControl.Feedback />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Categorie *</ControlLabel>
+        <ControlLabel>{this.props.t("project.category")}</ControlLabel>
         <FormControl componentClass="select"
                onChange={this.onCategoryChange}
                required>
-          <option value="educational">Software Educațional</option>
-          <option value="utilitar">Software Utilitar</option>
-          <option value="roboti">Roboți</option>
-          <option value="web">Web</option>
-          <option value="multimedia">Multimedia</option>
+          <option value="educational">{this.props.t("project.educational")}</option>
+          <option value="utilitar">{this.props.t("project.utility")}</option>
+          <option value="roboti">{this.props.t("public:categories.robots")}</option>
+          <option value="web">{this.props.t("public:categories.web")}</option>
+          <option value="multimedia">{this.props.t("public:categories.multimedia")}</option>
         </FormControl>
         <FormControl.Feedback />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Descriere *</ControlLabel>
+        <ControlLabel>{this.props.t("project.description")}</ControlLabel>
         <FormControl componentClass="textarea"
                onChange={this.onChange.bind(this, "description")}
                required />
         <FormControl.Feedback />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Descriere Tehnică *</ControlLabel>
+        <ControlLabel>{this.props.t("project.technicalDescription")}</ControlLabel>
         <FormControl componentClass="textarea"
                onChange={this.onChange.bind(this, "technical_description")}
                required />
         <FormControl.Feedback />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Cerințe de sistem *</ControlLabel>
+        <ControlLabel>{this.props.t("project.requirements")}</ControlLabel>
         <FormControl componentClass="textarea"
                onChange={this.onChange.bind(this, "system_requirements")}
                required />
@@ -182,7 +182,7 @@ export default createLegacyComponent({
       { this.renderWantsOpenSource() }
       { this.state.project.category === "web" ?
         <FormGroup>
-          <ControlLabel>Adresa lucrării *</ControlLabel>
+          <ControlLabel>{this.props.t("project.homepage")}</ControlLabel>
             <FormControl type="url"
                    placeholder="http://..."
                    onChange={this.onChange.bind(this, "homepage")}
@@ -192,7 +192,7 @@ export default createLegacyComponent({
       <FormGroup>
         <Button type="submit"
                 disabled={this.state.waitingForServerResponse}>
-          Pasul următor
+          {this.props.t("common.next")}
         </Button>
       </FormGroup>
       {this.renderErrors()}
@@ -237,3 +237,5 @@ export default createLegacyComponent({
     this.setState({project: projectState});
   }
 });
+
+export default withTranslation(["registration", "public"])(RegisterProject);

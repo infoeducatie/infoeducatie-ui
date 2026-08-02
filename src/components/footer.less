@@ -1,77 +1,98 @@
 @import (reference) "../main";
 
+.footer-wrapper {
+  background: @white;
+  border-top: 1px solid @brand-border;
+  color: @brand-navy;
+}
 
 .footer {
+  padding-bottom: 32px;
+  padding-top: 68px;
 
-  .small-spacing.second {
-    border-bottom: 3px @light-grey solid;
+  .footer-main {
+    align-items: flex-start;
   }
 
-  .call-to-action {
-    color: #5F6368;
+  h2 {
+    color: @brand-navy;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 8px 0 22px;
+    text-transform: none;
+  }
 
-    .left {
-      border-right: solid 3px @light-grey;
-      text-align: center;
+  .footer-logo {
+    align-items: center;
+    display: inline-flex;
+    margin-bottom: 18px;
+    text-decoration: none;
 
-      .newsletter {
-        padding: 15px;
-        height: 50px;
-        text-align: center;
-        border: solid @light-grey;
-      }
+    &:focus,
+    &:hover {
+      text-decoration: none;
+    }
 
-      .newsletter-submit {
-        background-color: @white;
-        border: 3px solid @orange;
-        border-radius: 30px;
-        color: @black;
-        min-height: 48px;
-        padding: 10px 20px;
+    span {
+      color: #1F4D8F;
+      font-family: @font-family-serif;
+      font-size: 38px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+  }
 
-        &:hover {
-          background-color: @orange;
-          color: @black;
-        }
+  .footer-brand > p,
+  .footer-newsletter > p {
+    color: #667086;
+    font-size: 14px;
+    line-height: 1.55;
+    max-width: 250px;
+  }
+
+  .footer-nav {
+    display: grid;
+    gap: 8px 22px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0;
+    padding: 0;
+
+    li,
+    .nav-link {
+      min-width: 0;
+    }
+
+    .nav-link {
+      color: #566078;
+      font-size: 14px;
+      min-height: 36px;
+      padding: 7px 0;
+
+      &:hover {
+        color: @brand-red;
       }
     }
   }
 
-  .navbar-default {
-    text-align: center;
-    letter-spacing: @medium-letter-spacing;
+  .footer-community ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 
-    @media screen and (min-width: @screen-sm) {
-      // http://stackoverflow.com/questions/14601425/bootstrap-navbar-justify-span-menu-items-occupying-full-width
-      .navbar-nav {
-        display: table;
-        width: 100%;
-
-        li {
-          width: auto;
-          float: none;
-          display: table-cell;
-        }
-      }
+    li + li {
+      margin-top: 10px;
     }
 
-    .navbar-nav {
-      text-transform: uppercase;
-      li {
-        &.active {
-          a {
-            color: @grey;
-          }
-        }
-        a {
-          color: @grey;
-          &:hover {
-            color: @black;
-          }
-          &:visited {
-            color: @grey;
-          }
-        }
+    a {
+      color: #566078;
+      display: inline-flex;
+      font-size: 14px;
+      min-height: 36px;
+      padding: 7px 0;
+      text-decoration: none;
+
+      &:hover {
+        color: @brand-red;
       }
     }
   }
@@ -79,21 +100,155 @@
   .social-logos {
     align-items: center;
     display: flex;
-    gap: 12px;
-    justify-content: center;
+    gap: 10px;
     list-style: none;
-    margin: 0;
+    margin: 22px 0 0;
     padding: 0;
 
     a {
       align-items: center;
+      background: @brand-navy;
+      border-radius: 50%;
       display: inline-flex;
-      min-height: 44px;
-      min-width: 44px;
+      height: 40px;
+      justify-content: center;
+      transition: background-color 150ms ease, transform 150ms ease;
+      width: 40px;
+
+      &:hover {
+        background: @brand-blue;
+        transform: translateY(-2px);
+      }
+    }
+
+    img {
+      height: 40px;
+      object-fit: contain;
+      width: 40px;
+    }
+
+    .x-logo {
+      box-sizing: border-box;
+      filter: brightness(0) invert(1);
+      padding: 11px;
     }
   }
 
+  .footer-newsletter {
+    .row {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    [class*="col-"] {
+      margin-left: 0;
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
+    }
+
+    .newsletter {
+      border: 1px solid @brand-border;
+      border-radius: 10px;
+      box-shadow: none;
+      font-size: 14px;
+      min-height: 48px;
+      padding: 12px 14px;
+    }
+
+    .newsletter-submit {
+      background: @brand-red;
+      border: 2px solid @brand-red;
+      border-radius: 10px;
+      color: @white;
+      font-size: 13px;
+      font-weight: bold;
+      margin-top: 10px;
+      min-height: 48px;
+      padding: 10px 18px;
+      width: 100%;
+
+      &:hover {
+        background: #B9131A;
+        border-color: #B9131A;
+        color: @white;
+      }
+    }
+
+    .small-spacing {
+      display: none;
+    }
+  }
+
+  .footer-bottom {
+    border-top: 1px solid @brand-border;
+    margin-top: 46px;
+    padding-top: 24px;
+  }
+
   .copyright {
-    color: #5F6368;
+    color: #7B8496;
+    font-size: 13px;
+    margin: 0;
+  }
+
+  @media screen and (max-width: (@screen-md - 1px)) {
+    .footer-pages,
+    .footer-community,
+    .footer-newsletter {
+      margin-top: 42px;
+    }
+  }
+
+  @media screen and (min-width: @screen-wide) {
+    padding-bottom: 40px;
+    padding-top: 82px;
+
+    h2 {
+      font-size: 17px;
+    }
+
+    .footer-logo span {
+      font-size: 46px;
+    }
+
+    .footer-brand > p,
+    .footer-newsletter > p,
+    .footer-nav .nav-link,
+    .footer-community ul a {
+      font-size: 16px;
+    }
+
+    .social-logos {
+      a,
+      img {
+        height: 44px;
+        width: 44px;
+      }
+    }
+
+    .footer-newsletter {
+      .newsletter {
+        font-size: 16px;
+        min-height: 54px;
+      }
+
+      .newsletter-submit {
+        font-size: 15px;
+        min-height: 54px;
+      }
+    }
+
+    .copyright {
+      font-size: 15px;
+    }
+  }
+
+  @media screen and (max-width: (@screen-sm - 1px)) {
+    padding-top: 52px;
+
+    .footer-nav {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 }

@@ -1,0 +1,35 @@
+{
+  "fields": {
+    "email": "Adresa de email",
+    "password": "Parola",
+    "firstName": "Prenume",
+    "lastName": "Nume"
+  },
+  "signIn": {
+    "title": "Autentificare",
+    "submit": "Autentifică-te",
+    "error": "Autentificarea nu a reușit!",
+    "link": "autentifica aici",
+    "noAccountPrefix": "Dacă nu ai un cont,",
+    "createAccount": "creează unul nou aici",
+    "forgotPrefix": "Dacă ai uitat parola,",
+    "forgotLink": "reseteaz-o aici"
+  },
+  "register": {
+    "title": "Înregistrare",
+    "existingAccount": "Ai deja un cont? Te poți",
+    "showPasswords": "Arată parolele",
+    "hidePasswords": "Ascunde parolele",
+    "passwordPlaceholder": "Minimum 8 caractere",
+    "passwordRule": "Parola trebuie să conțină minimum 8 caractere",
+    "passwordHelp": "Folosește minimum 8 caractere.",
+    "passwordConfirmation": "Confirmare parolă",
+    "passwordConfirmationPlaceholder": "Repetă parola",
+    "newsletter": "Abonare newsletter (noutăți despre concurs, informații utile pentru participanți)",
+    "submitting": "Se trimite...",
+    "submit": "Înregistrează-te",
+    "genericError": "Formularul nu a putut fi trimis.",
+    "passwordMismatch": "Parola și confirmarea parolei nu sunt identice.",
+    "success": "Verifică adresa de email pentru mesajul de confirmare."
+  }
+}

@@ -1,0 +1,63 @@
+@import (reference) "../main";
+
+@brand-shapes: url("/assets/img/brand-shapes.svg");
+
+// A quiet, reusable layer inspired by the geometric reference artwork. The
+// SVG contains only brand-colour vectors, keeping text and content untouched.
+#main-content > :not(.home):not(.robotics-competition) {
+  background-color: @brand-surface;
+  background-image: @brand-shapes;
+  background-position: center 180px;
+  background-repeat: repeat-y;
+  background-size: 1600px 1000px;
+}
+
+.home {
+  .home-content-pattern {
+    background-color: @white;
+    background-image: @brand-shapes;
+    background-position: center top;
+    background-repeat: repeat-y;
+    background-size: 1600px 1000px;
+  }
+
+  .green-section-wrapper,
+  .judging-criteria-section-wrapper,
+  .judging-criteria-section,
+  .gray-section-wrapper,
+  .yellow-section-wrapper,
+  .community-invite,
+  .sponsors-section-wrapper {
+    background-image: none;
+  }
+
+  .green-section-wrapper,
+  .yellow-section-wrapper {
+    background-color: rgba(246, 248, 252, 0.72);
+  }
+
+  .judging-criteria-section-wrapper,
+  .gray-section-wrapper,
+  .community-invite,
+  .sponsors-section-wrapper {
+    background-color: transparent;
+  }
+}
+
+@media screen and (min-width: @screen-wide) {
+  #main-content > :not(.home):not(.robotics-competition),
+  .home .home-content-pattern {
+    background-size: 2000px 1250px;
+  }
+}
+
+@media screen and (max-width: (@screen-sm - 1px)) {
+  #main-content > :not(.home):not(.robotics-competition) {
+    background-position: center 220px;
+    background-size: 900px 563px;
+  }
+
+  .home .home-content-pattern {
+    background-size: 900px 563px;
+  }
+}

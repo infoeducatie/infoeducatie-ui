@@ -1,118 +1,84 @@
 "use strict";
 
 import createLegacyComponent from "@lib/create-legacy-component";
-import { Navbar, Nav, NavItem, Row } from "@ui/bootstrap";
+import { getLocalizedPath } from "@lib/localized-routes";
+import { primaryNavigation } from "@lib/public-navigation";
+import { Nav, NavItem, Navbar } from "@ui/bootstrap";
 import { LinkContainer } from "@ui/router-bootstrap";
+import { Link } from "react-router-dom";
+import { withTranslation } from "react-i18next";
+
 import "../main.less";
-
+import ENFlag from "../../assets/img/icons/UK.svg";
 import ROFlag from "../../assets/img/icons/RO.png";
-import ENFlag from "../../assets/img/icons/US.png";
 
-
-export default createLegacyComponent({
+const Header = createLegacyComponent({
   displayName: "Header",
 
-  render() {
-    // TODO @palcu: refactor this when in React you will be able to return
-    // multiple values
-    return <div className="header">
-      <Row className="xxsmall-spacing" />
-      <Navbar
-        aria-label={this.props.language === "en" ? "Main navigation" : "Navigație principală"}
-        toggleLabel={this.props.language === "en" ? "Open main menu" : "Deschide meniul principal"}
-        toggleNavKey={0}
-      >
-        {this.props.isLoggedIn ? this.renderRegisterLinks()
-                               : this.renderUnregisterLinks()}
-      </Navbar>
-    </div>;
-  },
-
   changeLanguage() {
-    if (this.props.language === "en") {
-      this.props.changeLanguage("ro");
-    } else {
-      this.props.changeLanguage("en");
-    }
+    this.props.changeLanguage(this.props.language === "en" ? "ro" : "en");
   },
 
   renderNextLanguage() {
-    if (this.props.language === "en") {
-      return <img alt="Română" height="24" src={ROFlag} width="24" />;
-    } else {
-      return <img alt="English" height="24" src={ENFlag} width="24" />;
-    }
+    const flag = this.props.language === "en" ? ROFlag : ENFlag;
+    return (
+      <img
+        alt={this.props.t("language.nextName")}
+        height="24"
+        src={flag}
+        width="24"
+      />
+    );
   },
 
-  renderEnglishHeader() {
-    return <Nav className="navbar-nav" eventKey={0} right>
-      <LinkContainer to="/home"><NavItem>Home</NavItem></LinkContainer>
-      <LinkContainer to="/photos"><NavItem>Photos</NavItem></LinkContainer>
-      <LinkContainer to="/about"><NavItem>About</NavItem></LinkContainer>
-      <NavItem
-        aria-label="Schimbă limba în română"
-        onClick={this.changeLanguage}
-        title="Română"
-      >
-        {this.renderNextLanguage()}
-      </NavItem>
-    </Nav>;
+  render() {
+    const { isLoggedIn, t } = this.props;
+
+    return (
+      <div className="header">
+        <div className="header-shell">
+          <Link
+            aria-label={t("brand")}
+            className="site-logo"
+            to={getLocalizedPath("home")}
+          >
+            <span className="site-logo-wordmark">InfoEducație</span>
+          </Link>
+          <Navbar
+            aria-label={t("navigation.mainLabel")}
+            toggleLabel={t("navigation.openMenu")}
+            toggleNavKey={0}
+          >
+            <Nav className="navbar-nav" eventKey={0} right>
+              {primaryNavigation.map(([route, label]) => (
+                <LinkContainer key={route} to={getLocalizedPath(route)}>
+                  <NavItem>{t(`navigation.${label}`)}</NavItem>
+                </LinkContainer>
+              ))}
+              {isLoggedIn ? (
+                <NavItem onClick={this.props.logout}>
+                  {t("navigation.logout")}
+                </NavItem>
+              ) : null}
+              {isLoggedIn ? (
+                <LinkContainer to={getLocalizedPath("contestEntry")}>
+                  <NavItem>{t("navigation.register")}</NavItem>
+                </LinkContainer>
+              ) : null}
+              <NavItem
+                aria-label={t("language.switchTo")}
+                className="language-switch"
+                onClick={this.changeLanguage}
+                title={t("language.nextName")}
+              >
+                {this.renderNextLanguage()}
+              </NavItem>
+            </Nav>
+          </Navbar>
+        </div>
+      </div>
+    );
   },
-
-  renderResultsContestants() {
-    let lastEditionWithResults = this.props.current.last_edition_with_results;
-
-    if (lastEditionWithResults &&
-        this.props.current.edition.id == lastEditionWithResults.id) {
-      return <LinkContainer to="/rezultate"><NavItem>Rezultate</NavItem></LinkContainer>;
-    } else {
-      return <LinkContainer to="/participanti"><NavItem>Participanți</NavItem></LinkContainer>;
-    }
-  },
-
-  renderRegisterLinks() {
-    if (this.props.language === "ro") {
-      return <Nav className="navbar-nav" eventKey={0} right>
-        <LinkContainer to="/acasa"><NavItem>Acas&#259;</NavItem></LinkContainer>
-        <LinkContainer to="/alumni"><NavItem>Alumni</NavItem></LinkContainer>
-        <LinkContainer to="/seminarii"><NavItem>Seminarii</NavItem></LinkContainer>
-        <LinkContainer to="/program"><NavItem>Program</NavItem></LinkContainer>
-        { this.renderResultsContestants() }
-        <LinkContainer to="/juriu"><NavItem>Juriu</NavItem></LinkContainer>
-        <NavItem onClick={this.props.logout}>Delogare</NavItem>
-        <LinkContainer to="/inscriere"><NavItem>Înscriere</NavItem></LinkContainer>
-        <NavItem
-          aria-label="Switch language to English"
-          onClick={this.changeLanguage}
-          title="English"
-        >
-          {this.renderNextLanguage()}
-        </NavItem>
-      </Nav>;
-    } else {
-      return this.renderEnglishHeader();
-    }
-  },
-
-  renderUnregisterLinks() {
-    if (this.props.language === "ro") {
-      return <Nav className="navbar-nav" eventKey={0} right>
-        <LinkContainer to="/acasa"><NavItem>Acas&#259;</NavItem></LinkContainer>
-        <LinkContainer to="/alumni"><NavItem>Alumni</NavItem></LinkContainer>
-        <LinkContainer to="/seminarii"><NavItem>Seminarii</NavItem></LinkContainer>
-        <LinkContainer to="/program"><NavItem>Program</NavItem></LinkContainer>
-        { this.renderResultsContestants() }
-        <LinkContainer to="/juriu"><NavItem>Juriu</NavItem></LinkContainer>
-        <NavItem
-          aria-label="Switch language to English"
-          onClick={this.changeLanguage}
-          title="English"
-        >
-          {this.renderNextLanguage()}
-        </NavItem>
-      </Nav>;
-    } else {
-      return this.renderEnglishHeader();
-    }
-  }
 });
+
+export default withTranslation("common")(Header);

@@ -1,0 +1,117 @@
+{
+  "edition": {
+    "label": "{{edition}} edition",
+    "displayed": "Displayed edition",
+    "loading": "Loading editions..."
+  },
+  "categories": {
+    "all": "All",
+    "web": "Web",
+    "educational": "Educational",
+    "robots": "Robotics",
+    "utility": "Utility",
+    "multimedia": "Multimedia"
+  },
+  "alumni": {
+    "title": "InfoEducation Alumni",
+    "subtitle": "Romania's IT generation",
+    "participatingEditions": "Editions attended",
+    "loading": "Loading alumni...",
+    "error": "The alumni list is currently unavailable."
+  },
+  "schedule": {
+    "title": "InfoEducation Schedule",
+    "loading": "Loading schedule...",
+    "error": "The schedule is currently unavailable.",
+    "empty": "No schedule document has been published yet.",
+    "documentHeading": "Schedule document",
+    "open": "Open or download schedule",
+    "documentTitle": "InfoEducation schedule",
+    "previewNote": "Open the document to view the schedule on your phone."
+  },
+  "talks": {
+    "title": "InfoEducation Talks",
+    "loading": "Loading talks...",
+    "error": "Talks are currently unavailable.",
+    "discuss": "Discuss on the forum",
+    "authorPhoto": "Photo of {{name}}"
+  },
+  "contestants": {
+    "title": "InfoEducation Participants",
+    "serverError": "The data could not be retrieved from the server.",
+    "projectList": "Project list",
+    "empty": "No projects match the selected filters.",
+    "results": {
+      "published": "Published results are shown for this edition.",
+      "ranking": "Project ranking",
+      "empty": "There are no results in the selected category.",
+      "columns": {
+        "prize": "prize",
+        "project": "project name",
+        "contestant": "contestant",
+        "school": "school",
+        "county": "county",
+        "teacher": "teacher",
+        "score": "score",
+        "open": "open",
+        "total": "total"
+      }
+    },
+    "participants": "Participants",
+    "projects": "Projects",
+    "counties": "Counties",
+    "searchLabel": "Search projects",
+    "searchPlaceholder": "Title, participant, or county",
+    "shown_one": "{{count}} project shown",
+    "shown_few": "{{count}} projects shown",
+    "shown_other": "{{count}} projects shown",
+    "gridAria": "Show projects as cards",
+    "gridTitle": "Card view",
+    "tableAria": "Show projects as a table",
+    "tableTitle": "Table view",
+    "filter": "Filter: {{category}}",
+    "columns": {
+      "county": "county",
+      "project": "project title",
+      "contestant": "contestant",
+      "category": "category",
+      "comments": "comments"
+    }
+  },
+  "jury": {
+    "title": "InfoEducation Jury",
+    "leadership": "Jury leadership",
+    "educational": "educational software jury",
+    "utility": "utility software jury",
+    "web": "web applications jury",
+    "robots": "robotics jury",
+    "multimedia": "multimedia jury",
+    "technical": "technical committee",
+    "secretary": "secretary",
+    "loading": "Loading jury members...",
+    "error": "The jury is currently unavailable.",
+    "empty": "No jury members are published at the moment.",
+    "criteria": "Judging criteria",
+    "criteriaLoading": "Loading judging criteria...",
+    "criteriaError": "The judging criteria are currently unavailable.",
+    "criteriaEmpty": "No judging criteria are published at the moment.",
+    "openCriteria": "Open the criteria for {{category}}",
+    "roles": {
+      "president": "President",
+      "executivePresident": "Executive president",
+      "vicePresident": "Vice president",
+      "executiveVicePresident": "Executive vice president"
+    }
+  },
+  "news": {
+    "title": "News and updates",
+    "pinned": "Pinned",
+    "readMore": "Read more...",
+    "previous": "Previous",
+    "next": "Next",
+    "loading": "Loading news...",
+    "error": "News could not be loaded.",
+    "empty": "There is no published news at the moment.",
+    "retry": "Try again"
+  }
+}

@@ -3,11 +3,12 @@
 import _ from "lodash";
 import createLegacyComponent from "@lib/create-legacy-component";
 import { FormControl, ControlLabel, FormGroup, Button } from "@ui/bootstrap";
+import { withTranslation } from "react-i18next";
 
 import FormMixin from "../../mixins/form"
 
 
-export default createLegacyComponent({
+const RegisterTeacher = createLegacyComponent({
   displayName: "RegisterTeacher",
   mixins: [FormMixin],
 
@@ -40,56 +41,56 @@ export default createLegacyComponent({
 
   render() {
     let teacherForm = <p className="alert alert-warning">
-        Sunteți deja înregistrat.
+        {this.props.t("alreadyRegistered")}
     </p>;
 
     if (this.props.is_contestant) {
       teacherForm = <p className="alert alert-warning">
-          Sunteți deja înregistrat.
+          {this.props.t("alreadyRegistered")}
       </p>;
     } else if (!this.props.is_teacher) {
       teacherForm = <form onSubmit={this.onFormSubmit} className="RegisterTeacher">
         <FormGroup controlId="teacher-sex">
-          <ControlLabel>Gen *</ControlLabel>
+          <ControlLabel>{this.props.t("common.gender")}</ControlLabel>
           <FormControl componentClass="select"
                  onChange={this.onChange.bind(this, "sex")}>
-            <option value="1">Masculin</option>
-            <option value="2">Feminin</option>
-            <option value="3">Nespecificat</option>
+            <option value="1">{this.props.t("common.male")}</option>
+            <option value="2">{this.props.t("common.female")}</option>
+            <option value="3">{this.props.t("common.unspecified")}</option>
           </FormControl>
           <FormControl.Feedback />
         </FormGroup>
         <FormGroup controlId="teacher-phone-number">
-          <ControlLabel>Număr de telefon *</ControlLabel>
+          <ControlLabel>{this.props.t("common.phone")}</ControlLabel>
           <FormControl
             type="text"
             placeholder="0721234567"
             pattern="[0-9]{10}"
-            title="Numărul de telefon trebuie să conțină doar 10 caractere numerice"
+            title={this.props.t("common.phoneRule")}
             onChange={this.onChange.bind(this, "phone_number")}
             required />
           <FormControl.Feedback />
         </FormGroup>
         <FormGroup controlId="teacher-school-name">
-          <ControlLabel>Școala *</ControlLabel>
+          <ControlLabel>{this.props.t("common.school")}</ControlLabel>
           <FormControl
             type="text"
-            placeholder="Liceul Numărul 9"
+            placeholder={this.props.t("common.schoolPlaceholder")}
             onChange={this.onChange.bind(this, "school_name")}
             required />
           <FormControl.Feedback />
         </FormGroup>
         <FormGroup controlId="teacher-school-city">
-          <ControlLabel>Orașul școlii *</ControlLabel>
+          <ControlLabel>{this.props.t("common.schoolCity")}</ControlLabel>
           <FormControl
             type="text"
-            placeholder="București"
+            placeholder={this.props.t("common.cityPlaceholder")}
             onChange={this.onChange.bind(this, "school_city")}
             required />
           <FormControl.Feedback />
         </FormGroup>
         <FormGroup controlId="teacher-school-county">
-          <ControlLabel>Județul școlii *</ControlLabel>
+          <ControlLabel>{this.props.t("common.schoolCounty")}</ControlLabel>
           <FormControl componentClass="select"
                  onChange={this.onChange.bind(this, "school_county")}
                  required >
@@ -135,15 +136,15 @@ export default createLegacyComponent({
             <option value="Vaslui">Vaslui</option>
             <option value="Vâlcea">Vâlcea</option>
             <option value="Vrancea">Vrancea</option>
-            <option value="Alt județ">Alt județ(altă țară)</option>
+            <option value="Alt județ">{this.props.t("common.otherCounty")}</option>
           </FormControl>
           <FormControl.Feedback />
         </FormGroup>
         <FormGroup controlId="teacher-school-country">
-          <ControlLabel>Țara școlii *</ControlLabel>
+          <ControlLabel>{this.props.t("common.schoolCountry")}</ControlLabel>
           <FormControl
             type="text"
-            placeholder="România"
+            placeholder={this.props.t("common.countryPlaceholder")}
             onChange={this.onChange.bind(this, "school_country")}
             required />
           <FormControl.Feedback />
@@ -151,7 +152,7 @@ export default createLegacyComponent({
         <FormGroup>
           <Button type="submit"
                   disabled={this.state.waitingForServerResponse}>
-            Înscrie-te
+            {this.props.t("common.submit")}
           </Button>
           <FormControl.Feedback />
         </FormGroup>
@@ -173,3 +174,5 @@ export default createLegacyComponent({
   }
 
 });
+
+export default withTranslation("registration")(RegisterTeacher);

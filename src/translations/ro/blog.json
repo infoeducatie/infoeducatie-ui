@@ -1,0 +1,13 @@
+{
+  "title": "Blog",
+  "subtitle": "Articole și resurse din comunitatea InfoEducație",
+  "loading": "Se încarcă articolele...",
+  "error": "Articolele nu au putut fi încărcate. Încearcă din nou mai târziu.",
+  "empty": "Nu există încă articole publicate.",
+  "by": "de {{author}}",
+  "readMore": "Citește articolul",
+  "back": "Înapoi la toate articolele",
+  "articleLoading": "Se încarcă articolul...",
+  "articleError": "Articolul nu a fost găsit sau nu mai este disponibil.",
+  "publishedBy": "Publicat de {{author}} pe {{date}}"
+}

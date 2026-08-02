@@ -5,8 +5,9 @@ import request from "@lib/request";
 import _ from "lodash";
 import createLegacyComponent from "@lib/create-legacy-component";
 import { FormControl, ControlLabel, FormGroup, Button } from "@ui/bootstrap";
+import { withTranslation } from "react-i18next";
 
-export default createLegacyComponent({
+const RegisterContestant = createLegacyComponent({
   displayName: "RegisterContestant",
 
   getInitialState() {
@@ -55,26 +56,26 @@ export default createLegacyComponent({
   render() {
     return <form onSubmit={this.onFormSubmit} className="RegisterContestant">
       <FormGroup>
-        <ControlLabel>Gen *</ControlLabel>
+        <ControlLabel>{this.props.t("common.gender")}</ControlLabel>
         <FormControl componentClass="select"
                onChange={this.onChange.bind(this, "sex")}>
-          <option value="1">Masculin</option>
-          <option value="2">Feminin</option>
+          <option value="1">{this.props.t("common.male")}</option>
+          <option value="2">{this.props.t("common.female")}</option>
         </FormControl>
         <FormControl.Feedback />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Țara *</ControlLabel>
+        <ControlLabel>{this.props.t("contestant.country")}</ControlLabel>
         <FormControl
           type="text"
-          placeholder="România"
+          placeholder={this.props.t("common.countryPlaceholder")}
           onChange={this.onCountryChange}
           value={this.state.contestant.country}
           required />
         <FormControl.Feedback />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Județ *</ControlLabel>
+        <ControlLabel>{this.props.t("contestant.county")}</ControlLabel>
         <FormControl componentClass="select"
                onChange={this.onCountyChange}
                required>
@@ -120,12 +121,12 @@ export default createLegacyComponent({
           <option value="Vaslui">Vaslui</option>
           <option value="Vâlcea">Vâlcea</option>
           <option value="Vrancea">Vrancea</option>
-          <option value="Alt județ">Alt județ(altă țară)</option>
+          <option value="Alt județ">{this.props.t("common.otherCounty")}</option>
         </FormControl>
         <FormControl.Feedback />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Oraș *</ControlLabel>
+        <ControlLabel>{this.props.t("contestant.city")}</ControlLabel>
         <FormControl
           type="text"
           placeholder="Gălăciuc"
@@ -134,7 +135,7 @@ export default createLegacyComponent({
         <FormControl.Feedback />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Adresa *</ControlLabel>
+        <ControlLabel>{this.props.t("contestant.address")}</ControlLabel>
         <FormControl
           type="text"
           placeholder="1 Infinite Loop"
@@ -143,93 +144,93 @@ export default createLegacyComponent({
         <FormControl.Feedback />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Cod poștal *</ControlLabel>
+        <ControlLabel>{this.props.t("contestant.zipCode")}</ControlLabel>
         <FormControl
           type="text"
           placeholder="123456"
           pattern="[0-9]{6,6}"
-          title="Codul poștal trebuie să conțină doar 6 caractere numerice"
+          title={this.props.t("contestant.zipCodeRule")}
           onChange={this.onChange.bind(this, "zip_code")}
           required />
         <FormControl.Feedback />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>CNP *</ControlLabel>
+        <ControlLabel>{this.props.t("contestant.personalId")}</ControlLabel>
         <FormControl
           type="text"
           placeholder="1234567890123"
           pattern="[0-9]{13,13}"
-          title="CNP-ul trebuie să conțină doar 13 caractere numerice"
+          title={this.props.t("contestant.personalIdRule")}
           onChange={this.onChange.bind(this, "cnp")}
           required />
         <FormControl.Feedback />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Seria CI *</ControlLabel>
+        <ControlLabel>{this.props.t("contestant.idSeries")}</ControlLabel>
         <FormControl
           type="text"
           placeholder="AA"
           pattern="[a-zA-Z]{2,2}"
-          title="Seria CI trebuie să conțină doar 2 litere"
+          title={this.props.t("contestant.idSeriesRule")}
           className="uppercase"
           onChange={this.onChange.bind(this, "id_card_type")}
           required />
         <FormControl.Feedback />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Număr CI *</ControlLabel>
+        <ControlLabel>{this.props.t("contestant.idNumber")}</ControlLabel>
         <FormControl
           type="text"
           placeholder="123456"
           pattern="[0-9]{6,6}"
-          title="Numărul CI trebuie să conțină doar 6 caractere numerice"
+          title={this.props.t("contestant.idNumberRule")}
           onChange={this.onChange.bind(this, "id_card_number")}
           required />
         <FormControl.Feedback />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Număr de telefon *</ControlLabel>
+        <ControlLabel>{this.props.t("common.phone")}</ControlLabel>
         <FormControl
           type="text"
           placeholder="0721234567"
           pattern="[0-9]{10}"
-          title="Numărul de telefon trebuie să conțină doar 10 caractere numerice"
+          title={this.props.t("common.phoneRule")}
           onChange={this.onChange.bind(this, "phone_number")}
           required />
         <FormControl.Feedback />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Școala *</ControlLabel>
+        <ControlLabel>{this.props.t("common.school")}</ControlLabel>
         <FormControl
           type="text"
-          placeholder="Liceul Numărul 9"
+          placeholder={this.props.t("common.schoolPlaceholder")}
           onChange={this.onChange.bind(this, "school_name")}
           required />
         <FormControl.Feedback />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Clasa *</ControlLabel>
+        <ControlLabel>{this.props.t("contestant.grade")}</ControlLabel>
         <FormControl componentClass="select"
                onChange={this.onChange.bind(this, "grade")}
                required>
-          <option value="9">Clasa a IX-a</option>
-          <option value="10">Clasa a X-a</option>
-          <option value="11">Clasa a XI-a</option>
-          <option value="12">Clasa a XII-a</option>
+          <option value="9">{this.props.t("contestant.gradeOption", { grade: "IX" })}</option>
+          <option value="10">{this.props.t("contestant.gradeOption", { grade: "X" })}</option>
+          <option value="11">{this.props.t("contestant.gradeOption", { grade: "XI" })}</option>
+          <option value="12">{this.props.t("contestant.gradeOption", { grade: "XII" })}</option>
         </FormControl>
         <FormControl.Feedback />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Orașul școlii *</ControlLabel>
+        <ControlLabel>{this.props.t("common.schoolCity")}</ControlLabel>
         <FormControl
           type="text"
-          placeholder="București"
+          placeholder={this.props.t("common.cityPlaceholder")}
           onChange={this.onChange.bind(this, "school_city")}
           required />
         <FormControl.Feedback />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Județul școlii *</ControlLabel>
+        <ControlLabel>{this.props.t("common.schoolCounty")}</ControlLabel>
         <FormControl componentClass="select"
                onChange={this.onChange.bind(this, "school_county")}
                required >
@@ -275,21 +276,21 @@ export default createLegacyComponent({
           <option value="Vaslui">Vaslui</option>
           <option value="Vâlcea">Vâlcea</option>
           <option value="Vrancea">Vrancea</option>
-          <option value="Alt județ">Alt județ(altă țară)</option>
+          <option value="Alt județ">{this.props.t("common.otherCounty")}</option>
         </FormControl>
         <FormControl.Feedback />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Țara școlii *</ControlLabel>
+        <ControlLabel>{this.props.t("common.schoolCountry")}</ControlLabel>
         <FormControl
           type="text"
-          placeholder="România"
+          placeholder={this.props.t("common.countryPlaceholder")}
           onChange={this.onChange.bind(this, "school_country")}
           required />
         <FormControl.Feedback />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Data nașterii *</ControlLabel>
+        <ControlLabel>{this.props.t("contestant.birthDate")}</ControlLabel>
         <FormControl
           type="date"
           onChange={this.onChange.bind(this, "date_of_birth")}
@@ -297,7 +298,7 @@ export default createLegacyComponent({
         <FormControl.Feedback />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Prenumele profesorului îndrumător *</ControlLabel>
+        <ControlLabel>{this.props.t("contestant.mentorFirstName")}</ControlLabel>
         <FormControl
           type="text"
           placeholder="Ion"
@@ -306,7 +307,7 @@ export default createLegacyComponent({
         <FormControl.Feedback />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Numele profesorului îndrumător *</ControlLabel>
+        <ControlLabel>{this.props.t("contestant.mentorLastName")}</ControlLabel>
         <FormControl
           type="text"
           placeholder="Popescu"
@@ -315,48 +316,46 @@ export default createLegacyComponent({
         <FormControl.Feedback />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Te-ai calificat la faza județeană? *</ControlLabel>
+        <ControlLabel>{this.props.t("contestant.qualified")}</ControlLabel>
         <FormControl componentClass="select"
                value={this.state.officialParticipant}
                onChange={this.onOfficialParticipantChange}>
-          <option value="true">Da</option>
-          <option value="false">Nu</option>
+          <option value="true">{this.props.t("common.yes")}</option>
+          <option value="false">{this.props.t("common.no")}</option>
         </FormControl>
         <FormControl.Feedback />
       </FormGroup>
       <FormGroup>
-        <ControlLabel>Vei fi prezent în tabără? *</ControlLabel>
+        <ControlLabel>{this.props.t("contestant.attending")}</ControlLabel>
         <FormControl componentClass="select"
                value={this.state.presentInCamp}
                onChange={this.onPresentInCampChange}>
-          <option value="true">Da</option>
-          <option value="false">Nu</option>
+          <option value="true">{this.props.t("common.yes")}</option>
+          <option value="false">{this.props.t("common.no")}</option>
         </FormControl>
         <FormControl.Feedback />
       </FormGroup>
       { this.state.presentInCamp === "true" && this.state.officialParticipant === "true" ?
           <FormGroup>
-            <ControlLabel>Vei participa pe un loc gratuit? *</ControlLabel>
+            <ControlLabel>{this.props.t("contestant.freePlace")}</ControlLabel>
             <FormControl componentClass="select"
                    value={this.state.payingCampAcommodation}
                    onChange={this.onPayingCampAcommodation}>
-              <option value="false">Da, locul gratuit aferent proiectului.</option>
-              <option value="true">Nu, sunt al doilea concurent de la proiect.</option>
+              <option value="false">{this.props.t("contestant.freePlaceYes")}</option>
+              <option value="true">{this.props.t("contestant.freePlaceNo")}</option>
             </FormControl>
             <FormControl.Feedback />
           </FormGroup> : null }
       { this.state.payingCampAcommodation === "true" ?
         <p className="alert alert-danger">
-          Pentru a participa la tabăra InfoEducație trebuie să te fi calificat prin intermediul etapei județene sau a celei online.
-          Fiecare județ poate trimite maxim 5 lucrări și maxim 5 elevi.
-          Dacă se trimit mai puțin de 5 lucrări, unele lucrări pot avea 2 elevi, în tabără.
+          {this.props.t("contestant.campNotice")}
         </p>
         : null }
       <FormGroup>
         <Button type="submit"
                 disabled={this.state.waitingForServerResponse ||
                           this.state.payingCampAcommodation === "true"}>
-          Pasul următor
+          {this.props.t("common.next")}
         </Button>
       </FormGroup>
       {this.renderErrors()}
@@ -392,7 +391,7 @@ export default createLegacyComponent({
       let errors = _.clone(this.state.errors);
 
       if (!errors.length) {
-        errors.push("Formularul nu a putut fi trimis.");
+        errors.push(this.props.t("contestant.genericError"));
       }
 
       return <ul className="errors list-group">
@@ -492,3 +491,5 @@ export default createLegacyComponent({
     }
   }
 });
+
+export default withTranslation("registration")(RegisterContestant);

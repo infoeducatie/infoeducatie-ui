@@ -1,0 +1,82 @@
+@import (reference) "../main";
+
+#main-content > :not(.home):not(.robotics-competition) {
+  background: @brand-surface;
+  color: @brand-navy;
+
+  .control-label {
+    color: @brand-navy;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .form-control,
+  .form-select,
+  select {
+    background-color: @white;
+    border: 1px solid @brand-border;
+    border-radius: 12px;
+    color: @brand-navy;
+    min-height: 48px;
+    padding: 10px 14px;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+
+    &:focus {
+      border-color: fade(@brand-blue, 65%);
+      box-shadow: 0 0 0 4px fade(@brand-blue, 10%);
+      outline: 0;
+    }
+  }
+
+  .edition-filter {
+    background: @white;
+    border: 1px solid @brand-border;
+    border-radius: 16px;
+    box-shadow: 0 10px 28px rgba(11, 23, 51, 0.06);
+    margin-top: 36px;
+    max-width: 600px;
+    padding: 20px 22px;
+  }
+
+  .page-status {
+    background: @white;
+    border: 1px solid @brand-border;
+    border-radius: 14px;
+    color: #5E687D;
+    padding: 18px 20px;
+  }
+
+  .alert-warning {
+    background: #FFF8E1;
+    border-color: fade(@yellow, 55%);
+    color: @brand-navy;
+  }
+}
+
+@media screen and (min-width: @screen-wide) {
+  #main-content > :not(.home):not(.robotics-competition) {
+    .control-label {
+      font-size: 16px;
+    }
+
+    .form-control,
+    .form-select,
+    select {
+      font-size: 18px;
+      min-height: 56px;
+      padding: 13px 17px;
+    }
+
+    .edition-filter {
+      max-width: 720px;
+      padding: 26px 28px;
+    }
+  }
+}
+
+@media screen and (max-width: (@screen-sm - 1px)) {
+  #main-content > :not(.home):not(.robotics-competition) .edition-filter {
+    margin-top: 24px;
+    padding: 16px;
+  }
+}

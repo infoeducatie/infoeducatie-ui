@@ -2,11 +2,12 @@
 
 import createLegacyComponent from "@lib/create-legacy-component";
 import { FormControl, FormGroup, ControlLabel, Button } from "@ui/bootstrap";
+import { withTranslation } from "react-i18next";
 
 import FormMixin from "../../mixins/form"
 
 
-export default createLegacyComponent({
+const RegisterAdditionalSearch = createLegacyComponent({
   displayName: "RegisterAdditional",
   mixins: [FormMixin],
 
@@ -19,7 +20,7 @@ export default createLegacyComponent({
   render() {
     return <form onSubmit={this.onFormSubmit}>
       <FormGroup>
-        <ControlLabel>Adresa de email a coechipierului *</ControlLabel>
+        <ControlLabel>{this.props.t("additional.email")}</ControlLabel>
         <FormControl type="email"
                placeholder="coleg@infoeducatie.ro"
                value={this.additionalEmail}
@@ -30,7 +31,7 @@ export default createLegacyComponent({
       <FormGroup>
         <Button type="submit"
                 disabled={this.state.waitingForServerResponse}>
-          Caută
+          {this.props.t("additional.search")}
         </Button>
       </FormGroup>
     </form>;
@@ -49,3 +50,5 @@ export default createLegacyComponent({
     };
   }
 });
+
+export default withTranslation("registration")(RegisterAdditionalSearch);

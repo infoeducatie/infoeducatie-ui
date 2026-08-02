@@ -1,0 +1,68 @@
+@import (reference) "../main";
+
+.not-found-page {
+  text-align: center;
+
+  .blue-section-wrapper {
+    .blue-section-wrapper(@img_path: "/assets/img/banner-not-found-2026.jpg");
+  }
+
+  .blue-section {
+    .blue-section();
+  }
+
+  .not-found-code {
+    color: @yellow;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    margin: 0 0 12px;
+  }
+
+  .not-found-lead {
+    color: @white;
+    font-size: 20px;
+    margin: 18px auto 0;
+    max-width: 620px;
+  }
+
+  .not-found-actions {
+    padding-top: 52px;
+
+    p {
+      font-size: 18px;
+      margin: 18px auto 0;
+      max-width: 680px;
+    }
+  }
+
+  .not-found-links {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: @screen-xs) {
+  .not-found-page {
+    .not-found-lead {
+      font-size: 18px;
+    }
+
+    .not-found-actions {
+      padding-top: 36px;
+    }
+
+    .not-found-links {
+      align-items: stretch;
+      flex-direction: column;
+
+      .cta-link {
+        width: 100%;
+      }
+    }
+  }
+}

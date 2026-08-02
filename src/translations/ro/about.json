@@ -1,0 +1,12 @@
+{
+  "title": "Despre InfoEducație",
+  "loading": "Se încarcă pagina...",
+  "error": "Conținutul paginii nu este disponibil momentan.",
+  "documents": {
+    "criteria": "Criterii de jurizare",
+    "criteriaLoading": "Se încarcă criteriile de jurizare...",
+    "criteriaError": "Criteriile de jurizare nu sunt disponibile momentan.",
+    "criteriaEmpty": "Nu există criterii de jurizare publicate momentan.",
+    "openCriteria": "Deschide criteriile pentru {{category}}"
+  }
+}

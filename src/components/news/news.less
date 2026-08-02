@@ -1,67 +1,398 @@
 @import (reference) "../../main";
 
-
 .news-section {
+  color: @brand-navy;
+  padding-bottom: 0;
 
-  .section-heading {
-    color: @black;
-    font-size: @font-size-h6;
-    text-align: left;
+  .news-heading-row {
+    margin-bottom: 26px;
   }
 
-  a {
-    color: @black;
-    cursor: pointer;
-    font-size: 0.8em;
-    font-style: italic;
+  .section-heading {
+    color: @brand-navy;
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+    margin: 0;
+    text-align: left;
+    text-transform: none;
+  }
+
+  .news-grid {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .news-article {
+    background: @white;
+    border: 1px solid @brand-border;
+    border-radius: 18px;
+    box-shadow: 0 12px 32px rgba(11, 23, 51, 0.06);
+    color: @brand-navy;
+    display: flex;
+    flex-direction: column;
+    min-height: 290px;
+    padding: 24px 28px;
+    transition: box-shadow 160ms ease, transform 160ms ease;
 
     &:hover {
-      color: @black;
+      box-shadow: 0 18px 40px rgba(11, 23, 51, 0.1);
+      transform: translateY(-2px);
     }
+
+    > .row {
+      display: flex;
+      flex: 1 1 auto;
+      flex-direction: column;
+      margin: 0;
+
+      > * {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+
+  .news-meta {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    min-height: 22px;
   }
 
   .date {
-    color: @black;
-    font-weight: normal;
+    color: @brand-green;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.06em;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .pinned-indicator {
+    align-items: center;
+    color: @brand-green;
+    display: inline-flex;
+    flex: 0 0 18px;
+    height: 18px;
+    justify-content: center;
+    line-height: 1;
+    width: 18px;
+
+    svg {
+      display: block;
+    }
   }
 
   .title {
-    font-size: 25px;
-    color: @black;
-    font-weight: normal;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    color: @brand-navy;
+    display: -webkit-box;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    margin-bottom: 16px;
+    min-height: 60px;
+    overflow: hidden;
   }
 
   .message {
-    color: @black;
-  }
-
-  .pinned-news {
-    .title {
-      font-size: 35px;
-    }
-
-    .message {
-      font-size: @font-size-h4;
-    }
-  }
-
-  .pagination-icon {
-    background: transparent;
-    border: 0;
-    color: @black;
-    cursor: pointer;
-    min-height: 44px;
-    padding: 8px;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    color: #59647A;
+    display: -webkit-box;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    min-height: 77px;
+    overflow: hidden;
   }
 
   .read-more {
     background: transparent;
     border: 0;
-    color: @black;
+    color: @brand-green;
     cursor: pointer;
-    font-size: 0.8em;
-    font-style: italic;
-    padding: 6px 0;
-    text-decoration: underline;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: bold;
+    margin-top: auto;
+    padding: 8px 0;
+    text-align: left;
+    text-decoration: none;
+    transition: color 150ms ease;
+
+    &:focus,
+    &:hover {
+      color: #176C31;
+      text-decoration: underline;
+    }
+  }
+
+  .pagination-icon {
+    align-items: center;
+    background: @white;
+    border: 1px solid fade(@brand-green, 32%);
+    border-radius: 999px;
+    color: @brand-green;
+    cursor: pointer;
+    display: inline-flex;
+    font-weight: bold;
+    min-height: 44px;
+    padding: 9px 16px;
+    transition: background-color 150ms ease, border-color 150ms ease,
+      color 150ms ease, transform 150ms ease;
+
+    &:focus,
+    &:hover {
+      background: #EAF6ED;
+      border-color: @brand-green;
+      color: #176C31;
+      transform: translateY(-1px);
+    }
+  }
+
+  .news-pagination {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 22px;
+
+    &:empty {
+      display: none;
+      margin-top: 0;
+    }
+  }
+
+  .news-status {
+    color: #59647A;
+    margin-top: 24px;
+  }
+
+  .news-retry {
+    background: @white;
+    border: 2px solid @brand-navy;
+    border-radius: 999px;
+    color: @brand-navy;
+    cursor: pointer;
+    min-height: 44px;
+    padding: 8px 20px;
+  }
+
+  @media screen and (max-width: (@screen-md - 1px)) {
+    .news-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media screen and (min-width: @screen-wide) {
+    .news-heading-row {
+      margin-bottom: 32px;
+    }
+
+    .section-heading {
+      font-size: 48px;
+    }
+
+    .news-grid {
+      gap: 28px;
+    }
+
+    .news-article {
+      min-height: 350px;
+      padding: 30px 34px;
+    }
+
+    .news-meta {
+      margin-bottom: 20px;
+    }
+
+    .date {
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .title {
+      font-size: 30px;
+      margin-bottom: 20px;
+      min-height: 75px;
+    }
+
+    .message {
+      font-size: 18px;
+      min-height: 86px;
+    }
+
+    .read-more,
+    .pagination-icon {
+      font-size: 15px;
+    }
+
+    .pagination-icon {
+      min-height: 50px;
+      padding: 11px 20px;
+    }
+
+    .news-pagination {
+      margin-top: 28px;
+    }
+  }
+
+  @media screen and (max-width: (@screen-sm - 1px)) {
+    .section-heading {
+      font-size: 34px;
+    }
+
+    .news-article {
+      min-height: 280px;
+      padding: 24px 22px;
+    }
+
+    .news-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.news-modal {
+  color: @brand-navy;
+
+  .modal-dialog {
+    max-width: min(760px, calc(100% - 32px));
+  }
+
+  .modal-content {
+    border: 1px solid @brand-border;
+    border-radius: 22px;
+    box-shadow: 0 28px 80px rgba(11, 23, 51, 0.24);
+    overflow: hidden;
+  }
+
+  .modal-header {
+    align-items: center;
+    background: @white;
+    border-bottom: 1px solid @brand-border;
+    padding: 28px 32px 24px;
+  }
+
+  .news-modal-heading {
+    min-width: 0;
+    padding-right: 24px;
+  }
+
+  .news-modal-date {
+    color: @brand-green;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.06em;
+    margin: 0 0 10px;
+  }
+
+  .modal-title {
+    color: @brand-navy;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+
+  .btn-close {
+    align-self: center;
+    background-color: @brand-surface;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    border-radius: 999px;
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    height: 42px;
+    margin: 0;
+    opacity: 0.72;
+    padding: 0;
+    transition: background-color 150ms ease, opacity 150ms ease,
+      transform 150ms ease;
+    width: 42px;
+
+    &:focus,
+    &:hover {
+      background-color: #E9EEF6;
+      opacity: 1;
+      transform: rotate(4deg);
+    }
+  }
+
+  .modal-body {
+    background: @white;
+    color: #3F4960;
+    font-size: 17px;
+    line-height: 1.7;
+    padding: 28px 32px 34px;
+  }
+
+  .news-modal-body {
+    > :last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: @brand-green;
+      font-weight: bold;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+
+      &:hover {
+        color: #176C31;
+      }
+    }
+
+    h2,
+    h3,
+    h4 {
+      color: @brand-navy;
+      font-weight: bold;
+      line-height: 1.25;
+      margin: 28px 0 12px;
+      text-transform: none;
+    }
+
+    img {
+      border-radius: 14px;
+      height: auto;
+      max-width: 100%;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+  }
+
+  @media screen and (max-width: (@screen-sm - 1px)) {
+    .modal-dialog {
+      margin: 16px;
+      max-width: none;
+    }
+
+    .modal-header {
+      padding: 24px 22px 20px;
+    }
+
+    .news-modal-heading {
+      padding-right: 14px;
+    }
+
+    .modal-title {
+      font-size: 25px;
+    }
+
+    .modal-body {
+      font-size: 16px;
+      padding: 24px 22px 28px;
+    }
   }
 }

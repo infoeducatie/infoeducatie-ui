@@ -3,79 +3,108 @@
 
 .photos {
   .gray-section-wrapper {
-    .gray-section-wrapper (@img_path: "/assets/img/photos.webp");
+    .gray-section-wrapper (@img_path: "/assets/img/banner-photos-2026.jpg");
   }
   .gray-section {
     .gray-section();
   }
 
   .white-section {
-    color: @light-black;
-    padding-bottom: 64px;
+    background: @brand-surface;
+    color: @brand-navy;
+    padding-bottom: 72px;
+    padding-top: 48px;
 
     .photo-albums {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 36px 24px;
-      padding-top: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
     }
 
     .photo-cover-wrapper {
-      margin: 0 auto;
       width: 100%;
-      max-width: 260px;
+      background: @white;
+      border: 1px solid @brand-border;
+      border-radius: 18px;
+      box-shadow: 0 10px 28px rgba(11, 23, 51, 0.06);
+      overflow: hidden;
+      transition: box-shadow 160ms ease, transform 160ms ease;
 
-      .year {
+      &:hover {
+        box-shadow: 0 16px 34px rgba(11, 23, 51, 0.11);
+        transform: translateY(-3px);
+      }
+
+      .photo-album-link {
+        color: inherit;
+        display: block;
+        text-decoration: none;
+
+        &:focus-visible {
+          outline: 3px solid @brand-green;
+          outline-offset: -3px;
+        }
+
+        &:hover .cover,
+        &:focus-visible .cover {
+          filter: brightness(58%);
+          transform: scale(1.04);
+        }
+
+        &:hover .more-details,
+        &:focus-visible .more-details {
+          opacity: 1;
+        }
+
+        &:hover .album-title,
+        &:focus-visible .album-title {
+          color: @brand-blue;
+        }
+
+        &:hover .album-link-icon,
+        &:focus-visible .album-link-icon {
+          background: fade(@brand-blue, 15%);
+          transform: translate(2px, -2px);
+        }
+      }
+
+      .album-title {
         align-items: center;
+        border-top: 1px solid fade(@brand-border, 75%);
+        color: @brand-navy;
         display: flex;
         font-size: 18px;
         font-weight: 600;
-        gap: 10px;
-        justify-content: center;
-        margin-top: 12px;
-        text-align: center;
+        gap: 14px;
+        justify-content: space-between;
+        line-height: 1.3;
+        min-height: 62px;
+        padding: 12px 14px 12px 18px;
+        transition: color 160ms ease;
 
-        .pink-dash {
-          background: @pink;
-          display: inline-block;
-          height: 2px;
-          width: 20px;
+        .album-link-icon {
+          align-items: center;
+          background: fade(@brand-blue, 9%);
+          border-radius: 50%;
+          color: @brand-blue;
+          display: inline-flex;
+          flex: 0 0 34px;
+          height: 34px;
+          justify-content: center;
+          transition: background 160ms ease, transform 160ms ease;
         }
       }
 
       .photo-cover {
+        aspect-ratio: 4 / 3;
+        background: @light-black;
+        overflow: hidden;
+        position: relative;
         width: 100%;
-
-        .photo-album-link {
-          aspect-ratio: 4 / 3;
-          background: @light-black;
-          border-radius: 4px;
-          box-shadow: 0 3px 12px fade(@black, 15%);
-          display: block;
-          overflow: hidden;
-          position: relative;
-          text-decoration: none;
-
-          &:focus-visible {
-            outline: 3px solid @pink;
-            outline-offset: 3px;
-          }
-
-          &:hover .cover,
-          &:focus-visible .cover {
-            filter: brightness(55%);
-            transform: scale(1.04);
-          }
-
-          &:hover .more-details,
-          &:focus-visible .more-details {
-            opacity: 1;
-          }
-        }
 
         .more-details {
           border: 2px solid @white;
-          border-radius: 4px;
+          border-radius: 999px;
           color: @white;
           font-size: 16px;
           font-weight: 600;
@@ -98,67 +127,6 @@
           position: absolute;
           transition: filter 160ms ease, transform 160ms ease;
           width: 100%;
-		  &.year-2023 {
-                        background-image: url(/assets/img/2023.jpg);
-                      }
-          &.year-2022 {
-                        background-image: url(/assets/img/2022.jpg);
-                      }
-
-
-          &.year-2019 {
-                        background-image: url(/assets/img/2019.jpg);
-                      }
-
-          &.year-2018 {
-                        background-image: url(/assets/img/2018.jpg);
-                      }
-
-          &.year-2017 {
-                        background-image: url(/assets/img/2017.jpg);
-                      }
-
-        &.year-2016 {
-                      background-image: url(/assets/img/2016.jpg);
-                    }
-
-        &.year-2015 {
-                      background-image: url(/assets/img/2015.jpg);
-                    }
-
-          &.year-2014 {
-            background-image: url(/assets/img/2014.jpg);
-          }
-          &.year-2013 {
-            background-image: url(/assets/img/2013.jpg);
-          }
-          &.year-2012 {
-            background-image: url(/assets/img/2012.jpg);
-          }
-          &.year-2011 {
-            background-image: url(/assets/img/2011.jpg);
-          }
-          &.year-2010 {
-            background-image: url(/assets/img/2010.jpg);
-          }
-          &.year-2009 {
-            background-image: url(/assets/img/2009.jpg);
-          }
-          &.year-2008 {
-            background-image: url(/assets/img/2008.jpg);
-          }
-          &.year-2007 {
-            background-image: url(/assets/img/2007.jpg);
-          }
-          &.year-2006 {
-            background-image: url(/assets/img/2006.jpg);
-          }
-          &.year-2005 {
-            background-image: url(/assets/img/2005.jpg);
-          }
-          &.year-2004 {
-            background-image: url(/assets/img/2004.jpg);
-          }
         }
       }
     }
@@ -186,14 +154,17 @@
       .photo-albums {
         gap: 28px 16px;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        padding-top: 16px;
       }
 
-      .photo-cover-wrapper .year {
+      .photo-cover-wrapper .album-title {
         font-size: 16px;
+        gap: 8px;
+        min-height: 54px;
+        padding: 9px 10px 9px 12px;
 
-        .pink-dash {
-          width: 14px;
+        .album-link-icon {
+          flex-basis: 30px;
+          height: 30px;
         }
       }
     }

@@ -1,0 +1,41 @@
+{
+  "hero": {
+    "title": "InfoEducație",
+    "statement": "Build ideas. Test the future.",
+    "description": "Where technology, creativity, and collaboration come together to create solutions that matter.",
+    "subtitle": "National innovation and digital creation competition",
+    "edition": "Edition {{count}}",
+    "register": "Create an account",
+    "about": "About the competition"
+  },
+  "community": {
+    "eyebrow": "The InfoEducație community",
+    "title": "Building what comes next, together.",
+    "description": "Join our Discord server and stay close to participants, alumni, mentors, and organizers.",
+    "participants": "Participants and alumni",
+    "collaboration": "Ideas and collaboration",
+    "action": "Join Discord",
+    "actionLabel": "Join the official InfoEducație Discord server. Opens in a new tab.",
+    "official": "Official InfoEducație server"
+  },
+  "alumnus": {
+    "eyebrow": "Alumnus",
+    "quote": "InfoEducație gave me the motivation to learn web technologies and develop my project. My advice to participants is that the presentation is just as important as the work itself. Rehearse before presenting it to the jury!",
+    "name": "Cristian Strat",
+    "role": "Former Growth Manager at Twitter"
+  },
+  "camp": {
+    "location": "Focșani",
+    "datePending": "Dates to be announced",
+    "edition": "Edition {{count}}",
+    "photos": "More photos",
+    "imageAlt": "The InfoEducație camp in Focșani"
+  },
+  "sponsors": {
+    "title": "Partners and sponsors",
+    "loading": "Loading partners and sponsors…",
+    "error": "Partners and sponsors could not be loaded.",
+    "retry": "Try again",
+    "empty": "Partners and sponsors will be announced soon."
+  }
+}

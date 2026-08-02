@@ -1,0 +1,170 @@
+@import (reference) "../main";
+
+.sign-in-modal {
+  color: @brand-navy;
+
+  .modal-dialog {
+    max-width: min(540px, calc(100% - 32px));
+  }
+
+  .modal-content {
+    border: 1px solid @brand-border;
+    border-radius: 22px;
+    box-shadow: 0 28px 80px rgba(11, 23, 51, 0.26);
+    overflow: hidden;
+  }
+
+  .modal-header {
+    align-items: center;
+    background: @white;
+    border-bottom: 1px solid @brand-border;
+    padding: 26px 30px 22px;
+  }
+
+  .modal-title {
+    color: @brand-navy;
+    flex: 1 1 auto;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    min-width: 0;
+    padding-right: 20px;
+  }
+
+  .btn-close {
+    align-self: center;
+    background-color: @brand-surface;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    border-radius: 999px;
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    height: 40px;
+    margin: 0 0 0 auto;
+    opacity: 0.72;
+    padding: 0;
+    transition: background-color 150ms ease, opacity 150ms ease,
+      transform 150ms ease;
+    width: 40px;
+
+    &:focus,
+    &:hover {
+      background-color: #E9EEF6;
+      opacity: 1;
+      transform: rotate(4deg);
+    }
+  }
+
+  .modal-body {
+    background: @white;
+    padding: 26px 30px 30px;
+  }
+
+  .sign-in-form {
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      color: @brand-navy;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .form-control {
+      border: 1px solid @brand-border;
+      border-radius: 12px;
+      box-shadow: none;
+      color: @brand-navy;
+      font-size: 16px;
+      min-height: 50px;
+      padding: 12px 14px;
+      transition: border-color 150ms ease, box-shadow 150ms ease;
+
+      &:focus {
+        border-color: @brand-blue;
+        box-shadow: 0 0 0 4px fade(@brand-blue, 12%);
+      }
+    }
+
+    .sign-in-submit {
+      background: @brand-red;
+      border: 1px solid @brand-red;
+      border-radius: 999px;
+      box-shadow: 0 10px 24px fade(@brand-red, 18%);
+      font-size: 15px;
+      font-weight: bold;
+      min-height: 50px;
+      padding: 12px 22px;
+      transition: box-shadow 150ms ease, transform 150ms ease;
+      width: 100%;
+
+      &:focus,
+      &:hover {
+        background: darken(@brand-red, 5%);
+        border-color: darken(@brand-red, 5%);
+        box-shadow: 0 14px 28px fade(@brand-red, 24%);
+        transform: translateY(-1px);
+      }
+    }
+  }
+
+  .sign-in-error {
+    margin: -4px 0 20px;
+
+    .list-group-item {
+      border-radius: 12px;
+    }
+  }
+
+  .sign-in-links {
+    background: @brand-surface;
+    border: 1px solid @brand-border;
+    border-radius: 14px;
+    color: #59647A;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 16px 18px;
+
+    p {
+      margin: 0;
+
+      + p {
+        margin-top: 8px;
+      }
+    }
+
+    a {
+      color: @brand-green;
+      font-weight: bold;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+
+      &:hover {
+        color: #176C31;
+      }
+    }
+  }
+
+  @media screen and (max-width: (@screen-sm - 1px)) {
+    .modal-dialog {
+      margin: 16px;
+      max-width: none;
+    }
+
+    .modal-header {
+      padding: 22px 20px 18px;
+    }
+
+    .modal-title {
+      font-size: 25px;
+    }
+
+    .modal-body {
+      padding: 22px 20px 24px;
+    }
+  }
+}

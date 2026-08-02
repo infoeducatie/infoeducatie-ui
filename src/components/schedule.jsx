@@ -1,61 +1,117 @@
 "use strict";
 
-import createLegacyComponent from "@lib/create-legacy-component";
 import { ExternalLink } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
-import { Row, Col, Grid } from "@ui/bootstrap";
-import Header from "./header";
+import { Col, Grid, Row } from "@ui/bootstrap";
+import request from "@lib/request";
+import RichTextContent from "./rich-text-content";
+import SecondaryHero from "./secondary-hero";
 
-const scheduleUrl = "https://docs.google.com/document/d/e/2PACX-1vRRrkfFWKoIkJ_XrGeuXJEExZGbfQrryhLehwAQ-mRfu_MkNds0X3nF0JuXBVx69_a-zcqgO3SGb0XD/pub?embedded=true";
+function resolveAssetUrl(assetUrl) {
+  if (!assetUrl) return null;
 
-export default createLegacyComponent({
-  displayName: "SchedulePage",
+  try {
+    return new URL(assetUrl, window.config.API_URL).toString();
+  } catch {
+    return assetUrl;
+  }
+}
 
-  render() {
-    return <div className="schedule">
-      <div className="blue-section-wrapper">
-        <Grid className="blue-section">
-          <Row>
-            <Col xs={12}>
-              <Header isLoggedIn={this.props.isLoggedIn}
-                      current={this.props.current}
-                      language={this.props.language}
-                      changeLanguage={this.props.changeLanguage}
-                      logout={this.props.logout} />
-            </Col>
-          </Row>
-          <Row>
-            <Row className="small-spacing" />
-            <Col xs={12}>
-              <h1>Program InfoEducație</h1>
-              <h2>Ediția {this.props.edition.name}</h2>
-            </Col>
-          </Row>
-          <Row className="big-spacing" />
-        </Grid>
-      </div>
+export default function SchedulePage(props) {
+  const { t } = useTranslation("public");
+  const [pageResult, setPageResult] = useState({
+    page: null,
+    hasErrored: false,
+    language: null,
+  });
+  const isLoading = pageResult.language !== props.language;
+  const hasErrored = !isLoading && pageResult.hasErrored;
+  const page = isLoading ? null : pageResult.page;
+  const documentUrl = resolveAssetUrl(page?.document_url);
+  const editionName = props.edition.name ||
+    props.edition.count ||
+    props.edition.year;
+
+  useEffect(() => {
+    let isCurrent = true;
+
+    request({
+      method: "GET",
+      url: window.config.API_URL + "content_pages/program.json",
+      data: { locale: props.language },
+      success(data) {
+        if (!isCurrent) return;
+        setPageResult({
+          page: data && typeof data === "object" ? data : null,
+          hasErrored: !data || typeof data !== "object",
+          language: props.language,
+        });
+      },
+      error() {
+        if (!isCurrent) return;
+        setPageResult({
+          page: null,
+          hasErrored: true,
+          language: props.language,
+        });
+      },
+    });
+
+    return () => {
+      isCurrent = false;
+    };
+  }, [props.language]);
+
+  return (
+    <div className="schedule">
+      <SecondaryHero headerProps={props}>
+        <h1>{page?.title || t("schedule.title")}</h1>
+        <h2>{t("edition.label", { edition: editionName })}</h2>
+      </SecondaryHero>
       <Grid className="white-section">
         <Row>
           <Col xs={12} md={10} mdOffset={1}>
-             <div className="schedule-heading">
-               <div>
-                 <h2 className="content-heading">Programul ediției {this.props.edition.name}</h2>
-                 <p>Activitățile și orele sunt actualizate în documentul de mai jos.</p>
-               </div>
-               <a className="schedule-external" href={scheduleUrl} target="_blank" rel="noreferrer">
-                 Deschide programul <ExternalLink aria-hidden="true" size={18} />
-               </a>
-             </div>
-             <iframe
-               className="schedule-document"
-               title="Program InfoEducatie"
-               loading="lazy"
-               referrerPolicy="strict-origin-when-cross-origin"
-               src={scheduleUrl}
-             />
+            {isLoading ? (
+              <p className="page-status" role="status">{t("schedule.loading")}</p>
+            ) : null}
+            {hasErrored ? (
+              <p className="page-status alert alert-warning" role="alert">
+                {t("schedule.error")}
+              </p>
+            ) : null}
+            {documentUrl ? (
+              <div className="schedule-preview">
+                <RichTextContent html={page?.body} />
+                <div className="schedule-heading">
+                  <h2 className="content-heading">{t("schedule.documentHeading")}</h2>
+                  <a
+                    className="schedule-external"
+                    href={documentUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {t("schedule.open")} <ExternalLink aria-hidden="true" size={18} />
+                  </a>
+                </div>
+                <p className="schedule-preview-note">{t("schedule.previewNote")}</p>
+                <iframe
+                  className="schedule-document"
+                  title={t("schedule.documentTitle")}
+                  loading="lazy"
+                  src={`${documentUrl}#view=FitH`}
+                />
+              </div>
+            ) : (
+              <RichTextContent html={page?.body} />
+            )}
+            {!isLoading && !hasErrored && !documentUrl ? (
+              <p className="page-status" role="status">{t("schedule.empty")}</p>
+            ) : null}
           </Col>
         </Row>
       </Grid>
-    </div>;
-  }
-});
+    </div>
+  );
+}
