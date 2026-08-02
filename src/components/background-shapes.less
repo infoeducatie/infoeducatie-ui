@@ -13,41 +13,40 @@
 }
 
 .home {
+  .home-content-pattern {
+    background-color: @white;
+    background-image: @brand-shapes;
+    background-position: center top;
+    background-repeat: repeat-y;
+    background-size: 1600px 1000px;
+  }
+
   .green-section-wrapper,
+  .judging-criteria-section-wrapper,
   .judging-criteria-section,
   .gray-section-wrapper,
   .yellow-section-wrapper,
   .community-invite,
   .sponsors-section-wrapper {
-    background-image: @brand-shapes;
-    background-repeat: no-repeat;
-    background-size: 1600px 1000px;
+    background-image: none;
   }
 
   .green-section-wrapper,
-  .yellow-section-wrapper,
+  .yellow-section-wrapper {
+    background-color: rgba(246, 248, 252, 0.72);
+  }
+
+  .judging-criteria-section-wrapper,
+  .gray-section-wrapper,
+  .community-invite,
   .sponsors-section-wrapper {
-    background-position: center 8%;
-  }
-
-  .judging-criteria-section,
-  .community-invite {
-    background-position: center 52%;
-  }
-
-  .gray-section-wrapper {
-    background-position: center 82%;
+    background-color: transparent;
   }
 }
 
 @media screen and (min-width: @screen-wide) {
   #main-content > :not(.home):not(.robotics-competition),
-  .home .green-section-wrapper,
-  .home .judging-criteria-section,
-  .home .gray-section-wrapper,
-  .home .yellow-section-wrapper,
-  .home .community-invite,
-  .home .sponsors-section-wrapper {
+  .home .home-content-pattern {
     background-size: 2000px 1250px;
   }
 }
@@ -58,14 +57,7 @@
     background-size: 900px 563px;
   }
 
-  .home {
-    .green-section-wrapper,
-    .judging-criteria-section,
-    .gray-section-wrapper,
-    .yellow-section-wrapper,
-    .community-invite,
-    .sponsors-section-wrapper {
-      background-size: 900px 563px;
-    }
+  .home .home-content-pattern {
+    background-size: 900px 563px;
   }
 }

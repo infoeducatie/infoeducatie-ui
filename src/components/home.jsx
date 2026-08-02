@@ -72,66 +72,68 @@ export default function Home(props) {
         </Grid>
       </div>
 
-      <div className="green-section-wrapper">
-        <NewsContainer language={language} />
-      </div>
-
-      <JudgingCriteria language={language} />
-
-      <div className="gray-section-wrapper">
-        <Grid className="gray-section">
-          <Row className="alumnus-layout">
-            <Col className="alumnus-content" md={6} mdOffset={6}>
-              <h2 className="section-heading">{t("alumnus.eyebrow")}</h2>
-              <p className="quote">{t("alumnus.quote")}</p>
-              <h3 className="alumnus-name">{t("alumnus.name")}</h3>
-              <p className="alumnus-position">{t("alumnus.role")}</p>
-            </Col>
-          </Row>
-        </Grid>
-      </div>
-
-      <div className="yellow-section-wrapper">
-        <div className="yellow-section container-fluid">
-          <Row>
-            <Col className="text middle-align" md={6}>
-              <div className="wrapper-for-flexbox">
-                <h2 className="location-title">{t("camp.location")}</h2>
-                <p className="data">
-                  <span className="pink-dash" />
-                  {formatCampDate(current.edition, language, t)}
-                  <span className="pink-dash" />
-                </p>
-                <p className="edition">
-                  {t("camp.edition", { count: current.edition.count })}
-                </p>
-                <p>
-                  <Link
-                    className="cta-link cta-dark"
-                    to={getLocalizedPath("photos")}
-                  >
-                    {t("camp.photos")}
-                  </Link>
-                </p>
-              </div>
-            </Col>
-            <Col className="grass" md={6}>
-              <img
-                alt={t("camp.imageAlt")}
-                decoding="async"
-                height="1155"
-                loading="lazy"
-                src={HomeCamp}
-                width="1732"
-              />
-            </Col>
-          </Row>
+      <div className="home-content-pattern">
+        <div className="green-section-wrapper">
+          <NewsContainer language={language} />
         </div>
+
+        <JudgingCriteria language={language} />
+
+        <div className="gray-section-wrapper">
+          <Grid className="gray-section">
+            <Row className="alumnus-layout">
+              <Col className="alumnus-content" md={6} mdOffset={6}>
+                <h2 className="section-heading">{t("alumnus.eyebrow")}</h2>
+                <p className="quote">{t("alumnus.quote")}</p>
+                <h3 className="alumnus-name">{t("alumnus.name")}</h3>
+                <p className="alumnus-position">{t("alumnus.role")}</p>
+              </Col>
+            </Row>
+          </Grid>
+        </div>
+
+        <div className="yellow-section-wrapper">
+          <div className="yellow-section container-fluid">
+            <Row>
+              <Col className="text middle-align" md={6}>
+                <div className="wrapper-for-flexbox">
+                  <h2 className="location-title">{t("camp.location")}</h2>
+                  <p className="data">
+                    <span className="pink-dash" />
+                    {formatCampDate(current.edition, language, t)}
+                    <span className="pink-dash" />
+                  </p>
+                  <p className="edition">
+                    {t("camp.edition", { count: current.edition.count })}
+                  </p>
+                  <p>
+                    <Link
+                      className="cta-link cta-dark"
+                      to={getLocalizedPath("photos")}
+                    >
+                      {t("camp.photos")}
+                    </Link>
+                  </p>
+                </div>
+              </Col>
+              <Col className="grass" md={6}>
+                <img
+                  alt={t("camp.imageAlt")}
+                  decoding="async"
+                  height="1155"
+                  loading="lazy"
+                  src={HomeCamp}
+                  width="1732"
+                />
+              </Col>
+            </Row>
+          </div>
+        </div>
+
+        <CommunityInvite />
+
+        <SponsorsSection language={language} />
       </div>
-
-      <CommunityInvite />
-
-      <SponsorsSection language={language} />
     </div>
   );
 }
