@@ -1,17 +1,30 @@
 @import (reference) "../main";
 
 .header {
-  background: @white;
-  box-shadow: 0 0 0 100vmax @white, 0 10px 32px rgba(11, 23, 51, 0.08);
-  clip-path: inset(0 -100vmax -32px);
+  background: transparent;
   color: @brand-navy;
   position: relative;
   z-index: 20;
+
+  &:before {
+    background: @white;
+    box-shadow: 0 10px 32px rgba(11, 23, 51, 0.08);
+    content: "";
+    height: 100%;
+    left: 50%;
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    width: 100vw;
+    z-index: 0;
+  }
 
   .header-shell {
     align-items: center;
     display: flex;
     min-height: 64px;
+    position: relative;
+    z-index: 1;
   }
 
   .site-logo {
