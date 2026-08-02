@@ -22,9 +22,9 @@
   .header-shell {
     align-items: center;
     display: flex;
-    min-height: 72px;
-    padding-bottom: 8px;
-    padding-top: 8px;
+    min-height: 0;
+    padding-bottom: 14px;
+    padding-top: 14px;
     position: relative;
     z-index: 1;
   }
@@ -45,7 +45,7 @@
     .site-logo-wordmark {
       color: #1F4D8F;
       font-family: @font-family-serif;
-      font-size: 35px;
+      font-size: 37px;
       line-height: 1;
       white-space: nowrap;
     }
@@ -79,7 +79,7 @@
       align-items: center;
       color: @brand-navy;
       display: flex;
-      font-size: 16px;
+      font-size: 17px;
       font-weight: bold;
       justify-content: center;
       line-height: 20px;
@@ -147,17 +147,25 @@
     }
 
     .navbar-nav .nav-link {
-      font-size: 14px;
+      font-size: 15px;
       padding-left: 5px;
       padding-right: 5px;
     }
   }
 
+  @media screen and (max-width: 1399px) and (min-width: 1200px) {
+    .navbar-nav .nav-link {
+      font-size: 15px;
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+  }
+
   @media screen and (min-width: @screen-wide) {
     .header-shell {
-      min-height: 80px;
-      padding-bottom: 10px;
-      padding-top: 10px;
+      min-height: 0;
+      padding-bottom: 16px;
+      padding-top: 16px;
     }
 
     .site-logo {
@@ -195,9 +203,9 @@
 
   @media screen and (max-width: (@screen-md - 1px)) {
     .header-shell {
-      min-height: 68px;
-      padding-bottom: 5px;
-      padding-top: 5px;
+      min-height: 0;
+      padding-bottom: 8px;
+      padding-top: 8px;
     }
 
     .site-logo .site-logo-wordmark {
@@ -227,7 +235,7 @@
       width: 100%;
 
       .nav-link {
-        font-size: 16px;
+        font-size: 17px;
         justify-content: flex-start;
         min-height: 44px;
         padding: 10px 12px;
